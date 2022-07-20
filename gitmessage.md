@@ -64,7 +64,7 @@ Set-Alias vi vim
 - git bash 기준으로는 매번 시작시 source 파일을 실행하거나, git bash의 etc 폴더의 aliases.sh에 alias 명령어를 추가하는 방법이 있음(검증 미완료)
 <br>
 
-**2-3. Commit convention template 사용법 
+**2-3. Commit convention template 사용법** 
 - Gitlab, master branch에 업로드되어 있는 .gitmessage.txt 파일 다운로드
 - home(~) 혹은 root(/)로부터 .gitmessage.txt 파일의 절대 경로 확인
 - 다음 명령어 실행<br>
