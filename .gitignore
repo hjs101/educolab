@@ -135,7 +135,15 @@ celerybeat.pid
 .env
 .venv
 env/
+<<<<<<< HEAD
+<<<<<<< HEAD
 venv*/
+=======
+venv/
+>>>>>>> 46a97f8 (embedded에 .gitignore 추가)
+=======
+venv*/
+>>>>>>> 6b96986 (venv 2개 이상을 위한 .gitignore 수정)
 ENV/
 env.bak/
 venv.bak/
@@ -318,6 +326,7 @@ $RECYCLE.BIN/
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 backend/my_settings.py
 =======
 backend/my_settings.py
@@ -325,3 +334,6 @@ backend/my_settings.py
 =======
 backend/my_settings.py
 >>>>>>> 834c26a (Fix : mySettings.py 수정)
+=======
+backend/educolab/my_settings.py
+>>>>>>> 46a97f8 (embedded에 .gitignore 추가)
