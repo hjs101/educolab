@@ -32,7 +32,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts'
+<<<<<<< HEAD
+    'accounts',
+=======
+    'drf_yasg',
+>>>>>>> da408e3 (Feat : 백엔드 Swagger 적용)
     'django.contrib.admin',
     'django.contrib.auth',
     'rest_framework',
