@@ -26,7 +26,7 @@
 
 - 정확한 Dependency는 확인되지 않음. 설치시 kiby 예제 실행됨<br>
 
-```
+```bash
 $sudo apt update
 $sudo apt install python3-setuptools git-core python3-dev
 $sudo apt install pkg-config libgl1-mesa-dev libgles2-mesa-dev libgstreamer1.0-dev \
@@ -45,7 +45,7 @@ $sudo pip install kivy
 ### 3. 윈도우 kivy 설치
 #### 현재 notebook python 버전 확인 <br>
 윈도우 터미널
-```
+```bash
 $python --version
 ```
 
@@ -71,13 +71,13 @@ https://www.python.org/ 접속
 
 #### kivy 설치 <br>
 가상환경 실행(activate)
-```
+```bash
 $python -m pip install --upgrade pip setuptools
 $python -m pip install "kivy[base]" kivy_examples
 ```
 
 gitlab/embedded branch의 dev-env의 example01.py 활용 <br>
 해당 파일이 있는 경로에서 아래와 같은 코드 실행시 화면 종료 버튼을 포함한 창이 등장하면 정상동작
-```
+```bash
 $python example01.py
 ```
