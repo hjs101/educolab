@@ -13,4 +13,3 @@ class StudentSerializer(serializers.Serializer):
         Model = models.StudentInfo
         fields = ('student_id','name','birthday','school','grade','class_field','student_number',
         'phone_number','email','plus_point','minus_point')
-        
