@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class TeacherInfo(models.Model):
+
     teacher_id = models.CharField(primary_key=True, max_length=45)
     name = models.CharField(max_length=30)
     birthday = models.DateField()
@@ -13,8 +14,6 @@ class TeacherInfo(models.Model):
     password = models.CharField(max_length=45)
     phone_number = models.CharField(max_length=11)
     email = models.EmailField(max_length=45)
-    def __str__(s):
-        return ("teacher_id: " + s.teacher_id)
 class StudentInfo(models.Model):
     student_id = models.CharField(primary_key=True, max_length=45)
     name = models.CharField(max_length=30)

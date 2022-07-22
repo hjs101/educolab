@@ -2,9 +2,9 @@ DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.mysql',
 'NAME': 'educolab',
-'USER': 'ssafy',
-'PASSWORD': 'ssafy',
-"HOST": '127.0.0.1',
+'USER': 'educolab',
+'PASSWORD': 'educolab',
+"HOST": '13.125.255.83',
 "PORT": '3306',
 }
 }
