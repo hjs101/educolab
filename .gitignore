@@ -316,4 +316,12 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-backend/educolab/my_settings.py
+<<<<<<< HEAD
+<<<<<<< HEAD
+backend/my_settings.py
+=======
+backend/my_settings.py
+>>>>>>> 0fe143a (Style : git ignore 반영)
+=======
+backend/my_settings.py
+>>>>>>> 834c26a (Fix : mySettings.py 수정)

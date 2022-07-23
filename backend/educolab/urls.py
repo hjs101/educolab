@@ -21,7 +21,18 @@ from django.urls import path
 from drf_yasg.views import get_schema_view
 from drf_yasg       import openapi
 from rest_framework import permissions
+<<<<<<< HEAD
+from django.conf import settings
+from django.conf.urls.static import static
+=======
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView,
+)
 
+
+>>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
 schema_view = get_schema_view(
     openapi.Info(
         title="EduColab",
@@ -38,6 +49,28 @@ urlpatterns = [
     path(r'swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path(r'swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path(r'redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
+    path('accounts/registration/', include('dj_rest_auth.registration.urls')),
+    path('accounts/', include('accounts.urls')), 
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    path('accounts/',include('accounts.urls'))
+=======
+>>>>>>> 9b06d95 (feat : 회원가입기능 수정중 - 홍찬기)
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+<<<<<<< HEAD
+=======
     path('account/',include('accounts.urls'))
+=======
+    path('accounts/',include('accounts.urls'))
+>>>>>>> 9c14433 (Refactor : 로그인 마무리)
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> 0938bf0 (Refactor : 로그인시 넘겨주는 데이터 변경 및 프로필 사진 추가)
+=======
+>>>>>>> 51dde47 (Refactor : requirements.txt 파일 수정 및 url, views 수정사항 적용)
+=======
 ]
+>>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))

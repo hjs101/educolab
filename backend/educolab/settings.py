@@ -12,7 +12,24 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import my_settings
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
+from datetime import timedelta
+<<<<<<< HEAD
 
+=======
+import datetime
+>>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
+=======
+from datetime import timedelta
+
+>>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
+=======
+from sshtunnel import SSHTunnelForwarder
+>>>>>>> 834c26a (Fix : mySettings.py 수정)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,15 +50,55 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    'rest_framework_simplejwt',
+>>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
+=======
+>>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
     'accounts',
 =======
+=======
+    'accounts',
+>>>>>>> 9e2d7fd (Style : UserInfo DB 등록)
     'drf_yasg',
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> da408e3 (Feat : 백엔드 Swagger 적용)
 =======
+=======
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+>>>>>>> 2babd3d (Merge branch 'back' of https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102 into back)
+=======
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+>>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
     'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    'dj_rest_auth.registration',
     'corsheaders',
 >>>>>>> e121457 (Refactor : DB수정 후 로그인 변경사항)
+=======
+=======
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+>>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    'dj_rest_auth.registration',
+    'corsheaders',
+>>>>>>> 042ca24 (Feat : 프론트와 연결 가능하게 cors 추가)
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -126,16 +183,118 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = my_settings.MY_IMAGE_PATH
+MEDIA_URL = '/image/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 AUTH_USER_MODEL = 'accounts.User' 
 =======
 AUTH_USER_MODEL = 'accounts.UserInfo'
 
+SITE_ID = 1
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = True
+
 # 우선 모두 연결해 놓았습니다.
 CORS_ALLOW_ALL_ORIGINS = True
+<<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> e121457 (Refactor : DB수정 후 로그인 변경사항)
+=======
+AUTH_USER_MODEL = 'accounts.UserInfo'
+>>>>>>> 9e2d7fd (Style : UserInfo DB 등록)
+=======
+AUTH_USER_MODEL = 'accounts.UserInfo'
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = True
+
+# 우선 모두 연결해 놓았습니다.
+CORS_ALLOW_ALL_ORIGINS = True
+<<<<<<< HEAD
+>>>>>>> 042ca24 (Feat : 프론트와 연결 가능하게 cors 추가)
+=======
+
+REST_FRAMEWORK = {
+=======
+
+REST_FRAMEWORK = {
+<<<<<<< HEAD
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+>>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
+=======
+>>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
+=======
+
+REST_FRAMEWORK = {
+>>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
+REST_USE_JWT = True
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=5),
+    'USER_ID_FIELD': 'username',
+}
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
+}
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
+>>>>>>> 2babd3d (Merge branch 'back' of https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102 into back)
+=======
+=======
+REST_USE_JWT = True
+
+>>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=5),
+    'USER_ID_FIELD': 'username',
+}
+<<<<<<< HEAD
+>>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
+=======
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
+}
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
+>>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
+=======
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
+>>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
+=======
+
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
+>>>>>>> 02ef900 (feat : 회원가입기능 학교모델 추가)
+=======
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
+>>>>>>> 834c26a (Fix : mySettings.py 수정)
