@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from base64 import encode
 from tkinter.messagebox import NO
 from django.urls import is_valid_path
@@ -47,3 +48,8 @@ class LoginView(APIView):
             'userflag' : user.userFlag
         }
         return res
+=======
+from django.shortcuts import render
+
+# Create your views here.
+>>>>>>> 042ca243da65a20fe44224719e0e3c967d2b4fc7
