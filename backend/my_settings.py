@@ -4,7 +4,7 @@ DATABASES = {
 'NAME': 'educolab',
 'USER': 'educolab',
 'PASSWORD': 'educolab',
-"HOST": '13.125.255.83',
+"HOST": '13.125.213.119',
 "PORT": '3306',
 }
 }

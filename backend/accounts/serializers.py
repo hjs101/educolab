@@ -5,11 +5,11 @@ from . import models
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.TeacherInfo
-        fields = ('teacher_id','name','birthday','school','subject','homeroom_teacher_flag',
+        fields = ('username','name','birthday','school','subject','homeroom_teacher_flag',
         'homeroom_teacher_grade','homeroom_teacher_class','phone_number','email')
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.StudentInfo
-        fields = ('student_id','name','birthday','school','grade','class_field','student_number',
+        fields = ('username','name','birthday','school','grade','class_field','student_number',
         'phone_number','email','plus_point','minus_point')
