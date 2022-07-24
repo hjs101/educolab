@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 
 class UserInfo(AbstractUser):
+    username = models.CharField(primary_key=True,max_length=20)
     userflag = models.BooleanField(default=False)
     name = models.CharField(max_length=30,default=None)
     birthday = models.DateField(default=None)
