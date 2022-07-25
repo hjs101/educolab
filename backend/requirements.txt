@@ -8,10 +8,7 @@ cryptography==37.0.4
 defusedxml==0.7.1
 dj-rest-auth==2.2.5
 Django==3.2.12
-<<<<<<< HEAD
 django-allauth==0.51.0
-=======
->>>>>>> de4f72ef6ae7757130d7c0a354baf736731aa7be
 django-cors-headers==3.13.0
 django-filter==22.1
 djangorestframework==3.13.1
