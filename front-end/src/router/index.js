@@ -1,20 +1,42 @@
+// import { AppFullscreen } from 'quasar'
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const routes = [
+  // 공지사항
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/notice',
+    name: 'notice',
+    component: () => import('@/views/NoticeView')
   },
+
+  // 과제(교사)
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/teacher/task',
+    name: 'teacherTask',
+    component: () => import('@/views/TeacherTaskView')
+  },
+
+  // 퀴즈(교사)
+  {
+    path: '/quiz',
+    name: 'quiz',
+    component: () => import('@/views/QuizView')
+  },
+
+  // 설문조사(교사)
+  {
+    path: '/search',
+    name: 'search',
+    component: () => import('@/views/SearchView')
+  },
+
+  // 마이페이지(교사)
+  {
+    path: '/teacher',
+    name: 'teacherPage',
+    component: () => import('@/views/TeacherPageView')
   }
+
 ]
 
 const router = createRouter({
