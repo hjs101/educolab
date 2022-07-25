@@ -28,10 +28,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['name'] = self.user.name
         data['refresh'] = str(refresh)
         data['access'] = str(refresh.access_token)
-        data['success'] = True
         data['userflag'] = self.user.userflag
         data['email'] = self.user.email
-        data['img'] = self.user.profil
+        data['profil'] = self.user.profil
         return data
 
 
