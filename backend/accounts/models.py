@@ -16,3 +16,4 @@ class UserInfo(AbstractUser):
     homeroom_teacher_flag = models.IntegerField(null=True)
     plus_point = models.IntegerField(default=0)
     minus_point = models.IntegerField(default=0)
+    profil = models.CharField(max_length=45,null=True,blank=True)
