@@ -1,7 +1,10 @@
 import { createStore } from 'vuex'
+import accounts from './accounts.js'
 
 export default createStore({
   state: {
+    // 서버 기본 주소
+    URL: ''
   },
   getters: {
   },
@@ -10,5 +13,6 @@ export default createStore({
   actions: {
   },
   modules: {
+    accounts,
   }
 })
