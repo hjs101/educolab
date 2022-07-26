@@ -8,3 +8,5 @@ DATABASES = {
 "PORT": '3306',
 }
 }
+
+MY_IMAGE_PATH = '/SSAFY/C102_IOT/S07P12C102/backend/image/'

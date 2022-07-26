@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import my_settings
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,7 +35,13 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts',
     'drf_yasg',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    'dj_rest_auth.registration',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -120,6 +127,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = my_settings.MY_IMAGE_PATH
+MEDIA_URL = '/image/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -127,5 +137,29 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.UserInfo'
 
+SITE_ID = 1
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = True
+
 # 우선 모두 연결해 놓았습니다.
 CORS_ALLOW_ALL_ORIGINS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+REST_USE_JWT = True
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=5),
+    'USER_ID_FIELD': 'username',
+}
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
+}
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
