@@ -2,11 +2,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
+
   // 공지사항
   {
     path: '/notice',
     name: 'notice',
-    component: () => import('@/views/NoticeView')
+    component: () => import('@/views/NoticeView'),
+  },
+  
+  // 공지사항 작성
+  {
+    path: '/notice/create',
+    name: 'noticeForm',
+    component: () => import('@/views/NoticeFormView')
   },
 
   // 과제(교사)
