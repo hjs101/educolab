@@ -1,7 +1,6 @@
 <template>
-  <div class="q-mx">
-    <!-- 반응형하는 중 -->
-    <h3>LOGIN</h3>
+<div class="q-mx">
+    <h3>SIGN UP</h3>
     <!-- form 부분 -->
     <q-form
       @submit="onSubmit"
@@ -47,38 +46,19 @@
       <router-view></router-view>
     </div>
   </div>
-
 </template>
 
-<style scoped>
-  .input {
-    width: 500px;
-  }
-  .buttonGroup {
-    margin-top: 100px;
-  }
-</style>
-
 <script>
-import { reactive } from '@vue/reactivity'
-
+import {reactive} from '@vue/reactivity'
 export default {
-  name: 'LoginView',
+  name: "TeacherSignupView",
   setup () {
     // 기존의 data
     const state = reactive({
       username: '',
       password: ''
     })
-    // method 부분
-    const login = () => {
-      // login method
-      // state 호출할 때 this 바인딩이 필요하지 않음
-    }
-    return {
-      login,
-      state
-    }
+    return state
   }
 }
 </script>
