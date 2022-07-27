@@ -162,4 +162,5 @@ SIMPLE_JWT = {
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
 }
+
 ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'

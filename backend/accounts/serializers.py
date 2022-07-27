@@ -3,12 +3,22 @@ from . import models
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth import get_user_model
+from dj_rest_auth.registration.serializers import RegisterSerializer
+
+
 class UserinfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.UserInfo
         fields = '__all__'
 
 # jwt token 결과 커스텀 
+
+class SchoolInfoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.SchoolInfo
+        fields = '__all__'
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     
@@ -36,3 +46,28 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
+
+class CustomRegisterSerializer(RegisterSerializer):
+    userflag =serializers.BooleanField()
+    name = serializers.CharField()
+    birthday = serializers.DateField()
+    school = serializers.CharField()
+    school_url = serializers.CharField(required=False)
+    phone_number = serializers.CharField()
+    grade = serializers.IntegerField(required=False)
+    class_field = serializers.IntegerField(required=False)
+    subject = serializers.CharField(required=False)
+    homeroom_teacher_flag = serializers.IntegerField(required=False)
+    def get_cleaned_data(self):
+        data = super().get_cleaned_data()
+        data['userflag'] = self.validated_data.get('userflag','')
+        data['name'] = self.validated_data.get('name','')
+        data['birthday'] = self.validated_data.get('birthday','')
+        data['school'] = self.validated_data.get('school','')
+        data['school_url'] = self.validated_data.get('school_url','')
+        data['phone_number'] = self.validated_data.get('phone_number','')
+        data['grade'] = self.validated_data.get('grade','')
+        data['class_field'] = self.validated_data.get('class_field','')
+        data['subject'] = self.validated_data.get('subject','')
+        data['homeroom_teacher_flag'] = self.validated_data.get('homeroom_teacher_flag','')
+        return data
