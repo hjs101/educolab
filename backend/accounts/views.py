@@ -12,6 +12,7 @@ from re import L
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 from rest_framework import status
 
 from .serializers import SchoolInfoSerializer
@@ -148,10 +149,17 @@ from rest_framework.response import Response
 =======
 
 class SchoolInfoView(APIView):
-    
+    permission_classes = (AllowAny,)
+
     def get(self, request):
         search = request.data['schoolname']
         school = SchoolInfo.objects.filter(name__contains=search)
         serializer = SchoolInfoSerializer(school,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
+<<<<<<< HEAD
 >>>>>>> 9a0c0d9 (feat : 학교이름 검색 기능 구현 - 홍찬기)
+=======
+
+class FindIDView(APIView):
+    pass
+>>>>>>> 668c397 (feat : 회원가입정보 subject,userflag 수정)

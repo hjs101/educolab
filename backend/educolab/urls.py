@@ -49,6 +49,7 @@ urlpatterns = [
     path(r'swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path(r'swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path(r'redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
+<<<<<<< HEAD
     path('accounts/registration/', include('dj_rest_auth.registration.urls')),
     path('accounts/', include('accounts.urls')), 
     path('admin/', admin.site.urls),
@@ -59,6 +60,12 @@ urlpatterns = [
     path('accounts/',include('accounts.urls'))
 =======
 >>>>>>> 9b06d95 (feat : 회원가입기능 수정중 - 홍찬기)
+=======
+    path('accounts/registration', include('dj_rest_auth.registration.urls')),
+    path('accounts/', include('accounts.urls')), 
+    path('admin/', admin.site.urls),
+    path('notice/', include('notice.urls')),
+>>>>>>> 601cae8 (Feat : 공지사항 기능 구현)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 <<<<<<< HEAD

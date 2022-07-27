@@ -72,7 +72,11 @@ urlpatterns = [
 >>>>>>> 0938bf0 (Refactor : 로그인시 넘겨주는 데이터 변경 및 프로필 사진 추가)
 =======
     path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
+<<<<<<< HEAD
 >>>>>>> 9a0c0d9 (feat : 학교이름 검색 기능 구현 - 홍찬기)
+=======
+    path('findid/', views.FindIDView.as_view(), name='findid'),
+>>>>>>> 668c397 (feat : 회원가입정보 subject,userflag 수정)
 ]
 =======
 

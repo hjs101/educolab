@@ -6,15 +6,25 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 <<<<<<< HEAD
 <<<<<<< HEAD
 from rest_framework_simplejwt.tokens import RefreshToken
+<<<<<<< HEAD
 =======
 
 >>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
 =======
 from rest_framework_simplejwt.tokens import RefreshToken
 >>>>>>> 0938bf0 (Refactor : 로그인시 넘겨주는 데이터 변경 및 프로필 사진 추가)
+=======
+from django.contrib.auth import get_user_model
+from dj_rest_auth.registration.serializers import RegisterSerializer
+
+class TeacherNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ['name', 'username']
+>>>>>>> 3494f79 (Feat : 공지사항 등록, 목록 기능 구현)
 class UserinfoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.UserInfo
+        model = get_user_model()
         fields = '__all__'
 
 # jwt token 결과 커스텀 
@@ -114,6 +124,7 @@ class CustomRegisterSerializer(RegisterSerializer):
     phone_number = serializers.CharField()
     grade = serializers.IntegerField(required=False)
     class_field = serializers.IntegerField(required=False)
+    subject = serializers.CharField(required=False)
     def get_cleaned_data(self):
         data = super().get_cleaned_data()
         data['userflag'] = self.validated_data.get('userflag','')
@@ -123,5 +134,6 @@ class CustomRegisterSerializer(RegisterSerializer):
         data['phone_number'] = self.validated_data.get('phone_number','')
         data['grade'] = self.validated_data.get('grade','')
         data['class_field'] = self.validated_data.get('class_field','')
+        data['subject'] = self.validated_data.get('subject','')
         return data
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))

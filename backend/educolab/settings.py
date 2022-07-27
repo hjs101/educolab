@@ -15,6 +15,7 @@ import my_settings
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
 from datetime import timedelta
@@ -25,14 +26,24 @@ import datetime
 >>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
 =======
 from datetime import timedelta
+<<<<<<< HEAD
 
 >>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
 =======
 from sshtunnel import SSHTunnelForwarder
 >>>>>>> 834c26a (Fix : mySettings.py 수정)
+=======
+import os
+>>>>>>> 3b6b3c2 (Feat : 공지사항 기능 중간 저장)
+=======
+from datetime import timedelta
+import os
+>>>>>>> c4ffe2e (feat: 회원가입기능 유저플래그수정, 과목추가 - 홍찬기)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/image/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -183,9 +194,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = my_settings.MY_IMAGE_PATH
-MEDIA_URL = '/image/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -243,9 +251,15 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+<<<<<<< HEAD
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ]
+=======
+    'DEFAULT_PERMISSION_CLASSES' : [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+>>>>>>> 601cae8 (Feat : 공지사항 기능 구현)
 }
 
 <<<<<<< HEAD

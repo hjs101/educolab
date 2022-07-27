@@ -1,5 +1,6 @@
 from allauth.account.adapter import DefaultAccountAdapter
-
+from .serializers import SchoolInfoSerializer
+from .models import SchoolInfo
 class CustomAccountAdapter(DefaultAccountAdapter):
     def save_user(self, request, user, form, commit=True):
         data = form.cleaned_data
@@ -11,8 +12,12 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         if birthday:
             user.birthday = birthday
         school = data.get("school")
+        school = SchoolInfo.objects.get(code=school)
         if school:
             user.school = school
+        userflag = data.get("userflag")
+        if userflag:
+            user.userflag = userflag
         phone_number = data.get("phone_number")
         if phone_number:
             user.phone_number = phone_number
@@ -22,10 +27,9 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         class_field = data.get("class_field")
         if class_field:
             user.class_field = class_field
-        homeroom_teacher_flag = data.get("homeroom_teacher_flag")
-        if homeroom_teacher_flag:
-            user.homeroom_teacher_flag = homeroom_teacher_flag
-        
+        subject = data.get("subject")
+        if subject:
+            user.subject = subject
         
         user.save()
         return user
