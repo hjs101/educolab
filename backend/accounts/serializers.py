@@ -51,6 +51,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 class CustomRegisterSerializer(RegisterSerializer):
     userflag =serializers.BooleanField()
     name = serializers.CharField()
+    print(name)
     birthday = serializers.DateField()
     school = serializers.CharField()
     phone_number = serializers.CharField()
