@@ -28,4 +28,5 @@ urlpatterns = [
     path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
 	path('login/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
 ]

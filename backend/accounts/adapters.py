@@ -13,6 +13,9 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         school = data.get("school")
         if school:
             user.school = school
+        school_url = data.get("school_url")
+        if school_url:
+            user.school_url = school_url
         phone_number = data.get("phone_number")
         if phone_number:
             user.phone_number = phone_number
@@ -28,12 +31,7 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         homeroom_teacher_flag = data.get("homeroom_teacher_flag")
         if homeroom_teacher_flag:
             user.homeroom_teacher_flag = homeroom_teacher_flag
-        plus_point = data.get("plus_point")
-        if plus_point:
-            user.plus_point = plus_point
-        minus_point = data.get("minus_point")
-        if minus_point:
-            user.minus_point = minus_point
+        
         
         user.save()
         return user
