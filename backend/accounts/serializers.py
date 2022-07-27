@@ -41,6 +41,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['userflag'] = self.user.userflag
         data['email'] = self.user.email
         data['profil'] = self.user.profil
+        data['schoolcode']=self.user.school.code
         return data
 
 
