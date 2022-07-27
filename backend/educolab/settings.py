@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'notice',
     'accounts',
     'drf_yasg',
     'django.contrib.sites',

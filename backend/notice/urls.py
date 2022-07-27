@@ -19,5 +19,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('main', views.NoticeMainView.as_view(), name='notice/main'),
+    path('main/', views.NoticeMainView.as_view(), name='notice/main'),
 ]

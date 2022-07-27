@@ -1,10 +1,11 @@
 from django.db import models
-
+from accounts.models import UserInfo,SchoolInfo
 # Create your models here.
 
 class Notice(models.Model):
     notice_pk = models.IntegerField(primary_key=True)
-    teacher = models.ForeignKey('UserInfo', on_delete=models.CASCADE)
+    teacher = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    school = models.ForeignKey(SchoolInfo, on_delete=models.CASCADE, related_name="notice_school")
     classification = models.CharField(max_length=45)
     title = models.CharField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
