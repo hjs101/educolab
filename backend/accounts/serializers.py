@@ -14,6 +14,12 @@ class UserinfoSerializer(serializers.ModelSerializer):
 
 # jwt token 결과 커스텀 
 
+class SchoolInfoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.SchoolInfo
+        fields = '__all__'
+
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     
     # response 커스텀 
