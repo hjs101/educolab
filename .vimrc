@@ -1,4 +1,4 @@
-" vim-bootstrap 2022-05-12 01:10:41
+" vim-bootstrap 2022-07-26 15:49:02
 
 "*****************************************************************************
 "" Vim-Plug core
@@ -10,9 +10,9 @@ else
   let curl_exists=expand('curl')
 endif
 
-let g:vim_bootstrap_langs = "c"
+let g:vim_bootstrap_langs = "c,python"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
-let g:vim_bootstrap_theme = "molokai"
+let g:vim_bootstrap_theme = "codedark"
 let g:vim_bootstrap_frams = ""
 
 if !filereadable(vimplug_exists)
@@ -49,9 +49,7 @@ Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-Plug 'tomasr/molokai'
-Plug 'nanotech/jellybeans.vim'
-
+Plug 'tomasiser/vim-code-dark'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -77,9 +75,18 @@ Plug 'honza/vim-snippets'
 "" Custom bundles
 "*****************************************************************************
 
+" 
+Plug 'valloric/youcompleteme'
+
 " c
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
+
+
+" python
+"" Python Bundle
+
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 
 "*****************************************************************************
@@ -148,7 +155,7 @@ set ruler
 set number
 
 let no_buffers_menu=1
-colorscheme molokai
+colorscheme codedark
 
 
 " Better command line completion 
@@ -211,7 +218,6 @@ set titleold="Terminal"
 set titlestring=%F
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-colorscheme jellybeans
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -447,6 +453,30 @@ nnoremap <Leader>o :.Gbrowse<CR>
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 
+
+" python
+" vim-python
+augroup vimrc-python
+  autocmd!
+  autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
+      \ formatoptions+=croq softtabstop=4
+      \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+augroup END
+
+
+" ale
+:call extend(g:ale_linters, {
+    \'python': ['flake8'], })
+
+" vim-airline
+let g:airline#extensions#virtualenv#enabled = 1
+
+" Syntax highlight
+let python_highlight_all = 1
+
+
+
+" 
 
 
 "*****************************************************************************
