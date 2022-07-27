@@ -1,11 +1,15 @@
+from requests import request
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated 
 from accounts.serializers import TeacherNameSerializer
-from accounts.models import SchoolInfo
+from accounts.models import SchoolInfo,UserInfo
 from .serializers import NoticeMainSerializer
 from .models import Notice
-from accounts.models import SchoolInfo
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+
+import os
 class NoticeMainView(APIView) :
     
     # permission_classes = (IsAuthenticated,)
@@ -40,4 +44,16 @@ class NoticeMainView(APIView) :
 
 class NoticeCreateView(APIView):
     def post(self, req):
+        notice = Notice()
 
+        notice.teacher = UserInfo.objects.get(username=req.data['username'])
+        notice.school = SchoolInfo.objects.get(code=req.data['schoolcode'])
+        notice.classification = req.data['division']
+        notice.title = req.data['title']
+        notice.content = req.data['content']
+        
+        files = req.FILES.getlist("files")
+        
+        
+        for file in files:
+            
