@@ -8,6 +8,7 @@
 </template>
 
 <style>
+/* 모든 페이지에서 공통으로 사용할 스타일 정의 */
   h3 {
     text-align: center;
   }
