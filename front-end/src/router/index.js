@@ -2,21 +2,26 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
+  // Main
+  {
+    path: '/',
+    name: 'TheNavbar',
+    component: () => import('@/views/TheNavbar')
+  },
 
   // 공지사항
   {
     path: '/notice',
     name: 'notice',
-    component: () => import('@/views/NoticeView'),
+    component: () => import('@/views/NoticeView')
   },
-  
+
   // 공지사항 작성
   {
     path: '/notice/create',
     name: 'noticeForm',
     component: () => import('@/views/NoticeFormView')
   },
-
   // 과제(교사)
   {
     path: '/teacher/task',
