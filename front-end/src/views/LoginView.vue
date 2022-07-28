@@ -50,15 +50,6 @@
 
 </template>
 
-<style scoped>
-  .input {
-    width: 500px;
-  }
-  .buttonGroup {
-    margin-top: 100px;
-  }
-</style>
-
 <script>
 import { reactive } from '@vue/reactivity'
 
@@ -82,3 +73,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .input {
+    width: 500px;
+  }
+  .buttonGroup {
+    margin-top: 100px;
+  }
+</style>
