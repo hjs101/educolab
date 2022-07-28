@@ -13,10 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import my_settings
 from datetime import timedelta
-<<<<<<< HEAD
-=======
 import os
->>>>>>> back_notice
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
