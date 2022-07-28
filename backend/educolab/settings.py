@@ -13,9 +13,15 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import my_settings
 from datetime import timedelta
+<<<<<<< HEAD
+=======
+import os
+>>>>>>> back_notice
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/image/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -32,6 +38,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'notice',
     'accounts',
     'drf_yasg',
     'django.contrib.sites',
@@ -126,9 +133,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = my_settings.MY_IMAGE_PATH
-MEDIA_URL = '/image/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -148,9 +152,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ]
+    'DEFAULT_PERMISSION_CLASSES' : [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
 }
 
 REST_USE_JWT = True
