@@ -6,10 +6,13 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 from dj_rest_auth.registration.serializers import RegisterSerializer
 
-
+class TeacherNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ['name', 'username']
 class UserinfoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.UserInfo
+        model = get_user_model()
         fields = '__all__'
 
 # jwt token 결과 커스텀 
