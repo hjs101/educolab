@@ -10,7 +10,6 @@ class TeacherNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ['name', 'username']
-
 class UserinfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
