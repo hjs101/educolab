@@ -28,7 +28,6 @@
       type="password"
       v-model="userData.password2"
       @keyup="isCorrect"
-      @change="$emit(toSignup)"
       lazy-rules
       :rules="[
         val => val !== null && val !== '' || '비밀번호를 다시 입력해주세요',
@@ -51,7 +50,7 @@ import {computed} from 'vue'
 // import axios from 'axios';
 export default {
   name: 'LoginInfo',
-  setup (props, {emit}) {
+  setup () {
     const userData = reactive({
       username: null,
       password1: null,
@@ -80,15 +79,11 @@ export default {
         userData.correct = false
       }
     }
-    const toSignup = () => {
-      emit('to-signup', userData)
-    }
     return {
       userData,
       computedData,
       confirmUsername,
-      isCorrect,
-      toSignup
+      isCorrect
     }
   },
 }
