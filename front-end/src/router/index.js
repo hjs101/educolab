@@ -5,42 +5,47 @@ const routes = [
   // 공지사항 (공통)
   {
     path: '/notice',
-    name: 'notice',
+    name: 'Notice',
     component: () => import('@/views/NoticeView')
   },
 
+  {
+    path: '/notice/:contentId',
+    name: 'NoticeDetailView',
+    component: () => import('@/views/NoticeDetailView')
+  },
   // 공지사항 작성
   {
     path: '/notice/create',
-    name: 'noticeForm',
+    name: 'NoticeForm',
     component: () => import('@/views/NoticeFormView')
   },
 
   // 과제(교사)
   {
     path: '/teacher/task',
-    name: 'teacherTask',
+    name: 'TeacherTask',
     component: () => import('@/views/TeacherTaskView')
   },
 
   // 퀴즈(교사)
   {
     path: '/quiz',
-    name: 'quiz',
+    name: 'Quiz',
     component: () => import('@/views/QuizView')
   },
 
   // 설문조사(교사)
   {
     path: '/search',
-    name: 'search',
+    name: 'Search',
     component: () => import('@/views/SearchView')
   },
 
   // 마이페이지(교사)
   {
     path: '/teacher',
-    name: 'teacherPage',
+    name: 'TeacherPage',
     component: () => import('@/views/TeacherPageView')
   },
 

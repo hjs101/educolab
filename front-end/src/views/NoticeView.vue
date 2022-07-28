@@ -9,6 +9,8 @@
       <td>{{ search.created_at }}</td>
       <td>{{ search.user_id }}</td> 
     </tr>
+    
+    <router-link to="/notice/create"><button>글쓰기</button></router-link>
 
     <table>
       <thead>
@@ -22,7 +24,7 @@
 
       <tbody>
         <tr :key="notice.content_id" v-for="notice in content">
-          <td>{{ notice.content_id }}</td>
+          <router-link to="notice/{}"><td>{{ notice.content_id }}</td></router-link>
           <td>{{ notice.title }}</td>
           <td>{{ notice.created_at }}</td>
           <td>{{ notice.user_id }}</td>          
@@ -31,6 +33,7 @@
     </table>
 
   </div>
+  <router-view />  
 </template>
 
 <script>
@@ -52,8 +55,13 @@ export default {
         if (this.content[index].title.includes(this.searchTitle)) {
           this.searchNoticeList.push(this.content[index])
         }
+      }
+    },
+    TitleClick() {
+      this.$router.push({
+        path: `/notice/${this.notice.content_id}`
+      })
     }
-  }
   }
 }
 
