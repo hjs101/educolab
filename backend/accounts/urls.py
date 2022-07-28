@@ -29,4 +29,5 @@ urlpatterns = [
 	path('login/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
+    path('findid/', views.FindIDView.as_view(), name='findid'),
 ]

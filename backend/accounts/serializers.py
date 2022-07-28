@@ -9,7 +9,7 @@ from dj_rest_auth.registration.serializers import RegisterSerializer
 
 class UserinfoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.UserInfo
+        model = get_user_model()
         fields = '__all__'
 
 # jwt token 결과 커스텀 
@@ -51,12 +51,12 @@ class MyTokenObtainPairView(TokenObtainPairView):
 class CustomRegisterSerializer(RegisterSerializer):
     userflag =serializers.BooleanField()
     name = serializers.CharField()
-    print(name)
     birthday = serializers.DateField()
     school = serializers.CharField()
     phone_number = serializers.CharField()
     grade = serializers.IntegerField(required=False)
     class_field = serializers.IntegerField(required=False)
+    subject = serializers.CharField(required=False)
     def get_cleaned_data(self):
         data = super().get_cleaned_data()
         data['userflag'] = self.validated_data.get('userflag','')
@@ -66,4 +66,5 @@ class CustomRegisterSerializer(RegisterSerializer):
         data['phone_number'] = self.validated_data.get('phone_number','')
         data['grade'] = self.validated_data.get('grade','')
         data['class_field'] = self.validated_data.get('class_field','')
+        data['subject'] = self.validated_data.get('subject','')
         return data
