@@ -1,24 +1,29 @@
 <template>
-  <div>
-  <div v-if='isLoggedIn'><router-link to='/'></router-link></div>
-  <div v-else><router-link to='/quiz'></router-link></div>  
+  <div style="height:2000px;">
 
-    <router-view />
+    <!-- 로그인 했을 때 -->
+    <the-navbar v-if="isLoggedIn"></the-navbar>
+
+    <!-- 로그인 안했을 때 -->
+    <login-view v-else-if="!isLoggedIn"></login-view>
+    
   </div>
+
 </template>
 
 <script>
+import TheNavbar from '@/views/TheNavbar.vue'
+import LoginView from '@/views/LoginView.vue'
 
 export default {
-  name: 'theNavbar',
+  name: 'MainPage',
   data() {
-    let isLoggedIn = true
-    if (isLoggedIn == false) {
-      isLoggedIn = false
-    }
     return {
-      isLoggedIn
+      isLoggedIn : true,
     }
+  },
+  components: {
+    TheNavbar, LoginView
   }
 }
 </script>

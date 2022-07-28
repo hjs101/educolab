@@ -2,14 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-  // Main
-  {
-    path: '/',
-    name: 'TheNavbar',
-    component: () => import('@/views/TheNavbar')
-  },
-
-  // 공지사항
+  // 공지사항 (공통)
   {
     path: '/notice',
     name: 'notice',
@@ -22,6 +15,7 @@ const routes = [
     name: 'noticeForm',
     component: () => import('@/views/NoticeFormView')
   },
+
   // 과제(교사)
   {
     path: '/teacher/task',
@@ -48,8 +42,35 @@ const routes = [
     path: '/teacher',
     name: 'teacherPage',
     component: () => import('@/views/TeacherPageView')
-  }
+  },
 
+  // 과제(학생)
+  {
+    path: '/student/task',
+    name: 'StudentTaskListView',
+    component: () => import('@/views/StudentTaskListView')
+  },
+
+  // 내 필기(학생)
+  {
+    path: '/student/writing',
+    name: 'StudentWritingView.vue',
+    component: () => import('@/views/StudentWritingView')
+  },
+
+  // 포인트 상점(학생)
+  {
+    path: '/student/store',
+    name: 'StudentStoreView.vue',
+    component: () => import('@/views/StudentStoreView')
+  },
+
+  // 마이 페이지(학생)
+  {
+    path: '/student',
+    name: 'StudentPageView',
+    component: () => import('@/views/StudentPageView')
+  }
 ]
 
 const router = createRouter({
