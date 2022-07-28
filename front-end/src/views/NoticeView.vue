@@ -24,7 +24,7 @@
 
       <tbody>
         <tr :key="notice.content_id" v-for="notice in content">
-          <router-link to="notice/{}"><td>{{ notice.content_id }}</td></router-link>
+          <td>{{ notice.content_id }}</td>
           <td>{{ notice.title }}</td>
           <td>{{ notice.created_at }}</td>
           <td>{{ notice.user_id }}</td>          
@@ -33,7 +33,6 @@
     </table>
 
   </div>
-  <router-view />  
 </template>
 
 <script>
@@ -56,11 +55,6 @@ export default {
           this.searchNoticeList.push(this.content[index])
         }
       }
-    },
-    TitleClick() {
-      this.$router.push({
-        path: `/notice/${this.notice.content_id}`
-      })
     }
   }
 }

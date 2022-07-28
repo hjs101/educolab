@@ -8,12 +8,7 @@ const routes = [
     name: 'Notice',
     component: () => import('@/views/NoticeView')
   },
-
-  {
-    path: '/notice/:contentId',
-    name: 'NoticeDetailView',
-    component: () => import('@/views/NoticeDetailView')
-  },
+  
   // 공지사항 작성
   {
     path: '/notice/create',
