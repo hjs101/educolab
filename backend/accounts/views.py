@@ -6,17 +6,24 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 from re import L
 >>>>>>> 9a0c0d9 (feat : 학교이름 검색 기능 구현 - 홍찬기)
+=======
+from sre_constants import SUCCESS
+>>>>>>> 25d0df5 (feat: 회원가입에서 이메일 인증메일 보내기 기능 구현 , id 중복체크 기능 완성 - 홍찬기)
 from django.shortcuts import render
+from django.core.mail import send_mail
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 
 from .serializers import SchoolInfoSerializer
-from .models import SchoolInfo
+from .models import SchoolInfo, UserInfo
+from .helper import email_auth_num
+from my_settings import EMAIL_HOST_USER
 
 # Create your views here.
 <<<<<<< HEAD
@@ -152,6 +159,7 @@ class SchoolInfoView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
+        print(request)
         search = request.data['schoolname']
         school = SchoolInfo.objects.filter(name__contains=search)
         serializer = SchoolInfoSerializer(school,many=True)
@@ -160,6 +168,102 @@ class SchoolInfoView(APIView):
 >>>>>>> 9a0c0d9 (feat : 학교이름 검색 기능 구현 - 홍찬기)
 =======
 
+class CheckUsernameView(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request):
+        username = request.data.get('username')
+
+        try:
+            checkname = UserInfo.objects.get(username=username)
+        except:
+            checkname = None
+
+        if checkname is None:
+            dup = "success"
+        else:
+            dup = "fail"
+        context = {"dup": dup}
+        return Response(context)
+
+class SendSignupEmailView(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self,request):
+        email = request.data['email']
+        auth_num = email_auth_num()
+        send_mail(subject='educolab 회원가입 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
+        context = {
+            'auth_num' : auth_num,
+        }
+        return Response(context)
+
+<<<<<<< HEAD
 class FindIDView(APIView):
     pass
+<<<<<<< HEAD
 >>>>>>> 668c397 (feat : 회원가입정보 subject,userflag 수정)
+=======
+>>>>>>> 25d0df5 (feat: 회원가입에서 이메일 인증메일 보내기 기능 구현 , id 중복체크 기능 완성 - 홍찬기)
+=======
+class FindUsernameView(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request):
+        name = request.data.get('name')
+        email = request.data.get('email')
+
+        try:
+            user = UserInfo.objects.get(name=name,email=email)
+        except:
+            user = None
+        
+        if user == None:
+            context = {
+                'success' : False,
+            }
+        else:
+            username = user.username
+            context = {
+                'success' : True,
+                'username' : username,
+            }
+        
+        return Response(context)
+
+class SendPWEmailView(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self,request):
+        name = request.data.get('name')
+        email = request.data.get('email')
+        username = request.data.get('username')
+        
+        try:
+            userinfo = UserInfo.objects.get(name=name,username=username)
+        except:
+            userinfo = None
+        
+        if userinfo == None:
+            context = {
+                "success" : False,
+                "message" : "이름과 아이디가 일치하는 회원이 없습니다"
+            }
+            return Response(context)
+        
+        if email == userinfo.email:
+            auth_num = email_auth_num()
+            send_mail(subject='educolab 비밀번호 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
+            context = {
+                "success" : True,
+                "auth_num" : auth_num,
+            }
+            return Response(context)
+        else:
+            context = {
+                "success" : False,
+                "message" : "이메일이 일치하지 않습니다"
+            }
+            return Response(context)
+
+>>>>>>> 0c829cf (feat: 아이디 찾기 기능 구현)

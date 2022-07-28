@@ -328,6 +328,7 @@ $RECYCLE.BIN/
 <<<<<<< HEAD
 <<<<<<< HEAD
 backend/my_settings.py
+<<<<<<< HEAD
 =======
 backend/my_settings.py
 >>>>>>> 0fe143a (Style : git ignore 반영)
@@ -337,3 +338,6 @@ backend/my_settings.py
 =======
 backend/educolab/my_settings.py
 >>>>>>> 46a97f8 (embedded에 .gitignore 추가)
+=======
+front-end/node_modules
+>>>>>>> c1b7e5f ( Fix : 버그 수정 중)

@@ -20,9 +20,19 @@ from . import views
 
 urlpatterns = [
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('main', views.NoticeMainView.as_view(), name='notice/main'),
 =======
     path('main/', views.NoticeMainView.as_view(), name='notice/main'),
     path('create/', views.NoticeCreateView.as_view(), name='notice/create'),
 >>>>>>> 73fd2c6 (Feat : 공지사항 기능 진행상황 저장)
+=======
+    path('main/', views.NoticeMainView.as_view(), name='notice_main'),
+    path('create/', views.NoticeCreateView.as_view(), name='notice_create'),
+    path('detail/', views.NoticeDetailView.as_view(), name='notice_detail'),
+<<<<<<< HEAD
+>>>>>>> c5da375 (Feat : 공지사항 상세페이지 파일 표시, 수정기능(진행중))
+=======
+    path('update/', views.NoticeUpdateView.as_view(), name='notice_update'),
+>>>>>>> 1e437b7 (Feat : 공지사항 수정기능 구현)
 ]

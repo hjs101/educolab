@@ -43,7 +43,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/image/'
+MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -95,6 +95,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
+    'dj_rest_auth',
     'dj_rest_auth.registration',
     'corsheaders',
 >>>>>>> e121457 (Refactor : DB수정 후 로그인 변경사항)
@@ -134,7 +135,8 @@ ROOT_URLCONF = 'educolab.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -282,6 +284,7 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
+<<<<<<< HEAD
 >>>>>>> 2babd3d (Merge branch 'back' of https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102 into back)
 =======
 =======
@@ -312,3 +315,24 @@ ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
 =======
 ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
 >>>>>>> 834c26a (Fix : mySettings.py 수정)
+=======
+
+# email
+# 메일을 보내는 호스트 서버
+EMAIL_HOST = 'smtp.gmail.com'
+
+# ENAIL_HOST에 정의된 SMTP 서버가 사용하는 포트 (587: TLS/STARTTLS용 포트)
+EMAIL_PORT = '587'
+
+#  발신할 이메일 주소 '~@gmail.com'
+EMAIL_HOST_USER = my_settings.EMAIL_HOST_USER
+
+# 발신할 이메일 비밀번호 (2단계 인증일경우 앱 비밀번호)
+EMAIL_HOST_PASSWORD = my_settings.EMAIL_HOST_PASSWORD
+
+# TLS 보안 방법 (SMPT 서버와 통신할 떄 TLS (secure) connection 을 사용할지 말지 여부)
+EMAIL_USE_TLS = True
+
+# 사이트와 관련한 자동응답을 받을 이메일 주소
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+>>>>>>> 25d0df5 (feat: 회원가입에서 이메일 인증메일 보내기 기능 구현 , id 중복체크 기능 완성 - 홍찬기)

@@ -15,7 +15,7 @@ class Login_Screen(Screen):
         Window.left=10
         Window.clearcolor = (242/255,245/255,247/255,1)
         Window.size = (1280,720)
-        Window.borderless=True
+        Window.borderless = True
         Builder.load_file('login_v3.kv')
         self.db_init()
 
@@ -36,32 +36,27 @@ class Login_Screen(Screen):
             print(self.ID) 
 
     def forgetPW(self):
-        self.PW=self.ids.PW_input.text       
+        self.PW=self.ids.PW_input.text
         if len(self.PW) == 0:
             print("Nothing PW")
         else:
             print(self.PW) 
 
     def loginbtn(self):
-        # 여기에는 여동준 부분
-        # email 대신 password, 창 넘기는 거까지 구현해야 할 듯
-        # password는 request module 써서 넘겨야 하는데 그건 테스트 해봐야 할 듯
-        self.query = ("SELECT username, email FROM accounts_userinfo "
-                        "where username=%s and email=%s")
-        self.ID = self.ids.ID_input.text
-        self.PW = self.ids.PW_input.text
-        self.cur.execute(self.query, (self.ID, self.PW))
-
-        if len(self.ID) == 0 or len(self.PW) == 0:
-            print("Nothing ID or PW")
+        # 창 넘기는 거까지 구현해야 할 듯
+        self.ID=self.ids.ID_input.text
+        self.PW=self.ids.PW_input.text
+        data = {
+            'username': self.ID,
+            'password': self.PW,
+        }
+        self.response = requests.post('http://127.0.0.1:8000/accounts/login/', data=data)
+        if self.response.status_code == 400:
+            print('ID 또는 비밀번호를 입력하세요.')
+        elif self.response.status_code == 401:
+            print('ID 또는 비밀번호가 틀립니다.')
         else:
-            self.success_flag = False
-            for (username, email) in self.cur:
-                if username == self.ID and email == self.PW:
-                    self.success_flag = True
-                    break
-            if self.success_flag == True: print("성공!")
-            else: print("실패!")
+            print('로그인 성공!')
 
     def onStop(self):
         self.db.close()

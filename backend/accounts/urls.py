@@ -73,10 +73,23 @@ urlpatterns = [
 =======
     path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 9a0c0d9 (feat : 학교이름 검색 기능 구현 - 홍찬기)
 =======
     path('findid/', views.FindIDView.as_view(), name='findid'),
 >>>>>>> 668c397 (feat : 회원가입정보 subject,userflag 수정)
+=======
+    path('checkusername/', views.CheckUsernameView.as_view(), name='checkusername'), 
+    path('findusername/', views.FindUsernameView.as_view(), name='findusername'),
+    path('sendemail/', views.SendSignupEmailView.as_view(), name='sendsignupemail'),
+>>>>>>> 25d0df5 (feat: 회원가입에서 이메일 인증메일 보내기 기능 구현 , id 중복체크 기능 완성 - 홍찬기)
+=======
+    path('check_username/', views.CheckUsernameView.as_view(), name='checkusername'), 
+    path('find_username/', views.FindUsernameView.as_view(), name='findusername'),
+    path('send_signup_email/', views.SendSignupEmailView.as_view(), name='sendsignupemail'),
+    path('send_pw_email/',views.SendPWEmailView.as_view(), name="sendpwemail"),
+>>>>>>> effb278 (feat: 패스워드변경인증 이메일 기능 구현)
 ]
 =======
 
