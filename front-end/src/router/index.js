@@ -7,7 +7,7 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import ('@/views/LoginView')
-
+  },  
   // 공지사항
   {
     path: '/notice',
