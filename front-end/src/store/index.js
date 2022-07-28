@@ -1,16 +1,19 @@
 import { createStore } from 'vuex'
-import accounts from './accounts.js'
+import {accounts} from './modules/accounts.js'
 
 export default createStore({
-  state: {
-    // 서버 기본 주소
-    URL: ''
+  state () {
+    return {
+      // 서버 기본 주소
+      URL: ''
+    }
   },
-  getters: {
+  getters() {
+
   },
-  mutations: {
+  mutations() {
   },
-  actions: {
+  actions() {
   },
   modules: {
     accounts,

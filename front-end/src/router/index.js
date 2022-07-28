@@ -8,18 +8,9 @@ const routes = [
     component: () => import ('@/views/LoginView')
   },
   {
-    path: '/signup/student',
-    name: 'signupStudent',
+    path: '/signup/:userType',
+    name: 'signup',
     component: () => import ('@/views/SignupView')
-  },
-  {
-    path: '/signup/teacher',
-    name: 'signupTeacher',
-    component: () => import ('@/views/SignupView')
-  },
-  {
-    path: '/signup/*',
-    redirect: {name: 'NotFound'}
   },
   // signup 뒤에 student, teacher 아닌 것이 있으면 404 에러
   {
@@ -34,7 +25,7 @@ const routes = [
   // 404 에러
   {
     path: '/404',
-    name: 'NotFound',
+    name: 'notFound',
     component: () => import ('@/views/NotFoundView')
   },
   // {

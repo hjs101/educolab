@@ -7,7 +7,7 @@
         <use-provision />
       </q-scroll-area>
       <!-- 여기에 체크 박스 -->
-      <!-- <q-checkbox v-model="isChecked" label="위의 약관에 모두 동의합니다" color="teal" class="col-4 offset-4" /> -->
+      <q-checkbox v-model="isChecked" label="위의 약관에 모두 동의합니다" color="teal" class="col-4 offset-4" />
       <!-- 여기에 버튼 -->
       <br>
     </div>
@@ -30,16 +30,18 @@
 </style>
 
 <script>
-// import { ref } from '@vue/reactivity'
+import { ref } from '@vue/reactivity'
 import useProvision from '@/components/UseProvision.vue'
 export default {
   name: 'signupAgreeView',
   components: {
     useProvision
   },
-  // setup () {
-  //   let isChecked = ref(false)
-  //   return isChecked
-  // },
+  setup () {
+    let isChecked = ref(false)
+    return {
+      isChecked
+    }
+  },
 }
 </script>
