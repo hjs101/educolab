@@ -30,6 +30,6 @@ urlpatterns = [
     path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
     path('checkusername/', views.CheckUsernameView.as_view(), name='checkusername'), 
-    path('findid/', views.FindIDView.as_view(), name='findid'),
+    path('findusername/', views.FindUsernameView.as_view(), name='findusername'),
     path('sendemail/', views.SendSignupEmailView.as_view(), name='sendsignupemail'),
 ]
