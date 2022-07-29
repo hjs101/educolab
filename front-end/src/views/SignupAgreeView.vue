@@ -6,12 +6,15 @@
       <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
         <use-provision />
       </q-scroll-area>
+      <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
+        <use-info />
+      </q-scroll-area>
       <!-- 여기에 체크 박스 -->
       <q-checkbox v-model="isChecked" label="위의 약관에 모두 동의합니다" color="teal" class="col-4 offset-4" />
       <!-- 여기에 버튼 -->
       <br>
     </div>
-    <div class="buttonGroup">
+    <div class="buttonGroup" v-if="isChecked">
       <router-link to="/signup/teacher" class="button">
         <q-btn color="teal" label="교사용"/>
       </router-link>
@@ -32,10 +35,12 @@
 <script>
 import { ref } from '@vue/reactivity'
 import useProvision from '@/components/UseProvision.vue'
+import useInfo from '@/components/UseInfo.vue'
 export default {
   name: 'signupAgreeView',
   components: {
-    useProvision
+    useProvision,
+    useInfo
   },
   setup () {
     let isChecked = ref(false)

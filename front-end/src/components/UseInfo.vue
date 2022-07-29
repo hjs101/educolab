@@ -46,3 +46,9 @@
     </p>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'UseInfo',
+}
+</script>
