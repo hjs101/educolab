@@ -11,7 +11,7 @@
       <div class="input col-8 offset-2 col-md-3 offset-md-4">
         <q-input
           color="teal"
-          v-model="state.username"
+          v-model="credentials.username"
           label="ID"
           lazy-rules
           :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요']"
@@ -19,7 +19,7 @@
 
         <q-input
           color="teal"
-          v-model="state.password"
+          v-model="credentials.password"
           label="Password"
           type="password"
           lazy-rules
@@ -29,7 +29,7 @@
         />
       </div>
       <!-- 여기에 로그인버튼 -->
-      <q-btn color="secondary" label="LOG IN" class="col-8 offset-2 col-md-1 offset-md-1" @click="login"/>
+      <q-btn color="secondary" label="LOGIN" class="col-8 offset-2 col-md-1 offset-md-1" @click="login(credentials)"/>
 
     </q-form>
 
@@ -50,30 +50,6 @@
 
 </template>
 
-<script>
-import { reactive } from '@vue/reactivity'
-
-export default {
-  name: 'LoginView',
-  setup () {
-    // 기존의 data
-    const state = reactive({
-      username: '',
-      password: ''
-    })
-    // method 부분
-    const login = () => {
-      // login method
-      // state 호출할 때 this 바인딩이 필요하지 않음
-    }
-    return {
-      login,
-      state
-    }
-  }
-}
-</script>
-
 <style scoped>
   .input {
     width: 500px;
@@ -82,3 +58,26 @@ export default {
     margin-top: 100px;
   }
 </style>
+
+<script>
+// import { reactive } from '@vue/reactivity'
+import { mapGetters, mapActions } from 'vuex'
+
+export default {
+  name: 'LoginView',
+  data () {
+    return {
+      credentials: {
+        username : '',
+        password: '',
+      }
+    }
+  },
+  computed: {
+    ...mapGetters(['authError'])
+  },
+  methods: {
+    ...mapActions(['login'])
+  },
+}
+</script>

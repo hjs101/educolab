@@ -2,44 +2,27 @@
 // import axios from 'axios'
 // import drf from '@/api/drf/js'
 
+import drf from "@/api/drf"
+import router from "@/router"
+import Axios from "axios"
+
 export const accounts = {
-  state() {
-    return {
-      // token: localStorage.getItem('token') || '',
-      studentInfo: {
-        username: null,
-        password1: null,
-        password2: null,
-        name: null,
-        school: null, // code
-        grade: null,
-        classField: null,
-        number: null,
-        phoneNumber: null,
-        birthday: null,
-        email: null,
-      },
-      teacherInfo: {
-        username: null,
-        password1: null,
-        password2: null,
-        name: null,
-        school: null, // code
-        subject: null,
-        phoneNumber: null,
-        birthday: null,
-        email: null,
-      },
-      userType: null,
-    }
+  state: {
+      token: localStorage.getItem('token') || '',
+      userInfo: {},
+      isLogin: false,
   },
   getters: {
-    // isLoggedIn: state => !!state.token,
+    isLoggedIn: state => !!state.token,
+    currentUser: state => state.currentUser,
     getUserType: state => state.userType,
     getStudentInfo: state => state.studentInfo,
     getTeacherInfo: state => state.teacherInfo,
   },
   mutations: {
+    loginSuccess(state) {
+      state.isLogin = true
+    },
     CHANGE_STUDENT_DATA(state,data) {
       if (state.userType === 'student') {
         for (let key in data) {
@@ -54,12 +37,27 @@ export const accounts = {
     SET_USER_TYPE: (state, userType) => state.userType = userType,
     },
   actions: {
-    // saveToken({commit}, token) {
-    //   commit('SET_TOKEN', token)
-    //   localStorage.setItem('token', token)
-    // },
-    login() {
-
+    saveToken({commit}, token) {
+      commit('SET_TOKEN', token)
+      localStorage.setItem('token', token)
+    },
+    login({ dispatch }, credentials) {
+      // 로그인 함수 구현
+      Axios({
+        url: drf.accounts.login(),
+        method: 'post',
+        data: credentials
+      })
+      console.log(credentials)
+        .then(res => {
+          const token = res.data.key
+          dispatch('saveToken', token)
+          router.push({ name: 'Notice'})
+        })
+        // .catch(err => {
+        //   console.err(err.response.data)
+        //   commit('')
+        // })
     },
     signup() {
 

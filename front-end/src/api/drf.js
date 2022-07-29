@@ -6,7 +6,7 @@ export default {
   accounts: {
     login: () => ACCOUNTS + 'login/',
     logout: () => ACCOUNTS + 'logout/',
-    logout: () => ACCOUNTS + 'signup/',
+    signup: () => ACCOUNTS + 'signup/',
   },
   notice: {
     noticeList: () => NOTICE

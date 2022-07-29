@@ -39,9 +39,9 @@
 export default {
   name: 'theNavbar',
   data() {
-    return {
-      flag : 'teacher'
-    }
+    // return {
+    //   flag : 'teacher'
+    // }
   }
 }
 </script>
