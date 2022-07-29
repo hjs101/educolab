@@ -10,7 +10,7 @@
     <q-btn label="중복 확인" color="primary" @click="confirmUsername" />
     <p v-if="userData.password2 && computedData.validUsername !== 2">
       <span v-show="computedData.validUsername">사용가능한 아이디입니다</span>
-      <span v-show="!computedData.validUsername">이미 존재하는 아이디입니다/다른 아이디 값을 입력해주세요</span>
+      <span v-show="!computedData.validUsername">이미 존재하는 아이디입니다. 다른 아이디 값을 입력해주세요</span>
     </p>
     <q-input
       color="teal"
@@ -47,6 +47,7 @@
 <script>
 import {reactive} from '@vue/reactivity'
 import {computed} from 'vue'
+import {accounts} from '@/api/drf.js'
 // import axios from 'axios';
 export default {
   name: 'LoginInfo',
@@ -56,21 +57,20 @@ export default {
       password1: null,
       password2: null,
       correct: null,
-      confirm: 2,
+      confirm: null,
     })
     const computedData = reactive({
       samePassword: computed(() => userData.correct),
-      validUsername: computed(() => userData.confirm)
+      validUsername: computed(() => userData.confirm == 'success')
     })
     const confirmUsername = () => {
       // 아이디 일치 여부 확인
-      // const data = {username: userData.username}
-    
-    //   axios.get('', data)
-    //     .then((res) => {
-    //       // 변수명 알아내야 함
-    //       confirm = res.data
-      console.log(userData.username)
+      axios.get(accounts.checkUsername(), {username: userData.username})
+        .then((res) => {
+          // 변수명 알아내야 함
+          userData.confirm = res.data.dup
+          console.log(userData.username)
+        })
     }
     const isCorrect = () => {
       if (userData.password1 === userData.password2) {
@@ -85,6 +85,6 @@ export default {
       confirmUsername,
       isCorrect
     }
-  },
+  }
 }
 </script>

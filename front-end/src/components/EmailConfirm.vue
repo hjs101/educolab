@@ -54,7 +54,8 @@
 <script>
 import {reactive, ref} from '@vue/reactivity'
 import {computed} from 'vue'
-// import axios from 'axios'
+import axios from 'axios'
+import {accounts} from '@/api/drf.js'
 export default {
   name: 'EmailConfirm',
   setup () {
@@ -88,9 +89,8 @@ export default {
       },1000)
     }
     const isValidEmail = () => {
-      // axios.post('', fullEmail)
-      //   .then(res => realNumber = res.data.)
-      //   .catch(err => confirm('이메일이 유효하지 않습니다'))
+      axios.post(accounts.sendEmail(), fullEmail)
+        .then(res => realNumber = res.data[auth_num])
       email.valid = true
       start()
     }
