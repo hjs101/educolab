@@ -3,10 +3,10 @@
     <h3>SIGN UP</h3>
     <!-- 여기에 약관 동의-->
     <div class="row">
-      <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
+      <q-scroll-area class="col-6 offset-3 scroll">
         <use-provision />
       </q-scroll-area>
-      <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
+      <q-scroll-area class="col-6 offset-3 scroll">
         <use-info />
       </q-scroll-area>
       <!-- 여기에 체크 박스 -->
@@ -30,6 +30,12 @@
   /* 버튼 사이즈 키우기 */
   /* 약관 가운데 정렬 */
   /* 약관 테두리 */
+  .scroll {
+    height: 300px;
+    max-width: 700px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
 </style>
 
 <script>

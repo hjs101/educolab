@@ -55,7 +55,7 @@
 import {reactive, ref} from '@vue/reactivity'
 import {computed} from 'vue'
 import axios from 'axios'
-import {accounts} from '@/api/drf.js'
+import drf from '@/api/drf.js'
 export default {
   name: 'EmailConfirm',
   setup () {
@@ -89,8 +89,8 @@ export default {
       },1000)
     }
     const isValidEmail = () => {
-      axios.post(accounts.sendEmail(), fullEmail)
-        .then(res => realNumber = res.data[auth_num])
+      axios.post(drf.accounts.sendEmail(), email.fullEmail)
+        .then(res => number.authNumber = res.data['auth_num'])
       email.valid = true
       start()
     }
