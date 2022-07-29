@@ -8,21 +8,23 @@ import Axios from "axios"
 
 export const accounts = {
   state: {
-      token: localStorage.getItem('token') || '',
-      userInfo: {},
-      isLogin: false,
+      access: localStorage.getItem('access') || '',
+      currentUser: {},
+      authError: null,
   },
   getters: {
-    isLoggedIn: state => !!state.token,
+    isLoggedIn: state => !!state.access,
     currentUser: state => state.currentUser,
+    authError: state => state.authError,
+    authHeader: state => ({ Authorization: `Token ${state.access}` }),
     getUserType: state => state.userType,
     getStudentInfo: state => state.studentInfo,
     getTeacherInfo: state => state.teacherInfo,
   },
   mutations: {
-    loginSuccess(state) {
-      state.isLogin = true
-    },
+    SET_TOKEN: (state, access) => state.access = access,
+    SET_CURRENT_USER: (state, user) => state.currentUser = user,
+    SET_AUTH_ERROR: (state, error) => state.authError = error,
     CHANGE_STUDENT_DATA(state,data) {
       if (state.userType === 'student') {
         for (let key in data) {
@@ -37,33 +39,42 @@ export const accounts = {
     SET_USER_TYPE: (state, userType) => state.userType = userType,
     },
   actions: {
-    saveToken({commit}, token) {
-      commit('SET_TOKEN', token)
-      localStorage.setItem('token', token)
+    saveToken({commit}, access) {
+      commit('SET_TOKEN', access)
+      localStorage.setItem('access', access)
     },
-    login({ dispatch }, credentials) {
+    removeToken({commit}) {
+      commit('SET_TOKEN', '')
+      localStorage.setItem('access', '')
+    },
+    login({ commit, dispatch }, credentials) {
       // 로그인 함수 구현
       Axios({
         url: drf.accounts.login(),
         method: 'post',
         data: credentials
       })
-      console.log(credentials)
         .then(res => {
-          const token = res.data.key
-          dispatch('saveToken', token)
-          router.push({ name: 'Notice'})
+          console.log(res)
+          const access = res.data.access
+          dispatch('saveToken', access)
+          router.push({ name: 'nav'})
         })
-        // .catch(err => {
-        //   console.err(err.response.data)
-        //   commit('')
-        // })
+        .catch(err => {
+          console.error(err.response.data)
+          commit('SET_AUTH_ERROR', err.response.data)
+        })
     },
     signup() {
 
     },
-    logout() {
-
+    logout({dispatch}) {
+      console.log('여기는 옴?')
+        dispatch('removeToken')
+        router.push({ name : 'login' })
+      .catch(err => {
+        console.log(err.respone)
+      })
     },
     setUserType({commit}, userType) {
       // 로그인할 때

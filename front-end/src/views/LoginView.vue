@@ -2,6 +2,7 @@
   <div class="q-mx">
     <!-- 반응형하는 중 -->
     <h3>LOGIN</h3>
+    <account-error-list></account-error-list>
     <!-- form 부분 -->
     <q-form
       @submit="login"
@@ -62,9 +63,13 @@
 <script>
 // import { reactive } from '@vue/reactivity'
 import { mapGetters, mapActions } from 'vuex'
+import AccountErrorList from '@/components/AccountErrorList.vue'
 
 export default {
   name: 'LoginView',
+  components: {
+    AccountErrorList
+  },
   data () {
     return {
       credentials: {

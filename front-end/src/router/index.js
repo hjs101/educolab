@@ -4,10 +4,17 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   // 회원 관리
   {
-    path: '/login',
+    path: '/',
     name: 'login',
     component: () => import ('@/views/LoginView')
   },  
+
+  // 메인페이지 
+  {
+    path: '/nav',
+    name: 'nav',
+    component: () => import('@/views/TheNavbar.vue')
+  },
   // 공지사항
   {
     path: '/notice',
