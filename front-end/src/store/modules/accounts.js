@@ -14,7 +14,6 @@ export const accounts = {
         school: null, // code
         grade: null,
         classField: null,
-        number: null,
         phoneNumber: null,
         birthday: null,
         email: null,
@@ -40,7 +39,7 @@ export const accounts = {
     getTeacherInfo: state => state.teacherInfo,
   },
   mutations: {
-    CHANGE_STUDENT_DATA(state,data) {
+    CHANGE_DATA(state, data) {
       if (state.userType === 'student') {
         for (let key in data) {
           state.studentInfo[key] = data[key]
@@ -72,11 +71,8 @@ export const accounts = {
       // 회원가입 페이지
       commit('SET_USER_TYPE', userType)
     },
-    changeStudentData({commit}, data) {
-      commit('CHANGE_STUDENT_DATA', data)
-    },
-    changeTeacherData({commit}, data) {
-      commit('CHANGE_TEACHER_DATA', data)
+    changeData({commit}, data) {
+      commit('CHANGE_DATA', data)
     },
   },
 }

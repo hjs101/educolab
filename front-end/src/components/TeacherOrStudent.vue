@@ -15,15 +15,6 @@
         lazy-rules
         :rules="[ val => val && val.length > 0 || '반을 입력해주세요', val => val > 0 || '적절하지 않은 값입니다']"
       />
-      <q-input
-        v-model="userData.classNumber"
-        color="teal"
-        label="번호"
-        type="number"
-        min="1"
-        lazy-rules
-        :rules="[ val => val && val.length > 0 || '번호를 입력해주세요', val => val > 0 || '적절하지 않은 값입니다']"
-      />
     </div>
   </div>
 </template>
@@ -43,7 +34,6 @@ export default {
       subject: null,
       grade: null,
       classField: null,
-      classNumber: null
     })
     return {
       subjectOptions,
