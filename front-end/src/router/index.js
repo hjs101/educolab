@@ -11,9 +11,9 @@ const routes = [
 
   // 메인페이지 
   {
-    path: '/nav',
-    name: 'nav',
-    component: () => import('@/views/TheNavbar.vue')
+    path: '/educolab',
+    name: 'educolab',
+    component: () => import('@/views/MainPageView')
   },
   // 공지사항
   {

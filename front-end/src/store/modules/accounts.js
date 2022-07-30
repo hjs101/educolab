@@ -9,7 +9,7 @@ export const accounts = {
       authError: null,
   },
   getters: {
-    isLoggedIn: state => !!state.access,
+    isLoggedIn: state => !!state.access, 
     currentUser: state => state.currentUser,
     authError: state => state.authError,
     authHeader: state => ({ Authorization: `Token ${state.access}` }),
@@ -55,7 +55,7 @@ export const accounts = {
           const access = res.data.access
           dispatch('saveToken', access)
           commit('SET_CURRENT_USER', res.data) 
-          router.push({ name: 'nav'})
+          router.push({ name: 'educolab'})
         })         
         .catch(err => {
           console.error(err.response.data)
