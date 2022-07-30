@@ -36,6 +36,7 @@
           <q-card-section class="q-pt-none">
             <span v-if="number.isAuthNum && number.isValidNumber">
               인증되었습니다
+              {{sendData({email:email.fullEmail})}}
             </span>
             <span v-else>
               인증번호가 일치하지 않습니다
@@ -54,11 +55,13 @@
 <script>
 import {reactive, ref} from '@vue/reactivity'
 import {computed} from 'vue'
+import {useStore} from 'vuex'
 import axios from 'axios'
 import drf from '@/api/drf.js'
 export default {
   name: 'EmailConfirm',
   setup () {
+    const store = useStore()
     const emailOptions = [
       '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력'
     ]
@@ -98,7 +101,9 @@ export default {
       minute: computed(() => Math.floor(limit.value/60)),
       second: computed(() => limit.value%60 >= 10? limit.value%60:'0'+limit.value%60),
     })
-  
+    const sendData = (data) => {
+      store.dispatch('changeData', data)
+    }
     return {
       emailOptions,
       number,
@@ -107,6 +112,7 @@ export default {
       isValidEmail,
       time,
       start,
+      sendData
     }
   }
 }
