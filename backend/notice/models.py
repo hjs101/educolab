@@ -13,5 +13,6 @@ class Notice(models.Model):
     views = models.IntegerField(default=0)
 
 class Files(models.Model):
-    notice = models.ForeignKey(Notice, on_delete=models.CASCADE)
+    notice = models.ForeignKey(Notice, related_name="notice_file" ,on_delete=models.CASCADE)
+    atch_file_name = models.CharField(max_length=45, default="")
     atch_file = models.FileField(blank=True, upload_to='notice/files')  # Field name made lowercase.
