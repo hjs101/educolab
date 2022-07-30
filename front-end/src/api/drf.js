@@ -9,7 +9,7 @@ export default {
     signup: () => ACCOUNTS + 'signup/',
     schoolInfo: () => ACCOUNTS + 'schoolinfo/',
     checkUsername: () => ACCOUNTS + 'checkusername/',
-    sendEmail: () => ACCOUNTS + 'sendemail',
+    sendEmail: () => ACCOUNTS + 'sendemail/',
   },
   notice: {
     noticeList: () => NOTICE

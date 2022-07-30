@@ -13,10 +13,11 @@ export const accounts = {
         name: null,
         school: null, // code
         grade: null,
-        classField: null,
-        phoneNumber: null,
+        class_field: null,
+        phone_number: null,
         birthday: '2008-01-01',
         email: null,
+        user_flag : false,
       },
       teacherInfo: {
         username: null,
@@ -25,9 +26,10 @@ export const accounts = {
         name: null,
         school: null, // code
         subject: null,
-        phoneNumber: null,
+        phone_number: null,
         birthday: '1972-01-01',
         email: null,
+        user_flag : true,
       },
       userType: null,
       access: localStorage.getItem('access') || '',

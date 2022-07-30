@@ -69,19 +69,19 @@ export default {
       code: null,
       selectedName: null,
       list: [{
-        code: 123,
-        name: '아아아',
-        address: '어쩌고',
-      },
-      {
-        code: 124,
-        name: '아아아',
-        address: '어쩌고',
-      },
-      {
-        code: 125,
-        name: '아아아',
-        address: '어쩌고',
+      //   code: 123,
+      //   name: '아아아',
+      //   address: '어쩌고',
+      // },
+      // {
+      //   code: 124,
+      //   name: '아아아',
+      //   address: '어쩌고',
+      // },
+      // {
+      //   code: 125,
+      //   name: '아아아',
+      //   address: '어쩌고',
       }],
     })
     const findSchool = (event) => {
