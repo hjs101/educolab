@@ -86,7 +86,7 @@ export default {
     })
     const findSchool = (event) => {
       prompt.search = true
-      axios.get(drf.accounts.schoolInfo(), {school:event.target.value})
+      axios.get(drf.accounts.schoolInfo(), {schoolname:event.target.value})
         .then((res) => school.list = res.data)
         .catch((err) => console.log(err))
       // 백에 입력 값 보내기
