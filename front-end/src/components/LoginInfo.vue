@@ -9,8 +9,9 @@
     />
     <q-btn label="중복 확인" color="primary" @click="confirmUsername" />
     <p v-if="userData.password2 && computedData.validUsername !== 2">
-      <span v-show="computedData.validUsername">사용가능한 아이디입니다</span>
-      <span v-show="!computedData.validUsername">이미 존재하는 아이디입니다/다른 아이디 값을 입력해주세요</span>
+      <span v-if="computedData.validUsername">
+        {{computedData.message}}
+      </span>
     </p>
     <q-input
       color="teal"
@@ -47,34 +48,39 @@
 <script>
 import {reactive} from '@vue/reactivity'
 import {computed} from 'vue'
-// import axios from 'axios';
+import axios from 'axios'
+import drf from '@/api/drf.js'
+import {useStore} from 'vuex'
 export default {
   name: 'LoginInfo',
   setup () {
+    const store = useStore()
     const userData = reactive({
       username: null,
       password1: null,
       password2: null,
       correct: null,
-      confirm: 2,
+      confirm: null,
     })
     const computedData = reactive({
       samePassword: computed(() => userData.correct),
-      validUsername: computed(() => userData.confirm)
+      validUsername: computed(() => userData.confirm === 'success'),
+      message: computed(() => computedData.validUsername? '사용 가능한 아이디입니다':'중복된 아이디입니다. 다른 아이디를 입력해주세요')
     })
     const confirmUsername = () => {
-      // 아이디 일치 여부 확인
-      // const data = {username: userData.username}
-    
-    //   axios.get('', data)
-    //     .then((res) => {
-    //       // 변수명 알아내야 함
-    //       confirm = res.data
-      console.log(userData.username)
+      // 아이디 중복 여부 확인
+      axios.get(drf.accounts.checkUsername(), {username: userData.username})
+        .then((res) => {
+          userData.confirm = res.data.dup
+          if (computedData.validUsername) {
+            store.dispatch('changeData', {username: userData.username})
+          }
+        })
     }
     const isCorrect = () => {
       if (userData.password1 === userData.password2) {
         userData.correct = true
+        store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
       } else {
         userData.correct = false
       }
@@ -85,6 +91,6 @@ export default {
       confirmUsername,
       isCorrect
     }
-  },
+  }
 }
 </script>

@@ -7,6 +7,9 @@ export default {
     login: () => ACCOUNTS + 'login/',
     logout: () => ACCOUNTS + 'logout/',
     signup: () => ACCOUNTS + 'signup/',
+    schoolInfo: () => ACCOUNTS + 'schoolinfo/',
+    checkUsername: () => ACCOUNTS + 'checkusername/',
+    sendEmail: () => ACCOUNTS + 'sendemail',
   },
   notice: {
     noticeList: () => NOTICE

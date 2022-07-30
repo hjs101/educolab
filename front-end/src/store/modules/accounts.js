@@ -3,10 +3,37 @@ import router from "@/router"
 import axios from "axios"
 
 export const accounts = {
-  state: {
+  state() {
+    return {
+      // token: localStorage.getItem('token') || '',
+      studentInfo: {
+        username: null,
+        password1: null,
+        password2: null,
+        name: null,
+        school: null, // code
+        grade: null,
+        classField: null,
+        phoneNumber: null,
+        birthday: '2008-01-01',
+        email: null,
+      },
+      teacherInfo: {
+        username: null,
+        password1: null,
+        password2: null,
+        name: null,
+        school: null, // code
+        subject: null,
+        phoneNumber: null,
+        birthday: '1972-01-01',
+        email: null,
+      },
+      userType: null,
       access: localStorage.getItem('access') || '',
       currentUser: {},
       authError: null,
+    }
   },
   getters: {
     isLoggedIn: state => !!state.access, 
@@ -14,14 +41,15 @@ export const accounts = {
     authError: state => state.authError,
     authHeader: state => ({ Authorization: `Token ${state.access}` }),
     getUserType: state => state.userType,
-    getStudentInfo: state => state.studentInfo,
-    getTeacherInfo: state => state.teacherInfo,
+    // getStudentInfo: state => state.studentInfo,
+    // getTeacherInfo: state => state.teacherInfo,
+    getSubject: state => state.teacherInfo.subject,
   },
   mutations: {
     SET_TOKEN: (state, access) => state.access = access,
     SET_CURRENT_USER: (state, user) => state.currentUser = user,
     SET_AUTH_ERROR: (state, error) => state.authError = error,
-    CHANGE_STUDENT_DATA(state,data) {
+    CHANGE_DATA(state,data) {
       if (state.userType === 'student') {
         for (let key in data) {
           state.studentInfo[key] = data[key]
@@ -62,8 +90,27 @@ export const accounts = {
           commit('SET_AUTH_ERROR', err.response.data)
         })
     },
-    signup() {
-
+    signup(state) {
+      if (state.userType == 'student') {
+        axios.post(drf.accounts.signup(), state.studentInfo)
+          .then(() => {
+            confirm('회원가입이 완료되었습니다')
+            // 자동으로 이동
+          })
+          .catch(() => {
+            confirm('필수 항목이 빠져 있거나, 올바르지 않습니다')
+          })
+          
+        } else if (state.userType == 'teacher') {
+        axios.post(drf.accounts.signup(), state.teacherInfo)
+          .then(() => {
+            confirm('회원가입이 완료되었습니다')
+            // 자동으로 이동
+          })
+          .catch(() => {
+            confirm('필수 항목이 빠져 있거나, 올바르지 않습니다')
+          })
+      }
     },
     logout({dispatch}) {
       console.log('여기는 옴?')
@@ -78,11 +125,9 @@ export const accounts = {
       // 회원가입 페이지
       commit('SET_USER_TYPE', userType)
     },
-    changeStudentData({commit}, data) {
-      commit('CHANGE_STUDENT_DATA', data)
-    },
-    changeTeacherData({commit}, data) {
-      commit('CHANGE_TEACHER_DATA', data)
+    changeData({commit}, data) {
+      console.log(data)
+      commit('CHANGE_DATA', data)
     },
   },
 }
