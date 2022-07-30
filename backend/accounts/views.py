@@ -47,7 +47,10 @@ class SendSignupEmailView(APIView):
         email = request.data['email']
         auth_num = email_auth_num()
         send_mail(subject='educolab 회원가입 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
-        return Response({'auth_num': auth_num})
+        context = {
+            'auth_num' : auth_num,
+        }
+        return Response(context)
 
 class FindUsernameView(APIView):
     permission_classes = (AllowAny,)
@@ -74,4 +77,38 @@ class FindUsernameView(APIView):
         
         return Response(context)
 
+class SendPWEmailView(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self,request):
+        name = request.data.get('name')
+        email = request.data.get('email')
+        username = request.data.get('username')
+        
+        try:
+            userinfo = UserInfo.objects.get(name=name,username=username)
+        except:
+            userinfo = None
+        
+        if userinfo == None:
+            context = {
+                "success" : False,
+                "message" : "이름과 아이디가 일치하는 회원이 없습니다"
+            }
+            return Response(context)
+        
+        if email == userinfo.email:
+            auth_num = email_auth_num()
+            send_mail(subject='educolab 비밀번호 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
+            context = {
+                "success" : True,
+                "auth_num" : auth_num,
+            }
+            return Response(context)
+        else:
+            context = {
+                "success" : False,
+                "message" : "이메일이 일치하지 않습니다"
+            }
+            return Response(context)
 
