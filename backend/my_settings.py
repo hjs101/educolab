@@ -8,12 +8,3 @@ DATABASES = {
 "PORT": '3306',
 }
 }
-
-<<<<<<< HEAD
-=======
-MY_IMAGE_PATH = '/SSAFY/C102_IOT/S07P12C102/backend/image/'
-
-EMAIL_HOST_USER = 'educolabtest@gmail.com'
-
-EMAIL_HOST_PASSWORD = 'osbqrenzvuexioxx'
->>>>>>> back_email
