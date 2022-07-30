@@ -56,7 +56,7 @@
         type="number"
         :dense="false"
         min="1"
-        @change="sendData({class_field:classField.value})"
+        @change="sendData({class_field:classField})"
         lazy-rules
 <<<<<<< HEAD
         :rules="[ val => val && val.length > 0 || '반을 입력해주세요']"
