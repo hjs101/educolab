@@ -50,7 +50,7 @@ import {reactive} from '@vue/reactivity'
 import {computed} from 'vue'
 import axios from 'axios'
 import drf from '@/api/drf.js'
-import {useStore} from 'store'
+import {useStore} from 'vuex'
 export default {
   name: 'LoginInfo',
   setup () {
@@ -73,18 +73,18 @@ export default {
         .then((res) => {
           userData.confirm = res.data.dup
           if (computedData.validUsername) {
-            store.commit('changeData', {username: userData.username})
+            store.dispatch('changeData', {username: userData.username})
           }
         })
     }
     const isCorrect = () => {
       if (userData.password1 === userData.password2) {
         userData.correct = true
+        store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
       } else {
         userData.correct = false
       }
     }
-    const 
     return {
       userData,
       computedData,

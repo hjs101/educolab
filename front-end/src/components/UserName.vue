@@ -1,12 +1,11 @@
 <template>
   <q-input
     color="teal"
-    label="전화번호"
-    v-model="phoneNumber"
-    maxlength="13"
-    :value="phoneNumber.value"
+    label="이름"
+    v-model="name"
+    maxlength="20"
+    :value="name.value"
     @change="sendData"
-    mask="###-####-####"
     clearable
     :dense="false"
     lazy-rules
@@ -19,18 +18,16 @@
   import {useStore} from 'vuex'
 
   export default {
-    name:'userPhoneNumber',
+    name:'userName',
     setup() {
       const store = useStore()
-      let phoneNumber = ref('')
+      let name= ref('')
       const sendData = () => {
-        const value = phoneNumber.value.split('-')
-        const convertNumber = value[0] + value[1] + value[2]
-        store.dispatch('changeData', {phoneNumber: convertNumber})
+        store.dispatch('changeData', {name: name.value})
       }
       return {
         sendData,
-        phoneNumber
+        name
       }
     },
   }

@@ -1,6 +1,8 @@
 // import router from '@/router'
 // import axios from 'axios'
-// import drf from '@/api/drf/js'
+
+import drf from '@/api/drf.js'
+import axios from "axios"
 
 export const accounts = {
   state() {
@@ -15,7 +17,7 @@ export const accounts = {
         grade: null,
         classField: null,
         phoneNumber: null,
-        birthday: null,
+        birthday: '2008-01-01',
         email: null,
       },
       teacherInfo: {
@@ -26,7 +28,7 @@ export const accounts = {
         school: null, // code
         subject: null,
         phoneNumber: null,
-        birthday: null,
+        birthday: '1972-01-01',
         email: null,
       },
       userType: null,
@@ -35,11 +37,13 @@ export const accounts = {
   getters: {
     // isLoggedIn: state => !!state.token,
     getUserType: state => state.userType,
-    getStudentInfo: state => state.studentInfo,
-    getTeacherInfo: state => state.teacherInfo,
+    // getStudentInfo: state => state.studentInfo,
+    // getTeacherInfo: state => state.teacherInfo,
+    getSubject: state => state.teacherInfo.subject,
   },
   mutations: {
     CHANGE_DATA(state, data) {
+      console.log(state.userType)
       if (state.userType === 'student') {
         for (let key in data) {
           state.studentInfo[key] = data[key]
@@ -60,8 +64,27 @@ export const accounts = {
     login() {
 
     },
-    signup() {
-
+    signup(state) {
+      if (state.userType == 'student') {
+        axios.post(drf.accounts.signup(), state.studentInfo)
+          .then(() => {
+            confirm('회원가입이 완료되었습니다')
+            // 자동으로 이동
+          })
+          .catch(() => {
+            confirm('필수 항목이 빠져 있거나, 올바르지 않습니다')
+          })
+          
+        } else if (state.userType == 'teacher') {
+        axios.post(drf.accounts.signup(), state.teacherInfo)
+          .then(() => {
+            confirm('회원가입이 완료되었습니다')
+            // 자동으로 이동
+          })
+          .catch(() => {
+            confirm('필수 항목이 빠져 있거나, 올바르지 않습니다')
+          })
+      }
     },
     logout() {
 
@@ -72,6 +95,7 @@ export const accounts = {
       commit('SET_USER_TYPE', userType)
     },
     changeData({commit}, data) {
+      console.log(data)
       commit('CHANGE_DATA', data)
     },
   },
