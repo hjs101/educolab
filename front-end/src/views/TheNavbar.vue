@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- 교사 navbar -->
-    <div v-if="flag==='teacher'">
+    <!-- <div>
       <div class="q-pa-md q-gutter-sm">
         <q-bar style="height:100px;" >
           <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
@@ -14,9 +13,8 @@
         <hr>
       </div>
     </div>
-
-    <!-- 학생 navbar -->
-    <div v-else-if="flag==='student'">
+    <button @click="logoutBtn">로그아웃</button>
+    <div>
       <div class="q-pa-md q-gutter-sm">
         <q-bar style="height:100px;" >
           <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
@@ -28,20 +26,28 @@
         </q-bar>
         <hr>
       </div>
-    </div>
-
+    </div> -->
   </div>
-  <router-view />
+  <!-- <router-view /> -->
 </template>
 
 <script>
+// import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'theNavbar',
-  data() {
-    return {
-      flag : 'teacher'
-    }
-  }
+  // computed: {
+  //   ...mapGetters(['isLoggedIn'])
+  // },
+  // methods: {
+  //   ...mapActions(['logout']),
+  //   logoutBtn() {
+  //     if (this.isLoggedIn) {
+  //       this.logout()
+  //     } else {
+  //       this.$router.back()
+  //     }
+  //   }
+  // }
 }
 </script>
