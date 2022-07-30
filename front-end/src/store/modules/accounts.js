@@ -5,7 +5,6 @@ import axios from "axios"
 export const accounts = {
   state() {
     return {
-      // token: localStorage.getItem('token') || '',
       studentInfo: {
         username: null,
         password1: null,
@@ -94,6 +93,7 @@ export const accounts = {
       if (state.userType == 'student') {
         axios.post(drf.accounts.signup(), state.studentInfo)
           .then(() => {
+            console.log(state.teacherInfo)
             confirm('회원가입이 완료되었습니다')
             // 자동으로 이동
           })
@@ -104,6 +104,7 @@ export const accounts = {
         } else if (state.userType == 'teacher') {
         axios.post(drf.accounts.signup(), state.teacherInfo)
           .then(() => {
+            console.log(state.studentInfo)
             confirm('회원가입이 완료되었습니다')
             // 자동으로 이동
           })
@@ -113,7 +114,6 @@ export const accounts = {
       }
     },
     logout({dispatch}) {
-      console.log('여기는 옴?')
         dispatch('removeToken')
         router.push({ name : 'login' })
       .catch(err => {

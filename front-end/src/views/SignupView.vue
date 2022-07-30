@@ -3,7 +3,7 @@
     <h3>SIGN UP</h3>
     <!-- form 부분 -->
     <q-form
-      @submit="signup"
+      @submit="submitData"
       class="q-gutter row"
     >
       <div class="input col-8 offset-2 col-md-2 offset-md-6">
@@ -52,7 +52,6 @@ export default {
     UserName,
   },
   setup () {
-    // 교사와 학생 필수 정보만 보내기 (선택 정보는 X)
     const store = useStore()
     const router = useRoute()
     const userType = router.params.userType

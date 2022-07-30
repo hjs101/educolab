@@ -8,6 +8,19 @@
       :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요']"
     />
     <q-btn label="중복 확인" color="primary" @click="confirmUsername" />
+
+    <q-dialog v-model="userData.confirm">
+      <q-card>
+        <q-card-section>
+          <p>
+            {{computedData.message}}
+          </p>
+          <br>
+          <q-btn v-close-popup label="확인" color="primary" class="buttonGroup"/>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+    
     <p v-if="userData.password2 && computedData.validUsername !== 2">
       <span v-if="computedData.validUsername">
         {{computedData.message}}
@@ -64,14 +77,14 @@ export default {
     })
     const computedData = reactive({
       samePassword: computed(() => userData.correct),
-      validUsername: computed(() => userData.confirm === 'success'),
+      validUsername: computed(() => userData.confirm),
       message: computed(() => computedData.validUsername? '사용 가능한 아이디입니다':'중복된 아이디입니다. 다른 아이디를 입력해주세요')
     })
     const confirmUsername = () => {
       // 아이디 중복 여부 확인
       axios.get(drf.accounts.checkUsername(), {username: userData.username})
         .then((res) => {
-          userData.confirm = res.data.dup
+          userData.confirm = res.data.dup === 'success'
           if (computedData.validUsername) {
             store.dispatch('changeData', {username: userData.username})
           }
