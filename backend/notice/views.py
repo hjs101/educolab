@@ -84,21 +84,22 @@ class NoticeDetailView(APIView):
         return Response({"message" : "잘못된 접근입니다."})
 
 class NoticeUpdateView(APIView):
+    notice_id = ""
     def get(self, req):
         ## 공지사항 번호 가져오기
-        notice_id = req.GET['notice_num']
+        self.notice_id = req.GET['notice_num']
 
         ## 공지사항 번호로 공지사항 인스턴스 가져오기
-        notice = Notice.objects.get(pk=notice_id)
-        
+        notice = Notice.objects.get(pk=self.notice_id)
+
         notice.save()
 
         files = notice.notice_file.all()
-        
-        
+
+
         fileserializer = FileSerializer(files, many=True)
         print(files)
-        
+
         ## 공지사항 시리얼라이저 생성
         notice_detail_serializer = NoticeSerializer(notice)
         res = Response()
@@ -109,23 +110,27 @@ class NoticeUpdateView(APIView):
         if notice_detail_serializer.data['school']['code'] == req.user.school.code:
             return res
 
-        
+
         return Response({"message" : "잘못된 접근입니다."})
 
-    def post(self, req):
-        # notice = Notice()
-        notice_serializer = NoticeSerializer(data=req.data)
+    def put(self, req):
+        self.notice_id = req.data['notice_num']
+        notice = Notice.objects.get(pk=self.notice_id)
+        notice_serializer = NoticeSerializer(notice, data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
             notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))
 
+        notice_files = notice.notice_file.all()
+        notice_files.delete()
+
+        
         files = req.FILES.getlist("files")
 
-        notice = Notice.objects.all().order_by("-pk")
         for file in files:
-            fp = Files.objects.create(notice=notice[0], atch_file=file)
+            fp = Files.objects.create(notice=notice, atch_file=file)
             fp.save()
         res = Response()
         res.data = {
             'message' : "success",
         }
-        return res
+        return Response(notice_serializer.data)
