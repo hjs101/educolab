@@ -60,7 +60,7 @@ export default {
       prompt: false,
       search: false,
       selected: null,
-      searchResults: computed(() => prompt.search),
+      searchResults: computed(() => school.list),
       // isSelected: computed(() => prompt.selected === code)
     })
     const school = reactive({
@@ -69,14 +69,14 @@ export default {
       selectedName: null,
       list: [],
     })
+
     const findSchool = (event) => {
       prompt.search = true
-      // console.log({schoolname:event.target.value})
-      axios.get(drf.accounts.schoolInfo(), {schoolname:event.target.value})
+      axios.get(drf.accounts.schoolInfo(), {schoolname : event.target.value})
         .then((res) => school.list = res.data)
         .catch((err) => console.log(err))
-      // 백에 입력 값 보내기
     }
+
     const selectSchool = (name, code) => {
       prompt.selected = code
       school.selectedName = name
@@ -86,6 +86,7 @@ export default {
       school.name = school.selectedName
       store.dispatch('changeData', {school:school.code})
     }
+
     return {
       prompt,
       school,
