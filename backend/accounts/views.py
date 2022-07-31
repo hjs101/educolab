@@ -7,12 +7,16 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 from re import L
 >>>>>>> 9a0c0d9 (feat : 학교이름 검색 기능 구현 - 홍찬기)
 =======
 from sre_constants import SUCCESS
 >>>>>>> 25d0df5 (feat: 회원가입에서 이메일 인증메일 보내기 기능 구현 , id 중복체크 기능 완성 - 홍찬기)
+=======
+from sre_constants import SUCCESS
+>>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
 from django.shortcuts import render
 from django.core.mail import send_mail
 from rest_framework.views import APIView
@@ -26,6 +30,7 @@ from .helper import email_auth_num
 from my_settings import EMAIL_HOST_USER
 
 # Create your views here.
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 from base64 import encode
@@ -154,6 +159,8 @@ from rest_framework.response import Response
             return Response(serializer.data, status=201) """
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
 =======
+=======
+>>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
 
 class SchoolInfoView(APIView):
     permission_classes = (AllowAny,)
@@ -164,8 +171,11 @@ class SchoolInfoView(APIView):
         serializer = SchoolInfoSerializer(school,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 9a0c0d9 (feat : 학교이름 검색 기능 구현 - 홍찬기)
 =======
+=======
+>>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
 
 class CheckUsernameView(APIView):
     permission_classes = (AllowAny,)
@@ -198,6 +208,7 @@ class SendSignupEmailView(APIView):
         return Response(context)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 class FindIDView(APIView):
     pass
 <<<<<<< HEAD
@@ -215,6 +226,14 @@ class FindUsernameView(APIView):
 >>>>>>> 966ca14 (feat: 회원기능에서 POST 입력방식 변경)
 =======
 >>>>>>> 45cae29 ( Fix : 프론트 merge 전 커밋)
+=======
+class FindUsernameView(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request):
+        name = request.GET.get('name')
+        email = request.GET.get('email')
+>>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
 
         try:
             user = UserInfo.objects.get(name=name,email=email)
@@ -238,9 +257,15 @@ class SendPWEmailView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self,request):
+<<<<<<< HEAD
         name = request.POST.get('name','')
         email = request.POST.get('email','')
         username = request.POST.get('username','')
+=======
+        name = request.data.get('name')
+        email = request.data.get('email')
+        username = request.data.get('username')
+>>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
         
         try:
             userinfo = UserInfo.objects.get(name=name,username=username)
@@ -269,4 +294,7 @@ class SendPWEmailView(APIView):
             }
             return Response(context)
 
+<<<<<<< HEAD
 >>>>>>> 0c829cf (feat: 아이디 찾기 기능 구현)
+=======
+>>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
