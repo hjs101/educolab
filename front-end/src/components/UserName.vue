@@ -1,0 +1,34 @@
+<template>
+  <q-input
+    color="teal"
+    label="이름"
+    v-model="name"
+    maxlength="20"
+    :value="name.value"
+    @change="sendData"
+    clearable
+    :dense="false"
+    lazy-rules
+    :rules="[ val => val && val.length > 0 || '이름을 입력해주세요']"
+  />
+</template>
+
+<script>
+  import {ref} from '@vue/reactivity'
+  import {useStore} from 'vuex'
+
+  export default {
+    name:'userName',
+    setup() {
+      const store = useStore()
+      let name= ref('')
+      const sendData = () => {
+        store.dispatch('changeData', {name: name.value})
+      }
+      return {
+        sendData,
+        name
+      }
+    },
+  }
+</script>
