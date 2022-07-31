@@ -10,7 +10,11 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     signup: () => ACCOUNTS + 'registration/',
+=======
+    signup: () => ACCOUNTS + 'registration',
+>>>>>>> 4628d97 ( Style : 디자인 수정)
     schoolInfo: () => ACCOUNTS + 'schoolinfo/',
     checkUsername: () => ACCOUNTS + 'check_username/',
     sendEmail: () => ACCOUNTS + 'send_signup_email/',

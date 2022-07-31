@@ -13,9 +13,9 @@
       </q-scroll-area>
       <!-- 여기에 체크 박스 -->
       <q-checkbox v-model="isChecked" label="위의 약관에 모두 동의합니다" color="teal" class="col-4 offset-4" />
-      <!-- 여기에 버튼 -->
       <br>
     </div>
+      <!-- 여기에 버튼 -->
     <div class="buttonGroup" v-if="isChecked">
 =======
     <div class="row">
@@ -81,9 +81,11 @@
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
   .scroll {
     height: 300px;
-    max-width: 700px;
-    margin-top: 50px;
+    max-width: 750px;
+    margin-top: 30px;
     margin-bottom: 50px;
+    border-color: black;
+    border-width: 1px;
   }
 </style>
 

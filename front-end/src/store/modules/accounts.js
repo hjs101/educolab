@@ -86,7 +86,6 @@ export const accounts = {
       access: localStorage.getItem('access') || '',
       currentUser: {},
       authError: null,
-      schoolList: [],
     }
   },
   getters: {
