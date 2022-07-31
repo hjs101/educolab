@@ -29,5 +29,8 @@ urlpatterns = [
 	path('login/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
-    path('findid/', views.FindIDView.as_view(), name='findid'),
+    path('check_username/', views.CheckUsernameView.as_view(), name='checkusername'), 
+    path('find_username/', views.FindUsernameView.as_view(), name='findusername'),
+    path('send_signup_email/', views.SendSignupEmailView.as_view(), name='sendsignupemail'),
+    path('send_pw_email/',views.SendPWEmailView.as_view(), name="sendpwemail"),
 ]
