@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       @submit="submitData"
 =======
       @submit="onSubmit"
@@ -16,6 +17,8 @@
 =======
       @submit="submitData"
 >>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
+=======
+>>>>>>> f57c6b5 ( Fix : get 방식으로 요청)
       class="q-gutter row"
     >
       <div class="input col-8 offset-2 col-md-2 offset-md-6">
@@ -36,6 +39,7 @@
         <!-- 이메일 -->
         <email-confirm />
         <!-- 회원가입 버튼 -->
+<<<<<<< HEAD
         <q-btn color="primary" label="SIGN UP" @submit="submitData"/>
 =======
         <login-info @to-signup="changeData"/>
@@ -69,6 +73,9 @@
 =======
         <q-btn color="primary" label="SIGN UP" @submit="submitData"/>
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
+=======
+        <q-btn color="primary" label="SIGN UP" @click="submitData"/>
+>>>>>>> f57c6b5 ( Fix : get 방식으로 요청)
       </div>
     </q-form>
   </div>
