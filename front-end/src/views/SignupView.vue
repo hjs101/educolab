@@ -32,7 +32,7 @@ import {useRoute} from 'vue-router'
 import {useStore} from 'vuex'
 import {onMounted} from 'vue'
 import LoginInfo from '@/components/LoginInfo.vue'
-import searchSchool from '@/components/searchSchool.vue'
+import SearchSchool from '@/components/SearchSchool.vue'
 import EmailConfirm from '@/components/EmailConfirm.vue'
 import TeacherOrStudent from '@/components/TeacherOrStudent.vue'
 import UserBirthday from '@/components/UserBirthday.vue'
@@ -44,7 +44,7 @@ export default {
   name: "SignupView",
   components: {
     LoginInfo,
-    searchSchool,
+    SearchSchool,
     EmailConfirm,
     TeacherOrStudent,
     UserBirthday,
