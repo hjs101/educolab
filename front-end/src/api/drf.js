@@ -6,7 +6,7 @@ export default {
   accounts: {
     login: () => ACCOUNTS + 'login/',
     logout: () => ACCOUNTS + 'logout/',
-    signup: () => ACCOUNTS + 'registration/',
+    signup: () => ACCOUNTS + 'registration',
     schoolInfo: () => ACCOUNTS + 'schoolinfo/',
     checkUsername: () => ACCOUNTS + 'check_username/',
     sendEmail: () => ACCOUNTS + 'send_signup_email/',
