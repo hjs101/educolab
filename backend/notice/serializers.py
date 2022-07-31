@@ -24,5 +24,4 @@ class FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Files
         fields = '__all__'
-    
 
