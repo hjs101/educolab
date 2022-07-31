@@ -32,8 +32,11 @@ class FileSerializer(serializers.ModelSerializer):
         model = models.Files
         fields = '__all__'
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> c5da375 (Feat : 공지사항 상세페이지 파일 표시, 수정기능(진행중))
 =======
     
+=======
+>>>>>>> 0970789 (Style : back 브랜치 테스트)
 
 >>>>>>> 1e437b7 (Feat : 공지사항 수정기능 구현)

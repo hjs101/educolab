@@ -166,7 +166,11 @@ class SchoolInfoView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
+<<<<<<< HEAD
         search = request.GET.get('schoolname')
+=======
+        search = request.GET['schoolname']
+>>>>>>> 0970789 (Style : back 브랜치 테스트)
         school = SchoolInfo.objects.filter(name__contains=search)
         serializer = SchoolInfoSerializer(school,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
