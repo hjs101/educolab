@@ -9,7 +9,8 @@
     clearable
     :dense="false"
     lazy-rules
-    :rules="[ val => val && val.length > 0 || '이름을 입력해주세요']"
+    :rules="[ val => val && val.length > 0 || '이름을 입력해주세요',
+    val => val.length > 1 || '이름은 두 글자 이상이어야 합니다']"
   />
 </template>
 
