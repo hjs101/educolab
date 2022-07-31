@@ -179,7 +179,7 @@ export default {
       prompt: false,
       search: false,
       selected: null,
-      searchResults: computed(() => prompt.search),
+      searchResults: computed(() => school.list),
       // isSelected: computed(() => prompt.selected === code)
     })
     const school = reactive({
@@ -188,17 +188,20 @@ export default {
       selectedName: null,
       list: [],
     })
+
     const findSchool = (event) => {
       prompt.search = true
-      // console.log({schoolname:event.target.value})
-      axios.get(drf.accounts.schoolInfo(), {schoolname:event.target.value})
+      axios.get(drf.accounts.schoolInfo(), {schoolname : event.target.value})
         .then((res) => school.list = res.data)
         .catch((err) => console.log(err))
-      // 백에 입력 값 보내기
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
 =======
+=======
+
+>>>>>>> 9d52baa ( Fix : 버그 수정 중)
     const selectSchool = (name, code) => {
       prompt.selected = code
       school.selectedName = name
@@ -208,7 +211,11 @@ export default {
       school.name = school.selectedName
       store.dispatch('changeData', {school:school.code})
     }
+<<<<<<< HEAD
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+
+>>>>>>> 9d52baa ( Fix : 버그 수정 중)
     return {
       prompt,
       school,
