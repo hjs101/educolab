@@ -473,6 +473,7 @@ backend/educolab/my_settings.py
 =======
 front-end/node_modules
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> c1b7e5f ( Fix : 버그 수정 중)
 =======
 backend/educolab/my_settings.py
@@ -506,3 +507,6 @@ login_info.json
 ./backend
 ./front-end
 >>>>>>> 71f00cc (.gitignore 수정)
+=======
+front-end/node_modules/*
+>>>>>>> e702bd9 (ppt ÆÄÀÏ Ã߰¡)
