@@ -1,4 +1,5 @@
 from allauth.account.adapter import DefaultAccountAdapter
+from .serializers import SchoolInfoSerializer
 from .models import SchoolInfo
 class CustomAccountAdapter(DefaultAccountAdapter):
     def save_user(self, request, user, form, commit=True):
