@@ -159,8 +159,7 @@ class SchoolInfoView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
-        print(request)
-        search = request.data['schoolname']
+        search = request.GET.get('schoolname')
         school = SchoolInfo.objects.filter(name__contains=search)
         serializer = SchoolInfoSerializer(school,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
@@ -172,7 +171,7 @@ class CheckUsernameView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
-        username = request.data.get('username')
+        username = request.GET.get('username')
 
         try:
             checkname = UserInfo.objects.get(username=username)
@@ -210,8 +209,8 @@ class FindUsernameView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
-        name = request.data.get('name')
-        email = request.data.get('email')
+        name = request.GET.get('name')
+        email = request.GET.get('email')
 
         try:
             user = UserInfo.objects.get(name=name,email=email)
