@@ -1,4 +1,4 @@
-import drf from "@/api/drf"
+import drf from "@/api/drf.js"
 import router from "@/router"
 import axios from "axios"
 
@@ -92,26 +92,27 @@ export const accounts = {
         })
     },
     signup(state) {
-      if (state.userType == 'student') {
-        axios.post(drf.accounts.signup(), state.studentInfo)
+      if (state.getters.getUserType == 'student') {
+        axios.post(drf.accounts.signup(), state.state.studentInfo)
           .then(() => {
             console.log(state.teacherInfo)
-            confirm('회원가입이 완료되었습니다')
+            window.alert('회원가입이 완료되었습니다')
             // 자동으로 이동
           })
           .catch(() => {
-            confirm('필수 항목이 빠져 있거나, 올바르지 않습니다')
+            window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
           })
           
-        } else if (state.userType == 'teacher') {
-        axios.post(drf.accounts.signup(), state.teacherInfo)
+        } else if (state.getters.getUserType == 'teacher') {
+        axios.post(drf.accounts.signup(), JSON.stringify(state.state.teacherInfo),
+        {headers: {'Content-Type' : 'application/json'}})
           .then(() => {
             console.log(state.studentInfo)
-            confirm('회원가입이 완료되었습니다')
+            window.alert('회원가입이 완료되었습니다')
             // 자동으로 이동
           })
           .catch(() => {
-            confirm('필수 항목이 빠져 있거나, 올바르지 않습니다')
+            window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
           })
       }
     },

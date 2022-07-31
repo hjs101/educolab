@@ -21,7 +21,7 @@
         <!-- 이메일 -->
         <email-confirm />
         <!-- 회원가입 버튼 -->
-        <q-btn color="primary" label="SIGN UP" @submit="submitData"/>
+        <q-btn color="primary" label="SIGN UP" @click="submitData"/>
       </div>
     </q-form>
   </div>

@@ -14,5 +14,4 @@ export default {
   notice: {
     noticeList: () => NOTICE
   }
-
 }

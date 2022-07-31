@@ -55,9 +55,15 @@ class SendSignupEmailView(APIView):
 class FindUsernameView(APIView):
     permission_classes = (AllowAny,)
 
+<<<<<<< HEAD
     def post(self, request):
         name = request.POST.get('name')
         email = request.POST.get('email')
+=======
+    def get(self, request):
+        name = request.GET.get('name')
+        email = request.GET.get('email')
+>>>>>>> front
 
         try:
             user = UserInfo.objects.get(name=name,email=email)
@@ -81,9 +87,15 @@ class SendPWEmailView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self,request):
+<<<<<<< HEAD
         name = request.POST.get('name','')
         email = request.POST.get('email','')
         username = request.POST.get('username','')
+=======
+        name = request.data.get('name')
+        email = request.data.get('email')
+        username = request.data.get('username')
+>>>>>>> front
         
         try:
             userinfo = UserInfo.objects.get(name=name,username=username)

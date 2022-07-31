@@ -69,13 +69,15 @@ export default {
       selectedName: null,
       list: [],
     })
+
     const findSchool = (event) => {
       prompt.search = true
-      axios.get(drf.accounts.schoolInfo(), {schoolname:event.target.value})
+      axios.get(drf.accounts.schoolInfo(), 
+      {params: {schoolname : event.target.value}})
         .then((res) => school.list = res.data)
         .catch((err) => console.log(err))
-      // 백에 입력 값 보내기
     }
+
     const selectSchool = (name, code) => {
       prompt.selected = code
       school.selectedName = name
