@@ -17,7 +17,7 @@ class SchoolInfoView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
-        search = request.data['schoolname']
+        search = request.GET.get('schoolname')
         school = SchoolInfo.objects.filter(name__contains=search)
         serializer = SchoolInfoSerializer(school,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
@@ -26,7 +26,7 @@ class CheckUsernameView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
-        username = request.data.get('username')
+        username = request.GET.get('username')
 
         try:
             checkname = UserInfo.objects.get(username=username)
@@ -44,7 +44,7 @@ class SendSignupEmailView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self,request):
-        email = request.data['email']
+        email = request.POST.get('email')
         auth_num = email_auth_num()
         send_mail(subject='educolab 회원가입 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
         context = {
@@ -55,9 +55,9 @@ class SendSignupEmailView(APIView):
 class FindUsernameView(APIView):
     permission_classes = (AllowAny,)
 
-    def get(self, request):
-        name = request.data.get('name')
-        email = request.data.get('email')
+    def post(self, request):
+        name = request.POST.get('name')
+        email = request.POST.get('email')
 
         try:
             user = UserInfo.objects.get(name=name,email=email)
@@ -81,9 +81,9 @@ class SendPWEmailView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self,request):
-        name = request.data.get('name')
-        email = request.data.get('email')
-        username = request.data.get('username')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        username = request.POST.get('username')
         
         try:
             userinfo = UserInfo.objects.get(name=name,username=username)
