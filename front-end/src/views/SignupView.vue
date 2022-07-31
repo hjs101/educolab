@@ -109,6 +109,11 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .buttonCenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
 </style>
 
 <script>

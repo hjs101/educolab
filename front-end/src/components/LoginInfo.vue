@@ -26,21 +26,27 @@
         class="col-9"
         maxlength="20"
         :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요',
-        val => val.length > 4 ||'아이디는 최소 5자리 이상이어야 합니다'
+        val => val && val.length > 4 ||'아이디는 최소 5자리 이상이어야 합니다'
         ]"
       />
       <q-btn label="중복 확인" color="teal" @click="confirmUsername" class="col-2" />
     </div>
 >>>>>>> bf45305 ( Fix : 버그 수정)
 
-    <q-dialog v-model="userData.confirm">
+    <q-dialog v-model="userData.confirm" class="dialog">
       <q-card>
         <q-card-section>
-          <p>
+          <b>
             {{computedData.message}}
-          </p>
+          </b>
           <br>
-          <q-btn v-close-popup label="확인" color="primary" class="buttonGroup" @click="userData.confirm = false"/>
+          <q-btn
+          v-close-popup
+          label="확인"
+          color="primary"
+          class="submitButton"
+          @click="userData.confirm = false"
+          />
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -116,9 +122,6 @@
     </p>
   </div>
 </template>
-
-<style>
-</style>
 
 <script>
 import {reactive} from '@vue/reactivity'
@@ -201,6 +204,7 @@ export default {
       // 아이디 중복 여부 확인
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       axios.get(drf.accounts.checkUsername(), {username: userData.username})
         .then((res) => {
           userData.confirm = res.data.dup === 'success'
@@ -260,6 +264,9 @@ export default {
         axios.get(drf.accounts.checkUsername(), {username: userData.username})
 =======
       if (userData.username.length > 4) {
+=======
+      if (userData.username && userData.username.length > 4) {
+>>>>>>> dab616b ( Style : 회원가입 스타일 수정)
         axios.get(drf.accounts.checkUsername(), {params : {username: userData.username}})
 >>>>>>> 0929323 ( Feat : 회원가입 기능 구현)
           .then((res) => {

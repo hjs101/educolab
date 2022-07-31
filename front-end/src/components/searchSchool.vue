@@ -44,7 +44,7 @@
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary" v-if="prompt.search">
-          <q-btn flat label="취소" @click="school.name = null" v-close-popup />
+          <q-btn flat label="취소" v-close-popup />
           <q-btn label="추가" @click="applySchool" v-close-popup />
         </q-card-actions>
       </q-card>
@@ -74,7 +74,6 @@ export default {
       search: false,
       selected: null,
       searchResults: computed(() => prompt.search),
-      // isSelected: computed(() => prompt.selected === code)
     })
     const school = reactive({
       name: null,
