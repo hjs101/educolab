@@ -56,13 +56,8 @@ class FindUsernameView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, request):
-<<<<<<< HEAD
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-=======
         name = request.data.get('name')
         email = request.data.get('email')
->>>>>>> fba13e149fef20506a83c65e2450966b12c84d70
 
         try:
             user = UserInfo.objects.get(name=name,email=email)
