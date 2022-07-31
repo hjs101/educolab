@@ -3,7 +3,6 @@
     <h3>SIGN UP</h3>
     <!-- form 부분 -->
     <q-form
-      @submit="submitData"
       class="q-gutter row"
     >
       <div class="input col-8 offset-2 col-md-2 offset-md-6">
