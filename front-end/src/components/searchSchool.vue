@@ -72,7 +72,8 @@ export default {
 
     const findSchool = (event) => {
       prompt.search = true
-      axios.get(drf.accounts.schoolInfo(), {schoolname : event.target.value})
+      axios.get(drf.accounts.schoolInfo(), 
+      {params: {schoolname : event.target.value}})
         .then((res) => school.list = res.data)
         .catch((err) => console.log(err))
     }

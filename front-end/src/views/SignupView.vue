@@ -3,7 +3,6 @@
     <h3>SIGN UP</h3>
     <!-- form 부분 -->
     <q-form
-      @submit="submitData"
       class="q-gutter row"
     >
       <div class="input col-8 offset-2 col-md-2 offset-md-6">
@@ -21,7 +20,7 @@
         <!-- 이메일 -->
         <email-confirm />
         <!-- 회원가입 버튼 -->
-        <q-btn color="primary" label="SIGN UP" @submit="submitData"/>
+        <q-btn color="primary" label="SIGN UP" @click="submitData"/>
       </div>
     </q-form>
   </div>
