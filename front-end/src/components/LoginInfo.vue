@@ -9,7 +9,7 @@
         class="col-9"
         maxlength="20"
         :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요',
-        val => val.length > 5 ||'아이디는 최소 6자리 이상이어야 합니다'
+        val => val.length > 4 ||'아이디는 최소 5자리 이상이어야 합니다'
         ]"
       />
       <q-btn label="중복 확인" color="teal" @click="confirmUsername" class="col-2" />
@@ -87,8 +87,8 @@ export default {
     })
     const confirmUsername = () => {
       // 아이디 중복 여부 확인
-      if (userData.username.length > 5) {
-        axios.get(drf.accounts.checkUsername(), {username: userData.username})
+      if (userData.username.length > 4) {
+        axios.get(drf.accounts.checkUsername(), {params : {username: userData.username}})
           .then((res) => {
             userData.confirm = true
             userData.valid = res.data.dup === 'success'
@@ -101,7 +101,7 @@ export default {
     const isCorrect = () => {
       if (userData.password1 === userData.password2) {
         userData.correct = true
-        if (userData.password1 > 5) {
+        if (userData.password1.length > 5) {
           store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
         }
       } else {
