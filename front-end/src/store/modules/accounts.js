@@ -64,6 +64,7 @@ export const accounts = {
         phone_number: null,
         birthday: '2008-01-01',
         email: null,
+<<<<<<< HEAD
         user_flag : false,
 <<<<<<< HEAD
 =======
@@ -81,6 +82,9 @@ export const accounts = {
 >>>>>>> 6e582c6 (develop 브랜치 푸시)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+        userflag : false,
+>>>>>>> 0929323 ( Feat : 회원가입 기능 구현)
       },
       teacherInfo: {
         username: null,
@@ -99,7 +103,7 @@ export const accounts = {
         phone_number: null,
         birthday: '1972-01-01',
         email: null,
-        user_flag : true,
+        userflag : true,
       },
       userType: null,
       access: localStorage.getItem('access') || '',
@@ -113,8 +117,6 @@ export const accounts = {
     authError: state => state.authError,
     authHeader: state => ({ Authorization: `Token ${state.access}` }),
     getUserType: state => state.userType,
-    // getStudentInfo: state => state.studentInfo,
-    // getTeacherInfo: state => state.teacherInfo,
     getSubject: state => state.teacherInfo.subject,
   },
   mutations: {
@@ -233,14 +235,12 @@ export const accounts = {
 =======
 >>>>>>> e6b54fb (asdu)
         .then(res => {
-          console.log(res)
           const access = res.data.access
           dispatch('saveToken', access)
           commit('SET_CURRENT_USER', res.data) 
           router.push({ name: 'educolab'})
         })         
         .catch(err => {
-          console.error(err.response.data)
           commit('SET_AUTH_ERROR', err.response.data)
         })
     },
@@ -248,6 +248,7 @@ export const accounts = {
       if (state.getters.getUserType == 'student') {
         axios.post(drf.accounts.signup(), state.state.studentInfo)
           .then(() => {
+<<<<<<< HEAD
             console.log(state.teacherInfo)
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -260,17 +261,20 @@ export const accounts = {
             window.alert('회원가입이 완료되었습니다')
 >>>>>>> e6b54fb (asdu)
             // 자동으로 이동
+=======
+            window.alert('회원가입이 완료되었습니다')
+            router.push({ name: 'login'})
+>>>>>>> 0929323 ( Feat : 회원가입 기능 구현)
           })
           .catch(() => {
             window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
           })
           
         } else if (state.getters.getUserType == 'teacher') {
-        axios.post(drf.accounts.signup(), state.state.teacherInfo)
+          axios.post(drf.accounts.signup(), state.state.teacherInfo)
           .then(() => {
-            console.log(state.studentInfo)
             window.alert('회원가입이 완료되었습니다')
-            // 자동으로 이동
+            router.push({ name: 'login'})
           })
           .catch(() => {
             window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
@@ -364,7 +368,6 @@ export const accounts = {
 <<<<<<< HEAD
 <<<<<<< HEAD
     changeData({commit}, data) {
-      console.log(data)
       commit('CHANGE_DATA', data)
 =======
     changeStudentData({commit}, data) {
