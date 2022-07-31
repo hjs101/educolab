@@ -17,6 +17,7 @@ class SchoolInfoView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
+        print(request)
         search = request.data['schoolname']
         school = SchoolInfo.objects.filter(name__contains=search)
         serializer = SchoolInfoSerializer(school,many=True)

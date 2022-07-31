@@ -317,3 +317,4 @@ $RECYCLE.BIN/
 *.lnk
 
 backend/my_settings.py
+front-end/node_modules
