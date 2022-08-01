@@ -21,6 +21,7 @@ class NoticeSerializer(serializers.ModelSerializer):
 
 class FileSerializer(serializers.ModelSerializer):
     atch_file = serializers.FileField(use_url=True)
+    
     class Meta:
         model = models.Files
         fields = '__all__'
