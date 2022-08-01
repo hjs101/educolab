@@ -95,23 +95,24 @@ export const accounts = {
       if (state.getters.getUserType == 'student') {
         axios.post(drf.accounts.signup(), state.state.studentInfo)
           .then(() => {
-            console.log(state.teacherInfo)
+            console.log(state.state.sudentInfo)
             window.alert('회원가입이 완료되었습니다')
             // 자동으로 이동
           })
           .catch(() => {
+            console.log(state.state.sudentInfo)
             window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
           })
           
         } else if (state.getters.getUserType == 'teacher') {
-        axios.post(drf.accounts.signup(), JSON.stringify(state.state.teacherInfo),
-        {headers: {'Content-Type' : 'application/json'}})
+        axios.post(drf.accounts.signup(),state.state.teacherInfo)
           .then(() => {
-            console.log(state.studentInfo)
+            console.log(state.state.teacherInfo)
             window.alert('회원가입이 완료되었습니다')
             // 자동으로 이동
           })
           .catch(() => {
+            console.log(state.state.teacherInfo)
             window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
           })
       }
