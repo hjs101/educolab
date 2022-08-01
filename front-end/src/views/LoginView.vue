@@ -106,6 +106,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div class="buttonGroup">
 =======
     <div class="userGroup">
@@ -127,6 +128,10 @@
       </router-link>
       <router-view></router-view>
     </div>
+=======
+    <button-group :currentUrl="currentUrl"/>
+    <router-view></router-view>
+>>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
   </div>
 
 </template>
@@ -190,11 +195,13 @@
 // import { reactive } from '@vue/reactivity'
 import { mapGetters, mapActions } from 'vuex'
 import AccountErrorList from '@/components/AccountErrorList.vue'
+import ButtonGroup from '@/components/ButtonGroup.vue'
 
 export default {
   name: 'LoginView',
   components: {
-    AccountErrorList
+    AccountErrorList,
+    ButtonGroup
   },
 <<<<<<< HEAD
 =======
@@ -218,7 +225,8 @@ export default {
       credentials: {
         username : '',
         password: '',
-      }
+      },
+      currentUrl: 'login',
     }
   },
   computed: {

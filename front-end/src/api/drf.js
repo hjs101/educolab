@@ -37,7 +37,9 @@ export default {
     signup: () => ACCOUNTS + 'registration/',
     schoolInfo: () => ACCOUNTS + 'schoolinfo/',
     checkUsername: () => ACCOUNTS + 'check_username/',
+    findUsername: () => ACCOUNTS + 'find_username/',
     sendEmail: () => ACCOUNTS + 'send_signup_email/',
+<<<<<<< HEAD
 >>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
 =======
     sendEmail: () => ACCOUNTS + 'sendemail/',
@@ -51,6 +53,9 @@ export default {
     checkUsername: () => ACCOUNTS + 'check_username/',
     sendEmail: () => ACCOUNTS + 'send_signup_email/',
 >>>>>>> e6b54fb (asdu)
+=======
+    sendPwEmail: () => ACCOUNTS + 'send_pw_email/',
+>>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
   },
   notice: {
     noticeList: () => NOTICE + 'main/',

@@ -15,6 +15,7 @@ const routes = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 =======
@@ -45,6 +46,9 @@ const routes = [
 =======
 >>>>>>> e6b54fb (asdu)
 
+=======
+  
+>>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
   // 메인페이지 
   {
     path: '/educolab',
@@ -71,6 +75,7 @@ const routes = [
     name: 'Notice',
     component: () => import('@/views/NoticeView')
   },
+<<<<<<< HEAD
   
   // 공지사항 상세 페이지
   {
@@ -79,6 +84,15 @@ const routes = [
     component: () => import('@/views/NoticeDetailView')
   },
 
+=======
+  // 아이디 & 비밀번호 찾기
+  {
+    path: '/find/:info',
+    name: 'findId',
+    component: () => import('@/views/FindView')
+  },
+  // 회원가입
+>>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
   {
     path: '/signup/:userType',
     name: 'signup',
@@ -225,12 +239,13 @@ const routes = [
     name: 'StudentStoreView.vue',
     component: () => import('@/views/StudentStoreView')
   },
-
+  
   // 마이 페이지(학생)
   {
     path: '/student',
     name: 'StudentPageView',
     component: () => import('@/views/StudentPageView')
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 import { createRouter, createWebHistory } from 'vue-router'
@@ -343,6 +358,15 @@ const routes = [
 =======
   }
 >>>>>>> e6b54fb (asdu)
+=======
+  },
+  // 회원 관리
+  {
+    path: '/',
+    name: 'login',
+    component: () => import ('@/views/LoginView')
+  },  
+>>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
 ]
 
 const router = createRouter({
