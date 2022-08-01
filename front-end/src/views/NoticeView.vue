@@ -12,13 +12,32 @@
     
     <router-link to="/notice/create"><button>글쓰기</button></router-link> -->
     <!-- <button @click="notice"></button> -->
-    <h1>공지사항 메인 페이지</h1>
-    <div v-if="notice2">
+    <table class="center">
+      <thead>
+        <tr>
+          <th>분류</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>등록일</th>
+          <th>조회수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="notice in notice2" :key="notice.pk">
+          <td>{{ notice.classification}}</td>
+          <td>{{ notice.title }}</td>
+          <td>{{ notice.teacher.name}}</td>
+          <td>{{ timeInfo(notice.updated_at) }}</td>
+          <td>{{ notice.views }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <div v-if="notice2">
       <div v-for="notice in notice2"
       :key="notice.pk">>
         {{ notice.title}}
       </div>
-    </div>
+    </div> -->
 
 
   </div>
@@ -45,6 +64,10 @@ export default {
   },
   methods: {
     ...mapActions(['noticeList']),
+    timeInfo(time) {
+      const d = new Date(time)
+      return d.getFullYear() + ". " + (d.getMonth()+1) + ". " + d.getDate()
+    }
   },
   mounted() {
     this.noticeList()

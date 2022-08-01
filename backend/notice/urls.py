@@ -19,6 +19,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    # 메인
     path('main/', views.NoticeMainView.as_view(), name='notice/main'),
     path('create/', views.NoticeCreateView.as_view(), name='notice/create'),
 ]
