@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import drf from "@/api/drf"
 =======
 import drf from "@/api/drf.js"
@@ -43,6 +44,11 @@ export const accounts = {
 import drf from "@/api/drf.js"
 import router from "@/router"
 import axios from "axios"
+=======
+import drf from "@/api/drf.js";
+import router from "@/router";
+import axios from "axios";
+>>>>>>> 36a3f8f (Fix : 오타수정)
 
 export const accounts = {
   state() {
@@ -62,8 +68,9 @@ export const accounts = {
 >>>>>>> e6b54fb (asdu)
         class_field: null,
         phone_number: null,
-        birthday: '2008-01-01',
+        birthday: "2008-01-01",
         email: null,
+<<<<<<< HEAD
 <<<<<<< HEAD
         user_flag : false,
 <<<<<<< HEAD
@@ -85,6 +92,9 @@ export const accounts = {
 =======
         userflag : false,
 >>>>>>> 0929323 ( Feat : 회원가입 기능 구현)
+=======
+        userflag: false,
+>>>>>>> 36a3f8f (Fix : 오타수정)
       },
       teacherInfo: {
         username: null,
@@ -101,25 +111,26 @@ export const accounts = {
 =======
 >>>>>>> e6b54fb (asdu)
         phone_number: null,
-        birthday: '1972-01-01',
+        birthday: "1972-01-01",
         email: null,
-        userflag : true,
+        userflag: true,
       },
       userType: null,
-      access: localStorage.getItem('access') || '',
+      access: localStorage.getItem("access") || "",
       currentUser: {},
       authError: null,
-    }
+    };
   },
   getters: {
-    isLoggedIn: state => !!state.access, 
-    currentUser: state => state.currentUser,
-    authError: state => state.authError,
-    authHeader: state => ({ Authorization: `Token ${state.access}` }),
-    getUserType: state => state.userType,
-    getSubject: state => state.teacherInfo.subject,
+    isLoggedIn: (state) => !!state.access,
+    currentUser: (state) => state.currentUser,
+    authError: (state) => state.authError,
+    authHeader: (state) => ({ Authorization: `Token ${state.access}` }),
+    getUserType: (state) => state.userType,
+    getSubject: (state) => state.teacherInfo.subject,
   },
   mutations: {
+<<<<<<< HEAD
     SET_TOKEN: (state, access) => state.access = access,
     SET_CURRENT_USER: (state, user) => state.currentUser = user,
     SET_AUTH_ERROR: (state, error) => state.authError = error,
@@ -172,18 +183,26 @@ export const accounts = {
 =======
 >>>>>>> e6b54fb (asdu)
       if (state.userType === 'student') {
+=======
+    SET_TOKEN: (state, access) => (state.access = access),
+    SET_CURRENT_USER: (state, user) => (state.currentUser = user),
+    SET_AUTH_ERROR: (state, error) => (state.authError = error),
+    CHANGE_DATA(state, data) {
+      if (state.userType === "student") {
+>>>>>>> 36a3f8f (Fix : 오타수정)
         for (let key in data) {
-          state.studentInfo[key] = data[key]
+          state.studentInfo[key] = data[key];
         }
       } else {
-          for (let key in data) {
-            state.teacherInfo[key] = data[key]
-          }
+        for (let key in data) {
+          state.teacherInfo[key] = data[key];
         }
-      },
-    SET_USER_TYPE: (state, userType) => state.userType = userType,
+      }
     },
+    SET_USER_TYPE: (state, userType) => (state.userType = userType),
+  },
   actions: {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -193,10 +212,15 @@ export const accounts = {
     saveToken({commit}, access) {
       commit('SET_TOKEN', access)
       localStorage.setItem('access', access)
+=======
+    saveToken({ commit }, access) {
+      commit("SET_TOKEN", access);
+      localStorage.setItem("access", access);
+>>>>>>> 36a3f8f (Fix : 오타수정)
     },
-    removeToken({commit}) {
-      commit('SET_TOKEN', '')
-      localStorage.setItem('access', '')
+    removeToken({ commit }) {
+      commit("SET_TOKEN", "");
+      localStorage.setItem("access", "");
     },
     login({ commit, dispatch }, credentials) {
       // 로그인 함수 구현
@@ -226,9 +250,10 @@ export const accounts = {
 =======
 >>>>>>> e6b54fb (asdu)
         url: drf.accounts.login(),
-        method: 'post',
-        data: credentials
+        method: "post",
+        data: credentials,
       })
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -242,12 +267,25 @@ export const accounts = {
         })         
         .catch(err => {
           commit('SET_AUTH_ERROR', err.response.data)
+=======
+        .then((res) => {
+          const access = res.data.access;
+          dispatch("saveToken", access);
+          commit("SET_CURRENT_USER", res.data);
+          router.push({ name: "educolab" });
+>>>>>>> 36a3f8f (Fix : 오타수정)
         })
+        .catch((err) => {
+          commit("SET_AUTH_ERROR", err.response.data);
+        });
     },
     signup(state) {
-      if (state.getters.getUserType == 'student') {
-        axios.post(drf.accounts.signup(), state.state.studentInfo)
+      if (state.getters.getUserType == "student") {
+        axios
+          .post(drf.accounts.signup(), state.state.studentInfo)
           .then(() => {
+<<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD
             console.log(state.teacherInfo)
 <<<<<<< HEAD
@@ -255,6 +293,9 @@ export const accounts = {
 <<<<<<< HEAD
             confirm('회원가입이 완료되었습니다')
 =======
+=======
+            console.log(state.state.sudentInfo)
+>>>>>>> d7d3605 (feat : 비밀번호 변경 기능 구현)
             window.alert('회원가입이 완료되었습니다')
 >>>>>>> f57c6b5 ( Fix : get 방식으로 요청)
 =======
@@ -267,16 +308,24 @@ export const accounts = {
 >>>>>>> 0929323 ( Feat : 회원가입 기능 구현)
           })
           .catch(() => {
+            console.log(state.state.sudentInfo)
             window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
           })
           
         } else if (state.getters.getUserType == 'teacher') {
+<<<<<<< HEAD
           axios.post(drf.accounts.signup(), state.state.teacherInfo)
           .then(() => {
+=======
+        axios.post(drf.accounts.signup(),state.state.teacherInfo)
+          .then(() => {
+            console.log(state.state.teacherInfo)
+>>>>>>> d7d3605 (feat : 비밀번호 변경 기능 구현)
             window.alert('회원가입이 완료되었습니다')
             router.push({ name: 'login'})
           })
           .catch(() => {
+            console.log(state.state.teacherInfo)
             window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
           })
       }
@@ -358,12 +407,38 @@ export const accounts = {
 >>>>>>> 77a4159 (로그아웃 구현)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+            window.alert("회원가입이 완료되었습니다");
+            router.push({ name: "login" });
+          })
+          .catch(() => {
+            window.alert("필수 항목이 빠져 있거나, 올바르지 않습니다");
+          });
+      } else if (state.getters.getUserType == "teacher") {
+        axios
+          .post(drf.accounts.signup(), state.state.teacherInfo)
+          .then(() => {
+            window.alert("회원가입이 완료되었습니다");
+            router.push({ name: "login" });
+          })
+          .catch(() => {
+            window.alert("필수 항목이 빠져 있거나, 올바르지 않습니다");
+          });
+      }
     },
-    setUserType({commit}, userType) {
+    logout({ dispatch }) {
+      dispatch("removeToken");
+      router.push({ name: "login" }).catch((err) => {
+        console.log(err.respone);
+      });
+>>>>>>> 36a3f8f (Fix : 오타수정)
+    },
+    setUserType({ commit }, userType) {
       // 로그인할 때
       // 회원가입 페이지
-      commit('SET_USER_TYPE', userType)
+      commit("SET_USER_TYPE", userType);
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -386,6 +461,10 @@ export const accounts = {
       console.log(data)
       commit('CHANGE_DATA', data)
 >>>>>>> e6b54fb (asdu)
+=======
+    changeData({ commit }, data) {
+      commit("CHANGE_DATA", data);
+>>>>>>> 36a3f8f (Fix : 오타수정)
     },
   },
-}
+};

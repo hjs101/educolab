@@ -12,6 +12,7 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     signup: () => ACCOUNTS + 'registration/',
 =======
     signup: () => ACCOUNTS + 'registration',
@@ -43,6 +44,9 @@ export default {
 >>>>>>> 6e582c6 (develop 브랜치 푸시)
 =======
     signup: () => ACCOUNTS + 'registration',
+=======
+    signup: () => ACCOUNTS + 'registration/',
+>>>>>>> d7d3605 (feat : 비밀번호 변경 기능 구현)
     schoolInfo: () => ACCOUNTS + 'schoolinfo/',
     checkUsername: () => ACCOUNTS + 'check_username/',
     sendEmail: () => ACCOUNTS + 'send_signup_email/',

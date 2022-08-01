@@ -102,7 +102,7 @@ export default {
       const sendData = () => {
         const value = phoneNumber.value.split('-')
         const convertNumber = value[0] + value[1] + value[2]
-        store.dispatch('changeData', {phoneNumber: convertNumber})
+        store.dispatch('changeData', {phone_number: convertNumber})
       }
       return {
         sendData,
