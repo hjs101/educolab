@@ -14,9 +14,14 @@ class Notice(models.Model):
     title = models.CharField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    content = models.CharField(max_length=10000, blank=True, null=True)
+    content = models.TextField()
     views = models.IntegerField(default=0)
 
 class Files(models.Model):
+<<<<<<< HEAD
     notice = models.ForeignKey(Notice, on_delete=models.CASCADE)
+=======
+    notice = models.ForeignKey(Notice, related_name="notice_file" ,on_delete=models.CASCADE)
+    atch_file_name = models.CharField(max_length=45, default="")   #ss
+>>>>>>> 0101dc7 (Fix : 코드 복구)
     atch_file = models.FileField(blank=True, upload_to='notice/files')  # Field name made lowercase.

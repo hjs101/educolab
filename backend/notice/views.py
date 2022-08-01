@@ -110,7 +110,7 @@ class NoticeMainView(APIView) :
 class NoticeCreateView(APIView):
     def post(self, req):
         # notice = Notice()
-        notice_serializer = NoticeCreateSerializer(data=req.data)
+        notice_serializer = NoticeSerializer(data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
             notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.user.school.code))
 
@@ -118,8 +118,9 @@ class NoticeCreateView(APIView):
 
         notice = Notice.objects.all().order_by("-pk")
         for file in files:
-            fp = Files.objects.create(notice=notice[0], atch_file=file)
+            fp = Files.objects.create(notice=notice[0], atch_file=file, atch_file_name=file)
             fp.save()
+        return Response({"success" : True})
 
 <<<<<<< HEAD
 class NoticeDetailView(APIView):
@@ -210,6 +211,7 @@ class NoticeUpdateView(APIView):
         for file in files:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             
 >>>>>>> 3b6b3c2 (Feat : 공지사항 기능 중간 저장)
 =======
@@ -217,6 +219,9 @@ class NoticeUpdateView(APIView):
 =======
             fp = Files.objects.create(notice=notice, atch_file=file)
 >>>>>>> 1e437b7 (Feat : 공지사항 수정기능 구현)
+=======
+            fp = Files.objects.create(notice=notice, atch_file=file, atch_file_name=file)
+>>>>>>> 0101dc7 (Fix : 코드 복구)
             fp.save()
 <<<<<<< HEAD
 
@@ -224,6 +229,7 @@ class NoticeUpdateView(APIView):
 >>>>>>> 73fd2c6 (Feat : 공지사항 기능 진행상황 저장)
 =======
         res = Response()
+<<<<<<< HEAD
         res.data = {
             'message' : "success",
         }
@@ -240,3 +246,6 @@ class NoticeUpdateView(APIView):
 =======
         return Response(notice_serializer.data)
 >>>>>>> 417b70e (Fix : 충돌 수정)
+=======
+        return Response({"success":True})
+>>>>>>> 5489a10 (Feat : Response 응답 값 수정)
