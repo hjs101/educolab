@@ -50,6 +50,7 @@ class NoticeCreateView(APIView):
         for file in files:
             fp = Files.objects.create(notice=notice[0], atch_file=file)
             fp.save()
+        return Response({"success" : True})
 
 class NoticeDetailView(APIView):
     def get(self, req):
@@ -140,7 +141,4 @@ class NoticeUpdateView(APIView):
             fp = Files.objects.create(notice=notice, atch_file=file)
             fp.save()
         res = Response()
-        res.data = {
-            'message' : "success",
-        }
-        return Response(notice_serializer.data)
+        return Response({"success":True})
