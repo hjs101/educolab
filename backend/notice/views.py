@@ -40,7 +40,7 @@ class NoticeMainView(APIView) :
 class NoticeCreateView(APIView):
     def post(self, req):
         # notice = Notice()
-        notice_serializer = NoticeCreateSerializer(data=req.data)
+        notice_serializer = NoticeSerializer(data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
             notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.user.school.code))
 
