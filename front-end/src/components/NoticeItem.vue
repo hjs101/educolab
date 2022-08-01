@@ -1,9 +1,15 @@
 <template>
   <div>
-    <h1>공지사항 아이템</h1>
+    <span>{{ notice.index.classification }}</span>
+    <span>{{ notice }}</span>
   </div>
 </template>
 
 <script>
-
+export default {
+  name: 'NoticeItem',
+  props: {
+    notice: Object,
+  }
+}
 </script>

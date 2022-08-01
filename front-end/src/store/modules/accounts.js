@@ -40,7 +40,7 @@ export const accounts = {
     isLoggedIn: state => !!state.access, 
     currentUser: state => state.currentUser,
     authError: state => state.authError,
-    authHeader: state => ({ Authorization: `Token ${state.access}` }),
+    authHeader: state => ({ Authorization: `Bearer ${state.access}` }),
     getUserType: state => state.userType,
     getSubject: state => state.teacherInfo.subject,
   },
