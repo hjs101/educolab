@@ -19,3 +19,13 @@ class NoticeCreateSerializer(serializers.ModelSerializer):
         model = models.Notice
         fields = '__all__'
 
+<<<<<<< HEAD
+=======
+class FileSerializer(serializers.ModelSerializer):
+    atch_file = serializers.FileField(use_url=True)
+    
+    class Meta:
+        model = models.Files
+        fields = '__all__'
+
+>>>>>>> back
