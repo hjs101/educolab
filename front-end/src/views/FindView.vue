@@ -1,6 +1,6 @@
 <template>
   <div class="q-mx">
-    <h3>FIND {{}}</h3>
+    <h3>FIND {{type.title}}</h3>
     <!-- form 부분 -->
     <q-form
       class="q-gutter row"
@@ -24,10 +24,11 @@
         ]"
         />
         <q-select v-model="userInfo.address" :options="emailOptions" class="col-4" label="이메일 주소 선택" required />
+        <send-pw-email v-if="!type.isTypeId" :name="userInfo.name" :email="userInfo.fullEmail" />
       </div>
     </q-form>
       <!-- 여기에 아이디 찾기 버튼 -->
-      <q-btn color="amber" label="FIND" class="col-8 offset-2 col-md-1 offset-md-1" @click="findId"/>
+      <q-btn color="amber" label="FIND ID" v-if="type.isTypeId" class="col-8 offset-2 col-md-1 offset-md-1" @click="findId"/>
 
       <q-dialog v-model="confirm.prompt" persistent>
         <q-card style="min-width: 350px">
@@ -41,7 +42,7 @@
         </q-card>
       </q-dialog>
     <!-- 여기에 회원가입 로그인 비밀번호 찾기 -->
-    <button-group :currentUrl="currentUrl"/>
+    <button-group :currentUrl="type.currentUrl"/>
   </div>
 
 </template>
@@ -62,14 +63,22 @@ import {useRoute} from 'vue-router'
 import axios from 'axios'
 import drf from '@/api/drf.js'
 import ButtonGroup from '@/components/ButtonGroup.vue'
+import SendPwEmail from '@/components/SendPwEmail.vue'
 
 export default {
-  components: { ButtonGroup },
   name: 'FindView',
+  components: {
+    ButtonGroup,
+    SendPwEmail,
+  },
   setup () {
     const store = useRoute()
-    const type = store.params.info
-    const currentUrl = type === 'id'? 'findId':'findPw'
+    const type = reactive({
+      type : computed(() => store.params.info),
+      isTypeId: computed(() => type.type === 'id'),
+      title : computed(() => type.isTypeId? 'ID':'PW'),
+      currentUrl: computed(() => type.isTypeId? 'findId':'findPw'),
+      })
     const emailOptions = [
       '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력'
     ]
@@ -97,23 +106,12 @@ export default {
           }
         })
     }
-    const findPw = () => {
-      axios.post(drf.accounts.sendPwEmail(), {name: userInfo.name, email: userInfo.fullEmail, username: userInfo.username})
-        .then((res) => {
-          confirm.success = res.data.success
-          confirm.prompt = true
-          if (confirm.success) {
-            console.log('1')
-          }
-        })
-    }
     return {
-      currentUrl,
+      type,
       emailOptions,
       userInfo,
       confirm,
       findId,
-      findPw
     }
   },
 }
