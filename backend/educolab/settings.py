@@ -75,10 +75,14 @@ INSTALLED_APPS = [
     'notice',
 >>>>>>> d002568 (Feat : 설문조사 App 추가)
     'accounts',
+<<<<<<< HEAD
 =======
 =======
     'accounts',
 >>>>>>> 9e2d7fd (Style : UserInfo DB 등록)
+=======
+    'homework',
+>>>>>>> 143f316 (feat: homework 모델변경)
     'drf_yasg',
 <<<<<<< HEAD
 <<<<<<< HEAD
