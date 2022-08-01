@@ -19,6 +19,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('main/', views.NoticeMainView.as_view(), name='notice/main'),
-    path('create/', views.NoticeCreateView.as_view(), name='notice/create'),
+    path('main/', views.NoticeMainView.as_view(), name='notice_main'),
+    path('create/', views.NoticeCreateView.as_view(), name='notice_create'),
+    path('detail/', views.NoticeDetailView.as_view(), name='notice_detail'),
+    path('update/', views.NoticeUpdateView.as_view(), name='notice_update'),
 ]
