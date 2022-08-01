@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'notice',
     'accounts',
+    'homework',
     'drf_yasg',
     'django.contrib.sites',
     'allauth',
