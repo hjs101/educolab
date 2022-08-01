@@ -23,8 +23,12 @@ urlpatterns = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('main', views.NoticeMainView.as_view(), name='notice/main'),
 =======
+=======
+    # 메인
+>>>>>>> 4110506 (공지사항 메인페이지 백 통신 완료)
     path('main/', views.NoticeMainView.as_view(), name='notice/main'),
     path('create/', views.NoticeCreateView.as_view(), name='notice/create'),
 >>>>>>> 73fd2c6 (Feat : 공지사항 기능 진행상황 저장)

@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <span>{{ notice.index.classification }}</span>
-    <span>{{ notice }}</span>
-  </div>
+  <ul>
+    <li></li>
+  </ul>
 </template>
 
 <script>
