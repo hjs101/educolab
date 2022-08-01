@@ -16,10 +16,10 @@ class NoticeMainView(APIView) :
     def get(self,req):
 
         ## 1. request로부터 학교 코드를 받는다.
-        schoolCode = req.GET['schoolcode']
+        # schoolCode = req.GET['schoolcode']
 
         ## 2. 쿼리로 학교 코드가 req에서 받은 학교 코드인 사람이 작성자인 공지사항 목록을 가져온다.
-        school = SchoolInfo.objects.get(code=schoolCode)
+        school = SchoolInfo.objects.get(code=req.user.school.code)
         notices = school.notice_school.all()
         # notices = Notice.objects.select_related('school').filter(school_id=schoolCode)
         print(notices)
@@ -36,7 +36,7 @@ class NoticeCreateView(APIView):
         # notice = Notice()
         notice_serializer = NoticeSerializer(data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
-            notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))
+            notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.user.school.code))
 
         files = req.FILES.getlist("files")
         print(files)
@@ -82,6 +82,15 @@ class NoticeDetailView(APIView):
 
         
         return Response({"message" : "잘못된 접근입니다."})
+
+    def delete(self, req):
+        notice_id = req.GET['notice_num']
+
+        ## 공지사항 번호로 공지사항 인스턴스 가져오기
+        notice = Notice.objects.get(pk=notice_id)
+
+        notice.delete()
+        return Response("success")
 
 class NoticeUpdateView(APIView):
     notice_id = ""
