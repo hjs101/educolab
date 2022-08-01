@@ -14,5 +14,5 @@ class Notice(models.Model):
 
 class Files(models.Model):
     notice = models.ForeignKey(Notice, related_name="notice_file" ,on_delete=models.CASCADE)
-    atch_file_name = models.CharField(max_length=45, default="")
+    atch_file_name = models.CharField(max_length=45, default="")   #ss
     atch_file = models.FileField(blank=True, upload_to='notice/files')  # Field name made lowercase.
