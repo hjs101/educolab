@@ -1,7 +1,7 @@
 <template>
   <q-input
     color="teal"
-    label="전화번호"
+    label="휴대전화번호"
     v-model="phoneNumber"
     maxlength="13"
     :value="phoneNumber.value"
@@ -10,7 +10,7 @@
     clearable
     :dense="false"
     lazy-rules
-    :rules="[ val => val && val.length > 0 || '이름을 입력해주세요']"
+    :rules="[ val => val && val.length > 0 || '휴대전화번호를 입력해주세요']"
   />
 </template>
 

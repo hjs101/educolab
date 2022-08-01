@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <q-input color="teal" label="학교" v-model="school.name" disable/>
-    <q-btn label="학교 검색" color="primary" @click="prompt.prompt = true"/>
+  <div class="row justify-between">
+    <q-input color="teal" label="학교" v-model="school.name" disable class="col-9"/>
+    <q-btn label="학교 검색" color="teal" @click="prompt.prompt = true" class="col-2"/>
     <!-- 학교 검색 팝업 -->
     <q-dialog v-model="prompt.prompt" persistent>
       <q-card style="min-width: 350px">
@@ -31,7 +31,7 @@
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary" v-if="prompt.search">
-          <q-btn flat label="취소" @click="school.name = null" v-close-popup />
+          <q-btn flat label="취소" v-close-popup />
           <q-btn label="추가" @click="applySchool" v-close-popup />
         </q-card-actions>
       </q-card>
@@ -60,8 +60,7 @@ export default {
       prompt: false,
       search: false,
       selected: null,
-      searchResults: computed(() => school.list),
-      // isSelected: computed(() => prompt.selected === code)
+      searchResults: computed(() => prompt.search),
     })
     const school = reactive({
       name: null,
@@ -87,7 +86,6 @@ export default {
       school.name = school.selectedName
       store.dispatch('changeData', {school:school.code})
     }
-
     return {
       prompt,
       school,

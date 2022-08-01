@@ -71,6 +71,7 @@ export default {
   justify-content: center;
   text-align: center;
   gap: 10px;
+  margin: 100px 0px;
   }
   .center {
     text-align: center;

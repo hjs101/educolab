@@ -3,9 +3,9 @@
     <h3>SIGN UP</h3>
     <!-- form 부분 -->
     <q-form
-      class="q-gutter row"
+      class="q-gutter row justify-content-around"
     >
-      <div class="input col-8 offset-2 col-md-2 offset-md-6">
+      <div class="col-6 offset-3 col-md-4 offset-md-4">
       <!-- 여기에 아이디, 비밀번호 입력 창 -->
         <login-info/>
         <!-- 학교 검색 버튼 -->
@@ -20,11 +20,25 @@
         <!-- 이메일 -->
         <email-confirm />
         <!-- 회원가입 버튼 -->
-        <q-btn color="primary" label="SIGN UP" @click="submitData"/>
+        <q-btn color="primary" label="SIGN UP" class="submitButton" @click="submitData"/>
       </div>
     </q-form>
   </div>
 </template>
+
+<style>
+  .submitButton {
+    margin-top: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .buttonCenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+</style>
 
 <script>
 import {useRoute} from 'vue-router'

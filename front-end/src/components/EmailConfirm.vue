@@ -1,27 +1,41 @@
 <template>
   <div>
-    <q-input v-model="email.username" :suffix="email.address !== '직접 입력'? email.address: ''" input-class="text-right" label-slot clearable stack-label>
-      <template v-slot:label>
-        <div class="row items-center all-pointer-events">
-          Email
-          <q-tooltip class="bg-grey-8" anchor="top left" self="bottom left" :offset="[0, 8]">Email address</q-tooltip>
-        </div>
-      </template>
-    </q-input>
-    <!-- 이메일 주소 선택 -->
-    <q-select v-model="email.address" :options="emailOptions" label="이메일 주소 선택" />
-    <!-- 인증 버튼 -->
-    <q-btn color="primary" label="이메일 인증" class="buttonGroup" @click="isValidEmail"/>
+    <div class="row justify-between">
+      <q-input
+      color="teal"
+      v-model="email.username"
+      input-class="text-right"
+      class="col-5"
+      label-slot
+      clearable
+      stack-label
+      lazy-rules
+      :rules="[ val => val && val.length > 0 || '이메일을 입력해주세요']"
+      required
+      >
+        <template v-slot:label>
+          <div class="row items-center all-pointer-events">
+            Email
+            <q-tooltip class="bg-grey-8" anchor="top left" self="bottom left" :offset="[0, 8]">Email address</q-tooltip>
+          </div>
+        </template>
+      </q-input>
+      <!-- 이메일 주소 선택 -->
+      <q-select v-model="email.address" :options="emailOptions" class="col-4" label="이메일 주소 선택" required />
+      <!-- 인증 버튼 -->
+      <q-btn color="teal" label="인증" class="col-2" @click="isValidEmail"/>
+    </div>
     <!-- 인증 번호 입력 창 -->
-    <div v-if="email.showAuth">
+    <div v-if="email.showAuth" class="row justify-between">
       <q-input
         color="teal"
         v-model="number.inputNum"
+        class="col-9"
         lazy-rules
         :rules="[ val => val && val.length > 0 || '인증번호를 입력해주세요']"
       />
       <!-- 인증 번호 확인 버튼 -->
-      <q-btn color="primary" label="인증" class="buttonGroup" @click="alert = true"/>
+      <q-btn color="teal" label="인증" class="buttonGroup col-2" @click="alert = true" />
       <!-- 인증 제한 시간 -->
       <p>
         제한 시간 {{time.minute}}:{{time.second}}
@@ -91,12 +105,14 @@ export default {
       },1000)
     }
     const isValidEmail = () => {
-      axios.post(drf.accounts.sendEmail(), {email:email.fullEmail})
-        .then(res => {
-          number.authNum = res.data['auth_num']
-        })
-      email.valid = true
-      start()
+      if (email.address && email.username) {
+        axios.post(drf.accounts.sendEmail(), {email:email.fullEmail})
+          .then(res => {
+            number.authNum = res.data['auth_num']
+            email.valid = true
+          })
+        start()
+      }
     }
     const time = reactive({
       minute: computed(() => Math.floor(limit.value/60)),
