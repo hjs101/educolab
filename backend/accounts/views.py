@@ -378,10 +378,13 @@ class SendPWEmailView(APIView):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 0c829cf (feat: 아이디 찾기 기능 구현)
 =======
 >>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
 =======
+=======
+>>>>>>> 4eef746 (feat : homework 에도 비밀번호 변경기능 올려놓음)
 class ChangePWView(APIView):
     permission_classes = (AllowAny,)
 
@@ -408,5 +411,9 @@ class ChangePWView(APIView):
             "success" : True,
             "message" : "비밀번호가 성공적으로 변경되었습니다"
         }
+<<<<<<< HEAD
         return Response(context)
 >>>>>>> d2fc3f3 (feat : 비밀번호 초기화 및 변경 기능 구현)
+=======
+        return Response(context)
+>>>>>>> 4eef746 (feat : homework 에도 비밀번호 변경기능 올려놓음)
