@@ -89,7 +89,11 @@ urlpatterns = [
     path('find_username/', views.FindUsernameView.as_view(), name='findusername'),
     path('send_signup_email/', views.SendSignupEmailView.as_view(), name='sendsignupemail'),
     path('send_pw_email/',views.SendPWEmailView.as_view(), name="sendpwemail"),
+<<<<<<< HEAD
 >>>>>>> effb278 (feat: 패스워드변경인증 이메일 기능 구현)
+=======
+    path('change_pw/', views.ChangePWView.as_view(), name="changepw"),
+>>>>>>> d2fc3f3 (feat : 비밀번호 초기화 및 변경 기능 구현)
 ]
 =======
 

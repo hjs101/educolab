@@ -229,6 +229,7 @@ class SendSignupEmailView(APIView):
         email = request.data.get('email')
 >>>>>>> d73082d (feat : back branch 수정)
         auth_num = email_auth_num()
+        print(email)
         send_mail(subject='educolab 회원가입 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
         context = {
             'auth_num' : auth_num,
@@ -318,6 +319,7 @@ class SendPWEmailView(APIView):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         name = request.POST.get('name','')
         email = request.POST.get('email','')
         username = request.POST.get('username','')
@@ -341,6 +343,11 @@ class SendPWEmailView(APIView):
         email = request.data.get('email')
         username = request.data.get('username')
 >>>>>>> d73082d (feat : back branch 수정)
+=======
+        name = request.data.get('name')
+        email = request.data.get('email')
+        username = request.data.get('username')
+>>>>>>> d2fc3f3 (feat : 비밀번호 초기화 및 변경 기능 구현)
         
         try:
             userinfo = UserInfo.objects.get(name=name,username=username)
@@ -370,6 +377,36 @@ class SendPWEmailView(APIView):
             return Response(context)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 0c829cf (feat: 아이디 찾기 기능 구현)
 =======
 >>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
+=======
+class ChangePWView(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self,request):
+        name = request.data.get('name')
+        email = request.data.get('email')
+        username = request.data.get('username')
+        password1 = request.data.get('password1')
+        password2 = request.data.get('password2')
+
+        if password1 != password2:
+            context = {
+                "success" : False,
+                "message" : "비밀번호가 일치하지 않습니다"
+            }
+            return Response(context)
+
+        userinfo = UserInfo.objects.get(name=name,email=email,username=username)
+        userinfo.set_password(password1)
+        userinfo.save()
+        print(userinfo)
+
+        context = {
+            "success" : True,
+            "message" : "비밀번호가 성공적으로 변경되었습니다"
+        }
+        return Response(context)
+>>>>>>> d2fc3f3 (feat : 비밀번호 초기화 및 변경 기능 구현)
