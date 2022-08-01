@@ -48,7 +48,7 @@ class NoticeCreateView(APIView):
 
         notice = Notice.objects.all().order_by("-pk")
         for file in files:
-            fp = Files.objects.create(notice=notice[0], atch_file=file)
+            fp = Files.objects.create(notice=notice[0], atch_file=file, atch_file_name=file)
             fp.save()
         return Response({"success" : True})
 
@@ -138,7 +138,7 @@ class NoticeUpdateView(APIView):
         files = req.FILES.getlist("files")
 
         for file in files:
-            fp = Files.objects.create(notice=notice, atch_file=file)
+            fp = Files.objects.create(notice=notice, atch_file=file, atch_file_name=file)
             fp.save()
         res = Response()
         return Response({"success":True})
