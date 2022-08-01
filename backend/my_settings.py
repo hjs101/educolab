@@ -38,8 +38,8 @@ DATABASES = {
 'ENGINE': 'django.db.backends.mysql',
 'NAME': 'educolab',
 'USER': 'educolab',
-'PASSWORD': 'educolab',
-"HOST": '13.125.213.119',
+'PASSWORD': 'c102_edu',
+"HOST": '3.36.69.192',
 "PORT": '3306',
 >>>>>>> 559df98 ( Feat : 버그 수정)
 }
@@ -81,6 +81,7 @@ EMAIL_HOST_PASSWORD = 'osbqrenzvuexioxx'
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 25d0df5 (feat: 회원가입에서 이메일 인증메일 보내기 기능 구현 , id 중복체크 기능 완성 - 홍찬기)
 =======
 >>>>>>> 286095b (Style : 오류 수정)
@@ -94,3 +95,6 @@ EMAIL_HOST_PASSWORD = 'osbqrenzvuexioxx'
 =======
 EMAIL_HOST_PASSWORD = 'osbqrenzvuexioxx'
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+ 
+>>>>>>> e2d8893 (Feat : 설문조사 CRUD 구현 완료)

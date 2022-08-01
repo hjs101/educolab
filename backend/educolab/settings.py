@@ -64,11 +64,16 @@ INSTALLED_APPS = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     'rest_framework_simplejwt',
 >>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
 =======
 >>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
+=======
+    'survey',
+    'notice',
+>>>>>>> d002568 (Feat : 설문조사 App 추가)
     'accounts',
 =======
 =======

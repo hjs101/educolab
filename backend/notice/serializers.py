@@ -1,13 +1,13 @@
 import imp
 from rest_framework import serializers
-from accounts.serializers import SchoolInfoSerializer,TeacherNameSerializer
+from accounts.serializers import SchoolInfoSerializer,UserNameSerializer
 from . import models
 
 
 
 # 공지사항 목록 Serializer
 class NoticeMainSerializer(serializers.ModelSerializer):
-    teacher = TeacherNameSerializer(read_only=True)
+    teacher = UserNameSerializer(read_only=True)
     class Meta:
 <<<<<<< HEAD
         model = models.UserInfo
@@ -21,7 +21,7 @@ class NoticeMainSerializer(serializers.ModelSerializer):
 >>>>>>> 53d5343 (Feat : 데이터 변경사항 수정)
 
 class NoticeSerializer(serializers.ModelSerializer):
-    teacher = TeacherNameSerializer(read_only=True)
+    teacher = UserNameSerializer(read_only=True)
     school = SchoolInfoSerializer(read_only=True)
     class Meta:
         model = models.Notice

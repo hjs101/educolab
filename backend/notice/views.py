@@ -11,6 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 73fd2c6 (Feat : 공지사항 기능 진행상황 저장)
 from accounts.serializers import TeacherNameSerializer
 from accounts.models import SchoolInfo,UserInfo
@@ -26,6 +27,9 @@ from .serializers import NoticeMainSerializer, NoticeCreateSerializer
 >>>>>>> 559df98 ( Feat : 버그 수정)
 =======
 from accounts.serializers import TeacherNameSerializer
+=======
+from accounts.serializers import UserNameSerializer
+>>>>>>> ae003cb (Feat : 설문조사 기능 구현)
 from accounts.models import SchoolInfo,UserInfo
 from .serializers import NoticeMainSerializer, NoticeSerializer, FileSerializer
 >>>>>>> 417b70e (Fix : 충돌 수정)
@@ -109,20 +113,30 @@ class NoticeMainView(APIView) :
 
 class NoticeCreateView(APIView):
     def post(self, req):
+        if not req.user.userflag:
+            return Response({"message : 선생님만 접근 가능합니다."})
         # notice = Notice()
         notice_serializer = NoticeSerializer(data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
-            notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.user.school.code))
+            notice = notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.user.school.code))
 
         files = req.FILES.getlist("files")
 
-        notice = Notice.objects.all().order_by("-pk")
         for file in files:
+<<<<<<< HEAD
             fp = Files.objects.create(notice=notice[0], atch_file=file, atch_file_name=file)
             fp.save()
         return Response({"success" : True})
 
 <<<<<<< HEAD
+=======
+            fp = Files.objects.create(notice=notice, atch_file=file, atch_file_name=file)
+            fp.save()
+        return Response({
+            "success":True,
+            "pk" : notice.pk
+        })
+>>>>>>> ae003cb (Feat : 설문조사 기능 구현)
 class NoticeDetailView(APIView):
     def get(self, req):
         ## 공지사항 번호 가져오기
@@ -168,6 +182,8 @@ class NoticeDetailView(APIView):
 class NoticeUpdateView(APIView):
     notice_id = ""
     def get(self, req):
+        if not req.user.userflag:
+            return Response({"message : 선생님만 접근 가능합니다."})
         ## 공지사항 번호 가져오기
         self.notice_id = req.GET['notice_num']
 
@@ -200,15 +216,15 @@ class NoticeUpdateView(APIView):
         notice = Notice.objects.get(pk=self.notice_id)
         notice_serializer = NoticeSerializer(notice, data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
-            notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))
+            notice = notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))
 
         notice_files = notice.notice_file.all()
         notice_files.delete()
 
-        
         files = req.FILES.getlist("files")
 
         for file in files:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -222,6 +238,9 @@ class NoticeUpdateView(APIView):
 =======
             fp = Files.objects.create(notice=notice, atch_file=file, atch_file_name=file)
 >>>>>>> 0101dc7 (Fix : 코드 복구)
+=======
+            fp = Files.objects.create(notice=notice, atch_file=file, atch_file_name=file)
+>>>>>>> ae003cb (Feat : 설문조사 기능 구현)
             fp.save()
 <<<<<<< HEAD
 
@@ -231,8 +250,10 @@ class NoticeUpdateView(APIView):
         res = Response()
 <<<<<<< HEAD
         res.data = {
-            'message' : "success",
+            'success' : True,
+            "pk" : notice.pk
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         return res
@@ -249,3 +270,6 @@ class NoticeUpdateView(APIView):
 =======
         return Response({"success":True})
 >>>>>>> 5489a10 (Feat : Response 응답 값 수정)
+=======
+        return res
+>>>>>>> ae003cb (Feat : 설문조사 기능 구현)

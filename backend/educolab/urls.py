@@ -77,7 +77,11 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')), 
     path('admin/', admin.site.urls),
     path('notice/', include('notice.urls')),
+<<<<<<< HEAD
 >>>>>>> 601cae8 (Feat : 공지사항 기능 구현)
+=======
+    path('survey/', include('survey.urls')),
+>>>>>>> dfc8ff1 (Feat : 설문조사 생성 기능 구현)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 <<<<<<< HEAD
