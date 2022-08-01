@@ -1,11 +1,16 @@
-from django import views
-from pkg_resources import resource_isdir
+from urllib import response
+from requests import request
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from accounts.models import SchoolInfo
-from .serializers import NoticeMainSerializer, NoticeSerializer,FileSerializer
+from accounts.serializers import TeacherNameSerializer
+from accounts.models import SchoolInfo,UserInfo
+from .serializers import NoticeMainSerializer, NoticeSerializer, FileSerializer
 from .models import Notice, Files
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+from rest_framework.parsers import JSONParser
+from rest_framework.renderers import JSONRenderer
 import os, io
 
 
@@ -22,12 +27,13 @@ class NoticeMainView(APIView) :
         school = SchoolInfo.objects.get(code=req.user.school.code)
         notices = school.notice_school.all()
         # notices = Notice.objects.select_related('school').filter(school_id=schoolCode)
-        print(notices)
+        
         ## 3. 시리얼라이저 변환
         notice_serializer = NoticeMainSerializer(notices,many=True)
 
         ## 4. 가져온 목록 반환
         res = Response(notice_serializer.data)
+
 
         return res
 
@@ -39,16 +45,11 @@ class NoticeCreateView(APIView):
             notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.user.school.code))
 
         files = req.FILES.getlist("files")
-        print(files)
+
         notice = Notice.objects.all().order_by("-pk")
         for file in files:
-            fp = Files.objects.create(notice=notice[0], atch_file=file, atch_file_name=file)
+            fp = Files.objects.create(notice=notice[0], atch_file=file)
             fp.save()
-        res = Response()
-        res.data = {
-            'message' : "success",
-        }
-        return res
 
 class NoticeDetailView(APIView):
     def get(self, req):
