@@ -5,7 +5,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from accounts.serializers import TeacherNameSerializer
 from accounts.models import SchoolInfo,UserInfo
-from .models import Notice, Files
+from survey.serializers import SurveySerializer, QuestionSerializer
+from .models import SurveyList
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from rest_framework.parsers import JSONParser
@@ -32,20 +33,26 @@ class NoticeMainView(APIView) :
         ## 4. 가져온 목록 반환
 
 
-class NoticeCreateView(APIView):
+class SurveyCreateView(APIView):
     def post(self, req):
-        # notice = Notice()
+        # 설문조사 등록하기 start
+        survey_serializer = SurveySerializer(data=req.data['survey'])
+        students = UserInfo.objects.filter(grade = req.data['survey']['grade'], class_field=req.data['survey']['class_field']);
+        print(students)
+        if survey_serializer.is_valid(raise_exception=True):
+            survey = survey_serializer.save(target=students, teacher = req.user)
+        # 설문조사 등록하기 end
 
-        if notice_serializer.is_valid(raise_exception=True):
-            notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.user.school.code))
+        # 설문조사 문항 등록하기 start
+        
+        for question in req.data['question']:
+            question_serializer = QuestionSerializer(data=question)
+            if question_serializer.is_valid(raise_exception=True):
+                question_serializer.save(survey=survey)
+        # 설문조사 문항 등록하기 end
 
-        files = req.FILES.getlist("files")
 
-        notice = Notice.objects.all().order_by("-pk")
-        for file in files:
-            fp = Files.objects.create(notice=notice[0], atch_file=file)
-            fp.save()
-
+        return Response({"success":True})
 class NoticeDetailView(APIView):
     def get(self, req):
         ## 공지사항 번호 가져오기

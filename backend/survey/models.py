@@ -8,14 +8,13 @@ class SurveyList(models.Model):
     grade = models.IntegerField()
     class_field = models.IntegerField(db_column='class')  # Field renamed because it was a Python reserved
     target = models.ManyToManyField(UserInfo, related_name="target")
-    done_target = models.ForeignKey(UserInfo,on_delete=models.CASCADE, related_name="target_done")
+    done_target = models.ForeignKey(UserInfo, null=True ,on_delete=models.CASCADE, related_name="target_done")
 
 
 class SurveyQuestions(models.Model):
-    survey_pk = models.ForeignKey(SurveyList, on_delete=models.CASCADE)  
+    survey = models.ForeignKey(SurveyList, on_delete=models.CASCADE)
     question_number = models.IntegerField()
     survey_question = models.CharField(max_length=500)
-    answer = models.TextField(blank=True,null=True)
     multiple_bogi = models.CharField(max_length=500, blank=True, null=True)
     num1 = models.IntegerField(default=0)
     num2 = models.IntegerField(default=0)
