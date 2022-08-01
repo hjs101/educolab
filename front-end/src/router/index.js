@@ -2,13 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-  // 회원 관리
-  {
-    path: '/',
-    name: 'login',
-    component: () => import ('@/views/LoginView')
-  },  
-
+  
   // 메인페이지 
   {
     path: '/educolab',
@@ -21,8 +15,13 @@ const routes = [
     name: 'Notice',
     component: () => import('@/views/NoticeView')
   },
-  
-  // 공지사항 작성
+  // 아이디 & 비밀번호 찾기
+  {
+    path: '/find/:info',
+    name: 'findId',
+    component: () => import('@/views/FindView')
+  },
+  // 회원가입
   {
     path: '/signup/:userType',
     name: 'signup',
@@ -102,13 +101,19 @@ const routes = [
     name: 'StudentStoreView.vue',
     component: () => import('@/views/StudentStoreView')
   },
-
+  
   // 마이 페이지(학생)
   {
     path: '/student',
     name: 'StudentPageView',
     component: () => import('@/views/StudentPageView')
-  }
+  },
+  // 회원 관리
+  {
+    path: '/',
+    name: 'login',
+    component: () => import ('@/views/LoginView')
+  },  
 ]
 
 const router = createRouter({
