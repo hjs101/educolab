@@ -10,6 +10,7 @@ DATABASES = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 'PASSWORD': 'c102_edu',
 <<<<<<< HEAD
 "HOST": '127.0.0.1',
@@ -27,6 +28,10 @@ DATABASES = {
 'PASSWORD': 'c102_edu',
 "HOST": '3.36.69.192',
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+'PASSWORD': 'c102_edu',
+"HOST": '3.36.69.192',
+>>>>>>> 9f09b68 (Style: Dockerfile 생성)
 "PORT": '3306',
 },
 }
