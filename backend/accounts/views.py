@@ -214,6 +214,7 @@ class SendSignupEmailView(APIView):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         email = request.data.get('email')
 =======
         email = request.POST.get('email')
@@ -224,6 +225,9 @@ class SendSignupEmailView(APIView):
 =======
         email = request.data.get('email')
 >>>>>>> 80321b2 (Fix : 버그수정)
+=======
+        email = request.data.get('email')
+>>>>>>> d73082d (feat : back branch 수정)
         auth_num = email_auth_num()
         send_mail(subject='educolab 회원가입 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
         context = {
@@ -244,6 +248,7 @@ class FindUsernameView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, request):
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -282,6 +287,10 @@ class FindUsernameView(APIView):
         name = request.data.get('name')
         email = request.data.get('email')
 >>>>>>> 80321b2 (Fix : 버그수정)
+=======
+        name = request.data.get('name')
+        email = request.data.get('email')
+>>>>>>> d73082d (feat : back branch 수정)
 
         try:
             user = UserInfo.objects.get(name=name,email=email)
@@ -308,6 +317,7 @@ class SendPWEmailView(APIView):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         name = request.POST.get('name','')
         email = request.POST.get('email','')
         username = request.POST.get('username','')
@@ -326,6 +336,11 @@ class SendPWEmailView(APIView):
         email = request.data.get('email')
         username = request.data.get('username')
 >>>>>>> 80321b2 (Fix : 버그수정)
+=======
+        name = request.data.get('name')
+        email = request.data.get('email')
+        username = request.data.get('username')
+>>>>>>> d73082d (feat : back branch 수정)
         
         try:
             userinfo = UserInfo.objects.get(name=name,username=username)

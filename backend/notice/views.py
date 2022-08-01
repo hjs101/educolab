@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.permissions import IsAuthenticated
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 73fd2c6 (Feat : 공지사항 기능 진행상황 저장)
 from accounts.serializers import TeacherNameSerializer
 from accounts.models import SchoolInfo,UserInfo
@@ -23,6 +24,11 @@ from accounts.serializers import TeacherNameSerializer
 from accounts.models import SchoolInfo,UserInfo
 from .serializers import NoticeMainSerializer, NoticeCreateSerializer
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+from accounts.serializers import TeacherNameSerializer
+from accounts.models import SchoolInfo,UserInfo
+from .serializers import NoticeMainSerializer, NoticeSerializer, FileSerializer
+>>>>>>> 417b70e (Fix : 충돌 수정)
 from .models import Notice, Files
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
@@ -85,6 +91,7 @@ class NoticeMainView(APIView) :
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 
@@ -95,6 +102,9 @@ class NoticeMainView(APIView) :
 =======
 
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+
+>>>>>>> 417b70e (Fix : 충돌 수정)
         return res
 
 class NoticeCreateView(APIView):
@@ -218,6 +228,7 @@ class NoticeUpdateView(APIView):
             'message' : "success",
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         return res
 >>>>>>> c5da375 (Feat : 공지사항 상세페이지 파일 표시, 수정기능(진행중))
 =======
@@ -226,3 +237,6 @@ class NoticeUpdateView(APIView):
 =======
         return Response("success")
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+        return Response(notice_serializer.data)
+>>>>>>> 417b70e (Fix : 충돌 수정)
