@@ -12,3 +12,4 @@ DATABASES = {
 EMAIL_HOST_USER = 'educolabtest@gmail.com'
 
 EMAIL_HOST_PASSWORD = 'osbqrenzvuexioxx'
+ 

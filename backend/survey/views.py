@@ -36,13 +36,18 @@ class SurveyTeacherMainView(APIView) :
 
 class SurveyCreateView(APIView):
     def post(self, req):
-        
+
         if not req.user.userflag:
             return Response({"message" :"선생님만 접근 가능합니다."})
-        
+
         # 설문조사 등록하기 start
         survey_serializer = SurveySerializer(data=req.data['survey'])
-        students = UserInfo.objects.filter(grade = req.data['survey']['grade'], class_field=req.data['survey']['class_field'], school=req.user.school, userflag=False);
+        if req.data['survey']['grade'] == 0:
+            students = UserInfo.objects.filter(school=req.user.school, userflag=False)
+        elif req.data['survey']['class_field'] == 0:
+            students = UserInfo.objects.filter(grade = req.data['survey']['grade'],school=req.user.school, userflag=False)
+        else:
+            students = UserInfo.objects.filter(grade = req.data['survey']['grade'], class_field=req.data['survey']['class_field'], school=req.user.school, userflag=False);
         print(students)
         if survey_serializer.is_valid(raise_exception=True):
             survey = survey_serializer.save(target=students, teacher = req.user)
@@ -94,28 +99,31 @@ class SurveyUpdateView(APIView):
 
     def put(self, req):
         survey_id = req.data['survey_num']
-        survey = SurveyList.objects.get(pk=self.survey_id)
+        survey = SurveyList.objects.get(pk=survey_id)
 
-        survey_serializer = SurveySerializer(survey, data=req.data)
+        survey_serializer = SurveySerializer(survey, data=req.data['survey'])
+
+        if req.data['survey']['grade'] == 0:
+            students = UserInfo.objects.filter(school=req.user.school, userflag=False)
+        elif req.data['survey']['class_field'] == 0:
+            students = UserInfo.objects.filter(grade = req.data['survey']['grade'],school=req.user.school, userflag=False)
+        else:
+            students = UserInfo.objects.filter(grade = req.data['survey']['grade'], class_field=req.data['survey']['class_field'], school=req.user.school, userflag=False);
+
         if survey_serializer.is_valid(raise_exception=True):
-            survey = survey_serializer.save()
+            survey = survey_serializer.save(target=students,teacher = req.user)
 
-        
-        notice_files = notice.notice_file.all()
+        survey_questions = survey.question_survey.all()
 
+        survey_questions.delete()
 
         for question in req.data['question']:
             question_serializer = QuestionSerializer(data=question)
             if question_serializer.is_valid(raise_exception=True):
                 question_serializer.save(survey=survey)
 
-        files = req.FILES.getlist("files")
-
-        for file in files:
-            fp = Files.objects.create(notice=notice, atch_file=file)
-            fp.save()
         res = Response()
         res.data = {
             'message' : "success",
         }
-
+        return Response({"success" : True})

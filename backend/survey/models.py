@@ -6,7 +6,7 @@ class SurveyList(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     grade = models.IntegerField()
-    class_field = models.IntegerField(db_column='class')  # Field renamed because it was a Python reserved
+    class_field = models.IntegerField()  # Field renamed because it was a Python reserved
     target = models.ManyToManyField(UserInfo, related_name="target")
     done_target = models.ForeignKey(UserInfo, null=True ,on_delete=models.CASCADE, related_name="target_done")
 
