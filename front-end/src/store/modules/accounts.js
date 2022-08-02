@@ -122,12 +122,21 @@ export const accounts = {
     };
   },
   getters: {
+<<<<<<< HEAD
     isLoggedIn: (state) => !!state.access,
     currentUser: (state) => state.currentUser,
     authError: (state) => state.authError,
     authHeader: (state) => ({ Authorization: `Token ${state.access}` }),
     getUserType: (state) => state.userType,
     getSubject: (state) => state.teacherInfo.subject,
+=======
+    isLoggedIn: state => !!state.access, 
+    currentUser: state => state.currentUser,
+    authError: state => state.authError,
+    authHeader: state => ({ Authorization: `Bearer ${state.access}` }),
+    getUserType: state => state.userType,
+    getSubject: state => state.teacherInfo.subject,
+>>>>>>> afe56c9 (공지사항 메인페이지)
   },
   mutations: {
 <<<<<<< HEAD
@@ -287,6 +296,7 @@ export const accounts = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             console.log(state.teacherInfo)
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -408,6 +418,8 @@ export const accounts = {
 =======
 >>>>>>> e6b54fb (asdu)
 =======
+=======
+>>>>>>> c19258a (DB 버그 수정)
             window.alert("회원가입이 완료되었습니다");
             router.push({ name: "login" });
           })

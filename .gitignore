@@ -1,5 +1,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4bf513d (Fix : git.ignore 최신화)
 .DS_Store
 node_modules
 /dist
@@ -44,10 +48,15 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
+<<<<<<< HEAD
 =======
 >>>>>>> f99a32f (master에 .gitignore 추가)
 =======
 >>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
+=======
+>>>>>>> a234dfd (Fix : My_settings 올라가는지 테스트)
+=======
+>>>>>>> 4bf513d (Fix : git.ignore 최신화)
 # Created by https://www.toptal.com/developers/gitignore/api/windows,python,django,venv,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,python,django,venv,visualstudiocode
 
@@ -444,6 +453,8 @@ $RECYCLE.BIN/
 <<<<<<< HEAD
 backend/my_settings.py
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
 backend/my_settings.py
 >>>>>>> 0fe143a (Style : git ignore 반영)
@@ -462,3 +473,8 @@ backend/educolab/my_settings.py
 =======
 backend/my_settings.py
 >>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
+=======
+>>>>>>> a234dfd (Fix : My_settings 올라가는지 테스트)
+=======
+front-end/node_modules
+>>>>>>> 4bf513d (Fix : git.ignore 최신화)

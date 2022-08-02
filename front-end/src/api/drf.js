@@ -53,6 +53,6 @@ export default {
 >>>>>>> e6b54fb (asdu)
   },
   notice: {
-    noticeList: () => NOTICE
+    noticeList: () => NOTICE + 'main/'
   }
 }

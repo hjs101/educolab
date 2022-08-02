@@ -7,6 +7,7 @@ DATABASES = {
 'USER': 'educolab',
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 'PASSWORD': 'c102_edu',
 <<<<<<< HEAD
 "HOST": '127.0.0.1',
@@ -42,6 +43,11 @@ DATABASES = {
 "HOST": '3.36.69.192',
 "PORT": '3306',
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+'PASSWORD': 'c102_edu',
+"HOST": '3.36.69.192',
+"PORT": '3306'
+>>>>>>> d263f91 (Fix : my_settings 올라가는지테스트)
 }
 }
 

@@ -112,7 +112,7 @@ export default {
       } else {
         this.$router.back()
       }
-    }
+    },
   }
 <<<<<<< HEAD
 =======

@@ -3,9 +3,14 @@ import { createStore } from 'vuex'
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 import {accounts} from './modules/accounts.js'
+=======
+import { accounts } from './modules/accounts.js'
+import { notice } from './modules/notice.js'
+>>>>>>> afe56c9 (공지사항 메인페이지)
 
 export default createStore({
   state () {
@@ -15,13 +20,13 @@ export default createStore({
     }
   },
   getters() {
-
   },
   mutations() {
   },
   actions() {
   },
   modules: {
+<<<<<<< HEAD
     accounts,
 <<<<<<< HEAD
 =======
@@ -54,5 +59,8 @@ export default createStore({
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+    accounts, notice
+>>>>>>> afe56c9 (공지사항 메인페이지)
   }
 })
