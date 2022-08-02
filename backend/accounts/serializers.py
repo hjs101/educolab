@@ -19,8 +19,11 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from . import models
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+<<<<<<< HEAD
 from rest_framework_simplejwt.tokens import RefreshToken
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+>>>>>>> ea51fa4 (feat : 과제기능 생성,삭제 구현, 나머지는 더 구현해야함)
 from django.contrib.auth import get_user_model
 from dj_rest_auth.registration.serializers import RegisterSerializer
 
@@ -29,9 +32,18 @@ class UserNameSerializer(serializers.ModelSerializer):
         model = get_user_model()
         fields = ['name', 'username']
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3494f79 (Feat : 공지사항 등록, 목록 기능 구현)
 =======
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+
+class HomeworkUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ('name','username')
+
+>>>>>>> ea51fa4 (feat : 과제기능 생성,삭제 구현, 나머지는 더 구현해야함)
 class UserinfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()

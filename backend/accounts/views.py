@@ -8,6 +8,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 from re import L
 >>>>>>> 9a0c0d9 (feat : 학교이름 검색 기능 구현 - 홍찬기)
@@ -17,6 +18,8 @@ from sre_constants import SUCCESS
 =======
 from sre_constants import SUCCESS
 >>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
+=======
+>>>>>>> ea51fa4 (feat : 과제기능 생성,삭제 구현, 나머지는 더 구현해야함)
 from django.shortcuts import render
 from django.core.mail import send_mail
 from rest_framework.views import APIView
@@ -405,7 +408,6 @@ class ChangePWView(APIView):
         userinfo = UserInfo.objects.get(name=name,email=email,username=username)
         userinfo.set_password(password1)
         userinfo.save()
-        print(userinfo)
 
         context = {
             "success" : True,

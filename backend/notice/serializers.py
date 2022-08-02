@@ -1,4 +1,3 @@
-import imp
 from rest_framework import serializers
 from accounts.serializers import SchoolInfoSerializer,UserNameSerializer
 from . import models
