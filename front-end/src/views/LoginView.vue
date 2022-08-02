@@ -1,6 +1,5 @@
 <template>
   <div class="q-mx">
-    <!-- 반응형하는 중 -->
     <h3>LOGIN</h3>
     <account-error-list></account-error-list>
     <!-- form 부분 -->
@@ -30,8 +29,11 @@
         />
       </div>
       <!-- 여기에 로그인버튼 -->
-      <q-btn color="secondary" label="LOGIN" class="col-8 offset-2 col-md-1 offset-md-1" @click="login(credentials)"/>
-
+      <q-btn
+        color="secondary"
+        label="LOGIN"
+        class="col-8 offset-2 col-md-1 offset-md-1"
+        @click="login(credentials)"/>
     </q-form>
 
     <!-- 여기에 회원가입 / ID 찾기 / 비밀번호 찾기 -->

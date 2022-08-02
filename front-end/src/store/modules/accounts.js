@@ -34,8 +34,6 @@ export const accounts = {
       access: localStorage.getItem('access') || '',
       currentUser: {},
       authError: null,
-      // 비밀번호 변경 페이지 들어가기 전 인증을 거쳤는지 여부
-      hasPermission: false,
     }
   },
   getters: {
@@ -45,7 +43,6 @@ export const accounts = {
     authHeader: state => ({ Authorization: `Token ${state.access}` }),
     getUserType: state => state.userType,
     getSubject: state => state.teacherInfo.subject,
-    getPermission: state => state.hasPermission
   },
   mutations: {
     SET_TOKEN: (state, access) => state.access = access,
@@ -64,7 +61,6 @@ export const accounts = {
       },
     SET_USER_TYPE: (state, userType) => state.userType = userType,
     },
-    SET_PERMISSION: (state, permission) => state.hasPermission = permission,
   actions: {
     saveToken({commit}, access) {
       commit('SET_TOKEN', access)
@@ -136,8 +132,5 @@ export const accounts = {
       console.log(data)
       commit('CHANGE_DATA', data)
     },
-    setPermission({commit, data}) {
-      commit('SET_PERMISSION', data)
-    }
   },
 }
