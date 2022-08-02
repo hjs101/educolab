@@ -1,7 +1,7 @@
 from django.db import models
 from accounts.models import UserInfo
 class SurveyList(models.Model):
-    teacher = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name="survey_teacher")
     title = models.CharField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -12,7 +12,7 @@ class SurveyList(models.Model):
 
 
 class SurveyQuestions(models.Model):
-    survey = models.ForeignKey(SurveyList, on_delete=models.CASCADE)
+    survey = models.ForeignKey(SurveyList, on_delete=models.CASCADE, related_name="question_survey")
     question_number = models.IntegerField()
     survey_question = models.CharField(max_length=500)
     multiple_bogi = models.CharField(max_length=500, blank=True, null=True)

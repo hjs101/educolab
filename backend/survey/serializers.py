@@ -1,13 +1,13 @@
 import imp
 from rest_framework import serializers
-from accounts.serializers import UserinfoSerializer, TeacherNameSerializer
+from accounts.serializers import UserinfoSerializer, UserNameSerializer
 from . import models
 
 
 
 # 설문조사 Serializer
 class SurveySerializer(serializers.ModelSerializer):
-    teacher = TeacherNameSerializer(read_only=True)
+    teacher = UserNameSerializer(read_only=True)
     target = UserinfoSerializer(read_only=True, many=True)
     done_target = UserinfoSerializer(read_only=True)
     class Meta:
@@ -19,3 +19,13 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.SurveyQuestions
         fields='__all__'
+
+class SurveyMainSerializer(serializers.ModelSerializer):
+    teacher = UserNameSerializer(read_only=True)
+    class Meta:
+        model = models.SurveyList
+        fields = ['pk','title','updated_at','grade', 'class_field','teacher']
+class QuestionDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.SurveyQuestions
+        fields= ['question_number', 'survey_question', 'multiple_bogi']

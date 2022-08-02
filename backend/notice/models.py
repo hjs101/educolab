@@ -9,7 +9,7 @@ class Notice(models.Model):
     title = models.CharField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    content = models.CharField(max_length=10000, blank=True, null=True)
+    content = models.TextField()
     views = models.IntegerField(default=0)
 
 class Files(models.Model):

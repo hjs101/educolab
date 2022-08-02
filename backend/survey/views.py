@@ -3,9 +3,9 @@ from requests import request
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from accounts.serializers import TeacherNameSerializer
+from accounts.serializers import UserNameSerializer
 from accounts.models import SchoolInfo,UserInfo
-from survey.serializers import SurveySerializer, QuestionSerializer
+from survey.serializers import SurveySerializer, QuestionSerializer, SurveyMainSerializer,QuestionDetailSerializer
 from .models import SurveyList
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
@@ -14,37 +14,41 @@ from rest_framework.renderers import JSONRenderer
 import os, io
 
 
-class NoticeMainView(APIView) :
+class SurveyTeacherMainView(APIView) :
     ## 권한 설정 부분(View단위)
     # permission_classes = (IsAuthenticated,)
 
     def get(self,req):
+        if not req.user.userflag:
+            return Response({"message" :"선생님만 접근 가능합니다."})
+        
+        ## 2. 쿼리로 작성자가 user인 설문조사 목록을 가져온다.
+        teacher = UserInfo.objects.get(username=req.user.username)
+        survey = teacher.survey_teacher.all()
 
-        ## 1. request로부터 학교 코드를 받는다.
-        # schoolCode = req.GET['schoolcode']
-
-        ## 2. 쿼리로 학교 코드가 req에서 받은 학교 코드인 사람이 작성자인 공지사항 목록을 가져온다.
-        school = SchoolInfo.objects.get(code=req.user.school.code)
-        notices = school.notice_school.all()
+        print(survey)
         # notices = Notice.objects.select_related('school').filter(school_id=schoolCode)
         
         ## 3. 시리얼라이저 변환
-
+        survey_serializer = SurveyMainSerializer(survey, many=True)
         ## 4. 가져온 목록 반환
-
+        return Response(survey_serializer.data)
 
 class SurveyCreateView(APIView):
     def post(self, req):
+        
+        if not req.user.userflag:
+            return Response({"message" :"선생님만 접근 가능합니다."})
+        
         # 설문조사 등록하기 start
         survey_serializer = SurveySerializer(data=req.data['survey'])
-        students = UserInfo.objects.filter(grade = req.data['survey']['grade'], class_field=req.data['survey']['class_field']);
+        students = UserInfo.objects.filter(grade = req.data['survey']['grade'], class_field=req.data['survey']['class_field'], school=req.user.school, userflag=False);
         print(students)
         if survey_serializer.is_valid(raise_exception=True):
             survey = survey_serializer.save(target=students, teacher = req.user)
         # 설문조사 등록하기 end
 
         # 설문조사 문항 등록하기 start
-        
         for question in req.data['question']:
             question_serializer = QuestionSerializer(data=question)
             if question_serializer.is_valid(raise_exception=True):
@@ -53,70 +57,58 @@ class SurveyCreateView(APIView):
 
 
         return Response({"success":True})
-class NoticeDetailView(APIView):
+class SurveyDetailView(APIView):
     def get(self, req):
-        ## 공지사항 번호 가져오기
-        notice_id = req.GET['notice_num']
+        ## 설문조사 번호 가져오기
+        survey_id = req.GET['survey_num']
 
-        ## 공지사항 번호로 공지사항 인스턴스 가져오기
-        notice = Notice.objects.get(pk=notice_id)
+        ## 설문조사 번호로 설문조사 인스턴스 가져오기
+        survey = SurveyList.objects.get(pk=survey_id)
+        questions = survey.question_survey.all()
+        ## 설문조사 시리얼라이저 생성
+        question_serializer = QuestionDetailSerializer(questions, many=True)
 
-
-        ## 조회수 1 올리기 
-        notice.views+=1
-        
-        notice.save()
-
-        files = notice.notice_file.all()
-        
-        
-
-        print(files)
-        
-        ## 공지사항 시리얼라이저 생성
-
-        res = Response()
-
-        
-        return Response({"message" : "잘못된 접근입니다."})
+        return Response(question_serializer.data)
 
     def delete(self, req):
-        notice_id = req.GET['notice_num']
+        survey_id = req.GET['survey_num']
 
-        ## 공지사항 번호로 공지사항 인스턴스 가져오기
-        notice = Notice.objects.get(pk=notice_id)
+        ## 설문조사 번호로 설문조사 인스턴스 가져오기
+        survey = SurveyList.objects.get(pk=survey_id)
 
-        notice.delete()
-        return Response("success")
+        survey.delete()
+        return Response({"success":True})
 
-class NoticeUpdateView(APIView):
-    notice_id = ""
+class SurveyUpdateView(APIView):
     def get(self, req):
-        ## 공지사항 번호 가져오기
-        self.notice_id = req.GET['notice_num']
+        ## 설문조사 번호 가져오기
+        survey_id = req.GET['survey_num']
 
-        ## 공지사항 번호로 공지사항 인스턴스 가져오기
-        notice = Notice.objects.get(pk=self.notice_id)
+        ## 설문조사 번호로 설문조사 인스턴스 가져오기
+        survey = SurveyList.objects.get(pk=survey_id)
+        questions = survey.question_survey.all()
+        ## 설문조사 시리얼라이저 생성
+        question_serializer = QuestionDetailSerializer(questions, many=True)
 
-        notice.save()
-
-        files = notice.notice_file.all()
-
-
-
-
-
-        return Response({"message" : "잘못된 접근입니다."})
+        return Response(question_serializer.data)
 
     def put(self, req):
-        self.notice_id = req.data['notice_num']
-        notice = Notice.objects.get(pk=self.notice_id)
+        survey_id = req.data['survey_num']
+        survey = SurveyList.objects.get(pk=self.survey_id)
 
-
-        notice_files = notice.notice_file.all()
-        notice_files.delete()
+        survey_serializer = SurveySerializer(survey, data=req.data)
+        if survey_serializer.is_valid(raise_exception=True):
+            survey = survey_serializer.save()
 
         
+        notice_files = notice.notice_file.all()
+
+
+        for question in req.data['question']:
+            question_serializer = QuestionSerializer(data=question)
+            if question_serializer.is_valid(raise_exception=True):
+                question_serializer.save(survey=survey)
+
         files = req.FILES.getlist("files")
 
         for file in files:

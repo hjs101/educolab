@@ -19,8 +19,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # path('main/', views.NoticeMainView.as_view(), name='survey_main'),
+    path('main/', views.SurveyTeacherMainView.as_view(), name='survey_main'),
     path('create/', views.SurveyCreateView.as_view(), name='survey_create'),
-    # path('detail/', views.NoticeDetailView.as_view(), name='survey_detail'),
-    # path('update/', views.NoticeUpdateView.as_view(), name='survey_update'),
+    path('detail/', views.SurveyDetailView.as_view(), name='survey_detail'),
+    path('update/', views.SurveyUpdateView.as_view(), name='survey_update'),
 ]
