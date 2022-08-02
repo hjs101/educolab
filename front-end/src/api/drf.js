@@ -55,7 +55,11 @@ export default {
 >>>>>>> e6b54fb (asdu)
 =======
     sendPwEmail: () => ACCOUNTS + 'send_pw_email/',
+<<<<<<< HEAD
 >>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
+=======
+    changePw: () => ACCOUNTS + 'change_pw/',
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
   },
   notice: {
     noticeList: () => NOTICE + 'main/',

@@ -8,6 +8,7 @@ DATABASES = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 'PASSWORD': 'c102_edu',
 <<<<<<< HEAD
 "HOST": '127.0.0.1',
@@ -21,6 +22,10 @@ DATABASES = {
 >>>>>>> 834c26a (Fix : mySettings.py 수정)
 "HOST": '13.125.213.119',
 >>>>>>> d260595 (feat: signup3 merge - 홍찬기)
+=======
+'PASSWORD': 'c102_edu',
+"HOST": '3.36.69.192',
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
 "PORT": '3306',
 },
 }
@@ -51,6 +56,7 @@ DATABASES = {
 }
 }
 
+<<<<<<< HEAD
 MY_IMAGE_PATH = '/SSAFY/C102_IOT/S07P12C102/backend/image/'
 
 <<<<<<< HEAD
@@ -80,6 +86,8 @@ MY_IMAGE_PATH = '/SSAFY/C102_IOT/S07P12C102/backend/image/'
 
 =======
 >>>>>>> 755dda7 (wq)
+=======
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
 EMAIL_HOST_USER = 'educolabtest@gmail.com'
 
 <<<<<<< HEAD

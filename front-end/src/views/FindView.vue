@@ -26,9 +26,9 @@
         <q-select v-model="userInfo.address" :options="emailOptions" class="col-4" label="이메일 주소 선택" required />
         <send-pw-email v-if="!type.isTypeId" :name="userInfo.name" :email="userInfo.fullEmail" />
       </div>
+      <q-btn color="amber" label="FIND ID" v-if="type.isTypeId" class="col-8 offset-2 col-md-1 offset-md-1" @click="findId"/>
     </q-form>
       <!-- 여기에 아이디 찾기 버튼 -->
-      <q-btn color="amber" label="FIND ID" v-if="type.isTypeId" class="col-8 offset-2 col-md-1 offset-md-1" @click="findId"/>
 
       <q-dialog v-model="confirm.prompt" persistent>
         <q-card style="min-width: 350px">
@@ -36,13 +36,13 @@
             <div class="text-h6 center">{{confirm.message}}</div>
           </q-card-section >
           <q-card-actions align="center">
-            <button-group v-if="confirm.isSuccess" :currentUrl="currentUrl"/>
+            <button-group v-if="confirm.isSuccess" :currentUrl="type.currentUrl" @click="initInfo"/>
             <q-btn v-else color="primary" label="확인" v-close-popup/>
           </q-card-actions>
         </q-card>
       </q-dialog>
     <!-- 여기에 회원가입 로그인 비밀번호 찾기 -->
-    <button-group :currentUrl="type.currentUrl"/>
+    <button-group :currentUrl="type.currentUrl" @click="initInfo"/>
   </div>
 
 </template>
@@ -58,8 +58,8 @@
 
 <script>
 import { reactive } from '@vue/reactivity'
-import {computed} from 'vue'
-import {useRoute} from 'vue-router'
+import {computed, onBeforeMount} from 'vue'
+import {useRoute, useRouter} from 'vue-router'
 import axios from 'axios'
 import drf from '@/api/drf.js'
 import ButtonGroup from '@/components/ButtonGroup.vue'
@@ -72,9 +72,10 @@ export default {
     SendPwEmail,
   },
   setup () {
-    const store = useRoute()
+    const route = useRoute()
+    const router = useRouter()
     const type = reactive({
-      type : computed(() => store.params.info),
+      type : computed(() => route.params.info),
       isTypeId: computed(() => type.type === 'id'),
       title : computed(() => type.isTypeId? 'ID':'PW'),
       currentUrl: computed(() => type.isTypeId? 'findId':'findPw'),
@@ -84,16 +85,15 @@ export default {
     ]
     const userInfo = reactive({
       name : null,
-      email: null,
+      email: '',
       address: null,
-      username: null,
       fullEmail: computed(() => userInfo.email + userInfo.address)
     })
     const confirm = reactive({
       username: null,
       success: false,
       prompt: false,
-      message: computed(() => type === 'id' && confirm.success? `아이디는 ${confirm.username}입니다`: '입력하신 회원정보가 존재하지 않습니다'),
+      message: computed(() => type.isTypeId && confirm.success? `아이디는 ${confirm.username}입니다`: '입력하신 회원정보가 존재하지 않습니다'),
       isSuccess: computed(() => confirm.success)
     })
     const findId = () => {
@@ -101,17 +101,32 @@ export default {
         .then((res) => {
           confirm.success = res.data.success
           confirm.prompt = true
+          console.log(res.data)
           if (confirm.success) {
             confirm.username = res.data.username
           }
         })
     }
+    const initInfo = () => {
+      userInfo.name = null
+      userInfo.email = ''
+      userInfo.address = null
+      confirm.username = null
+      confirm.success = false
+      confirm.prompt= false
+    }
+    onBeforeMount (() => {
+      if (!type.isTypeId && type.type !== 'password') {
+        router.push('/404')
+      }
+    })
     return {
       type,
       emailOptions,
       userInfo,
       confirm,
       findId,
+      initInfo
     }
   },
 }

@@ -119,7 +119,13 @@ export const accounts = {
       access: localStorage.getItem("access") || "",
       currentUser: {},
       authError: null,
+<<<<<<< HEAD
     };
+=======
+      // 비밀번호 변경 페이지 들어가기 전 인증을 거쳤는지 여부
+      hasPermission: false,
+    }
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
   },
   getters: {
 <<<<<<< HEAD
@@ -140,9 +146,13 @@ export const accounts = {
     getUserType: state => state.userType,
     getSubject: state => state.teacherInfo.subject,
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> afe56c9 (공지사항 메인페이지)
 =======
 >>>>>>> 0004fc1 (notice merge)
+=======
+    getPermission: state => state.hasPermission
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
   },
   mutations: {
 <<<<<<< HEAD
@@ -214,8 +224,12 @@ export const accounts = {
         }
       }
     },
+<<<<<<< HEAD
     SET_USER_TYPE: (state, userType) => (state.userType = userType),
   },
+=======
+    SET_PERMISSION: (state, permission) => state.hasPermission = permission,
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
   actions: {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -294,6 +308,7 @@ export const accounts = {
           commit("SET_AUTH_ERROR", err.response.data);
         });
     },
+<<<<<<< HEAD
     signup(state) {
       if (state.getters.getUserType == "student") {
         axios
@@ -345,7 +360,36 @@ export const accounts = {
             console.log(state.state.teacherInfo)
             window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
           })
+=======
+    signup({state, getters, dispatch}) {
+      let info = null
+      if (getters.getUserType == 'student') {
+        info = state.studentInfo
+      } else {
+        info = state.teacherInfo
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
       }
+      axios.post(drf.accounts.signup(), info)
+      .then(() => {
+        window.alert('회원가입이 완료되었습니다')
+        router.push({ name: 'login'})
+        for (let key in state.studentInfo) {
+          if (key === 'userflag') {
+            dispatch('changeData', {'userflag':false})
+          } else if (key === 'birthday') {
+            dispatch('changeData', {'birthday':false})
+          } else {
+            dispatch('changeData', {key:null})
+          }
+        }
+      })
+      .catch(({response}) => {
+        if (response.data.email) {
+          window.alert(response.data.email[0])
+        } else {
+          window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
+        }
+      })
     },
     logout({dispatch}) {
         dispatch('removeToken')
@@ -464,6 +508,7 @@ export const accounts = {
 <<<<<<< HEAD
 <<<<<<< HEAD
     changeData({commit}, data) {
+      console.log(data)
       commit('CHANGE_DATA', data)
 =======
     changeStudentData({commit}, data) {
@@ -487,5 +532,8 @@ export const accounts = {
       commit("CHANGE_DATA", data);
 >>>>>>> 36a3f8f (Fix : 오타수정)
     },
+    setPermission({commit, data}) {
+      commit('SET_PERMISSION', data)
+    }
   },
 };

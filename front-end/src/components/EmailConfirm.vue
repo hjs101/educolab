@@ -53,6 +53,7 @@
       </q-input>
       <!-- 이메일 주소 선택 -->
       <q-select v-model="email.address" :options="emailOptions" class="col-4" label="이메일 주소 선택" required />
+<<<<<<< HEAD
       <!-- 인증 버튼 -->
       <q-btn color="teal" label="인증" class="col-2" @click="isValidEmail"/>
     </div>
@@ -152,6 +153,10 @@
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+    </div>
+    <confirm-auth-number :data="{email:email.fullEmail}"/>
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
   </div>
 </template>
 
@@ -159,48 +164,46 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 import {reactive, ref} from '@vue/reactivity'
+=======
+import {reactive} from '@vue/reactivity'
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
 import {computed} from 'vue'
-import {useStore} from 'vuex'
-import axios from 'axios'
-import drf from '@/api/drf.js'
+import ConfirmAuthNumber from '@/components/ConfirmAuthNumber.vue'
 export default {
   name: 'EmailConfirm',
+  components: {
+    ConfirmAuthNumber,
+  },
   setup () {
+<<<<<<< HEAD
     const store = useStore()
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
     const emailOptions = [
       '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력'
     ]
-    const number = reactive({
-      authNum: null,
-      inputNum: null,
-      isValidNumber: computed(() => number.authNum === number.inputNum),
-      isAuthNum: computed(() => !!number.authNum)
-    }) 
     const email = reactive({
-      address: '',
+      address: null,
       username: '',
-      valid: false,
-      showAuth: computed(() => email.valid),
-      fullEmail: computed(() => email.address !== '직접 입력'? email.username+email.address: email.username),
-    })
-    let alert = ref(false)
-    let limit = ref(180)
-    const start = () => {
-      limit.value = 180
-      const timer = setInterval(() => {
-        if (limit.value > 0) {
-          limit.value -= 1
+      fullEmail: computed(() => {
+        if (email.address) {
+          if (email.address === '직접 입력') {
+            return email.username
+          } else {
+            return email.username+email.address
+          }
         } else {
-          number.authNum = null
-          clearInterval(timer)
+          return null
         }
+<<<<<<< HEAD
       },1000)
     }
     const isValidEmail = () => {
@@ -335,16 +338,15 @@ export default {
     const time = reactive({
       minute: computed(() => Math.floor(limit.value/60)),
       second: computed(() => limit.value%60 >= 10? limit.value%60:'0'+limit.value%60),
+=======
+      }),
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
     })
-    const sendData = (data) => {
-      if (number.isValidNumber) {
-        store.dispatch('changeData', data)
-      }
-    }
+    
     return {
       emailOptions,
-      number,
       email,
+<<<<<<< HEAD
       alert,
       isValidEmail,
 <<<<<<< HEAD
@@ -363,6 +365,8 @@ export default {
       start,
       sendData
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
     }
   }
 }
