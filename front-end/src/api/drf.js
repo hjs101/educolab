@@ -15,5 +15,6 @@ export default {
     noticeList: () => NOTICE + 'main/',
     noticeDetail: () => NOTICE + 'detail/',
     noticeCreate: () => NOTICE + 'create/',
+    noticeUpdate: () => NOTICE + 'update/'
   }
 }

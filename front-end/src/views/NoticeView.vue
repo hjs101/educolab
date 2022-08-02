@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="notice in notice2" :key="notice.pk">
+        <tr v-for="notice in notice2" :key="notice.id">
           <td>{{ notice.pk }}</td>  
           <td>{{ notice.classification}}</td>
           <router-link :to="{ name: 'NoticeDetail', params: {noticePk: `${notice.pk}`}}">

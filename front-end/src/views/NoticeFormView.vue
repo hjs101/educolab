@@ -44,13 +44,15 @@
             <label class="custom-file-label" for="customFile">{{file_name}}</label>
         </div>
       </div> -->
-      <input type="file" @change="onFileSelected">
+      <!-- <input type="file" @change="onFileSelected"> -->
       <hr>
 
-      <button @click="submitNotice(credentials)">등록</button>
+      <button @click="index !== undefined ? updateNotice(credentials, index) : submitNotice(credentials)">
+      {{ index !== undefined ? '수정' : '작성'}}</button>
 
+      <h1>{{ credentials.content }}</h1>
+      <p>{{ index }}</p>
     </q-form>
-
     <hr>
   <router-view />
   </div>
@@ -58,15 +60,17 @@
 
 <script>
 import {ref} from 'vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   data() {
+    const index = this.$route.params.noticePk
     return {
+      index: index,
       credentials : {
-        classification : '',
-        title : '',
-        content : '',
+      classification : this.index !== undefined ? this.noticeItem.notice.classification : "",
+      title : this.index !== undefined ? this.noticeItem.notice.title : "",
+      content : this.index !== undefined ? this.noticeItem.notice.content : "",
         // files : '',
       }
     }
@@ -82,11 +86,14 @@ export default {
       // files : ref(null)
     }    
   },
+  computed : {
+    ...mapGetters(['noticeItem'])
+  },
   methods: {
-    ...mapActions(['submitNotice']),
+    ...mapActions(['submitNotice', 'updateNotice']),
     // onFileSelected(event) {
     //   this.credentials.files = event.target.files[0]
     // }
-  }
+  },
 }
 </script>

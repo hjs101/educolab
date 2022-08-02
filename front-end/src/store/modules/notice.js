@@ -86,17 +86,21 @@ export const notice = {
           router.push({ name : 'Notice'})
         })
     },
-    updateNotice({ getters }, noticeId) {
+    updateNotice({ getters }, credentials, noticePk) {
+      console.log(credentials)
       axios({
-        url: drf.notice.noticeDetail(),
+        url: drf.notice.noticeUpdate(),
         method: 'put',
         headers: getters.authHeader,
+        data : credentials,
         params: {
-          notice_num : noticeId
+          notice_num : noticePk
         }
       })
         .then(res => {
           console.log(res)
+          alert('해당 글이 수정되었습니다.')
+          router.push({ name : 'Notice'})
         })
     }
   }

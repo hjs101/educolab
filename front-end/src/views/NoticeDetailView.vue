@@ -13,11 +13,12 @@
         </div>
       </div>
 
-      <!-- <button @click="updateNotice(noticeItem.notice.id)">수정</button> -->
+      <button @click="updateData">수정</button>
       <button @click="deleteNotice(noticeItem.notice.id)">삭제</button>
       <br>
       <router-link to="/notice"><button>목록</button></router-link>
     </div>
+    
   </div>
 </template>
 
@@ -25,19 +26,26 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  // data() {
-  //   const index = this.$route.params.noticePk
-  //   return {
-  //     noticeItem : this.noticeItem,
-  //     index : index
-  //   }
-  // },
+  data() {
+    const index = this.$route.params.noticePk
+    return {
+      // noticeItem : this.noticeItem,
+      index : index
+    }
+  },
   computed: {
     ...mapGetters(['noticeItem'])
   },
   methods: {
     ...mapActions(['deleteNotice']),
-
+    updateData() {
+      this.$router.push({
+        name: 'NoticeForm',
+        params : {
+          noticePk : this.index
+        }
+      })
+    }
   }
 }
 </script>
