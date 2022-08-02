@@ -63,7 +63,13 @@ const routes = [
     component: () => import('@/views/NoticeView')
   },
   
-  // 공지사항 작성
+  // 공지사항 상세 페이지
+  {
+    path: '/notice/detail/:noticePk',
+    name: 'NoticeDetail',
+    component: () => import('@/views/NoticeDetailView')
+  },
+
   {
     path: '/signup/:userType',
     name: 'signup',
@@ -112,8 +118,10 @@ const routes = [
   //   path: '*',
   //   redirect: '/404'
   // }
+
+  // 공지사항 작성
   {
-    path: '/notice/create',
+    path: '/notice/create/:noticePk?',
     name: 'NoticeForm',
 <<<<<<< HEAD
 =======

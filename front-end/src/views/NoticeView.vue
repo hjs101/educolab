@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -30,9 +31,15 @@
     
     <router-link to="/notice/create"><button>글쓰기</button></router-link> -->
     <!-- <button @click="notice"></button> -->
+=======
+  <div class="center">
+    <h1>공지사항</h1>
+    <router-link to="/notice/create"><button>글쓰기</button></router-link>
+>>>>>>> fec931d (공지사항  상세페이지 구현)
     <table class="center">
       <thead>
         <tr>
+          <th>글 번호</th>
           <th>분류</th>
           <th>제목</th>
           <th>작성자</th>
@@ -41,10 +48,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="notice in notice2" :key="notice.pk">
+        <tr v-for="notice in notice2" :key="notice.id">
+          <td>{{ notice.pk }}</td>  
           <td>{{ notice.classification}}</td>
-          <td>{{ notice.title }}</td>
-          <td>{{ notice.teacher.name}}</td>
+          <router-link :to="{ name: 'NoticeDetail', params: {noticePk: `${notice.pk}`}}">
+            <td @click="noticeDetail(notice.pk)">{{ notice.title }}</td>
+          </router-link>
+          <td>{{ notice.teacher.name }}</td>
           <td>{{ timeInfo(notice.updated_at) }}</td>
           <td>{{ notice.views }}</td>
         </tr>
@@ -78,14 +88,19 @@ export default {
   //   NoticeItem
   // },
   computed: {
-    ...mapGetters(['notice2'])
+    ...mapGetters(['notice2', 'notcieItem'])
   },
   methods: {
-    ...mapActions(['noticeList']),
+    ...mapActions(['noticeList', 'noticeDetail']),
     timeInfo(time) {
       const d = new Date(time)
       return d.getFullYear() + ". " + (d.getMonth()+1) + ". " + d.getDate()
-    }
+    },
+    // rowClicked(row) {
+    //   this.$router.push({
+    //     path: `/board/detail/${row.id}`
+    //   })
+    // }
   },
   mounted() {
     this.noticeList()

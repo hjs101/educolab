@@ -53,6 +53,9 @@ export default {
 >>>>>>> e6b54fb (asdu)
   },
   notice: {
-    noticeList: () => NOTICE + 'main/'
+    noticeList: () => NOTICE + 'main/',
+    noticeDetail: () => NOTICE + 'detail/',
+    noticeCreate: () => NOTICE + 'create/',
+    noticeUpdate: () => NOTICE + 'update/'
   }
 }
