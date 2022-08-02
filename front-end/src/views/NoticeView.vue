@@ -1,17 +1,7 @@
 <template>
-  <div>
-    <!-- <h2>공지사항 메인 페이지(교사)</h2>
-    <input type="search" name="" id="" v-model="searchTitle">
-    <button for="searchTitle" @click="searchNotice">검색</button>
-    <tr :key="search.content_id" v-for="search in searchNoticeList">
-      <td>{{ search.content_id }}</td>
-      <td>{{ search.title }}</td>
-      <td>{{ search.created_at }}</td>
-      <td>{{ search.user_id }}</td> 
-    </tr>
-    
-    <router-link to="/notice/create"><button>글쓰기</button></router-link> -->
-    <!-- <button @click="notice"></button> -->
+  <div class="center">
+    <h1>공지사항</h1>
+    <router-link to="/notice/create"><button>글쓰기</button></router-link>
     <table class="center">
       <thead>
         <tr>
