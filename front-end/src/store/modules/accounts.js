@@ -397,6 +397,7 @@ export const accounts = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             console.log(state.teacherInfo)
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -570,6 +571,8 @@ export const accounts = {
 >>>>>>> c19258a (DB 버그 수정)
 =======
 >>>>>>> 0004fc1 (notice merge)
+=======
+>>>>>>> 8dd0805 (깃 충돌  해결)
             window.alert("회원가입이 완료되었습니다");
             router.push({ name: "login" });
           })
