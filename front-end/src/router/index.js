@@ -22,6 +22,12 @@ const routes = [
     component: () => import('@/views/NoticeView')
   },
   
+  // 공지사항 상세 페이지
+  {
+    path: '/notice/detail/:noticePk',
+    name: 'NoticeDetail',
+    component: () => import('@/views/NoticeDetailView')
+  },
   // 공지사항 작성
   {
     path: '/signup/:userType',

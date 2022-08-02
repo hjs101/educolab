@@ -12,6 +12,7 @@ export default {
     sendEmail: () => ACCOUNTS + 'send_signup_email/',
   },
   notice: {
-    noticeList: () => NOTICE + 'main/'
+    noticeList: () => NOTICE + 'main/',
+    noticeDetail: () => NOTICE + 'detail/' ,
   }
 }
