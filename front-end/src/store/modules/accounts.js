@@ -34,6 +34,8 @@ export const accounts = {
       access: localStorage.getItem('access') || '',
       currentUser: {},
       authError: null,
+      // 비밀번호 변경 페이지 들어가기 전 인증을 거쳤는지 여부
+      hasPermission: false,
     }
   },
   getters: {
@@ -43,6 +45,7 @@ export const accounts = {
     authHeader: state => ({ Authorization: `Token ${state.access}` }),
     getUserType: state => state.userType,
     getSubject: state => state.teacherInfo.subject,
+    getPermission: state => state.hasPermission
   },
   mutations: {
     SET_TOKEN: (state, access) => state.access = access,
@@ -61,6 +64,7 @@ export const accounts = {
       },
     SET_USER_TYPE: (state, userType) => state.userType = userType,
     },
+    SET_PERMISSION: (state, permission) => state.hasPermission = permission,
   actions: {
     saveToken({commit}, access) {
       commit('SET_TOKEN', access)
@@ -87,27 +91,34 @@ export const accounts = {
           commit('SET_AUTH_ERROR', err.response.data)
         })
     },
-    signup(state) {
-      if (state.getters.getUserType == 'student') {
-        axios.post(drf.accounts.signup(), state.state.studentInfo)
-          .then(() => {
-            window.alert('회원가입이 완료되었습니다')
-            router.push({ name: 'login'})
-          })
-          .catch(() => {
-            window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
-          })
-          
-        } else if (state.getters.getUserType == 'teacher') {
-          axios.post(drf.accounts.signup(), state.state.teacherInfo)
-          .then(() => {
-            window.alert('회원가입이 완료되었습니다')
-            router.push({ name: 'login'})
-          })
-          .catch(() => {
-            window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
-          })
+    signup({state, getters, dispatch}) {
+      let info = null
+      if (getters.getUserType == 'student') {
+        info = state.studentInfo
+      } else {
+        info = state.teacherInfo
       }
+      axios.post(drf.accounts.signup(), info)
+      .then(() => {
+        window.alert('회원가입이 완료되었습니다')
+        router.push({ name: 'login'})
+        for (let key in state.studentInfo) {
+          if (key === 'userflag') {
+            dispatch('changeData', {'userflag':false})
+          } else if (key === 'birthday') {
+            dispatch('changeData', {'birthday':false})
+          } else {
+            dispatch('changeData', {key:null})
+          }
+        }
+      })
+      .catch(({response}) => {
+        if (response.data.email) {
+          window.alert(response.data.email[0])
+        } else {
+          window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
+        }
+      })
     },
     logout({dispatch}) {
         dispatch('removeToken')
@@ -122,7 +133,11 @@ export const accounts = {
       commit('SET_USER_TYPE', userType)
     },
     changeData({commit}, data) {
+      console.log(data)
       commit('CHANGE_DATA', data)
     },
+    setPermission({commit, data}) {
+      commit('SET_PERMISSION', data)
+    }
   },
 }

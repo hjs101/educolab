@@ -9,17 +9,17 @@ const routes = [
     name: 'educolab',
     component: () => import('@/views/MainPageView')
   },
-  // 공지사항
-  {
-    path: '/notice',
-    name: 'Notice',
-    component: () => import('@/views/NoticeView')
-  },
   // 아이디 & 비밀번호 찾기
   {
     path: '/find/:info',
-    name: 'findId',
+    name: 'findInfo',
     component: () => import('@/views/FindView')
+  },
+  // 비밀번호 & 회원정보 변경
+  {
+    path: '/change/:info',
+    name: 'changeInfo',
+    component: () => import('@/views/ChangeView')
   },
   // 회원가입
   {
@@ -27,26 +27,18 @@ const routes = [
     name: 'signup',
     component: () => import ('@/views/SignupView')
   },
-  // signup 뒤에 student, teacher 아닌 것이 있으면 404 에러
+  // 회원가입 동의 페이지
   {
     path: '/signup',
     name: 'agree',
     component: () => import ('@/views/SignupAgreeView')
   },
+  // 공지사항
   {
-    path: '/nonlogin',
-    redirect: {name: 'login'}
+    path: '/notice',
+    name: 'Notice',
+    component: () => import('@/views/NoticeView')
   },
-  // 404 에러
-  {
-    path: '/404',
-    name: 'notFound',
-    component: () => import ('@/views/NotFoundView')
-  },
-  // {
-  //   path: '*',
-  //   redirect: '/404'
-  // }
   {
     path: '/notice/create',
     name: 'NoticeForm',
@@ -113,7 +105,18 @@ const routes = [
     path: '/',
     name: 'login',
     component: () => import ('@/views/LoginView')
-  },  
+  },
+  // 404 에러
+  {
+    path: '/404',
+    name: 'notFound',
+    component: () => import ('@/views/NotFoundView')
+  },
+  // 존재하지 않는 페이지
+  {
+    path: '/:anything',
+    redirect: '/404'
+  }
 ]
 
 const router = createRouter({
