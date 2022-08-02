@@ -3,7 +3,7 @@ from requests import request
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from accounts.serializers import TeacherNameSerializer
+from accounts.serializers import UserNameSerializer
 from accounts.models import SchoolInfo,UserInfo
 from .serializers import NoticeMainSerializer, NoticeSerializer, FileSerializer
 from .models import Notice, Files
@@ -39,19 +39,22 @@ class NoticeMainView(APIView) :
 
 class NoticeCreateView(APIView):
     def post(self, req):
+        if not req.user.userflag:
+            return Response({"message : 선생님만 접근 가능합니다."})
         # notice = Notice()
         notice_serializer = NoticeSerializer(data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
-            notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.user.school.code))
+            notice = notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.user.school.code))
 
         files = req.FILES.getlist("files")
 
-        notice = Notice.objects.all().order_by("-pk")
         for file in files:
-            fp = Files.objects.create(notice=notice[0], atch_file=file, atch_file_name=file)
+            fp = Files.objects.create(notice=notice, atch_file=file, atch_file_name=file)
             fp.save()
-        return Response({"success" : True})
-
+        return Response({
+            "success":True,
+            "pk" : notice.pk
+        })
 class NoticeDetailView(APIView):
     def get(self, req):
         ## 공지사항 번호 가져오기
@@ -97,6 +100,8 @@ class NoticeDetailView(APIView):
 class NoticeUpdateView(APIView):
     notice_id = ""
     def get(self, req):
+        if not req.user.userflag:
+            return Response({"message : 선생님만 접근 가능합니다."})
         ## 공지사항 번호 가져오기
         self.notice_id = req.GET['notice_num']
 
@@ -129,16 +134,19 @@ class NoticeUpdateView(APIView):
         notice = Notice.objects.get(pk=self.notice_id)
         notice_serializer = NoticeSerializer(notice, data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
-            notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))
+            notice = notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))
 
         notice_files = notice.notice_file.all()
         notice_files.delete()
 
-        
         files = req.FILES.getlist("files")
 
         for file in files:
             fp = Files.objects.create(notice=notice, atch_file=file, atch_file_name=file)
             fp.save()
         res = Response()
-        return Response({"success":True})
+        res.data = {
+            'success' : True,
+            "pk" : notice.pk
+        }
+        return res
