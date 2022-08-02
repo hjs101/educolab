@@ -13,7 +13,7 @@ class UserInfo(AbstractUser):
     userflag = models.BooleanField(default=False, blank=True)
     name = models.CharField(max_length=30,default=None,blank=True)
     birthday = models.DateField(default=None,blank=True)
-    school = models.ForeignKey(SchoolInfo,on_delete=models.CASCADE,db_column='school', related_name='school')
+    school = models.ForeignKey(SchoolInfo,on_delete=models.CASCADE,db_column='school', related_name='school_student')
     phone_number = models.CharField(max_length=11,blank=True)
     grade = models.IntegerField(blank=True,null=True)
     class_field = models.IntegerField(blank=True, null=True)

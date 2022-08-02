@@ -9,26 +9,34 @@ class TeacherHomework(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    deadline = models.DateTimeField()
+    deadline = models.DateField()
     grade = models.IntegerField()
     class_field = models.IntegerField()  
     target = models.ManyToManyField(UserInfo)
+    check_flag = models.BooleanField(default=False)
 
 class StudentHomework(models.Model):
-    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name="S_homework")
     title = models.CharField(max_length=45)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    deadline = models.DateTimeField()
+    deadline = models.DateField()
     agreement = models.BooleanField(default=False)
+    check_flag = models.BooleanField(default=False)
+
+class Files(models.Model):
+    teacher_homework = models.ForeignKey(TeacherHomework,on_delete=models.CASCADE, null=True)
+    student_homework = models.ForeignKey(StudentHomework, on_delete=models.CASCADE,null=True)
+    atch_file_name = models.CharField(max_length=45, default="")
+    atch_file = models.FileField(blank=True, upload_to='homework/create')  # Field name made lowercase.
 
 class SubmitHomework(models.Model):
     student = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
-    teacher_homework_pk = models.ForeignKey(TeacherHomework, on_delete=models.CASCADE,null=True, related_name='student_submit')
-    student_homework_pk = models.ForeignKey(StudentHomework, on_delete=models.CASCADE,null=True, related_name='my_submit')
-    content = models.TextField()
-    submit_at = models.DateTimeField(auto_now_add=True) # 백앤드에서 현재 시간 넣어주기
+    teacher_homework = models.ForeignKey(TeacherHomework, on_delete=models.CASCADE,null=True, related_name='student_submit')
+    student_homework = models.ForeignKey(StudentHomework, on_delete=models.CASCADE,null=True, related_name='my_submit')
+    content = models.TextField(null=True)
+    submit_at = models.DateTimeField(auto_now=True) # 백앤드에서 현재 시간 넣어주기
     submit_flag = models.BooleanField(default=False)
-    atch_file_name = models.CharField(max_length=45, default="")
-    atch_file = models.FileField(blank=True, upload_to='homework/files')  # Field name made lowercase.
+    atch_file_name = models.CharField(max_length=45, default="",null=True)
+    atch_file = models.FileField(blank=True, upload_to='homework/submit',null=True)

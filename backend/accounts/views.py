@@ -1,4 +1,3 @@
-from sre_constants import SUCCESS
 from django.shortcuts import render
 from django.core.mail import send_mail
 from rest_framework.views import APIView
@@ -132,7 +131,6 @@ class ChangePWView(APIView):
         userinfo = UserInfo.objects.get(name=name,email=email,username=username)
         userinfo.set_password(password1)
         userinfo.save()
-        print(userinfo)
 
         context = {
             "success" : True,
