@@ -1,8 +1,19 @@
 <template>
   <div>
     <!-- 인증 버튼 -->
-    <q-btn v-if="params.userType" color="teal" label="이메일 인증" class="col-2" @click="isValidEmail"/>
-    <q-btn v-else color="white" text-color="black" label="FIND PW" class="col-8 offset-2 col-md-1 offset-md-1" @click="isValidEmail"/>
+    <q-btn
+      v-if="params.userType"
+      color="teal"
+      label="이메일 인증"
+      class="col-2"
+      @click="isValidEmail"/>
+    <q-btn
+      v-else
+      color="white"
+      text-color="black"
+      label="FIND PW"
+      class="col-8 offset-2 col-md-1 offset-md-1"
+      @click="isValidEmail"/>
     <!-- 비밀번호 찾기 (인증 실패 팝업) -->
     <q-dialog v-model="email.isFail">
         <q-card>

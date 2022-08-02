@@ -120,10 +120,13 @@ export const accounts = {
       currentUser: {},
       authError: null,
 <<<<<<< HEAD
+<<<<<<< HEAD
     };
 =======
       // 비밀번호 변경 페이지 들어가기 전 인증을 거쳤는지 여부
       hasPermission: false,
+=======
+>>>>>>> d7025b4 (Feat : 비밀번호 변경 페이지 제작 & 컴포넌트화 & 비밀번호 변경 기능 진행 중)
     }
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
   },
@@ -147,12 +150,15 @@ export const accounts = {
     getSubject: state => state.teacherInfo.subject,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> afe56c9 (공지사항 메인페이지)
 =======
 >>>>>>> 0004fc1 (notice merge)
 =======
     getPermission: state => state.hasPermission
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+>>>>>>> d7025b4 (Feat : 비밀번호 변경 페이지 제작 & 컴포넌트화 & 비밀번호 변경 기능 진행 중)
   },
   mutations: {
 <<<<<<< HEAD
@@ -225,11 +231,14 @@ export const accounts = {
       }
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     SET_USER_TYPE: (state, userType) => (state.userType = userType),
   },
 =======
     SET_PERMISSION: (state, permission) => state.hasPermission = permission,
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+>>>>>>> d7025b4 (Feat : 비밀번호 변경 페이지 제작 & 컴포넌트화 & 비밀번호 변경 기능 진행 중)
   actions: {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -532,8 +541,5 @@ export const accounts = {
       commit("CHANGE_DATA", data);
 >>>>>>> 36a3f8f (Fix : 오타수정)
     },
-    setPermission({commit, data}) {
-      commit('SET_PERMISSION', data)
-    }
   },
 };

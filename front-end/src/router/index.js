@@ -96,9 +96,15 @@ const routes = [
   },
   // 비밀번호 & 회원정보 변경
   {
-    path: '/change/:info',
+    path: '/change/:userData',
     name: 'changeInfo',
-    component: () => import('@/views/ChangeView')
+    component: () => import('@/views/FindView')
+  },
+  // 회원정보 조회
+  {
+    path: '/myinfo',
+    name: 'ReadMyInfo',
+    component: () => import('@/views/FindView')
   },
   // 회원가입
 >>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)

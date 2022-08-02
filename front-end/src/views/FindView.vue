@@ -1,48 +1,48 @@
 <template>
   <div class="q-mx">
-    <h3>FIND {{type.title}}</h3>
+    <h3 v-if="type.type">FIND {{type.title}}</h3>
     <!-- form 부분 -->
     <q-form
-      class="q-gutter row"
-    >
-    <!-- 여기에 이름, 이메일 입력 창 -->
+      class="q-gutter row">
       <div class="input col-8 offset-2 col-md-3 offset-md-4">
-        <q-input
+      <!-- 여기에 이름, 이메일 입력 창 -->
+        <div v-if="type.type">
+          <q-input
+            color="teal"
+            v-model="userInfo.name"
+            label="이름"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || '이름을 입력해주세요']"
+          />
+          <q-input
           color="teal"
-          v-model="userInfo.name"
-          label="이름"
+          v-model="userInfo.email"
+          label="이메일"
           lazy-rules
-          :rules="[ val => val && val.length > 0 || '이름을 입력해주세요']"
-        />
-        <q-input
-        color="teal"
-        v-model="userInfo.email"
-        label="이메일"
-        lazy-rules
-        :rules="[
-          val => val !== null && val !== '' || '이메일을 입력해주세요',
-        ]"
-        />
-        <q-select v-model="userInfo.address" :options="emailOptions" class="col-4" label="이메일 주소 선택" required />
+          :rules="[
+            val => val !== null && val !== '' || '이메일을 입력해주세요',
+          ]"
+          />
+          <q-select v-model="userInfo.address" :options="emailOptions" class="col-4" label="이메일 주소 선택" required />
+          <q-btn color="amber" label="FIND ID" v-if="type.isTypeId" class="col-8 offset-2 col-md-1 offset-md-1" @click="findId"/>
+        </div>
         <send-pw-email v-if="!type.isTypeId" :name="userInfo.name" :email="userInfo.fullEmail" />
       </div>
-      <q-btn color="amber" label="FIND ID" v-if="type.isTypeId" class="col-8 offset-2 col-md-1 offset-md-1" @click="findId"/>
     </q-form>
-      <!-- 여기에 아이디 찾기 버튼 -->
 
-      <q-dialog v-model="confirm.prompt" persistent>
-        <q-card style="min-width: 350px">
-          <q-card-section>
-            <div class="text-h6 center">{{confirm.message}}</div>
-          </q-card-section >
-          <q-card-actions align="center">
-            <button-group v-if="confirm.isSuccess" :currentUrl="type.currentUrl" @click="initInfo"/>
-            <q-btn v-else color="primary" label="확인" v-close-popup/>
-          </q-card-actions>
-        </q-card>
-      </q-dialog>
+    <q-dialog v-model="confirm.prompt" persistent>
+      <q-card style="min-width: 350px">
+        <q-card-section>
+          <div class="text-h6 center">{{confirm.message}}</div>
+        </q-card-section >
+        <q-card-actions align="center">
+          <button-group v-if="confirm.isSuccess" :currentUrl="type.currentUrl" @click="initInfo"/>
+          <q-btn v-else color="primary" label="확인" v-close-popup/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
     <!-- 여기에 회원가입 로그인 비밀번호 찾기 -->
-    <button-group :currentUrl="type.currentUrl" @click="initInfo"/>
+    <button-group v-if="type.type" :currentUrl="type.currentUrl" @click="initInfo"/>
   </div>
 
 </template>
@@ -76,6 +76,7 @@ export default {
     const router = useRouter()
     const type = reactive({
       type : computed(() => route.params.info),
+      changeType: computed(() => route.params.userData),
       isTypeId: computed(() => type.type === 'id'),
       title : computed(() => type.isTypeId? 'ID':'PW'),
       currentUrl: computed(() => type.isTypeId? 'findId':'findPw'),
@@ -116,7 +117,7 @@ export default {
       confirm.prompt= false
     }
     onBeforeMount (() => {
-      if (!type.isTypeId && type.type !== 'password') {
+      if (!type.isTypeId && type.type !== 'password' && !type.changeType) {
         router.push('/404')
       }
     })
