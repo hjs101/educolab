@@ -13,6 +13,7 @@ export default {
   },
   notice: {
     noticeList: () => NOTICE + 'main/',
-    noticeDetail: () => NOTICE + 'detail/' ,
+    noticeDetail: () => NOTICE + 'detail/',
+    noticeCreate: () => NOTICE + 'create/',
   }
 }

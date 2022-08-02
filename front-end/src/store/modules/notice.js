@@ -1,4 +1,5 @@
 import drf from "@/api/drf.js"
+import router from "@/router"
 import axios from "axios"
 
 export const notice = {
@@ -45,13 +46,74 @@ export const notice = {
         }
       })
         .then(res => {
-          console.log('여기는 오니?')
           console.log(res.data)
           commit('NOTICE_DETAIL', res.data)
         })
         .catch(err => {
           console.log(err)
         })
+    },
+
+    submitNotice({ getters }, credentials) {
+      axios({
+        url: drf.notice.noticeCreate(),
+        method: 'post',
+        headers: getters.authHeader,
+        data : credentials,
+      })
+      .then(res => {
+          console.log(res)
+          console.log(res.data)
+          router.push({ name: 'Notice' })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    deleteNotice({ getters }, noticeId) {
+      axios({
+        url: drf.notice.noticeDetail(),
+        method: 'delete',
+        headers: getters.authHeader,
+        params : {
+          notice_num : noticeId
+        }
+      })
+        .then(res => {
+          console.log(res)
+          alert('해당 글이 삭제되었습니다.')
+          router.push({ name : 'Notice'})
+        })
+    },
+    updateNotice({ getters }, noticeId) {
+      axios({
+        url: drf.notice.noticeDetail(),
+        method: 'put',
+        headers: getters.authHeader,
+        params: {
+          notice_num : noticeId
+        }
+      })
+        .then(res => {
+          console.log(res)
+        })
     }
   }
 }
+
+// updateArticle({ commit, getters }, { pk, title, content}) {
+//   axios({
+//     url: drf.articles.article(pk),
+//     method: 'put',
+//     data: { title, content },
+//     headers: getters.authHeader,
+//   })
+//     .then(res => {
+//       commit('SET_ARTICLE', res.data)
+//       router.push({
+//         name: 'article',
+//         params: { articlePk: getters.article.pk }
+//       })
+//     })
+// },
