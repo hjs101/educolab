@@ -28,3 +28,9 @@ class StudentHomeworkMainSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentHomework
         fields = ('pk','title','deadline')
+
+class TeacherHomeworkDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = TeacherHomework
+        fields = ()

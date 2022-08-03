@@ -2,11 +2,9 @@ from django import views
 from pkg_resources import resource_isdir
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
 from accounts.models import SchoolInfo
 from .serializers import NoticeMainSerializer, NoticeSerializer,FileSerializer
 from .models import Notice, Files
-import os, io
 
 
 class NoticeMainView(APIView) :
