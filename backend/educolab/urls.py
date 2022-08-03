@@ -54,6 +54,7 @@ urlpatterns = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('accounts/registration/', include('dj_rest_auth.registration.urls')),
 =======
     path('accounts/registration', include('dj_rest_auth.registration.urls')),
@@ -78,6 +79,9 @@ urlpatterns = [
 =======
     path('accounts/registration/', include('dj_rest_auth.registration.urls')),
 >>>>>>> d2fc3f3 (feat : 비밀번호 초기화 및 변경 기능 구현)
+=======
+    path('accounts/registration/', include('dj_rest_auth.registration.urls')),
+>>>>>>> 82b6b8b (feat : 과제 생성,수정,삭제,상세보기 기능 완성)
     path('accounts/', include('accounts.urls')), 
     path('admin/', admin.site.urls),
     path('notice/', include('notice.urls')),

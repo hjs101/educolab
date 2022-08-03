@@ -23,16 +23,15 @@ class StudentHomework(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     deadline = models.DateField()
     agreement = models.BooleanField(default=False)
-    check_flag = models.BooleanField(default=False)
 
 class Files(models.Model):
-    teacher_homework = models.ForeignKey(TeacherHomework,on_delete=models.CASCADE, null=True)
-    student_homework = models.ForeignKey(StudentHomework, on_delete=models.CASCADE,null=True)
+    teacher_homework = models.ForeignKey(TeacherHomework,on_delete=models.CASCADE, null=True, related_name='teacher_file')
+    student_homework = models.ForeignKey(StudentHomework, on_delete=models.CASCADE,null=True, related_name='student_file')
     atch_file_name = models.CharField(max_length=45, default="")
     atch_file = models.FileField(blank=True, upload_to='homework/create')  # Field name made lowercase.
 
 class SubmitHomework(models.Model):
-    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE,null=True)
     teacher_homework = models.ForeignKey(TeacherHomework, on_delete=models.CASCADE,null=True, related_name='student_submit')
     student_homework = models.ForeignKey(StudentHomework, on_delete=models.CASCADE,null=True, related_name='my_submit')
     content = models.TextField(null=True)
