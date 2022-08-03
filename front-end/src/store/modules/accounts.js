@@ -92,28 +92,6 @@ export const accounts = {
         axios
           .post(drf.accounts.signup(), state.state.studentInfo)
           .then(() => {
-<<<<<<< HEAD
-            console.log(state.state.sudentInfo)
-            window.alert('회원가입이 완료되었습니다')
-            // 자동으로 이동
-          })
-          .catch(() => {
-            console.log(state.state.sudentInfo)
-            window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
-          })
-          
-        } else if (state.getters.getUserType == 'teacher') {
-        axios.post(drf.accounts.signup(),state.state.teacherInfo)
-          .then(() => {
-            console.log(state.state.teacherInfo)
-            window.alert('회원가입이 완료되었습니다')
-            // 자동으로 이동
-          })
-          .catch(() => {
-            console.log(state.state.teacherInfo)
-            window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
-          })
-=======
             window.alert("회원가입이 완료되었습니다");
             router.push({ name: "login" });
           })
@@ -130,7 +108,6 @@ export const accounts = {
           .catch(() => {
             window.alert("필수 항목이 빠져 있거나, 올바르지 않습니다");
           });
->>>>>>> 36a3f8f21f4e9d98277ce765109df2441d68b551
       }
     },
     logout({ dispatch }) {
