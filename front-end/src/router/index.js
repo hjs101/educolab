@@ -14,8 +14,17 @@ const routes = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+  // 검색 공지사항
+  {
+    path: '/search',
+    name: 'searchNotice',
+    component: () => import ('@/components/SearchNotice')
+  },
+>>>>>>> 3646f0b (공지사항 파일 업로드)
   // 회원 관리
   {
     path: '/',

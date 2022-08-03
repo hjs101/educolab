@@ -113,6 +113,7 @@ class NoticeMainView(APIView) :
 
 class NoticeCreateView(APIView):
     def post(self, req):
+        print(req.data)
         if not req.user.userflag:
             return Response({"message : 선생님만 접근 가능합니다."})
         # notice = Notice()
@@ -121,7 +122,9 @@ class NoticeCreateView(APIView):
             notice = notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.user.school.code))
 
         files = req.FILES.getlist("files")
+        print(req.data['files'])
 
+        print(files)
         for file in files:
 <<<<<<< HEAD
             fp = Files.objects.create(notice=notice[0], atch_file=file, atch_file_name=file)
@@ -155,7 +158,7 @@ class NoticeDetailView(APIView):
         
         
         fileserializer = FileSerializer(files, many=True)
-        print(files)
+
         
         ## 공지사항 시리얼라이저 생성
         notice_detail_serializer = NoticeSerializer(notice)

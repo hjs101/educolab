@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 64e711e (공지사항 상세페이지 버그 수)
 =======
@@ -31,18 +32,35 @@
         </div>
       </div>
 >>>>>>> fec931d (공지사항  상세페이지 구현)
+=======
+    <div class="center">
+      <h3>제목 : {{ noticeItem.notice.title }}</h3>
+      <p>등록일 : {{ noticeItem.notice.updated_at }}</p>
+      <p>작성자 : {{ noticeItem.notice.teacher.name }}</p>
+      <h4>내용 : {{ noticeItem.notice.content }}</h4>
+      <div v-for="(file, index) in noticeItem.files" :key="index">
+        파일이름: 
+        <button @click="openFile(file.atch_file)">{{ file.atch_file_name }}</button>
+        <br>
+>>>>>>> 3646f0b (공지사항 파일 업로드)
 
-      <button @click="updateData">수정</button>
-      <button @click="deleteNotice(noticeItem.notice.id)">삭제</button>
-      <br>
-      <router-link to="/notice"><button>목록</button></router-link>
+      </div>
     </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 8ad08b5 (비밀번호  변경으로 인한 로그인 이슈)
 =======
     
 >>>>>>> b39710a (공지사항  수정 구현)
+=======
+
+    <button @click="updateData">수정</button>
+    <button @click="deleteNotice(noticeItem.notice.id)">삭제</button>
+    <br>
+    <router-link to="/notice"><button>목록</button></router-link>
+>>>>>>> 3646f0b (공지사항 파일 업로드)
   </div>
+    
 </template>
 
 <script>
@@ -68,6 +86,9 @@ export default {
           noticePk : this.index
         }
       })
+    },
+    openFile(url) {
+      window.open('http://127.0.0.1:8000'+ url)
     }
   }
 }
