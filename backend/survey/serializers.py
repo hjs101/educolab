@@ -29,3 +29,8 @@ class QuestionDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.SurveyQuestions
         fields= ['question_number', 'survey_question', 'multiple_bogi']
+
+class QuestionStatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.SurveyQuestions
+        fields = ['survey_question','question_number','multiple_bogi','num1','num2','num3','num4','num5']
