@@ -23,4 +23,8 @@ urlpatterns = [
     path('create/', views.SurveyCreateView.as_view(), name='survey_create'),
     path('detail/', views.SurveyDetailView.as_view(), name='survey_detail'),
     path('update/', views.SurveyUpdateView.as_view(), name='survey_update'),
+    path('stat/', views.SurveyStatView.as_view(), name='survey_stat'),
+    path('stat/detail/',views.SurveyStatDetailView.as_view(),name="survey_stat_detail"),
+    path('submit/', views.SurveySubmitView.as_view(), name='survey_submit'),
+    
 ]

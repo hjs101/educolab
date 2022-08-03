@@ -28,4 +28,21 @@ class SurveyMainSerializer(serializers.ModelSerializer):
 class QuestionDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.SurveyQuestions
-        fields= ['question_number', 'survey_question', 'multiple_bogi']
+        fields= ['id','question_number', 'survey_question', 'multiple_bogi']
+
+class QuestionStatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.SurveyQuestions
+        fields = ['id','survey_question','question_number','multiple_bogi','num1','num2','num3','num4','num5']
+
+class QuestionStatDetailSerializer(serializers.ModelSerializer):
+    question = QuestionDetailSerializer(read_only=True)
+    class Meta:
+        model = models.SurveyQuestionsAnswer
+        fields = "__all__"
+
+class QuestionsAnswerSerializer(serializers.ModelSerializer):
+    question = QuestionSerializer(read_only=True)
+    class Meta:
+        model = models.SurveyQuestionsAnswer
+        fields = "__all__"
