@@ -6,16 +6,41 @@ from .models import StudentHomework, TeacherHomework, Files, SubmitHomework
 from accounts.models import SchoolInfo, UserInfo
 from .serializers import StudentHomeworkDetailSerializer, StudentHomeworkMainSerializer, TeacherHomeworkCreateSerializer, StudentHomeworkCreateSerializer, TeacherHomeworkDetailSerializer, TeacherHomeworkMainSerializer
 
+from datetime import datetime
 # Create your views here.
 class HomeworkMainView(APIView):
     
     def get(self, request):
         if request.user.userflag == True:
             teacher = UserInfo.objects.get(username=request.user.username)
-            homework = teacher.T_homework.all()
+            today = datetime.now().date()
+            homeworks = teacher.T_homework.all()
+            notdone_homework = []
+            done_notcheck_homework = []
+            all_done_homework = []
+            for homework in homeworks:
+                print(homework.deadline, today)
+                if homework.deadline >= today:
+                    notdone_homework.append(homework)
+                elif homework.check_flag == False:
+                    done_notcheck_homework.append(homework)
+                else:
+                    all_done_homework.append(homework)
+            
+            print(notdone_homework)
+            print(done_notcheck_homework)
+            print(all_done_homework)
 
-            homework_serializer = TeacherHomeworkMainSerializer(homework, many=True)
-            return Response(homework_serializer.data)
+            notdone_homework_serializer = TeacherHomeworkMainSerializer(notdone_homework, many=True)
+            done_notcheck_homework_serializer = TeacherHomeworkMainSerializer(done_notcheck_homework, many=True)
+            all_done_homework_serializer = TeacherHomeworkMainSerializer(all_done_homework, many=True)
+            
+            context = {
+                "not_done" : notdone_homework_serializer.data,
+                "done_notcheck" : done_notcheck_homework_serializer.data,
+                "all_done" : all_done_homework_serializer.data
+            }
+            return Response(context)
         
         elif request.user.userflag == False:
             student = UserInfo.objects.get(username=request.user.username)

@@ -12,7 +12,7 @@ class TeacherHomework(models.Model):
     deadline = models.DateField()
     grade = models.IntegerField()
     class_field = models.IntegerField()  
-    target = models.ManyToManyField(UserInfo)
+    target = models.ManyToManyField(UserInfo, related_name='teacher_homework')
     check_flag = models.BooleanField(default=False)
 
 class StudentHomework(models.Model):
