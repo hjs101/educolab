@@ -111,6 +111,7 @@ export const accounts = {
         });
     },
     signup({state, getters}) {
+      let data = null
       if (getters.getUserType == "student") {
         data = state.studentInfo
       } else {
@@ -122,8 +123,8 @@ export const accounts = {
           router.push({ name: "login" })
           this.initInfo()
         })
-        .catch(() => {
-          if (response.data.email) {
+        .catch(({response}) => {
+          if (response.data?.email) {
             window.alert(response.data.email[0])
           } else {
             window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')

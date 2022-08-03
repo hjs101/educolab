@@ -23,13 +23,28 @@
             val => val !== null && val !== '' || '이메일을 입력해주세요',
           ]"
           />
-          <q-select v-model="userInfo.address" :options="emailOptions" class="col-4" label="이메일 주소 선택" required />
-          <q-btn color="amber" label="FIND ID" v-if="type.isTypeId" class="col-8 offset-2 col-md-1 offset-md-1" @click="findId"/>
+          <q-select
+            v-model="userInfo.address"
+            :options="emailOptions"
+            class="col-4"
+            label="이메일 주소 선택"
+            required
+          />
+          <q-btn
+            color="amber"
+            label="FIND ID"
+            v-if="type.isTypeId"
+            class="col-8 offset-2 col-md-1 offset-md-1"
+            @click="findId"
+          />
         </div>
-        <send-pw-email v-if="!type.isTypeId" :name="userInfo.name" :email="userInfo.fullEmail" />
+        <send-pw-email
+          v-if="!type.isTypeId"
+          :name="userInfo.computedName"
+          :email="userInfo.fullEmail"
+        />
       </div>
     </q-form>
-
     <q-dialog v-model="confirm.prompt" persistent>
       <q-card style="min-width: 350px">
         <q-card-section>
@@ -72,6 +87,7 @@ export default {
     SendPwEmail,
   },
   setup () {
+
     const route = useRoute()
     const router = useRouter()
     const type = reactive({
@@ -88,12 +104,14 @@ export default {
       name : null,
       email: '',
       address: null,
-      fullEmail: computed(() => userInfo.email + userInfo.address)
+      fullEmail: computed(() => userInfo.email + userInfo.address),
+      computedName: computed(() => userInfo.name),
     })
     const confirm = reactive({
       username: null,
       success: false,
       prompt: false,
+      computedPrompt: computed(() => confirm.prompt),
       message: computed(() => type.isTypeId && confirm.success? `아이디는 ${confirm.username}입니다`: '입력하신 회원정보가 존재하지 않습니다'),
       isSuccess: computed(() => confirm.success)
     })
@@ -102,9 +120,10 @@ export default {
         .then((res) => {
           confirm.success = res.data.success
           confirm.prompt = true
-          console.log(res.data)
           if (confirm.success) {
             confirm.username = res.data.username
+            console.log(confirm.username)
+            console.log(confirm.prompt)
           }
         })
     }
