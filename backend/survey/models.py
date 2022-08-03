@@ -8,7 +8,7 @@ class SurveyList(models.Model):
     grade = models.IntegerField()
     class_field = models.IntegerField()  # Field renamed because it was a Python reserved
     target = models.ManyToManyField(UserInfo, related_name="target")
-    done_target = models.ForeignKey(UserInfo, null=True ,on_delete=models.CASCADE, related_name="target_done")
+    done_target = models.ManyToManyField(UserInfo , related_name="done_target")
 
 
 class SurveyQuestions(models.Model):
@@ -23,7 +23,7 @@ class SurveyQuestions(models.Model):
     num5 = models.IntegerField(default=0)
 
 class SurveyQuestionsAnswer(models.Model):
-    survey_question_pk = models.ForeignKey('SurveyQuestions',on_delete=models.CASCADE)
+    question = models.ForeignKey(SurveyQuestions,on_delete=models.CASCADE, related_name="question_answers")
     content = models.TextField()
 
 class SueveyTemplate(models.Model):
