@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from accounts.serializers import UserNameSerializer
 from accounts.models import SchoolInfo,UserInfo
-from survey.serializers import SurveySerializer, QuestionSerializer, SurveyMainSerializer,QuestionDetailSerializer
+from survey.serializers import SurveySerializer, QuestionSerializer, SurveyMainSerializer,QuestionDetailSerializer,QuestionStatSerializer
 from .models import SurveyList
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
@@ -127,3 +127,20 @@ class SurveyUpdateView(APIView):
             'message' : "success",
         }
         return Response({"success" : True})
+class SurveyStatView(APIView):
+    def get(self, req):
+        survey_id = req.GET['survey_num']
+        survey = SurveyList.objects.get(pk=survey_id)
+
+        survey_questions = survey.question_survey.all()
+        print(survey_questions)
+        question_serializer = QuestionStatSerializer(data=survey_questions,many=True)
+        if question_serializer.is_valid(raise_exception=True):
+            res = Response({
+                "survey_title" : survey.title,
+                "questions" : question_serializer.data
+            })
+        return res
+        ##survey.title
+
+
