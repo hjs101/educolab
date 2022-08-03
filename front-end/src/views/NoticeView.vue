@@ -54,7 +54,7 @@ export default {
   //   NoticeItem
   // },
   computed: {
-    ...mapGetters(['notice2', 'notcieItem'])
+    ...mapGetters(['notice2', 'noticeItem'])
   },
   methods: {
     ...mapActions(['noticeList', 'noticeDetail']),

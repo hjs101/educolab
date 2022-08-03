@@ -2,6 +2,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
+  // 검색 공지사항
+  {
+    path: '/search',
+    name: 'searchNotice',
+    component: () => import ('@/components/SearchNotice')
+  },
   // 회원 관리
   {
     path: '/',
