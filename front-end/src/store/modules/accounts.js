@@ -318,6 +318,7 @@ export const accounts = {
         });
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     signup(state) {
       if (state.getters.getUserType == "student") {
         axios
@@ -350,6 +351,25 @@ export const accounts = {
           })
           .catch(() => {
             console.log(state.state.sudentInfo)
+=======
+    signup({state, getters}) {
+      let data = null
+      if (getters.getUserType == "student") {
+        data = state.studentInfo
+      } else {
+        data = state.teacherInfo
+      }
+      axios.post(drf.accounts.signup(), data)
+        .then(() => {
+          window.alert("회원가입이 완료되었습니다")
+          router.push({ name: "login" })
+          this.initInfo()
+        })
+        .catch(({response}) => {
+          if (response.data?.email) {
+            window.alert(response.data.email[0])
+          } else {
+>>>>>>> fb19966 (Feat : 비밀번호 변경 기능 완료 & 팝업 컴포넌트화 (수정할 부분 있음))
             window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
           })
           

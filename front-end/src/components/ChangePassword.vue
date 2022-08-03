@@ -6,6 +6,7 @@
       <div class="input col-8 offset-2 col-md-3 offset-md-4">
         <q-input
           color="teal"
+          type="password"
           v-model="password.one"
           label="새 비밀번호"
           lazy-rules
@@ -13,6 +14,7 @@
         />
         <q-input
           color="teal"
+          type="password"
           v-model="password.two"
           label="비밀번호 확인"
           lazy-rules
@@ -30,10 +32,11 @@
         @click="changePw"
       />
       <message-pop-up
-      v-if="password.prompt"
-      :message="password.message"
-      :path="'/login'"
-      :success="success"/>
+        v-if="password.prompt"
+        :message="password.message"
+        :path="'/'"
+        :success="password.success"
+        />
     </q-form>
   </div>
 </template>
@@ -62,13 +65,21 @@ export default {
       message: null,
       success: false,
       prompt: false,
+      popUpFlag:computed(() => password.prompt),
       samePassword: computed(() => password.one === password.two)
     })
     const changePw = () => {
       axios.post(drf.accounts.changePw(), {...props.data, password1:password.one, password2:password.two})
       .then(({data}) => {
+        console.log(data)
         password.message = data.message
         password.success = data.success
+      })
+      .catch(({response}) => {
+        password.message = response.data.message
+        password.success = false
+      })
+      .finally(() => {
         password.prompt = true
       })
     }

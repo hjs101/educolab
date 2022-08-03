@@ -14,26 +14,24 @@
       label="FIND PW"
       class="col-8 offset-2 col-md-1 offset-md-1"
       @click="isValidEmail"/>
-    <!-- 비밀번호 찾기 (인증 실패 팝업) -->
-    <q-dialog v-model="email.isFail">
-        <q-card>
-          <q-card-section>
-            <div class="text-h6">인증 실패</div>
-          </q-card-section>
-
-          <q-card-section class="q-pt-none">
-            <span>
-              {{email.message}}
-            </span>
-          </q-card-section>
-
-          <q-card-actions align="center">
-            <q-btn flat label="확인" color="primary" v-close-popup/>
-          </q-card-actions>
-        </q-card>
-      </q-dialog>
+    <!-- 인증 번호를 보냈음을 알림 또는 빈 항목이 있음을 알림 (프론트) -->
+    <message-pop-up
+      v-if="email.prompt && !email.isFail"
+      title=""
+      message="인증번호가 전송되었습니다"
+      path=""
+      success=""
+    />
+    <!-- 인증 실패 팝업 (일치하는 회원정보가 없음) -->
+    <message-pop-up 
+      v-if="email.prompt && email.isFail"
+      title="인증 실패"
+      :message="email.message"
+      path=""
+      success=""
+    />
     <!-- 인증 번호 입력 창 -->
-    <div v-if="number.showAuth" class="row justify-between">
+    <div v-if="email.prompt && !email.isFail" class="row justify-between">
       <q-input
         color="teal"
         v-model="number.inputNum"
@@ -42,35 +40,19 @@
         :rules="[ val => val && val.length > 0 || '인증번호를 입력해주세요']"
       />
       <!-- 인증 번호 확인 버튼 -->
-      <q-btn color="teal" label="확인" class="col-2" @click="alert = true" />
+      <q-btn color="teal" label="확인" class="col-2" @click="sendData" />
       <!-- 인증 제한 시간 -->
       <p>
         제한 시간 {{time.minute}}:{{time.second}}
       </p>
       <!-- 인증 번호 일치 여부 팝업-->
-      <q-dialog v-model="alert">
-        <q-card>
-          <q-card-section>
-            <div class="text-h6">인증 번호 확인</div>
-          </q-card-section>
-
-          <q-card-section class="q-pt-none">
-            <span v-if="number.isAuthNum && number.isValidNumber">
-              인증되었습니다
-            </span>
-            <span v-else-if="!number.isAuthNum">
-              인증번호 입력 시간이 지났습니다. 이메일 인증을 다시 받아주세요
-            </span>
-            <span v-else>
-              인증번호가 일치하지 않습니다
-            </span>
-          </q-card-section>
-
-          <q-card-actions align="right">
-            <q-btn flat label="확인" color="primary" v-close-popup @click="sendData"/>
-          </q-card-actions>
-        </q-card>
-      </q-dialog>
+      <message-pop-up
+        v-if="alert"
+        title="인증 번호 확인"
+        message="인증되었습니다"
+        path=""
+        :success="email.valid"
+      />
     </div>
   </div>
     
@@ -83,10 +65,14 @@ import {computed, onBeforeMount} from 'vue'
 import {useStore} from 'vuex'
 import axios from 'axios'
 import drf from '@/api/drf.js'
+import MessagePopUp from '@/components/MessagePopUp.vue'
 export default {
   name: 'ConfirmAuthNumber',
   props: {
     data: Object,
+  },
+  components: {
+    MessagePopUp,
   },
   setup (props) {
     const route = useRoute()
@@ -100,9 +86,11 @@ export default {
       authNum: null,
       valid: false,
       message: null,
+      prompt: false,
       isFail: computed(() => !!email.message)
     })
     const isValidEmail = () => {
+      // if는 find, else는 signup
       if (params.info) {
         if (props.data.email && props.data.name && props.data.username) {
           axios.post(drf.accounts.sendPwEmail(), props.data)
@@ -115,15 +103,18 @@ export default {
                 email.message = res.data.message
               }
             })
+        } else {
+          email.message = '비어있는 항목을 채워주세요'
+          // 빈 항목이 있을 때
         }
+        email.prompt = true
       } else {
         if (props.data.email) {
+          start()
           axios.post(drf.accounts.sendEmail(), props.data)
             .then(res => {
-              console.log
               email.authNum = res.data['auth_num']
               email.valid = true
-              start()
             })
         }
       }
@@ -131,13 +122,13 @@ export default {
     const number = reactive({
       inputNum: null,
       showAuth: computed(() => email.valid),
+      message: null,
       isValidNumber: computed(() => email.authNum === number.inputNum),
       isAuthNum: computed(() => !!email.authNum),
     }) 
     let alert = ref(false)
     let limit = ref(180)
     const start = () => {
-      console.log(1)
       limit.value = 180
       const timer = setInterval(() => {
         if (limit.value > 0) {
@@ -155,12 +146,14 @@ export default {
     const sendData = () => {
       if (number.isValidNumber) {
         if (route.params.info === 'password') {
-          store.dispatch('setPermission', true)
+          alert = true
+          email.valid = false
           router.push('/change/password')
           } else {
-          store.dispatch('changeData', {email:props.email})
+            store.dispatch('changeData', props.data)
         }
       }
+      alert = true
     }
     onBeforeMount (() => {
       if (!params.userType && params.info !== 'password') {
@@ -174,7 +167,7 @@ export default {
       alert,
       time,
       isValidEmail,
-      sendData,
+      sendData
     }
   }
 }
