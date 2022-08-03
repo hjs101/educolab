@@ -67,6 +67,30 @@ const routes = [
     component: () => import('@/views/TeacherTaskView')
   },
 
+  // 과제(학생)
+  {
+    path: '/student/task',
+    name: 'StudentTaskListView',
+    component: () => import('@/views/StudentTaskListView')
+  },
+  // 과제 상세 
+  {
+    path: '/:userType/task/detail/:taskPk',
+    name: 'TaskDetailView',
+    component: () => import('@/views/TaskDetailView')
+  },
+  // 과제 생성
+  {
+    path: '/:userType/task/create',
+    name: 'TaskCreateView',
+    component: () => import('@/views/TaskCreateOrUpdateView')
+  },
+  // 과제 수정
+  {
+    path: '/:userType/task/update/:taskPk',
+    name: 'TaskUpdateView',
+    component: () => import('@/views/TaskCreateOrUpdateView')
+  },
   // 퀴즈(교사)
   {
     path: '/quiz',
@@ -86,13 +110,6 @@ const routes = [
     path: '/teacher',
     name: 'TeacherPage',
     component: () => import('@/views/TeacherPageView')
-  },
-
-  // 과제(학생)
-  {
-    path: '/student/task',
-    name: 'StudentTaskListView',
-    component: () => import('@/views/StudentTaskListView')
   },
 
   // 내 필기(학생)
