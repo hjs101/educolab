@@ -33,4 +33,5 @@ urlpatterns = [
     path('find_username/', views.FindUsernameView.as_view(), name='findusername'),
     path('send_signup_email/', views.SendSignupEmailView.as_view(), name='sendsignupemail'),
     path('send_pw_email/',views.SendPWEmailView.as_view(), name="sendpwemail"),
+    path('change_pw/', views.ChangePWView.as_view(), name="changepw"),
 ]

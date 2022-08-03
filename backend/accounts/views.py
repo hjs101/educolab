@@ -46,6 +46,7 @@ class SendSignupEmailView(APIView):
     def post(self,request):
         email = request.data.get('email')
         auth_num = email_auth_num()
+        print(email)
         send_mail(subject='educolab 회원가입 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
         context = {
             'auth_num' : auth_num,
@@ -112,3 +113,30 @@ class SendPWEmailView(APIView):
             }
             return Response(context)
 
+class ChangePWView(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self,request):
+        name = request.data.get('name')
+        email = request.data.get('email')
+        username = request.data.get('username')
+        password1 = request.data.get('password1')
+        password2 = request.data.get('password2')
+
+        if password1 != password2:
+            context = {
+                "success" : False,
+                "message" : "비밀번호가 일치하지 않습니다"
+            }
+            return Response(context)
+
+        userinfo = UserInfo.objects.get(name=name,email=email,username=username)
+        userinfo.set_password(password1)
+        userinfo.save()
+        print(userinfo)
+
+        context = {
+            "success" : True,
+            "message" : "비밀번호가 성공적으로 변경되었습니다"
+        }
+        return Response(context)
