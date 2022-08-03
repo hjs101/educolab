@@ -37,12 +37,12 @@ export const accounts = {
     };
   },
   getters: {
-    isLoggedIn: (state) => !!state.access,
-    currentUser: (state) => state.currentUser,
-    authError: (state) => state.authError,
-    authHeader: (state) => ({ Authorization: `Token ${state.access}` }),
-    getUserType: (state) => state.userType,
-    getSubject: (state) => state.teacherInfo.subject,
+    isLoggedIn: state => !!state.access, 
+    currentUser: state => state.currentUser,
+    authError: state => state.authError,
+    authHeader: state => ({ Authorization: `Bearer ${state.access}` }),
+    getUserType: state => state.userType,
+    getSubject: state => state.teacherInfo.subject,
   },
   mutations: {
     SET_TOKEN: (state, access) => (state.access = access),
