@@ -1,6 +1,5 @@
 <template>
   <div class="q-mx">
-    <!-- 반응형하는 중 -->
     <h3>LOGIN</h3>
     <account-error-list></account-error-list>
     <!-- form 부분 -->
@@ -30,23 +29,16 @@
         />
       </div>
       <!-- 여기에 로그인버튼 -->
-      <q-btn color="secondary" label="LOGIN" class="col-8 offset-2 col-md-1 offset-md-1" @click="login(credentials)"/>
-
+      <q-btn
+        color="secondary"
+        label="LOGIN"
+        class="col-8 offset-2 col-md-1 offset-md-1"
+        @click="login(credentials)"/>
     </q-form>
 
     <!-- 여기에 회원가입 / ID 찾기 / 비밀번호 찾기 -->
-    <div class="buttonGroup">
-      <router-link to="/signup" class="button">
-        <q-btn color="primary" label="SIGN UP"/>
-      </router-link>
-      <router-link to="#" class="button">
-        <q-btn color="amber" label="FIND ID" />
-      </router-link>
-      <router-link to="#" class="button">
-        <q-btn color="light" text-color="black" label="FIND PW" />
-      </router-link>
-      <router-view></router-view>
-    </div>
+    <button-group :currentUrl="currentUrl"/>
+    <router-view></router-view>
   </div>
 
 </template>
@@ -64,18 +56,21 @@
 // import { reactive } from '@vue/reactivity'
 import { mapGetters, mapActions } from 'vuex'
 import AccountErrorList from '@/components/AccountErrorList.vue'
+import ButtonGroup from '@/components/ButtonGroup.vue'
 
 export default {
   name: 'LoginView',
   components: {
-    AccountErrorList
+    AccountErrorList,
+    ButtonGroup
   },
   data () {
     return {
       credentials: {
         username : '',
         password: '',
-      }
+      },
+      currentUrl: 'login',
     }
   },
   computed: {
