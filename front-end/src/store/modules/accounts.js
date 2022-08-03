@@ -1,6 +1,6 @@
-import drf from "@/api/drf.js";
-import router from "@/router";
-import axios from "axios";
+import drf from "@/api/drf.js"
+import router from "@/router"
+import axios from "axios"
 
 export const accounts = {
   state() {
@@ -51,11 +51,11 @@ export const accounts = {
     CHANGE_DATA(state, data) {
       if (state.userType === "student") {
         for (let key in data) {
-          state.studentInfo[key] = data[key];
+          state.studentInfo[key] = data[key]
         }
       } else {
         for (let key in data) {
-          state.teacherInfo[key] = data[key];
+          state.teacherInfo[key] = data[key]
         }
       }
     },
@@ -64,11 +64,34 @@ export const accounts = {
   actions: {
     saveToken({ commit }, access) {
       commit("SET_TOKEN", access);
-      localStorage.setItem("access", access);
+      localStorage.setItem("access", access)
     },
     removeToken({ commit }) {
       commit("SET_TOKEN", "");
-      localStorage.setItem("access", "");
+      localStorage.setItem("access", "")
+    },
+    initInfo({state, getters, dispatch}) {
+      if (getters.getUserType == "student") {
+        for (let key in state.studentInfo) {
+          if (key === 'userflag') {
+            dispatch('changeData', {'userflag':false})
+          } else if (key === 'birthday') {
+            dispatch('changeData', {'birthday':"2008-01-01"})
+          } else {
+            dispatch('changeData', {[key]:null})
+          }
+        }
+      } else {
+        for (let key in state.teacherInfo) {
+          if (key === 'userflag') {
+            dispatch('changeData', {'userflag':false})
+          } else if (key === 'birthday') {
+            dispatch('changeData', {'birthday':"1967-01-01"})
+          } else {
+            dispatch('changeData', {[key]:null})
+          }
+        }
+      }
     },
     login({ commit, dispatch }, credentials) {
       // 로그인 함수 구현
@@ -78,37 +101,35 @@ export const accounts = {
         data: credentials,
       })
         .then((res) => {
-          const access = res.data.access;
-          dispatch("saveToken", access);
-          commit("SET_CURRENT_USER", res.data);
-          router.push({ name: "educolab" });
+          const access = res.data.access
+          dispatch("saveToken", access)
+          commit("SET_CURRENT_USER", res.data)
+          router.push({ name: "educolab" })
         })
         .catch((err) => {
-          commit("SET_AUTH_ERROR", err.response.data);
+          commit("SET_AUTH_ERROR", err.response.data)
         });
     },
-    signup(state) {
-      if (state.getters.getUserType == "student") {
-        axios
-          .post(drf.accounts.signup(), state.state.studentInfo)
-          .then(() => {
-            window.alert("회원가입이 완료되었습니다");
-            router.push({ name: "login" });
-          })
-          .catch(() => {
-            window.alert("필수 항목이 빠져 있거나, 올바르지 않습니다");
-          });
-      } else if (state.getters.getUserType == "teacher") {
-        axios
-          .post(drf.accounts.signup(), state.state.teacherInfo)
-          .then(() => {
-            window.alert("회원가입이 완료되었습니다");
-            router.push({ name: "login" });
-          })
-          .catch(() => {
-            window.alert("필수 항목이 빠져 있거나, 올바르지 않습니다");
-          });
+    signup({state, getters}) {
+      let data = null
+      if (getters.getUserType == "student") {
+        data = state.studentInfo
+      } else {
+        data = state.teacherInfo
       }
+      axios.post(drf.accounts.signup(), data)
+        .then(() => {
+          window.alert("회원가입이 완료되었습니다")
+          router.push({ name: "login" })
+          this.initInfo()
+        })
+        .catch(({response}) => {
+          if (response.data?.email) {
+            window.alert(response.data.email[0])
+          } else {
+            window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
+          }
+        })
     },
     logout({ dispatch }) {
       dispatch("removeToken");
@@ -119,10 +140,10 @@ export const accounts = {
     setUserType({ commit }, userType) {
       // 로그인할 때
       // 회원가입 페이지
-      commit("SET_USER_TYPE", userType);
+      commit("SET_USER_TYPE", userType)
     },
     changeData({ commit }, data) {
-      commit("CHANGE_DATA", data);
+      commit("CHANGE_DATA", data)
     },
   },
 };
