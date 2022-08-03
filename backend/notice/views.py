@@ -3,6 +3,7 @@ from requests import request
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 <<<<<<< HEAD
+<<<<<<< HEAD
 from rest_framework.permissions import IsAuthenticated 
 <<<<<<< HEAD
 =======
@@ -17,6 +18,8 @@ from accounts.serializers import TeacherNameSerializer
 from accounts.models import SchoolInfo,UserInfo
 from .serializers import NoticeMainSerializer, NoticeCreateSerializer
 =======
+=======
+>>>>>>> 82a5c7c (feat: pull전 commit)
 from accounts.models import SchoolInfo
 from .serializers import NoticeMainSerializer, NoticeSerializer,FileSerializer
 >>>>>>> c5da375 (Feat : 공지사항 상세페이지 파일 표시, 수정기능(진행중))
@@ -34,11 +37,14 @@ from accounts.models import SchoolInfo,UserInfo
 from .serializers import NoticeMainSerializer, NoticeSerializer, FileSerializer
 >>>>>>> 417b70e (Fix : 충돌 수정)
 from .models import Notice, Files
+<<<<<<< HEAD
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 import os, io
+=======
+>>>>>>> 82a5c7c (feat: pull전 commit)
 
 
 <<<<<<< HEAD
