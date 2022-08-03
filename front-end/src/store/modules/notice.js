@@ -54,15 +54,18 @@ export const notice = {
         })
     },
 
-    submitNotice({ getters }, credentials) {
+    submitNotice({ getters }, info) {
+      console.log('ㅋㅋㅋㅋㅋㅋㅋㅋ')
       axios({
         url: drf.notice.noticeCreate(),
         method: 'post',
-        headers: getters.authHeader,
-        data : credentials,
+        headers: {
+          ...getters.authHeader,
+          'Content-Type': 'multipart/form-data'
+        },
+        data : info,
       })
       .then(res => {
-          console.log(res)
           console.log(res.data)
           router.push({ name: 'Notice' })
         })
