@@ -123,6 +123,7 @@ export const accounts = {
   },
   getters: {
 <<<<<<< HEAD
+<<<<<<< HEAD
     isLoggedIn: (state) => !!state.access,
     currentUser: (state) => state.currentUser,
     authError: (state) => state.authError,
@@ -130,13 +131,18 @@ export const accounts = {
     getUserType: (state) => state.userType,
     getSubject: (state) => state.teacherInfo.subject,
 =======
+=======
+>>>>>>> 0004fc1 (notice merge)
     isLoggedIn: state => !!state.access, 
     currentUser: state => state.currentUser,
     authError: state => state.authError,
     authHeader: state => ({ Authorization: `Bearer ${state.access}` }),
     getUserType: state => state.userType,
     getSubject: state => state.teacherInfo.subject,
+<<<<<<< HEAD
 >>>>>>> afe56c9 (공지사항 메인페이지)
+=======
+>>>>>>> 0004fc1 (notice merge)
   },
   mutations: {
 <<<<<<< HEAD
@@ -297,6 +303,7 @@ export const accounts = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             console.log(state.teacherInfo)
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -420,6 +427,8 @@ export const accounts = {
 =======
 =======
 >>>>>>> c19258a (DB 버그 수정)
+=======
+>>>>>>> 0004fc1 (notice merge)
             window.alert("회원가입이 완료되었습니다");
             router.push({ name: "login" });
           })
