@@ -16,15 +16,19 @@ const routes = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 =======
+=======
+>>>>>>> 8e382a2 (Fix : 회원가입 오류 수정해 merge)
   // 검색 공지사항
   {
     path: '/search',
     name: 'searchNotice',
     component: () => import ('@/components/SearchNotice')
   },
+<<<<<<< HEAD
 >>>>>>> 3646f0b (공지사항 파일 업로드)
   // 회원 관리
   {
@@ -49,6 +53,8 @@ const routes = [
 =======
   
 >>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
+=======
+>>>>>>> 8e382a2 (Fix : 회원가입 오류 수정해 merge)
   // 메인페이지 
   {
     path: '/educolab',
