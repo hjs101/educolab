@@ -33,12 +33,19 @@ class Files(models.Model):
     atch_file = models.FileField(blank=True, upload_to='homework/create')  # Field name made lowercase.
 
 class SubmitHomework(models.Model):
+<<<<<<< HEAD
     student = models.ForeignKey(UserInfo, on_delete=models.CASCADE,null=True,related_name='submit_homework')
+=======
+    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE,null=True)
+>>>>>>> 1d03a62 (Backend file 삽입)
     teacher_homework = models.ForeignKey(TeacherHomework, on_delete=models.CASCADE,null=True, related_name='student_submit')
     student_homework = models.ForeignKey(StudentHomework, on_delete=models.CASCADE,null=True, related_name='my_submit')
     content = models.TextField(null=True)
     submit_at = models.DateTimeField(auto_now=True) # 백앤드에서 현재 시간 넣어주기
     submit_flag = models.BooleanField(default=False)
+<<<<<<< HEAD
     check_flag = models.BooleanField(default=False)
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
     atch_file_name = models.CharField(max_length=45, default="",null=True)
     atch_file = models.FileField(blank=True, upload_to='homework/submit',null=True)

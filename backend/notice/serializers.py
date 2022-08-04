@@ -9,6 +9,7 @@ class NoticeMainSerializer(serializers.ModelSerializer):
     teacher = UserNameSerializer(read_only=True)
     class Meta:
 <<<<<<< HEAD
+<<<<<<< HEAD
         model = models.UserInfo
         fields = ['classification','title','created_at','teacher']
 =======
@@ -18,6 +19,10 @@ class NoticeMainSerializer(serializers.ModelSerializer):
 =======
         fields = ['pk','classification','title','updated_at','views','teacher']
 >>>>>>> 53d5343 (Feat : 데이터 변경사항 수정)
+=======
+        model = models.Notice
+        fields = ['pk','classification','title','updated_at','views','teacher']
+>>>>>>> 1d03a62 (Backend file 삽입)
 
 class NoticeSerializer(serializers.ModelSerializer):
     teacher = UserNameSerializer(read_only=True)
@@ -29,16 +34,20 @@ class NoticeSerializer(serializers.ModelSerializer):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 73fd2c6 (Feat : 공지사항 기능 진행상황 저장)
 =======
 =======
 >>>>>>> f99fc5d (Fix : 오류 수정)
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 class FileSerializer(serializers.ModelSerializer):
     atch_file = serializers.FileField(use_url=True)
     
     class Meta:
         model = models.Files
         fields = '__all__'
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -56,3 +65,5 @@ class FileSerializer(serializers.ModelSerializer):
 >>>>>>> f99fc5d (Fix : 오류 수정)
 =======
 >>>>>>> afd284c (Fix : 버그수정)
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)

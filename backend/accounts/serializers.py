@@ -1,6 +1,7 @@
 from rest_framework import serializers
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from . import models
 <<<<<<< HEAD
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -33,6 +34,13 @@ from django.contrib.auth import get_user_model
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from educolab.settings import SECRET_KEY
 import jwt
+=======
+from . import models
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+from django.contrib.auth import get_user_model
+from dj_rest_auth.registration.serializers import RegisterSerializer
+>>>>>>> 1d03a62 (Backend file 삽입)
 
 class UserNameSerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,21 +48,30 @@ class UserNameSerializer(serializers.ModelSerializer):
         fields = ['name', 'username']
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3494f79 (Feat : 공지사항 등록, 목록 기능 구현)
 =======
 >>>>>>> 559df98 ( Feat : 버그 수정)
 =======
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 
 class HomeworkUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
+<<<<<<< HEAD
         fields = ('name','username','grade','class_field',)
 
 >>>>>>> ea51fa4 (feat : 과제기능 생성,삭제 구현, 나머지는 더 구현해야함)
+=======
+        fields = ('name','username')
+
+>>>>>>> 1d03a62 (Backend file 삽입)
 class UserinfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = '__all__'
+<<<<<<< HEAD
         
 # jwt token 결과 커스텀 
 <<<<<<< HEAD
@@ -62,6 +79,10 @@ class UserinfoSerializer(serializers.ModelSerializer):
 <<<<<<< HEAD
 =======
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+
+# jwt token 결과 커스텀 
+>>>>>>> 1d03a62 (Backend file 삽입)
 
 class SchoolInfoSerializer(serializers.ModelSerializer):
 
@@ -76,6 +97,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         'no_active_account': {'message':'username or password is incorrect!',
                               'success': False,
                               'status' : 401}
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -134,6 +156,12 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         print(data)
 >>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
 =======
+=======
+    }
+    # 유효성 검사
+    def validate(self, attrs):
+        data = super().validate(attrs)
+>>>>>>> 1d03a62 (Backend file 삽입)
         
         refresh = self.get_token(self.user)
         
@@ -143,6 +171,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['access'] = str(refresh.access_token)
         data['userflag'] = self.user.userflag
         data['email'] = self.user.email
+<<<<<<< HEAD
 <<<<<<< HEAD
         data['img'] = self.user.profil
 >>>>>>> 0938bf0 (Refactor : 로그인시 넘겨주는 데이터 변경 및 프로필 사진 추가)
@@ -209,6 +238,15 @@ from dj_rest_auth.registration.serializers import RegisterSerializer
 class MyTokenRefershView(TokenRefreshView):
     serializer_class = MyTokenRefershSerializer
 >>>>>>> b9da983 (Feat : mypage 구현중)
+=======
+        data['profil'] = self.user.profil
+        data['schoolcode']=self.user.school.code
+        return data
+
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+>>>>>>> 1d03a62 (Backend file 삽입)
 
 class CustomRegisterSerializer(RegisterSerializer):
     userflag =serializers.BooleanField()
@@ -231,6 +269,9 @@ class CustomRegisterSerializer(RegisterSerializer):
         data['subject'] = self.validated_data.get('subject','')
         return data
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
 =======
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)

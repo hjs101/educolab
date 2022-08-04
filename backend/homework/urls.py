@@ -22,6 +22,7 @@ urlpatterns = [
     path('main/', views.HomeworkMainView.as_view(), name="homework_main"),
     path('create/', views.HomeworkCreateView.as_view(), name="homework_create"),
     path('detail/', views.HomeworkDetailView.as_view(), name='homework_detail_delete_put'),
+<<<<<<< HEAD
     path('check/', views.HomeworkCheckView.as_view(), name='homework_check'),
 <<<<<<< HEAD
     path('check/done/', views.HomeworkCheckDoneView.as_view(), name='homework_check_done'),
@@ -29,4 +30,6 @@ urlpatterns = [
     path('checkdone/', views.HomeworkCheckDoneView.as_view()),
 >>>>>>> cda8e1a (feat : 채점 여부 플래그)
     path('submit/', views.HomeworkSubmitView.as_view(), name='homework_submit'),
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 ]

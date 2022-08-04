@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 <<<<<<< HEAD
@@ -68,10 +69,22 @@ import os
 >>>>>>> 3b6b3c2 (Feat : 공지사항 기능 중간 저장)
 =======
 >>>>>>> 73fd2c6 (Feat : 공지사항 기능 진행상황 저장)
+=======
+from urllib import response
+from requests import request
+from rest_framework.decorators import APIView
+from rest_framework.response import Response
+from accounts.models import SchoolInfo
+from .serializers import NoticeMainSerializer, NoticeSerializer,FileSerializer
+from .models import Notice, Files
+
+
+>>>>>>> 1d03a62 (Backend file 삽입)
 class NoticeMainView(APIView) :
     ## 권한 설정 부분(View단위)
     # permission_classes = (IsAuthenticated,)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     def post(self,req):
     
@@ -93,6 +106,10 @@ class NoticeMainView(APIView) :
 =======
 =======
 >>>>>>> 3494f79 (Feat : 공지사항 등록, 목록 기능 구현)
+=======
+    def get(self,req):
+
+>>>>>>> 1d03a62 (Backend file 삽입)
         ## 1. request로부터 학교 코드를 받는다.
         # schoolCode = req.GET['schoolcode']
 
@@ -104,6 +121,7 @@ class NoticeMainView(APIView) :
         ## 3. 시리얼라이저 변환
         notice_serializer = NoticeMainSerializer(notices,many=True)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 >>>>>>> 73fd2c6 (Feat : 공지사항 기능 진행상황 저장)
@@ -131,11 +149,20 @@ class NoticeMainView(APIView) :
 =======
 
 >>>>>>> 417b70e (Fix : 충돌 수정)
+=======
+        ## 4. 가져온 목록 반환
+        res = Response(notice_serializer.data)
+
+
+>>>>>>> 1d03a62 (Backend file 삽입)
         return res
 
 class NoticeCreateView(APIView):
     def post(self, req):
+<<<<<<< HEAD
         print(req.data)
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
         if not req.user.userflag:
             return Response({"message : 선생님만 접근 가능합니다."})
         # notice = Notice()
@@ -144,6 +171,7 @@ class NoticeCreateView(APIView):
             notice = notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.user.school.code))
 
         files = req.FILES.getlist("files")
+<<<<<<< HEAD
         print(req.data['files'])
 
         print(files)
@@ -155,13 +183,20 @@ class NoticeCreateView(APIView):
 
 <<<<<<< HEAD
 =======
+=======
+
+        for file in files:
+>>>>>>> 1d03a62 (Backend file 삽입)
             fp = Files.objects.create(notice=notice, atch_file=file, atch_file_name=file)
             fp.save()
         return Response({
             "success":True,
             "pk" : notice.pk
         })
+<<<<<<< HEAD
 >>>>>>> ae003cb (Feat : 설문조사 기능 구현)
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 class NoticeDetailView(APIView):
     def get(self, req):
         ## 공지사항 번호 가져오기
@@ -180,7 +215,11 @@ class NoticeDetailView(APIView):
         
         
         fileserializer = FileSerializer(files, many=True)
+<<<<<<< HEAD
 
+=======
+        print(files)
+>>>>>>> 1d03a62 (Backend file 삽입)
         
         ## 공지사항 시리얼라이저 생성
         notice_detail_serializer = NoticeSerializer(notice)
@@ -205,11 +244,19 @@ class NoticeDetailView(APIView):
         return Response("success")
 
 class NoticeUpdateView(APIView):
+<<<<<<< HEAD
+=======
+    notice_id = ""
+>>>>>>> 1d03a62 (Backend file 삽입)
     def get(self, req):
         if not req.user.userflag:
             return Response({"message : 선생님만 접근 가능합니다."})
         ## 공지사항 번호 가져오기
+<<<<<<< HEAD
         notice_id = req.GET['notice_num']
+=======
+        self.notice_id = req.GET['notice_num']
+>>>>>>> 1d03a62 (Backend file 삽입)
 
         ## 공지사항 번호로 공지사항 인스턴스 가져오기
         notice = Notice.objects.get(pk=self.notice_id)
@@ -236,8 +283,13 @@ class NoticeUpdateView(APIView):
         return Response({"message" : "잘못된 접근입니다."})
 
     def put(self, req):
+<<<<<<< HEAD
         notice_id = req.data['notice_num']
         notice = Notice.objects.get(pk=notice_id)
+=======
+        self.notice_id = req.data['notice_num']
+        notice = Notice.objects.get(pk=self.notice_id)
+>>>>>>> 1d03a62 (Backend file 삽입)
         notice_serializer = NoticeSerializer(notice, data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
             notice = notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))
@@ -248,6 +300,7 @@ class NoticeUpdateView(APIView):
         files = req.FILES.getlist("files")
 
         for file in files:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -273,10 +326,16 @@ class NoticeUpdateView(APIView):
 =======
         res = Response()
 <<<<<<< HEAD
+=======
+            fp = Files.objects.create(notice=notice, atch_file=file, atch_file_name=file)
+            fp.save()
+        res = Response()
+>>>>>>> 1d03a62 (Backend file 삽입)
         res.data = {
             'success' : True,
             "pk" : notice.pk
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -297,3 +356,6 @@ class NoticeUpdateView(APIView):
 =======
         return res
 >>>>>>> ae003cb (Feat : 설문조사 기능 구현)
+=======
+        return res
+>>>>>>> 1d03a62 (Backend file 삽입)

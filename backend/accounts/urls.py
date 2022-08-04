@@ -21,6 +21,7 @@ from . import views
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 from rest_framework_simplejwt.views import (
     TokenVerifyView,
@@ -49,12 +50,17 @@ from django.conf.urls.static import static
 
 >>>>>>> 51dde47 (Refactor : requirements.txt 파일 수정 및 url, views 수정사항 적용)
 from rest_framework_simplejwt.views import (
+=======
+
+from rest_framework_simplejwt.views import (
+>>>>>>> 1d03a62 (Backend file 삽입)
     TokenRefreshView,
     TokenVerifyView,
 )
 from .serializers import MyTokenObtainPairView
 ##aaadd
 urlpatterns = [
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     path('login', views.LoginView.as_view(), name = "LoginView"),
@@ -88,10 +94,17 @@ urlpatterns = [
     path('sendemail/', views.SendSignupEmailView.as_view(), name='sendsignupemail'),
 >>>>>>> 25d0df5 (feat: 회원가입에서 이메일 인증메일 보내기 기능 구현 , id 중복체크 기능 완성 - 홍찬기)
 =======
+=======
+    path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+	path('login/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
+>>>>>>> 1d03a62 (Backend file 삽입)
     path('check_username/', views.CheckUsernameView.as_view(), name='checkusername'), 
     path('find_username/', views.FindUsernameView.as_view(), name='findusername'),
     path('send_signup_email/', views.SendSignupEmailView.as_view(), name='sendsignupemail'),
     path('send_pw_email/',views.SendPWEmailView.as_view(), name="sendpwemail"),
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> effb278 (feat: 패스워드변경인증 이메일 기능 구현)
@@ -107,3 +120,7 @@ urlpatterns = [
 urlpatterns = [
 ]
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
+=======
+    path('change_pw/', views.ChangePWView.as_view(), name="changepw"),
+]
+>>>>>>> 1d03a62 (Backend file 삽입)

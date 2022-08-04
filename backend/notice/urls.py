@@ -24,6 +24,7 @@ urlpatterns = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('main', views.NoticeMainView.as_view(), name='notice/main'),
 =======
 =======
@@ -46,9 +47,14 @@ urlpatterns = [
     path('create/', views.NoticeCreateView.as_view(), name='notice/create'),
 >>>>>>> 559df98 ( Feat : 버그 수정)
 =======
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
     path('main/', views.NoticeMainView.as_view(), name='notice_main'),
     path('create/', views.NoticeCreateView.as_view(), name='notice_create'),
     path('detail/', views.NoticeDetailView.as_view(), name='notice_detail'),
     path('update/', views.NoticeUpdateView.as_view(), name='notice_update'),
+<<<<<<< HEAD
 >>>>>>> 15da655 (Fix : 버그수정)
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 ]

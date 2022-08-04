@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from asyncio.windows_events import NULL
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -46,11 +47,19 @@ class StudentInfo(models.Model):
 =======
 =======
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+# Create your models here.
+
+>>>>>>> 1d03a62 (Backend file 삽입)
 class SchoolInfo(models.Model):
     code = models.CharField(max_length=7,primary_key=True)
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 02ef900 (feat : 회원가입기능 학교모델 추가)
 class UserInfo(AbstractUser):
@@ -85,6 +94,10 @@ class UserInfo(AbstractUser):
 class UserInfo(AbstractUser):
     username = models.CharField(primary_key=True,max_length=20)
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+class UserInfo(AbstractUser):
+    username = models.CharField(primary_key=True,max_length=20)
+>>>>>>> 1d03a62 (Backend file 삽입)
     userflag = models.BooleanField(default=False, blank=True)
     name = models.CharField(max_length=30,default=None,blank=True)
     birthday = models.DateField(default=None,blank=True)
@@ -96,6 +109,7 @@ class UserInfo(AbstractUser):
     homeroom_teacher_flag = models.IntegerField(null=True)
     plus_point = models.IntegerField(default=0)
     minus_point = models.IntegerField(default=0)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -154,3 +168,6 @@ class PointLog(models.Model):
 =======
     created_at = models.DateField(auto_now=True)
 >>>>>>> 59ac581 (Feat : Mypage 기능 구현)
+=======
+    profil = models.CharField(max_length=45,null=True,blank=True)
+>>>>>>> 1d03a62 (Backend file 삽입)

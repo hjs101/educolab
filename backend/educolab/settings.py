@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 #-*-coding: utf-8-*-
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 """
 Django settings for educolab project.
 
@@ -12,6 +15,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 ##
 from pathlib import Path
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 import my_settings
@@ -52,11 +56,20 @@ from datetime import timedelta
 import os
 import environ
 >>>>>>> b9da983 (Feat : mypage 구현중)
+=======
+from datetime import timedelta
+import os
+import environ
+>>>>>>> 1d03a62 (Backend file 삽입)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+<<<<<<< HEAD
 MEDIA_URL = 'api/media/'
+=======
+MEDIA_URL = '/media/'
+>>>>>>> 1d03a62 (Backend file 삽입)
 
 STATIC_ROOT = '/static/'
 
@@ -80,6 +93,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -144,12 +158,23 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
+=======
+    'survey',
+    'notice',
+    'accounts',
+    'homework',
+    'drf_yasg',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+>>>>>>> 1d03a62 (Backend file 삽입)
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'corsheaders',
+<<<<<<< HEAD
 >>>>>>> e121457 (Refactor : DB수정 후 로그인 변경사항)
 =======
 =======
@@ -163,6 +188,8 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'corsheaders',
 >>>>>>> 042ca24 (Feat : 프론트와 연결 가능하게 cors 추가)
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -265,8 +292,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 AUTH_USER_MODEL = 'accounts.User' 
 =======
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 AUTH_USER_MODEL = 'accounts.UserInfo'
 
 SITE_ID = 1
@@ -276,6 +306,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 
 # 우선 모두 연결해 놓았습니다.
 CORS_ALLOW_ALL_ORIGINS = True
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> e121457 (Refactor : DB수정 후 로그인 변경사항)
@@ -330,6 +361,18 @@ REST_FRAMEWORK = {
 <<<<<<< HEAD
 =======
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
+=======
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES' : [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+}
+
+>>>>>>> 1d03a62 (Backend file 삽입)
 REST_USE_JWT = True
 
 SIMPLE_JWT = {
@@ -341,6 +384,7 @@ SIMPLE_JWT = {
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -377,6 +421,9 @@ ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
 ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
 >>>>>>> 834c26a (Fix : mySettings.py 수정)
 =======
+=======
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
+>>>>>>> 1d03a62 (Backend file 삽입)
 
 # email
 # 메일을 보내는 호스트 서버
@@ -395,5 +442,9 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
 # 사이트와 관련한 자동응답을 받을 이메일 주소
+<<<<<<< HEAD
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 >>>>>>> 25d0df5 (feat: 회원가입에서 이메일 인증메일 보내기 기능 구현 , id 중복체크 기능 완성 - 홍찬기)
+=======
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+>>>>>>> 1d03a62 (Backend file 삽입)

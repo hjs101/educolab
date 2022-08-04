@@ -1,13 +1,22 @@
+<<<<<<< HEAD
 from re import sub
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 from django.shortcuts import render
 from rest_framework.views import APIView 
 from rest_framework.response import Response
 
+<<<<<<< HEAD
 from accounts.serializers import UserinfoSerializer
 
 from .models import StudentHomework, TeacherHomework, Files, SubmitHomework
 from accounts.models import  UserInfo, PointLog
 from .serializers import StudentHomeworkDetailSerializer, StudentHomeworkMainSerializer, SubmitHomeworkSerializer, SubmitHomeworksubmitSerializer, TeacherHomeworkCreateSerializer, StudentHomeworkCreateSerializer, TeacherHomeworkDetailSerializer, TeacherHomeworkMainSerializer
+=======
+from .models import StudentHomework, TeacherHomework, Files, SubmitHomework
+from accounts.models import SchoolInfo, UserInfo
+from .serializers import StudentHomeworkDetailSerializer, StudentHomeworkMainSerializer, TeacherHomeworkCreateSerializer, StudentHomeworkCreateSerializer, TeacherHomeworkDetailSerializer, TeacherHomeworkMainSerializer
+>>>>>>> 1d03a62 (Backend file 삽입)
 
 from datetime import datetime
 # Create your views here.
@@ -15,23 +24,33 @@ class HomeworkMainView(APIView):
     
     def get(self, request):
 <<<<<<< HEAD
+<<<<<<< HEAD
         if request.user.userflag:
 =======
         today = datetime.now().date()
         if request.user.userflag == True:
 >>>>>>> 7affbf9 (feat : 과제 메인 기능 구현)
+=======
+        today = datetime.now().date()
+        if request.user.userflag == True:
+>>>>>>> 1d03a62 (Backend file 삽입)
             teacher = UserInfo.objects.get(username=request.user.username)
             homeworks = teacher.T_homework.all()
             notdone_homework = []
             done_notcheck_homework = []
             all_done_homework = []
             for homework in homeworks:
+<<<<<<< HEAD
+=======
+                print(homework.deadline, today)
+>>>>>>> 1d03a62 (Backend file 삽입)
                 if homework.deadline >= today:
                     notdone_homework.append(homework)
                 elif homework.check_flag == False:
                     done_notcheck_homework.append(homework)
                 else:
                     all_done_homework.append(homework)
+<<<<<<< HEAD
         
             
             student_homeworks = teacher.homeroom_T.filter(submit_flag=True,agreement=False)
@@ -70,6 +89,29 @@ class HomeworkMainView(APIView):
 >>>>>>> e59250a (feat: 과제 메인페이지 기능 어느정도 구현 완료 나머지는 상의필요)
         
         elif request.user.userflag:
+=======
+            
+            student_homeworks = teacher.homeroom_T.filter(submit_flag=True,agreement=False)
+
+            print(notdone_homework)
+            print(done_notcheck_homework)
+            print(all_done_homework)
+            print(student_homeworks)
+            notdone_homework_serializer = TeacherHomeworkMainSerializer(notdone_homework, many=True)
+            done_notcheck_homework_serializer = TeacherHomeworkMainSerializer(done_notcheck_homework, many=True)
+            all_done_homework_serializer = TeacherHomeworkMainSerializer(all_done_homework, many=True)
+            student_homeworks_serizlizer = StudentHomeworkMainSerializer(student_homeworks, many=True)
+            
+            context = {
+                "not_done" : notdone_homework_serializer.data,
+                "done_notcheck" : done_notcheck_homework_serializer.data,
+                "all_done" : all_done_homework_serializer.data,
+                "students" : student_homeworks_serizlizer.data
+            }
+            return Response(context)
+        
+        elif request.user.userflag == False:
+>>>>>>> 1d03a62 (Backend file 삽입)
             student = UserInfo.objects.get(username=request.user.username)
             homeworks = student.teacher_homework.all()
 
@@ -82,6 +124,7 @@ class HomeworkMainView(APIView):
                 else:
                     done_homework.append(homework)
             
+<<<<<<< HEAD
             my_submit_homework = student.S_homework.filter(submit_flag=True).order_by('-id')
             my_homework = student.S_homework.filter(submit_flag=False).order_by('deadline')
 
@@ -101,10 +144,28 @@ class HomeworkMainView(APIView):
             return Response(context)
 
             
+=======
+            my_homework = student.S_homework.all()
+
+            notdone_homework_serializer = TeacherHomeworkMainSerializer(notdone_homework, many=True)
+            done_homework_serialzier = TeacherHomeworkMainSerializer(done_homework, many=True)
+            my_homework_serializer = StudentHomeworkMainSerializer(my_homework, many=True)
+            context = {
+                "notdone" : notdone_homework_serializer.data,
+                "done" : done_homework_serialzier.data,
+                "my_homework" : my_homework_serializer.data
+            }
+            return Response(context)
+            
+            
+
+
+>>>>>>> 1d03a62 (Backend file 삽입)
 class HomeworkCreateView(APIView):
     
     def post(self, request):
         if request.user.userflag == 0:
+<<<<<<< HEAD
             print(0)
             print(request.data)
             homework_serializer = StudentHomeworkCreateSerializer(data=request.data)
@@ -112,6 +173,14 @@ class HomeworkCreateView(APIView):
             if homework_serializer.is_valid(raise_exception=True):
                 teacher = UserInfo.objects.get(school=request.user.school,class_field=request.user.class_field,grade=request.user.grade,userflag=True)
                 homework = homework_serializer.save(student=request.user,teacher=teacher)
+=======
+            homework_serializer = StudentHomeworkCreateSerializer(data=request.data)
+            
+            if homework_serializer.is_valid(raise_exception=True):
+                teacher = UserInfo.objects.get(class_field=request.user.class_field,grade=request.user.grade,userflag=True)
+                homework = homework_serializer.save(student=request.user,teacher=teacher)
+
+>>>>>>> 1d03a62 (Backend file 삽입)
                 files = request.FILES.getlist("files")
                 for file in files:
                     fp = Files.objects.create(student_homework=homework,atch_file=file,atch_file_name=file)
@@ -121,6 +190,7 @@ class HomeworkCreateView(APIView):
                 submit.save()
 
         elif request.user.userflag == 1:
+<<<<<<< HEAD
             print(1)
             print(request.data)
             homework_serializer = TeacherHomeworkCreateSerializer(data=request.data)
@@ -158,6 +228,22 @@ class HomeworkCreateView(APIView):
                     print(student)
                     submit = SubmitHomework.objects.create(student=student,teacher_homework=homework)
                     print(submit)
+=======
+            homework_serializer = TeacherHomeworkCreateSerializer(data=request.data)
+            if homework_serializer.is_valid(raise_exception=True):
+                school = request.user.school
+                school_student= school.school_student.all()
+                students = school_student.filter(grade=homework_serializer.validated_data['grade'],class_field=homework_serializer.validated_data['class_field'])
+                homework = homework_serializer.save(teacher=request.user,target=students)
+                
+                files = request.FILES.getlist("files")
+                for file in files:
+                    fp = Files.objects.create(teacher_homework=homework,atch_file=file,atch_file_name=file)
+                    fp.save()
+                
+                for student in students:
+                    submit = SubmitHomework.objects.create(student=student,teacher_homework=homework)
+>>>>>>> 1d03a62 (Backend file 삽입)
                     submit.save()
 
         context = {
@@ -169,6 +255,7 @@ class HomeworkCreateView(APIView):
 class HomeworkDetailView(APIView):
     def get(self, request):
         homework_pk = request.GET.get('pk')
+<<<<<<< HEAD
         teacher_flag = request.GET.get('teacher_flag')
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -220,6 +307,23 @@ class HomeworkDetailView(APIView):
 >>>>>>> 373b6d1 (feat: 과제 생성 기능 수정, 상세정보 기능 수정, 제출 수정)
         # serializer를 통해서 어디까지 보여줄지 정해야함.
         # 각각 따로 만들어야함
+=======
+        teacher_flag = request.GET.get('teacher')
+        print(homework_pk, teacher_flag)
+        if teacher_flag:
+            homework = TeacherHomework.objects.get(id=homework_pk)
+            homework_serializer = TeacherHomeworkDetailSerializer(homework)
+
+        else:
+            print(2)
+            homework = StudentHomework.objects.get(id=homework_pk)
+            homework_serializer = StudentHomeworkDetailSerializer(homework)
+        
+
+        # serializer를 통해서 어디까지 보여줄지 정해야함.
+        # 각각 따로 만들어야함
+        return Response(homework_serializer.data)
+>>>>>>> 1d03a62 (Backend file 삽입)
     
     def put(self, request):
         homework_pk = request.data.get('pk')
@@ -233,7 +337,12 @@ class HomeworkDetailView(APIView):
 
                 d_files = homework.teacher_file.all()
                 d_files.delete()
+<<<<<<< HEAD
                 files = request.FILES.getlist("files")
+=======
+
+                files = request.FILES.getlist('files')
+>>>>>>> 1d03a62 (Backend file 삽입)
                 for file in files:
                     fp = Files.objects.create(teacher_homework=homework,atch_file=file,atch_file_name=file)
                     fp.save()
@@ -261,11 +370,15 @@ class HomeworkDetailView(APIView):
     def delete(self, request):
         homework_pk = request.data.get('pk')
 <<<<<<< HEAD
+<<<<<<< HEAD
         teacher_flag = request.data.get('teacher')
         print(homework_pk)
 =======
         teacher_flag = request.data.get('teacher_flag')
 >>>>>>> 373b6d1 (feat: 과제 생성 기능 수정, 상세정보 기능 수정, 제출 수정)
+=======
+        teacher_flag = request.data.get('teacher')
+>>>>>>> 1d03a62 (Backend file 삽입)
         print(teacher_flag)
         if teacher_flag == True:
             homework = TeacherHomework.objects.get(pk=homework_pk)
@@ -278,6 +391,7 @@ class HomeworkDetailView(APIView):
             "success" : True,
             "message" : "삭제되었습니다"
         }
+<<<<<<< HEAD
         return Response(context) 
 
 class HomeworkCheckView(APIView): # 채점
@@ -361,3 +475,6 @@ class HomeworkSubmitView(APIView): # 제출
                 return Response(context)
 
 
+=======
+        return Response(context)
+>>>>>>> 1d03a62 (Backend file 삽입)

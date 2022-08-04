@@ -9,6 +9,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 from re import L
 >>>>>>> 9a0c0d9 (feat : 학교이름 검색 기능 구현 - 홍찬기)
@@ -20,6 +21,8 @@ from sre_constants import SUCCESS
 >>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
 =======
 >>>>>>> ea51fa4 (feat : 과제기능 생성,삭제 구현, 나머지는 더 구현해야함)
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 from django.shortcuts import render
 from django.core.mail import send_mail
 from rest_framework.views import APIView
@@ -30,6 +33,7 @@ from rest_framework import status
 from .serializers import SchoolInfoSerializer
 from .models import SchoolInfo, UserInfo
 from .helper import email_auth_num
+<<<<<<< HEAD
 <<<<<<< HEAD
 from educolab.settings import EMAIL_HOST_USER
 =======
@@ -167,11 +171,17 @@ from rest_framework.response import Response
 =======
 =======
 >>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
+=======
+from educolab.settings import EMAIL_HOST_USER
+
+# Create your views here.
+>>>>>>> 1d03a62 (Backend file 삽입)
 
 class SchoolInfoView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -194,6 +204,12 @@ class SchoolInfoView(APIView):
 =======
 =======
 >>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
+=======
+        search = request.GET.get('schoolname')
+        school = SchoolInfo.objects.filter(name__contains=search)
+        serializer = SchoolInfoSerializer(school,many=True)
+        return Response(serializer.data,status=status.HTTP_200_OK)
+>>>>>>> 1d03a62 (Backend file 삽입)
 
 class CheckUsernameView(APIView):
     permission_classes = (AllowAny,)
@@ -221,6 +237,7 @@ class SendSignupEmailView(APIView):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         email = request.data.get('email')
 =======
         email = request.POST.get('email')
@@ -234,6 +251,9 @@ class SendSignupEmailView(APIView):
 =======
         email = request.data.get('email')
 >>>>>>> d73082d (feat : back branch 수정)
+=======
+        email = request.data.get('email')
+>>>>>>> 1d03a62 (Backend file 삽입)
         auth_num = email_auth_num()
         send_mail(subject='educolab 회원가입 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
         context = {
@@ -243,6 +263,7 @@ class SendSignupEmailView(APIView):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 class FindIDView(APIView):
     pass
 <<<<<<< HEAD
@@ -250,10 +271,13 @@ class FindIDView(APIView):
 =======
 >>>>>>> 25d0df5 (feat: 회원가입에서 이메일 인증메일 보내기 기능 구현 , id 중복체크 기능 완성 - 홍찬기)
 =======
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 class FindUsernameView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, request):
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -297,6 +321,10 @@ class FindUsernameView(APIView):
         name = request.data.get('name')
         email = request.data.get('email')
 >>>>>>> d73082d (feat : back branch 수정)
+=======
+        name = request.data.get('name')
+        email = request.data.get('email')
+>>>>>>> 1d03a62 (Backend file 삽입)
 
         try:
             user = UserInfo.objects.get(name=name,email=email)
@@ -320,6 +348,7 @@ class SendPWEmailView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self,request):
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -357,10 +386,20 @@ class SendPWEmailView(APIView):
         
 =======
 >>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
+=======
+        name = request.data.get('name')
+        email = request.data.get('email')
+        username = request.data.get('username')
+        
+>>>>>>> 1d03a62 (Backend file 삽입)
         try:
             userinfo = UserInfo.objects.get(name=name,username=username)
         except:
             userinfo = None
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 1d03a62 (Backend file 삽입)
         if userinfo == None:
             context = {
                 "success" : False,
@@ -386,12 +425,15 @@ class SendPWEmailView(APIView):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 0c829cf (feat: 아이디 찾기 기능 구현)
 =======
 >>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
 =======
 =======
 >>>>>>> 4eef746 (feat : homework 에도 비밀번호 변경기능 올려놓음)
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 class ChangePWView(APIView):
     permission_classes = (AllowAny,)
 
@@ -418,8 +460,12 @@ class ChangePWView(APIView):
             "message" : "비밀번호가 성공적으로 변경되었습니다"
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         return Response(context)
 >>>>>>> d2fc3f3 (feat : 비밀번호 초기화 및 변경 기능 구현)
 =======
         return Response(context)
 >>>>>>> 4eef746 (feat : homework 에도 비밀번호 변경기능 올려놓음)
+=======
+        return Response(context)
+>>>>>>> 1d03a62 (Backend file 삽입)

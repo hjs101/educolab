@@ -20,7 +20,10 @@ from . import views
 
 urlpatterns = [
     path('main/', views.SurveyTeacherMainView.as_view(), name='survey_main'),
+<<<<<<< HEAD
     path('main_stu/', views.SurveyStudentMainView.as_view(), name='survey_main_student'),
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
     path('create/', views.SurveyCreateView.as_view(), name='survey_create'),
     path('detail/', views.SurveyDetailView.as_view(), name='survey_detail'),
     path('update/', views.SurveyUpdateView.as_view(), name='survey_update'),

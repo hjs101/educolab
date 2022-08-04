@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.urls import path, include
 =======
 from django.urls import path
@@ -25,6 +26,14 @@ from rest_framework import permissions
 from django.conf import settings
 from django.conf.urls.static import static
 =======
+=======
+from django.urls import path, include
+from drf_yasg.views import get_schema_view
+from drf_yasg       import openapi
+from rest_framework import permissions
+from django.conf import settings
+from django.conf.urls.static import static
+>>>>>>> 1d03a62 (Backend file 삽입)
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -32,7 +41,10 @@ from rest_framework_simplejwt.views import (
 )
 
 
+<<<<<<< HEAD
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
 schema_view = get_schema_view(
     openapi.Info(
         title="EduColab",
@@ -43,6 +55,7 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=[permissions.AllowAny],
 )
+<<<<<<< HEAD
 >>>>>>> da408e3 (Feat : 백엔드 Swagger 적용)
 
 urlpatterns = [
@@ -171,3 +184,17 @@ urlpatterns = [
 =======
 ]
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
+=======
+
+urlpatterns = [
+    path(r'swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path(r'swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path(r'redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
+    path('accounts/registration/', include('dj_rest_auth.registration.urls')),
+    path('accounts/', include('accounts.urls')), 
+    path('admin/', admin.site.urls),
+    path('notice/', include('notice.urls')),
+    path('homework/', include('homework.urls')),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+>>>>>>> 1d03a62 (Backend file 삽입)

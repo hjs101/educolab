@@ -4,7 +4,11 @@ from accounts.serializers import UserNameSerializer, HomeworkUserSerializer
 
 class TeacherHomeworkCreateSerializer(serializers.ModelSerializer):
     teacher = UserNameSerializer(read_only=True)
+<<<<<<< HEAD
     target = UserNameSerializer(read_only=True,many=True)
+=======
+    target = HomeworkUserSerializer(read_only=True,many=True)
+>>>>>>> 1d03a62 (Backend file 삽입)
 
     class Meta:
         model = TeacherHomework
@@ -22,6 +26,7 @@ class TeacherHomeworkMainSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TeacherHomework
+<<<<<<< HEAD
         fields = ('id','title','deadline','grade','class_field','subject',)
 
 class StudentHomeworkMainSerializer(serializers.ModelSerializer):
@@ -37,16 +42,30 @@ class TeacherHomeworkDetailSerializer(serializers.ModelSerializer):
         model = TeacherHomework
         fields = ()
 =======
+=======
+        fields = ('pk','title','deadline','grade','class_field')
+
+class StudentHomeworkMainSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = StudentHomework
+        fields = ('pk','title','deadline')
+
+>>>>>>> 1d03a62 (Backend file 삽입)
 class SubmitHomeworkSerializer(serializers.ModelSerializer):
     student = UserNameSerializer(read_only=True)
     class Meta:
         model = SubmitHomework
+<<<<<<< HEAD
         fields = ('id','student','content','submit_at','submit_flag','atch_file_name','atch_file')
 
 class SubmitHomeworksubmitSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubmitHomework
         fields = '__all__'
+=======
+        fields = ('student','content','submit_at','submit_flag','atch_file_name','atch_file')
+>>>>>>> 1d03a62 (Backend file 삽입)
 
 class FileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -55,6 +74,7 @@ class FileSerializer(serializers.ModelSerializer):
 
 class TeacherHomeworkDetailSerializer(serializers.ModelSerializer):
     teacher = UserNameSerializer(read_only=True)
+<<<<<<< HEAD
     teacher_file = FileSerializer(many=True,read_only=True)
     class Meta:
         model = TeacherHomework
@@ -84,3 +104,18 @@ class StudentHomeworkDetailSerializer(serializers.ModelSerializer):
 =======
         fields = ('id','student','title','content','updated_at','deadline','agreement','student_file','my_submit',)
 >>>>>>> 9857488 (feat: media 수정중)
+=======
+    student_submit = SubmitHomeworkSerializer(many=True,read_only=True)
+    teacher_file = FileSerializer(many=True,read_only=True)
+    class Meta:
+        model = TeacherHomework
+        fields = ('id','teacher','title','subject','content','updated_at','deadline','check_flag','student_submit','teacher_file')
+
+class StudentHomeworkDetailSerializer(serializers.ModelSerializer):
+    student = UserNameSerializer(read_only=True)
+    my_submit = SubmitHomeworkSerializer(many=True,read_only=True)
+    student_file = FileSerializer(many=True,read_only=True)
+    class Meta:
+        model = StudentHomework
+        fields = ('id','student','title','content','updated_at','deadline','agreement','student_file','my_submit',)
+>>>>>>> 1d03a62 (Backend file 삽입)

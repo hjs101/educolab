@@ -4,7 +4,10 @@ from .models import SchoolInfo
 class CustomAccountAdapter(DefaultAccountAdapter):
     def save_user(self, request, user, form, commit=True):
         data = form.cleaned_data
+<<<<<<< HEAD
         print(data)
+=======
+>>>>>>> 1d03a62 (Backend file 삽입)
         user = super().save_user(request, user, form, commit)
         name = data.get("name")
         if name:
