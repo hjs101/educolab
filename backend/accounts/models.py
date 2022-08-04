@@ -23,3 +23,8 @@ class UserInfo(AbstractUser):
     minus_point = models.IntegerField(default=0)
     profil = models.CharField(max_length=45,null=True,blank=True)
     acc_point = models.IntegerField(default=0)
+    
+class PointLog(models.Model):
+    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name="point_student")
+    content = models.CharField(max_length=45)
+    point = models.IntegerField()
