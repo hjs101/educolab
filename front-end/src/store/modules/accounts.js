@@ -299,6 +299,7 @@ export const accounts = {
 >>>>>>> e6b54fb (asdu)
         .then(res => {
           const access = res.data.access
+<<<<<<< HEAD
           dispatch('saveToken', access)
           commit('SET_CURRENT_USER', res.data) 
           router.push({ name: 'educolab'})
@@ -312,6 +313,12 @@ export const accounts = {
           commit("SET_CURRENT_USER", res.data);
           router.push({ name: "educolab" });
 >>>>>>> 36a3f8f (Fix : 오타수정)
+=======
+          dispatch("saveToken", access)
+          console.log(res.data)
+          commit("SET_CURRENT_USER",res.data)
+          router.push({ name: "educolab" })
+>>>>>>> b5069a1 (Feat : 과제 목록 & 생성 & 상세 페이지 제작 진행 중)
         })
         .catch((err) => {
           commit("SET_AUTH_ERROR", err.response.data);

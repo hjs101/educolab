@@ -193,8 +193,9 @@ const routes = [
     component: () => import('@/views/NoticeFormView')
   },
 
-  // 과제(교사)
+  // 과제(교사) 메인
   {
+<<<<<<< HEAD
     path: '/teacher/task',
     name: 'TeacherTask',
 <<<<<<< HEAD
@@ -212,6 +213,11 @@ const routes = [
     path: '/student/task',
     name: 'StudentTaskListView',
     component: () => import('@/views/StudentTaskListView')
+=======
+    path: '/:userType/task',
+    name: 'TaskListView',
+    component: () => import('@/views/TaskListView')
+>>>>>>> b5069a1 (Feat : 과제 목록 & 생성 & 상세 페이지 제작 진행 중)
   },
   // 과제 상세 
   {
