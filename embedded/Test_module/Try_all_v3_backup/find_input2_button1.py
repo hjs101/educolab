@@ -58,9 +58,13 @@ class Find_input2_button1(Screen):
         self.ids.left_input.text=""
         self.ids.right_input.text=""
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.manager.before_page=self.name
 =======
 >>>>>>> 210a2e8 (Feat : 메인화면 추가)
+=======
+        self.manager.before_page=self.name
+>>>>>>> 01bd712 (Feat : 목록 화면 작성)
 
     def onPopUp(self): # 왼쪽 버튼 클릭시 팝업 및 다음 페이지 경로 지정
         if self.next_flag:

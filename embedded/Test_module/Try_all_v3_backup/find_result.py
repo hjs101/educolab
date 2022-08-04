@@ -36,11 +36,17 @@ class Find_result(Screen):
             self.next_page_slide="right"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def on_leave(self):
         self.manager.before_page=self.name
 
 =======
 >>>>>>> 210a2e8 (Feat : 메인화면 추가)
+=======
+    def on_leave(self):
+        self.manager.before_page=self.name
+
+>>>>>>> 01bd712 (Feat : 목록 화면 작성)
 class find_test_App(App):
     def build(self):
         Builder.load_file('find_result.kv')

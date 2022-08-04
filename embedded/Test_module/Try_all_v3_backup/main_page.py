@@ -40,6 +40,7 @@ class Main_Screen(Screen):
         self.ids.homework_icon.img_path='./icon/homework.png'
         self.ids.survey_icon.img_path='./icon/survey.png'
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     def go_notice(self):
         pass
@@ -54,6 +55,11 @@ class Main_Screen(Screen):
         self.manager.before_page=self.name
 =======
 >>>>>>> 210a2e8 (Feat : 메인화면 추가)
+=======
+
+    def on_leave(self):
+        self.manager.before_page=self.name
+>>>>>>> 01bd712 (Feat : 목록 화면 작성)
         
 class main_test_App(App):
     def build(self):

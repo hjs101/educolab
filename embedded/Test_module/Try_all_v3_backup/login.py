@@ -57,9 +57,13 @@ class Login_Screen(Screen):
         self.ids.ID_input.text=""
         self.ids.PW_input.text=""
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.manager.before_page=self.name
 =======
 >>>>>>> 210a2e8 (Feat : 메인화면 추가)
+=======
+        self.manager.before_page=self.name
+>>>>>>> 01bd712 (Feat : 목록 화면 작성)
 
 class login_test_App(App):
     def build(self):
