@@ -2,22 +2,9 @@ from urllib import response
 from requests import request
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
-<<<<<<< HEAD
-from rest_framework.permissions import IsAuthenticated
-from accounts.serializers import UserNameSerializer
-from accounts.models import SchoolInfo,UserInfo
-from .serializers import NoticeMainSerializer, NoticeSerializer, FileSerializer
-from .models import Notice, Files
-from django.core.files.base import ContentFile
-from django.core.files.storage import default_storage
-from rest_framework.parsers import JSONParser
-from rest_framework.renderers import JSONRenderer
-import os, io
-=======
 from accounts.models import SchoolInfo
 from .serializers import NoticeMainSerializer, NoticeSerializer,FileSerializer
 from .models import Notice, Files
->>>>>>> back_homework
 
 
 class NoticeMainView(APIView) :

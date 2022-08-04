@@ -46,10 +46,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')), 
     path('admin/', admin.site.urls),
     path('notice/', include('notice.urls')),
-<<<<<<< HEAD
-    path('survey/', include('survey.urls')),
-=======
     path('homework/', include('homework.urls')),
->>>>>>> back_homework
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
