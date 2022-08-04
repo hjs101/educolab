@@ -51,6 +51,15 @@ class Main_Screen(Screen):
     def go_survey(self):
         pass
 
+    def go_notice(self):
+        pass
+    def go_memo(self):
+        pass
+    def go_quiz(self):
+        pass
+    def go_survey(self):
+        pass
+
     def on_leave(self):
         self.manager.before_page=self.name
 =======
