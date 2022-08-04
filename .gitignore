@@ -451,6 +451,7 @@ $RECYCLE.BIN/
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 backend/my_settings.py
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -482,3 +483,7 @@ front-end/node_modules
 =======
 login_info.json
 >>>>>>> 90a0649 (깃이그노어 수정)
+=======
+backend/educolab/my_settings.py
+login_token.txt
+>>>>>>> b7db13e (Refactor: login token 발급)
