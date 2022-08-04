@@ -22,4 +22,6 @@ urlpatterns = [
     path('main/', views.HomeworkMainView.as_view(), name="homework_main"),
     path('create/', views.HomeworkCreateView.as_view(), name="homework_create"),
     path('detail/', views.HomeworkDetailView.as_view(), name='homework_detail_delete_put'),
+    path('check/', views.HomeworkCheckView.as_view(), name='homework_check'),
+    path('submit/', views.HomeworkSubmitView.as_view(), name='homework_submit'),
 ]
