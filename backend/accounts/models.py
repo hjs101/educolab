@@ -22,3 +22,4 @@ class UserInfo(AbstractUser):
     plus_point = models.IntegerField(default=0)
     minus_point = models.IntegerField(default=0)
     profil = models.CharField(max_length=45,null=True,blank=True)
+    acc_point = models.IntegerField(default=0)
