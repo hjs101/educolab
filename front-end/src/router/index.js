@@ -2,23 +2,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-<<<<<<< HEAD
   // 검색 공지사항
   {
     path: '/search',
     name: 'searchNotice',
     component: () => import ('@/components/SearchNotice')
   },
-  // 회원 관리
-  {
-    path: '/',
-    name: 'login',
-    component: () => import ('@/views/LoginView')
-  },  
-
-=======
-  
->>>>>>> ad69bfbd99db13e767ae10bb842c597a75816bf9
   // 메인페이지 
   {
     path: '/educolab',
