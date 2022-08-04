@@ -1,4 +1,3 @@
-from sre_constants import SUCCESS
 from django.shortcuts import render
 from django.core.mail import send_mail
 from rest_framework.views import APIView
@@ -9,7 +8,7 @@ from rest_framework import status
 from .serializers import SchoolInfoSerializer
 from .models import SchoolInfo, UserInfo
 from .helper import email_auth_num
-from my_settings import EMAIL_HOST_USER
+from educolab.settings import EMAIL_HOST_USER
 
 # Create your views here.
 
@@ -112,3 +111,29 @@ class SendPWEmailView(APIView):
             }
             return Response(context)
 
+class ChangePWView(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self,request):
+        name = request.data.get('name')
+        email = request.data.get('email')
+        username = request.data.get('username')
+        password1 = request.data.get('password1')
+        password2 = request.data.get('password2')
+
+        if password1 != password2:
+            context = {
+                "success" : False,
+                "message" : "비밀번호가 일치하지 않습니다"
+            }
+            return Response(context)
+
+        userinfo = UserInfo.objects.get(name=name,email=email,username=username)
+        userinfo.set_password(password1)
+        userinfo.save()
+
+        context = {
+            "success" : True,
+            "message" : "비밀번호가 성공적으로 변경되었습니다"
+        }
+        return Response(context)
