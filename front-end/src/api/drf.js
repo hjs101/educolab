@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const ACCOUNTS = BASE_URL + '/accounts/'
 const NOTICE = BASE_URL + '/notice/'
 const HOMEWORK = BASE_URL + '/homework/'
+=======
+const BASE_URL = 'http://localhost:8000/'
+const ACCOUNTS = BASE_URL + 'accounts/'
+const NOTICE = BASE_URL + 'notice/'
+const SURVEY = BASE_URL + 'survey/'
+
+>>>>>>> 452a9d1 (설문조사  등록)
 
 export default {
   accounts: {
@@ -67,12 +75,14 @@ export default {
     // changeInfo: () => ACCOUNTS + 
 >>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
   },
+
   notice: {
     noticeList: () => NOTICE + 'main/',
     noticeDetail: () => NOTICE + 'detail/',
     noticeCreate: () => NOTICE + 'create/',
     noticeUpdate: () => NOTICE + 'update/'
   },
+<<<<<<< HEAD
   task: {
     list: () => HOMEWORK + 'main/',
     create: () => HOMEWORK + 'create/',
@@ -83,5 +93,10 @@ export default {
   },
   file: {
     path: () => BASE_URL,
+=======
+
+  survey: {
+    surveyList: () => SURVEY + 'main/'    
+>>>>>>> 452a9d1 (설문조사  등록)
   }
 }

@@ -28,7 +28,7 @@
           <div class="cursor-pointer"><router-link to="/notice">공지사항</router-link></div>
           <div class="cursor-pointer"><router-link to="/teacher/task">과제</router-link></div>
           <div class="cursor-pointer"><router-link to="/quiz">퀴즈</router-link></div>
-          <div class="cursor-pointer"><router-link to="/search">설문조사</router-link></div>
+          <div class="cursor-pointer"><router-link to="/survey">설문조사</router-link></div>
           <div class="cursor-pointer"><router-link to="/teacher">마이페이지</router-link></div>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -125,7 +125,11 @@ import {isEmpty} from 'lodash'
 export default {
   name: 'MainPage',
   computed: {
-    ...mapGetters(['isLoggedIn', 'currentUser'])
+    ...mapGetters(['isLoggedIn', 'currentUser']),
+    flag() {
+      const flag = this.currentUser.userflag
+      return flag
+    }
   },
   methods: {
     ...mapActions(['logout']),
@@ -137,6 +141,7 @@ export default {
       }
     },
   },
+<<<<<<< HEAD
   setup() {
     const store = useStore()
     onBeforeMount(() => {
@@ -186,6 +191,8 @@ export default {
 >>>>>>> 77a4159 (로그아웃 구현)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> 452a9d1 (설문조사  등록)
 }
 </script>
 

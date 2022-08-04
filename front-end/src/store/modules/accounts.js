@@ -117,7 +117,9 @@ export const accounts = {
       },
       userType: null,
       access: localStorage.getItem("access") || "",
-      currentUser: {},
+      currentUser: {
+        userflag : true
+      },
       authError: null,
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -375,9 +377,13 @@ export const accounts = {
 >>>>>>> 36a3f8f (Fix : 오타수정)
 =======
           dispatch("saveToken", access)
+<<<<<<< HEAD
           console.log(res.data)
           commit("SET_CURRENT_USER",res.data)
           // 새로고침 -> 로그인 정보 날리기
+=======
+          // commit("SET_CURRENT_USER", res.data)
+>>>>>>> 452a9d1 (설문조사  등록)
           router.push({ name: "educolab" })
 >>>>>>> b5069a1 (Feat : 과제 목록 & 생성 & 상세 페이지 제작 진행 중)
         })

@@ -17,6 +17,7 @@ const routes = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 =======
@@ -55,11 +56,13 @@ const routes = [
 >>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
 =======
 >>>>>>> 8e382a2 (Fix : 회원가입 오류 수정해 merge)
+=======
+>>>>>>> 452a9d1 (설문조사  등록)
   // 메인페이지 
   {
     path: '/educolab',
     name: 'educolab',
-    component: () => import('@/views/MainPageView')
+    component: () => import('@/components/MainPage')
   },
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -243,6 +246,7 @@ const routes = [
     name: 'TaskUpdateView',
     component: () => import('@/views/TaskFormview')
   },
+<<<<<<< HEAD
   // 퀴즈(교사)
   {
     path: '/quiz',
@@ -271,6 +275,21 @@ const routes = [
     name: 'Search',
 >>>>>>> e6b54fb (asdu)
     component: () => import('@/views/SearchView')
+=======
+
+  // 설문조사(교사)
+  {
+    path: '/survey',
+    name: 'Survey',
+    component: () => import('@/views/SurveyView')
+  },
+
+  // 설문조사(등록)
+  {
+    path: '/survey/create',
+    name: 'SurveyCreate',
+    component: () => import('@/views/SurveyCreateView')
+>>>>>>> 452a9d1 (설문조사  등록)
   },
 
   // 마이페이지(교사)
