@@ -17,12 +17,14 @@ class TeacherHomework(models.Model):
 
 class StudentHomework(models.Model):
     student = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name="S_homework")
+    teacher = models.ForeignKey(UserInfo, on_delete=models.DO_NOTHING, related_name="homeroom_T", null=True)
     title = models.CharField(max_length=45)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deadline = models.DateField()
     agreement = models.BooleanField(default=False)
+    submit_flag = models.BooleanField(default=False)
 
 class Files(models.Model):
     teacher_homework = models.ForeignKey(TeacherHomework,on_delete=models.CASCADE, null=True, related_name='teacher_file')
