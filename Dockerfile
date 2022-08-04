@@ -1,4 +1,5 @@
-FROM sjoh0704/django:latest
+FROM jenkins:latest
+RUN pip3 install django
 WORKDIR /usr/src/app
 COPY . .
 WORKDIR ./backend
