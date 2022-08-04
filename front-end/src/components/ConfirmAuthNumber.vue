@@ -109,14 +109,17 @@ export default {
         }
         email.prompt = true
       } else {
-        if (props.data.email) {
-          start()
-          axios.post(drf.accounts.sendEmail(), props.data)
-            .then(res => {
-              email.authNum = res.data['auth_num']
-              email.valid = true
-            })
-        }
+          if (props.data.email) {
+            start()
+            axios.post(drf.accounts.sendEmail(), props.data)
+              .then(res => {
+                email.authNum = res.data['auth_num']
+                email.valid = true
+              })
+          } else {
+            email.message = '비어있는 항목을 채워주세요'
+          }
+          email.prompt = true
       }
     }
     const number = reactive({
