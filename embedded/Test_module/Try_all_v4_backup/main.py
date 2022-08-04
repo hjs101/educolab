@@ -11,12 +11,16 @@ from find_input2_button2 import Find_input2_button2
 from find_input2_button1 import Find_input2_button1
 from main_page import Main_Screen
 from list_page import List_Screen
+<<<<<<< HEAD
 from info import Info_Screen
+=======
+>>>>>>> 207a577 (Refactor : v4_backup 추가)
 
 from find_result import Find_result
 from find_renew import Find_renew
 from data.db_init import db_proc
 
+<<<<<<< HEAD
 ##### to remove warning message ######
 Builder.load_file('loading.kv')
 Builder.load_file('login.kv')
@@ -33,6 +37,8 @@ Builder.load_file('list_page.kv')
 Builder.load_file('info.kv')
 ###########################################
 
+=======
+>>>>>>> 207a577 (Refactor : v4_backup 추가)
 
 class WindowManager(ScreenManager):
     def __init__(self, **kwargs):

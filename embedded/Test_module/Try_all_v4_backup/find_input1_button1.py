@@ -18,7 +18,11 @@ class Find_input1_button1(Screen):
         Window.size = (1280,720)
         Window.borderless=True
 
+<<<<<<< HEAD
         # Builder.load_file('find_input1_button1.kv')
+=======
+        Builder.load_file('find_input1_button1.kv')
+>>>>>>> 207a577 (Refactor : v4_backup 추가)
         self.popup=MyPopUp()
 
     def midBtn(self):

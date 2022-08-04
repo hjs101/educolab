@@ -16,9 +16,12 @@ class db_proc:
         self.cur.execute(query, args)
         return self.cur
 
+<<<<<<< HEAD
     def db_commit(self):
         self.db.commit()
         
+=======
+>>>>>>> 207a577 (Refactor : v4_backup 추가)
     def db_close(self):
         print("db 연결 해제")
         self.db.close()

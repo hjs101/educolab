@@ -20,7 +20,11 @@ class Find_input2_button2(Screen):
         Window.size = (1280,720)
         Window.borderless=True
 
+<<<<<<< HEAD
         # Builder.load_file('find_input2_button2.kv')
+=======
+        Builder.load_file('find_input2_button2.kv')
+>>>>>>> 207a577 (Refactor : v4_backup 추가)
         self.popup=MyPopUp()
         # self.name_temp=''
         # self.username_temp=''
