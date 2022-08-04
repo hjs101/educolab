@@ -88,6 +88,7 @@ urlpatterns = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 601cae8 (Feat : 공지사항 기능 구현)
 =======
     path('survey/', include('survey.urls')),
@@ -99,6 +100,9 @@ urlpatterns = [
     path('survey/', include('survey.urls')),
     path('homework/', include('homework.urls')),
 >>>>>>> 7306741 (feat : 과제 제출 기능 구현)
+=======
+    path('homework/', include('homework.urls')),
+>>>>>>> 0e40bf0 (Fix : 배포관련수정)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 <<<<<<< HEAD

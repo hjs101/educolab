@@ -5,6 +5,7 @@ from rest_framework.response import Response
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from rest_framework.permissions import IsAuthenticated 
 <<<<<<< HEAD
 =======
@@ -51,6 +52,11 @@ from accounts.models import SchoolInfo
 from .serializers import NoticeMainSerializer, NoticeSerializer,FileSerializer
 from .models import Notice, Files
 >>>>>>> 7306741 (feat : 과제 제출 기능 구현)
+=======
+from accounts.models import SchoolInfo
+from .serializers import NoticeMainSerializer, NoticeSerializer,FileSerializer
+from .models import Notice, Files
+>>>>>>> 0e40bf0 (Fix : 배포관련수정)
 
 
 <<<<<<< HEAD
