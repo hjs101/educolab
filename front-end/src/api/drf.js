@@ -1,6 +1,8 @@
 const BASE_URL = 'http://localhost:8000/'
 const ACCOUNTS = BASE_URL + 'accounts/'
 const NOTICE = BASE_URL + 'notice/'
+const SURVEY = BASE_URL + 'survey/'
+
 
 export default {
   accounts: {
@@ -14,10 +16,15 @@ export default {
     sendPwEmail: () => ACCOUNTS + 'send_pw_email/',
     changePw: () => ACCOUNTS + 'change_pw/',
   },
+
   notice: {
     noticeList: () => NOTICE + 'main/',
     noticeDetail: () => NOTICE + 'detail/',
     noticeCreate: () => NOTICE + 'create/',
     noticeUpdate: () => NOTICE + 'update/'
+  },
+
+  survey: {
+    surveyList: () => SURVEY + 'main/'    
   }
 }

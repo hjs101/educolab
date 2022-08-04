@@ -2,17 +2,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-  // 검색 공지사항
-  {
-    path: '/search',
-    name: 'searchNotice',
-    component: () => import ('@/components/SearchNotice')
-  },
   // 메인페이지 
   {
     path: '/educolab',
     name: 'educolab',
-    component: () => import('@/views/MainPageView')
+    component: () => import('@/components/MainPage')
   },
   // 아이디 & 비밀번호 찾기
   {
@@ -96,18 +90,19 @@ const routes = [
     name: 'TaskUpdateView',
     component: () => import('@/views/TaskCreateOrUpdateView')
   },
-  // 퀴즈(교사)
-  {
-    path: '/quiz',
-    name: 'Quiz',
-    component: () => import('@/views/QuizView')
-  },
 
   // 설문조사(교사)
   {
-    path: '/search',
-    name: 'Search',
-    component: () => import('@/views/SearchView')
+    path: '/survey',
+    name: 'Survey',
+    component: () => import('@/views/SurveyView')
+  },
+
+  // 설문조사(등록)
+  {
+    path: '/survey/create',
+    name: 'SurveyCreate',
+    component: () => import('@/views/SurveyCreateView')
   },
 
   // 마이페이지(교사)
