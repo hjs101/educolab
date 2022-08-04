@@ -229,13 +229,13 @@ const routes = [
   {
     path: '/:userType/task/create',
     name: 'TaskCreateView',
-    component: () => import('@/views/TaskCreateOrUpdateView')
+    component: () => import('@/views/TaskFormview')
   },
   // 과제 수정
   {
     path: '/:userType/task/update/:taskPk',
     name: 'TaskUpdateView',
-    component: () => import('@/views/TaskCreateOrUpdateView')
+    component: () => import('@/views/TaskFormview')
   },
   // 퀴즈(교사)
   {

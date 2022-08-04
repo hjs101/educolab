@@ -123,9 +123,7 @@ export default {
 =======
 >>>>>>> e6b54fb (asdu)
     const store = useStore()
-    const subjectOptions = [
-    '국어', '수학', '사회', '과학', '보건', '기술가정', '기타'
-    ]
+    const subjectOptions = store.getters.getSubject
     let subject = ref('')
     let grade = ref('')
     let classField = ref('')

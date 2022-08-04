@@ -121,6 +121,12 @@ export const accounts = {
       authError: null,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      subjectOptions : [
+        '국어', '수학', '사회', '과학', '보건', '기술가정', '기타'
+      ]
+>>>>>>> 194924a (Feat: 생성 기능 구현 중)
     };
 =======
       // 비밀번호 변경 페이지 들어가기 전 인증을 거쳤는지 여부
@@ -147,6 +153,7 @@ export const accounts = {
     authError: state => state.authError,
     authHeader: state => ({ Authorization: `Bearer ${state.access}` }),
     getUserType: state => state.userType,
+<<<<<<< HEAD
     getSubject: state => state.teacherInfo.subject,
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -159,6 +166,9 @@ export const accounts = {
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
 =======
 >>>>>>> d7025b4 (Feat : 비밀번호 변경 페이지 제작 & 컴포넌트화 & 비밀번호 변경 기능 진행 중)
+=======
+    getSubject: state => state.subjectOptions,
+>>>>>>> 194924a (Feat: 생성 기능 구현 중)
   },
   mutations: {
 <<<<<<< HEAD
@@ -528,11 +538,17 @@ export const accounts = {
       }
     },
     logout({ dispatch }) {
-      dispatch("removeToken");
+      dispatch("removeToken")
+      // 새로고침까지 (vuex 데이터 모두 제거하고 싶음)
       router.push({ name: "login" }).catch((err) => {
+<<<<<<< HEAD
         console.log(err.respone);
       });
 >>>>>>> 36a3f8f (Fix : 오타수정)
+=======
+        console.log(err.respone)
+      })
+>>>>>>> 194924a (Feat: 생성 기능 구현 중)
     },
     setUserType({ commit }, userType) {
       // 로그인할 때

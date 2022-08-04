@@ -20,6 +20,13 @@
           label="내용"
           v-model="task.content"
         />
+        <q-select
+          outlined
+          v-model="task.subject"
+          label="과목"
+          :options="subjectOptions"
+        />
+
         <!-- 교사에게만 보임 -->
         <div v-if="isTeacher">
           <q-input
@@ -58,7 +65,7 @@
           label="첨부파일"
           stack-label
           outlined
-          @update:model-value="val => { files = val }"
+          @update:model-value="val => { task.files = val }"
           multiple
           type="file"
         />
@@ -72,61 +79,49 @@
 </template>
 
 <script>
-import { useQuasar } from 'quasar'
 import { ref, reactive, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import {useStore} from 'vuex'
 export default {
-  name: 'TaskCreateOrUpdateView',
+  name: 'TaskFormView',
   setup () {
     const route = useRoute()
+    const store = useStore()
+    const subjectOptions = store.getters.getSubject
     let userType = route.params.userType
     let isTeacher = computed(() => userType === 'teacher')
     let taskPk = route.params.taskPk
-    const $q = useQuasar()
     const task = reactive({
+      teacher: store.getters.currentUser.username,
+      subject: store.getters.currentUser.subject,
       title: null,
       content: null,
-      targetGrade: null,
-      targetClass: null,
+      grade: null,
+      class_field: null,
       files: null,
       deadline: null,
     })
     const accept = ref(false)
-    let files = ref(null)
+    const onSubmit = (event) => {
+      event.preventDefault()
+      store.dispatch('createTask', task)
+    }
+    const onReset = (event) => {
+      event.preventDefault()
+      for (let key in task) {
+        task[key] = null
+      }
+    }
 
     return {
       task,
       accept,
-      files,
       userType,
       taskPk,
       isTeacher,
-
-      onSubmit () {
-        if (accept.value !== true) {
-          $q.notify({
-            color: 'red-5',
-            textColor: 'white',
-            icon: 'warning',
-            message: 'You need to accept the license and terms first'
-          })
-        }
-        else {
-          $q.notify({
-            color: 'green-4',
-            textColor: 'white',
-            icon: 'cloud_done',
-            message: 'Submitted'
-          })
-        }
-      },
-
-      onReset () {
-        for (let key in task) {
-          task[key] = null
-        }
-        accept.value = false
-      }
+      onSubmit,
+      onReset,
+      subjectOptions
     }
   }
 }

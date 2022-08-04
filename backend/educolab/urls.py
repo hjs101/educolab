@@ -95,6 +95,7 @@ urlpatterns = [
 >>>>>>> dfc8ff1 (Feat : 설문조사 생성 기능 구현)
 =======
     path('homework/', include('homework.urls')),
+<<<<<<< HEAD
 >>>>>>> 143f316 (feat: homework 모델변경)
 =======
     path('survey/', include('survey.urls')),
@@ -103,6 +104,9 @@ urlpatterns = [
 =======
     path('homework/', include('homework.urls')),
 >>>>>>> 0e40bf0 (Fix : 배포관련수정)
+=======
+    path('survey/', include('survey.urls')),
+>>>>>>> 2121f86 (Fix : URL 충돌 해결)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 <<<<<<< HEAD

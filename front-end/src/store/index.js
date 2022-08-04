@@ -10,7 +10,11 @@ import {accounts} from './modules/accounts.js'
 =======
 import { accounts } from './modules/accounts.js'
 import { notice } from './modules/notice.js'
+<<<<<<< HEAD
 >>>>>>> afe56c9 (공지사항 메인페이지)
+=======
+import { task } from './modules/task.js'
+>>>>>>> 194924a (Feat: 생성 기능 구현 중)
 
 export default createStore({
   state () {
@@ -26,6 +30,7 @@ export default createStore({
   actions() {
   },
   modules: {
+<<<<<<< HEAD
 <<<<<<< HEAD
     accounts,
 <<<<<<< HEAD
@@ -62,5 +67,10 @@ export default createStore({
 =======
     accounts, notice
 >>>>>>> afe56c9 (공지사항 메인페이지)
+=======
+    accounts,
+    notice,
+    task,
+>>>>>>> 194924a (Feat: 생성 기능 구현 중)
   }
 })

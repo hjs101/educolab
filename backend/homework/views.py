@@ -96,6 +96,8 @@ class HomeworkCreateView(APIView):
     
     def post(self, request):
         if request.user.userflag == 0:
+            print(0)
+            print(request.data)
             homework_serializer = StudentHomeworkCreateSerializer(data=request.data)
             
             if homework_serializer.is_valid(raise_exception=True):
@@ -111,6 +113,8 @@ class HomeworkCreateView(APIView):
                 submit.save()
 
         elif request.user.userflag == 1:
+            print(1)
+            print(request.data)
             homework_serializer = TeacherHomeworkCreateSerializer(data=request.data)
             if homework_serializer.is_valid(raise_exception=True):
                 school = request.user.school
