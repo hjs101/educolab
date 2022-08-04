@@ -53,7 +53,7 @@ export default {
       } else {
         this.$router.back()
       }
-    }
+    },
   }
 }
 </script>

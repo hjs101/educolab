@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
-import {accounts} from './modules/accounts.js'
+import { accounts } from './modules/accounts.js'
+import { notice } from './modules/notice.js'
 
 export default createStore({
   state () {
@@ -9,13 +10,12 @@ export default createStore({
     }
   },
   getters() {
-
   },
   mutations() {
   },
   actions() {
   },
   modules: {
-    accounts,
+    accounts, notice
   }
 })

@@ -1,61 +1,75 @@
 <template>
-  <div>
-    <h2>공지사항 메인 페이지(교사)</h2>
-    <input type="search" name="" id="" v-model="searchTitle">
-    <button for="searchTitle" @click="searchNotice">검색</button>
-    <tr :key="search.content_id" v-for="search in searchNoticeList">
-      <td>{{ search.content_id }}</td>
-      <td>{{ search.title }}</td>
-      <td>{{ search.created_at }}</td>
-      <td>{{ search.user_id }}</td> 
-    </tr>
-    
+  <div class="center">
+    <h1>공지사항</h1>
     <router-link to="/notice/create"><button>글쓰기</button></router-link>
-
-    <table>
+    <table class="center">
       <thead>
         <tr>
+          <th>글 번호</th>
           <th>분류</th>
           <th>제목</th>
+          <th>작성자</th>
           <th>등록일</th>
-          <th>등록자</th>          
+          <th>조회수</th>
         </tr>
       </thead>
-
       <tbody>
-        <tr :key="notice.content_id" v-for="notice in content">
-          <td>{{ notice.content_id }}</td>
-          <td>{{ notice.title }}</td>
-          <td>{{ notice.created_at }}</td>
-          <td>{{ notice.user_id }}</td>          
+        <tr v-for="notice in notice2" :key="notice.id">
+          <td>{{ notice.pk }}</td>  
+          <td>{{ notice.classification}}</td>
+          <router-link :to="{ name: 'NoticeDetail', params: {noticePk: `${notice.pk}`}}">
+            <td @click="noticeDetail(notice.pk)">{{ notice.title }}</td>
+          </router-link>
+          <td>{{ notice.teacher.name }}</td>
+          <td>{{ timeInfo(notice.updated_at) }}</td>
+          <td>{{ notice.views }}</td>
         </tr>
       </tbody>
     </table>
-  
+    <!-- <div v-if="notice2">
+      <div v-for="notice in notice2"
+      :key="notice.pk">>
+        {{ notice.title}}
+      </div>
+    </div> -->
+
+
   </div>
 </template>
 
 <script>
-import noticeList from '@/data/index.js'
+import { mapActions, mapGetters } from 'vuex'
+// import NoticeItem from '@/components/NoticeItem.vue'
 
 export default {
   name: "NoticeView",
   data() {
     return {
-      content: noticeList.Content,
-      searchTitle: '',
-      searchNoticeList : [],
+      // content: noticeList.Content,
+      // searchTitle: '',
+      // searchNoticeList : [],
     }
   },
+  // components: {
+  //   NoticeItem
+  // },
+  computed: {
+    ...mapGetters(['notice2', 'noticeItem'])
+  },
   methods: {
-    searchNotice() {
-      this.searchNoticeList = []
-      for (let index = 0; index < this.content.length; index++) {
-        if (this.content[index].title.includes(this.searchTitle)) {
-          this.searchNoticeList.push(this.content[index])
-        }
-      }
-    }
+    ...mapActions(['noticeList', 'noticeDetail']),
+    timeInfo(time) {
+      const d = new Date(time)
+      return d.getFullYear() + ". " + (d.getMonth()+1) + ". " + d.getDate()
+    },
+    // rowClicked(row) {
+    //   this.$router.push({
+    //     path: `/board/detail/${row.id}`
+    //   })
+    // }
+  },
+  mounted() {
+    this.noticeList()
   }
 }
 

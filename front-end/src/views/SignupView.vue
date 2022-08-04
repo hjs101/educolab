@@ -41,9 +41,9 @@
 </style>
 
 <script>
-import {useRoute} from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 import {useStore} from 'vuex'
-import {onMounted} from 'vue'
+import {onBeforeMount} from 'vue'
 import LoginInfo from '@/components/LoginInfo.vue'
 import SearchSchool from '@/components/SearchSchool.vue'
 import EmailConfirm from '@/components/EmailConfirm.vue'
@@ -66,13 +66,18 @@ export default {
   },
   setup () {
     const store = useStore()
-    const router = useRoute()
-    const userType = router.params.userType
+    const route = useRoute()
+    const router = useRouter()
+    const userType = route.params.userType
     const submitData = () => {
       store.dispatch('signup')
     }
-    onMounted(() => {
-      store.dispatch('setUserType', userType)
+    onBeforeMount(() => {
+      if (userType !== 'student' && userType !== 'teacher') {
+        router.push('/404')
+      } else {
+        store.dispatch('setUserType', userType)
+      }
     })
     return {
       userType,

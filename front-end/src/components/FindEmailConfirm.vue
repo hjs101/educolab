@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: 'NoticeItem',
+  name: 'FindEmailConfirm',
 }
 </script>

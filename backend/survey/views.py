@@ -5,8 +5,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from accounts.serializers import UserNameSerializer
 from accounts.models import SchoolInfo,UserInfo
-from survey.serializers import SurveySerializer, QuestionSerializer, SurveyMainSerializer,QuestionDetailSerializer
-from .models import SurveyList
+from survey.serializers import SurveySerializer,QuestionStatDetailSerializer, QuestionSerializer, SurveyMainSerializer,QuestionDetailSerializer,QuestionStatSerializer, QuestionsAnswerSerializer
+from .models import SurveyList, SurveyQuestions
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from rest_framework.parsers import JSONParser
@@ -36,13 +36,18 @@ class SurveyTeacherMainView(APIView) :
 
 class SurveyCreateView(APIView):
     def post(self, req):
-        
+
         if not req.user.userflag:
             return Response({"message" :"선생님만 접근 가능합니다."})
-        
+
         # 설문조사 등록하기 start
         survey_serializer = SurveySerializer(data=req.data['survey'])
-        students = UserInfo.objects.filter(grade = req.data['survey']['grade'], class_field=req.data['survey']['class_field'], school=req.user.school, userflag=False);
+        if req.data['survey']['grade'] == 0:
+            students = UserInfo.objects.filter(school=req.user.school, userflag=False)
+        elif req.data['survey']['class_field'] == 0:
+            students = UserInfo.objects.filter(grade = req.data['survey']['grade'],school=req.user.school, userflag=False)
+        else:
+            students = UserInfo.objects.filter(grade = req.data['survey']['grade'], class_field=req.data['survey']['class_field'], school=req.user.school, userflag=False);
         print(students)
         if survey_serializer.is_valid(raise_exception=True):
             survey = survey_serializer.save(target=students, teacher = req.user)
@@ -94,28 +99,100 @@ class SurveyUpdateView(APIView):
 
     def put(self, req):
         survey_id = req.data['survey_num']
-        survey = SurveyList.objects.get(pk=self.survey_id)
+        survey = SurveyList.objects.get(pk=survey_id)
 
-        survey_serializer = SurveySerializer(survey, data=req.data)
+        survey_serializer = SurveySerializer(survey, data=req.data['survey'])
+
+        if req.data['survey']['grade'] == 0:
+            students = UserInfo.objects.filter(school=req.user.school, userflag=False)
+        elif req.data['survey']['class_field'] == 0:
+            students = UserInfo.objects.filter(grade = req.data['survey']['grade'],school=req.user.school, userflag=False)
+        else:
+            students = UserInfo.objects.filter(grade = req.data['survey']['grade'], class_field=req.data['survey']['class_field'], school=req.user.school, userflag=False);
+
         if survey_serializer.is_valid(raise_exception=True):
-            survey = survey_serializer.save()
+            survey = survey_serializer.save(target=students,teacher = req.user)
 
-        
-        notice_files = notice.notice_file.all()
+        survey_questions = survey.question_survey.all()
 
+        survey_questions.delete()
 
         for question in req.data['question']:
             question_serializer = QuestionSerializer(data=question)
             if question_serializer.is_valid(raise_exception=True):
                 question_serializer.save(survey=survey)
 
-        files = req.FILES.getlist("files")
-
-        for file in files:
-            fp = Files.objects.create(notice=notice, atch_file=file)
-            fp.save()
         res = Response()
         res.data = {
             'message' : "success",
         }
+        return Response({"success" : True})
+class SurveyStatView(APIView):
+    def get(self, req):
+        survey_id = req.GET['survey_num']
+        survey = SurveyList.objects.get(pk=survey_id)
 
+        survey_questions = survey.question_survey.all()
+        print(survey_questions)
+        question_serializer = QuestionStatSerializer(survey_questions,many=True)
+        res = Response({
+            "survey_title" : survey.title,
+            "questions" : question_serializer.data
+        })
+        return res
+
+class SurveyStatDetailView(APIView):
+    def get(self, req):
+        question_id = req.GET['question_num']
+        question = SurveyQuestions.objects.get(pk=question_id)
+
+        answers = question.question_answers.all()
+        answer_serializer = QuestionStatDetailSerializer(answers,many=True)
+        res = Response(answer_serializer.data)
+        return res
+        ##survey.title
+
+## 설문 제출 누적시키기
+class SurveySubmitView(APIView):
+    def post(self, req):
+
+        answers = req.data['answers']
+        survey = SurveyList.objects.get(id=req.data['survey_num'])
+        
+        userauth = survey.target.filter(username=req.user.username).exists()
+        if not userauth:
+            return Response({"message" : "설문 제출 자격이 없습니다."})
+
+        done =  survey.done_target.filter(username=req.user.username).exists()
+        print(done)
+        if done:
+            return Response({"message" : "이미 제출하셨습니다."})
+        for answer in answers:
+            print(answer)
+            question = SurveyQuestions.objects.get(id=answer['id'])
+            
+
+            
+            if question.multiple_bogi is not None:
+                if answer['answer'] == 1:
+                    question.num1 +=1
+                elif answer['answer'] == 2:
+                    question.num2 +=1
+                elif answer['answer'] == 3:
+                    question.num3 +=1
+                elif answer['answer'] == 4:
+                    question.num4 +=1
+                elif answer['answer'] == 5:
+                    question.num5 +=1
+                else:
+                    return Response({"message" : "정상적인 값을 입력해주세요"})
+            else:
+                content = {'content' : answer['answer']}
+                answer_serializer = QuestionsAnswerSerializer(data=content)
+                if answer_serializer.is_valid(raise_exception=True):
+                    answer_serializer.save(question=question)
+            
+            question.save()
+            survey.done_target.add(req.user)
+
+        return Response({"success":True})
