@@ -5,6 +5,7 @@ class db_proc:
     def create_db(self):
         self.db = connector.connect(
 <<<<<<< HEAD
+<<<<<<< HEAD
             host = '3.36.69.192',
             user = 'educolab',
             password = 'c102_edu',
@@ -13,6 +14,11 @@ class db_proc:
             user = 'educolab',
             password = 'educolab',
 >>>>>>> dbdcd45 (Refactor : v3, v4 구분)
+=======
+            host = '3.36.69.192',
+            user = 'educolab',
+            password = 'c102_edu',
+>>>>>>> 4c23f18 (안올라온 파일들 있어서...)
             database = 'educolab'
         )
         self.cur = self.db.cursor()
