@@ -12,6 +12,7 @@ class TeacherHomeworkCreateSerializer(serializers.ModelSerializer):
 
 class StudentHomeworkCreateSerializer(serializers.ModelSerializer):
     student = UserNameSerializer(read_only=True)
+    teacher = UserNameSerializer(read_only=True)
 
     class Meta:
         model = StudentHomework

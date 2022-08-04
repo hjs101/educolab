@@ -11,9 +11,9 @@ from datetime import datetime
 class HomeworkMainView(APIView):
     
     def get(self, request):
+        today = datetime.now().date()
         if request.user.userflag == True:
             teacher = UserInfo.objects.get(username=request.user.username)
-            today = datetime.now().date()
             homeworks = teacher.T_homework.all()
             notdone_homework = []
             done_notcheck_homework = []
@@ -27,27 +27,49 @@ class HomeworkMainView(APIView):
                 else:
                     all_done_homework.append(homework)
             
+            student_homeworks = teacher.homeroom_T.filter(submit_flag=True,agreement=False)
+
             print(notdone_homework)
             print(done_notcheck_homework)
             print(all_done_homework)
-
+            print(student_homeworks)
             notdone_homework_serializer = TeacherHomeworkMainSerializer(notdone_homework, many=True)
             done_notcheck_homework_serializer = TeacherHomeworkMainSerializer(done_notcheck_homework, many=True)
             all_done_homework_serializer = TeacherHomeworkMainSerializer(all_done_homework, many=True)
+            student_homeworks_serizlizer = StudentHomeworkMainSerializer(student_homeworks, many=True)
             
             context = {
                 "not_done" : notdone_homework_serializer.data,
                 "done_notcheck" : done_notcheck_homework_serializer.data,
-                "all_done" : all_done_homework_serializer.data
+                "all_done" : all_done_homework_serializer.data,
+                "students" : student_homeworks_serizlizer.data
             }
             return Response(context)
         
         elif request.user.userflag == False:
             student = UserInfo.objects.get(username=request.user.username)
-            homework = student.S_homework.all()
+            homeworks = student.teacher_homework.all()
 
-            homework_serializer = StudentHomeworkMainSerializer(homework, many=True)
-            return Response(homework_serializer.data)
+            notdone_homework = []
+            done_homework = []
+
+            for homework in homeworks:
+                if homework.deadline >= today:
+                    notdone_homework.append(homework)
+                else:
+                    done_homework.append(homework)
+            
+            my_homework = student.S_homework.all()
+
+            notdone_homework_serializer = TeacherHomeworkMainSerializer(notdone_homework, many=True)
+            done_homework_serialzier = TeacherHomeworkMainSerializer(done_homework, many=True)
+            my_homework_serializer = StudentHomeworkMainSerializer(my_homework, many=True)
+            context = {
+                "notdone" : notdone_homework_serializer.data,
+                "done" : done_homework_serialzier.data,
+                "my_homework" : my_homework_serializer.data
+            }
+            return Response(context)
             
             
 
@@ -57,8 +79,10 @@ class HomeworkCreateView(APIView):
     def post(self, request):
         if request.user.userflag == 0:
             homework_serializer = StudentHomeworkCreateSerializer(data=request.data)
+            
             if homework_serializer.is_valid(raise_exception=True):
-                homework = homework_serializer.save(student=request.user)
+                teacher = UserInfo.objects.get(class_field=request.user.class_field,grade=request.user.grade,userflag=True)
+                homework = homework_serializer.save(student=request.user,teacher=teacher)
 
                 files = request.FILES.getlist("files")
                 for file in files:
