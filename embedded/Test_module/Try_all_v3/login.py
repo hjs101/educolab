@@ -42,9 +42,12 @@ class Login_Screen(Screen):
             print("access :" + self.res.json()['access'])
             print("refresh :" + self.res.json()['refresh'])
             print("username :" + self.res.json()['name'])
+<<<<<<< HEAD
             self.f = open("login_token.txt", 'w')
             self.f.write(self.res.json()['access'])
             self.f.close()
+=======
+>>>>>>> 210a2e8 (Feat : 메인화면 추가)
         else:
             self.popup.ids.alert.text="아이디와 비밀번호를\n다시 확인하여 주십시오"
             self.popup.open()

@@ -51,7 +51,10 @@ class Find_renew(Screen):
         self.ids.left_input.text=""
         self.ids.right_input.text=""
         self.ids.right_info_text=""
+<<<<<<< HEAD
         self.manager.before_page=self.name
+=======
+>>>>>>> 210a2e8 (Feat : 메인화면 추가)
 
 class find_test_App(App):
     def build(self):

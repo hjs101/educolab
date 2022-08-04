@@ -35,8 +35,11 @@ class Loading_Screen(Screen):
             self.manager.transition=NoTransition()
             self.manager.current='login'
             self.manager.transition=SlideTransition()
+<<<<<<< HEAD
     def on_leave(self):
         self.manager.before_page=self.name
+=======
+>>>>>>> 210a2e8 (Feat : 메인화면 추가)
 
 class loading_test_App(App):
     def build(self):

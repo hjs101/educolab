@@ -49,7 +49,10 @@ class Find_input1_button2(Screen):
 
     def on_leave(self): # 페이지 이동시 기존 입력값 지우기
         self.ids.mid_input.text=""
+<<<<<<< HEAD
         self.manager.before_page=self.name
+=======
+>>>>>>> 210a2e8 (Feat : 메인화면 추가)
         
 
 class find_test_App(App):

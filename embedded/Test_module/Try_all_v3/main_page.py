@@ -7,7 +7,10 @@ import requests
 from myTextInput import limitedTextInput
 from kivy.properties import StringProperty
 from myPopup import MyPopUp
+<<<<<<< HEAD
 from data.db_init import db_proc
+=======
+>>>>>>> 210a2e8 (Feat : 메인화면 추가)
 
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
@@ -20,9 +23,14 @@ class Main_Screen(Screen):
         Window.clearcolor = (242/255,245/255,247/255,1)
         Window.size = (1280,720)
         Window.borderless=True
+<<<<<<< HEAD
         self.DB = db_proc()
         Builder.load_file('main_page.kv')
     
+=======
+        Builder.load_file('main_page.kv')
+
+>>>>>>> 210a2e8 (Feat : 메인화면 추가)
     def on_pre_enter(self):
         ##### 여기 문구를 수정해주세요 #####
         self.ids.userinfo.text="싸피중학교 3학년 1반 24번 OOO"
@@ -41,10 +49,13 @@ class Main_Screen(Screen):
         self.ids.bad_points_icon.img_path='./icon/minus.png'
         self.ids.homework_icon.img_path='./icon/homework.png'
         self.ids.survey_icon.img_path='./icon/survey.png'
+<<<<<<< HEAD
 
     def go_notice(self):
         pass
 
+=======
+>>>>>>> 210a2e8 (Feat : 메인화면 추가)
         
 class main_test_App(App):
     def build(self):
