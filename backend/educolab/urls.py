@@ -87,6 +87,7 @@ urlpatterns = [
     path('notice/', include('notice.urls')),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 601cae8 (Feat : 공지사항 기능 구현)
 =======
     path('survey/', include('survey.urls')),
@@ -94,6 +95,10 @@ urlpatterns = [
 =======
     path('homework/', include('homework.urls')),
 >>>>>>> 143f316 (feat: homework 모델변경)
+=======
+    path('survey/', include('survey.urls')),
+    path('homework/', include('homework.urls')),
+>>>>>>> 7306741 (feat : 과제 제출 기능 구현)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 <<<<<<< HEAD
