@@ -110,10 +110,14 @@ INSTALLED_APPS = [
 >>>>>>> 9e2d7fd (Style : UserInfo DB 등록)
 =======
     'homework',
+<<<<<<< HEAD
 >>>>>>> 143f316 (feat: homework 모델변경)
 =======
     'homework',
 >>>>>>> b9da983 (Feat : mypage 구현중)
+=======
+    'mainpage',
+>>>>>>> 9d68f0e (feat : 메인페이지 학교행사 생성,수정,삭제 기능 구현)
     'drf_yasg',
 <<<<<<< HEAD
 <<<<<<< HEAD

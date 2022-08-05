@@ -94,6 +94,7 @@ urlpatterns = [
 =======
     path('survey/', include('survey.urls')),
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> dfc8ff1 (Feat : 설문조사 생성 기능 구현)
 =======
     path('homework/', include('homework.urls')),
@@ -124,6 +125,9 @@ urlpatterns = [
     path('api/survey/', include('survey.urls')),
     path('api/mypage/', include('mypage.urls')),
 >>>>>>> d215d15 (자동배포로 인한 Url 변경)
+=======
+    path('main/', include('mainpage.urls')),
+>>>>>>> 9d68f0e (feat : 메인페이지 학교행사 생성,수정,삭제 기능 구현)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 <<<<<<< HEAD
