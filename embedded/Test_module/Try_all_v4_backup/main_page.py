@@ -79,8 +79,13 @@ class Main_Screen(Screen):
         self.ids.survey_icon.img_path='./icon/survey.png'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def for_logout(self):
 =======
+=======
+    def for_logout(self):
+        pass
+>>>>>>> 42a2e09 (Feat : 공지사항 상세 내용 추가)
     def go_notice(self):
         pass
     def go_memo(self):

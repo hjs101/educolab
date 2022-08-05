@@ -7,10 +7,14 @@
 - **Try_all_v1_backup** : 프론트 기능만 업데이트 된 버전<br>
 - **Try_all_v2_backup** : v1 + 프론트(시작화면 로딩, DB 추가, 가상키보드 기능)<br>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 42a2e09 (Feat : 공지사항 상세 내용 추가)
 <br>
 - **notice_v0** : 공지사항 목록 및 상세 화면 디자인<br>
 - **Try_all_v3** : v2_backup + 로그인 토큰 저장 기능<br>
 - **Try_all_v3_backup** : v3 + 공지사항 목록 화면 추가<br>
+<<<<<<< HEAD
 - **Try_all_v4** : v3_backup + 메인페이지 업데이트 기능 추가 <br>
 - **Try_all_v4_backup** : v4 + 공지사항 상세 페이지 추가<br>
 - **Try_all_v5** : v4_backup + 공지사항 목록 및 상세내용 보기 기능 추가 <br>
@@ -22,3 +26,8 @@
 - **Try_all_v3** : v2_backup + 화면 정리<br>
 - **notice_v0** : 최초 화면 디자인 정의<br>
 >>>>>>> 210a2e8 (Feat : 메인화면 추가)
+=======
+- **Try_all_v4** : v3_backup + 기능 추가 개발 중 <br>
+- **Try_all_v4_backup** : v3_backup + 화면 개발 중<br>
+
+>>>>>>> 42a2e09 (Feat : 공지사항 상세 내용 추가)

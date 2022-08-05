@@ -12,9 +12,13 @@ from find_input2_button1 import Find_input2_button1
 from main_page import Main_Screen
 from list_page import List_Screen
 <<<<<<< HEAD
+<<<<<<< HEAD
 from info import Info_Screen
 =======
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+from info import Info_Screen
+>>>>>>> 42a2e09 (Feat : 공지사항 상세 내용 추가)
 
 from find_result import Find_result
 from find_renew import Find_renew
