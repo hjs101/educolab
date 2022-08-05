@@ -24,6 +24,7 @@ class Find_input2_button1(Screen):
 <<<<<<< HEAD
         # Builder.load_file('find_input2_button1.kv')
         self.popup=MyPopUp()
+<<<<<<< HEAD
 =======
         Builder.load_file('find_input2_button1.kv')
 =======
@@ -33,6 +34,8 @@ class Find_input2_button1(Screen):
         # self.name_temp=''
         # self.username_temp=''
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+>>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
 
     def on_pre_enter(self):     
         # 화면 출력 내용 변환
@@ -79,12 +82,17 @@ class Find_input2_button1(Screen):
 class find_test_App(App):
     def build(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
         Builder.load_file('find_input2_button1.kv')
         return Find_input2_button1()
 =======
         Builder.load_file('find_input2_button2.kv')
         return Find_input2_button2()
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+        Builder.load_file('find_input2_button1.kv')
+        return Find_input2_button1()
+>>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
 
 if __name__=="__main__":
     find_test_App().run()

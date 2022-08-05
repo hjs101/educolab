@@ -5,16 +5,25 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image, AsyncImage
 import requests
 from myTextInput import limitedTextInput
+<<<<<<< HEAD
 from kivy.properties import NumericProperty
 from myPopup import MyPopUp2
+=======
+from kivy.properties import ListProperty
+from myPopup import MyPopUp
+>>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
 
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
 
 class Survey_Select_Screen(Screen):
+<<<<<<< HEAD
     # progress_all:0.8*root.width
     # progress_set:self.progress_all*self.percent
     percent=NumericProperty(0.7)
+=======
+    key_color=ListProperty([1,1,1,1])
+>>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
     def __init__(self, **kwargs):
         super(Survey_Select_Screen, self).__init__(**kwargs)
         Window.top=50
@@ -23,6 +32,7 @@ class Survey_Select_Screen(Screen):
         Window.size = (1280,720)
         Window.borderless=True
         # Builder.load_file('survey_select.kv')
+<<<<<<< HEAD
         self.key_color=[0/255, 176/255, 240/255,1]
         self.popup = MyPopUp2()
         a=23
@@ -103,6 +113,15 @@ class Survey_Select_Screen(Screen):
     def checkPopup(self):
         print(self.popup.sig)
 
+=======
+        self.key_color=[151/255, 71/255, 255/255,1]
+
+        # ##icons
+        # self.ids.before2.img_path='./icon/left_double.png'
+        # self.ids.before1.img_path='./icon/None.png'
+        # self.ids.after1.img_path='./icon/right_single.png'
+        # self.ids.after2.img_path='./icon/right_double.png'
+>>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
 
 
     def onStop(self): # 창 종료 버튼

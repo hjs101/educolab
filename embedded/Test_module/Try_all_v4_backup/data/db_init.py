@@ -17,11 +17,17 @@ class db_proc:
         return self.cur
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def db_commit(self):
         self.db.commit()
         
 =======
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+    def db_commit(self):
+        self.db.commit()
+        
+>>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
     def db_close(self):
         print("db 연결 해제")
         self.db.close()

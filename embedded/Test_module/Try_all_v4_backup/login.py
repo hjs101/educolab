@@ -4,14 +4,20 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 import requests
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
 from pymysql import NULL
 from myTextInput import limitedTextInput
 from myPopup import MyPopUp
 import json
+<<<<<<< HEAD
 =======
 from myTextInput import limitedTextInput
 from myPopup import MyPopUp
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+>>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
 
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
@@ -55,6 +61,7 @@ class Login_Screen(Screen):
         if self.next_flag:
             self.login_next_page="main"
 <<<<<<< HEAD
+<<<<<<< HEAD
             with open("./login_info.json", 'w', encoding='utf-8') as file:
                 json.dump(self.res.json(), file)
 =======
@@ -65,6 +72,10 @@ class Login_Screen(Screen):
             self.f.write(self.res.json()['access'])
             self.f.close()
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+            with open("./login_info.json", 'w', encoding='utf-8') as file:
+                json.dump(self.res.json(), file)
+>>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
         else:
             self.popup.ids.alert.text="아이디와 비밀번호를\n다시 확인하여 주십시오"
             self.popup.open()
