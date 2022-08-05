@@ -38,9 +38,6 @@ export default {
     const {userType} = route.params
     const isTeacher = computed(() => userType === 'teacher')
     onBeforeMount(() => {
-      // 현재 로그인이 되어있는지 확인 (토큰이 있는지 확인)
-      // 현재 사용자 타입과 로그인한 사용자 타입이 맞는지 확인
-      // 데이터 받아오기
     })
     onMounted(() => {
       store.dispatch('taskList')

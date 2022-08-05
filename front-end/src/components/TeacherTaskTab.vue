@@ -19,28 +19,28 @@
 
     <q-tab-panels v-model="tab">
       <q-tab-panel name="toSubmitTask">
-        <q-list bordered class="rounded-borders" v-for="sample in samples" :key="sample.pk">
-          <task-item :sample = sample />
+        <q-list bordered class="rounded-borders" v-for="item in list.notDone" :key="item.pk">
+          <task-item :item = item />
         </q-list>
         <the-pagination />
       </q-tab-panel>
 
       <q-tab-panel name="toScoreTask">
-        <q-list bordered class="rounded-borders" v-for="sample in samples" :key="sample.pk">
-          <task-item :sample = sample />
+        <q-list bordered class="rounded-borders" v-for="item in list.notCheck" :key="item.pk">
+          <task-item :item = item />
         </q-list>
         <the-pagination />
       </q-tab-panel>
 
       <q-tab-panel name="studentTask">
-        <q-list bordered class="rounded-borders" v-for="sample in samples" :key="sample.pk">
-          <task-item :sample = sample />
+        <q-list bordered class="rounded-borders" v-for="item in list.studentTask" :key="item.pk">
+          <task-item :item = item />
         </q-list>
       </q-tab-panel>
 
       <q-tab-panel name="doneTask">
-        <q-list bordered class="rounded-borders" v-for="sample in samples" :key="sample.title">
-          <task-item :sample = sample />
+        <q-list bordered class="rounded-borders" v-for="item in list.done" :key="item.pk">
+          <task-item :item = item />
         </q-list>
       </q-tab-panel>
     </q-tab-panels>
@@ -48,7 +48,8 @@
 </template>
 
 <script>
-import {ref} from 'vue'
+import {computed, reactive, ref} from 'vue'
+import {useStore} from 'vuex'
 import TaskItem from '@/components/TaskItem.vue'
 import ThePagination from '@/components/ThePagination.vue'
 export default {
@@ -59,12 +60,16 @@ export default {
   },
   setup() {
     let tab = ref('toSubmitTask')
-    let samples =[
-      {pk: 1, title : '과제 제목', name: '출제자', content: '내용'},
-      {pk: 2, title : '과제 제목2', name: '출제자2', content: '내용2'}]
+    const store = useStore()
+    const list = reactive({
+      notCheck: computed(() => store.getters.getTeacherNotcheck),
+      studentTask: computed(() => store.getters.getTeacherStudentTask),
+      notDone: computed(() => store.getters.getTeacherNotDone),
+      done: computed(() => store.getters.getTeacherDone),
+    })
     return {
       tab,
-      samples
+      list
     }
   }
 }

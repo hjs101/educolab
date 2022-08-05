@@ -34,7 +34,7 @@
       <div>
       <!-- 자신이 만든 페이지에서만 보임 -->
         <router-link class="button" :to="{name: 'TaskUpdateView', params: {
-          userType: user.type, taskPk: task.pk,
+          userType: user.type, taskPk,
         }}">
           <q-btn color="primary" label="수정"/>
         </router-link>
@@ -62,16 +62,7 @@ export default {
   setup() {
     const route = useRoute()
     const store = useStore()
-    const task = reactive({
-      pk :route.params.taskPk,
-      title: '제목',
-      createdAt: '생성일자와 시간',
-      deadline: '제출기한',
-      name: '출제자',
-      content : '과제 내용',
-      students : [],
-      text: ''
-    })
+    let {taskPk} = ref(route.params)
     const user = reactive({
       type: route.params.userType,
       current: store.getters.currentUser.userflag,
@@ -84,7 +75,7 @@ export default {
       {name : '학생 이름2', submitAt:'제출 시간2', content: '내용2'},]
     let confirm = ref(false)
     return {
-      task,
+      taskPk,
       user,
       files,
       samples,

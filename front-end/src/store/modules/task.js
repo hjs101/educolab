@@ -92,7 +92,9 @@ export const task = {
       axios({
         url: drf.task.create(),
         method : 'post',
-        headers: getters.authHeader,
+        headers: {
+          ...getters.authHeader,
+        'Content-Type': 'multipart/form-data'},
         data,
       })
         .then(res => {

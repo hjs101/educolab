@@ -35,7 +35,7 @@
             :min="1"
             :max="3"
             label="학년"
-            v-model="task.targetGrade"
+            v-model="task.grade"
             lazy-rules
             :rules="[
             val => val === '' || val === null || val > 0 && val < 4 || '값이 올바르지 않습니다'
@@ -47,7 +47,7 @@
             label="반"
             :min="1"
             :max="20"
-            v-model="task.targetClass"
+            v-model="task.class_field"
             lazy-rules
             :rules="[
             val => val === '' || val === null || val > 0 && val < 21 || '값이 올바르지 않습니다'
@@ -104,7 +104,18 @@ export default {
     const accept = ref(false)
     const onSubmit = (event) => {
       event.preventDefault()
-      store.dispatch('createTask', task)
+      let form = new FormData()
+      for (let key in task) {
+        if (key === 'files' && task[key] !== null) {
+          for (let i=0; i < task.files.length; i++) {
+            console.log(task[key][i])
+            form.append(key, task[key][i])
+          }
+        } else {
+          form.append(key, task[key])
+        }
+      }
+      store.dispatch('createTask', form)
     }
     const onReset = (event) => {
       event.preventDefault()

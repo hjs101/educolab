@@ -430,7 +430,7 @@ const routes = [
   },
   // 존재하지 않는 페이지
   {
-    path: '/:anything',
+    path: '/:pathMatch(.*)*',
     redirect: '/404'
   }
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
