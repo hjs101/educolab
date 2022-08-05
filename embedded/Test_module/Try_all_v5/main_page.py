@@ -61,11 +61,18 @@ class Main_Screen(Screen):
 
     def for_logout(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
         with open("./login_info.json", 'w', encoding='utf-8') as file:
             json.dump({}, file)
 =======
         pass
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
+=======
+        with open("./login_info.json", 'r') as file:
+            data = json.load(file)
+            self.acc_token = data["access"]
+        self.res = requests.get('http://127.0.0.1:8000/accounts/logout')
+>>>>>>> c515355 (Feat: notice request 구현 시작!)
 
     def on_leave(self):
         self.manager.before_page=self.name
