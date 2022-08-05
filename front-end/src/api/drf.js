@@ -96,7 +96,12 @@ export default {
 =======
 
   survey: {
+<<<<<<< HEAD
     surveyList: () => SURVEY + 'main/'    
 >>>>>>> 452a9d1 (설문조사  등록)
+=======
+    surveyList: () => SURVEY + 'main/',    
+    surveyCreate: () => SURVEY + 'create/'
+>>>>>>> c450ef8 (설문조사  등록 구현)
   }
 }

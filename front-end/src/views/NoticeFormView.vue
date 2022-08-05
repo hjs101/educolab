@@ -6,11 +6,11 @@
 >>>>>>> e6b54fb (asdu)
   <div class="q-px-xl">
     <h1>공지 작성,수정 페이지</h1>
-    {{credentials.classification}}
+    <!-- {{credentials.classification}}
     <br>
-    {{noticePk}}
+    {{noticePk}} -->
     <br>
-    {{noticeItem.notice.classification}}
+    <!-- {{noticeItem.notice.classification}} -->
     <q-form v-if="!noticePk || noticeItem.notice">
 
       <div class="q-gutter-lg row">
@@ -50,7 +50,7 @@
       <hr>
 
       <button 
-      @click.self.prevent="index !== undefined ? submitNotice(credentials) : updateNotice(credentials) ">
+      @click.self.prevent="submitNotice(info)">
       등록</button>
   
       <!-- {{ index !== undefined ? '작성' : '수정'}}</button> -->
@@ -87,7 +87,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(['submitNotice',]),
+    ...mapActions(['submitNotice']),
     onFileSelected(event) {
       this.credentials.files = event.target.files
       console.log(this.credentials.files)
