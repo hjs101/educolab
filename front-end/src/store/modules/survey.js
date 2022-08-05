@@ -6,15 +6,19 @@ export const survey = {
   state() {
     return {
       survey : {},
+      surveyData: [{}, {}],
     }
   },
   
   getters: {
-    survey : state => state.survey
+    survey : state => state.survey,
+    surveyData : state => state.surveyData
   },
 
   mutations: {
-    SURVEY_LIST : (state, survey) => state.survey = survey
+    SURVEY_LIST : (state, survey) => state.survey = survey,
+    SURVEY_DATA: (state, data) => state.surveyData[data.question_number-1] = data
+    
   },
 
   actions: {
@@ -31,6 +35,10 @@ export const survey = {
         .catch(err => {
           console.log(err)
         })
+    },
+    goSurvey({commit}, data) {
+      console.log(data)
+      commit('SURVEY_DATA', data)
     }
   }
 } 

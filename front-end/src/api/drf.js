@@ -25,6 +25,7 @@ export default {
   },
 
   survey: {
-    surveyList: () => SURVEY + 'main/'    
+    surveyList: () => SURVEY + 'main/',    
+    surveyCreate: () => SURVEY + 'create/'
   }
 }
