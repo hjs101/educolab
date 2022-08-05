@@ -1,4 +1,4 @@
-FROM jenkins:latest
+FROM jenkins:lts
 WORKDIR /usr/src/app
 COPY . .
 WORKDIR /var/jenkins_home/workspace/educolab_back/backend
