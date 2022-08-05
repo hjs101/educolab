@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @change="goSurvey(credentials)">
+    <div @change="goSurvey({...credentials})">
       <select v-model="selected">
         <option value="">==문항 선택==</option>
         <option value="choice">객관식 설문조사</option>
@@ -16,14 +16,15 @@
         문항 {{ survey }}. <input class="inputWidth" type="text" placeholder="객관식 문항을 입력해주세요." v-model="credentials.survey_question">
         <!-- <button @click="deleteSurvey">X</button> -->
         <div class="surveymargin">
-          선택지 1. <input type="text" v-model="credentials.num1">
-          선택지 2. <input type="text" v-model="credentials.num2">
-          선택지 3. <input type="text" v-model="credentials.num3">
-          선택지 4. <input type="text" v-model="credentials.num4">
-          선택지 5. <input type="text" v-model="credentials.num5">
+          선택지 1. <input type="text" v-model="num1">
+          선택지 2. <input type="text" v-model="num2">
+          선택지 3. <input type="text" v-model="num3">
+          선택지 4. <input type="text" v-model="num4">
+          선택지 5. <input type="text" v-model="num5">
         </div>
       </div>
     </div>
+    {{num1}}
   </div>
 </template>
 
@@ -38,32 +39,33 @@ export default {
     survey: Number,
   },
   setup(props) {
-    const credentials = reactive({ 
+    let selected = ref('')
+    let shape = ref('')
+    let num1 = ref('')
+    let num2 = ref('')
+    let num3 = ref('')
+    let num4 = ref('')
+    let num5 = ref('')
+    let credentials = reactive({ 
       survey_question: '',
       question_number : props.survey,
       fullNum: computed(() => {
-        if(this.selected === 'question') {
+        if(selected.value === 'question') {
           return null
         } else {
-          return `${this.num1}/${this.num2}/${this.num3}/${this.num4}/${this.num5}` 
+          return `${num1.value}/${num2.value}/${num3.value}/${num4.value}/${num5.value}` 
         }
       })
     })
-    const selected = ref('')
     return {
       credentials,
-      shape: ref(''),
-    }
-  },
-  data() {
-    // const fullNum = `${this.num1}/${this.num2}/${this.num3}/${this.num4}/${this.num5}`? `${this.num1}/${this.num2}/${this.num3}/${this.num4}/${this.num5}` : null
-    return {
-      selected: '',
-      num1 : '',
-      num2 : '',
-      num3 : '',
-      num4 : '',
-      num5 : '',
+      selected,
+      shape,
+      num1,
+      num2,
+      num3,
+      num4,
+      num5
     }
   },
   // computed: {

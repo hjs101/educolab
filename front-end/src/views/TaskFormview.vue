@@ -1,8 +1,15 @@
 <template>
   <main>
+<<<<<<< HEAD
     <h1>{{userType}} 과제 {{type}} 페이지 {{taskPk}}</h1>
     <section class="q-pa-md" style="max-width: 400px">
       <q-form
+=======
+    <h1>{{userType}} 과제 작성, 수정 페이지 {{taskPk}}</h1>
+    <section class="q-pa-md" style="max-width: 400px">
+      <q-form
+        @submit="onSubmit"
+>>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
         @reset="onReset"
         class="q-gutter-md"
       >
@@ -19,6 +26,7 @@
           label="내용"
           v-model="task.content"
         />
+<<<<<<< HEAD
 
         <!-- 교사에게만 보임 -->
         <div v-if="isTeacher">
@@ -28,13 +36,28 @@
             label="과목"
             :options="subjectOptions"
           />
+=======
+        <q-select
+          outlined
+          v-model="task.subject"
+          label="과목"
+          :options="subjectOptions"
+        />
+
+        <!-- 교사에게만 보임 -->
+        <div v-if="isTeacher">
+>>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
           <q-input
             outlined
             type="number"
             :min="1"
             :max="3"
             label="학년"
+<<<<<<< HEAD
             v-model="task.grade"
+=======
+            v-model="task.targetGrade"
+>>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
             lazy-rules
             :rules="[
             val => val === '' || val === null || val > 0 && val < 4 || '값이 올바르지 않습니다'
@@ -46,12 +69,17 @@
             label="반"
             :min="1"
             :max="20"
+<<<<<<< HEAD
             v-model="task.class_field"
+=======
+            v-model="task.targetClass"
+>>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
             lazy-rules
             :rules="[
             val => val === '' || val === null || val > 0 && val < 21 || '값이 올바르지 않습니다'
             ]"
           />
+<<<<<<< HEAD
         </div>
         <q-input
           outlined
@@ -61,6 +89,17 @@
           v-model="task.deadline"
         />
         <q-input
+=======
+          <q-input
+            outlined
+            stack-label
+            type="date"
+            label="제출기한"
+            v-model="task.deadline"
+          />
+        </div>
+        <q-input
+>>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
           label="첨부파일"
           stack-label
           outlined
@@ -69,12 +108,17 @@
           type="file"
         />
         <div>
+<<<<<<< HEAD
           <q-btn label="초기화" type="reset" color="primary" flat class="q-ml-sm" />
           <q-btn :label="type" color="primary" @click="onSubmit(false)" />
           <q-btn v-if="!isTeacher" label="제출" color="primary" @click="onSubmit(true)"/>
           <router-link class="button" :to="{name:'TaskListView', params: {userType,}}">
             <q-btn label="목록" color="primary"/>
           </router-link>
+=======
+          <q-btn label="등록" type="submit" color="primary"/>
+          <q-btn label="초기화" type="reset" color="primary" flat class="q-ml-sm" />
+>>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
         </div>
       </q-form>
     </section>
@@ -82,7 +126,11 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { reactive, computed, onBeforeMount} from 'vue'
+=======
+import { ref, reactive, computed } from 'vue'
+>>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
 import { useRoute } from 'vue-router'
 import {useStore} from 'vuex'
 export default {
@@ -90,6 +138,7 @@ export default {
   setup () {
     const route = useRoute()
     const store = useStore()
+<<<<<<< HEAD
     let {userType, taskPk} = route.params
     onBeforeMount(() => {
       if (taskPk) {
@@ -176,3 +225,49 @@ export default {
   }
 }
 </script>
+=======
+    const subjectOptions = store.getters.getSubject
+    let userType = route.params.userType
+    let isTeacher = computed(() => userType === 'teacher')
+    let taskPk = route.params.taskPk
+    const task = reactive({
+      teacher: store.getters.currentUser.username,
+      subject: store.getters.currentUser.subject,
+      title: null,
+      content: null,
+      grade: null,
+      class_field: null,
+      files: null,
+      deadline: null,
+    })
+    const accept = ref(false)
+    const onSubmit = (event) => {
+      event.preventDefault()
+      store.dispatch('createTask', task)
+    }
+    const onReset = (event) => {
+      event.preventDefault()
+      for (let key in task) {
+        task[key] = null
+      }
+    }
+
+    return {
+      task,
+      accept,
+      userType,
+      taskPk,
+      isTeacher,
+      onSubmit,
+      onReset,
+      subjectOptions
+    }
+  }
+}
+</script>
+
+import {reactive} from 'vue'
+setup() {
+  credential
+}
+>>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
