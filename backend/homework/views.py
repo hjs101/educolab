@@ -121,7 +121,6 @@ class HomeworkDetailView(APIView):
             homework_serializer = TeacherHomeworkDetailSerializer(homework)
 
         else:
-            print(2)
             homework = StudentHomework.objects.get(id=homework_pk)
             homework_serializer = StudentHomeworkDetailSerializer(homework)
         
