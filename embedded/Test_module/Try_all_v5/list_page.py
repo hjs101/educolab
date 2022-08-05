@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 from audioop import reverse
+=======
+>>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image, AsyncImage
+<<<<<<< HEAD
 import requests, json
+=======
+import requests
+>>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 from myTextInput import limitedTextInput
 from kivy.properties import ListProperty
 from myPopup import MyPopUp
@@ -21,10 +28,15 @@ class List_Screen(Screen):
         Window.clearcolor = (242/255,245/255,247/255,1)
         Window.size = (1280,720)
         Window.borderless=True
+<<<<<<< HEAD
+=======
+        # Builder.load_file('list_page.kv')
+>>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
         self.next_page='main'
         self.page_num=0
 
     def on_pre_enter(self):
+<<<<<<< HEAD
         ######## 여기 컨텐츠 받아와서 넣으셔야 합니다 #####
         for i in range(5):
             self.ids['num' + str(i+1)].text=''
@@ -54,6 +66,46 @@ class List_Screen(Screen):
             self.survey_list()
 
         self.ids.middle.text=str(self.manager.page_num)
+=======
+        ##### key_color and title #####
+        if 'Notice' in self.name:
+            self.key_color=[151/255, 71/255, 255/255,1]
+            self.ids.main_title.text="공지사항"
+        if 'Memo' in self.name:
+            self.key_color=[198/255, 128/255, 62/255,1]
+            self.ids.main_title.text="필기노트"
+        if 'Quiz' in self.name:
+            self.key_color=[77/255, 166/255, 96/255,1]
+            self.ids.main_title.text="퀴즈"
+        if 'Survey' in self.name:
+            self.key_color=[0/255, 176/255, 240/255,1]
+            self.ids.main_title.text="설문조사"
+
+        ######## 여기 컨텐츠 받아와서 넣으셔야 합니다 #####
+        self.ids.num1.text="번호 1"
+        self.ids.title1.text=self.name
+        self.ids.writer1.text="작성자 1"
+        self.ids.date1.text="날짜 1"
+        self.ids.num2.text="번호 2"
+        self.ids.title2.text="제목 2"
+        self.ids.writer2.text="작성자 2"
+        self.ids.date2.text="날짜 2"
+        self.ids.num3.text="번호 3"
+        self.ids.title3.text="제목 3"
+        self.ids.writer3.text="작성자 3"
+        self.ids.date3.text="날짜 3"
+        self.ids.num4.text="번호 4"
+        self.ids.title4.text="제목 4"
+        self.ids.writer4.text="작성자 4"
+        self.ids.date4.text="날짜 4"
+        self.ids.num5.text="번호 5"
+        self.ids.title5.text="제목 5"
+        self.ids.writer5.text="작성자 5"
+        self.ids.date5.text="날짜 5"
+        #################################################
+        self.ids.middle.text=str(self.manager.page_num)
+        
+>>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 
         ##icons
         if self.manager.page_num==1:
@@ -70,6 +122,7 @@ class List_Screen(Screen):
             self.ids.after1.source='./icon/right_single.png'
             self.ids.after2.source='./icon/right_double.png'
 
+<<<<<<< HEAD
     def notice_list(self):
         res = requests.get('http://127.0.0.1:8000/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
         data_full = json.loads(res.text)
@@ -92,13 +145,18 @@ class List_Screen(Screen):
     def survey_list(self):
         pass
 
+=======
+>>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
     def content_btn(self, content_num): ##### 각각의 게시물을 들어갈때 들어가는 페이지 설정 
         if self.name=='Notice_list1' or self.name=='Notice_list2': self.content_page="Notice_info"
         else : self.content_page=self.name
         ##### 몇번째 게시물로 들어가는지 확인 #####
         ### Content_num : 1 ~ 5
         print("게시물 "+str(content_num)+"번")
+<<<<<<< HEAD
         self.content_num = int(self.ids['num' + str(content_num)].text)
+=======
+>>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 
 
     def page_num_reset(self): ##### main 페이지로 넘어갈때 

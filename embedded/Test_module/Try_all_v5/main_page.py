@@ -60,8 +60,12 @@ class Main_Screen(Screen):
         self.ids.survey_icon.img_path='./icon/survey.png'
 
     def for_logout(self):
+<<<<<<< HEAD
         with open("./login_info.json", 'w', encoding='utf-8') as file:
             json.dump({}, file)
+=======
+        pass
+>>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 
     def on_leave(self):
         self.manager.before_page=self.name
