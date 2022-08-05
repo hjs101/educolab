@@ -36,6 +36,11 @@ class SubmitHomeworkSerializer(serializers.ModelSerializer):
         model = SubmitHomework
         fields = ('student','content','submit_at','submit_flag','atch_file_name','atch_file')
 
+class SubmitHomeworksubmitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubmitHomework
+        fields = '__all__'
+
 class FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Files
