@@ -19,7 +19,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # path('main/', views.SurveyTeacherMainView.as_view(), name='survey_main'),
-
-    
+    path('main/', views.MypageMainView.as_view(), name='mypage_main'),
+    path('grant/', views.PointGrantView.as_view(), name='mypage_point'),
 ]

@@ -89,12 +89,11 @@ class NoticeDetailView(APIView):
         return Response("success")
 
 class NoticeUpdateView(APIView):
-    notice_id = ""
     def get(self, req):
         if not req.user.userflag:
             return Response({"message : 선생님만 접근 가능합니다."})
         ## 공지사항 번호 가져오기
-        self.notice_id = req.GET['notice_num']
+        notice_id = req.GET['notice_num']
 
         ## 공지사항 번호로 공지사항 인스턴스 가져오기
         notice = Notice.objects.get(pk=self.notice_id)
@@ -121,8 +120,8 @@ class NoticeUpdateView(APIView):
         return Response({"message" : "잘못된 접근입니다."})
 
     def put(self, req):
-        self.notice_id = req.data['notice_num']
-        notice = Notice.objects.get(pk=self.notice_id)
+        notice_id = req.data['notice_num']
+        notice = Notice.objects.get(pk=notice_id)
         notice_serializer = NoticeSerializer(notice, data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
             notice = notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))
