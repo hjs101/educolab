@@ -25,6 +25,9 @@ from find_renew import Find_renew
 from data.db_init import db_proc
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
 ##### to remove warning message ######
 Builder.load_file('loading.kv')
 Builder.load_file('login.kv')
@@ -41,8 +44,11 @@ Builder.load_file('list_page.kv')
 Builder.load_file('info.kv')
 ###########################################
 
+<<<<<<< HEAD
 =======
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+>>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
 
 class WindowManager(ScreenManager):
     def __init__(self, **kwargs):

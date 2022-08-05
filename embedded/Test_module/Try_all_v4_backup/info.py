@@ -21,10 +21,14 @@ class Info_Screen(Screen):
         Window.size = (1280,720)
         Window.borderless=True
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('info.kv')
 =======
         Builder.load_file('info.kv')
 >>>>>>> 42a2e09 (Feat : 공지사항 상세 내용 추가)
+=======
+        # Builder.load_file('info.kv')
+>>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
 
     def on_pre_enter(self):
         if 'Notice' in self.name:

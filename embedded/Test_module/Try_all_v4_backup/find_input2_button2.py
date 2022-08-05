@@ -21,10 +21,14 @@ class Find_input2_button2(Screen):
         Window.borderless=True
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('find_input2_button2.kv')
 =======
         Builder.load_file('find_input2_button2.kv')
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+        # Builder.load_file('find_input2_button2.kv')
+>>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
         self.popup=MyPopUp()
         # self.name_temp=''
         # self.username_temp=''

@@ -21,10 +21,14 @@ class List_Screen(Screen):
         Window.size = (1280,720)
         Window.borderless=True
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('list_page.kv')
 =======
         Builder.load_file('list_page.kv')
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+        # Builder.load_file('list_page.kv')
+>>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
         self.next_page='main'
         self.page_num=0
 
@@ -101,10 +105,14 @@ class List_Screen(Screen):
         else:
             self.ids.before2.source='./icon/left_double.png'
 <<<<<<< HEAD
+<<<<<<< HEAD
             self.ids.before1.source='./icon/left_single.png'
 =======
             self.ids.before1.source='./icon/left_double.png'
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+            self.ids.before1.source='./icon/left_single.png'
+>>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
         
         if self.manager.page_num==self.manager.max_page_num:
             self.ids.after1.source='./icon/None.png'

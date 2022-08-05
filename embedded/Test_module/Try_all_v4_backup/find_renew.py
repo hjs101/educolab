@@ -17,10 +17,14 @@ class Find_renew(Screen):
         Window.size = (1280,720)
         Window.borderless=True
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('find_renew.kv')
 =======
         Builder.load_file('find_renew.kv')
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+        # Builder.load_file('find_renew.kv')
+>>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
         # self.name_temp=''
         # self.username_temp=''
         # self.email_temp=''

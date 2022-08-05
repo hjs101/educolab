@@ -24,6 +24,7 @@ class Main_Screen(Screen):
         Window.size = (1280,720)
         Window.borderless=True
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('main_page.kv')
 
     def on_pre_enter(self):
@@ -54,6 +55,9 @@ class Main_Screen(Screen):
         self.ids.challenge.text="최초로 퀴즈를 1등한 자"
 =======
         Builder.load_file('main_page.kv')
+=======
+        # Builder.load_file('main_page.kv')
+>>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
 
     def on_pre_enter(self):
         ##### 여기 문구를 수정해주세요 #####

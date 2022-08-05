@@ -19,10 +19,14 @@ class Find_input1_button1(Screen):
         Window.borderless=True
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('find_input1_button1.kv')
 =======
         Builder.load_file('find_input1_button1.kv')
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+        # Builder.load_file('find_input1_button1.kv')
+>>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
         self.popup=MyPopUp()
 
     def midBtn(self):

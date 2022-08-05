@@ -18,10 +18,14 @@ class Loading_Screen(Screen):
         Window.size = (1280,720)
         Window.borderless=True
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('loading.kv')
 =======
         Builder.load_file('loading.kv')
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
+=======
+        # Builder.load_file('loading.kv')
+>>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
 
     def on_pre_enter(self):
         Clock.schedule_once(self.go_page,0)
