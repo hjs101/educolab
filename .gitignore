@@ -464,6 +464,7 @@ backend/my_settings.py
 >>>>>>> 834c26a (Fix : mySettings.py 수정)
 =======
 backend/educolab/my_settings.py
+<<<<<<< HEAD
 >>>>>>> 46a97f8 (embedded에 .gitignore 추가)
 =======
 front-end/node_modules
@@ -487,3 +488,6 @@ login_info.json
 backend/educolab/my_settings.py
 login_token.txt
 >>>>>>> b7db13e (Refactor: login token 발급)
+=======
+login_token.json
+>>>>>>> 63e320c (Refactor : 기능 및 화면 조정 2)
