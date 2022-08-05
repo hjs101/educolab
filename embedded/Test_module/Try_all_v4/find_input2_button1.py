@@ -23,10 +23,13 @@ class Find_input2_button1(Screen):
         Builder.load_file('find_input2_button1.kv')
         self.popup=MyPopUp()
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         # self.name_temp=''
         # self.username_temp=''
 >>>>>>> dbdcd45 (Refactor : v3, v4 구분)
+=======
+>>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
 
     def on_pre_enter(self):     
         # 화면 출력 내용 변환
@@ -74,10 +77,14 @@ class find_test_App(App):
     def build(self):
         Builder.load_file('find_input2_button2.kv')
 <<<<<<< HEAD
+<<<<<<< HEAD
         return Find_input2_button1()
 =======
         return Find_input2_button2()
 >>>>>>> dbdcd45 (Refactor : v3, v4 구분)
+=======
+        return Find_input2_button1()
+>>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
 
 if __name__=="__main__":
     find_test_App().run()

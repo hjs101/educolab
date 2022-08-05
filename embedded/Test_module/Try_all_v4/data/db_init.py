@@ -29,11 +29,17 @@ class db_proc:
         return self.cur
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def db_commit(self):
         self.db.commit()
 
 =======
 >>>>>>> dbdcd45 (Refactor : v3, v4 구분)
+=======
+    def db_commit(self):
+        self.db.commit()
+
+>>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
     def db_close(self):
         print("db 연결 해제")
         self.db.close()

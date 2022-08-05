@@ -465,6 +465,7 @@ backend/my_settings.py
 =======
 backend/educolab/my_settings.py
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 46a97f8 (embedded에 .gitignore 추가)
 =======
 front-end/node_modules
@@ -491,3 +492,6 @@ login_token.txt
 =======
 login_token.json
 >>>>>>> 63e320c (Refactor : 기능 및 화면 조정 2)
+=======
+login_info.json
+>>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
