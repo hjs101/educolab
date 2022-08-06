@@ -11,25 +11,32 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 ##
 from pathlib import Path
-import my_settings
 from datetime import timedelta
 import os
+import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+STATIC_ROOT = '/static/'
+
+env = environ.Env(DEBUG=(bool, True))
+
+environ.Env.read_env(
+    env_file=os.path.join(BASE_DIR, '.env')
+)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(v@!&r6hj*^%+vnmr*kn98ty9tl@qbj#45$=o+)qi^hk#y2q1b'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +45,7 @@ INSTALLED_APPS = [
     'survey',
     'notice',
     'accounts',
+    'homework',
     'drf_yasg',
     'django.contrib.sites',
     'allauth',
@@ -92,7 +100,16 @@ WSGI_APPLICATION = 'educolab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = my_settings.DATABASES
+DATABASES={
+'default': {
+'ENGINE': 'django.db.backends.mysql',
+'NAME': env('DB_NAME'),
+'USER': env('DB_USER'),
+'PASSWORD': env('DB_PASSWORD'),
+"HOST": env('DB_HOST'),
+"PORT": env('DB_PORT'),
+}
+}
 
 
 # Password validation
@@ -178,10 +195,10 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 
 #  발신할 이메일 주소 '~@gmail.com'
-EMAIL_HOST_USER = my_settings.EMAIL_HOST_USER
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 
 # 발신할 이메일 비밀번호 (2단계 인증일경우 앱 비밀번호)
-EMAIL_HOST_PASSWORD = my_settings.EMAIL_HOST_PASSWORD
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 # TLS 보안 방법 (SMPT 서버와 통신할 떄 TLS (secure) connection 을 사용할지 말지 여부)
 EMAIL_USE_TLS = True

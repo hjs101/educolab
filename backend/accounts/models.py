@@ -13,7 +13,7 @@ class UserInfo(AbstractUser):
     userflag = models.BooleanField(default=False, blank=True)
     name = models.CharField(max_length=30,default=None,blank=True)
     birthday = models.DateField(default=None,blank=True)
-    school = models.ForeignKey(SchoolInfo,on_delete=models.CASCADE,db_column='school', related_name='school')
+    school = models.ForeignKey(SchoolInfo,on_delete=models.CASCADE,db_column='school', related_name='school_student')
     phone_number = models.CharField(max_length=11,blank=True)
     grade = models.IntegerField(blank=True,null=True)
     class_field = models.IntegerField(blank=True, null=True)
@@ -22,3 +22,11 @@ class UserInfo(AbstractUser):
     plus_point = models.IntegerField(default=0)
     minus_point = models.IntegerField(default=0)
     profil = models.CharField(max_length=45,null=True,blank=True)
+    acc_point = models.IntegerField(default=0, null=True)
+    
+class PointLog(models.Model):
+    teacher = models.ForeignKey(UserInfo, on_delete=models.DO_NOTHING, related_name="point_teacher")
+    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name="point_student")
+    content = models.CharField(max_length=45)
+    point = models.IntegerField()
+    created_at = models.DateField(auto_now=True)
