@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM jenkins/jenkins:lts
 WORKDIR /usr/src/app
 COPY requirements.txt ./
 
