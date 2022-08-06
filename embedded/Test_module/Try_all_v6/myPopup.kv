@@ -43,9 +43,14 @@
 				id:yes
 				text:"네"
 				on_release:
+<<<<<<< HEAD
 					root.dismiss()
 					app.root.prob_num=1
 					app.root.survey_ans={}
+=======
+					app.root.survey_save()
+					root.dismiss()
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 					app.root.transition.direction="down"
 					app.root.current=app.root.before_page ## 여기서 app.root.current로 접근하여 스크린을 변경하는 방법이 있긴 하다.
 				bold: True
@@ -79,6 +84,7 @@
 						rgba:94/255,106/255,117/255,1
 					Line:
 						width:1.5
+<<<<<<< HEAD
 						rectangle: self.x, self.y, self.width, self.height
 
 
@@ -126,4 +132,6 @@
 						rgba:94/255,106/255,117/255,1
 					Line:
 						width:1.5
+=======
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 						rectangle: self.x, self.y, self.width, self.height

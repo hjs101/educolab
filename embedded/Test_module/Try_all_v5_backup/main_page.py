@@ -61,11 +61,16 @@ class Main_Screen(Screen):
 
     def for_logout(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
         with open("./login_info.json", 'w', encoding='utf-8') as file:
             json.dump({}, file)
 =======
         pass
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
+=======
+        with open("./login_info.json", 'w', encoding='utf-8') as file:
+            json.dump({}, file)
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 
     def on_leave(self):
         self.manager.before_page=self.name

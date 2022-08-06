@@ -18,7 +18,10 @@ from survey_word import Survey_Word_Screen
 from find_result import Find_result
 from find_renew import Find_renew
 from data.db_init import db_proc
+<<<<<<< HEAD
 import requests, json
+=======
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 
 ##### to remove warning message ######
 Builder.load_file('loading.kv')
@@ -46,19 +49,26 @@ class WindowManager(ScreenManager):
         self.DB=db_proc()
         self.DB.create_db()
         self.before_page=''
+<<<<<<< HEAD
         self.start_page_num=0   #list 시작 게시물 index
+=======
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
         self.page_num=1     #list 현재 페이지
         self.max_page_num=5 #list 최대 페이지
         self.prob_num=1     #현재 문항 번호
         self.max_prob_num=5 #최대 문항 번호
         self.survey_ans={}  #설문 답안
         self.survey_cnt=0   #설문에 답변한 문항 수
+<<<<<<< HEAD
         self.content_number=0    #어떤 글?
+=======
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 
     def onStop(self): # 창 종료 버튼
         self.DB.db_close()
         App.get_running_app().stop()
 
+<<<<<<< HEAD
     def access_api(self):
         with open("./login_info.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -85,6 +95,11 @@ class WindowManager(ScreenManager):
             headers={'Authorization' : 'Bearer ' + self.access_api()},
             data=self.send_data
         )
+=======
+    def survey_save(self): ##**# 팝업 종료시 Yes를 누르면 이 함수 호출 후 > 팝업 종료 및 페이지 이동
+        pass
+    
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 
 class masterApp(App):
     def build(self):

@@ -9,6 +9,12 @@ from kivy.properties import ListProperty
 from myPopup import MyPopUp
 import json
 
+<<<<<<< HEAD
+=======
+## self.ID  = 입력받은 ID
+## self.PW  = 입력받은 ID
+
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 class Info_Screen(Screen):
     key_color=ListProperty([1,1,1,1])
     def __init__(self, **kwargs):
@@ -18,8 +24,18 @@ class Info_Screen(Screen):
         Window.clearcolor = (242/255,245/255,247/255,1)
         Window.size = (1280,720)
         Window.borderless=True
+<<<<<<< HEAD
 
     def on_pre_enter(self):
+=======
+        # Builder.load_file('info.kv')
+
+    def on_pre_enter(self):
+        # self.page_pk = self.manager.get_screen('Notice_list1').content_num
+        ##**# Notice_list1, Notice_list2에서 오는 두 가지 경우를 다 따지는 방식
+        self.page_pk = self.manager.get_screen(self.manager.before_page).content_num
+
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
         with open("./login_info.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
             self.acc_token = data["access"]
@@ -39,13 +55,28 @@ class Info_Screen(Screen):
 
 
     def notice_detail(self):
+<<<<<<< HEAD
         res = requests.get('https://i7c102.p.ssafy.io/api/notice/detail', params={'notice_num': self.manager.content_number}, headers={'Authorization' : 'Bearer ' + self.acc_token})
+=======
+        res = requests.get('http://127.0.0.1:8000/notice/detail', params={'notice_num': self.page_pk}, headers={'Authorization' : 'Bearer ' + self.acc_token})
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
         data = json.loads(res.text)['notice']
         self.ids.title.text=data['title']
         temp = str(data['updated_at']).split('T')
         self.ids.info.text="작성자: " + data['teacher']['name'] + " | 작성날짜: " + temp[0] + " | 조회수: " + str(data['views'])
         self.ids.content.text=data['content']
 
+<<<<<<< HEAD
+=======
+    ##**# 다른 곳에서 Info_Screen 형식을 쓸지 잘 모르겠어요
+    # def memo_detail(self):
+    #     pass
+    # def quiz_detail(self):
+    #     pass
+    # def survey_detail(self):
+    #     pass
+
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
     def on_leave(self):
         self.manager.before_page=self.name
 

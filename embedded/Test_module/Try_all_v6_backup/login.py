@@ -31,7 +31,11 @@ class Login_Screen(Screen):
             'password': self.PW,
         }
 
+<<<<<<< HEAD
         self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/login/', data=self.data)
+=======
+        self.res = requests.post('http://127.0.0.1:8000/accounts/login/', data=self.data)
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 
         if len(self.ID) == 0 or len(self.PW) == 0 or self.res.status_code == 401:
             self.next_flag = 0 ## 현재 페이지 유지 + 팝업

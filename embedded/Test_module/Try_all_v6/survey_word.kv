@@ -46,7 +46,11 @@
 			color: 1,1,1,1
 
 			on_release:
+<<<<<<< HEAD
 				root.onPopUp(False)
+=======
+				root.onPopUp()
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 
 			size_hint: None, None
 			height: 50
@@ -62,6 +66,7 @@
 				RoundedRectangle:
 					size: self.size
 					pos: self.pos
+<<<<<<< HEAD
 					radius:[10]
 
 		Button:
@@ -89,6 +94,10 @@
 					size: self.size
 					pos: self.pos
 					radius:[10]	
+=======
+					radius:[10]	
+
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 		Label:
 			id:title
 			# text:"오늘 저녁 메뉴 선정"
@@ -113,9 +122,16 @@
 			on_release:
 				root.next_flag_setup("after")
 				root.next_page_setup()
+<<<<<<< HEAD
 				# root.cnt_setup()
 				app.root.current=root.next_page
 				root.manager.transition.direction="left"
+=======
+				root.cnt_setup()
+				app.root.current=root.next_page
+				root.manager.transition.direction="left"
+				print(root.manager.survey_ans)
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 
 			Image:
 				id:after
@@ -134,9 +150,16 @@
 			on_release:
 				root.next_flag_setup("before")
 				root.next_page_setup()
+<<<<<<< HEAD
 				# root.cnt_setup()
 				app.root.current=root.next_page
 				root.manager.transition.direction="right"
+=======
+				root.cnt_setup()
+				app.root.current=root.next_page
+				root.manager.transition.direction="right"
+				print(root.manager.survey_ans)
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 
 			Image:
 				id:before
@@ -172,6 +195,10 @@
 						rounded_rectangle: self.x, self.y, self.width, self.height, 40
 				Label:
 					id:prob
+<<<<<<< HEAD
+=======
+					# text: "어제는 라면을 먹었고 오늘 점심에는 햇반을 먹었으며 오늘 저녁에는 치킨을 시켰다면 내일 점심으로 먹을 것은 무엇인가?"
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 					size_hint: 1,None
 					text_size:self.width, None
 					height: self.texture_size[1]
@@ -182,12 +209,20 @@
 
 			limitedTextInput:
 				id:ans
+<<<<<<< HEAD
 				on_text:root.calc(self.text)
 				# id: PW_input ### to get a string							
 				multiline: False
 				max_input_num:-1
 				size_hint: .8, .5
 				pos_hint: {"center_x":0.5, "top":1}
+=======
+				# id: PW_input ### to get a string							
+				multiline: False
+				max_input_num :-1
+				size_hint : .8, .5
+				pos_hint : {"center_x":0.5, "top":1}
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 				font_size: 30
 				# password:True
 				padding:10

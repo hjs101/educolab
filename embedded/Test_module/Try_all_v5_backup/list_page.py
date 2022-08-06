@@ -1,17 +1,25 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from audioop import reverse
 =======
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
+=======
+from audioop import reverse
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image, AsyncImage
 <<<<<<< HEAD
+<<<<<<< HEAD
 import requests, json
 =======
 import requests
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
+=======
+import requests, json
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 from myTextInput import limitedTextInput
 from kivy.properties import ListProperty
 from myPopup import MyPopUp
@@ -29,14 +37,20 @@ class List_Screen(Screen):
         Window.size = (1280,720)
         Window.borderless=True
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         # Builder.load_file('list_page.kv')
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
+=======
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
         self.next_page='main'
         self.page_num=0
 
     def on_pre_enter(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
         # Contents reset
         for i in range(5):
             self.ids['num' + str(i+1)].text=''
@@ -48,6 +62,7 @@ class List_Screen(Screen):
         with open("./login_info.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
             self.acc_token = data["access"]
+<<<<<<< HEAD
         if 'Notice' in self.name:
             self.key_color=[151/255, 71/255, 255/255,1]
             self.ids.main_title.text="공지사항"
@@ -70,46 +85,33 @@ class List_Screen(Screen):
         # icons
 =======
         ##### key_color and title #####
+=======
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
         if 'Notice' in self.name:
             self.key_color=[151/255, 71/255, 255/255,1]
             self.ids.main_title.text="공지사항"
+            self.notice_list()
         if 'Memo' in self.name:
             self.key_color=[198/255, 128/255, 62/255,1]
             self.ids.main_title.text="필기노트"
+            self.memo_list()
         if 'Quiz' in self.name:
             self.key_color=[77/255, 166/255, 96/255,1]
             self.ids.main_title.text="퀴즈"
+            self.quiz_list()
         if 'Survey' in self.name:
             self.key_color=[0/255, 176/255, 240/255,1]
             self.ids.main_title.text="설문조사"
+            self.survey_list()
 
-        ######## 여기 컨텐츠 받아와서 넣으셔야 합니다 #####
-        self.ids.num1.text="번호 1"
-        self.ids.title1.text=self.name
-        self.ids.writer1.text="작성자 1"
-        self.ids.date1.text="날짜 1"
-        self.ids.num2.text="번호 2"
-        self.ids.title2.text="제목 2"
-        self.ids.writer2.text="작성자 2"
-        self.ids.date2.text="날짜 2"
-        self.ids.num3.text="번호 3"
-        self.ids.title3.text="제목 3"
-        self.ids.writer3.text="작성자 3"
-        self.ids.date3.text="날짜 3"
-        self.ids.num4.text="번호 4"
-        self.ids.title4.text="제목 4"
-        self.ids.writer4.text="작성자 4"
-        self.ids.date4.text="날짜 4"
-        self.ids.num5.text="번호 5"
-        self.ids.title5.text="제목 5"
-        self.ids.writer5.text="작성자 5"
-        self.ids.date5.text="날짜 5"
-        #################################################
         self.ids.middle.text=str(self.manager.page_num)
-        
 
+<<<<<<< HEAD
         ##icons
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
+=======
+        # icons
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
         if self.manager.page_num==1:
             self.ids.before2.source='./icon/None.png'
             self.ids.before1.source='./icon/None.png'
@@ -125,6 +127,9 @@ class List_Screen(Screen):
             self.ids.after2.source='./icon/right_double.png'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
     def notice_list(self):
         res = requests.get('http://127.0.0.1:8000/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
         data_full = json.loads(res.text)
@@ -159,6 +164,7 @@ class List_Screen(Screen):
 
 
     def content_btn(self, content_num): # List에서 각각의 게시물 들어갈때 페이지 구분 
+<<<<<<< HEAD
         if self.name=='Notice_list1' or self.name=='Notice_list2': self.content_page="Notice_info"
         if self.name=='Survey_list1' or self.name=='Survey_list2':
             ##**# 설문조사 1번 문항 : 주관식? 객관식? type_flag
@@ -184,12 +190,38 @@ class List_Screen(Screen):
         #     self.content_num = int(self.ids['num' + str(content_num)].text)
 =======
     def content_btn(self, content_num): ##### 각각의 게시물을 들어갈때 들어가는 페이지 설정 
+=======
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
         if self.name=='Notice_list1' or self.name=='Notice_list2': self.content_page="Notice_info"
+        if self.name=='Survey_list1' or self.name=='Survey_list2':
+            ##**# 설문조사 1번 문항 : 주관식? 객관식? type_flag
+            self.type_flag=True  #객관식
+            # self.type_flag=False #주관식
+            if self.type_flag:
+                self.content_page="Survey_select1"
+            else:
+                self.content_page="Survey_word1"
+            ##**# 설문조사 하나의 전체 문항개수 = self.manager.max_prob_num
+            ##**# 설문조사 하나의 현재 문항개수 = self.manager.prob_num
+
         else : self.content_page=self.name
+<<<<<<< HEAD
         ##### 몇번째 게시물로 들어가는지 확인 #####
         ### Content_num : 1 ~ 5
         print("게시물 "+str(content_num)+"번")
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
+=======
+
+        ##**# 데이터가 없어서 일단 화면 테스트를 목적으로 임시 주석
+        ##**# 함수 survey_list에서 self.deact_flag 만들어 주시고 푸시면 정상 작동
+        ##**# 게시물이 5개 미만일때 정보 없는 버튼 비활성화 목적의 flag 활용
+        # if content_num > self.deact_flag: self.content_page=self.name
+        # else:
+        #     ##### 몇번째 게시물로 들어가는지 확인 #####
+        #     ### Content_num : 1 ~ 5
+        #     print("게시물 "+str(content_num)+"번")
+        #     self.content_num = int(self.ids['num' + str(content_num)].text)
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 
 
     def page_num_reset(self): ##### main 페이지로 넘어갈때 

@@ -26,7 +26,12 @@ class Info_Screen(Screen):
     def on_pre_enter(self):
         # self.page_pk = self.manager.get_screen('Notice_list1').content_num
         ##**# Notice_list1, Notice_list2에서 오는 두 가지 경우를 다 따지는 방식
+<<<<<<< HEAD
         self.page_pk = self.manager.get_screen(self.manager.before_page).content_number
+=======
+        self.page_pk = self.manager.get_screen(self.manager.before_page).content_num
+
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
         with open("./login_info.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
             self.acc_token = data["access"]
@@ -46,9 +51,13 @@ class Info_Screen(Screen):
 
 
     def notice_detail(self):
+<<<<<<< HEAD
         print(self.page_pk)
         res = requests.get('https://i7c102.p.ssafy.io/api/notice/detail', params={'notice_num': self.page_pk}, headers={'Authorization' : 'Bearer ' + self.acc_token})
         # print(res.text)
+=======
+        res = requests.get('http://127.0.0.1:8000/notice/detail', params={'notice_num': self.page_pk}, headers={'Authorization' : 'Bearer ' + self.acc_token})
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
         data = json.loads(res.text)['notice']
         self.ids.title.text=data['title']
         temp = str(data['updated_at']).split('T')

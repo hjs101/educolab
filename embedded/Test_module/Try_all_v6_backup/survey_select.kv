@@ -46,7 +46,11 @@
 			color: 1,1,1,1
 
 			on_release:
+<<<<<<< HEAD
 				root.onPopUp(False)
+=======
+				root.onPopUp()
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 
 			size_hint: None, None
 			height: 50
@@ -62,6 +66,7 @@
 				RoundedRectangle:
 					size: self.size
 					pos: self.pos
+<<<<<<< HEAD
 					radius:[10]
 
 		Button:
@@ -88,6 +93,8 @@
 				RoundedRectangle:
 					size: self.size
 					pos: self.pos
+=======
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 					radius:[10]	
 
 		Label:
@@ -114,7 +121,11 @@
 			on_release:
 				root.next_flag_setup("after")
 				root.next_page_setup()
+<<<<<<< HEAD
 				# root.cnt_setup()
+=======
+				root.cnt_setup()
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 				app.root.current=root.next_page
 				root.manager.transition.direction="left"
 				print(root.manager.survey_ans)
@@ -136,7 +147,11 @@
 			on_release:
 				root.next_flag_setup("before")
 				root.next_page_setup()
+<<<<<<< HEAD
 				# root.cnt_setup()
+=======
+				root.cnt_setup()
+>>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 				app.root.current=root.next_page
 				root.manager.transition.direction="right"
 				print(root.manager.survey_ans)
