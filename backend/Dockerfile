@@ -1,8 +1,6 @@
 FROM jenkins/jenkins:lts
-WORKDIR /usr/src/app
-COPY . .
-WORKDIR /var/jenkins_home/workspace/educolab_back/backend
-ADD requirements.txt
-RUN pip install -r requirements.txt
-# CMD ["gunicorn", "--bind", "0.0.0.0:8000", "educolab.wsgi:application"]
-# EXPOSE 8000
+RUN mkdir /code
+WORKDIR /code 
+ADD requirements.txt /code/
+RUN pip install -r requirements.txt 
+ADD . /code/
