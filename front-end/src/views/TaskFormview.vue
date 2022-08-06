@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>{{userType}} 과제 작성, 수정 페이지 {{taskPk}}</h1>
+    <h1>{{userType}} 과제 {{type}} 페이지 {{taskPk}}</h1>
     <section class="q-pa-md" style="max-width: 400px">
       <q-form
         @submit="onSubmit"
@@ -70,8 +70,10 @@
           type="file"
         />
         <div>
-          <q-btn label="등록" type="submit" color="primary"/>
           <q-btn label="초기화" type="reset" color="primary" flat class="q-ml-sm" />
+          <q-btn :label="type" type="submit" color="primary"/>
+          <q-btn v-if="!isTeacher" label="제출" color="primary"/>
+          <q-btn label="목록" type="submit" color="primary"/>
         </div>
       </q-form>
     </section>
@@ -79,27 +81,37 @@
 </template>
 
 <script>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed} from 'vue'
 import { useRoute } from 'vue-router'
 import {useStore} from 'vuex'
+import {isEmpty} from 'lodash'
 export default {
   name: 'TaskFormView',
+  created() {
+    const store = useStore()
+    const route = useRoute()
+    let {taskPk} = route.params
+    if (taskPk && isEmpty(store.getters.getTask)) {
+        store.dispatch('taskDetail', taskPk)
+    }
+  },
   setup () {
     const route = useRoute()
     const store = useStore()
     const subjectOptions = store.getters.getSubject
-    let userType = route.params.userType
+    let {userType, taskPk} = route.params
     let isTeacher = computed(() => userType === 'teacher')
-    let taskPk = route.params.taskPk
+    let type = computed(() => taskPk? '수정':'등록')
+    const storeTask = ref(computed(() => store.getters.getTask))
     const task = reactive({
       teacher: store.getters.currentUser.username,
       subject: store.getters.currentUser.subject,
-      title: null,
-      content: null,
-      grade: null,
-      class_field: null,
-      files: null,
-      deadline: null,
+      title: taskPk? storeTask.value.title : null,
+      content: taskPk? storeTask.value.content : null,
+      grade: taskPk? storeTask.value.grade : null,
+      class_field: taskPk? storeTask.value.class_field : null,
+      files: taskPk? storeTask.value.files : null,
+      deadline: taskPk? storeTask.value.deadline : null,
     })
     const accept = ref(false)
     const onSubmit = (event) => {
@@ -119,16 +131,28 @@ export default {
     }
     const onReset = (event) => {
       event.preventDefault()
-      for (let key in task) {
-        task[key] = null
+      if (taskPk) {
+        for (let key in task) {
+          if (key === 'teacher') {
+              task[key] = store.getters.currentUser.username
+            } else if (key === 'subject') {
+              task[key] = store.getters.currentUser.subject
+            } else {
+            task[key] = storeTask.value[key]
+          }
+        }
+      } else {
+        for (let key in task) {
+          task[key] = null
+        }
       }
     }
-
     return {
       task,
       accept,
       userType,
       taskPk,
+      type,
       isTeacher,
       onSubmit,
       onReset,

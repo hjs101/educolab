@@ -17,26 +17,34 @@ export const task = {
         done: [],
         selfTask: [],
       },
-      task: {
-        
-      },
+      task: {},
     }
   },
   
   getters: {
     getTeacherDone: state => state.teacher.allDone,
+    cntTeacherDone: (state, getters) => Math.ceil(getters.getTeacherDone.length/10),
     getTeacherNotCheck: state => state.teacher.notCheck,
+    cntTeacherNotCheck: (state, getters) => Math.ceil(getters.getTeacherNotCheck.length/10),
     getTeacherNotDone: state => state.teacher.notDone,
+    cntTeacherNotDone: (state, getters) => Math.ceil(getters.getTeacherNotDone.length/10),
     getTeacherStudentTask: state => state.teacher.studentTask,
+    cntTeacherStudentTask: (state, getters) => Math.ceil(getters.getTeacherStudentTask.length/10),
     getStudentNotDone: state => state.student.notDone,
+    cntStudentNotDone: (state, getters)=> Math.ceil(getters.getStudentNotDone.length/10),
     getStudentDone: state => state.student.done,
+    cntStudentDone: (state, getters) => Math.ceil(getters.getStudentDone.length/10),
     getStudentSelfTask: state => state.student.selfTask,
+    cntStudentSelfTask: (state, getters) => Math.ceil(getters.getStudentSelfTask.length/10),
     getTask: state => state.task,
+    getTeacherAll: state => state.teacher.allDone + state.teacher.notCheck + state.teacher.notDone + state.teacher.studentTask,
+    cntTeacherAll: (state, getters) => Math.ceil(getters.getTeacherAll.length/10), 
+    getStudentAll: state => state.student.notDone + state.student.done + state.student.selfTask,
+    cntStudentAll: (state, getters) => Math.ceil(getters.getStudentAll.length/10), 
   },
 
   mutations: {
     SET_TEACHER_TASK: (state, data) => {
-      console.log(1)
       let teacherKey = null
       for (let key in data) {
         if (key === 'not_done') {
@@ -114,8 +122,8 @@ export const task = {
         method: 'get',
         headers: getters.authHeader,
         params: {
-          homework_pk : taskPk,
-          teacher: getters.currentUser.userflag
+          pk : taskPk,
+          teacher: 1
         }
       })
         .then(res => {
@@ -156,12 +164,12 @@ export const task = {
           console.log(err)
         })
     },
-    submitTask({getters}) {
+    submitTask({getters}, data) {
       axios({
         url: drf.task.submit(),
         method: 'post',
         headers: getters.authHeader,
-        // data: ,
+        data,
       })
     }
   }

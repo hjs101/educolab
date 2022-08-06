@@ -3,10 +3,11 @@
     <q-pagination
       v-model="current"
       color="primary"
-      :max="10"
+      :max="limit"
       :max-pages="6"
-      boundary-links
+      :boundary-links="limit>10"
       direction-links
+      @change="changePage"
     />
   </div>
 </template>
@@ -17,10 +18,19 @@ import {ref} from 'vue'
 export default {
   name: 'ThePagination',
   props: {
+    limit: Number,
   },
-  setup() {
+  emits: [
+    'changePage'
+  ],
+  setup(props,{emit}) {
+    const current = ref(1)
+    const changePage = () => {
+      emit('change-page', current.value)
+    }
     return {
-      current: ref(1)
+      current,
+      changePage
     }
   }
 }

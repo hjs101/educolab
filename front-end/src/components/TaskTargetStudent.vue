@@ -2,41 +2,20 @@
   <div>
     <q-expansion-item
       expand-separator
-      :label="sample.name"
-      :caption="sample.submitAt"
+      :label="item.student.name"
+      :caption="item['submit_at']"
     >
       <q-card>
         <q-card-section>
-          {{sample.content}}
+          {{item.content}}
           <br>
-          첨부파일 |
-          채점하기 버튼 |
-          채점여부 |
+          {{item['submit_flag']}}
+          {{item['atch_file_name']}}
+          <!-- {{item['atch_file']}} -->
+          <q-input type="number" label="점수" />
+          또는 select
+          <q-btn color="primary" label="채점하기" />
           최신이 위로 오도록 정렬
-          
-        </q-card-section>
-      </q-card>
-    </q-expansion-item>
-
-    <q-expansion-item
-      expand-separator
-      label="Wifi settings"
-    >
-      <q-card>
-        <q-card-section>
-          내용
-        </q-card-section>
-      </q-card>
-    </q-expansion-item>
-
-    <q-expansion-item
-      expand-separator
-      label="Drafts"
-      header-class="text-purple"
-    >
-      <q-card>
-        <q-card-section>
-          내용
         </q-card-section>
       </q-card>
     </q-expansion-item>
@@ -47,7 +26,7 @@
 export default {
   name: 'TaskTargetStudent',
   props: {
-    sample: Object,
+    item: Object,
   },
 }
 </script>

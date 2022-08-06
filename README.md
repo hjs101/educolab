@@ -1,107 +1,107 @@
-## Front
+# 목차
 
-#### 원래 App.vue 내용
-```
-<template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="glossy">
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          @click="leftDrawerOpen = !leftDrawerOpen"
-          aria-label="Menu"
-          icon="mdi-menu"
-        />
+## [Front 진행 상황](#front-진행-상황)
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+[a. 과제](#a.-과제)
 
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
+[b. 팝업](#b.-팝업)
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      class="bg-grey-2"
-    >
-      <q-list>
-        <q-item-label header>Essential Links</q-item-label>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="mdi-school" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Docs</q-item-label>
-            <q-item-label caption>quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://github.com/quasarframework/">
-          <q-item-section avatar>
-            <q-icon name="mdi-code-tags" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Github</q-item-label>
-            <q-item-label caption>github.com/quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://chat.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="mdi-message-text" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Discord Chat Channel</q-item-label>
-            <q-item-label caption>chat.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://forum.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="mdi-forum" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Forum</q-item-label>
-            <q-item-label caption>forum.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://twitter.com/quasarframework">
-          <q-item-section avatar>
-            <q-icon name="mdi-twitter" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Twitter</q-item-label>
-            <q-item-label caption>@quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </q-drawer>
+[c. 회원가입](#c.-회원가입)
 
-    <q-page-container>
-      <HelloWorld />
-    </q-page-container>
-  </q-layout>
-</template>
+[d. 로그인&로그아웃](#d.-로그인-&-로그아웃)
 
-<script>
-import { ref } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+[e. 페이지 접근 제한](#e.-페이지-접근-제한)
 
-export default {
-  name: 'LayoutDefault',
+[f. 리프레시 토큰 발급](f.-리프레시-토큰-발급)
 
-  components: {
-    HelloWorld
-  },
+[g. 공통](g.-공통)
 
-  setup () {
-    return {
-      leftDrawerOpen: ref(false)
-    }
-  }
-}
-</script>
+
+
+---
+
+
+
+
+
+## Front 진행 상황
+
+#### a. 과제
 
 ```
+* 문제 : 새로고침 시 사용자 정보가 없어지기 때문에 백에서 데이터를 불러와야 함
+
+과제 목록
+- 전체적인 틀은 잡아놓음
+- pagination과 데이터 연결 필요
+- 현재 데이터가 교사 페이지의 제출기한이 지나지 않은 과제뿐이므로 다른 데이터도 시도해볼 필요 있음
+- 전체적으로 틀은 비슷하므로 큰 오류가 없을 것으로 예상됨
+
+과제 생성/수정
+- 교사 쪽에서 과제 생성하는 것은 기능 구현 완료 (첨부파일이 잘 저장되었는지 확인 필요)
+- 학생 아이디로 시도해봐야 함
+- 과제 수정은 상세 페이지가 아직 구현되지 않았고 새로고침 시 사용자 정보를 불러올 수 없기 때문에 그 기능이 완료된 후에나 할 수 있을 것 같음
+- 수정 시 데이터를 불러오는 것은 과제 상세 페이지에 들어갔을 때와 같은 url로 보낼 예정
+
+과제 상세
+- 샘플데이터로 시도해본 결과 전체적인 틀은 잡아놓음
+- 교사 페이지에서는 아코디언으로 학생 정보가 보임
+- 학생 페이지에서는 과제 제출 입력창이 보임
+- 첨부파일 부분 확인 필요
+
+과제 검색
+- url 설정 완료
+- 새로고침 시 과제 목록 페이지에 들어갔을 때와 같은 url로 요청 보냄
+- 전체 과제 중에서 어떤 부분을 검색할 것인지, 검색한 단어를 포함하면 검색 결과에 노출시키는 것을 구현해야 함
+```
+
+
+
+### b. 팝업
+
+```
+한 번 팝업이 뜨고 다음에는 뜨지 않는 오류 수정해야 함
+confirm과 alert v-if로 나누기
+```
+
+
+
+### c. 회원 가입
+
+```
+인증번호가 확인되었습니다 팝업이 뜨지 않는 오류 수정
+회원가입 후 새로고침 구현
+```
+
+
+
+### d. 로그인 & 로그아웃
+
+```
+로그인, 로그아웃 후 새로고침 구현
+```
+
+
+
+### e. 페이지 접근 제한
+
+```
+로그인 여부, 사용자 유형에 따라 들어갈 수 있는 페이지 접근 제한
+```
+
+
+
+### f. 리프레시 토큰 발급
+
+```
+페이지가 새로고침될 때마다, 토큰 유효기간이 다가올 때마다 토큰 발급 구현 필요
+```
+
+
+
+### g. 공통
+
+```
+로딩이 길어질 경우에 로딩중임을 표시
+```
+

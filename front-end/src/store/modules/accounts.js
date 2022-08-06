@@ -268,7 +268,11 @@ export const accounts = {
     },
     removeToken({ commit }) {
       commit("SET_TOKEN", "");
+<<<<<<< HEAD
       localStorage.setItem("access", "");
+=======
+      localStorage.setItem("access", "")
+>>>>>>> d5aaae8 (Feat : 과제 생성/수정/상세 페이지 구현 완료 & 과제 수정/삭제/검색/페이지네이션 기능 구현 중)
     },
     login({ commit, dispatch }, credentials) {
       // 로그인 함수 구현
@@ -327,6 +331,7 @@ export const accounts = {
           dispatch("saveToken", access)
           console.log(res.data)
           commit("SET_CURRENT_USER",res.data)
+          // 새로고침 -> 로그인 정보 날리기
           router.push({ name: "educolab" })
 >>>>>>> b5069a1 (Feat : 과제 목록 & 생성 & 상세 페이지 제작 진행 중)
         })
@@ -379,8 +384,8 @@ export const accounts = {
       axios.post(drf.accounts.signup(), data)
         .then(() => {
           window.alert("회원가입이 완료되었습니다")
+          // 새로고침 -> vuex에 있는 정보 날려버리기 -> 이동
           router.push({ name: "login" })
-          this.initInfo()
         })
         .catch(({response}) => {
           if (response.data?.email) {
@@ -584,5 +589,6 @@ export const accounts = {
       commit("CHANGE_DATA", data);
 >>>>>>> 36a3f8f (Fix : 오타수정)
     },
+    // back에 현재 사용자 정보 요청 (토큰 보내면 )
   },
 };

@@ -117,17 +117,24 @@ class HomeworkCreateView(APIView):
             print(request.data)
             homework_serializer = TeacherHomeworkCreateSerializer(data=request.data)
             if homework_serializer.is_valid(raise_exception=True):
+                print('valid')
                 school = request.user.school
+                print(school)
                 school_student= school.school_student.all()
+                print(school_student)
                 students = school_student.filter(grade=homework_serializer.validated_data['grade'],class_field=homework_serializer.validated_data['class_field'])
+                print(students)
                 homework = homework_serializer.save(teacher=request.user,target=students)
-                
+                print(homework)
                 files = request.FILES.getlist("files")
+                print(files)
                 for file in files:
+                    print(file)
                     fp = Files.objects.create(teacher_homework=homework,atch_file=file,atch_file_name=file)
                     fp.save()
                 
                 for student in students:
+                    print(student)
                     submit = SubmitHomework.objects.create(student=student,teacher_homework=homework)
                     submit.save()
 

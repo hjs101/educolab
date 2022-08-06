@@ -22,26 +22,31 @@
         <q-list bordered class="rounded-borders" v-for="item in list.notDone" :key="item.pk">
           <task-item :item = item />
         </q-list>
-        <the-pagination />
+        <the-pagination
+          v-if="number.notDone"
+          :limit="number.notDone"
+          @change-page="changePage" />
       </q-tab-panel>
 
       <q-tab-panel name="toScoreTask">
         <q-list bordered class="rounded-borders" v-for="item in list.notCheck" :key="item.pk">
           <task-item :item = item />
         </q-list>
-        <the-pagination />
+        <the-pagination v-if="number.notCheck" :limit="number.notCheck" />
       </q-tab-panel>
 
       <q-tab-panel name="studentTask">
         <q-list bordered class="rounded-borders" v-for="item in list.studentTask" :key="item.pk">
           <task-item :item = item />
         </q-list>
+        <the-pagination v-if="number.studentTask" :limit="number.studentTask" />
       </q-tab-panel>
 
       <q-tab-panel name="doneTask">
         <q-list bordered class="rounded-borders" v-for="item in list.done" :key="item.pk">
           <task-item :item = item />
         </q-list>
+        <the-pagination v-if="number.done" :limit="number.done" />
       </q-tab-panel>
     </q-tab-panels>
   </q-card>
@@ -67,9 +72,21 @@ export default {
       notDone: computed(() => store.getters.getTeacherNotDone),
       done: computed(() => store.getters.getTeacherDone),
     })
+    const number = reactive({
+      notCheck: computed(() => store.getters.cntTeacherNotcheck),
+      studentTask: computed(() => store.getters.cntTeacherStudentTask),
+      notDone: computed(() => store.getters.cntTeacherNotDone),
+      done: computed(() => store.getters.cntTeacherDone),
+    })
+    let page = ref('1')
+    const changePage = (number) => {
+      page.value = number
+    }
     return {
       tab,
-      list
+      list,
+      number,
+      changePage
     }
   }
 }

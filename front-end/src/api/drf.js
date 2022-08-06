@@ -1,7 +1,7 @@
-const BASE_URL = 'http://localhost:8000/'
-const ACCOUNTS = BASE_URL + 'accounts/'
-const NOTICE = BASE_URL + 'notice/'
-const HOMEWORK = BASE_URL + 'homework/'
+const BASE_URL = 'http://localhost:8000'
+const ACCOUNTS = BASE_URL + '/accounts/'
+const NOTICE = BASE_URL + '/notice/'
+const HOMEWORK = BASE_URL + '/homework/'
 
 export default {
   accounts: {
@@ -74,5 +74,8 @@ export default {
     detail: () => HOMEWORK + 'detail/',
     check: () => HOMEWORK + 'check/',
     submit: () => HOMEWORK + 'submit/',
+  },
+  file: {
+    path: () => BASE_URL,
   }
 }

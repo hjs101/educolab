@@ -18,29 +18,41 @@
 
     <q-tab-panels v-model="tab">
       <q-tab-panel name="todoTask">
-        <q-list bordered class="rounded-borders" v-for="sample in samples" :key="sample.pk">
-          <task-item :sample = sample />
+        <q-list bordered class="rounded-borders" v-for="item in list.notDone" :key="item.pk">
+          <task-item :item = item />
         </q-list>
-        <the-pagination />
+        <the-pagination
+          v-if="number.notDone"
+          :limit="number.notDone"
+          @change-page="changePage" />
       </q-tab-panel>
 
       <q-tab-panel name="myTask">
-        <q-list bordered class="rounded-borders" v-for="sample in samples" :key="sample.pk">
-          <task-item :sample = sample />
+        <q-list bordered class="rounded-borders" v-for="item in list.studentTask" :key="item.pk">
+          <task-item :item = item />
         </q-list>
+        <the-pagination
+          v-if="number.studentTask"
+          :limit="number.studentTask"
+          @change-page="changePage" />
       </q-tab-panel>
 
       <q-tab-panel name="doneTask">
-        <q-list bordered class="rounded-borders" v-for="sample in samples" :key="sample.title">
-          <task-item :sample = sample />
+        <q-list bordered class="rounded-borders" v-for="item in list.done" :key="item.pk">
+          <task-item :item = item />
         </q-list>
+        <the-pagination
+          v-if="number.done"
+          :limit="number.done"
+          @change-page="changePage" />
       </q-tab-panel>
     </q-tab-panels>
   </q-card>
 </template>
 
 <script>
-import {ref} from 'vue'
+import {ref, reactive, computed} from 'vue'
+import {useStore} from 'vuex'
 import TaskItem from '@/components/TaskItem.vue'
 import ThePagination from '@/components/ThePagination.vue'
 export default {
@@ -50,13 +62,22 @@ export default {
     ThePagination,
   },
   setup() {
+    const store = useStore()
     let tab = ref('todoTask')
-    let samples =[
-      {pk: 1, title : '과제 제목', name: '출제자', content: '내용'},
-      {pk: 2, title : '과제 제목2', name: '출제자2', content: '내용2'}]
+    const list = reactive({
+      notDone: computed(() => store.getters.getStudentNotDone),
+      studentTask: computed(() => store.getters.getStudentSelfTask),
+      done: computed(() => store.getters.getStudentDone),
+    })
+    const number = reactive({
+      notDone: computed(() => store.getters.cntStudentNotDone),
+      studentTask: computed(() => store.getters.cntStudentSelfTask),
+      done: computed(() => store.getters.cntStudentDone),
+    })
     return {
       tab,
-      samples
+      list,
+      number
     }
   }
 }
