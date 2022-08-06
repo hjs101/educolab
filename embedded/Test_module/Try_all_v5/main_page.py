@@ -62,6 +62,7 @@ class Main_Screen(Screen):
     def for_logout(self):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         with open("./login_info.json", 'w', encoding='utf-8') as file:
             json.dump({}, file)
 =======
@@ -76,6 +77,10 @@ class Main_Screen(Screen):
 >>>>>>> c515355 (Feat: notice request 구현 시작!)
 =======
 >>>>>>> 9c53273 (Refactor: 아 로그아웃 깜빡했다)
+=======
+        with open("./login_info.json", 'w', encoding='utf-8') as file:
+            json.dump({}, file)
+>>>>>>> c595370 (Refactor: 아 이것도 빼먹었다 ㅎ)
 
     def on_leave(self):
         self.manager.before_page=self.name
