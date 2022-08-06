@@ -445,6 +445,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.pem
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -464,6 +465,7 @@ backend/my_settings.py
 >>>>>>> 834c26a (Fix : mySettings.py 수정)
 =======
 backend/educolab/my_settings.py
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 46a97f8 (embedded에 .gitignore 추가)
@@ -495,3 +497,6 @@ login_token.json
 =======
 login_info.json
 >>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
+=======
+login_info.json
+>>>>>>> a740439 (깃이그노어 수정)
