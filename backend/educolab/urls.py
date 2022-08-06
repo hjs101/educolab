@@ -46,6 +46,7 @@ schema_view = get_schema_view(
 >>>>>>> da408e3 (Feat : 백엔드 Swagger 적용)
 
 urlpatterns = [
+<<<<<<< HEAD
     path(r'swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path(r'swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path(r'redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
@@ -111,6 +112,18 @@ urlpatterns = [
 =======
     path('mypage/', include('mypage.urls')),
 >>>>>>> 40812b7 (Feat : Mypage 생성)
+=======
+    path(r'api/swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path(r'api/swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path(r'api/redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
+    path('api/accounts/registration/', include('dj_rest_auth.registration.urls')),
+    path('api/accounts/', include('accounts.urls')), 
+    path('api/admin/', admin.site.urls),
+    path('api/notice/', include('notice.urls')),
+    path('api/homework/', include('homework.urls')),
+    path('api/survey/', include('survey.urls')),
+    path('api/mypage/', include('mypage.urls')),
+>>>>>>> d215d15 (자동배포로 인한 Url 변경)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 <<<<<<< HEAD
