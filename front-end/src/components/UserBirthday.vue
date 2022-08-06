@@ -2,10 +2,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   <q-input
     color="teal"
     label="생년월일"
@@ -15,6 +18,7 @@
     lazy-rules
     :rules="[ val => val && val.length > 0 || '생년월일을 입력해주세요']"
   />
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -33,10 +37,13 @@
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 </template>
 
 <script>
 import {ref} from '@vue/reactivity'
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -49,6 +56,9 @@ import {useStore} from 'vuex'
 =======
 import {useStore} from 'vuex'
 >>>>>>> e6b54fb (asdu)
+=======
+import {useStore} from 'vuex'
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 export default {
   name: 'UserBirthday',
   props: {
@@ -59,14 +69,18 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     const store = useStore()
     const sendData = () => {
       store.dispatch('changeData', {birthday:birthday.value})
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     return {
@@ -86,6 +100,11 @@ export default {
       birthday,
       sendData
 >>>>>>> e6b54fb (asdu)
+=======
+    return {
+      birthday,
+      sendData
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     }
   }
 }

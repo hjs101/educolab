@@ -10,6 +10,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div style="height: 2000px">
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -68,11 +69,28 @@
           <button class="q-px-lg" @click="logoutBtn">로그아웃</button>
         </div>
 >>>>>>> 9bb5647 (메인 페이지 css)
+=======
+  <div style="height: 2000px">
+    <!-- 교사 navbar -->
+    <div v-if="isLoggedIn && currentUser.userflag">
+      <div class="q-pa-md q-gutter-sm">
+        <q-bar style="height:100px;" >
+          <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
+          <div class="cursor-pointer"><router-link to="/notice">공지사항</router-link></div>
+          <div class="cursor-pointer"><router-link to="/teacher/task">과제</router-link></div>
+          <div class="cursor-pointer"><router-link to="/quiz">퀴즈</router-link></div>
+          <div class="cursor-pointer"><router-link to="/search">설문조사</router-link></div>
+          <div class="cursor-pointer"><router-link to="/teacher">마이페이지</router-link></div>
+          <button @click="logoutBtn">로그아웃</button>
+        </q-bar>
+        <hr>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       </div>
     </div>
 
     <!-- 학생 navbar -->
     <div v-if="isLoggedIn && !currentUser.userflag">
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         </q-bar>
@@ -89,11 +107,17 @@
         <q-bar style="height:100px;" >
           <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
 <<<<<<< HEAD
+=======
+      <div class="q-pa-md q-gutter-sm">
+        <q-bar style="height:100px;" >
+          <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
           <div class="cursor-pointer"><router-link to="/notice">공지사항</router-link></div>
           <div class="cursor-pointer"><router-link to="/student/task">과제</router-link></div>
           <div class="cursor-pointer"><router-link to="/student/writing">내 필기</router-link></div>
           <div class="cursor-pointer"><router-link to="/student/store">포인트 상점</router-link></div>
           <div class="cursor-pointer"><router-link to="/student">마이페이지</router-link></div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -105,11 +129,14 @@
           <div class="cursor-pointer button"><router-link to="/student/store" class="button">포인트 상점</router-link></div>
           <div class="cursor-pointer button"><router-link to="/student" class="button">마이페이지</router-link></div>
 >>>>>>> f4abfa5 (Feat : 과제 생성 기능 완료 & 과제 목록 불러오기 진행 중)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
           <button @click="logoutBtn">로그아웃</button>
         </q-bar>
         <hr>
       </div>
     </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 <<<<<<< HEAD
@@ -144,10 +171,15 @@
 >>>>>>> 9bb5647 (메인 페이지 css)
   <router-view />
   
+=======
+
+  <router-view />
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -157,10 +189,14 @@ import { mapGetters, mapActions } from 'vuex'
 import {onBeforeMount} from 'vue'
 import {useStore} from 'vuex'
 import {isEmpty} from 'lodash'
+=======
+import { mapGetters, mapActions } from 'vuex'
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 
 
 export default {
   name: 'MainPage',
+<<<<<<< HEAD
   data() {
     return {
       isHovering : true
@@ -172,6 +208,10 @@ export default {
       const flag = this.currentUser.userflag
       return flag
     }
+=======
+  computed: {
+    ...mapGetters(['isLoggedIn', 'currentUser'])
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   },
   methods: {
     ...mapActions(['logout']),
@@ -182,6 +222,7 @@ export default {
         this.$router.back()
       }
     },
+<<<<<<< HEAD
     selectedHovering() {
       this.isHovering = true
     },
@@ -249,11 +290,15 @@ export default {
     }
   }
 >>>>>>> 9bb5647 (메인 페이지 css)
+=======
+  }
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 }
 </script>
 
 <style>
 /* 모든 페이지에서 공통으로 사용할 스타일 정의 */
+<<<<<<< HEAD
 
  /* 폰트 적용 */
   @font-face {
@@ -275,6 +320,8 @@ export default {
   .font-size2 {
     font-size: 1.1rem
   }
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   h3 {
     text-align: center;
   }
@@ -291,6 +338,7 @@ export default {
   .center {
     text-align: center;
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 </style>
@@ -520,3 +568,6 @@ export default {
 
 </style>
 >>>>>>> 9bb5647 (메인 페이지 css)
+=======
+</style>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)

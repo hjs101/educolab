@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="baseStyle">
     <!-- 제목, 퀴즈 문제, 퀴즈 보기 -->
     <div v-for="quizItem in quizDetail" :key="quizItem">
@@ -82,3 +83,10 @@ export default {
   border-bottom : 1px solid #BDBDBD;
 }
 </style>
+=======
+  <div>
+    <h1>퀴즈 상세 페이지</h1>
+  <router-view />
+  </div>
+</template>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)

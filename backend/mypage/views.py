@@ -2,7 +2,10 @@ from django.urls import is_valid_path
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from accounts.models import UserInfo
+<<<<<<< HEAD
 from pointshop.models import PTitle
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 from accounts.serializers import UserinfoSerializer
 from .serializers import PointlogSerializer,TeacherSerializer, StudentSerializer,SearchStudentSerializer
 # Create your views here.
@@ -62,6 +65,7 @@ class PointGrantView(APIView):
         if log_serializer.is_valid(raise_exception=True):
             log_serializer.save(teacher = req.user, student = student)
         return Response({"success":True})
+<<<<<<< HEAD
 
 class ProfilChangeView(APIView):
     def put(self,req):
@@ -86,3 +90,5 @@ class TitleChangeView(APIView):
         return Response({
             "success" : True
         })
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)

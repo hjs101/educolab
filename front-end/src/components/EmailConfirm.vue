@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <q-input v-model="email.username" :suffix="email.address !== '직접 입력'? email.address: ''" input-class="text-right" label-slot clearable stack-label>
 =======
     <q-input v-model="email" :suffix="emailAddress" input-class="text-right" label-slot clearable stack-label>
@@ -43,6 +44,20 @@
         lazy-rules
         :rules="[ val => val && val.length > 0 || '이메일을 입력해주세요']"
         required
+=======
+    <div class="row justify-between">
+      <q-input
+      color="teal"
+      v-model="email.username"
+      input-class="text-right"
+      class="col-5"
+      label-slot
+      clearable
+      stack-label
+      lazy-rules
+      :rules="[ val => val && val.length > 0 || '이메일을 입력해주세요']"
+      required
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       >
         <template v-slot:label>
           <div class="row items-center all-pointer-events">
@@ -53,6 +68,7 @@
       </q-input>
       <!-- 이메일 주소 선택 -->
       <q-select v-model="email.address" :options="emailOptions" class="col-4" label="이메일 주소 선택" required />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <!-- 인증 버튼 -->
       <q-btn color="teal" label="인증" class="col-2" @click="isValidEmail"/>
@@ -157,10 +173,15 @@
     </div>
     <confirm-auth-number :data="{email:email.fullEmail}"/>
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+    </div>
+    <confirm-auth-number :data="{email:email.fullEmail}"/>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -171,6 +192,9 @@ import {reactive, ref} from '@vue/reactivity'
 =======
 import {reactive} from '@vue/reactivity'
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+import {reactive} from '@vue/reactivity'
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 import {computed} from 'vue'
 import ConfirmAuthNumber from '@/components/ConfirmAuthNumber.vue'
 export default {
@@ -180,6 +204,7 @@ export default {
   },
   setup () {
 <<<<<<< HEAD
+<<<<<<< HEAD
     const store = useStore()
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -187,6 +212,8 @@ export default {
 >>>>>>> e6b54fb (asdu)
 =======
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     const emailOptions = [
       '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력'
     ]
@@ -203,6 +230,7 @@ export default {
         } else {
           return null
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
       },1000)
     }
@@ -341,11 +369,15 @@ export default {
 =======
       }),
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+      }),
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     })
     
     return {
       emailOptions,
       email,
+<<<<<<< HEAD
 <<<<<<< HEAD
       alert,
       isValidEmail,
@@ -367,6 +399,8 @@ export default {
 >>>>>>> e6b54fb (asdu)
 =======
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     }
   }
 }

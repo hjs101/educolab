@@ -21,7 +21,10 @@ from . import views
 urlpatterns = [
     path('main/', views.MypageMainView.as_view(), name='mypage_main'),
     path('grant/', views.PointGrantView.as_view(), name='mypage_point'),
+<<<<<<< HEAD
     path('profil/', views.ProfilChangeView.as_view(), name='profil_change'),
     path('title/', views.TitleChangeView.as_view(), name='title_change'),
     
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 ]

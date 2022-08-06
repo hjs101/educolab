@@ -11,6 +11,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.8.3",
     "lodash": "^4.17.21",
@@ -28,6 +29,11 @@
     "core-js": "^3.8.3",
     "quasar": "^2.0.0",
 >>>>>>> e6b54fb (asdu)
+=======
+    "@quasar/extras": "^1.0.0",
+    "core-js": "^3.8.3",
+    "quasar": "^2.0.0",
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.2"
@@ -46,6 +52,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "vue-cli-plugin-axios": "~0.0.4",
     "vue-cli-plugin-quasar": "~5.0.1"
 =======
@@ -59,6 +66,10 @@
     "vue-cli-plugin-axios": "~0.0.4",
     "vue-cli-plugin-quasar": "~5.0.1"
 >>>>>>> e6b54fb (asdu)
+=======
+    "vue-cli-plugin-axios": "~0.0.4",
+    "vue-cli-plugin-quasar": "~5.0.1"
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   },
   "eslintConfig": {
     "root": true,

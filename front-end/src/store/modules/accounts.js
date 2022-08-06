@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import drf from "@/api/drf"
 =======
 import drf from "@/api/drf.js"
@@ -49,11 +50,19 @@ import drf from "@/api/drf.js";
 import router from "@/router";
 import axios from "axios";
 >>>>>>> 36a3f8f (Fix : 오타수정)
+=======
+import drf from "@/api/drf.js"
+import router from "@/router"
+import axios from "axios"
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 
 export const accounts = {
   state() {
     return {
+<<<<<<< HEAD
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       studentInfo: {
         username: null,
         password1: null,
@@ -64,12 +73,16 @@ export const accounts = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         class_field: null,
         phone_number: null,
         birthday: "2008-01-01",
         email: null,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         user_flag : false,
@@ -95,6 +108,9 @@ export const accounts = {
 =======
         userflag: false,
 >>>>>>> 36a3f8f (Fix : 오타수정)
+=======
+        userflag: false,
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       },
       teacherInfo: {
         username: null,
@@ -106,10 +122,13 @@ export const accounts = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 6e582c6 (develop 브랜치 푸시)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         phone_number: null,
         birthday: "1972-01-01",
         email: null,
@@ -117,6 +136,7 @@ export const accounts = {
       },
       userType: null,
       access: localStorage.getItem("access") || "",
+<<<<<<< HEAD
       currentUser: {
         userflag : true
       },
@@ -180,11 +200,19 @@ export const accounts = {
 =======
 =======
 >>>>>>> 0004fc1 (notice merge)
+=======
+      currentUser: {},
+      authError: null,
+    };
+  },
+  getters: {
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     isLoggedIn: state => !!state.access, 
     currentUser: state => state.currentUser,
     authError: state => state.authError,
     authHeader: state => ({ Authorization: `Bearer ${state.access}` }),
     getUserType: state => state.userType,
+<<<<<<< HEAD
 <<<<<<< HEAD
     getSubject: state => state.teacherInfo.subject,
 <<<<<<< HEAD
@@ -263,11 +291,17 @@ export const accounts = {
 >>>>>>> e6b54fb (asdu)
       if (state.userType === 'student') {
 =======
+=======
+    getSubject: state => state.teacherInfo.subject,
+  },
+  mutations: {
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     SET_TOKEN: (state, access) => (state.access = access),
     SET_CURRENT_USER: (state, user) => (state.currentUser = user),
     SET_AUTH_ERROR: (state, error) => (state.authError = error),
     CHANGE_DATA(state, data) {
       if (state.userType === "student") {
+<<<<<<< HEAD
 >>>>>>> 36a3f8f (Fix : 오타수정)
         for (let key in data) {
           state.studentInfo[key] = data[key];
@@ -321,10 +355,55 @@ export const accounts = {
 =======
       localStorage.setItem("access", "")
 >>>>>>> d5aaae8 (Feat : 과제 생성/수정/상세 페이지 구현 완료 & 과제 수정/삭제/검색/페이지네이션 기능 구현 중)
+=======
+        for (let key in data) {
+          state.studentInfo[key] = data[key]
+        }
+      } else {
+        for (let key in data) {
+          state.teacherInfo[key] = data[key]
+        }
+      }
+    },
+    SET_USER_TYPE: (state, userType) => (state.userType = userType),
+  },
+  actions: {
+    saveToken({ commit }, access) {
+      commit("SET_TOKEN", access);
+      localStorage.setItem("access", access)
+    },
+    removeToken({ commit }) {
+      commit("SET_TOKEN", "");
+      localStorage.setItem("access", "")
+    },
+    initInfo({state, getters, dispatch}) {
+      if (getters.getUserType == "student") {
+        for (let key in state.studentInfo) {
+          if (key === 'userflag') {
+            dispatch('changeData', {'userflag':false})
+          } else if (key === 'birthday') {
+            dispatch('changeData', {'birthday':"2008-01-01"})
+          } else {
+            dispatch('changeData', {[key]:null})
+          }
+        }
+      } else {
+        for (let key in state.teacherInfo) {
+          if (key === 'userflag') {
+            dispatch('changeData', {'userflag':false})
+          } else if (key === 'birthday') {
+            dispatch('changeData', {'birthday':"1967-01-01"})
+          } else {
+            dispatch('changeData', {[key]:null})
+          }
+        }
+      }
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     },
     login({ commit, dispatch }, credentials) {
       // 로그인 함수 구현
       axios({
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -349,10 +428,13 @@ export const accounts = {
 >>>>>>> c64b335 (유저정보  테스트)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         url: drf.accounts.login(),
         method: "post",
         data: credentials,
       })
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -427,6 +509,18 @@ export const accounts = {
           .catch(() => {
             console.log(state.state.sudentInfo)
 =======
+=======
+        .then((res) => {
+          const access = res.data.access
+          dispatch("saveToken", access)
+          commit("SET_CURRENT_USER", res.data)
+          router.push({ name: "educolab" })
+        })
+        .catch((err) => {
+          commit("SET_AUTH_ERROR", err.response.data)
+        });
+    },
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     signup({state, getters}) {
       let data = null
       if (getters.getUserType == "student") {
@@ -437,13 +531,19 @@ export const accounts = {
       axios.post(drf.accounts.signup(), data)
         .then(() => {
           window.alert("회원가입이 완료되었습니다")
+<<<<<<< HEAD
           // 새로고침 -> vuex에 있는 정보 날려버리기 -> 이동
           router.push({ name: "login" })
+=======
+          router.push({ name: "login" })
+          this.initInfo()
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         })
         .catch(({response}) => {
           if (response.data?.email) {
             window.alert(response.data.email[0])
           } else {
+<<<<<<< HEAD
 >>>>>>> fb19966 (Feat : 비밀번호 변경 기능 완료 & 팝업 컴포넌트화 (수정할 부분 있음))
             window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
           })
@@ -617,10 +717,22 @@ export const accounts = {
 >>>>>>> d6448ce (Feat: back branch merge 전 commit & 생성/수정/삭제 구현 완료 & 제출, 상세, 목록, 검색 기능 구현 중)
 =======
 >>>>>>> 8f533c8 (Feat : Pagination 기능 구현 완료)
+=======
+            window.alert('필수 항목이 빠져 있거나, 올바르지 않습니다')
+          }
+        })
+    },
+    logout({ dispatch }) {
+      dispatch("removeToken");
+      router.push({ name: "login" }).catch((err) => {
+        console.log(err.respone);
+      });
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     },
     setUserType({ commit }, userType) {
       // 로그인할 때
       // 회원가입 페이지
+<<<<<<< HEAD
       commit("SET_USER_TYPE", userType);
     },
 <<<<<<< HEAD
@@ -659,5 +771,12 @@ export const accounts = {
       commit("CHANGE_PW_INFO", data)
     }
     // back에 현재 사용자 정보 요청 (토큰 보내면 )
+=======
+      commit("SET_USER_TYPE", userType)
+    },
+    changeData({ commit }, data) {
+      commit("CHANGE_DATA", data)
+    },
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   },
 };

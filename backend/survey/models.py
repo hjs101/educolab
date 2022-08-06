@@ -24,10 +24,14 @@ class SurveyQuestions(models.Model):
 
 class SurveyQuestionsAnswer(models.Model):
 <<<<<<< HEAD
+<<<<<<< HEAD
     question = models.ForeignKey(SurveyQuestions,on_delete=models.CASCADE, related_name="question_answers", null=True)
 =======
     question = models.ForeignKey(SurveyQuestions,on_delete=models.CASCADE, related_name="question_answers")
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+    question = models.ForeignKey(SurveyQuestions,on_delete=models.CASCADE, related_name="question_answers", null=True)
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     content = models.TextField()
 
 class SueveyTemplate(models.Model):

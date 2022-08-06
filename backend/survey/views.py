@@ -102,6 +102,7 @@ class SurveyDetailView(APIView):
         ## 설문조사 시리얼라이저 생성
         question_serializer = QuestionDetailSerializer(questions, many=True)
 <<<<<<< HEAD
+<<<<<<< HEAD
         survey_name = [{"survey_name" : survey.title}]
         print(question_serializer.data)
         return Response(survey_name+question_serializer.data)
@@ -109,6 +110,11 @@ class SurveyDetailView(APIView):
 
         return Response(question_serializer.data)
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+        survey_name = [{"survey_name" : survey.title}]
+        print(question_serializer.data)
+        return Response(survey_name+question_serializer.data)
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 
     def delete(self, req):
         survey_id = req.GET['survey_num']

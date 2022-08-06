@@ -1,6 +1,7 @@
 <template>
   <div>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <q-input
       color="teal"
       label="아이디"
@@ -17,6 +18,8 @@
 =======
 >>>>>>> e6b54fb (asdu)
 =======
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <div class="row justify-between">
       <q-input
         color="teal"
@@ -31,7 +34,10 @@
       />
       <q-btn label="중복 확인" color="teal" @click="confirmUsername" class="col-2" />
     </div>
+<<<<<<< HEAD
 >>>>>>> bf45305 ( Fix : 버그 수정)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 
     <q-dialog v-model="userData.confirm" class="dialog">
       <q-card>
@@ -50,6 +56,7 @@
         </q-card-section>
       </q-card>
     </q-dialog>
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     <p v-if="userData.password2 && computedData.validUsername !== 2">
@@ -77,6 +84,8 @@
     </p>
 =======
 >>>>>>> bf45305 ( Fix : 버그 수정)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <q-input
       color="teal"
       label="비밀번호"
@@ -99,6 +108,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       @change="$emit(toSignup)"
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
@@ -110,6 +120,10 @@
       minlength="5"
       maxlength="20"
 >>>>>>> bf45305 ( Fix : 버그 수정)
+=======
+      minlength="5"
+      maxlength="20"
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       lazy-rules
       :rules="[
         val => val !== null && val !== '' || '비밀번호를 다시 입력해주세요',
@@ -126,6 +140,7 @@
 <script>
 import {reactive} from '@vue/reactivity'
 import {computed} from 'vue'
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -151,10 +166,16 @@ import axios from 'axios'
 import drf from '@/api/drf.js'
 import {useStore} from 'vuex'
 >>>>>>> e6b54fb (asdu)
+=======
+import axios from 'axios'
+import drf from '@/api/drf.js'
+import {useStore} from 'vuex'
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 export default {
   name: 'LoginInfo',
   setup () {
     const store = useStore()
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -171,6 +192,8 @@ export default {
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     const userData = reactive({
       username: null,
       password1: null,
@@ -179,13 +202,17 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       confirm: null,
       valid: null,
     })
     const computedData = reactive({
       samePassword: computed(() => userData.correct),
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -198,10 +225,14 @@ export default {
 =======
       validUsername: computed(() => userData.valid),
 >>>>>>> bf45305 ( Fix : 버그 수정)
+=======
+      validUsername: computed(() => userData.valid),
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       message: computed(() => computedData.validUsername? '사용 가능한 아이디입니다':'중복된 아이디입니다. 다른 아이디를 입력해주세요')
     })
     const confirmUsername = () => {
       // 아이디 중복 여부 확인
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -269,6 +300,10 @@ export default {
 >>>>>>> dab616b ( Style : 회원가입 스타일 수정)
         axios.get(drf.accounts.checkUsername(), {params : {username: userData.username}})
 >>>>>>> 0929323 ( Feat : 회원가입 기능 구현)
+=======
+      if (userData.username && userData.username.length > 4) {
+        axios.get(drf.accounts.checkUsername(), {params : {username: userData.username}})
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
           .then((res) => {
             userData.confirm = true
             userData.valid = res.data.dup === 'success'
@@ -277,11 +312,15 @@ export default {
             }
           })
       }
+<<<<<<< HEAD
 >>>>>>> bf45305 ( Fix : 버그 수정)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     }
     const isCorrect = () => {
       if (userData.password1 === userData.password2) {
         userData.correct = true
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -304,10 +343,16 @@ export default {
           store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
         }
 >>>>>>> bf45305 ( Fix : 버그 수정)
+=======
+        if (userData.password1.length > 5) {
+          store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
+        }
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       } else {
         userData.correct = false
       }
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -327,10 +372,13 @@ export default {
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     return {
       userData,
       computedData,
       confirmUsername,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -354,5 +402,10 @@ export default {
     }
   }
 >>>>>>> e6b54fb (asdu)
+=======
+      isCorrect
+    }
+  }
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 }
 </script>

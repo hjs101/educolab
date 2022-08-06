@@ -119,6 +119,7 @@ class UserInfo(AbstractUser):
     profil = models.CharField(max_length=45,null=True,blank=True)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 0938bf0 (Refactor : 로그인시 넘겨주는 데이터 변경 및 프로필 사진 추가)
 =======
     userflag = models.BooleanField(default=False, blank=True)
@@ -157,12 +158,16 @@ class UserInfo(AbstractUser):
     own_icon = models.ManyToManyField(Icon, related_name='icon_owner')
 
 >>>>>>> 4910d64 (feat : 상점 기능 구현, 마이페이지 칭호 변경 구현)
+=======
+    acc_point = models.IntegerField(default=0, null=True)
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     
 class PointLog(models.Model):
     teacher = models.ForeignKey(UserInfo, on_delete=models.DO_NOTHING, related_name="point_teacher")
     student = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name="point_student")
     content = models.CharField(max_length=45)
     point = models.IntegerField()
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> b9da983 (Feat : mypage 구현중)
 =======
@@ -171,3 +176,6 @@ class PointLog(models.Model):
 =======
     profil = models.CharField(max_length=45,null=True,blank=True)
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+    created_at = models.DateField(auto_now=True)
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)

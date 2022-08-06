@@ -14,11 +14,23 @@
       label="FIND PW"
       class="col-8 offset-2 col-md-1 offset-md-1"
       @click="isValidEmail"/>
+<<<<<<< HEAD
+=======
+    <!-- 인증 번호를 보냈음을 알림 또는 빈 항목이 있음을 알림 (프론트) -->
+    <message-pop-up
+      v-if="email.prompt && !email.isFail"
+      title=""
+      message="인증번호가 전송되었습니다"
+      path=""
+      success=""
+    />
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <!-- 인증 실패 팝업 (일치하는 회원정보가 없음) -->
     <message-pop-up 
       v-if="email.prompt && email.isFail"
       title="인증 실패"
       :message="email.message"
+<<<<<<< HEAD
       @reverse="email.prompt = false"
     />
     <!-- 인증 번호를 보냈음을 알림 -->
@@ -26,6 +38,10 @@
       v-if="email.prompt && !email.isFail"
       message="인증번호가 전송되었습니다"
       @reverse="email.prompt = false"
+=======
+      path=""
+      success=""
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     />
     <!-- 인증 번호 입력 창 -->
     <div v-if="email.prompt && !email.isFail" class="row justify-between">
@@ -47,7 +63,12 @@
         v-if="alert"
         title="인증 번호 확인"
         message="인증되었습니다"
+<<<<<<< HEAD
         @reverse="alert = false"
+=======
+        path=""
+        :success="email.valid"
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       />
     </div>
   </div>
@@ -67,9 +88,12 @@ export default {
   props: {
     data: Object,
   },
+<<<<<<< HEAD
   emits: [
     'reverse',
   ],
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   components: {
     MessagePopUp,
   },
@@ -102,9 +126,15 @@ export default {
                 email.message = res.data.message
               }
             })
+<<<<<<< HEAD
             .catch(err => console.dir(err))
         } else {
           email.message = '비어있는 항목을 채워주세요'
+=======
+        } else {
+          email.message = '비어있는 항목을 채워주세요'
+          // 빈 항목이 있을 때
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         }
         email.prompt = true
       } else {

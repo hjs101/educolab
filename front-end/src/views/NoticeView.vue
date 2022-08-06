@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -40,6 +41,11 @@
     <h1>공지사항</h1>
     <router-link to="/notice/create"><button>글쓰기</button></router-link>
 >>>>>>> fec931d (공지사항  상세페이지 구현)
+=======
+  <div class="center">
+    <h1>공지사항</h1>
+    <router-link to="/notice/create"><button>글쓰기</button></router-link>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <table class="center">
       <thead>
         <tr>
@@ -54,7 +60,11 @@
       <tbody>
         <tr v-for="notice in notice2" :key="notice.id">
           <td>{{ notice.pk }}</td>  
+<<<<<<< HEAD
           <td>{{ notice.classification }}</td>
+=======
+          <td>{{ notice.classification}}</td>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
           <router-link :to="{ name: 'NoticeDetail', params: {noticePk: `${notice.pk}`}}">
             <td @click="noticeDetail(notice.pk)">{{ notice.title }}</td>
           </router-link>
@@ -114,16 +124,20 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
   #notice {
     margin: auto;
     width: 80%;
     font-family: "jooa";
   }
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   .searchWrap{border-radius:5px; text-align:center; padding:20px 0; margin-bottom:10px;}
   .tbList th{border-top:1px solid #888;}
 	.tbList th, .tbList td{border-bottom:1px solid #eee; padding:5px 0;}
 	.tbList td.txt_left{text-align:left;}
   .btn{margin-bottom:40px;}
+<<<<<<< HEAD
 <<<<<<< HEAD
 </style>
 =======
@@ -197,3 +211,6 @@ export default {
 =======
 </style>
 >>>>>>> e6b54fb (asdu)
+=======
+</style>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)

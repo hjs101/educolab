@@ -4,6 +4,7 @@ import { createStore } from 'vuex'
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 import {accounts} from './modules/accounts.js'
@@ -23,6 +24,10 @@ import { survey } from './modules/survey.js'
 =======
 import { quiz } from './modules/quiz.js'
 >>>>>>> c9ecd87 (퀴즈 임베디드 연동)
+=======
+import { accounts } from './modules/accounts.js'
+import { notice } from './modules/notice.js'
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 
 export default createStore({
   state () {
@@ -38,6 +43,7 @@ export default createStore({
   actions() {
   },
   modules: {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -88,5 +94,8 @@ export default createStore({
 =======
     accounts, notice, survey, quiz
 >>>>>>> c9ecd87 (퀴즈 임베디드 연동)
+=======
+    accounts, notice
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   }
 })

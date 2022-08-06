@@ -1,14 +1,18 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e66f000 (navbar 생성)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 // import { AppFullscreen } from 'quasar'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -24,12 +28,15 @@ const routes = [
 =======
 =======
 >>>>>>> 8e382a2 (Fix : 회원가입 오류 수정해 merge)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   // 검색 공지사항
   {
     path: '/search',
     name: 'searchNotice',
     component: () => import ('@/components/SearchNotice')
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 3646f0b (공지사항 파일 업로드)
   // 회원 관리
@@ -67,10 +74,13 @@ const routes = [
     component: () => import ('@/views/LoginView')
   },
 >>>>>>> 9bb5647 (메인 페이지 css)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   // 메인페이지 
   {
     path: '/educolab',
     name: 'educolab',
+<<<<<<< HEAD
     component: () => import('@/components/MainPage')
   },
 <<<<<<< HEAD
@@ -106,6 +116,10 @@ const routes = [
 =======
 =======
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+    component: () => import('@/views/MainPageView')
+  },
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   // 아이디 & 비밀번호 찾기
   {
     path: '/find/:info',
@@ -120,12 +134,20 @@ const routes = [
   },
   // 회원정보 조회
   {
+<<<<<<< HEAD
     path: '/my-info',
     name: 'readMyInfo',
     component: () => import('@/views/FindView')
   },
   // 회원가입
 >>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
+=======
+    path: '/myinfo',
+    name: 'ReadMyInfo',
+    component: () => import('@/views/FindView')
+  },
+  // 회원가입
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   {
     path: '/signup/:userType',
     name: 'signup',
@@ -136,6 +158,7 @@ const routes = [
     path: '/signup',
     name: 'agree',
     component: () => import ('@/views/SignupAgreeView')
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -176,11 +199,28 @@ const routes = [
   //   path: '*',
   //   redirect: '/404'
   // }
+=======
+  },
+  // 공지사항
+  {
+    path: '/notice',
+    name: 'Notice',
+    component: () => import('@/views/NoticeView')
+  },
+  
+  // 공지사항 상세 페이지
+  {
+    path: '/notice/detail/:noticePk',
+    name: 'NoticeDetail',
+    component: () => import('@/views/NoticeDetailView')
+  },
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 
   // 공지사항 작성
   {
     path: '/notice/create/:noticePk?',
     name: 'NoticeForm',
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     component: () => import('@/views/NoticeView'),
@@ -221,6 +261,15 @@ const routes = [
 >>>>>>> e66f000 (navbar 생성)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+    component: () => import('@/views/NoticeFormView')
+  },
+
+  // 과제(교사)
+  {
+    path: '/teacher/task',
+    name: 'TeacherTask',
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     component: () => import('@/views/TeacherTaskView')
   },
 
@@ -229,6 +278,7 @@ const routes = [
     path: '/student/task',
     name: 'StudentTaskListView',
     component: () => import('@/views/StudentTaskListView')
+<<<<<<< HEAD
 =======
     path: '/:userType/task',
     name: 'TaskListView',
@@ -244,6 +294,12 @@ const routes = [
   // 과제 상세 
   {
     path: '/:userType/task/detail/:taskType/:taskPk',
+=======
+  },
+  // 과제 상세 
+  {
+    path: '/:userType/task/detail/:taskPk',
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     name: 'TaskDetailView',
     component: () => import('@/views/TaskDetailView')
   },
@@ -251,12 +307,17 @@ const routes = [
   {
     path: '/:userType/task/create',
     name: 'TaskCreateView',
+<<<<<<< HEAD
     component: () => import('@/views/TaskFormview')
+=======
+    component: () => import('@/views/TaskCreateOrUpdateView')
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   },
   // 과제 수정
   {
     path: '/:userType/task/update/:taskPk',
     name: 'TaskUpdateView',
+<<<<<<< HEAD
     component: () => import('@/views/TaskFormview')
   },
 <<<<<<< HEAD
@@ -272,12 +333,21 @@ const routes = [
 =======
     name: 'Quiz',
 >>>>>>> e6b54fb (asdu)
+=======
+    component: () => import('@/views/TaskCreateOrUpdateView')
+  },
+  // 퀴즈(교사)
+  {
+    path: '/quiz',
+    name: 'Quiz',
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     component: () => import('@/views/QuizView')
   },
 
   // 설문조사(교사)
   {
     path: '/search',
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     name: 'Search',
@@ -335,6 +405,15 @@ const routes = [
 <<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+    name: 'Search',
+    component: () => import('@/views/SearchView')
+  },
+
+  // 마이페이지(교사)
+  {
+    path: '/teacher',
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     name: 'TeacherPage',
     component: () => import('@/views/TeacherPageView')
   },
@@ -358,6 +437,7 @@ const routes = [
     path: '/student',
     name: 'StudentPageView',
     component: () => import('@/views/StudentPageView')
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -419,6 +499,8 @@ const routes = [
   {
     path: '/nonlogin',
     redirect: {name: 'login'}
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   },
   // 404 에러
   {
@@ -426,6 +508,7 @@ const routes = [
     name: 'notFound',
     component: () => import ('@/views/NotFoundView')
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
   // {
   //   path: '*',
@@ -475,10 +558,14 @@ const routes = [
 =======
   },
   // 회원 관리
+=======
+  // 로그인
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   {
     path: '/',
     name: 'login',
     component: () => import ('@/views/LoginView')
+<<<<<<< HEAD
 <<<<<<< HEAD
   },  
 >>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
@@ -528,6 +615,14 @@ const routes = [
     redirect: '/404'
   }
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+  },
+  // 존재하지 않는 페이지
+  {
+    path: '/:anything',
+    redirect: '/404'
+  },
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 ]
 
 const router = createRouter({

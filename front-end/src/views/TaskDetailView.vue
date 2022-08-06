@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <q-card flat bordered>
     <h1>과제 상세 페이지</h1>
     <section>
@@ -124,3 +125,16 @@ export default {
 }
 </script>
 
+=======
+  <div>
+    <h1>과제 상세 페이지</h1>
+  <router-view />
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'TaskDetailView',
+}
+</script>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)

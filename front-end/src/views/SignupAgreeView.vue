@@ -5,8 +5,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <div class="row">
       <q-scroll-area class="col-6 offset-3 scroll">
         <use-provision />
@@ -20,6 +23,7 @@
     </div>
       <!-- 여기에 버튼 -->
     <div class="buttonGroup" v-if="isChecked">
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     <div class="row">
@@ -42,6 +46,8 @@
 >>>>>>> 8e42007 ( Feat : 이메일 인증 제한 시간 추가)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       <router-link to="/signup/teacher" class="button">
         <q-btn color="teal" label="교사용"/>
       </router-link>
@@ -49,6 +55,7 @@
         <q-btn color="teal" label="학생용"/>
       </router-link>
     </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -72,6 +79,8 @@
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <router-view></router-view>
   </div>
 </template>
@@ -79,10 +88,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 <style scoped>
   /* 버튼 사이즈 키우기 */
   /* 약관 가운데 정렬 */
@@ -90,10 +102,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   .scroll {
     height: 300px;
     max-width: 750px;
@@ -120,6 +135,7 @@ export default {
       isChecked
     }
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <style>
@@ -160,5 +176,7 @@ export default {
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 }
 </script>

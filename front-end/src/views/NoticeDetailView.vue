@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 64e711e (공지사항 상세페이지 버그 수)
 =======
@@ -33,6 +34,8 @@
       </div>
 >>>>>>> fec931d (공지사항  상세페이지 구현)
 =======
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <div class="center">
       <h3>제목 : {{ noticeItem.notice.title }}</h3>
       <p>등록일 : {{ noticeItem.notice.updated_at }}</p>
@@ -42,6 +45,7 @@
         파일이름: 
         <button @click="openFile(file.atch_file)">{{ file.atch_file_name }}</button>
         <br>
+<<<<<<< HEAD
 >>>>>>> 3646f0b (공지사항 파일 업로드)
 
       </div>
@@ -53,12 +57,20 @@
     
 >>>>>>> b39710a (공지사항  수정 구현)
 =======
+=======
+
+      </div>
+    </div>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 
     <button @click="updateData">수정</button>
     <button @click="deleteNotice(noticeItem.notice.id)">삭제</button>
     <br>
     <router-link to="/notice"><button>목록</button></router-link>
+<<<<<<< HEAD
 >>>>>>> 3646f0b (공지사항 파일 업로드)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   </div>
     
 </template>
@@ -97,6 +109,7 @@ export default {
 <style>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 </style>
 =======
     <h1>공지 상세 페이지</h1>
@@ -107,3 +120,6 @@ export default {
 =======
 </style>
 >>>>>>> e6b54fb (asdu)
+=======
+</style>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)

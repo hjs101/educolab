@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
   <div class="q-px-xl">
@@ -11,6 +12,15 @@
     {{noticePk}} -->
     <br>
     <!-- {{noticeItem.notice.classification}} -->
+=======
+  <div class="q-px-xl">
+    <h1>공지 작성,수정 페이지</h1>
+    {{credentials.classification}}
+    <br>
+    {{noticePk}}
+    <br>
+    {{noticeItem.notice.classification}}
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <q-form v-if="!noticePk || noticeItem.notice">
 
       <div class="q-gutter-lg row">
@@ -50,7 +60,11 @@
       <hr>
 
       <button 
+<<<<<<< HEAD
       @click.self.prevent="submitNotice(info)">
+=======
+      @click.self.prevent="index !== undefined ? submitNotice(credentials) : updateNotice(credentials) ">
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       등록</button>
   
       <!-- {{ index !== undefined ? '작성' : '수정'}}</button> -->
@@ -87,7 +101,11 @@ export default {
   },
 
   methods: {
+<<<<<<< HEAD
     ...mapActions(['submitNotice']),
+=======
+    ...mapActions(['submitNotice',]),
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     onFileSelected(event) {
       this.credentials.files = event.target.files
       console.log(this.credentials.files)
@@ -105,6 +123,7 @@ export default {
     this.noticeItem
   }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 </script>
 =======
@@ -181,3 +200,6 @@ export default {
 =======
 </script>
 >>>>>>> e6b54fb (asdu)
+=======
+</script>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)

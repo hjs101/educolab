@@ -24,6 +24,7 @@ from . import views
 <<<<<<< HEAD
 
 from rest_framework_simplejwt.views import (
+<<<<<<< HEAD
     TokenVerifyView,
 )
 from .serializers import MyTokenObtainPairView, MyTokenRefershView
@@ -55,9 +56,11 @@ from rest_framework_simplejwt.views import (
 from rest_framework_simplejwt.views import (
 >>>>>>> 1d03a62 (Backend file 삽입)
     TokenRefreshView,
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     TokenVerifyView,
 )
-from .serializers import MyTokenObtainPairView
+from .serializers import MyTokenObtainPairView, MyTokenRefershView
 ##aaadd
 urlpatterns = [
 <<<<<<< HEAD
@@ -97,7 +100,7 @@ urlpatterns = [
 =======
     path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
 	path('login/verify/', TokenVerifyView.as_view(), name='token_verify'),
-    path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('login/refresh/', MyTokenRefershView.as_view(), name='token_refresh'),
     path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
 >>>>>>> 1d03a62 (Backend file 삽입)
     path('check_username/', views.CheckUsernameView.as_view(), name='checkusername'), 

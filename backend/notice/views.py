@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 <<<<<<< HEAD
@@ -72,6 +73,8 @@ import os
 =======
 from urllib import response
 from requests import request
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from accounts.models import SchoolInfo
@@ -160,9 +163,13 @@ class NoticeMainView(APIView) :
 class NoticeCreateView(APIView):
     def post(self, req):
 <<<<<<< HEAD
+<<<<<<< HEAD
         print(req.data)
 =======
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+        print(req.data)
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         if not req.user.userflag:
             return Response({"message : 선생님만 접근 가능합니다."})
         # notice = Notice()
@@ -185,6 +192,7 @@ class NoticeCreateView(APIView):
 =======
 =======
 
+        print(files)
         for file in files:
 >>>>>>> 1d03a62 (Backend file 삽입)
             fp = Files.objects.create(notice=notice, atch_file=file, atch_file_name=file)
@@ -216,10 +224,14 @@ class NoticeDetailView(APIView):
         
         fileserializer = FileSerializer(files, many=True)
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
         print(files)
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         
         ## 공지사항 시리얼라이저 생성
         notice_detail_serializer = NoticeSerializer(notice)
@@ -239,24 +251,31 @@ class NoticeDetailView(APIView):
 
         ## 공지사항 번호로 공지사항 인스턴스 가져오기
         notice = Notice.objects.get(pk=notice_id)
-
+#
         notice.delete()
         return Response("success")
 
 class NoticeUpdateView(APIView):
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     notice_id = ""
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     def get(self, req):
         if not req.user.userflag:
             return Response({"message : 선생님만 접근 가능합니다."})
         ## 공지사항 번호 가져오기
 <<<<<<< HEAD
+<<<<<<< HEAD
         notice_id = req.GET['notice_num']
 =======
         self.notice_id = req.GET['notice_num']
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+        notice_id = req.GET['notice_num']
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 
         ## 공지사항 번호로 공지사항 인스턴스 가져오기
         notice = Notice.objects.get(pk=self.notice_id)
@@ -284,12 +303,17 @@ class NoticeUpdateView(APIView):
 
     def put(self, req):
 <<<<<<< HEAD
+<<<<<<< HEAD
         notice_id = req.data['notice_num']
         notice = Notice.objects.get(pk=notice_id)
 =======
         self.notice_id = req.data['notice_num']
         notice = Notice.objects.get(pk=self.notice_id)
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+        notice_id = req.data['notice_num']
+        notice = Notice.objects.get(pk=notice_id)
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         notice_serializer = NoticeSerializer(notice, data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
             notice = notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))

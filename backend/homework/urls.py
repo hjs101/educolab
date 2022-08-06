@@ -23,6 +23,7 @@ urlpatterns = [
     path('create/', views.HomeworkCreateView.as_view(), name="homework_create"),
     path('detail/', views.HomeworkDetailView.as_view(), name='homework_detail_delete_put'),
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('check/', views.HomeworkCheckView.as_view(), name='homework_check'),
 <<<<<<< HEAD
     path('check/done/', views.HomeworkCheckDoneView.as_view(), name='homework_check_done'),
@@ -32,4 +33,8 @@ urlpatterns = [
     path('submit/', views.HomeworkSubmitView.as_view(), name='homework_submit'),
 =======
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+    path('check/', views.HomeworkCheckView.as_view(), name='homework_check'),
+    path('submit/', views.HomeworkSubmitView.as_view(), name='homework_submit'),
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 ]

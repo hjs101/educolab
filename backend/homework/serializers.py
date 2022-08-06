@@ -67,6 +67,11 @@ class SubmitHomeworksubmitSerializer(serializers.ModelSerializer):
         fields = ('student','content','submit_at','submit_flag','atch_file_name','atch_file')
 >>>>>>> 1d03a62 (Backend file 삽입)
 
+class SubmitHomeworksubmitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubmitHomework
+        fields = '__all__'
+
 class FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Files

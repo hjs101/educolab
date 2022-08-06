@@ -1,4 +1,5 @@
 DATABASES = {
+<<<<<<< HEAD
 'default': {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -112,3 +113,20 @@ EMAIL_HOST_PASSWORD = 'osbqrenzvuexioxx'
 =======
  
 >>>>>>> e2d8893 (Feat : 설문조사 CRUD 구현 완료)
+=======
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'educolab',
+        'USER': 'educolab',
+        'PASSWORD': 'c102_edu',
+        "HOST": '3.36.69.192',
+        "PORT": '3306',
+    }
+}
+
+MY_IMAGE_PATH = '/SSAFY/C102_IOT/S07P12C102/backend/image/'
+
+EMAIL_HOST_USER = 'educolabtest@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'osbqrenzvuexioxx'
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)

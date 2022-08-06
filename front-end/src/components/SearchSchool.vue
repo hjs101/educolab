@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
   <div>
@@ -13,6 +14,11 @@
     <q-input color="teal" label="학교" v-model="school.name" disable class="col-9"/>
     <q-btn label="학교 검색" color="teal" @click="prompt.prompt = true" class="col-2"/>
 >>>>>>> bf45305 ( Fix : 버그 수정)
+=======
+  <div class="row justify-between">
+    <q-input color="teal" label="학교" v-model="school.name" disable class="col-9"/>
+    <q-btn label="학교 검색" color="teal" @click="prompt.prompt = true" class="col-2"/>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <!-- 학교 검색 팝업 -->
     <q-dialog v-model="prompt.prompt" persistent>
       <q-card style="min-width: 350px">
@@ -20,6 +26,9 @@
           <div class="text-h6 center">학교 검색</div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         </q-card-section>
 
         <q-card-section class="q-pt-none">
@@ -79,6 +88,7 @@ export default {
       name: null,
       code: null,
       selectedName: null,
+<<<<<<< HEAD
 <<<<<<< HEAD
       list: [],
 =======
@@ -197,6 +207,8 @@ export default {
       name: null,
       code: null,
       selectedName: null,
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       list: [],
     })
 
@@ -210,6 +222,7 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
 =======
 =======
@@ -218,6 +231,9 @@ export default {
 =======
 
 >>>>>>> e6b54fb (asdu)
+=======
+
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     const selectSchool = (name, code) => {
       prompt.selected = code
       school.selectedName = name
@@ -229,6 +245,7 @@ export default {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
 
@@ -236,10 +253,13 @@ export default {
 =======
 
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     return {
       prompt,
       school,
       findSchool,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -262,6 +282,10 @@ export default {
       selectSchool,
       applySchool
 >>>>>>> e6b54fb (asdu)
+=======
+      selectSchool,
+      applySchool
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     }
   },
 }

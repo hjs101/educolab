@@ -3,8 +3,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   <div class="q-mx">
     <h3>LOGIN</h3>
     <account-error-list></account-error-list>
@@ -18,6 +21,7 @@
         <q-input
           color="teal"
           v-model="credentials.username"
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   <div class="q-pa-md">
@@ -48,6 +52,8 @@
 >>>>>>> c942112 (로그인 프론트와 백 연결)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
           label="ID"
           lazy-rules
           :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요']"
@@ -55,6 +61,7 @@
 
         <q-input
           color="teal"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -75,6 +82,11 @@
           label="Password"
           type="password"
           @keyup.enter="login"
+=======
+          v-model="credentials.password"
+          label="Password"
+          type="password"
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
           lazy-rules
           :rules="[
             val => val !== null && val !== '' || '비밀번호를 입력해주세요',
@@ -82,6 +94,7 @@
         />
       </div>
       <!-- 여기에 로그인버튼 -->
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -102,11 +115,14 @@
 >>>>>>> e6b54fb (asdu)
 
 =======
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       <q-btn
         color="secondary"
         label="LOGIN"
         class="col-8 offset-2 col-md-1 offset-md-1"
         @click="login(credentials)"/>
+<<<<<<< HEAD
 >>>>>>> d7025b4 (Feat : 비밀번호 변경 페이지 제작 & 컴포넌트화 & 비밀번호 변경 기능 진행 중)
     </q-form>
 
@@ -140,6 +156,13 @@
     <button-group :currentUrl="currentUrl"/>
     <router-view></router-view>
 >>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
+=======
+    </q-form>
+
+    <!-- 여기에 회원가입 / ID 찾기 / 비밀번호 찾기 -->
+    <button-group :currentUrl="currentUrl"/>
+    <router-view></router-view>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   </div>
 
 </template>
@@ -148,16 +171,20 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c942112 (로그인 프론트와 백 연결)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 <style scoped>
   .input {
     width: 500px;
   }
   .buttonGroup {
     margin-top: 100px;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -190,10 +217,13 @@
 >>>>>>> c942112 (로그인 프론트와 백 연결)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   }
 </style>
 
 <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -204,6 +234,10 @@
 import { mapGetters, mapActions, useStore } from 'vuex'
 import {onBeforeMount} from 'vue'
 import {useRouter, useRoute} from 'vue-router'
+=======
+// import { reactive } from '@vue/reactivity'
+import { mapGetters, mapActions } from 'vuex'
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 import AccountErrorList from '@/components/AccountErrorList.vue'
 import ButtonGroup from '@/components/ButtonGroup.vue'
 
@@ -213,6 +247,7 @@ export default {
     AccountErrorList,
     ButtonGroup
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 // import { reactive } from '@vue/reactivity'
@@ -230,6 +265,8 @@ export default {
 >>>>>>> 77a4159 (로그아웃 구현)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   data () {
     return {
       credentials: {
@@ -245,6 +282,7 @@ export default {
   methods: {
     ...mapActions(['login'])
   },
+<<<<<<< HEAD
   setup () {
     const store = useStore()
     const router = useRouter()
@@ -305,3 +343,7 @@ export default {
 =======
 </script>
 >>>>>>> e6b54fb (asdu)
+=======
+}
+</script>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)

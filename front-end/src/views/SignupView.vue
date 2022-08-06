@@ -9,6 +9,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       @submit="submitData"
 =======
       @submit="onSubmit"
@@ -35,6 +36,12 @@
 <<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+      class="q-gutter row justify-content-around"
+    >
+      <div class="col-6 offset-3 col-md-4 offset-md-4">
+      <!-- 여기에 아이디, 비밀번호 입력 창 -->
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         <login-info/>
         <!-- 학교 검색 버튼 -->
         <search-school />
@@ -42,8 +49,11 @@
         <user-name />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         <user-phone-number />
         <!-- 생년월일-->
         <user-birthday :userType="userType" />
@@ -52,6 +62,7 @@
         <!-- 이메일 -->
         <email-confirm />
         <!-- 회원가입 버튼 -->
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -97,6 +108,9 @@
 =======
         <q-btn color="primary" label="SIGN UP" class="submitButton" @click="submitData"/>
 >>>>>>> bf45305 ( Fix : 버그 수정)
+=======
+        <q-btn color="primary" label="SIGN UP" class="submitButton" @click="submitData"/>
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       </div>
     </q-form>
   </div>
@@ -121,12 +135,16 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 import {useRoute} from 'vue-router'
 =======
 import {useRoute, useRouter} from 'vue-router'
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+import {useRoute, useRouter} from 'vue-router'
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 import {useStore} from 'vuex'
 import {onBeforeMount} from 'vue'
 import LoginInfo from '@/components/LoginInfo.vue'
@@ -138,6 +156,7 @@ import UserPhoneNumber from '@/components/UserPhoneNumber.vue'
 import UserName from '@/components/UserName.vue'
 
 // import { onMounted } from '@vue/runtime-core'
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 import {reactive} from '@vue/reactivity'
@@ -158,6 +177,8 @@ import UserPhoneNumber from '@/components/UserPhoneNumber.vue'
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 export default {
   name: "SignupView",
   components: {
@@ -165,10 +186,13 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 02d99cb ( Fix : 통신 확인)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     SearchSchool,
     EmailConfirm,
     TeacherOrStudent,
@@ -197,6 +221,7 @@ export default {
       submitData
     }
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     searchSchool,
@@ -235,5 +260,7 @@ export default {
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 }
 </script>

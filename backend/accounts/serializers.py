@@ -36,8 +36,9 @@ from educolab.settings import SECRET_KEY
 import jwt
 =======
 from . import models
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer,TokenRefreshSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 from dj_rest_auth.registration.serializers import RegisterSerializer
 >>>>>>> 1d03a62 (Backend file 삽입)
@@ -240,13 +241,40 @@ class MyTokenRefershView(TokenRefreshView):
 >>>>>>> b9da983 (Feat : mypage 구현중)
 =======
         data['profil'] = self.user.profil
-        data['schoolcode']=self.user.school.code
+        data['schoolname']=self.user.school.name
         return data
 
+class MyTokenRefershSerializer(TokenObtainPairSerializer):
+        # response 커스텀 
+    default_error_messages = {
+        'no_active_account': {'message':'username or password is incorrect!',
+                              'success': False,
+                              'status' : 401}
+    }
+    # 유효성 검사
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        
+        refresh = self.get_token(self.user)
+        
+         # response에 추가하고 싶은 key값들 추가
+        data['name'] = self.user.name
+        data['access'] = str(refresh.access_token)
+        data['userflag'] = self.user.userflag
+        data['email'] = self.user.email
+        data['profil'] = self.user.profil
+        data['schoolname']=self.user.school
+        return data
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
+<<<<<<< HEAD
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+    
+class MyTokenRefershView(TokenRefreshView):
+    serializer_class = MyTokenRefershSerializer
+>>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 
 class CustomRegisterSerializer(RegisterSerializer):
     userflag =serializers.BooleanField()
