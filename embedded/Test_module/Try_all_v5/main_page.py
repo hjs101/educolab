@@ -71,8 +71,11 @@ class Main_Screen(Screen):
         with open("./login_info.json", 'r') as file:
             data = json.load(file)
             self.acc_token = data["access"]
+<<<<<<< HEAD
         self.res = requests.get('http://127.0.0.1:8000/accounts/logout')
 >>>>>>> c515355 (Feat: notice request 구현 시작!)
+=======
+>>>>>>> 9c53273 (Refactor: 아 로그아웃 깜빡했다)
 
     def on_leave(self):
         self.manager.before_page=self.name
