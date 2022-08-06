@@ -2,6 +2,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const ACCOUNTS = BASE_URL + '/accounts/'
@@ -91,9 +94,27 @@ export default {
 =======
     // changeInfo: () => ACCOUNTS + 
 >>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
+=======
+const BASE_URL = "http://3.36.69.192:8000/";
+const ACCOUNTS = BASE_URL + "accounts/";
+const NOTICE = BASE_URL + "notice/";
+
+export default {
+  accounts: {
+    login: () => ACCOUNTS + "login/",
+    logout: () => ACCOUNTS + "logout/",
+    signup: () => ACCOUNTS + "registration/",
+    schoolInfo: () => ACCOUNTS + "schoolinfo/",
+    checkUsername: () => ACCOUNTS + "check_username/",
+    findUsername: () => ACCOUNTS + "find_username/",
+    sendEmail: () => ACCOUNTS + "send_signup_email/",
+    sendPwEmail: () => ACCOUNTS + "send_pw_email/",
+    changePw: () => ACCOUNTS + "change_pw/",
+>>>>>>> 7dba180 (Test : 배포테스트)
   },
 
   notice: {
+<<<<<<< HEAD
     noticeList: () => NOTICE + 'main/',
     noticeDetail: () => NOTICE + 'detail/',
     noticeCreate: () => NOTICE + 'create/',
@@ -155,6 +176,12 @@ export default {
 }
 =======
 const BASE_URL = "http://3.36.69.192:8000/";
+=======
+const BASE_URL = "http://127.0.0.1:8000/";
+>>>>>>> 6339470 (Test : 자동배포 테스트)
+=======
+const BASE_URL = "http://3.36.69.192:8000/";
+>>>>>>> b94cff3 (Test : 자동배포테스트)
 const ACCOUNTS = BASE_URL + "accounts/";
 const NOTICE = BASE_URL + "notice/";
 
@@ -171,10 +198,15 @@ export default {
     changePw: () => ACCOUNTS + "change_pw/",
   },
   notice: {
+=======
+>>>>>>> 7dba180 (Test : 배포테스트)
     noticeList: () => NOTICE + "main/",
     noticeDetail: () => NOTICE + "detail/",
     noticeCreate: () => NOTICE + "create/",
     noticeUpdate: () => NOTICE + "update/",
   },
 };
+<<<<<<< HEAD
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> 7dba180 (Test : 배포테스트)

@@ -2,8 +2,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 4bf513d (Fix : git.ignore 최신화)
+=======
+# Created by https://www.toptal.com/developers/gitignore/api/windows,python,django,venv,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,python,django,venv,visualstudiocode
+
+>>>>>>> 7dba180 (Test : 배포테스트)
 .DS_Store
 node_modules
 /dist
