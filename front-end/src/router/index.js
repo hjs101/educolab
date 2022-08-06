@@ -195,8 +195,12 @@ const routes = [
 >>>>>>> e6b54fb (asdu)
     component: () => import('@/views/NoticeFormView')
   },
+<<<<<<< HEAD
 
   // 과제 메인
+=======
+  // 과제(교사)
+>>>>>>> 3d91e39 (설문조사  등록 구현)
   {
 <<<<<<< HEAD
     path: '/teacher/task',
@@ -284,7 +288,7 @@ const routes = [
     component: () => import('@/views/SurveyView')
   },
 
-  // 설문조사(등록)
+  // 설문조사 등록
   {
     path: '/survey/create',
     name: 'SurveyCreate',
@@ -292,6 +296,12 @@ const routes = [
 >>>>>>> 452a9d1 (설문조사  등록)
   },
 
+  // 설문조사 상세
+  {
+    path: '/survey/detail/:surveyPk',
+    name: 'surveyDetail',
+    component: () => import('@/views/SurveyDetailView')
+  },
   // 마이페이지(교사)
   {
     path: '/teacher',

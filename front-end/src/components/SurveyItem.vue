@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @change="goSurvey({...credentials})">
+    <div @change="onSurvey({...credentials})">
       <select v-model="selected">
         <option value="">==문항 선택==</option>
         <option value="choice">객관식 설문조사</option>
@@ -80,7 +80,7 @@ export default {
   //   }
   // },
   methods: {
-    ...mapActions(['goSurvey']),
+    ...mapActions(['onSurvey']),
   },
 }
 </script>

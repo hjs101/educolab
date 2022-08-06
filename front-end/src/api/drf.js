@@ -101,7 +101,12 @@ export default {
 >>>>>>> 452a9d1 (설문조사  등록)
 =======
     surveyList: () => SURVEY + 'main/',    
+<<<<<<< HEAD
     surveyCreate: () => SURVEY + 'create/'
 >>>>>>> c450ef8 (설문조사  등록 구현)
+=======
+    surveyCreate: () => SURVEY + 'create/',
+    surveyDetail: () => SURVEY + 'detail/',
+>>>>>>> 3d91e39 (설문조사  등록 구현)
   }
 }
