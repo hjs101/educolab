@@ -72,8 +72,9 @@ class SurveyDetailView(APIView):
         questions = survey.question_survey.all()
         ## 설문조사 시리얼라이저 생성
         question_serializer = QuestionDetailSerializer(questions, many=True)
-
-        return Response(question_serializer.data)
+        survey_name = [{"survey_name" : survey.title}]
+        print(question_serializer.data)
+        return Response(survey_name+question_serializer.data)
 
     def delete(self, req):
         survey_id = req.GET['survey_num']
