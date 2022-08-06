@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
 <<<<<<< HEAD
@@ -35,9 +36,20 @@ module.exports = defineConfig({
 
   pluginOptions: {
     quasar: {
+=======
+const { defineConfig } = require("@vue/cli-service");
+module.exports = defineConfig({
+  transpileDependencies: ["quasar"],
+
+  pluginOptions: {
+    quasar: {
+>>>>>>> 5947376 (Style : 자동 문법변경)
       importStrategy: "kebab",
       rtlSupport: false,
     },
   },
 });
+<<<<<<< HEAD
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> 5947376 (Style : 자동 문법변경)
