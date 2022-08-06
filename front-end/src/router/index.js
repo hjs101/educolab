@@ -58,7 +58,6 @@ const routes = [
     name: 'NoticeForm',
     component: () => import('@/views/NoticeFormView')
   },
-
   // 과제(교사)
   {
     path: '/teacher/task',
@@ -98,13 +97,19 @@ const routes = [
     component: () => import('@/views/SurveyView')
   },
 
-  // 설문조사(등록)
+  // 설문조사 등록
   {
     path: '/survey/create',
     name: 'SurveyCreate',
     component: () => import('@/views/SurveyCreateView')
   },
 
+  // 설문조사 상세
+  {
+    path: '/survey/detail/:surveyPk',
+    name: 'surveyDetail',
+    component: () => import('@/views/SurveyDetailView')
+  },
   // 마이페이지(교사)
   {
     path: '/teacher',

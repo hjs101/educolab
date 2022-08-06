@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="center">
-      설문조사 제목 : <input class="inputWidth" type="text" placeholder="설문조사 제목을 입력해주세요." v-model="credential.survey.title"><br>
+      설문조사 제목 : <input class="inputWidth" type="text" placeholder="설문조사 제목을 입력해주세요." v-model="credentials.survey.title"><br>
     </div>
 
     <!-- 학년 선택-->
-    <select v-model="credential.survey.grade">
+    <select v-model="credentials.survey.grade">
       <option value="0">전체</option>
       <option value="1">1학년</option>
       <option value="2">2학년</option>
@@ -13,7 +13,7 @@
     </select>
 
     <!-- 반 선택-->
-    <select v-model="credential.survey.class_field">
+    <select v-model="credentials.survey.class_field">
       <option value="0">전체</option>
       <option value="1">1반</option>
       <option value="2">2반</option>
@@ -31,32 +31,31 @@
     <form class="surveymargin">
       <div class="surveymargin" v-for="survey in surveyList" :key="survey">
           <survey-item :survey="survey"/>
-            <button @click="deleteSurvey">설문문항 삭제</button>
+            <button @click="deleteSurvey(survey, $event)">설문문항 삭제</button>
           <hr>
-          
       </div>
     </form>
-    <button @click="testSurvey(credential)">설문등록</button>
+    <button @click="submitSurvey(credentials)">설문등록</button>
 
     <!-- <button></button> -->
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import axios from 'axios'
+import { mapActions, mapGetters } from 'vuex'
+// import axios from 'axios'
 import SurveyItem from '../components/SurveyItem.vue'
-import drf from '@/api/drf'
+// import drf from '@/api/drf'
 
 export default {
   components: { SurveyItem },
   name: 'SurveyCreateView',
   computed: {
-    ...mapGetters(['surveyData']),
+    ...mapGetters(['surveyData', 'authHeader']),
   },
   data() {
     return {
-      credential : {
+      credentials : {
         survey: {
           title: '',
           grade: '',
@@ -68,30 +67,29 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['submitSurvey']),
     addSurvey() {
-      this.surveyList++
-      
+      this.surveyList++,
+      this.surveyData.push({})
     },
-    deleteSurvey(event) {
+    deleteSurvey(survey, event) {
       event.preventDefault()
       this.surveyList = this.surveyList - 1
+      this.surveyData.splice(survey-1, 1)
     },
-    parents() {
-      console.log('부모가 받았어!!')
-    },
-    testSurvey() {
-      this.credential.question = this.surveyData
-      axios({
-        url: drf.survey.surveyCreate(),
-        method: 'post',
-        headers : this.authHeader,
-        data : this.credential
-      })
-        .then(res => {
-          console.log('갑니까?')
-          console.log(res)
-        })
-    }
+    // testSurvey() {
+    //   this.credentials.question = this.surveyData
+    //   axios({
+    //     url: drf.survey.surveyCreate(),
+    //     method: 'post',
+    //     headers : this.authHeader,
+    //     data : this.credentials
+    //   })
+    //     .then(res => {
+    //       console.log('갑니까?')
+    //       console.log(res)
+    //     })
+    // }
   }
 }
 </script>
