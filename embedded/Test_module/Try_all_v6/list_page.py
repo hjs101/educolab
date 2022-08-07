@@ -72,6 +72,7 @@ class List_Screen(Screen):
 
     def notice_list(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
         res = requests.get('https://i7c102.p.ssafy.io/api/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
         data_full = json.loads(res.text)
         self.manager.max_page_num = int(len(data_full) / 5) + 1
@@ -81,6 +82,9 @@ class List_Screen(Screen):
         for data in data_full[self.manager.start_page_num : self.manager.start_page_num + 5]:
 =======
         res = requests.get('http://127.0.0.1:8000/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
+=======
+        res = requests.get('https://i7c102.p.ssafy.io/api/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
+>>>>>>> 1a93471 (Style: API 수정)
         data_full = json.loads(res.text)
         data_full.sort(key=lambda x: -x['pk'])
         i = 1
@@ -179,6 +183,7 @@ class List_Screen(Screen):
             ##**# 설문조사 하나의 전체 문항개수 = self.manager.max_prob_num
             ##**# 설문조사 하나의 현재 문항개수 = self.manager.prob_num
 <<<<<<< HEAD
+<<<<<<< HEAD
         else:
             self.content_page=self.name
 
@@ -190,8 +195,11 @@ class List_Screen(Screen):
         ##**# 게시물이 5개 미만일때 정보 없는 버튼 비활성화 목적의 flag 활용
 =======
 
+=======
+>>>>>>> 1a93471 (Style: API 수정)
         else : self.content_page=self.name
 
+        self.content_number = content_num
         ##**# 데이터가 없어서 일단 화면 테스트를 목적으로 임시 주석
         ##**# 함수 survey_list에서 self.deact_flag 만들어 주시고 푸시면 정상 작동
         ##**# 게시물이 5개 미만일때 정보 없는 버튼 비활성화 목적의 flag 활용
