@@ -7,20 +7,22 @@ export const survey = {
     return {
       survey : {},
       surveyData: [{}, {}],
-      // surveyItem : {}
+      surveyBogi : [],
     }
   },
   
   getters: {
     survey : state => state.survey,
     surveyData : state => state.surveyData,
-    surveyItem: state => state.surveyItem,
+    surveyItem : state => state.surveyItem,
+    surveyBogi : state => state.surveyBogi
   },
 
   mutations: {
     SURVEY_LIST : (state, survey) => state.survey = survey,
     SURVEY_DATA: (state, data) => state.surveyData[data.question_number-1] = data,
     SURVEY_ITEM: (state, surveyItem) => state.surveyItem = surveyItem,
+    SURVEY_BOGI: (state, surveyBogi) => state.surveyBogi = surveyBogi
   },
 
   actions: {
@@ -31,7 +33,6 @@ export const survey = {
         headers: getters.authHeader,
       })
         .then(res => {
-          console.log(res)
           commit('SURVEY_LIST', res.data)
         })
         .catch(err => {
@@ -39,12 +40,11 @@ export const survey = {
         })
     },
     onSurvey({ commit }, data) {
-      console.log(data)
       commit('SURVEY_DATA', data)
     },
     submitSurvey({ getters }, credentials) {
       credentials.question = getters.surveyData
-      console.log(credentials.question)
+      console.log(credentials)
       axios({
         url: drf.survey.surveyCreate(),
         method: 'post',
@@ -52,7 +52,7 @@ export const survey = {
         data : credentials
       })
         .then(res => {
-          console.log(res)
+          console.log(res.data)
           router.push({ name: 'Survey' })
         })
     },
@@ -66,11 +66,48 @@ export const survey = {
         }
       })
         .then(res => {
-          console.log(res.data)
+          for(var i = 1; i < res.data.length; i++) {
+            if (res.data[i].multiple_bogi) {
+              const surveyBogi = res.data[i].multiple_bogi.split('/')
+              getters.surveyBogi[i] = surveyBogi
+            }
+          }
           commit('SURVEY_ITEM', res.data)
         })
         .catch(err => {
           console.log(err)
+        })
+    },
+    deleteSurvey({ getters }, surveyPk) {
+      axios({
+        url: drf.survey.surveyDetail(),
+        method: 'delete',
+        headers: getters.authHeader,
+        params: {
+          survey_num : surveyPk
+        } 
+      })
+        .then(alert('해당 글이 삭제되었습니다.'), 
+        router.push({ name : 'Survey' }))
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    updateSurvey({ getters }, {credentials, surveyPk}) {
+      credentials.question = getters.surveyData
+      credentials.survey_num = surveyPk
+      axios ({
+        url: drf.survey.surveyUpdate(),
+        method: 'put',
+        headers: getters.authHeader,
+        data : credentials,
+        params : {
+          survey_num : surveyPk
+        }
+      })
+        .then(res => {
+          console.log(res)
+          router.push({ name : 'Survey' })
         })
     }
   }

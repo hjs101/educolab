@@ -92,24 +92,25 @@ const routes = [
 
   // 설문조사(교사)
   {
-    path: '/survey',
+    path: '/survey/',
     name: 'Survey',
     component: () => import('@/views/SurveyView')
-  },
-
-  // 설문조사 등록
-  {
-    path: '/survey/create',
-    name: 'SurveyCreate',
-    component: () => import('@/views/SurveyCreateView')
   },
 
   // 설문조사 상세
   {
     path: '/survey/detail/:surveyPk',
-    name: 'surveyDetail',
+    name: 'SurveyDetail',
     component: () => import('@/views/SurveyDetailView')
   },
+
+  // 설문조사 등록
+  {
+    path: '/survey/create/:surveyPk?',
+    name: 'SurveyCreate',
+    component: () => import('@/views/SurveyCreateView')
+  },
+
   // 마이페이지(교사)
   {
     path: '/teacher',
