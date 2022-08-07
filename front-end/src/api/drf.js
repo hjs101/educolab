@@ -107,6 +107,10 @@ export default {
 =======
     surveyCreate: () => SURVEY + 'create/',
     surveyDetail: () => SURVEY + 'detail/',
+<<<<<<< HEAD
 >>>>>>> 3d91e39 (설문조사  등록 구현)
+=======
+    surveyUpdate: () => SURVEY + 'update/',
+>>>>>>> 4cea92e (설문조사  수정 구현)
   }
 }
