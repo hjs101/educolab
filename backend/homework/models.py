@@ -11,7 +11,7 @@ class TeacherHomework(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     deadline = models.DateField()
     grade = models.IntegerField()
-    class_field = models.IntegerField()  
+    class_field = models.IntegerField()
     target = models.ManyToManyField(UserInfo, related_name='teacher_homework')
     check_flag = models.BooleanField(default=False)
 
@@ -33,7 +33,7 @@ class Files(models.Model):
     atch_file = models.FileField(blank=True, upload_to='homework/create')  # Field name made lowercase.
 
 class SubmitHomework(models.Model):
-    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE,null=True)
+    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE,null=True,related_name='submit_homework')
     teacher_homework = models.ForeignKey(TeacherHomework, on_delete=models.CASCADE,null=True, related_name='student_submit')
     student_homework = models.ForeignKey(StudentHomework, on_delete=models.CASCADE,null=True, related_name='my_submit')
     content = models.TextField(null=True)
