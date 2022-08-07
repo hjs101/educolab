@@ -49,9 +49,15 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['access'] = str(refresh.access_token)
         data['userflag'] = self.user.userflag
         data['email'] = self.user.email
-        data['profil'] = self.user.profil
+        data['profil'] = self.user.profil.url
         data['schoolname']=self.user.school.name
         return data
+
+class ProfilFileSerializer(serializers.ModelSerializer):
+    profil = serializers.ImageField(use_url=True)
+    class Meta:
+        model = models.UserInfo
+        fields = 'profil'
 
 class MyTokenRefershSerializer(TokenObtainPairSerializer):
         # response 커스텀 
@@ -66,12 +72,12 @@ class MyTokenRefershSerializer(TokenObtainPairSerializer):
         
         refresh = self.get_token(self.user)
         
-         # response에 추가하고 싶은 key값들 추가
+        # response에 추가하고 싶은 key값들 추가
         data['name'] = self.user.name
         data['access'] = str(refresh.access_token)
         data['userflag'] = self.user.userflag
         data['email'] = self.user.email
-        data['profil'] = self.user.profil
+        data['profil'] = self.user.profil.url
         data['schoolname']=self.user.school
         return data
 

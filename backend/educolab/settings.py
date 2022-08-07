@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'notice',
     'accounts',
     'homework',
+    'mainpage',
     'drf_yasg',
     'django.contrib.sites',
     'allauth',

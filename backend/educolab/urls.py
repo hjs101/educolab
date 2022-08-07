@@ -49,5 +49,6 @@ urlpatterns = [
     path('api/homework/', include('homework.urls')),
     path('api/survey/', include('survey.urls')),
     path('api/mypage/', include('mypage.urls')),
+    path('api/main/', include('mainpage.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

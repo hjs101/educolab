@@ -21,7 +21,7 @@ class UserInfo(AbstractUser):
     homeroom_teacher_flag = models.IntegerField(null=True)
     plus_point = models.IntegerField(default=0)
     minus_point = models.IntegerField(default=0)
-    profil = models.CharField(max_length=45,null=True,blank=True)
+    profil = models.ImageField(blank=True, upload_to='accounts/profils' ,default='accounts/profils/test01.jpg')
     acc_point = models.IntegerField(default=0, null=True)
     
 class PointLog(models.Model):
