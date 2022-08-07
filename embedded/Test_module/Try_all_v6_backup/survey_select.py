@@ -28,6 +28,7 @@ class Survey_Select_Screen(Screen):
         self.key_color=[0/255, 176/255, 240/255,1]
         self.popup = MyPopUp2()
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     
     def on_pre_enter(self):
@@ -36,6 +37,10 @@ class Survey_Select_Screen(Screen):
     
     def on_pre_enter(self):
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+    
+    def on_pre_enter(self):
+>>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
         # 초기화
         self.result=[]
         self.prob_num=self.manager.prob_num
@@ -72,6 +77,7 @@ class Survey_Select_Screen(Screen):
         if self.prob_num==self.manager.max_prob_num: self.ids.after.source='./icon/None.png'
         else: self.ids.after.source='./icon/right_button.png'
 <<<<<<< HEAD
+<<<<<<< HEAD
         print(self.manager.survey_ans)
         self.percent=len(self.manager.survey_ans)/self.manager.max_prob_num
         # print(self.percent)
@@ -79,6 +85,9 @@ class Survey_Select_Screen(Screen):
 =======
         self.percent=self.manager.survey_cnt/self.manager.max_prob_num
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+        self.percent=self.manager.survey_cnt/self.manager.max_prob_num
+>>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
         self.ids.progress.text=f'{self.percent*100:.1f}%'
 
     def next_flag_setup(self, btn_direction): ##### list 옆 페이지로 넘어가는 self.next_flag 정의
@@ -108,6 +117,7 @@ class Survey_Select_Screen(Screen):
 
     def checkbox_click(self, instance, value, ans_num): # 체크박스 클릭시 결과를 넣어준다.
 <<<<<<< HEAD
+<<<<<<< HEAD
         if self.check_flag:
             self.manager.survey_ans.pop(str(self.prob_num),None)
 
@@ -127,6 +137,8 @@ class Survey_Select_Screen(Screen):
             self.ids.progress.text=f'{self.percent*100:.1f}%'
 
 =======
+=======
+>>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
         if value==True:
             self.result.append(ans_num)
         else:
@@ -137,7 +149,10 @@ class Survey_Select_Screen(Screen):
             if str(self.prob_num) in self.manager.survey_ans: self.manager.survey_cnt-=1 # 지운거
         else:
             if str(self.prob_num) not in self.manager.survey_ans: self.manager.survey_cnt+=1 # 추가한거
+<<<<<<< HEAD
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
 
     def toggle_btn(self, btn): # 체크박스 뿐 아니라 보기를 눌렀을 때 활성화 하기 위한 용도의 함수
         if self.ids[btn].active==True:
@@ -146,8 +161,11 @@ class Survey_Select_Screen(Screen):
             self.ids[btn].active=True
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def onPopUp(self, btn_flag):
 =======
+=======
+>>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
     def onPopUp(self):
         # 데이터 저장
         self.cnt_setup()
@@ -159,16 +177,23 @@ class Survey_Select_Screen(Screen):
         for i in range(5):
             self.ids['ans'+str(i+1)].active=False
 
+<<<<<<< HEAD
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
         # ##### 필수 설문이 완료되었는지 체크 : self.end_flag #####
         self.end_flag=True  # 필수 설문 완료
         # self.end_flag=False # 필수 설문 미완료
         #########################################################################
 <<<<<<< HEAD
+<<<<<<< HEAD
         if self.end_flag and btn_flag:
 =======
         if self.end_flag:
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+        if self.end_flag:
+>>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
             self.popup.ids.alert.text="설문이 완료되었습니다. 종료하시겠습니까?\n설문 종료시 답변을 더 이상 수정할 수 없습니다"
             self.popup.open()
         else:
@@ -176,9 +201,12 @@ class Survey_Select_Screen(Screen):
             self.popup.open()
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def on_leave(self):
         self.check_flag=False
 =======
+=======
+>>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
     def on_pre_leave(self):
         # 데이터 저장
         self.result.sort()
@@ -186,7 +214,10 @@ class Survey_Select_Screen(Screen):
             self.manager.survey_ans[str(self.prob_num)]=self.result.copy()
         else:
             if str(self.prob_num) in self.manager.survey_ans: self.manager.survey_ans.pop(str(self.prob_num),None)
+<<<<<<< HEAD
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
         for i in range(5):
             self.ids['ans'+str(i+1)].active=False
 
