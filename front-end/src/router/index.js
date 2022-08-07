@@ -108,8 +108,8 @@ const routes = [
   },
   // 회원정보 조회
   {
-    path: '/myinfo',
-    name: 'ReadMyInfo',
+    path: '/my-info',
+    name: 'readMyInfo',
     component: () => import('@/views/FindView')
   },
   // 회원가입

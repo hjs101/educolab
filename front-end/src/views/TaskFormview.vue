@@ -104,21 +104,22 @@ export default {
     let type = computed(() => taskPk? '수정':'등록')
     const storeTask = ref(computed(() => store.getters.getTask))
     const task = reactive({
-      teacher: store.getters.currentUser.username,
-      subject: store.getters.currentUser.subject,
-      title: taskPk? storeTask.value.title : null,
-      content: taskPk? storeTask.value.content : null,
-      grade: taskPk? storeTask.value.grade : null,
-      class_field: taskPk? storeTask.value.class_field : null,
-      files: taskPk? storeTask.value.files : null,
-      deadline: taskPk? storeTask.value.deadline : null,
+      teacher: computed(() => store.getters.currentUser.username),
+      subject: computed(() => store.getters.currentUser.subject),
+      title: computed(() => taskPk? storeTask.value.title : null),
+      content: computed(() => taskPk? storeTask.value.content : null),
+      grade: computed(() => taskPk? storeTask.value.grade : null),
+      class_field: computed(() => taskPk? storeTask.value.class_field : null),
+      files: computed(() => taskPk? storeTask.value.files : null),
+      deadline: computed(() => taskPk? storeTask.value.deadline : null),
     })
     const accept = ref(false)
     const onSubmit = (event) => {
       event.preventDefault()
       let form = new FormData()
+      form.append('pk', taskPk)
       for (let key in task) {
-        if (key === 'files' && task[key] !== null) {
+        if (key === 'files' && task[key]) {
           for (let i=0; i < task.files.length; i++) {
             console.log(task[key][i])
             form.append(key, task[key][i])
@@ -127,7 +128,11 @@ export default {
           form.append(key, task[key])
         }
       }
-      store.dispatch('createTask', form)
+      if (taskPk) {
+        store.dispatch('taskUpdate', form)
+      } else {
+        store.dispatch('createTask', form)
+      }
     }
     const onReset = (event) => {
       event.preventDefault()

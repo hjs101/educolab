@@ -1,3 +1,4 @@
+// const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://localhost:8000'
 const ACCOUNTS = BASE_URL + '/accounts/'
 const NOTICE = BASE_URL + '/notice/'
@@ -60,7 +61,11 @@ export default {
 >>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
 =======
     changePw: () => ACCOUNTS + 'change_pw/',
+<<<<<<< HEAD
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+    // changeInfo: () => ACCOUNTS + 
+>>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
   },
   notice: {
     noticeList: () => NOTICE + 'main/',

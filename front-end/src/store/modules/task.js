@@ -73,8 +73,6 @@ export const task = {
       }
     },
     TASK_DETAIL: (state, data) => state.task = data,
-    UPDATE_TASK: (state, data) => state.task = data,
-    DELETE_TASK: (state) => state.task = [],
   },
 
   actions: {
@@ -134,27 +132,32 @@ export const task = {
           console.log(err)
         })
     },
-    taskUpdate({ getters, commit }, data) {
+    taskUpdate({ getters }, data) {
       axios({
         url: drf.task.detail(),
         method: 'put',
-        headers: getters.authHeader,
-        data: data
+        headers: {
+          ...getters.authHeader,
+        'Content-Type': 'multipart/form-data'},
+        data,
       })
-        .then(res => {
-          console.log(res.data)
-          commit('UPDATE_TASK', res.data)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      .then(()=> {
+        console.log(data)
+        router.push({name: 'TaskDetailView', params: {
+          userType: getters.currentUser.userflag? 'teacher': 'student',
+          taskPk: data.get('pk')
+        }})
+      })
+      .catch(err => {
+        console.log(err)
+      })
     },
-    taskDelete({ getters, commit }) {
+    taskDelete({ getters, commit }, taskPk) {
       axios({
         url: drf.task.detail(),
         method: 'delete',
         headers: getters.authHeader,
-        data: task,
+        data: taskPk,
       })
         .then(res => {
           console.log(res.data)

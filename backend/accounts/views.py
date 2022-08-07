@@ -232,7 +232,6 @@ class SendSignupEmailView(APIView):
         email = request.data.get('email')
 >>>>>>> d73082d (feat : back branch 수정)
         auth_num = email_auth_num()
-        print(email)
         send_mail(subject='educolab 회원가입 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
         context = {
             'auth_num' : auth_num,
@@ -330,6 +329,7 @@ class SendPWEmailView(APIView):
         name = request.data.get('name')
         email = request.data.get('email')
         username = request.data.get('username')
+<<<<<<< HEAD
 >>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
 =======
         name = request.POST.get('name')
@@ -352,11 +352,12 @@ class SendPWEmailView(APIView):
         username = request.data.get('username')
 >>>>>>> d2fc3f3 (feat : 비밀번호 초기화 및 변경 기능 구현)
         
+=======
+>>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
         try:
             userinfo = UserInfo.objects.get(name=name,username=username)
         except:
             userinfo = None
-        
         if userinfo == None:
             context = {
                 "success" : False,

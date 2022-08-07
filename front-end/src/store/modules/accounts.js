@@ -125,6 +125,7 @@ export const accounts = {
 =======
       subjectOptions : [
         '국어', '수학', '사회', '과학', '보건', '기술가정', '기타'
+<<<<<<< HEAD
       ]
 >>>>>>> 194924a (Feat: 생성 기능 구현 중)
     };
@@ -135,6 +136,35 @@ export const accounts = {
 >>>>>>> d7025b4 (Feat : 비밀번호 변경 페이지 제작 & 컴포넌트화 & 비밀번호 변경 기능 진행 중)
     }
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
+=======
+      ],
+      emailOptions: [
+        '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력'
+      ],
+      userInfo: {
+        username: null,
+        password1: null,
+        password2: null,
+        name: null,
+        school: null,
+        homeroom_teacher_flag: null,
+        grade: null,
+        class_field: null,
+        subject: null,
+        phone_number: null,
+        birthday: null,
+        email: null,
+        userflag: null,
+        plus_point: null,
+        minus_point: null,
+        profil: null,
+      },
+      findPw: {
+        name: null,
+        email: null,
+      }
+    }
+>>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
   },
   getters: {
 <<<<<<< HEAD
@@ -168,7 +198,13 @@ export const accounts = {
 >>>>>>> d7025b4 (Feat : 비밀번호 변경 페이지 제작 & 컴포넌트화 & 비밀번호 변경 기능 진행 중)
 =======
     getSubject: state => state.subjectOptions,
+<<<<<<< HEAD
 >>>>>>> 194924a (Feat: 생성 기능 구현 중)
+=======
+    getEmail: state => state.emailOptions,
+    getUserInfo: state => state.userInfo,
+    getInfo: state => state.findPw,
+>>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
   },
   mutations: {
 <<<<<<< HEAD
@@ -243,6 +279,16 @@ export const accounts = {
 <<<<<<< HEAD
 <<<<<<< HEAD
     SET_USER_TYPE: (state, userType) => (state.userType = userType),
+    CHANGE_INFO(state, data) {
+      for (let key in data) {
+        state.userInfo[key] = data[key]
+      }
+    },
+    CHANGE_PW_INFO(state, data) {
+      for (let key in data) {
+        state.findPw[key] = data[key]
+      }
+    }
   },
 =======
     SET_PERMISSION: (state, permission) => state.hasPermission = permission,
@@ -589,6 +635,12 @@ export const accounts = {
       commit("CHANGE_DATA", data);
 >>>>>>> 36a3f8f (Fix : 오타수정)
     },
+    changeInfo({commit}, data) {
+      commit("CHANGE_INFO", data)
+    },
+    changePwInfo({commit}, data) {
+      commit("CHANGE_PW_INFO", data)
+    }
     // back에 현재 사용자 정보 요청 (토큰 보내면 )
   },
 };
