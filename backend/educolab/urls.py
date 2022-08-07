@@ -56,6 +56,7 @@ urlpatterns = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('accounts/registration/', include('dj_rest_auth.registration.urls')),
 =======
     path('accounts/registration', include('dj_rest_auth.registration.urls')),
@@ -117,17 +118,23 @@ urlpatterns = [
     path(r'api/swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path(r'api/swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path(r'api/redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
+=======
+>>>>>>> 3c21bc9 (feat : 과제 정렬, 메인페이지 정보 전달 진행중 누락된게 있어 merge후 진행예정)
     path('api/accounts/registration/', include('dj_rest_auth.registration.urls')),
     path('api/accounts/', include('accounts.urls')), 
     path('api/admin/', admin.site.urls),
     path('api/notice/', include('notice.urls')),
     path('api/homework/', include('homework.urls')),
     path('api/survey/', include('survey.urls')),
+<<<<<<< HEAD
     path('api/mypage/', include('mypage.urls')),
 >>>>>>> d215d15 (자동배포로 인한 Url 변경)
 =======
     path('main/', include('mainpage.urls')),
 >>>>>>> 9d68f0e (feat : 메인페이지 학교행사 생성,수정,삭제 기능 구현)
+=======
+    path('api/main/', include('mainpage.urls')),
+>>>>>>> 3c21bc9 (feat : 과제 정렬, 메인페이지 정보 전달 진행중 누락된게 있어 merge후 진행예정)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 <<<<<<< HEAD
