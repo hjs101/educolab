@@ -111,6 +111,11 @@ export default {
 >>>>>>> 3d91e39 (설문조사  등록 구현)
 =======
     surveyUpdate: () => SURVEY + 'update/',
+<<<<<<< HEAD
 >>>>>>> 4cea92e (설문조사  수정 구현)
+=======
+    surveyStat : () => SURVEY + 'stat/',
+    surveyQuestion : () => SURVEY + 'stat/detail/'
+>>>>>>> 3d3b676 (설문조사  통계 조회)
   }
 }
