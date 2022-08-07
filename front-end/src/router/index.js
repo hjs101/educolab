@@ -111,6 +111,12 @@ const routes = [
     component: () => import('@/views/SurveyCreateView')
   },
 
+  // 설문조사 통계
+  {
+    path: '/survey/stat/:surveyPk',
+    name: 'SurveyStat',
+    component: () => import('@/views/SurveyStatView')
+  },
   // 마이페이지(교사)
   {
     path: '/teacher',

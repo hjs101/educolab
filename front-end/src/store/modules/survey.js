@@ -8,6 +8,8 @@ export const survey = {
       survey : {},
       surveyData: [{}, {}],
       surveyBogi : [],
+      surveyStat: {},
+      surveyQuestion: {}
     }
   },
   
@@ -15,14 +17,18 @@ export const survey = {
     survey : state => state.survey,
     surveyData : state => state.surveyData,
     surveyItem : state => state.surveyItem,
-    surveyBogi : state => state.surveyBogi
+    surveyBogi : state => state.surveyBogi,
+    surveyStat : state => state.surveyStat,
+    surveyQuestion: state => state.surveyQuestion
   },
 
   mutations: {
     SURVEY_LIST : (state, survey) => state.survey = survey,
     SURVEY_DATA: (state, data) => state.surveyData[data.question_number-1] = data,
     SURVEY_ITEM: (state, surveyItem) => state.surveyItem = surveyItem,
-    SURVEY_BOGI: (state, surveyBogi) => state.surveyBogi = surveyBogi
+    SURVEY_BOGI: (state, surveyBogi) => state.surveyBogi = surveyBogi,
+    SURVEY_STAT: (state, surveyStat) => state.surveyStat = surveyStat,
+    SURVEY_QUESTION: (state, surveyQuestion) => state.surveyQuestion = surveyQuestion
   },
 
   actions: {
@@ -96,7 +102,7 @@ export const survey = {
     updateSurvey({ getters }, {credentials, surveyPk}) {
       credentials.question = getters.surveyData
       credentials.survey_num = surveyPk
-      axios ({
+      axios({
         url: drf.survey.surveyUpdate(),
         method: 'put',
         headers: getters.authHeader,
@@ -109,6 +115,37 @@ export const survey = {
           console.log(res)
           router.push({ name : 'Survey' })
         })
+    },
+
+    getSurveyStat({ getters, commit }, surveyPk) {
+      axios({
+        url: drf.survey.surveyStat(),
+        method: 'get',
+        headers: getters.authHeader,
+        params: {
+          survey_num : surveyPk
+        }
+      })
+        .then(res => {
+          commit('SURVEY_STAT', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    onQuestion({ getters, commit }, questionPk) {
+      axios({
+        url: drf.survey.surveyQuestion(),
+        method: 'get',
+        headers: getters.authHeader,
+        params: {
+          question_num : questionPk
+        }
+      })
+        .then(res => {
+          console.log(res.data)
+          commit('SURVEY_QUESTION', res.data)
+        })
     }
-  }
+  },
 } 

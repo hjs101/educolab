@@ -29,5 +29,7 @@ export default {
     surveyCreate: () => SURVEY + 'create/',
     surveyDetail: () => SURVEY + 'detail/',
     surveyUpdate: () => SURVEY + 'update/',
+    surveyStat : () => SURVEY + 'stat/',
+    surveyQuestion : () => SURVEY + 'stat/detail/'
   }
 }

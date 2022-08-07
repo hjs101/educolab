@@ -23,7 +23,9 @@
           <td>{{ survey.grade }}</td>
           <td>{{ survey.class_field }}</td>
           <td>{{ timeInfo(survey.updated_at) }}</td> 
-          <button>통계보기</button>
+          <router-link :to="{name:'SurveyStat', params: {surveyPk:`${survey.pk}`}}">
+            <button @click="surveyStat(survey.pk)">통계보기</button>
+          </router-link>
         </tr> 
       </tbody>
     </table>
@@ -47,11 +49,14 @@ export default {
     ...mapGetters(['survey',]),
   },
   methods : {
-    ...mapActions(['surveyList', 'getSurveyDetail',]),
+    ...mapActions(['surveyList', 'getSurveyDetail', 'getSurveyStat']),
     timeInfo(time) {
       const d = new Date(time)
       return d.getFullYear() + ". " + (d.getMonth()+1) + ". " + d.getDate()
     },
+    surveyStat(surveyPk) {
+      this.getSurveyStat(surveyPk)
+    }
   },
   created() {
     this.surveyList()
