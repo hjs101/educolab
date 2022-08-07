@@ -68,7 +68,11 @@ class Info_Screen(Screen):
 =======
         print(self.page_pk)
         res = requests.get('https://i7c102.p.ssafy.io/api/notice/detail', params={'notice_num': self.page_pk}, headers={'Authorization' : 'Bearer ' + self.acc_token})
+<<<<<<< HEAD
 >>>>>>> 1a93471 (Style: API 수정)
+=======
+        # print(json.loads(res))
+>>>>>>> 31e39c9 (Fix : 목록 화면 분기 조정)
         data = json.loads(res.text)['notice']
         self.ids.title.text=data['title']
         temp = str(data['updated_at']).split('T')
