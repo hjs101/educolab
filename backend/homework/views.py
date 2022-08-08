@@ -219,7 +219,6 @@ class HomeworkSubmitView(APIView): # 제출
             if submit_serializer.is_valid(raise_exception=True):
                 file = request.FILES.get('files')
                 submit_serializer.save(atch_file=file,atch_file_name=file)
-                print(submit.student_homework)
                 homework = StudentHomework.objects.get(id=submit.student_homework.id)
                 homework.submit_flag = True
                 homework.save()
