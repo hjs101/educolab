@@ -28,6 +28,7 @@
 
 #### a. 과제
 
+<<<<<<< HEAD
 ```
 * 문제 : 새로고침 시 사용자 정보가 없어지기 때문에 백에서 데이터를 불러와야 함
 * 문제 : 학생과 교사 연결이 제대로 되어있지 않음 - 회원 가입 시 특정 학교, 특정 학년, 특정 반에 대해서 계정을 만들어놓아야 할 것 같음
@@ -113,3 +114,22 @@ confirm과 alert v-if로 나누기
 로딩이 길어질 경우에 로딩중임을 표시
 ```
 
+=======
+#### 로컬 실행 방법
+```
+frontend polder 에서 npm run serve
+```
+
+## Back
+
+#### 로컬 실행 방법
+```
+backend polder 에서 python manage.py runserver
+```
+## Embeded
+
+#### 로컬 실행 방법
+```
+Embeded polder 에서 dev-embeded 
+```
+>>>>>>> 7563471 (STYLE)
