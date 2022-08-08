@@ -65,7 +65,6 @@ class PointGrantView(APIView):
         if log_serializer.is_valid(raise_exception=True):
             log_serializer.save(teacher = req.user, student = student)
         return Response({"success":True})
-<<<<<<< HEAD
 
 class ProfilChangeView(APIView):
     def put(self,req):
@@ -78,6 +77,7 @@ class ProfilChangeView(APIView):
         return Response({
             "success" : True
         })
+<<<<<<< HEAD
 
 class TitleChangeView(APIView):
     def put(self,request):
@@ -92,3 +92,5 @@ class TitleChangeView(APIView):
         })
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> fc9ea5f (머지)

@@ -61,6 +61,7 @@ schema_view = get_schema_view(
 urlpatterns = [
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path(r'swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path(r'swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path(r'redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
@@ -187,6 +188,8 @@ urlpatterns = [
 =======
 
 urlpatterns = [
+=======
+>>>>>>> fc9ea5f (머지)
     path(r'api/swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path(r'api/swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path(r'api/redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
@@ -197,6 +200,10 @@ urlpatterns = [
     path('api/homework/', include('homework.urls')),
     path('api/survey/', include('survey.urls')),
     path('api/mypage/', include('mypage.urls')),
+<<<<<<< HEAD
+=======
+    path('api/main/', include('mainpage.urls')),
+>>>>>>> fc9ea5f (머지)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 >>>>>>> 1d03a62 (Backend file 삽입)

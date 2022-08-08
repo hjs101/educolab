@@ -65,11 +65,13 @@ import environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-<<<<<<< HEAD
 MEDIA_URL = 'api/media/'
+<<<<<<< HEAD
 =======
 MEDIA_URL = '/media/'
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+>>>>>>> fc9ea5f (머지)
 
 STATIC_ROOT = '/static/'
 
@@ -93,6 +95,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -159,10 +162,17 @@ INSTALLED_APPS = [
     'allauth.account',
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
 =======
+=======
+    'mypage',
+>>>>>>> fc9ea5f (머지)
     'survey',
     'notice',
     'accounts',
     'homework',
+<<<<<<< HEAD
+=======
+    'mainpage',
+>>>>>>> fc9ea5f (머지)
     'drf_yasg',
     'django.contrib.sites',
     'allauth',

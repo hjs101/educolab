@@ -45,20 +45,23 @@ class HomeworkMainView(APIView):
             all_done_homework = []
             for homework in homeworks:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                 print(homework.deadline, today)
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+>>>>>>> fc9ea5f (머지)
                 if homework.deadline >= today:
                     notdone_homework.append(homework)
                 elif homework.check_flag == False:
                     done_notcheck_homework.append(homework)
                 else:
                     all_done_homework.append(homework)
-<<<<<<< HEAD
         
             
             student_homeworks = teacher.homeroom_T.filter(submit_flag=True,agreement=False)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             print(notdone_homework)
             print(done_notcheck_homework)
@@ -76,6 +79,8 @@ class HomeworkMainView(APIView):
 >>>>>>> 7affbf9 (feat : 과제 메인 기능 구현)
 =======
 >>>>>>> 7306741 (feat : 과제 제출 기능 구현)
+=======
+>>>>>>> fc9ea5f (머지)
             notdone_homework_serializer = TeacherHomeworkMainSerializer(notdone_homework, many=True)
             not_done = sorted(notdone_homework_serializer.data, key=lambda x:x['deadline'])
             done_notcheck_homework_serializer = TeacherHomeworkMainSerializer(done_notcheck_homework, many=True)
@@ -87,6 +92,7 @@ class HomeworkMainView(APIView):
                 "not_done" : not_done,
                 "done_notcheck" : done_notcheck_homework_serializer.data,
                 "all_done" : all_done,
+<<<<<<< HEAD
                 "students" : student_homeworks_serizlizer.data
             }
             return Response(context)
@@ -106,6 +112,8 @@ class HomeworkMainView(APIView):
                 "not_done" : notdone_homework_serializer.data,
                 "done_notcheck" : done_notcheck_homework_serializer.data,
                 "all_done" : all_done_homework_serializer.data,
+=======
+>>>>>>> fc9ea5f (머지)
                 "students" : student_homeworks_serizlizer.data
             }
             return Response(context)
@@ -125,7 +133,11 @@ class HomeworkMainView(APIView):
                     done_homework.append(homework)
             
 <<<<<<< HEAD
+<<<<<<< HEAD
             my_submit_homework = student.S_homework.filter(submit_flag=True).order_by('-id')
+=======
+            my_submit_homework = student.S_homework.filter(submit_flag=True).order_by('-pk')
+>>>>>>> fc9ea5f (머지)
             my_homework = student.S_homework.filter(submit_flag=False).order_by('deadline')
 
             notdone_homework_serializer = TeacherHomeworkMainSerializer(notdone_homework, many=True)
@@ -139,6 +151,7 @@ class HomeworkMainView(APIView):
                 "notdone" : not_done,
                 "done" : done,
                 "my_submit_homework" : my_submit_homework_serializer.data,
+<<<<<<< HEAD
                 "my_homework" : my_homework_serializer.data
             }
             return Response(context)
@@ -153,6 +166,8 @@ class HomeworkMainView(APIView):
             context = {
                 "notdone" : notdone_homework_serializer.data,
                 "done" : done_homework_serialzier.data,
+=======
+>>>>>>> fc9ea5f (머지)
                 "my_homework" : my_homework_serializer.data
             }
             return Response(context)
@@ -315,7 +330,10 @@ class HomeworkDetailView(APIView):
             homework_serializer = TeacherHomeworkDetailSerializer(homework)
 
         else:
+<<<<<<< HEAD
             print(2)
+=======
+>>>>>>> fc9ea5f (머지)
             homework = StudentHomework.objects.get(id=homework_pk)
             homework_serializer = StudentHomeworkDetailSerializer(homework)
         

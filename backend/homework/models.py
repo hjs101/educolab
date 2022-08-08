@@ -11,7 +11,11 @@ class TeacherHomework(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     deadline = models.DateField()
     grade = models.IntegerField()
+<<<<<<< HEAD
     class_field = models.IntegerField()  
+=======
+    class_field = models.IntegerField()
+>>>>>>> fc9ea5f (머지)
     target = models.ManyToManyField(UserInfo, related_name='teacher_homework')
     check_flag = models.BooleanField(default=False)
 
@@ -33,11 +37,13 @@ class Files(models.Model):
     atch_file = models.FileField(blank=True, upload_to='homework/create')  # Field name made lowercase.
 
 class SubmitHomework(models.Model):
-<<<<<<< HEAD
     student = models.ForeignKey(UserInfo, on_delete=models.CASCADE,null=True,related_name='submit_homework')
+<<<<<<< HEAD
 =======
     student = models.ForeignKey(UserInfo, on_delete=models.CASCADE,null=True)
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+>>>>>>> fc9ea5f (머지)
     teacher_homework = models.ForeignKey(TeacherHomework, on_delete=models.CASCADE,null=True, related_name='student_submit')
     student_homework = models.ForeignKey(StudentHomework, on_delete=models.CASCADE,null=True, related_name='my_submit')
     content = models.TextField(null=True)

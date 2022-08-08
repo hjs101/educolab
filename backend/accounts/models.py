@@ -114,6 +114,7 @@ class UserInfo(AbstractUser):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
 =======
     profil = models.CharField(max_length=45,null=True,blank=True)
@@ -149,6 +150,9 @@ class UserInfo(AbstractUser):
 =======
     profil = models.ImageField(blank=True, upload_to='accounts/profils' ,default='accounts/profils/test01.jpg')
 >>>>>>> 2b5572c (Feat : 프로필 사진 변경 구현)
+=======
+    profil = models.ImageField(blank=True, upload_to='accounts/profils' ,default='accounts/profils/test01.jpg')
+>>>>>>> fc9ea5f (머지)
     acc_point = models.IntegerField(default=0, null=True)
 <<<<<<< HEAD
 >>>>>>> 59ac581 (Feat : Mypage 기능 구현)

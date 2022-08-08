@@ -174,6 +174,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['email'] = self.user.email
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         data['img'] = self.user.profil
 >>>>>>> 0938bf0 (Refactor : 로그인시 넘겨주는 데이터 변경 및 프로필 사진 추가)
 =======
@@ -190,6 +191,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 >>>>>>> b9da983 (Feat : mypage 구현중)
 =======
 =======
+=======
+>>>>>>> fc9ea5f (머지)
         data['profil'] = self.user.profil.url
 >>>>>>> 2b5572c (Feat : 프로필 사진 변경 구현)
         data['schoolname']=self.user.school.name
@@ -202,6 +205,7 @@ class ProfilFileSerializer(serializers.ModelSerializer):
         model = models.UserInfo
         fields = 'profil'
 
+<<<<<<< HEAD
 class MyTokenRefershSerializer(TokenRefreshSerializer):
         # response 커스텀 
     default_error_messages = {
@@ -244,6 +248,8 @@ class MyTokenRefershView(TokenRefreshView):
         data['schoolname']=self.user.school.name
         return data
 
+=======
+>>>>>>> fc9ea5f (머지)
 class MyTokenRefershSerializer(TokenObtainPairSerializer):
         # response 커스텀 
     default_error_messages = {
@@ -257,12 +263,20 @@ class MyTokenRefershSerializer(TokenObtainPairSerializer):
         
         refresh = self.get_token(self.user)
         
+<<<<<<< HEAD
          # response에 추가하고 싶은 key값들 추가
+=======
+        # response에 추가하고 싶은 key값들 추가
+>>>>>>> fc9ea5f (머지)
         data['name'] = self.user.name
         data['access'] = str(refresh.access_token)
         data['userflag'] = self.user.userflag
         data['email'] = self.user.email
+<<<<<<< HEAD
         data['profil'] = self.user.profil
+=======
+        data['profil'] = self.user.profil.url
+>>>>>>> fc9ea5f (머지)
         data['schoolname']=self.user.school
         return data
 
