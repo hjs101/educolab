@@ -10,8 +10,8 @@
       narrow-indicator
     >
       <q-tab name="todoTask" label="제출 가능한 과제" />
-      <q-tab name="myCheckedTask" label="제출한 자율 학습" />
       <q-tab name="myTask" label="미제출 자율 학습" />
+      <q-tab name="myCheckedTask" label="제출한 자율 학습" />
       <q-tab name="doneTask" label="제출한 과제 목록" />
     </q-tabs>
 
@@ -20,7 +20,7 @@
     <q-tab-panels v-model="tab">
       <q-tab-panel name="todoTask">
         <q-list bordered class="rounded-borders" v-for="item in list.notDone" :key="item.pk">
-          <task-item :item = item />
+          <task-item :item = item :teacher="1" />
         </q-list>
         <the-pagination
           v-if="number.notDone"
@@ -28,9 +28,9 @@
           @change-page="changePage" />
       </q-tab-panel>
 
-      <q-tab-panel name="myCheckedTask">
+      <q-tab-panel name="myTask">
         <q-list bordered class="rounded-borders" v-for="item in list.studentTask" :key="item.pk">
-          <task-item :item = item />
+          <task-item :item = item :teacher="0" />
         </q-list>
         <the-pagination
           v-if="number.studentTask"
@@ -38,9 +38,9 @@
           @change-page="changePage" />
       </q-tab-panel>
 
-      <q-tab-panel name="myTask">
+      <q-tab-panel name="myCheckedTask">
         <q-list bordered class="rounded-borders" v-for="item in list.studentTask" :key="item.pk">
-          <task-item :item = item />
+          <task-item :item = item :teacher="0" />
         </q-list>
         <the-pagination
           v-if="number.studentTask"
@@ -50,7 +50,7 @@
 
       <q-tab-panel name="doneTask">
         <q-list bordered class="rounded-borders" v-for="item in list.done" :key="item.pk">
-          <task-item :item = item />
+          <task-item :item = item :teacher="1" />
         </q-list>
         <the-pagination
           v-if="number.done"

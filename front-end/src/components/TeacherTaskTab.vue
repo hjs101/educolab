@@ -9,18 +9,32 @@
       align="justify"
       narrow-indicator
     >
-      <q-tab name="toSubmitTask" label="제출 중인 과제 목록" />
       <q-tab name="toScoreTask" label="채점 가능한 과제 목록" />
       <q-tab name="studentTask" label="학생이 신청한 과제 목록" />
+      <q-tab name="toSubmitTask" label="제출 중인 과제 목록" />
       <q-tab name="doneTask" label="채점한 과제 목록" />
     </q-tabs>
 
     <q-separator />
 
     <q-tab-panels v-model="tab">
+      <q-tab-panel name="toScoreTask">
+        <q-list bordered class="rounded-borders" v-for="item in list.notCheck" :key="item.pk">
+          <task-item :item = item :teacher="1"/>
+        </q-list>
+        <the-pagination v-if="number.notCheck" :limit="number.notCheck" />
+      </q-tab-panel>
+
+      <q-tab-panel name="studentTask">
+        <q-list bordered class="rounded-borders" v-for="item in list.studentTask" :key="item.pk">
+          <task-item :item = item :teacher="0"/>
+        </q-list>
+        <the-pagination v-if="number.studentTask" :limit="number.studentTask" />
+      </q-tab-panel>
+
       <q-tab-panel name="toSubmitTask">
         <q-list bordered class="rounded-borders" v-for="item in list.notDone" :key="item.pk">
-          <task-item :item = item taskType="" />
+          <task-item :item = item :teacher="1" />
         </q-list>
         <the-pagination
           v-if="number.notDone"
@@ -28,23 +42,9 @@
           @change-page="changePage" />
       </q-tab-panel>
 
-      <q-tab-panel name="toScoreTask">
-        <q-list bordered class="rounded-borders" v-for="item in list.notCheck" :key="item.pk">
-          <task-item :item = item taskType=""/>
-        </q-list>
-        <the-pagination v-if="number.notCheck" :limit="number.notCheck" />
-      </q-tab-panel>
-
-      <q-tab-panel name="studentTask">
-        <q-list bordered class="rounded-borders" v-for="item in list.studentTask" :key="item.pk">
-          <task-item :item = item taskType="studentTask"/>
-        </q-list>
-        <the-pagination v-if="number.studentTask" :limit="number.studentTask" />
-      </q-tab-panel>
-
       <q-tab-panel name="doneTask">
         <q-list bordered class="rounded-borders" v-for="item in list.done" :key="item.pk">
-          <task-item :item = item  />
+          <task-item :item = item :teacher="1" />
         </q-list>
         <the-pagination v-if="number.done" :limit="number.done" />
       </q-tab-panel>
@@ -64,7 +64,7 @@ export default {
     ThePagination,
   },
   setup() {
-    let tab = ref('toSubmitTask')
+    let tab = ref('toScoreTask')
     const store = useStore()
     const list = reactive({
       notCheck: computed(() => store.getters.getTeacherNotcheck),

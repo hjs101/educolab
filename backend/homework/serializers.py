@@ -22,13 +22,13 @@ class TeacherHomeworkMainSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TeacherHomework
-        fields = ('pk','title','deadline','grade','class_field')
+        fields = ('id','title','deadline','grade','class_field')
 
 class StudentHomeworkMainSerializer(serializers.ModelSerializer):
-
+    student = UserNameSerializer(read_only=True)
     class Meta:
         model = StudentHomework
-        fields = ('pk','title','deadline')
+        fields = ('id','title','deadline','student',)
 
 <<<<<<< HEAD
 class TeacherHomeworkDetailSerializer(serializers.ModelSerializer):
@@ -41,7 +41,7 @@ class SubmitHomeworkSerializer(serializers.ModelSerializer):
     student = UserNameSerializer(read_only=True)
     class Meta:
         model = SubmitHomework
-        fields = ('student','content','submit_at','submit_flag','atch_file_name','atch_file')
+        fields = ('id','student','content','submit_at','submit_flag','atch_file_name','atch_file')
 
 class SubmitHomeworksubmitSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,17 +1,16 @@
 <template>
   <router-link div class="button black" :to="{name: 'TaskDetailView', params: {
-    userType: userType, taskType,taskPk: item.pk
+    userType: userType, taskType,taskPk: item.id
   }}">
     <q-card>
       <q-card-section >
-        {{item.pk}}
+        {{item.id}}
         <div class="text-h6">{{item.title}}</div>
-        <div class="text-subtitle2">~ {{item.deadline}}</div>
-        <!-- <div class="text-subtitle2">{{item.teacher}}</div> -->
+        <div v-if="teacher" class="text-subtitle2">~ {{item.deadline}}</div>
       </q-card-section>
       <q-card-section>
         {{item.grade}}학년 {{item.class_field}}반
-        <!-- 학생 출제 과제라면 이름-->
+        <span v-if="!teacher"> {{item.student.name}}</span>
       </q-card-section>
     </q-card>
   </router-link>
@@ -24,17 +23,21 @@
 </style>
 
 <script>
+import { computed } from '@vue/runtime-core'
 import {useRoute} from 'vue-router'
 export default {
   name: 'TaskItem',
   props: {
     item: Object,
+    teacher: Number,
   },
-  setup() {
+  setup(props) {
     const route = useRoute()
     const {userType} = route.params
+    const taskType = computed(() => props.teacher?'lecture':'self')
     return {
-      userType
+      userType,
+      taskType
     }
   }
 }

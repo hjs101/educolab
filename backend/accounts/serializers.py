@@ -98,16 +98,19 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     }
     # 유효성 검사
     def validate(self, attrs):
+        import pprint
         data = super().validate(attrs)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> 559df98 ( Feat : 버그 수정)
         
+=======
+>>>>>>> 90e6116 (Feat : merge 후 달라진 부분에 대해 세부 사항 수정 중)
         refresh = self.get_token(self.user)
-        
-         # response에 추가하고 싶은 key값들 추가
+        # response에 추가하고 싶은 key값들 추가
         data['name'] = self.user.name
         data['refresh'] = str(refresh)
         data['access'] = str(refresh.access_token)

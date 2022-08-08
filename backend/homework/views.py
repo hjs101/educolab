@@ -54,7 +54,7 @@ class HomeworkMainView(APIView):
             not_done = sorted(notdone_homework_serializer.data, key=lambda x:x['deadline'])
             done_notcheck_homework_serializer = TeacherHomeworkMainSerializer(done_notcheck_homework, many=True)
             all_done_homework_serializer = TeacherHomeworkMainSerializer(all_done_homework, many=True)
-            all_done = sorted(all_done_homework_serializer.data, key=lambda x:x['pk'], reverse=True)
+            all_done = sorted(all_done_homework_serializer.data, key=lambda x:x['id'], reverse=True)
             student_homeworks_serizlizer = StudentHomeworkMainSerializer(student_homeworks, many=True)
             
             context = {
@@ -156,16 +156,16 @@ class HomeworkDetailView(APIView):
     def get(self, request):
         homework_pk = request.GET.get('pk')
         teacher_flag = request.GET.get('teacher_flag')
-        print(homework_pk, teacher_flag)
-        if teacher_flag:
+        if teacher_flag == '1':
+            print('teacher')
             homework = TeacherHomework.objects.get(id=homework_pk)
             homework_serializer = TeacherHomeworkDetailSerializer(homework)
 
         else:
+            print('student')
             homework = StudentHomework.objects.get(id=homework_pk)
             homework_serializer = StudentHomeworkDetailSerializer(homework)
         
-
         # serializer를 통해서 어디까지 보여줄지 정해야함.
         # 각각 따로 만들어야함
         return Response(homework_serializer.data)

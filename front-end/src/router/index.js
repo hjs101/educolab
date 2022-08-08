@@ -227,7 +227,7 @@ const routes = [
   },
   // 과제 상세 
   {
-    path: '/:userType/task/detail/:taskPk',
+    path: '/:userType/task/detail/:taskType/:taskPk',
     name: 'TaskDetailView',
     component: () => import('@/views/TaskDetailView')
   },

@@ -102,6 +102,7 @@ export const task = {
         .then(res => {
           router.push({name: 'TaskDetailView', params: {
             userType: getters.currentUser.userflag? 'teacher': 'student',
+            taskType: data.get('teacher')? 'lecture':'self',
             taskPk: res.data.pk
           }})
         })
@@ -110,15 +111,13 @@ export const task = {
           console.log(err.data)
         })
     },
-    taskDetail({ getters, commit }, taskPk) {
+    taskDetail({ getters, commit }, params) {
+      console.log(params)
       axios({
         url: drf.task.detail(),
         method: 'get',
         headers: getters.authHeader,
-        params: {
-          pk : taskPk,
-          teacher: 1
-        }
+        params,
       })
         .then(res => {
           console.log(res.data)

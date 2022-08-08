@@ -3,7 +3,6 @@
     <h1>{{userType}} 과제 {{type}} 페이지 {{taskPk}}</h1>
     <section class="q-pa-md" style="max-width: 400px">
       <q-form
-        @submit="onSubmit"
         @reset="onReset"
         class="q-gutter-md"
       >
@@ -71,9 +70,11 @@
         />
         <div>
           <q-btn label="초기화" type="reset" color="primary" flat class="q-ml-sm" />
-          <q-btn :label="type" type="submit" color="primary"/>
-          <q-btn v-if="!isTeacher" label="제출" color="primary"/>
-          <q-btn label="목록" type="submit" color="primary"/>
+          <q-btn :label="type" color="primary" @click="onSubmit(false)" />
+          <q-btn v-if="!isTeacher" label="제출" color="primary" @click="onSubmit(true)"/>
+          <router-link class="button" :to="{name:'TaskListView', params: {userType,}}">
+            <q-btn label="목록" color="primary"/>
+          </router-link>
         </div>
       </q-form>
     </section>
@@ -124,8 +125,7 @@ export default {
       deadline: computedTask.deadline,
     })
     const accept = ref(false)
-    const onSubmit = (event) => {
-      event.preventDefault()
+    const onSubmit = (arg) => {
       let form = new FormData()
       form.append('pk', taskPk)
       for (let key in task) {
@@ -138,10 +138,14 @@ export default {
           form.append(key, task[key])
         }
       }
-      if (taskPk) {
+      if (arg) {
+        store.dispatch('submitTask', form)
+      } else if (taskPk) {
         store.dispatch('taskUpdate', form)
+        console.log('update')
       } else {
         store.dispatch('createTask', form)
+        console.log('create')
       }
     }
     const onReset = (event) => {
@@ -171,7 +175,7 @@ export default {
       isTeacher,
       onSubmit,
       onReset,
-      subjectOptions
+      subjectOptions,
     }
   }
 }
