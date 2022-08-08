@@ -42,7 +42,6 @@ class SurveyTeacherMainView(APIView) :
         ## 4. 가져온 목록 반환
         return Response(survey_serializer.data)
 
-<<<<<<< HEAD
 class SurveyStudentMainView(APIView) :
     def get(self,req):
         if req.user.userflag:
@@ -53,21 +52,27 @@ class SurveyStudentMainView(APIView) :
         survey_serializer = SurveyMainSerializer(my_survey,many=True)
 
         return Response(survey_serializer.data)
+<<<<<<< HEAD
 
 =======
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+    
+>>>>>>> 521f17f (Test : static 파일 위치 테스트)
 class SurveyCreateView(APIView):
     def post(self, req):
 
         if not req.user.userflag:
             return Response({"message" :"선생님만 접근 가능합니다."})
-<<<<<<< HEAD
         
 
         
         # survey_serializer
+<<<<<<< HEAD
 =======
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+>>>>>>> 521f17f (Test : static 파일 위치 테스트)
 
         # 설문조사 등록하기 start
         survey_serializer = SurveySerializer(data=req.data['survey'])

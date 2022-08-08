@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const ACCOUNTS = BASE_URL + '/accounts/'
@@ -186,6 +187,9 @@ const BASE_URL = "http://127.0.0.1:8000/";
 =======
 const BASE_URL = "http://3.36.69.192:8000/";
 >>>>>>> b94cff3 (Test : 자동배포테스트)
+=======
+const BASE_URL = "https://i7c102.p.ssafy.io/api/";
+>>>>>>> 0e0ba57 (Fix : 제발)
 const ACCOUNTS = BASE_URL + "accounts/";
 const NOTICE = BASE_URL + "notice/";
 
