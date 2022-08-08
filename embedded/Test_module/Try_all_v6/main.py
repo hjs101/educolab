@@ -50,9 +50,13 @@ class WindowManager(ScreenManager):
         self.DB.create_db()
         self.before_page=''
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.start_page_num=0   #list 시작 게시물 index
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+        self.start_page_num=0   #list 시작 게시물 index
+>>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
         self.page_num=1     #list 현재 페이지
         self.max_page_num=5 #list 최대 페이지
         self.prob_num=1     #현재 문항 번호
@@ -60,9 +64,13 @@ class WindowManager(ScreenManager):
         self.survey_ans={}  #설문 답안
         self.survey_cnt=0   #설문에 답변한 문항 수
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.content_number=0    #어떤 글?
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+        self.content_number=0    #어떤 글?
+>>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
 
     def onStop(self): # 창 종료 버튼
         self.DB.db_close()
