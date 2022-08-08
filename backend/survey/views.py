@@ -202,7 +202,7 @@ class SurveyStatDetailView(APIView):
 class SurveySubmitView(APIView):
     def post(self, req):
 
-        answers = req.data['answers']
+        answers = req.POST.getlist('answers')
         survey = SurveyList.objects.get(id=req.data['survey_num'])
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -237,7 +237,7 @@ class SurveySubmitView(APIView):
             return Response({"message" : "이미 제출하셨습니다."})
         for answer in answers:
             print(answer.get('id'))
-            question = SurveyQuestions.objects.get(id=answer.get('id'))
+            question = SurveyQuestions.objects.get(id=answer['id'])
             
 
             
