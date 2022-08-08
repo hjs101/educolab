@@ -2,6 +2,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
+  // 로그인
+  {
+    path: '/educolab/login',
+    name: 'login',
+    component: () => import ('@/views/LoginView')
+  },
   // 메인페이지 
   {
     path: '/educolab',
@@ -149,12 +155,6 @@ const routes = [
     path: '/404',
     name: 'notFound',
     component: () => import ('@/views/NotFoundView')
-  },
-  // 로그인
-  {
-    path: '/',
-    name: 'login',
-    component: () => import ('@/views/LoginView')
   },
 
   // 퀴즈 메인 

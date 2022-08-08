@@ -1,8 +1,8 @@
-const BASE_URL = 'http://localhost:8000/api/'
-const ACCOUNTS = BASE_URL + 'accounts/'
-const NOTICE = BASE_URL + 'notice/'
-const SURVEY = BASE_URL + 'survey/'
-const QUIZ = BASE_URL + 'quiz/'
+const BASE_URL = 'https://i7c102.p.ssafy.io/api'
+const ACCOUNTS = BASE_URL + '/accounts/'
+const NOTICE = BASE_URL + '/notice/'
+const SURVEY = BASE_URL + '/survey/'
+const QUIZ = BASE_URL + '/quiz/'
 
 export default {
   accounts: {
@@ -38,5 +38,5 @@ export default {
     quizCreate: () => QUIZ + '',
     quizDetail: () => QUIZ + '',
     quizUpdate: () => QUIZ + '',
-  }
+  },
 }
