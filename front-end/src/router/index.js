@@ -18,6 +18,7 @@ const routes = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 =======
@@ -58,6 +59,14 @@ const routes = [
 >>>>>>> 8e382a2 (Fix : 회원가입 오류 수정해 merge)
 =======
 >>>>>>> 452a9d1 (설문조사  등록)
+=======
+  // 로그인
+  {
+    path: '/educolab/login',
+    name: 'login',
+    component: () => import ('@/views/LoginView')
+  },
+>>>>>>> 9bb5647 (메인 페이지 css)
   // 메인페이지 
   {
     path: '/educolab',
@@ -417,6 +426,7 @@ const routes = [
     name: 'notFound',
     component: () => import ('@/views/NotFoundView')
   },
+<<<<<<< HEAD
   // {
   //   path: '*',
   //   redirect: '/404'
@@ -489,6 +499,8 @@ const routes = [
     },
     redirect: '/'
   },
+=======
+>>>>>>> 9bb5647 (메인 페이지 css)
 
   // 퀴즈 메인 
   {

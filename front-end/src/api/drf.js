@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const ACCOUNTS = BASE_URL + '/accounts/'
@@ -19,6 +20,13 @@ const SURVEY = BASE_URL + 'survey/'
 =======
 const QUIZ = BASE_URL + 'quiz/'
 >>>>>>> 4918ec5 (퀴즈 CRUD 폼 작성)
+=======
+const BASE_URL = 'https://i7c102.p.ssafy.io/api'
+const ACCOUNTS = BASE_URL + '/accounts/'
+const NOTICE = BASE_URL + '/notice/'
+const SURVEY = BASE_URL + '/survey/'
+const QUIZ = BASE_URL + '/quiz/'
+>>>>>>> 9bb5647 (메인 페이지 css)
 
 export default {
   accounts: {
@@ -134,6 +142,10 @@ export default {
     quizCreate: () => QUIZ + '',
     quizDetail: () => QUIZ + '',
     quizUpdate: () => QUIZ + '',
+<<<<<<< HEAD
 >>>>>>> 4918ec5 (퀴즈 CRUD 폼 작성)
   }
+=======
+  },
+>>>>>>> 9bb5647 (메인 페이지 css)
 }
