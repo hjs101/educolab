@@ -11,7 +11,7 @@ class TeacherHomework(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     deadline = models.DateField()
     grade = models.IntegerField()
-    class_field = models.IntegerField()
+    class_field = models.IntegerField()  
     target = models.ManyToManyField(UserInfo, related_name='teacher_homework')
     check_flag = models.BooleanField(default=False)
 
