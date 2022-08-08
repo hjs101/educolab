@@ -468,6 +468,7 @@ backend/educolab/my_settings.py
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 46a97f8 (embedded에 .gitignore 추가)
 =======
 front-end/node_modules
@@ -500,3 +501,8 @@ login_info.json
 =======
 login_info.json
 >>>>>>> a740439 (깃이그노어 수정)
+=======
+login_info.json
+./backend
+./front-end
+>>>>>>> 71f00cc (.gitignore 수정)
