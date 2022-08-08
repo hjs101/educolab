@@ -9,44 +9,76 @@
       align="justify"
       narrow-indicator
     >
-      <q-tab name="toScoreTask" label="채점 가능한 과제 목록" />
+      <q-tab name="notCheck" label="채점 가능한 과제 목록" />
       <q-tab name="studentTask" label="학생이 신청한 과제 목록" />
-      <q-tab name="toSubmitTask" label="제출 중인 과제 목록" />
-      <q-tab name="doneTask" label="채점한 과제 목록" />
+      <q-tab name="notDone" label="제출 중인 과제 목록" />
+      <q-tab name="done" label="채점한 과제 목록" />
     </q-tabs>
 
     <q-separator />
 
     <q-tab-panels v-model="tab">
-      <q-tab-panel name="toScoreTask">
-        <q-list bordered class="rounded-borders" v-for="item in list.notCheck" :key="item.pk">
-          <task-item :item = item :teacher="1"/>
-        </q-list>
-        <the-pagination v-if="number.notCheck" :limit="number.notCheck" />
+      <q-tab-panel name="notCheck">
+        <div v-for="num in number.notCheck" :key="num">
+          <div v-if="num === page.notCheck">
+            <q-list bordered class="rounded-borders" v-for="item in totalList.notCheck.slice((num-1)*10, num*10)" :key="item.pk">
+              <task-item :item = item :teacher="1"/>
+            </q-list>
+          </div>
+        </div>
+        <the-pagination
+          v-if="number.notCheck"
+          :limit="number.notCheck"
+          target="notCheck"
+          @change-page="changePage"
+        />
       </q-tab-panel>
 
       <q-tab-panel name="studentTask">
-        <q-list bordered class="rounded-borders" v-for="item in list.studentTask" :key="item.pk">
-          <task-item :item = item :teacher="0"/>
-        </q-list>
-        <the-pagination v-if="number.studentTask" :limit="number.studentTask" />
+        <div v-for="num in number.studentTask" :key="num">
+          <div v-if="num === page.studentTask">
+            <q-list bordered class="rounded-borders" v-for="item in totalList.studentTask.slice((num-1)*10, num*10)" :key="item.pk">
+              <task-item :item = item :teacher="0"/>
+            </q-list>
+          </div>
+        </div>
+        <the-pagination
+          v-if="number.studentTask"
+          :limit="number.studentTask"
+          target="notCheck"
+          @change-page="changePage"
+        />
       </q-tab-panel>
 
-      <q-tab-panel name="toSubmitTask">
-        <q-list bordered class="rounded-borders" v-for="item in list.notDone" :key="item.pk">
-          <task-item :item = item :teacher="1" />
-        </q-list>
+      <q-tab-panel name="notDone">
+        <div v-for="num in number.notDone" :key="num">
+          <div v-if="num === page.notDone">
+            <q-list bordered class="rounded-borders" v-for="item in totalList.notDone.slice((num-1)*10, num*10)" :key="item.pk">
+              <task-item :item = item :teacher="1" />
+            </q-list>
+          </div>
+        </div>
         <the-pagination
           v-if="number.notDone"
           :limit="number.notDone"
+          target="notDone"
           @change-page="changePage" />
       </q-tab-panel>
 
-      <q-tab-panel name="doneTask">
-        <q-list bordered class="rounded-borders" v-for="item in list.done" :key="item.pk">
-          <task-item :item = item :teacher="1" />
-        </q-list>
-        <the-pagination v-if="number.done" :limit="number.done" />
+      <q-tab-panel name="done">
+        <div v-for="num in number.done" :key="num">
+          <div v-if="num === page.done">
+            <q-list bordered class="rounded-borders" v-for="item in totalList.done.slice((num-1)*10, num*10)" :key="item.pk">
+              <task-item :item = item :teacher="1" />
+            </q-list>
+          </div>
+        </div>
+        <the-pagination
+          v-if="number.done"
+          :limit="number.done"
+          target="done"
+          @change-page="changePage"
+        />
       </q-tab-panel>
     </q-tab-panels>
   </q-card>
@@ -63,14 +95,23 @@ export default {
     TaskItem,
     ThePagination,
   },
+  emits: [
+    'change-page',
+  ],
   setup() {
-    let tab = ref('toScoreTask')
+    let tab = ref('notCheck')
     const store = useStore()
-    const list = reactive({
+    const totalList = reactive({
       notCheck: computed(() => store.getters.getTeacherNotcheck),
       studentTask: computed(() => store.getters.getTeacherStudentTask),
       notDone: computed(() => store.getters.getTeacherNotDone),
       done: computed(() => store.getters.getTeacherDone),
+    })
+    const page = reactive({
+      notCheck: 1,
+      studentTask: 1,
+      notDone: 1,
+      done: 1,
     })
     const number = reactive({
       notCheck: computed(() => store.getters.cntTeacherNotcheck),
@@ -78,13 +119,13 @@ export default {
       notDone: computed(() => store.getters.cntTeacherNotDone),
       done: computed(() => store.getters.cntTeacherDone),
     })
-    let page = ref('1')
-    const changePage = (number) => {
-      page.value = number
+    const changePage = (value, target) => {
+      page[target] = value
     }
     return {
       tab,
-      list,
+      totalList,
+      page,
       number,
       changePage
     }

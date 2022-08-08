@@ -7,7 +7,7 @@
       :max-pages="6"
       :boundary-links="limit>10"
       direction-links
-      @change="changePage"
+      @click="changePage"
     />
   </div>
 </template>
@@ -19,14 +19,12 @@ export default {
   name: 'ThePagination',
   props: {
     limit: Number,
+    target: String,
   },
-  emits: [
-    'changePage'
-  ],
   setup(props,{emit}) {
     const current = ref(1)
     const changePage = () => {
-      emit('change-page', current.value)
+      emit('change-page', current.value, props.target)
     }
     return {
       current,

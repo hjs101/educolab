@@ -603,8 +603,11 @@ export const accounts = {
 >>>>>>> 194924a (Feat: 생성 기능 구현 중)
 =======
       router.push({ name: "login" })
+<<<<<<< HEAD
       router.go(1)
 >>>>>>> d6448ce (Feat: back branch merge 전 commit & 생성/수정/삭제 구현 완료 & 제출, 상세, 목록, 검색 기능 구현 중)
+=======
+>>>>>>> 8f533c8 (Feat : Pagination 기능 구현 완료)
     },
     setUserType({ commit }, userType) {
       // 로그인할 때
