@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import { accounts } from './modules/accounts.js'
 import { notice } from './modules/notice.js'
+import { survey } from './modules/survey.js'
 
 export default createStore({
   state () {
@@ -16,6 +17,6 @@ export default createStore({
   actions() {
   },
   modules: {
-    accounts, notice
+    accounts, notice, survey
   }
 })

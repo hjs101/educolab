@@ -17,7 +17,7 @@ export const notice = {
 
   mutations: {
     NOTICE_LIST: (state, notice1) => state.notice1 = notice1,
-    NOTICE_DETAIL : (state, noticeDetail) => state.noticeDetail = noticeDetail
+    NOTICE_DETAIL : (state, noticeDetail) => state.noticeDetail = noticeDetail,
   },
 
   actions: {
@@ -105,7 +105,7 @@ export const notice = {
           alert('해당 글이 수정되었습니다.')
           router.push({ name : 'Notice'})
         })
-    }
+    },
   }
 }
 
