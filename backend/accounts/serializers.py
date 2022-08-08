@@ -14,7 +14,7 @@ class UserNameSerializer(serializers.ModelSerializer):
 class HomeworkUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('name','username')
+        fields = ('name','username','grade','class_field',)
 
 class UserinfoSerializer(serializers.ModelSerializer):
     class Meta:
