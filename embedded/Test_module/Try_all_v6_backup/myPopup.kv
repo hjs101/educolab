@@ -1,0 +1,83 @@
+<MyPopUp>:
+	auto_dismiss: True
+	size_hint: 0.3, 0.3
+	pos_hint:{"x": 0.35, "top":0.65}
+	title: "Alert"
+	title_color: 94/255,106/255,117/255,1
+	background:"popup.png"
+
+
+	Label:
+        id: alert
+		halign:"center"
+		bold: True
+		font_size:25
+		color: 94/255,106/255,117/255,1
+
+
+<MyPopUp2>:
+	auto_dismiss: True
+	size_hint: 0.45, 0.3
+	pos_hint:{"x": 0.275, "top":0.65}
+	title: "Alert"
+	title_color: 94/255,106/255,117/255,1
+	background:"popup.png"
+	sig:False
+
+	BoxLayout:
+		orientation:"vertical"
+		Label:
+			id: alert
+			halign:"center"
+			bold: True
+			font_size:25
+			color: 94/255,106/255,117/255,1
+
+		FloatLayout:
+			orientation:"horizontal"
+			size_hint_y:0.4
+			Button:
+				size_hint_x: 0.25
+				# width:200
+				pos_hint:{'x': 0.22, 'center_y':0.5}
+				id:yes
+				text:"네"
+				on_release:
+					app.root.survey_save()
+					root.dismiss()
+					app.root.prob_num=1
+					app.root.survey_ans={}
+					app.root.transition.direction="down"
+					app.root.current=app.root.before_page ## 여기서 app.root.current로 접근하여 스크린을 변경하는 방법이 있긴 하다.
+				bold: True
+				font_size:25
+				color: 94/255,106/255,117/255,1
+				background_normal:''
+				background_color: 232/255,235/255,237/255,1
+				canvas.before:
+					Color:
+						rgba:94/255,106/255,117/255,1
+					Line:
+						width:1.5
+						rectangle: self.x, self.y, self.width, self.height
+						
+
+
+			Button:
+				id:no
+				size_hint_x: 0.25
+				pos_hint:{'x': 0.53, 'center_y':0.5}
+				text:"아니오"
+				on_release:
+					root.dismiss()
+				bold: True
+				font_size:25
+				color: 94/255,106/255,117/255,1
+				background_normal:''
+				background_color: 232/255,235/255,237/255,1
+				canvas.before:
+					Color:
+						rgba:94/255,106/255,117/255,1
+					Line:
+						width:1.5
+						rectangle: self.x, self.y, self.width, self.height

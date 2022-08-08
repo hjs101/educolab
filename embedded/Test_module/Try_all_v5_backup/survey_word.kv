@@ -1,0 +1,197 @@
+<Survey_Word_Screen>:
+	FloatLayout:
+		size: root.width, root.height
+		canvas.before:
+			Color:
+				rgba:(194/255,209/255,217/255,1)
+			RoundedRectangle:
+				size: root.width*0.7, 10
+				pos: root.width*0.12, 47
+				radius:[5]	
+			Color:
+				rgba:(66/255,75/255,90/255,1)
+			RoundedRectangle:
+				size: root.width*0.7*root.percent, 10
+				pos: root.width*0.12, 47
+				radius:[5]	
+		Label:
+			id:progress
+			font_size: 25
+			text_size: self.size
+			size_hint: None, None
+			halign:'center'
+			valign:'middle'
+			height:40
+			width:120
+			color:0/255,176/255,240/255,1
+			pos_hint: {"x":0.83,"top":0.1}
+			#test for Design
+			canvas.before:
+				Color:
+					rgba: (1,1,1,1)
+				RoundedRectangle:
+					size: self.size
+					pos: self.pos
+					radius:[40]					
+				Color:
+					rgba: (0/255,176/255,240/255,1)
+				Line:
+					width:2
+					rounded_rectangle: self.x, self.y, self.width, self.height, 20
+		Button:
+			text:"목록으로"
+			bold:True
+			font_size: 30
+			halign:'center'
+			color: 1,1,1,1
+
+			on_release:
+				root.onPopUp()
+
+			size_hint: None, None
+			height: 50
+			width : 200
+
+			pos_hint: {"right":0.95,"top":0.94}
+			# width:150
+			background_normal:''
+			background_color: (0,0,0,0)
+			canvas.before:
+				Color:
+					rgba :(54/255,54/255,54/255,1)
+				RoundedRectangle:
+					size: self.size
+					pos: self.pos
+					radius:[10]	
+
+		Label:
+			id:title
+			# text:"오늘 저녁 메뉴 선정"
+			bold:True
+			font_size: 40
+			text_size:self.size
+			halign:'left'
+			valign:'center'
+			color: 95/255,107/255,117/255,1
+			size_hint: .7, None
+			height: 50
+			pos_hint: {"x":0.05,"top":0.94}
+
+		Button:
+			size_hint: None, None
+			height:60
+			width:60
+			background_color:0,0,0,0
+
+			pos_hint: {"right":0.95,"top":0.5}
+
+			on_release:
+				root.next_flag_setup("after")
+				root.next_page_setup()
+				root.cnt_setup()
+				app.root.current=root.next_page
+				root.manager.transition.direction="left"
+				print(root.manager.survey_ans)
+
+			Image:
+				id:after
+				source: ''
+				size:self.parent.size
+				center_x:self.parent.center_x
+				center_y:self.parent.center_y
+
+		Button:
+			size_hint: None, None
+			height:60
+			width:60
+			background_color:0,0,0,0
+
+			pos_hint: {"x":0.05, "top":0.5}
+			on_release:
+				root.next_flag_setup("before")
+				root.next_page_setup()
+				root.cnt_setup()
+				app.root.current=root.next_page
+				root.manager.transition.direction="right"
+				print(root.manager.survey_ans)
+
+			Image:
+				id:before
+				source: ''
+				size:self.parent.size
+				center_x:self.parent.center_x
+				center_y:self.parent.center_y
+
+		BoxLayout:
+			orientation: "vertical"
+			size_hint: None, None
+			size: 1160, 520
+			pos_hint: {"center_x":0.5, "center_y":0.48}
+			padding: 5
+			spacing: 20
+			halign:'center'
+
+			BoxLayout:
+				size_hint: 1, None
+				padding:20
+				#test for Design
+				canvas.before:
+					Color:
+						rgba: (1,1,1,1)
+					RoundedRectangle:
+						size: self.size
+						pos: self.pos
+						radius:[40]					
+					Color:
+						rgba: (0/255,176/255,240/255,1)
+					Line:
+						width:2
+						rounded_rectangle: self.x, self.y, self.width, self.height, 40
+				Label:
+					id:prob
+					# text: "어제는 라면을 먹었고 오늘 점심에는 햇반을 먹었으며 오늘 저녁에는 치킨을 시켰다면 내일 점심으로 먹을 것은 무엇인가?"
+					size_hint: 1,None
+					text_size:self.width, None
+					height: self.texture_size[1]
+					font_size:25
+					halign:'left'
+					valign:'middle'
+					color: 95/255,107/255,117/255,1
+
+			limitedTextInput:
+				id:ans
+				# id: PW_input ### to get a string							
+				multiline: False
+				max_input_num :-1
+				size_hint : .8, .5
+				pos_hint : {"center_x":0.5, "top":1}
+				font_size: 30
+				# password:True
+				padding:10
+				#padding_y:(self.height-self.font_size)/2
+				background_normal:''
+				background_color: (1,1,1,1)
+				canvas.before:
+					Color:
+						rgba: 94/255,106/255,117/255,1
+					Line:
+						width:1
+						rectangle: self.x, self.y, self.width, self.height
+
+			Label:
+				size_hint_y:None
+				height:150
+				pos_hint: {"center_x":0.5, "center_y":1}
+				background_normal:''
+				background_color: 0,0,0,0
+
+
+# #test for Design
+# background_normal:''
+# background_color:0,0,0,0
+# canvas.before:
+# 	Color:
+# 		rgba:0,1,0,1
+# 	Rectangle: 
+# 		size: self.size
+# 		pos : self.pos
