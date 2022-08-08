@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8000/'
+const BASE_URL = 'http://localhost:8000/api/'
 const ACCOUNTS = BASE_URL + 'accounts/'
 const NOTICE = BASE_URL + 'notice/'
 const SURVEY = BASE_URL + 'survey/'
