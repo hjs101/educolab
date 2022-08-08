@@ -105,6 +105,8 @@ INSTALLED_APPS = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
     'rest_framework_simplejwt',
 >>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
@@ -117,6 +119,16 @@ INSTALLED_APPS = [
 =======
 >>>>>>> b9da983 (Feat : mypage 구현중)
 =======
+=======
+=======
+>>>>>>> 629f87c (Feat : 채팅)
+    'channels',
+    'mypage',
+    'chat',
+<<<<<<< HEAD
+>>>>>>> ce3d1c2 (채팅 실습해보기)
+=======
+>>>>>>> 629f87c (Feat : 채팅)
     'quiz',
 >>>>>>> 31efb28 (Feat : 퀴즈 기능 구현)
     'survey',
@@ -208,6 +220,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+ASGI_APPLICATION = 'educolab.routing.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -240,7 +263,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'educolab.wsgi.application'
 
-
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 

@@ -203,7 +203,12 @@ urlpatterns = [
 <<<<<<< HEAD
 =======
     path('api/main/', include('mainpage.urls')),
+<<<<<<< HEAD
 >>>>>>> fc9ea5f (머지)
+=======
+    path('api/quiz/', include('quiz.urls')),
+    path('api/chat/', include('chat.urls')),
+>>>>>>> ce3d1c2 (채팅 실습해보기)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 >>>>>>> 1d03a62 (Backend file 삽입)

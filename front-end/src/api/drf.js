@@ -206,6 +206,7 @@ export default {
     changePw: () => ACCOUNTS + "change_pw/",
   },
   notice: {
+<<<<<<< HEAD
 =======
 >>>>>>> 7dba180 (Test : 배포테스트)
     noticeList: () => NOTICE + "main/",
@@ -218,3 +219,27 @@ export default {
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
 >>>>>>> 7dba180 (Test : 배포테스트)
+=======
+    noticeList: () => NOTICE + 'main/',
+    noticeDetail: () => NOTICE + 'detail/',
+    noticeCreate: () => NOTICE + 'create/',
+    noticeUpdate: () => NOTICE + 'update/'
+  },
+
+  survey: {
+    surveyList: () => SURVEY + 'main/',    
+    surveyCreate: () => SURVEY + 'create/',
+    surveyDetail: () => SURVEY + 'detail/',
+    surveyUpdate: () => SURVEY + 'update/',
+    surveyStat : () => SURVEY + 'stat/',
+    surveyQuestion : () => SURVEY + 'stat/detail/'
+
+  },
+
+  quiz: {
+    quizList: () => QUIZ + 'main/',
+    quizCreate: () => QUIZ + 'create/',
+    quizDetail: () => QUIZ + 'detail/',
+  },
+}
+>>>>>>> 11618aa (Fix : 병합해결)

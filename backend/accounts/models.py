@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from asyncio.windows_events import NULL
+=======
+>>>>>>> 2cbdf2a (Fix : 에러해결)
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
