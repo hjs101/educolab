@@ -63,6 +63,7 @@ class Main_Screen(Screen):
                 self.minus_point = str(minus_point)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             self.res = requests.get('https://i7c102.p.ssafy.io/api/survey/main_stu', headers={'Authorization' : 'Bearer ' + self.manager.access_api()})
             self.survey_full = json.loads(self.res.text)
             self.survey_cnt = len(self.survey_full)
@@ -72,6 +73,9 @@ class Main_Screen(Screen):
 =======
             self.acc_token = self.data['access']
             self.res = requests.get('https://i7c102.p.ssafy.io/api/survey/main_stu', headers={'Authorization' : 'Bearer ' + self.acc_token})
+=======
+            self.res = requests.get('https://i7c102.p.ssafy.io/api/survey/main_stu', headers={'Authorization' : 'Bearer ' + self.manager.access_api()})
+>>>>>>> 5a10bc3 (refactor: embedded만 남겨둠)
             self.survey_full = json.loads(self.res.text)
             self.survey_cnt = len(self.survey_full)
             self.current_survey = self.survey_full[0]['title']
