@@ -205,10 +205,18 @@ class SurveySubmitView(APIView):
         answers = req.data['answers']
         survey = SurveyList.objects.get(id=req.data['survey_num'])
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
         
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+=======
+        print("answers:")
+>>>>>>> 92062c5 (Test : 테스트1)
+        print(answers)
+>>>>>>> 4ea1789 (Test : 테스트)
         userauth = survey.target.filter(username=req.user.username).exists()
         if not userauth:
             return Response({"message" : "설문 제출 자격이 없습니다."})
@@ -228,8 +236,8 @@ class SurveySubmitView(APIView):
         if done:
             return Response({"message" : "이미 제출하셨습니다."})
         for answer in answers:
-            print(answer)
-            question = SurveyQuestions.objects.get(id=answer['id'])
+            print(answer.get('id'))
+            question = SurveyQuestions.objects.get(id=answer.get('id'))
             
 
             
