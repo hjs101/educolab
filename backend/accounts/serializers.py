@@ -61,11 +61,15 @@ class HomeworkUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
 <<<<<<< HEAD
+<<<<<<< HEAD
         fields = ('name','username','grade','class_field',)
 
 >>>>>>> ea51fa4 (feat : 과제기능 생성,삭제 구현, 나머지는 더 구현해야함)
 =======
         fields = ('name','username')
+=======
+        fields = ('name','username','grade','class_field',)
+>>>>>>> 298b9be (fix : student homework에 학생 학년반 추가)
 
 >>>>>>> 1d03a62 (Backend file 삽입)
 class UserinfoSerializer(serializers.ModelSerializer):

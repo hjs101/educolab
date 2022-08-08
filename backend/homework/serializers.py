@@ -5,10 +5,14 @@ from accounts.serializers import UserNameSerializer, HomeworkUserSerializer
 class TeacherHomeworkCreateSerializer(serializers.ModelSerializer):
     teacher = UserNameSerializer(read_only=True)
 <<<<<<< HEAD
+<<<<<<< HEAD
     target = UserNameSerializer(read_only=True,many=True)
 =======
     target = HomeworkUserSerializer(read_only=True,many=True)
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+    target = UserNameSerializer(read_only=True,many=True)
+>>>>>>> 298b9be (fix : student homework에 학생 학년반 추가)
 
     class Meta:
         model = TeacherHomework
