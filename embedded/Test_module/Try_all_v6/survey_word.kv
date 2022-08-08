@@ -47,10 +47,14 @@
 
 			on_release:
 <<<<<<< HEAD
+<<<<<<< HEAD
 				root.onPopUp(False)
 =======
 				root.onPopUp()
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+				root.onPopUp(False)
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 
 			size_hint: None, None
 			height: 50
@@ -66,6 +70,7 @@
 				RoundedRectangle:
 					size: self.size
 					pos: self.pos
+<<<<<<< HEAD
 <<<<<<< HEAD
 					radius:[10]
 
@@ -98,6 +103,35 @@
 					radius:[10]	
 
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+					radius:[10]
+
+		Button:
+			text:"설문 완료"
+			bold:True
+			font_size: 30
+			halign:'center'
+			color: 1,1,1,1
+
+			on_release:
+				root.onPopUp(True)
+
+			size_hint: None, None
+			height: 50
+			width : 200
+
+			pos_hint: {"right":0.78,"top":0.94}
+			# width:150
+			background_normal:''
+			background_color: (0,0,0,0)
+			canvas.before:
+				Color:
+					rgba :(54/255,54/255,54/255,1)
+				RoundedRectangle:
+					size: self.size
+					pos: self.pos
+					radius:[10]	
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 		Label:
 			id:title
 			# text:"오늘 저녁 메뉴 선정"
@@ -123,6 +157,7 @@
 				root.next_flag_setup("after")
 				root.next_page_setup()
 <<<<<<< HEAD
+<<<<<<< HEAD
 				# root.cnt_setup()
 				app.root.current=root.next_page
 				root.manager.transition.direction="left"
@@ -132,6 +167,11 @@
 				root.manager.transition.direction="left"
 				print(root.manager.survey_ans)
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+				# root.cnt_setup()
+				app.root.current=root.next_page
+				root.manager.transition.direction="left"
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 
 			Image:
 				id:after
@@ -151,6 +191,7 @@
 				root.next_flag_setup("before")
 				root.next_page_setup()
 <<<<<<< HEAD
+<<<<<<< HEAD
 				# root.cnt_setup()
 				app.root.current=root.next_page
 				root.manager.transition.direction="right"
@@ -160,6 +201,11 @@
 				root.manager.transition.direction="right"
 				print(root.manager.survey_ans)
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+				# root.cnt_setup()
+				app.root.current=root.next_page
+				root.manager.transition.direction="right"
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 
 			Image:
 				id:before
@@ -196,9 +242,12 @@
 				Label:
 					id:prob
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 					# text: "어제는 라면을 먹었고 오늘 점심에는 햇반을 먹었으며 오늘 저녁에는 치킨을 시켰다면 내일 점심으로 먹을 것은 무엇인가?"
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 					size_hint: 1,None
 					text_size:self.width, None
 					height: self.texture_size[1]
@@ -209,6 +258,7 @@
 
 			limitedTextInput:
 				id:ans
+<<<<<<< HEAD
 <<<<<<< HEAD
 				on_text:root.calc(self.text)
 				# id: PW_input ### to get a string							
@@ -223,6 +273,14 @@
 				size_hint : .8, .5
 				pos_hint : {"center_x":0.5, "top":1}
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+				on_text:root.calc(self.text)
+				# id: PW_input ### to get a string							
+				multiline: False
+				max_input_num:-1
+				size_hint: .8, .5
+				pos_hint: {"center_x":0.5, "top":1}
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 				font_size: 30
 				# password:True
 				padding:10

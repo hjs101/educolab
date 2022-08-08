@@ -205,12 +205,18 @@ class List_Screen(Screen):
     def content_btn(self, content_num): # List에서 각각의 게시물 들어갈때 페이지 구분 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
         if content_num > self.deact_flag: self.content_page=self.name
         else:
             self.manager.content_number = int(self.ids['num' + str(content_num)].text)
 
+<<<<<<< HEAD
 =======
 >>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
+=======
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
         if self.name=='Notice_list1' or self.name=='Notice_list2': 
             if content_num>self.deact_flag:
                 self.content_page=self.name
@@ -241,10 +247,20 @@ class List_Screen(Screen):
 =======
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
         elif self.name=='Survey_list1' or self.name=='Survey_list2':
+<<<<<<< HEAD
             ##**# 설문조사 1번 문항 : 주관식? 객관식? type_flag
             self.type_flag=True  #객관식
             # self.type_flag=False #주관식
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+            self.res = requests.get('https://i7c102.p.ssafy.io/api/survey/detail', params={'survey_num': self.manager.content_number}, headers={'Authorization' : 'Bearer ' + self.acc_token})
+            self.temp_data = json.loads(self.res.text)
+            self.manager.max_prob_num = len(self.temp_data) - 1
+            if self.temp_data[self.manager.prob_num]['multiple_bogi'] == None:
+                self.type_flag=False #주관식
+            else: self.type_flag=True  #객관식
+
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
             if self.type_flag:
                 self.content_page="Survey_select1"
             else:
@@ -259,6 +275,7 @@ class List_Screen(Screen):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         if content_num > self.deact_flag: self.content_page=self.name
         else:
@@ -268,6 +285,8 @@ class List_Screen(Screen):
                 temp_data = json.loads(res.text)
                 self.manager.max_prob_num = len(temp_data) - 1
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 
         # self.content_number = content_num
         # print("now"+self.content_page)

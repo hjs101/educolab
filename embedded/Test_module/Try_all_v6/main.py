@@ -19,9 +19,13 @@ from find_result import Find_result
 from find_renew import Find_renew
 from data.db_init import db_proc
 <<<<<<< HEAD
+<<<<<<< HEAD
 import requests, json
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+import requests, json
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 
 ##### to remove warning message ######
 Builder.load_file('loading.kv')
@@ -77,6 +81,9 @@ class WindowManager(ScreenManager):
         App.get_running_app().stop()
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
     def access_api(self):
         with open("./login_info.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -103,11 +110,14 @@ class WindowManager(ScreenManager):
             headers={'Authorization' : 'Bearer ' + self.access_api()},
             data=self.send_data
         )
+<<<<<<< HEAD
 =======
     def survey_save(self): ##**# 팝업 종료시 Yes를 누르면 이 함수 호출 후 > 팝업 종료 및 페이지 이동
         pass
     
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 
 class masterApp(App):
     def build(self):

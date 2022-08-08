@@ -9,11 +9,14 @@ from kivy.properties import StringProperty
 from myPopup import MyPopUp
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
 
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 class Main_Screen(Screen):
     def __init__(self, **kwargs):
         super(Main_Screen, self).__init__(**kwargs)
@@ -23,6 +26,7 @@ class Main_Screen(Screen):
         Window.size = (1280,720)
         Window.borderless=True
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     def on_pre_enter(self):
         with open("./login_info.json", 'r') as file:
@@ -31,9 +35,10 @@ class Main_Screen(Screen):
             self.school_name = self.data["schoolname"] + ' '
 =======
         # Builder.load_file('main_page.kv')
+=======
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 
     def on_pre_enter(self):
-        ##### 여기 문구를 수정해주세요 #####
         with open("./login_info.json", 'r') as file:
             # 학생정보 db 받아오기
             self.data = json.load(file)
@@ -57,12 +62,20 @@ class Main_Screen(Screen):
                 self.plus_point = str(plus_point)
                 self.minus_point = str(minus_point)
 <<<<<<< HEAD
+<<<<<<< HEAD
             self.res = requests.get('https://i7c102.p.ssafy.io/api/survey/main_stu', headers={'Authorization' : 'Bearer ' + self.manager.access_api()})
             self.survey_full = json.loads(self.res.text)
             self.survey_cnt = len(self.survey_full)
             self.current_survey = self.survey_full[0]['title']
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+            self.acc_token = self.data['access']
+            self.res = requests.get('https://i7c102.p.ssafy.io/api/survey/main_stu', headers={'Authorization' : 'Bearer ' + self.acc_token})
+            self.survey_full = json.loads(self.res.text)
+            self.survey_cnt = len(self.survey_full)
+            self.current_survey = self.survey_full[0]['title']
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
 
         # 적용
         self.ids.userinfo.text=self.school_name + self.grade + self.class_field + self.student_name
@@ -72,6 +85,7 @@ class Main_Screen(Screen):
         self.ids.challenge.text="최초로 퀴즈를 1등한 자"
         self.ids.homework.text="과제 (4) | 08/22 : SSAFY 멀티캠퍼스 방문 후기 작성"
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.ids.survey.text="설문 (" + str(self.survey_cnt) + ") | " + self.current_survey
 
 =======
@@ -79,6 +93,10 @@ class Main_Screen(Screen):
         ##################################
         # 프로필 이미지는 아직 수정이 안됩니다.
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+        self.ids.survey.text="설문 (" + str(self.survey_cnt) + ") | " + self.current_survey
+
+>>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
         self.ids.profile.img_path='./profile.jpg' # profile in Computer
         self.ids.userinfo_icon.img_path='./icon/info.png'
         self.ids.challenge_icon.img_path='./icon/challenge.png'
