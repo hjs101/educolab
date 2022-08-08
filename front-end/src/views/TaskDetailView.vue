@@ -1,5 +1,5 @@
 <template>
-  <q-card flat bordered class="my-card">
+  <q-card flat bordered>
     <h1>과제 상세 페이지</h1>
     <section>
       <!-- 과제 내용 & 교사용 -->
@@ -53,7 +53,7 @@ export default {
     const store = useStore()
     const params = {
       pk: route.params.taskPk,
-      teacher_flag: route.params.taskType === 'lecture'?1:0,
+      teacher_flag: route.params.userType === 'teacher'?1:0,
     }
     store.dispatch('taskDetail', params)
   },

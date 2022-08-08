@@ -137,10 +137,11 @@ export const task = {
         data,
       })
       .then(()=> {
-        console.log(data)
+        // 새로고침 -> currentUser가 날아가면서 오류 생김
         router.push({name: 'TaskDetailView', params: {
-          userType: getters.currentUser.userflag? 'teacher': 'student',
-          taskPk: data.get('pk')
+          userType: data['teacher_flag']? 'teacher': 'student',
+          taskPk: data.get('pk'),
+          taskType: data.get('teacher')? 'lecture':'self',
         }})
       })
       .catch(err => {

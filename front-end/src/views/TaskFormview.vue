@@ -105,8 +105,7 @@ export default {
     let type = computed(() => taskPk? '수정':'등록')
     const storeTask = ref(computed(() => store.getters.getTask))
     const computedTask = reactive({
-      teacher: computed(() => store.getters.currentUser.username),
-      subject: computed(() => store.getters.currentUser.subject),
+      subject: computed(() => taskPk? storeTask.value.subject : null),
       title: computed(() => taskPk? storeTask.value.title : null),
       content: computed(() => taskPk? storeTask.value.content : null),
       grade: computed(() => taskPk? storeTask.value.grade : null),
@@ -115,7 +114,7 @@ export default {
       deadline: computed(() => taskPk? storeTask.value.deadline : null),
     })
     const task = reactive({
-      teacher: computedTask.teacher,
+      teacher_flag: isTeacher.value,
       subject: computedTask.subject,
       title: computedTask.title,
       content: computedTask.content,
