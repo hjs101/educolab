@@ -46,7 +46,7 @@ class UserNameSerializer(serializers.ModelSerializer):
 class HomeworkUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('name','username')
+        fields = ('name','username','grade','class_field',)
 
 >>>>>>> ea51fa4 (feat : 과제기능 생성,삭제 구현, 나머지는 더 구현해야함)
 class UserinfoSerializer(serializers.ModelSerializer):

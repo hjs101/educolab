@@ -87,6 +87,7 @@ INSTALLED_APPS = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     'rest_framework_simplejwt',
 >>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
@@ -98,6 +99,9 @@ INSTALLED_APPS = [
 >>>>>>> 40812b7 (Feat : Mypage 생성)
 =======
 >>>>>>> b9da983 (Feat : mypage 구현중)
+=======
+    'quiz',
+>>>>>>> 31efb28 (Feat : 퀴즈 기능 구현)
     'survey',
     'notice',
 >>>>>>> d002568 (Feat : 설문조사 App 추가)

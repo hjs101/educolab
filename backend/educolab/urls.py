@@ -140,10 +140,14 @@ urlpatterns = [
 >>>>>>> 9d68f0e (feat : 메인페이지 학교행사 생성,수정,삭제 기능 구현)
 =======
     path('api/main/', include('mainpage.urls')),
+<<<<<<< HEAD
 >>>>>>> 3c21bc9 (feat : 과제 정렬, 메인페이지 정보 전달 진행중 누락된게 있어 merge후 진행예정)
 =======
     path('api/main/', include('mainpage.urls')),
 >>>>>>> 8d76cce (feat : merge중 오류 해결)
+=======
+    path('api/quiz/', include('quiz.urls')),
+>>>>>>> 31efb28 (Feat : 퀴즈 기능 구현)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 <<<<<<< HEAD
