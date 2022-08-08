@@ -23,10 +23,9 @@ from . import views
 <<<<<<< HEAD
 
 from rest_framework_simplejwt.views import (
-    TokenRefreshView,
     TokenVerifyView,
 )
-from .serializers import MyTokenObtainPairView
+from .serializers import MyTokenObtainPairView, MyTokenRefershView
 ##aaadd
 urlpatterns = [
 <<<<<<< HEAD
@@ -37,6 +36,7 @@ urlpatterns = [
 =======
     path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
 	path('login/verify/', TokenVerifyView.as_view(), name='token_verify'),
+<<<<<<< HEAD
     path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 <<<<<<< HEAD
 >>>>>>> 2babd3d (Merge branch 'back' of https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102 into back)
@@ -71,6 +71,9 @@ urlpatterns = [
     path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 >>>>>>> 0938bf0 (Refactor : 로그인시 넘겨주는 데이터 변경 및 프로필 사진 추가)
 =======
+=======
+    path('login/refresh/', MyTokenRefershView.as_view(), name='token_refresh'),
+>>>>>>> b9da983 (Feat : mypage 구현중)
     path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
 <<<<<<< HEAD
 <<<<<<< HEAD

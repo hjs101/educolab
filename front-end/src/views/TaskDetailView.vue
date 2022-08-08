@@ -7,7 +7,7 @@
       <!-- 학생용 -->
       <student-task-submit v-if="!user.isTeacher" />
       <!-- 자신이 만든 페이지에서만 보임 -->
-      <div>
+      <div class="buttonGroup">
         <router-link
           class="button"
           :to="{name: 'TaskUpdateView', params: {
@@ -21,15 +21,15 @@
           v-if="confirm"
           title="삭제 확인"
           message="정말 삭제하시겠습니까?"
-          cancel="true"
-          reload="true"
+          :cancel="true"
+          :reload="true"
           :path="user.path"
           @reverse="deleteTask"
         />
+        <router-link :to="user.path" class="button">
+          <q-btn color="primary" label="목록"/>
+        </router-link>
       </div>
-      <router-link :to="user.path" class="button">
-        <q-btn color="primary" label="목록"/>
-      </router-link>
     </section>
   </div>
 </template>
@@ -65,7 +65,11 @@ export default {
       })
     const deleteTask = (signal) => {
       if (signal) {
-        store.dispatch('taskDelete', taskPk)
+        const data = {
+          pk: taskPk.value,
+          teacher: user.isTeacher,
+        }
+        store.dispatch('taskDelete', data)
       }
       confirm = false
     }

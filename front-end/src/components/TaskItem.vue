@@ -1,6 +1,6 @@
 <template>
   <router-link div class="button black" :to="{name: 'TaskDetailView', params: {
-    userType: userType, taskPk: item.pk
+    userType: userType, taskType,taskPk: item.pk
   }}">
     <q-card>
       <q-card-section >
@@ -11,6 +11,7 @@
       </q-card-section>
       <q-card-section>
         {{item.grade}}학년 {{item.class_field}}반
+        <!-- 학생 출제 과제라면 이름-->
       </q-card-section>
     </q-card>
   </router-link>

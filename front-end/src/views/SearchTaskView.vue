@@ -1,14 +1,25 @@
 <template>
   <article div class="q-gutter-md" style="max-width: 300px">
-    <q-input label="과제 검색" v-model="query"/>
+    <q-input label="제목 검색" v-model="query"/>
     <q-btn color="primary" label="검색" />
-    <div v-for="item in taskList.value" :key="item.pk">
+    <!-- {{store.getters.getTeacherDone}}
+    <br>
+    {{store.getters.getTeacherStudentTask}}
+    <br>
+    {{store.getters.getTeacherNotCheck}}
+    <br>
+    {{store.getters.getTeacherNotDone}}
+    <br> -->
+    여기가 모두
+    <!-- {{taskList}} -->
+    <!-- {{store.getters.getTeacherAll}} -->
+    <!-- <div v-for="item in taskList" :key="item.pk">
       <task-item :item="item" />
-    </div>
+    </div> -->
     <q-btn color="primary" label="메인" />
-    <the-pagination
+    <!-- <the-pagination
       v-if="length.value"
-    />
+    /> -->
       <!-- v-if="number.notDone"
       :limit="number.notDone"
       @change-page="changePage" -->
@@ -19,31 +30,33 @@
 import {onBeforeMount, ref} from 'vue'
 import {useStore} from 'vuex'
 import {useRoute} from 'vue-router'
-import TaskItem from '@/components/TaskItem.vue'
-import ThePagination from '../components/ThePagination.vue'
-import {isEmpty} from 'lodash'
+// import TaskItem from '@/components/TaskItem.vue'
+// import ThePagination from '../components/ThePagination.vue'
+// import {isEmpty} from 'lodash'
 export default {
   name: 'SearchTask',
   components: {
-    TaskItem,
-    ThePagination
+    // TaskItem,
+    // ThePagination
   },
   setup() {
     const store = useStore()
     const route = useRoute()
-    let {userType} = route.params
+    // let {userType} = route.params
     let query = ref(route.query.query)
-    const taskList = ref(userType === 'teacher'? store.getters.getTeacherAll : store.getters.getStudentAll)
-    const length = ref(userType === 'teacher'? store.getters.cntTeacherAll: store.getters.cntStudentAll)
+    // const taskList = computed(() => store.getters.getTeacherDone.value)
+    // const length = computed(() => taskList.value.length)
     onBeforeMount(() => {
-      if (isEmpty(taskList)) {
-        store.dispatch('taskList')
-      }
+      // console.dir(taskList)
+      // if (isEmpty(taskList)) {
+      //   store.dispatch('taskList')
+      // }
     })
     return {
-      taskList,
+      // taskList,
       query,
-      length
+      length,
+      store
     }
   }
 }

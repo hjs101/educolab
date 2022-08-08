@@ -2,14 +2,12 @@
   <main>
     <h1>{{userType}} 과제 페이지</h1>
     <section class="q-pa-md">
-      <!-- 검색창-->
       <article div class="q-gutter-md" style="max-width: 300px">
         <q-input label="과제 검색" v-model="query"/>
         <router-link :to="{name: 'SearchTaskView', params:{userType,}, query:{query,}}" >
           <q-btn color="primary" label="검색" />
         </router-link>
       </article>
-      <!-- 검색하지 않았을 때 -->
       <article class="q-gutter-y-md" style="max-width: 800px">
         <router-link
         :to="{name:'TaskCreateView', params:{userType,}}"

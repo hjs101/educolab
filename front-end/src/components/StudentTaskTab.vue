@@ -9,8 +9,9 @@
       align="justify"
       narrow-indicator
     >
-      <q-tab name="todoTask" label="제출 전 과제 목록" />
-      <q-tab name="myTask" label="자율학습 과제 목록" />
+      <q-tab name="todoTask" label="제출 가능한 과제" />
+      <q-tab name="myCheckedTask" label="제출한 자율 학습" />
+      <q-tab name="myTask" label="미제출 자율 학습" />
       <q-tab name="doneTask" label="제출한 과제 목록" />
     </q-tabs>
 
@@ -24,6 +25,16 @@
         <the-pagination
           v-if="number.notDone"
           :limit="number.notDone"
+          @change-page="changePage" />
+      </q-tab-panel>
+
+      <q-tab-panel name="myCheckedTask">
+        <q-list bordered class="rounded-borders" v-for="item in list.studentTask" :key="item.pk">
+          <task-item :item = item />
+        </q-list>
+        <the-pagination
+          v-if="number.studentTask"
+          :limit="number.studentTask"
           @change-page="changePage" />
       </q-tab-panel>
 
@@ -71,6 +82,7 @@ export default {
     })
     const number = reactive({
       notDone: computed(() => store.getters.cntStudentNotDone),
+      studentCheckedTask: computed(() => store.getters.cntStudentSelfTask),
       studentTask: computed(() => store.getters.cntStudentSelfTask),
       done: computed(() => store.getters.cntStudentDone),
     })

@@ -20,7 +20,7 @@
     <q-tab-panels v-model="tab">
       <q-tab-panel name="toSubmitTask">
         <q-list bordered class="rounded-borders" v-for="item in list.notDone" :key="item.pk">
-          <task-item :item = item />
+          <task-item :item = item taskType="" />
         </q-list>
         <the-pagination
           v-if="number.notDone"
@@ -30,21 +30,21 @@
 
       <q-tab-panel name="toScoreTask">
         <q-list bordered class="rounded-borders" v-for="item in list.notCheck" :key="item.pk">
-          <task-item :item = item />
+          <task-item :item = item taskType=""/>
         </q-list>
         <the-pagination v-if="number.notCheck" :limit="number.notCheck" />
       </q-tab-panel>
 
       <q-tab-panel name="studentTask">
         <q-list bordered class="rounded-borders" v-for="item in list.studentTask" :key="item.pk">
-          <task-item :item = item />
+          <task-item :item = item taskType="studentTask"/>
         </q-list>
         <the-pagination v-if="number.studentTask" :limit="number.studentTask" />
       </q-tab-panel>
 
       <q-tab-panel name="doneTask">
         <q-list bordered class="rounded-borders" v-for="item in list.done" :key="item.pk">
-          <task-item :item = item />
+          <task-item :item = item  />
         </q-list>
         <the-pagination v-if="number.done" :limit="number.done" />
       </q-tab-panel>

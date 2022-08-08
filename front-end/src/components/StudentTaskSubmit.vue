@@ -2,6 +2,7 @@
   <q-form
     @submit="onSubmit"
     @reset="onReset">
+    <span>과제 제출</span>
     <q-input
       v-model="student.text"
       outlined
@@ -13,7 +14,6 @@
       multiple
       type="file"
     />
-    <!-- 학생에게만 보임 (생성, 수정 모두) -->
     <q-btn color="primary" type="reset" flat label="초기화"/>
     <q-btn color="primary" type="submit" label="과제 제출"/>
   </q-form>
@@ -33,6 +33,7 @@ export default {
     const onSubmit = (event) => {
       event.preventDefault()
       let form = new FormData()
+      form.append('submit_pk', student.text)
       form.append('text', student.text)
       if (student['files'] !== null) {
         for (let i=0; i < student.files.length; i++) {
@@ -41,8 +42,7 @@ export default {
       }
       store.dispatch('submitTask', form)
     }
-    const onReset = (event) => {
-      event.preventDefault()
+    const onReset = () => {
       for (let key in student) {
         student[key] = null
       }

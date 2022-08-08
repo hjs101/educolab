@@ -103,7 +103,7 @@ export default {
     let isTeacher = computed(() => userType === 'teacher')
     let type = computed(() => taskPk? '수정':'등록')
     const storeTask = ref(computed(() => store.getters.getTask))
-    const task = reactive({
+    const computedTask = reactive({
       teacher: computed(() => store.getters.currentUser.username),
       subject: computed(() => store.getters.currentUser.subject),
       title: computed(() => taskPk? storeTask.value.title : null),
@@ -112,6 +112,16 @@ export default {
       class_field: computed(() => taskPk? storeTask.value.class_field : null),
       files: computed(() => taskPk? storeTask.value.files : null),
       deadline: computed(() => taskPk? storeTask.value.deadline : null),
+    })
+    const task = reactive({
+      teacher: computedTask.teacher,
+      subject: computedTask.subject,
+      title: computedTask.title,
+      content: computedTask.content,
+      grade: computedTask.grade,
+      class_field: computedTask.class_field,
+      files: computedTask.files,
+      deadline: computedTask.deadline,
     })
     const accept = ref(false)
     const onSubmit = (event) => {

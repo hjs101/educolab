@@ -3,29 +3,34 @@
     {{task.id}}
     <header>
       {{task.title}} | {{date}} |
-      <!-- 학생이 볼 때만 교사 이름 보임? -->
       <span>
-        {{task.teacher.name}} |
+        <!-- {{task.teacher.name}} | -->
       </span>
-        {{task.subject}} |
-        <!-- 채점 완료? -->
-        채점 완료 여부 : {{task['check_flag']}}
+        {{task.subject}} | {{checkState}}
     </header>
     <article>
       제출기한 : {{task.deadline}}
       <br>
-      {{task.content}} | 첨부파일
+      내용 : {{task.content}}
+      <br>
+      첨부파일 :
       <div v-for="file in task['teacher_file']" :key="file">
         <a :href="url+file['atch_file']" class="button">{{file['atch_file_name']}}</a>
       </div>
     </article>
+    <hr>
     <!-- 교사용 -->
     <article v-if="isTeacher">
+      <!-- 학생이 작성한 과제 상세 페이지에서 -->
+      <q-input type="number" label="점수" min="-1" max="5"/>
       <q-btn color="primary" label="채점 완료" />
-      여기에 학생 정보가 들어감
-      <q-list bordered class="rounded-borders" v-for="item in task['student_submit']" :key="item.student?.username">
-        <task-target-student :item="item['student_submit']" />
-      </q-list>
+      <hr>
+      <!-- 자신이 작성한 상세 페이지에서 -->
+      <div>
+        <q-list bordered class="rounded-borders" v-for="item in task['student_submit']" :key="item.student?.username">
+          <task-target-student :item="item" />
+        </q-list>
+      </div>
     </article>
   </div>
 </template>
@@ -49,10 +54,12 @@ export default {
     const task = computed(() => store.getters.getTask)
     const url = drf.file.path()
     const date = dayjs(task.value['updated_at']).format('YYYY-MM-DD HH:mm')
+    let checkState = computed(() => task.value['check_flag']? '완료':'미완료')
     return {
       task,
       url,
-      date
+      date,
+      checkState
     }
   },
 }

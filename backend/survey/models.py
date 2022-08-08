@@ -23,7 +23,7 @@ class SurveyQuestions(models.Model):
     num5 = models.IntegerField(default=0)
 
 class SurveyQuestionsAnswer(models.Model):
-    question = models.ForeignKey(SurveyQuestions,on_delete=models.CASCADE, related_name="question_answers")
+    question = models.ForeignKey(SurveyQuestions,on_delete=models.CASCADE, related_name="question_answers", null=True)
     content = models.TextField()
 
 class SueveyTemplate(models.Model):

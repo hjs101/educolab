@@ -92,6 +92,7 @@ urlpatterns = [
 >>>>>>> 601cae8 (Feat : 공지사항 기능 구현)
 =======
     path('survey/', include('survey.urls')),
+<<<<<<< HEAD
 >>>>>>> dfc8ff1 (Feat : 설문조사 생성 기능 구현)
 =======
     path('homework/', include('homework.urls')),
@@ -107,6 +108,9 @@ urlpatterns = [
 =======
     path('survey/', include('survey.urls')),
 >>>>>>> 2121f86 (Fix : URL 충돌 해결)
+=======
+    path('mypage/', include('mypage.urls')),
+>>>>>>> 40812b7 (Feat : Mypage 생성)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 <<<<<<< HEAD

@@ -37,10 +37,6 @@ export const task = {
     getStudentSelfTask: state => state.student.selfTask,
     cntStudentSelfTask: (state, getters) => Math.ceil(getters.getStudentSelfTask.length/10),
     getTask: state => state.task,
-    getTeacherAll: state => state.teacher.allDone + state.teacher.notCheck + state.teacher.notDone + state.teacher.studentTask,
-    cntTeacherAll: (state, getters) => Math.ceil(getters.getTeacherAll.length/10), 
-    getStudentAll: state => state.student.notDone + state.student.done + state.student.selfTask,
-    cntStudentAll: (state, getters) => Math.ceil(getters.getStudentAll.length/10), 
   },
 
   mutations: {
@@ -152,20 +148,22 @@ export const task = {
         console.log(err)
       })
     },
-    taskDelete({ getters, commit }, taskPk) {
+    taskDelete({ getters}, data) {
+      console.log(data)
       axios({
         url: drf.task.detail(),
         method: 'delete',
         headers: getters.authHeader,
-        data: taskPk,
+        data,
       })
-        .then(res => {
-          console.log(res.data)
-          commit('DELETE_TASK')
+        .then(() => {
+          router.push({name: 'TaskListView', params: {
+            userType: data.teacher? 'teacher':'student'
+          }})
+          router.go(0)
         })
-        .catch(err => {
-          console.log(err)
-        })
+        // .catch(err => {
+        // })
     },
     submitTask({getters}, data) {
       axios({

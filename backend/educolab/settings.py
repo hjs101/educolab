@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 ##
 from pathlib import Path
 <<<<<<< HEAD
+<<<<<<< HEAD
 import my_settings
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -46,6 +47,11 @@ from datetime import timedelta
 import os
 import environ
 >>>>>>> 82b6b8b (feat : 과제 생성,수정,삭제,상세보기 기능 완성)
+=======
+from datetime import timedelta
+import os
+import environ
+>>>>>>> b9da983 (Feat : mypage 구현중)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -79,16 +85,24 @@ INSTALLED_APPS = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
     'rest_framework_simplejwt',
 >>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
 =======
 >>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
 =======
+=======
+    'mypage',
+>>>>>>> 40812b7 (Feat : Mypage 생성)
+=======
+>>>>>>> b9da983 (Feat : mypage 구현중)
     'survey',
     'notice',
 >>>>>>> d002568 (Feat : 설문조사 App 추가)
     'accounts',
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -97,6 +111,9 @@ INSTALLED_APPS = [
 =======
     'homework',
 >>>>>>> 143f316 (feat: homework 모델변경)
+=======
+    'homework',
+>>>>>>> b9da983 (Feat : mypage 구현중)
     'drf_yasg',
 <<<<<<< HEAD
 <<<<<<< HEAD

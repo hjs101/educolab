@@ -147,7 +147,7 @@ class HomeworkCreateView(APIView):
 class HomeworkDetailView(APIView):
     def get(self, request):
         homework_pk = request.GET.get('pk')
-        teacher_flag = request.GET.get('teacher')
+        teacher_flag = request.GET.get('teacher_flag')
         print(homework_pk, teacher_flag)
         if teacher_flag:
             homework = TeacherHomework.objects.get(id=homework_pk)
@@ -203,6 +203,7 @@ class HomeworkDetailView(APIView):
     def delete(self, request):
         homework_pk = request.data.get('pk')
         teacher_flag = request.data.get('teacher')
+        print(homework_pk)
         print(teacher_flag)
         if teacher_flag == True:
             homework = TeacherHomework.objects.get(pk=homework_pk)

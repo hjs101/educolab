@@ -1,7 +1,6 @@
-from urllib import response
-from requests import request
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -35,10 +34,13 @@ from accounts.serializers import TeacherNameSerializer
 =======
 from accounts.serializers import UserNameSerializer
 >>>>>>> ae003cb (Feat : 설문조사 기능 구현)
+=======
+>>>>>>> b9da983 (Feat : mypage 구현중)
 from accounts.models import SchoolInfo,UserInfo
 from .serializers import NoticeMainSerializer, NoticeSerializer, FileSerializer
 >>>>>>> 417b70e (Fix : 충돌 수정)
 from .models import Notice, Files
+<<<<<<< HEAD
 <<<<<<< HEAD
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
@@ -57,6 +59,8 @@ from accounts.models import SchoolInfo
 from .serializers import NoticeMainSerializer, NoticeSerializer,FileSerializer
 from .models import Notice, Files
 >>>>>>> 0e40bf0 (Fix : 배포관련수정)
+=======
+>>>>>>> b9da983 (Feat : mypage 구현중)
 
 
 <<<<<<< HEAD
@@ -201,12 +205,11 @@ class NoticeDetailView(APIView):
         return Response("success")
 
 class NoticeUpdateView(APIView):
-    notice_id = ""
     def get(self, req):
         if not req.user.userflag:
             return Response({"message : 선생님만 접근 가능합니다."})
         ## 공지사항 번호 가져오기
-        self.notice_id = req.GET['notice_num']
+        notice_id = req.GET['notice_num']
 
         ## 공지사항 번호로 공지사항 인스턴스 가져오기
         notice = Notice.objects.get(pk=self.notice_id)
@@ -233,8 +236,8 @@ class NoticeUpdateView(APIView):
         return Response({"message" : "잘못된 접근입니다."})
 
     def put(self, req):
-        self.notice_id = req.data['notice_num']
-        notice = Notice.objects.get(pk=self.notice_id)
+        notice_id = req.data['notice_num']
+        notice = Notice.objects.get(pk=notice_id)
         notice_serializer = NoticeSerializer(notice, data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
             notice = notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))

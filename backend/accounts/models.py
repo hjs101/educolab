@@ -98,6 +98,8 @@ class UserInfo(AbstractUser):
 >>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
 =======
     profil = models.CharField(max_length=45,null=True,blank=True)
+<<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 0938bf0 (Refactor : 로그인시 넘겨주는 데이터 변경 및 프로필 사진 추가)
 =======
     userflag = models.BooleanField(default=False, blank=True)
@@ -115,3 +117,22 @@ class UserInfo(AbstractUser):
 =======
     profil = models.CharField(max_length=45,null=True,blank=True)
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+    acc_point = models.IntegerField(default=0)
+<<<<<<< HEAD
+>>>>>>> 40812b7 (Feat : Mypage 생성)
+=======
+=======
+    acc_point = models.IntegerField(default=0, null=True)
+>>>>>>> 59ac581 (Feat : Mypage 기능 구현)
+    
+class PointLog(models.Model):
+    teacher = models.ForeignKey(UserInfo, on_delete=models.DO_NOTHING, related_name="point_teacher")
+    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name="point_student")
+    content = models.CharField(max_length=45)
+    point = models.IntegerField()
+<<<<<<< HEAD
+>>>>>>> b9da983 (Feat : mypage 구현중)
+=======
+    created_at = models.DateField(auto_now=True)
+>>>>>>> 59ac581 (Feat : Mypage 기능 구현)

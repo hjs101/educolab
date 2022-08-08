@@ -2,10 +2,15 @@ from rest_framework import serializers
 <<<<<<< HEAD
 <<<<<<< HEAD
 from . import models
+<<<<<<< HEAD
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer,TokenRefreshSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+>>>>>>> b9da983 (Feat : mypage 구현중)
 from rest_framework_simplejwt.tokens import RefreshToken
 <<<<<<< HEAD
 =======
@@ -111,6 +116,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['profil'] = self.user.profil
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
         refresh = self.get_token(self.user)
@@ -142,17 +149,50 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 =======
         data['schoolcode']=self.user.school.code
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+        data['schoolname']=self.user.school
+>>>>>>> b9da983 (Feat : mypage 구현중)
+=======
+        data['schoolname']=self.user.school.name
+>>>>>>> 59ac581 (Feat : Mypage 기능 구현)
         return data
 
+class MyTokenRefershSerializer(TokenObtainPairSerializer):
+        # response 커스텀 
+    default_error_messages = {
+        'no_active_account': {'message':'username or password is incorrect!',
+                              'success': False,
+                              'status' : 401}
+    }
+    # 유효성 검사
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        
+        refresh = self.get_token(self.user)
+        
+         # response에 추가하고 싶은 key값들 추가
+        data['name'] = self.user.name
+        data['access'] = str(refresh.access_token)
+        data['userflag'] = self.user.userflag
+        data['email'] = self.user.email
+        data['profil'] = self.user.profil
+        data['schoolname']=self.user.school
+        return data
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 from django.contrib.auth import get_user_model
 from dj_rest_auth.registration.serializers import RegisterSerializer
 =======
 >>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+    
+class MyTokenRefershView(TokenRefreshView):
+    serializer_class = MyTokenRefershSerializer
+>>>>>>> b9da983 (Feat : mypage 구현중)
 
 class CustomRegisterSerializer(RegisterSerializer):
     userflag =serializers.BooleanField()

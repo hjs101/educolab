@@ -591,6 +591,7 @@ export const accounts = {
     logout({ dispatch }) {
       dispatch("removeToken")
       // 새로고침까지 (vuex 데이터 모두 제거하고 싶음)
+<<<<<<< HEAD
       router.push({ name: "login" }).catch((err) => {
 <<<<<<< HEAD
         console.log(err.respone);
@@ -600,6 +601,10 @@ export const accounts = {
         console.log(err.respone)
       })
 >>>>>>> 194924a (Feat: 생성 기능 구현 중)
+=======
+      router.push({ name: "login" })
+      router.go(1)
+>>>>>>> d6448ce (Feat: back branch merge 전 commit & 생성/수정/삭제 구현 완료 & 제출, 상세, 목록, 검색 기능 구현 중)
     },
     setUserType({ commit }, userType) {
       // 로그인할 때

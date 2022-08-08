@@ -30,7 +30,10 @@ from rest_framework import status
 from .serializers import SchoolInfoSerializer
 from .models import SchoolInfo, UserInfo
 from .helper import email_auth_num
+<<<<<<< HEAD
 from educolab.settings import EMAIL_HOST_USER
+=======
+>>>>>>> b9da983 (Feat : mypage 구현중)
 
 # Create your views here.
 <<<<<<< HEAD
