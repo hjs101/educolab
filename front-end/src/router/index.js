@@ -489,6 +489,26 @@ const routes = [
     },
     redirect: '/'
   },
+
+  // 퀴즈 메인 
+  {
+    path: '/quiz',
+    name: 'Quiz',
+    component: () => import('@/views/QuizView')
+  },
+
+  // 퀴즈 등록
+  {
+    path: '/quiz/create',
+    name: 'QuizCreate',
+    component: () => import('@/views/QuizCreateView')
+  },
+
+  {
+    path: '/quiz/detail',
+    name: 'QuizDetail',
+    component: () => import('@/views/QuizDetailView')
+  },
   // 존재하지 않는 페이지
   {
     path: '/:pathMatch(.*)*',

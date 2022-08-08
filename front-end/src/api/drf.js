@@ -13,8 +13,12 @@ const BASE_URL = 'http://localhost:8000/api/'
 const ACCOUNTS = BASE_URL + 'accounts/'
 const NOTICE = BASE_URL + 'notice/'
 const SURVEY = BASE_URL + 'survey/'
+<<<<<<< HEAD
 
 >>>>>>> 452a9d1 (설문조사  등록)
+=======
+const QUIZ = BASE_URL + 'quiz/'
+>>>>>>> 4918ec5 (퀴즈 CRUD 폼 작성)
 
 export default {
   accounts: {
@@ -120,6 +124,16 @@ export default {
 =======
     surveyStat : () => SURVEY + 'stat/',
     surveyQuestion : () => SURVEY + 'stat/detail/'
+<<<<<<< HEAD
 >>>>>>> 3d3b676 (설문조사  통계 조회)
+=======
+  },
+
+  quiz: {
+    quizList: () => QUIZ + '',
+    quizCreate: () => QUIZ + '',
+    quizDetail: () => QUIZ + '',
+    quizUpdate: () => QUIZ + '',
+>>>>>>> 4918ec5 (퀴즈 CRUD 폼 작성)
   }
 }

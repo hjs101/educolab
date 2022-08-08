@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 5d02b22 (네브바, 컴포넌트 구성)
 =======
@@ -33,10 +34,19 @@
 
   <router-view />
 >>>>>>> 2553da4 (공지사항  삭제)
+=======
+  <div>
+    <h1>퀴즈 메인페이지</h1>
+    <router-link :to="{name:'QuizCreate'}">
+      <button>퀴즈 등록</button>
+    </router-link>
+
+>>>>>>> 4918ec5 (퀴즈 CRUD 폼 작성)
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 export default {
   name: 'testList',
   // data() {
@@ -51,3 +61,16 @@ export default {
   // }
 }
 </script>
+=======
+
+export default({
+  setup() {
+    
+  },
+})
+</script>
+
+<style scoped>
+
+</style>
+>>>>>>> 4918ec5 (퀴즈 CRUD 폼 작성)
