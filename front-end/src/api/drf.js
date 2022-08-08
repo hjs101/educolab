@@ -2,7 +2,7 @@ const BASE_URL = 'http://localhost:8000/api/'
 const ACCOUNTS = BASE_URL + 'accounts/'
 const NOTICE = BASE_URL + 'notice/'
 const SURVEY = BASE_URL + 'survey/'
-
+const QUIZ = BASE_URL + 'quiz/'
 
 export default {
   accounts: {
@@ -31,5 +31,12 @@ export default {
     surveyUpdate: () => SURVEY + 'update/',
     surveyStat : () => SURVEY + 'stat/',
     surveyQuestion : () => SURVEY + 'stat/detail/'
+  },
+
+  quiz: {
+    quizList: () => QUIZ + '',
+    quizCreate: () => QUIZ + '',
+    quizDetail: () => QUIZ + '',
+    quizUpdate: () => QUIZ + '',
   }
 }
