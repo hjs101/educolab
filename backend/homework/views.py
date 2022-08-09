@@ -2,6 +2,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView 
 from rest_framework.response import Response
 
+from accounts.serializers import UserinfoSerializer
+
 from .models import StudentHomework, TeacherHomework, Files, SubmitHomework
 from accounts.models import SchoolInfo, UserInfo
 from .serializers import StudentHomeworkDetailSerializer, StudentHomeworkMainSerializer, SubmitHomeworkSerializer, SubmitHomeworksubmitSerializer, TeacherHomeworkCreateSerializer, StudentHomeworkCreateSerializer, TeacherHomeworkDetailSerializer, TeacherHomeworkMainSerializer
@@ -272,6 +274,11 @@ class HomeworkCheckView(APIView): # 채점
             username = request.data.get('username')
             point = request.data.get('point')
             student = UserInfo.objects.get(username=username)
+            student.plus_point += point
+            student.acc_point += point
+            student.save()
+            students = UserinfoSerializer(student)
+            return Response(students.data)
 
         
 class HomeworkSubmitView(APIView): # 제출
