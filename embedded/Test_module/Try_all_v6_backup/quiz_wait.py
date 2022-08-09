@@ -45,8 +45,6 @@ class Quiz_Waiting_Screen(Screen):
     def next2(self): ##**# 임시로 화면 넘기는 버튼. Socket 구현시 삭제/조정 예정
         self.next_flag=-1
 
-
-
     def update_image(self, dt):
         ##**# 대기 인원 업데이트
         self.ids.sub_title.text= f'대기 인원 : {self.people_num}'
@@ -71,6 +69,9 @@ class Quiz_Waiting_Screen(Screen):
             self.ids.img.angle-=30
             if self.ids.img.angle==-360: self.ids.img.angle=0
 
+    def on_pre_leave(self):
+        Clock.unschedule(self.event1)
+        
     def onStop(self): # 창 종료 버튼
         App.get_running_app().stop()
 

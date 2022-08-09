@@ -19,7 +19,7 @@ class Quiz_Count_Screen(Screen):
     def on_pre_enter(self):
         ##### change label #####
         self.count=3
-        self.people_num =35
+        self.people_num=35
         self.ids.title.text=f'{self.count}'
         # self.ids.sub_title.text= f'대기 인원 : {self.people_num}'
         # self.ids.loading.source='./icon/Loading.png'
@@ -58,7 +58,9 @@ class Quiz_Count_Screen(Screen):
     def onStop(self): # 창 종료 버튼
         App.get_running_app().stop()
 
-
+    def on_pre_leave(self):
+        Clock.unschedule(self.event1)
+        
 class quiz_test_App(App):
     def build(self):
         Builder.load_file('quiz_count.kv')

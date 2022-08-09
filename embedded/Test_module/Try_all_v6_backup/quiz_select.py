@@ -35,6 +35,7 @@ class Quiz_Select_Screen(Screen):
             Clock.unschedule(self.event1)
             self.manager.transition=NoTransition()
             self.manager.current="Quiz_wait"
+
     def button_click(self, ans):
         # self.ans=ans
         Clock.unschedule(self.event1)
@@ -42,11 +43,13 @@ class Quiz_Select_Screen(Screen):
         self.manager.current="Quiz_wait"
         ##**# Quiz 답변 socket 전송 : 답변=ans [int]
         ##########################
-        print(ans)
+        # print(ans)
 
     def onStop(self): # 창 종료 버튼
         App.get_running_app().stop()
-
+        
+    def on_pre_leave(self):
+        Clock.unschedule(self.event1)
 
 class quiz_test_App(App):
     def build(self):
