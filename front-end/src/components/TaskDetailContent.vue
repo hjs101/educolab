@@ -12,11 +12,14 @@
       <article>
         제출기한 : {{task.deadline}}
         <br>
-        내용 : {{task.content}}
-        <br>
-        첨부파일 :
-        <div v-for="file in task['teacher_file']" :key="file">
-          <a :href="url+file['atch_file']" class="button">{{file['atch_file_name']}}</a>
+        <!-- 학생용 과제 제출 안 한 상세 페이지에는 안 보이게 -->
+        <div>
+          내용 : {{task.content}}
+          <br>
+          첨부파일 :
+          <div v-for="file in task['teacher_file']" :key="file">
+            <a :href="url+file['atch_file']" class="button">{{file['atch_file_name']}}</a>
+          </div>
         </div>
       </article>
       <hr>

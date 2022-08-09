@@ -22,7 +22,7 @@
         <div v-for="num in number.notDone" :key="num">
           <div v-if="num === page.notDone">
             <q-list bordered class="rounded-borders" v-for="item in list.notDone.slice((num-1)*10, num*10)" :key="item.pk">
-              <task-item :item = item :teacher="1" />
+              <task-item :item = item :teacher="1" :submit="false" />
             </q-list>
           </div>
         </div>
@@ -37,7 +37,7 @@
         <div v-for="num in number.studentTask" :key="num">
           <div v-if="num === page.studentTask">
             <q-list bordered class="rounded-borders" v-for="item in list.studentTask.slice((num-1)*10, num*10)" :key="item.pk">
-              <task-item :item = item :teacher="0" />
+              <task-item :item = item :teacher="0" :submit="false" />
             </q-list>
           </div>
         </div>
@@ -51,8 +51,8 @@
       <q-tab-panel name="studentCheckedTask">
         <div v-for="num in number.studentCheckedTask" :key="num">
           <div v-if="num === page.studentCheckedTask">
-            <q-list bordered class="rounded-borders" v-for="item in list.studentTask.slice((num-1)*10, num*10)" :key="item.pk">
-              <task-item :item = item :teacher="0" />
+            <q-list bordered class="rounded-borders" v-for="item in list.studentCheckedTask.slice((num-1)*10, num*10)" :key="item.pk">
+              <task-item :item = item :teacher="0"  :submit="true" />
             </q-list>
           </div>
         </div>
@@ -67,7 +67,7 @@
         <div v-for="num in number.done" :key="num">
           <div v-if="num === page.done">
             <q-list bordered class="rounded-borders" v-for="item in list.done.slice((num-1)*10, num*10)" :key="item.pk">
-              <task-item :item = item :teacher="1" />
+              <task-item :item = item :teacher="1"  :submit="true" />
             </q-list>
           </div>
         </div>

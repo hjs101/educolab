@@ -5,7 +5,8 @@
       <!-- 과제 내용 & 교사용 -->
       <task-detail-content :isTeacher="user.isTeacher"/>
       <!-- 학생용 -->
-      <student-task-submit v-if="!user.isTeacher" />
+      <!-- 제출 후에는 뜨지 않도록 -->
+      <student-task-submit v-if="!user.isTeacher && !confirm.isChecked" />
       <!-- 자신이 만든 페이지에서만 보임 -->
       <div class="buttonGroup">
         <router-link
@@ -15,10 +16,10 @@
         }}">
           <q-btn color="primary" label="수정"/>
         </router-link>
-        <q-btn color="primary" label="삭제" @click="confirm = true"/>
+        <q-btn color="primary" label="삭제" @click="confirm.prompt = true"/>
         <!-- 여기에 삭제 확인 메시지 -->
         <message-pop-up
-          v-if="confirm"
+          v-if="confirm.isTrue"
           title="삭제 확인"
           message="정말 삭제하시겠습니까?"
           :cancel="true"
@@ -53,7 +54,7 @@ export default {
     const store = useStore()
     const params = {
       pk: route.params.taskPk,
-      teacher_flag: route.params.userType === 'teacher'?1:0,
+      teacher_flag: route.params.taskType === 'lecture'?1:0,
     }
     store.dispatch('taskDetail', params)
   },
@@ -61,7 +62,14 @@ export default {
     const route = useRoute()
     const store = useStore()
     let taskPk = ref(route.params.taskPk)
-    let confirm = ref(false)
+    const confirm = reactive({
+      prompt: false,
+      isTrue: computed(() => confirm.prompt)  
+    })
+    const submit = reactive({
+      task: computed(() => store.getters.getTask),
+      isChecked: computed(() => submit.task.value.agreement)
+    })
     const user = reactive({
       type: route.params.userType,
       isTeacher: computed(() => user.type === 'teacher'),
@@ -75,7 +83,7 @@ export default {
         }
         store.dispatch('taskDelete', data)
       }
-      confirm = false
+      confirm.prompt = false
     }
     return {
       taskPk,

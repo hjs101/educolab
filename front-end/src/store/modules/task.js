@@ -63,10 +63,12 @@ export const task = {
       for (let key in data) {
         if (key === 'notdone') {
           studentKey = 'notDone'
-        } else if ( key === 'done') {
+        } else if (key === 'done') {
           studentKey = 'done'
-        } else {
+        } else if (key === 'my_homework') {
           studentKey = 'selfTask'
+        } else {
+          studentKey = 'checkedSelfTask'
         }
         state.student[studentKey] = data[key]
       }
@@ -177,6 +179,10 @@ export const task = {
         'Content-Type': 'multipart/form-data'},
         data,
       })
+        .then(((res) => {
+          console.log(res.data.message)
+          router.push({name: 'TaskListView'})
+        }))
     }
   }
 }

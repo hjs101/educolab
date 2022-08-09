@@ -19,15 +19,15 @@
           label="내용"
           v-model="task.content"
         />
-        <q-select
-          outlined
-          v-model="task.subject"
-          label="과목"
-          :options="subjectOptions"
-        />
 
         <!-- 교사에게만 보임 -->
         <div v-if="isTeacher">
+          <q-select
+            outlined
+            v-model="task.subject"
+            label="과목"
+            :options="subjectOptions"
+          />
           <q-input
             outlined
             type="number"
@@ -52,14 +52,14 @@
             val => val === '' || val === null || val > 0 && val < 21 || '값이 올바르지 않습니다'
             ]"
           />
-          <q-input
-            outlined
-            stack-label
-            type="date"
-            label="제출기한"
-            v-model="task.deadline"
-          />
         </div>
+        <q-input
+          outlined
+          stack-label
+          type="date"
+          label="제출기한"
+          v-model="task.deadline"
+        />
         <q-input
           label="첨부파일"
           stack-label
