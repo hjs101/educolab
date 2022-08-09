@@ -134,6 +134,7 @@ urlpatterns = [
     path('api/survey/', include('survey.urls')),
     path('api/mypage/', include('mypage.urls')),
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> d215d15 (자동배포로 인한 Url 변경)
 =======
     path('main/', include('mainpage.urls')),
@@ -146,6 +147,9 @@ urlpatterns = [
     path('api/main/', include('mainpage.urls')),
 >>>>>>> 8d76cce (feat : merge중 오류 해결)
 =======
+=======
+    path('api/mainpage/', include('mainpage.urls')),
+>>>>>>> 1d035b5 (feat: 이달랭킹 및 메인페이지 버그수정)
     path('api/quiz/', include('quiz.urls')),
 <<<<<<< HEAD
 >>>>>>> 31efb28 (Feat : 퀴즈 기능 구현)
