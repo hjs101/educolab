@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -33,6 +34,9 @@
     <!-- <button @click="notice"></button> -->
 =======
   <div class="center">
+=======
+  <div id="notice" class="center">
+>>>>>>> 6ecfa2b (기본 폰트, 스타일 적용)
     <h1>공지사항</h1>
     <router-link to="/notice/create"><button>글쓰기</button></router-link>
 >>>>>>> fec931d (공지사항  상세페이지 구현)
@@ -110,6 +114,11 @@ export default {
 </script>
 
 <style>
+  #notice {
+    margin: auto;
+    width: 80%;
+    font-family: "jooa";
+  }
   .searchWrap{border-radius:5px; text-align:center; padding:20px 0; margin-bottom:10px;}
   .tbList th{border-top:1px solid #888;}
 	.tbList th, .tbList td{border-bottom:1px solid #eee; padding:5px 0;}
