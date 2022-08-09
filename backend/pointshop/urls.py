@@ -19,9 +19,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('main/', views.MypageMainView.as_view(), name='mypage_main'),
-    path('grant/', views.PointGrantView.as_view(), name='mypage_point'),
-    path('profil/', views.ProfilChangeView.as_view(), name='profil_change'),
-    path('title/', views.TitleChangeView.as_view(), name='title_change'),
-    
+    path('',views.MainpageView.as_view(), name='mainpage'),
 ]

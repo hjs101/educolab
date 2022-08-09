@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'accounts',
     'homework',
     'mainpage',
+    'pointshop',
     'drf_yasg',
     'django.contrib.sites',
     'allauth',
