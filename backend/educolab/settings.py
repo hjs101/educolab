@@ -121,7 +121,11 @@ INSTALLED_APPS = [
 >>>>>>> b9da983 (Feat : mypage 구현중)
 =======
     'mainpage',
+<<<<<<< HEAD
 >>>>>>> 9d68f0e (feat : 메인페이지 학교행사 생성,수정,삭제 기능 구현)
+=======
+    'pointshop',
+>>>>>>> 4910d64 (feat : 상점 기능 구현, 마이페이지 칭호 변경 구현)
     'drf_yasg',
 <<<<<<< HEAD
 <<<<<<< HEAD

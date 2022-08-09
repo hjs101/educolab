@@ -2,6 +2,7 @@ from django.urls import is_valid_path
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from accounts.models import UserInfo
+from pointshop.models import PTitle
 from accounts.serializers import UserinfoSerializer
 from .serializers import PointlogSerializer,TeacherSerializer, StudentSerializer,SearchStudentSerializer
 # Create your views here.
@@ -70,6 +71,18 @@ class ProfilChangeView(APIView):
         
         user.save()
         
+        return Response({
+            "success" : True
+        })
+
+class TitleChangeView(APIView):
+    def put(self,request):
+        user = request.user
+
+        user.wear_title = PTitle.objects.get(id=request.data.get('pk'))
+
+        user.save()
+
         return Response({
             "success" : True
         })

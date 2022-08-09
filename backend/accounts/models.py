@@ -1,5 +1,8 @@
+from asyncio.windows_events import NULL
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+
+from pointshop.models import PTitle
 
 # Create your models here.
 
@@ -132,7 +135,13 @@ class UserInfo(AbstractUser):
     profil = models.ImageField(blank=True, upload_to='accounts/profils' ,default='accounts/profils/test01.jpg')
 >>>>>>> 2b5572c (Feat : 프로필 사진 변경 구현)
     acc_point = models.IntegerField(default=0, null=True)
+<<<<<<< HEAD
 >>>>>>> 59ac581 (Feat : Mypage 기능 구현)
+=======
+    wear_title = models.ForeignKey(PTitle,null=True,on_delete=models.SET_NULL)
+    own_title = models.ManyToManyField(PTitle,related_name='title_owner')
+
+>>>>>>> 4910d64 (feat : 상점 기능 구현, 마이페이지 칭호 변경 구현)
     
 class PointLog(models.Model):
     teacher = models.ForeignKey(UserInfo, on_delete=models.DO_NOTHING, related_name="point_teacher")

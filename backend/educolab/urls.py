@@ -147,7 +147,11 @@ urlpatterns = [
 >>>>>>> 8d76cce (feat : merge중 오류 해결)
 =======
     path('api/quiz/', include('quiz.urls')),
+<<<<<<< HEAD
 >>>>>>> 31efb28 (Feat : 퀴즈 기능 구현)
+=======
+    path('api/pointshop/', include('pointshop.urls')),
+>>>>>>> 4910d64 (feat : 상점 기능 구현, 마이페이지 칭호 변경 구현)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 <<<<<<< HEAD

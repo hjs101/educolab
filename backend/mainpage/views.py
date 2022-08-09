@@ -59,7 +59,6 @@ class MainpageView(APIView): # 메인페이지 정보 전달 (과제,공지,행�
                 "event" : event_serializer.data,
                 "notice" : notice_serializer.data,
                 "acc_rank" : accrank_serializer.data,
-                "timeline" : timeline_serializer.data,
                 "homework" : homework_serializer.data
             }
         
