@@ -133,6 +133,7 @@ export const survey = {
           console.log(err)
         })
     },
+
     onQuestion({ getters, commit }, questionPk) {
       axios({
         url: drf.survey.surveyQuestion(),
@@ -146,6 +147,6 @@ export const survey = {
           console.log(res.data)
           commit('SURVEY_QUESTION', res.data)
         })
-    }
+    },
   },
 } 

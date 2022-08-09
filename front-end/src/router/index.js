@@ -166,13 +166,14 @@ const routes = [
 
   // 퀴즈 등록
   {
-    path: '/quiz/create',
+    path: '/quiz/create/:quizPk?',
     name: 'QuizCreate',
     component: () => import('@/views/QuizCreateView')
   },
 
+  // 퀴즈 상세
   {
-    path: '/quiz/detail',
+    path: '/quiz/detail/:quizPk',
     name: 'QuizDetail',
     component: () => import('@/views/QuizDetailView')
   },
