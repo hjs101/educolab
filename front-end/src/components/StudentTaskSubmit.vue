@@ -22,12 +22,10 @@
 <script>
 import {reactive} from 'vue'
 import {useStore} from 'vuex'
-import {useRoute} from 'vue-router'
 export default {
   name: 'StudentTaskSubmit',
   setup() {
     const store = useStore()
-    const route = useRoute()
     const student = reactive({
       content: null,
       files: null,
@@ -36,16 +34,8 @@ export default {
       event.preventDefault()
       let form = new FormData()
       const task = store.getters.getTask
-      let pk = null
-      let teacher = null
-      if (route.params.taskType === 'lecture') {
-        teacher = 1
-      } else {
-        pk = task['my_submit'][0].id
-        teacher = 0
-      }
-      form.append('submit_pk', pk)
-      form.append('teacher', teacher)
+      form.append('submit_pk', task['student_submit'][0].id)
+      form.append('teacher_flag', 1)
       form.append('content', student.content)
       if (student['files'] !== null) {
         for (let i=0; i < student.files.length; i++) {

@@ -287,6 +287,7 @@ class HomeworkCheckView(APIView): # 채점
         
 class HomeworkSubmitView(APIView): # 제출
     def post(self, request):
+        print(request.data)
         submit_pk = request.data.get('submit_pk') # 제출번호
 
         if request.data.get('teacher_flag') == '1':
@@ -295,7 +296,7 @@ class HomeworkSubmitView(APIView): # 제출
 
             if submit_serializer.is_valid(raise_exception=True):
                 file = request.FILES.get('files')
-                submit_serializer.save(atch_file=file,atch_file_name=file)
+                submit_serializer.save(atch_file=file,atch_file_name=file, submit_flag=True)
                 context = {
                     "success" : True,
                     "message" : "제출되었습니다"
@@ -304,10 +305,9 @@ class HomeworkSubmitView(APIView): # 제출
         else:
             submit = SubmitHomework.objects.get(id=submit_pk)
             submit_serializer = SubmitHomeworksubmitSerializer(submit,data=request.data)
-
             if submit_serializer.is_valid(raise_exception=True):
                 file = request.FILES.get('files')
-                submit_serializer.save(atch_file=file,atch_file_name=file)
+                submit_serializer.save(atch_file=file,atch_file_name=file, submit_flag=True)
                 homework = StudentHomework.objects.get(id=submit.student_homework.id)
                 homework.submit_flag = True
                 homework.save()

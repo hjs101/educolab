@@ -5,7 +5,6 @@
       <!-- 과제 내용 & 교사용 -->
       <task-detail-content :isTeacher="user.isTeacher"/>
       <!-- 학생용 -->
-      <!-- 제출 후에는 뜨지 않도록 -->
       <student-task-submit v-if="!user.isTeacher && !confirm.isChecked" />
       <!-- 자신이 만든 페이지에서만 보임 -->
       <div class="buttonGroup">
@@ -68,7 +67,7 @@ export default {
     })
     const submit = reactive({
       task: computed(() => store.getters.getTask),
-      isChecked: computed(() => submit.task.value.agreement)
+      isChecked: computed(() => route.params.taskType === 'lecture'? submit.task.value['student_submit'][0]['submit_flag'] : true)
     })
     const user = reactive({
       type: route.params.userType,

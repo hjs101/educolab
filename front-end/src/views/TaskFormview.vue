@@ -85,15 +85,14 @@
 import { ref, reactive, computed} from 'vue'
 import { useRoute } from 'vue-router'
 import {useStore} from 'vuex'
-import {isEmpty} from 'lodash'
 export default {
   name: 'TaskFormView',
   created() {
     const store = useStore()
     const route = useRoute()
-    let {taskPk} = route.params
-    if (taskPk && isEmpty(store.getters.getTask)) {
-        store.dispatch('taskDetail', taskPk)
+    let {taskPk, userType} = route.params
+    if (taskPk) {
+      store.dispatch('taskDetail', {pk: taskPk, teacher_flag: userType === 'teacher'? 1:0})
     }
   },
   setup () {
@@ -103,34 +102,32 @@ export default {
     let {userType, taskPk} = route.params
     let isTeacher = computed(() => userType === 'teacher')
     let type = computed(() => taskPk? '수정':'등록')
-    const storeTask = ref(computed(() => store.getters.getTask))
+    const storeTask = computed(() => store.getters.getTask)
     const computedTask = reactive({
-      subject: computed(() => taskPk? storeTask.value.subject : null),
-      title: computed(() => taskPk? storeTask.value.title : null),
-      content: computed(() => taskPk? storeTask.value.content : null),
-      grade: computed(() => taskPk? storeTask.value.grade : null),
-      class_field: computed(() => taskPk? storeTask.value.class_field : null),
-      files: computed(() => taskPk? storeTask.value.files : null),
-      deadline: computed(() => taskPk? storeTask.value.deadline : null),
+      subject: computed(() => storeTask.value.homework?.subject),
+      title: computed(() => storeTask.value.homework?.title || storeTask.value.title),
+      content: computed(() => storeTask.value.homework?.content || storeTask.value.content),
+      grade: computed(() => storeTask.value.homework?.grade),
+      class_field: computed(() => storeTask.value.homework?.class_field),
+      files: computed(() => storeTask.value.homework?.files || storeTask.value['student_file']),
+      deadline: computed(() => storeTask.value.homework?.deadline || storeTask.value.deadline),
     })
     const task = reactive({
       teacher_flag: isTeacher.value,
-      subject: computedTask.subject,
-      title: computedTask.title,
-      content: computedTask.content,
-      grade: computedTask.grade,
-      class_field: computedTask.class_field,
-      files: computedTask.files,
-      deadline: computedTask.deadline,
+      subject: computedTask.subject || null,
+      title: computedTask.title || null,
+      content: computedTask.content || null,
+      grade: computedTask.grade || null,
+      class_field: computedTask.class_field || null,
+      files: computedTask.files || null,
+      deadline: computedTask.deadline || null,
     })
     const accept = ref(false)
     const onSubmit = (arg) => {
       let form = new FormData()
-      form.append('pk', taskPk)
       for (let key in task) {
         if (key === 'files' && task[key]) {
           for (let i=0; i < task.files.length; i++) {
-            console.log(task[key][i])
             form.append(key, task[key][i])
           }
         } else {
@@ -138,11 +135,15 @@ export default {
         }
       }
       if (arg) {
+        form.append('submit_pk', storeTask.value['my_submit'][0].id)
+        form.append('teacher_flag', 0)
         store.dispatch('submitTask', form)
       } else if (taskPk) {
+        form.append('pk', taskPk)
         store.dispatch('taskUpdate', form)
         console.log('update')
       } else {
+        form.append('pk', taskPk)
         store.dispatch('createTask', form)
         console.log('create')
       }
@@ -167,6 +168,7 @@ export default {
     }
     return {
       task,
+      storeTask,
       accept,
       userType,
       taskPk,
