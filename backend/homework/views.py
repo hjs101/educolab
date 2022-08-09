@@ -2,9 +2,11 @@ from django.shortcuts import render
 from rest_framework.views import APIView 
 from rest_framework.response import Response
 
+from accounts.serializers import UserinfoSerializer
+
 from .models import StudentHomework, TeacherHomework, Files, SubmitHomework
-from accounts.models import SchoolInfo, UserInfo
-from .serializers import StudentHomeworkDetailSerializer, StudentHomeworkMainSerializer, SubmitHomeworksubmitSerializer, TeacherHomeworkCreateSerializer, StudentHomeworkCreateSerializer, TeacherHomeworkDetailSerializer, TeacherHomeworkMainSerializer
+from accounts.models import SchoolInfo, UserInfo, PointLog
+from .serializers import StudentHomeworkDetailSerializer, StudentHomeworkMainSerializer, SubmitHomeworkSerializer, SubmitHomeworksubmitSerializer, TeacherHomeworkCreateSerializer, StudentHomeworkCreateSerializer, TeacherHomeworkDetailSerializer, TeacherHomeworkMainSerializer
 
 from datetime import datetime
 # Create your views here.
@@ -33,7 +35,7 @@ class HomeworkMainView(APIView):
             not_done = sorted(notdone_homework_serializer.data, key=lambda x:x['deadline'])
             done_notcheck_homework_serializer = TeacherHomeworkMainSerializer(done_notcheck_homework, many=True)
             all_done_homework_serializer = TeacherHomeworkMainSerializer(all_done_homework, many=True)
-            all_done = sorted(all_done_homework_serializer.data, key=lambda x:x['pk'], reverse=True)
+            all_done = sorted(all_done_homework_serializer.data, key=lambda x:x['id'], reverse=True)
             student_homeworks_serizlizer = StudentHomeworkMainSerializer(student_homeworks, many=True)
             
             context = {
@@ -57,13 +59,13 @@ class HomeworkMainView(APIView):
                 else:
                     done_homework.append(homework)
             
-            my_submit_homework = student.S_homework.filter(submit_flag=True).order_by('-pk')
+            my_submit_homework = student.S_homework.filter(submit_flag=True).order_by('-id')
             my_homework = student.S_homework.filter(submit_flag=False).order_by('deadline')
 
             notdone_homework_serializer = TeacherHomeworkMainSerializer(notdone_homework, many=True)
             not_done = sorted(notdone_homework_serializer.data, key=lambda x:x['deadline'])
             done_homework_serialzier = TeacherHomeworkMainSerializer(done_homework, many=True)
-            done = sorted(done_homework_serialzier.data,key=lambda x:x['pk'], reverse=True)
+            done = sorted(done_homework_serialzier.data,key=lambda x:x['id'], reverse=True)
 
             my_submit_homework_serializer = StudentHomeworkMainSerializer(my_submit_homework, many=True)
             my_homework_serializer = StudentHomeworkMainSerializer(my_homework, many=True)
@@ -74,6 +76,7 @@ class HomeworkMainView(APIView):
                 "my_homework" : my_homework_serializer.data
             }
             return Response(context)
+
             
             
 
@@ -101,7 +104,7 @@ class HomeworkCreateView(APIView):
             if homework_serializer.is_valid(raise_exception=True):
                 school = request.user.school
                 school_student= school.school_student.all()
-                students = school_student.filter(grade=homework_serializer.validated_data['grade'],class_field=homework_serializer.validated_data['class_field'])
+                students = school_student.filter(grade=homework_serializer.validated_data['grade'],class_field=homework_serializer.validated_data['class_field'],userflag=False)
                 homework = homework_serializer.save(teacher=request.user,target=students)
                 
                 files = request.FILES.getlist("files")
@@ -122,21 +125,42 @@ class HomeworkCreateView(APIView):
 class HomeworkDetailView(APIView):
     def get(self, request):
         homework_pk = request.GET.get('pk')
-        teacher_flag = request.GET.get('teacher')
+        teacher_flag = request.GET.get('teacher_flag')
         print(homework_pk, teacher_flag)
-        if teacher_flag:
-            homework = TeacherHomework.objects.get(id=homework_pk)
-            homework_serializer = TeacherHomeworkDetailSerializer(homework)
+        if teacher_flag == '1':
+            if request.user.userflag == True:
+                homework = TeacherHomework.objects.get(id=homework_pk)
+                homework_serializer = TeacherHomeworkDetailSerializer(homework)
+                student_submit = homework.student_submit.all()
+                student_submit_serializer = SubmitHomeworkSerializer(student_submit, many=True)
+                print(1)
+                context = {
+                    "homework" : homework_serializer.data,
+                    "student_submit" : student_submit_serializer.data
+                }
+            
+            else:
+                homework = TeacherHomework.objects.get(id=homework_pk)
+                student_submit = homework.student_submit.filter(student=request.user)
+                homework_serializer = TeacherHomeworkDetailSerializer(homework)
+                student_submit_serializer = SubmitHomeworkSerializer(student_submit, many=True)
 
+                context = {
+                    "homework" : homework_serializer.data,
+                    "student_submit" : student_submit_serializer.data
+                }
+
+            return Response(context)
+                
         else:
             homework = StudentHomework.objects.get(id=homework_pk)
             homework_serializer = StudentHomeworkDetailSerializer(homework)
-        
+
+            return Response(homework_serializer.data)
 
         # serializer를 통해서 어디까지 보여줄지 정해야함.
         # 각각 따로 만들어야함
-        return Response(homework_serializer.data)
-
+    
     def put(self, request):
         homework_pk = request.data.get('pk')
         print(homework_pk)
@@ -173,10 +197,10 @@ class HomeworkDetailView(APIView):
             "message" : "수정이 성공적으로 완성되었습니다"
         }
         return Response(context)
-
+        
     def delete(self, request):
         homework_pk = request.data.get('pk')
-        teacher_flag = request.data.get('teacher')
+        teacher_flag = request.data.get('teacher_flag')
         print(teacher_flag)
         if teacher_flag == True:
             homework = TeacherHomework.objects.get(pk=homework_pk)
@@ -189,18 +213,30 @@ class HomeworkDetailView(APIView):
             "success" : True,
             "message" : "삭제되었습니다"
         }
-        return Response(context)
+        return Response(context) 
 
 class HomeworkCheckView(APIView): # 채점
     def post(self, request):
         if request.user.userflag == True:
-            pass
+            username = request.data.get('username')
+            point = request.data.get('point')
+            student = UserInfo.objects.get(username=username)
+            if point > 0:
+                student.plus_point += point
+                student.acc_point += point
+            else:
+                student.minus_point += point
+            PointLog.objects.create(teacher=request.user,student=student,content="과제 점수",point=point)
+            student.save()
+            students = UserinfoSerializer(student)
+            return Response(students.data)
+
         
 class HomeworkSubmitView(APIView): # 제출
     def post(self, request):
         submit_pk = request.data.get('submit_pk') # 제출번호
 
-        if request.data.get('teacher') == '1':
+        if request.data.get('teacher_flag') == '1':
             submit = SubmitHomework.objects.get(id=submit_pk)
             submit_serializer = SubmitHomeworksubmitSerializer(submit,data=request.data)
 
