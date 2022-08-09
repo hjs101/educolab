@@ -4,7 +4,7 @@
     @reset="onReset">
     <span>과제 제출</span>
     <q-input
-      v-model="student.text"
+      v-model="student.content"
       outlined
       label="내용"
       type="textarea"
@@ -27,14 +27,14 @@ export default {
   setup() {
     const store = useStore()
     const student = reactive({
-      text: null,
+      content: null,
       files: null,
     })
     const onSubmit = (event) => {
       event.preventDefault()
       let form = new FormData()
-      form.append('submit_pk', student.text)
-      form.append('text', student.text)
+      form.append('submit_pk', )
+      form.append('content', student.content)
       if (student['files'] !== null) {
         for (let i=0; i < student.files.length; i++) {
           form.append('files', student.files[i])

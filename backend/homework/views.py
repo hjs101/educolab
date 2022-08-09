@@ -97,9 +97,6 @@ class HomeworkMainView(APIView):
             }
             return Response(context)
             
-            
-
-
 class HomeworkCreateView(APIView):
     
     def post(self, request):

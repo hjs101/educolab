@@ -102,7 +102,7 @@ export default {
     let tab = ref('notCheck')
     const store = useStore()
     const totalList = reactive({
-      notCheck: computed(() => store.getters.getTeacherNotcheck),
+      notCheck: computed(() => store.getters.getTeacherNotCheck),
       studentTask: computed(() => store.getters.getTeacherStudentTask),
       notDone: computed(() => store.getters.getTeacherNotDone),
       done: computed(() => store.getters.getTeacherDone),
@@ -114,7 +114,7 @@ export default {
       done: 1,
     })
     const number = reactive({
-      notCheck: computed(() => store.getters.cntTeacherNotcheck),
+      notCheck: computed(() => store.getters.cntTeacherNotCheck),
       studentTask: computed(() => store.getters.cntTeacherStudentTask),
       notDone: computed(() => store.getters.cntTeacherNotDone),
       done: computed(() => store.getters.cntTeacherDone),

@@ -16,6 +16,7 @@ export const task = {
         notDone: [],
         done: [],
         selfTask: [],
+        checkedSelfTask: [],
       },
       task: {},
     }
@@ -36,6 +37,8 @@ export const task = {
     cntStudentDone: (state, getters) => Math.ceil(getters.getStudentDone.length/10),
     getStudentSelfTask: state => state.student.selfTask,
     cntStudentSelfTask: (state, getters) => Math.ceil(getters.getStudentSelfTask.length/10),
+    getCheckedSelfTask: state => state.student.checkedSelfTask,
+    cntCheckedSelfTask: (state, getters) => Math.ceil(getters.getCheckedSelfTask.length/10),
     getTask: state => state.task,
   },
 
@@ -169,7 +172,9 @@ export const task = {
       axios({
         url: drf.task.submit(),
         method: 'post',
-        headers: getters.authHeader,
+        headers: {
+          ...getters.authHeader,
+        'Content-Type': 'multipart/form-data'},
         data,
       })
     }

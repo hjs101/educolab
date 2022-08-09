@@ -7,9 +7,7 @@
 
     <q-card-section class="q-pt-none">
       <header>
-        <span>
-          과목 {{task.subject}} | {{checkState}}
-        </span>
+        <span> {{checkState}}</span>
       </header>
       <article>
         제출기한 : {{task.deadline}}
@@ -27,7 +25,7 @@
         <!-- 학생이 작성한 과제 상세 페이지에서 -->
         <q-input v-if="task.student" type="number" label="점수" min="-1" max="5"/>
         <div  v-if="!task['check_flag']">
-          <q-btn color="primary" label="채점 완료" />
+          <q-btn color="primary" label="채점 완료" @click="checkComplete" />
           <hr>
         <!-- 자신이 작성한 상세 페이지에서 -->
           <q-list bordered class="rounded-borders" v-for="item in task['student_submit']" :key="item.student?.username">
@@ -59,11 +57,15 @@ export default {
     const url = drf.file.path()
     const date = dayjs(task.value['updated_at']).format('YYYY-MM-DD HH:mm')
     let checkState = computed(() => task.value['check_flag']? '완료':'미완료')
+    const checkComplete = () => {
+
+    }
     return {
       task,
       url,
       date,
-      checkState
+      checkState,
+      checkComplete
     }
   },
 }
