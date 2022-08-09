@@ -5,7 +5,12 @@
       <!-- 과제 내용 & 교사용 -->
       <task-detail-content :isTeacher="user.isTeacher"/>
       <!-- 학생용 -->
-      <student-task-submit v-if="!user.isTeacher && !confirm.isChecked" />
+      <section v-if="!user.isTeacher">
+      <!-- 채점 안 한 과제 -->
+        <student-task-submit v-if="submit.isLecture && !submit.isSubmit" />
+        <!-- 채점한 과제 -->
+        <student-submit-content v-else />
+      </section>
       <!-- 자신이 만든 페이지에서만 보임 -->
       <div class="buttonGroup">
         <router-link
@@ -40,13 +45,15 @@ import {useStore} from 'vuex'
 import {useRoute} from 'vue-router'
 import StudentTaskSubmit from '@/components/StudentTaskSubmit.vue'
 import TaskDetailContent from '@/components/TaskDetailContent.vue'
-import MessagePopUp from '../components/MessagePopUp.vue'
+import MessagePopUp from '@/components/MessagePopUp.vue'
+import StudentSubmitContent from '@/components/StudentSubmitContent.vue'
 export default {
   name: 'TaskDetailView',
   components: {
     StudentTaskSubmit,
     TaskDetailContent,
     MessagePopUp,
+    StudentSubmitContent,
   },
   created() {
     const route = useRoute()
@@ -67,7 +74,17 @@ export default {
     })
     const submit = reactive({
       task: computed(() => store.getters.getTask),
-      isChecked: computed(() => route.params.taskType === 'lecture'? submit.task.value['student_submit'][0]['submit_flag'] : true)
+      isLecture: computed(() => route.params.taskType === 'lecture'),
+      isSubmit: computed(() => {
+        if (submit.isLecture) {
+          if (submit.task.student_submit) {
+            return submit.task.student_submit[0].submit_flag
+          }
+        } else if (submit.task.my_submit) {
+          return submit.task.my_submit[0].submit_flag
+        }
+        return false
+      })
     })
     const user = reactive({
       type: route.params.userType,
@@ -88,7 +105,8 @@ export default {
       taskPk,
       user,
       confirm,
-      deleteTask
+      deleteTask,
+      submit
     }
   },
 }

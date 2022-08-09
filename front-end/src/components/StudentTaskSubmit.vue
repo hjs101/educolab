@@ -20,15 +20,17 @@
 </template>
 
 <script>
-import {reactive} from 'vue'
+import {computed, reactive} from 'vue'
 import {useStore} from 'vuex'
 export default {
   name: 'StudentTaskSubmit',
   setup() {
     const store = useStore()
+    const storeTask = computed(() => store.getters.getTask)
+    const change = computed(() => storeTask.value.student_submit)
     const student = reactive({
-      content: null,
-      files: null,
+      content: change.value? change.value[0].content: '',
+      files: change.value? change.value[0].atch_file_name: ''
     })
     const onSubmit = (event) => {
       event.preventDefault()

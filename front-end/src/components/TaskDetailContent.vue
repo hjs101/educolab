@@ -2,12 +2,16 @@
   <q-card-section>
     <q-card-section>
       {{task.homework?.id || task.id}}
-      <div class="text-h6">{{task.homework?.title || task.title}} | {{date}}</div>
+      <div class="text-h6">{{task.homework?.title || task.title}}</div>
+      <span v-if="isTeacher">{{dayjs(task.value.homework['updated_at']).format('YYYY-MM-DD HH:mm')}}</span>
+      <span>{{dayjs(task['updated_at']).format('YYYY-MM-DD HH:mm')}}</span>
+      <!-- {{date}} -->
     </q-card-section>
 
     <q-card-section class="q-pt-none">
       <header>
-        <span> {{checkState}}</span>
+        <span v-if="task.homework"> {{task.homework['check_flag']? '채점 완료':'채점 미완료'}}</span>
+        <span v-else> {{task.value['check_flag']? '채점 완료':'채점 미완료'}}</span>
       </header>
       <article>
         제출기한 : {{task.homework?.deadline || task.deadline}}
@@ -44,7 +48,7 @@
 import {useStore} from 'vuex'
 import {computed} from 'vue'
 import drf from '@/api/drf.js'
-import dayjs from 'dayjs'
+// import dayjs from 'dayjs'
 import TaskTargetStudent from '@/components/TaskTargetStudent.vue'
 export default {
   name: 'TaskDetailContent',
@@ -57,23 +61,29 @@ export default {
   setup(props) {
     const store = useStore()
     const url = drf.file.path()
-    let task = computed(() => store.getters.getTask)
-    let checkState = computed(() => {
-      if (props.isTeacher) {
-        return task.value.homework['check_flag']? '채점 완료':'채점 미완료'
-      } else {
-        return task.value['check_flag']? '채점 완료':'채점 미완료'
-      }
-    })
+    const task = computed(() => store.getters.getTask)
+    // let checkState = computed(() => {
+    //   if (props.isTeacher) {
+    //     return task.value.homework['check_flag']? '채점 완료':'채점 미완료'
+    //   } else {
+    //     return task.value['check_flag']? '채점 완료':'채점 미완료'
+    //   }
+    // })
     const files = computed(() => props.isTeacher? task.value.homework['teacher_file']: task.value['my_submit'])
-    const date = props.isTeacher?dayjs(task.value.homework['updated_at']).format('YYYY-MM-DD HH:mm'):dayjs(task.value['updated_at']).format('YYYY-MM-DD HH:mm')
+    // const date = computed(() => {
+    //   if (!props.isTeacher) {
+    //     return dayjs(task.value['updated_at']).format('YYYY-MM-DD HH:mm')
+    //   } else {
+    //     return dayjs(task.value.homework['updated_at']).format('YYYY-MM-DD HH:mm')
+    //   }
+    // })
     const checkComplete = () => {
     }
     return {
       task,
       url,
-      date,
-      checkState,
+      // date,
+      // checkState,
       checkComplete,
       files
     }

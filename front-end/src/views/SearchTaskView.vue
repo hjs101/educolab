@@ -1,51 +1,51 @@
 <template>
   <article div class="q-gutter-md" style="max-width: 300px">
-    <q-input label="제목 검색" v-model="query"/>
-    <q-btn color="primary" label="검색" />
-    <!-- {{store.getters.getTeacherDone}}
+    <q-input label="제목 검색" v-model="search.query"/>
+    <q-btn color="primary" label="검색" @click="search.search = search.query"/>
     <br>
-    {{store.getters.getTeacherStudentTask}}
-    <br>
-    {{store.getters.getTeacherNotCheck}}
-    <br>
-    {{store.getters.getTeacherNotDone}}
-    <br> -->
-    여기가 모두
-    <!-- {{taskList}} -->
-    <!-- {{store.getters.getTeacherAll}} -->
-    <!-- <div v-for="item in taskList" :key="item.pk">
-      <task-item :item="item" />
-    </div> -->
+    검색 결과
+    <div v-for="num in taskLength" :key="num">
+      <div v-if="num === page">
+        <q-list bordered class="rounded-borders" v-for="item in taskList.slice((num-1)*10, num*10)" :key="item.id">
+          <task-item v-if="item.title.includes(search.search)" :item = item :teacher="1" :submit="false" />
+        </q-list>
+      </div>
+    </div>
+    <the-pagination
+      v-if="taskLength"
+      :limit="taskLength"
+      @change-page="changePage" />
     <q-btn color="primary" label="메인" />
-    <!-- <the-pagination
-      v-if="length.value"
-    /> -->
-      <!-- v-if="number.notDone"
-      :limit="number.notDone"
-      @change-page="changePage" -->
   </article>
 </template>
 
 <script>
-import {onBeforeMount, ref} from 'vue'
+import {onBeforeMount, ref, computed, reactive} from 'vue'
 import {useStore} from 'vuex'
 import {useRoute} from 'vue-router'
-// import TaskItem from '@/components/TaskItem.vue'
-// import ThePagination from '../components/ThePagination.vue'
+import TaskItem from '@/components/TaskItem.vue'
+import ThePagination from '../components/ThePagination.vue'
 // import {isEmpty} from 'lodash'
 export default {
   name: 'SearchTask',
   components: {
-    // TaskItem,
-    // ThePagination
+    TaskItem,
+    ThePagination
   },
   setup() {
     const store = useStore()
     const route = useRoute()
-    // let {userType} = route.params
-    let query = ref(route.query.query)
-    // const taskList = computed(() => store.getters.getTeacherDone.value)
-    // const length = computed(() => taskList.value.length)
+    let {userType} = route.params
+    const search = reactive({
+      query: route.query.query,
+      search: route.query.query,
+    })
+    const taskList = computed(() => userType === 'teacher'? store.getters.getTeacherAll : store.getters.getStudentAll)
+    const taskLength = computed(() => userType === 'teacher'? store.getters.cntTeacherAll : store.getters.cntStudentAll)
+    let page = ref(1)
+    const changePage = (value) => {
+      page.value = value
+    }
     onBeforeMount(() => {
       // console.dir(taskList)
       // if (isEmpty(taskList)) {
@@ -53,10 +53,12 @@ export default {
       // }
     })
     return {
-      // taskList,
-      query,
-      length,
-      store
+      taskList,
+      taskLength,
+      store,
+      page,
+      changePage,
+      search
     }
   }
 }

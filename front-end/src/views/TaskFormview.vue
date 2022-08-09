@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import { ref, reactive, computed} from 'vue'
+import { reactive, computed} from 'vue'
 import { useRoute } from 'vue-router'
 import {useStore} from 'vuex'
 export default {
@@ -122,7 +122,6 @@ export default {
       files: computedTask.files || null,
       deadline: computedTask.deadline || null,
     })
-    const accept = ref(false)
     const onSubmit = (arg) => {
       let form = new FormData()
       for (let key in task) {
@@ -169,7 +168,6 @@ export default {
     return {
       task,
       storeTask,
-      accept,
       userType,
       taskPk,
       type,

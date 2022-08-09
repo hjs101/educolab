@@ -40,6 +40,14 @@ export const task = {
     getCheckedSelfTask: state => state.student.checkedSelfTask,
     cntCheckedSelfTask: (state, getters) => Math.ceil(getters.getCheckedSelfTask.length/10),
     getTask: state => state.task,
+    getTeacherAll: (state, getters) => [
+    ...getters.getTeacherDone, ...getters.getTeacherNotCheck, ...getters.getTeacherNotDone, ...getters.getTeacherStudentTask
+    ],
+    cntTeacherAll: (state, getters) => Math.ceil(getters.getTeacherAll.length/10),
+    getStudentAll: (state, getters) => [
+    ...getters.getStudentNotDone, ...getters.getStudentDone, ...getters.getStudentSelfTask, ...getters.getCheckedSelfTask
+    ],
+    cntStudentAll: (state, getters) => Math.ceil(getters.getStudentAll.length/10),
   },
 
   mutations: {
