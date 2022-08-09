@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>퀴즈 메인페이지</h1>
+  <div class="baseStyle">
+    <img src="@/assets/quiz.png" alt="quiz">
       <div class="row justify-end">
         <q-btn @click="QuizCreate" color="green-13 q-mx-lg q-py-sm text-bold text-size" 
         label="퀴즈 등록" />
@@ -57,6 +57,11 @@ export default({
 </script>
 
 <style scoped>
+  /* #quiz {
+    margin: auto;
+    width: 80%;
+    font-family: "jooa";
+  } */
   .text-size {
     font-size: 1.1rem;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="q-px-xl">
+  <div class="baseStyle">
     <!-- 제목, 퀴즈 문제, 퀴즈 보기 -->
     <div v-for="quizItem in quizDetail" :key="quizItem">
       <h4>{{ quizItem.quiz_name }}</h4>
