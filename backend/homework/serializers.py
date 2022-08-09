@@ -55,11 +55,14 @@ class FileSerializer(serializers.ModelSerializer):
 
 class TeacherHomeworkDetailSerializer(serializers.ModelSerializer):
     teacher = UserNameSerializer(read_only=True)
-    student_submit = SubmitHomeworkSerializer(many=True,read_only=True)
     teacher_file = FileSerializer(many=True,read_only=True)
     class Meta:
         model = TeacherHomework
+<<<<<<< HEAD
         fields = ('id','teacher','grade','class_field','title','subject','content','updated_at','deadline','check_flag','student_submit','teacher_file')
+=======
+        fields = ('id','teacher','title','subject','content','updated_at','deadline','check_flag','teacher_file')
+>>>>>>> 373b6d1 (feat: 과제 생성 기능 수정, 상세정보 기능 수정, 제출 수정)
 
 class StudentHomeworkDetailSerializer(serializers.ModelSerializer):
     student = UserNameSerializer(read_only=True)
