@@ -1,18 +1,17 @@
 <template>
-  <div style="height: 2000px">
+  <div>
     <!-- 교사 navbar -->
     <div v-if="isLoggedIn && currentUser.userflag">
-      <div class="q-pa-md q-gutter-sm">
-        <q-bar style="height:100px;" >
-          <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
-          <div class="cursor-pointer"><router-link to="/notice">공지사항</router-link></div>
-          <div class="cursor-pointer"><router-link to="/teacher/task">과제</router-link></div>
-          <div class="cursor-pointer"><router-link to="/quiz">퀴즈</router-link></div>
-          <div class="cursor-pointer"><router-link to="/survey">설문조사</router-link></div>
-          <div class="cursor-pointer"><router-link to="/teacher">마이페이지</router-link></div>
-          <button @click="logoutBtn">로그아웃</button>
-        </q-bar>
-        <hr>
+      <div class="bord-bt">
+        <div class="q-pa-lg row items-center">
+          <a href="/educolab"><img class="q-mx-lg" src="@/assets/educolab.png" alt="educolab" style="width:4rem; height:4rem;"></a>
+          <router-link class="q-px-lg button color5" to="/notice">공지사항</router-link>
+          <router-link class="q-px-lg button color5" to="/teacher/task">과제</router-link>
+          <router-link class="q-px-lg button color5" to="/quiz">퀴즈</router-link>
+          <router-link class="q-px-lg button color5" to="/survey">설문조사</router-link>
+          <router-link class="q-px-lg button color5" to="/teacher">마이페이지</router-link>
+          <button class="q-px-lg" @click="logoutBtn">로그아웃</button>
+        </div>
       </div>
     </div>
 
@@ -32,6 +31,16 @@
       </div>
     </div>
 
+    <!-- <footer class="bord-top">
+      <div class="row justify-center items-center">
+        <img class="q-mx-md" src="@/assets/educolab.png" alt="educolab" style="width:4rem; height:4rem;">
+        <div class="ftr-size">
+          <span class="text-bold">"교육과 서비스의 조화" edu colab!!</span>
+          <p class="margin">edu colab는 학습 역량 증진 / 교육 연계 보조 / 수업의 질 향상을 목표로</p>
+          <p class="margin">교사에게는 편리한, 학생에게는 학습욕구를 팽창시켜드립니다!!ㄴ</p>
+        </div>
+      </div>
+    </footer> -->
   <router-view />
   </div>
 </template>
@@ -42,6 +51,11 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'MainPage',
+  data() {
+    return {
+      isHovering : true
+    }
+  },
   computed: {
     ...mapGetters(['isLoggedIn', 'currentUser']),
     flag() {
@@ -58,12 +72,29 @@ export default {
         this.$router.back()
       }
     },
+    selectedHovering() {
+      this.isHovering = true
+    },
+    unselectedHovering() {
+      this.isHovering = false
+    }
   },
+  created() {
+    if (this.isLoggedIn === false) {
+      this.$router.push({name:'login'})
+    }
+  }
 }
 </script>
 
 <style>
 /* 모든 페이지에서 공통으로 사용할 스타일 정의 */
+  /* #app {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-size: 1rem;
+  } */
   h3 {
     text-align: center;
   }
@@ -80,4 +111,38 @@ export default {
   .center {
     text-align: center;
   }
+  .bord-bt {
+    border-bottom: 1px solid #99DFF9;
+  }
+  .bord-top {
+    border-top: 1px solid #99DFF9;
+  }
+  .color1 {
+    color: #FF9966;
+  }
+  .color2 {
+    color: #8BFF8B;
+  }
+  .color3 {
+    color: #FFC000;
+  }
+  .color4 {
+    color: #99DFF9;
+  }
+  .color5 {
+    color: black;
+  }
+  .ftr-size {
+    font-size: 0.5rem;
+  } 
+  .margin {
+     margin: 0 
+  }
+  footer {
+    width: 100%;
+    height: 100px; /* footer의 높이 */
+    position: absolute;  
+    bottom: 0;
+  }
+
 </style>
