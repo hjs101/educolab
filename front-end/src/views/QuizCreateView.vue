@@ -20,11 +20,24 @@
     <hr>
 
     <form>
-      <div v-for="quiz in quizList" :key="quiz">
-      <quiz-item
-      :quiz="quiz"
-      />
-      <button @click="deleteQuiz(quiz, $event)">퀴즈문제 삭제</button>
+      <div v-if="quizPk">
+        <div v-for="quiz in quizData.length" :key="quiz">
+          <quiz-item
+          :quiz="quiz"
+          :quizDetail="quizDetail"
+          />
+          <button @click="deleteQuiz(quiz, $event)">퀴즈문제 삭제</button>
+        </div>
+      </div>
+
+      <div v-else>
+        <div v-for="quiz in quizList" :key="quiz">
+          <quiz-item
+          :quiz="quiz"
+          :quizDetail="quizDetail"
+          />
+          <button @click="deleteQuiz(quiz, $event)">퀴즈문제 삭제</button>
+        </div>
       </div>
     </form>
 
@@ -47,7 +60,6 @@ export default {
   setup() {
     const route = useRoute()
     let quizPk = ref(route.params.quizPk)
-    let quizList = 2
     let credentials = reactive({
       quiz: {
         title : ref('')
@@ -57,14 +69,18 @@ export default {
     return {
       credentials,
       quizPk,
-      quizList
+    }
+  },
+  data() {
+    return {
+      quizList : 2
     }
   },
   computed: {
     ...mapGetters(['quizDetail', 'quizData'])
   },
   methods: {
-    ...mapActions(['createQuiz']),
+    ...mapActions(['createQuiz', 'getQuizDetail']),
     addQuiz() {
       this.quizList++,
       this.quizData.push({})
@@ -73,6 +89,17 @@ export default {
       event.preventDefault()
       this.quizList = this.quizList - 1
       this.quizData.splice(quiz-1, 1)
+    }
+  },
+  mounted() {
+    if (this.quizPk) {
+      this.getQuizDetail(this.quizPk)
+      for (var i=0; i < this.quizDetail.length; i++) {
+        if ( this.quizDetail[i].quiz_name) {
+          this.credentials.quiz.title = this.quizDetail[i].quiz_name
+        }
+        return
+      }
     }
   }
 }

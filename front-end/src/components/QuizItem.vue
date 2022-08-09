@@ -21,7 +21,6 @@
       <q-input class="answer-border" outlined v-model="credentials.answer" style="width:40px;"></q-input>
     </div>        
     <hr>
-
     <!-- <div class="row">
       <div class="row q-mb-xl items-center" v-for="answer in quizList" :key="answer">
         <p class="bogi-size">답안 {{ answer }}.</p>
@@ -39,6 +38,7 @@ export default {
   name: 'QuizItem',
   props: {
     quiz: Number,
+    quizDetail: Object,
   },
   setup(props) {
     let num1 = ref('')
@@ -66,6 +66,18 @@ export default {
   },
   methods: {
     ...mapActions(['onQuiz'])
+  },
+  mounted() {
+    for (var i=1; i < this.quizDetail.length; i++) {
+      if (this.quiz === i) {
+        this.credentials.quiz_question = this.quizDetail[i].quiz_question
+        this.credentials.answer = this.quizDetail[i].answer
+        this.num1 = this.quizDetail[i].multiple_bogi[0]
+        this.num2 = this.quizDetail[i].multiple_bogi[1]
+        this.num3 = this.quizDetail[i].multiple_bogi[2]
+        this.num4 = this.quizDetail[i].multiple_bogi[3]
+      }
+    }
   }
 }
 </script>
