@@ -1,0 +1,472 @@
+<Main_Screen>:
+	FloatLayout:
+		size: root.width, root.height
+		Button:
+			on_release:
+				root.manager.onStop()
+			pos_hint: {"right":0.98,"top":0.98}
+			text:"x"
+			bold: True
+			color: 1,1,1,1
+			size_hint: None, None
+			halign:'center'
+			valign:'bottom'
+			size : 30,30
+			# background_normal:''
+			background_color:0,0,0,0
+			canvas.before:
+				Color:
+					rgba: 1,0,0,1
+				RoundedRectangle:
+					size: self.size
+					pos: self.pos
+					radius:[10]
+				Color:
+					rgba: 155/255,17/255,30/255,1
+				Line:
+					width:1
+					rounded_rectangle: self.x, self.y, self.width, self.height, 10
+
+		Button: # Home
+			on_release:
+				root.for_logout()
+				app.root.current="login"
+				root.manager.transition.direction='right'
+			pos_hint: {"right":0.95,"top":0.98}
+			text:"Logout"
+			font_size: 20
+			bold: True
+			color: 1,1,1,1
+			size_hint: None, None
+			halign:'center'
+			valign:'bottom'
+			size : 100,30
+			background_normal:''
+			background_color:0,0,0,0
+			canvas.before:
+				Color:
+					rgba: 66/255,75/255,90/255,1
+				RoundedRectangle:
+					size: self.size
+					pos : self.pos
+					radius:[10]
+				Color:
+					rgba: 0,0,0,1
+				Line:
+					width:1
+					rounded_rectangle: self.x, self.y, self.width, self.height, 10
+
+		BoxLayout:
+			orientation: "vertical"
+			size_hint : None, None
+			size : 1120, 700
+			pos_hint : {"center_x":0.5, "center_y":0.5}
+			padding: 40
+			spacing: 40
+			halign:'center'
+
+
+			BoxLayout:
+				orientation:"horizontal"
+				size_hint_y : .8
+
+				Label:
+					text:"EduColab"
+					color: 94/255,106/255,117/255,1
+					font_size : 90
+					bold: True
+					halign:'right'
+					valign:'middle'
+					
+					
+				FloatLayout:
+					size_hint: (0.1, 1)
+					AsyncImage:
+						source:'logo.png'
+						pos_hint:{'center_x':-1.6,'center_y':.5}
+						size_hint: None,None
+						size : 150,150
+
+			BoxLayout:
+				orientation:"horizontal"
+				spacing : 30
+
+
+				Button:
+					text:"공지사항"
+					font_size: 35
+					bold: True
+					halign:'center'
+					color: (0,0,0,1)
+
+					on_release:
+						app.root.current="Notice_list1"
+						root.manager.transition.direction="up"
+
+					background_normal:''
+					background_color: (0,0,0,0)
+					canvas.before:
+						Color:
+							rgba :(179/255,211/255,247/255,1) if self.state=='normal' else (139/255,171/255,207/255,1)
+						RoundedRectangle:
+							size: self.size
+							pos : self.pos
+							radius:[40]					
+						Color:
+							rgba: (75/255,150/255,236/255,1) if self.state=='normal' else (80/255,93/255,104/255,1)
+						Line:
+							width:2
+							rounded_rectangle: self.x, self.y, self.width, self.height, 40
+
+				Button:
+					text:"필기"
+					font_size: 35
+					bold: True
+					halign:'center'
+					color: 0,0,0,1
+
+					on_release:
+						app.root.current="Memo_list1"
+						root.manager.transition.direction="up"
+
+					background_normal:''
+					background_color: (0,0,0,0)
+					canvas.before:
+						Color:
+							rgba :(179/255,211/255,247/255,1) if self.state=='normal' else (139/255,171/255,207/255,1)
+						RoundedRectangle:
+							size: self.size
+							pos : self.pos
+							radius:[40]					
+						Color:
+							rgba: (75/255,150/255,236/255,1) if self.state=='normal' else (80/255,93/255,104/255,1)
+						Line:
+							width:2
+							rounded_rectangle: self.x, self.y, self.width, self.height, 40
+
+				Button:
+					text:"퀴즈"
+					font_size: 35
+					bold: True
+					halign:'center'
+					color: 0,0,0,1
+					
+					on_release:
+						app.root.current="Quiz_wait"
+						root.manager.transition.direction="up"
+
+					background_normal:''
+					background_color: (0,0,0,0)
+					canvas.before:
+						Color:
+							rgba :(179/255,211/255,247/255,1) if self.state=='normal' else (139/255,171/255,207/255,1)
+						RoundedRectangle:
+							size: self.size
+							pos : self.pos
+							radius:[40]					
+						Color:
+							rgba: (75/255,150/255,236/255,1) if self.state=='normal' else (80/255,93/255,104/255,1)
+						Line:
+							width:2
+							rounded_rectangle: self.x, self.y, self.width, self.height, 40
+
+
+				Button:
+					text:"설문조사"
+					font_size: 35
+					bold: True
+					halign:'center'
+					color: 0,0,0,1
+
+					on_release:
+						app.root.current="Survey_list1"
+						root.manager.transition.direction="up"
+
+					background_normal:''
+					background_color: (0,0,0,0)
+					canvas.before:
+						Color:
+							rgba :(179/255,211/255,247/255,1) if self.state=='normal' else (139/255,171/255,207/255,1)
+						RoundedRectangle:
+							size: self.size
+							pos : self.pos
+							radius:[40]					
+						Color:
+							rgba: (75/255,150/255,236/255,1) if self.state=='normal' else (80/255,93/255,104/255,1)
+						Line:
+							width:2
+							rounded_rectangle: self.x, self.y, self.width, self.height, 40
+
+					
+
+			FloatLayout:
+				orientation:"horizontal"
+				size_hint_y: 1.8
+
+				Label:
+					id:profile
+					# background_color :1,0,0,1
+					pos_hint: {"center_x":.1, "center_y":0.55}
+					size_hint: (.1, .8)
+					# #### in computer #####
+					img_path: ''
+					canvas.after:
+						Ellipse:
+							size: 200, 200
+							pos: self.pos
+							source: self.img_path # in computer
+					######################
+					# AsyncImage:
+					# 	source: 'https://cdn.pixabay.com/photo/2014/09/07/22/17/forest-438432_960_720.jpg'		
+					# 	allow_stretch: True
+				BoxLayout:
+					orientation:'vertical'
+					pos_hint: {"center_x":.65, "center_y":0.5}
+					size_hint: (.7, 1)
+
+					background_normal:''
+					background_color:0,0,0,0
+					canvas.before:
+						Color:
+							rgba:250/255,251/255,252/255,1
+						Rectangle:
+							size: self.size
+							pos : self.pos
+						Color:
+							rgba:65/255,113/255,156/255,1
+						Line:
+							width:2
+							points:(self.x, self.y, self.x+self.width, self.y)
+						Color:# outer line
+							rgba:65/255,113/255,156/255,1
+						Line:
+							width:2
+							points:(self.x, self.y+self.height, self.x+self.width, self.y+self.height)
+						Color:# inner circle
+							rgba:250/255,251/255,252/255,1
+						Line:
+							width:5
+							circle: (self.x, self.y+self.height, 2)
+						Color:
+							rgba:250/255,251/255,252/255,1
+						Line:
+							width:5
+							circle: (self.x+self.width, self.y, 2)
+						Color:# outer circle
+							rgba:65/255,113/255,156/255,1
+						Line:
+							width:2
+							circle: (self.x, self.y+self.height, 5)
+						Color:
+							rgba:65/255,113/255,156/255,1
+						Line:
+							width:2
+							circle: (self.x+self.width, self.y, 5)
+
+
+					BoxLayout:
+						orientation:'horizontal'
+						padding: 50
+						spacing: 20
+						Label:
+							id:userinfo_icon
+							background_normal:''
+							background_color:0,0,0,0
+							size_hint: None,None
+							width:40
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+
+							img_path: ''
+							canvas.after:
+								Rectangle:
+									size: 30, 30
+									pos: self.x+5, self.y+5
+									source: self.img_path # in computer
+
+						Label:
+							id:userinfo
+							size_hint: 1,None
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+							text_size: self.size
+							halign:"left"
+							valign:"middle"
+							text:"싸피중학교 3학년 1반 24번 OOO "
+							bold: True
+							font_size:25
+							color:15/255,63/255,106/255,1
+
+					BoxLayout:
+						orientation:'horizontal'
+						padding: 50
+						spacing: 15
+						Label:
+							id:challenge_icon
+							background_normal:''
+							background_color:0,0,0,0
+							size_hint: None,None
+							width:40
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+
+							img_path: ''
+							canvas.after:
+								Rectangle:
+									size: 30, 30
+									pos: self.x+5, self.y+5
+									source: self.img_path # in computer
+
+						Label:
+							id:challenge
+							size_hint: 1,None
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+							text_size: self.size
+							halign:"left"
+							valign:"middle"
+							text:"최초로 퀴즈를 1등한 자"
+							bold: True
+							font_size:25
+							color:15/255,63/255,106/255,1
+
+					BoxLayout:
+						orientation:'horizontal'
+						padding: 50
+						spacing: 15
+						Label:
+							id:good_points_icon
+							background_normal:''
+							background_color:0,0,0,0
+							size_hint: None,None
+							width:40
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+
+							img_path: ''
+							canvas.after:
+								Rectangle:
+									size: 30, 30
+									pos: self.x+5, self.y+5
+									source: self.img_path # in computer
+
+						Label:
+							id:good_points
+							size_hint: None,None
+							width:160
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+							text_size: self.size
+							halign:"left"
+							valign:"middle"
+							text:"상점 : 1201"
+							bold: True
+							font_size:25
+							color:15/255,63/255,106/255,1
+
+						Label:
+							id:bad_points_icon
+							background_normal:''
+							background_color:0,0,0,0
+							size_hint: None,None
+							width:40
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+
+							img_path: ''
+							canvas.after:
+								Rectangle:
+									size: 30, 30
+									pos: self.x+5, self.y+5
+									source: self.img_path # in computer
+
+						Label:
+							id:bad_points
+							size_hint: 1,None
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+							text_size: self.size
+							halign:"left"
+							valign:"middle"
+							text:"벌점 : 316"
+							bold: True
+							font_size:25
+							color:15/255,63/255,106/255,1
+							
+					BoxLayout:
+						orientation:'horizontal'
+						padding: 50
+						spacing: 15
+						Label:
+							id:homework_icon
+							background_normal:''
+							background_color:0,0,0,0
+							size_hint: None,None
+							width:40
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+
+							img_path: ''
+							canvas.after:
+								Rectangle:
+									size: 30, 30
+									pos: self.x+5, self.y+5
+									source: self.img_path # in computer
+
+
+						Label:
+							id:homework
+							size_hint: 1,None
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+							text_size: self.size
+							halign:"left"
+							valign:"middle"
+							text:"과제 (4) | 08/22 : SSAFY 멀티캠퍼스 방문 후기 작성"
+							bold: True
+							font_size:25
+							color:15/255,63/255,106/255,1
+						
+
+					BoxLayout:
+						orientation:'horizontal'
+						padding: 50
+						spacing: 15
+						Label:
+							id:survey_icon
+							background_normal:''
+							background_color:0,0,0,0
+							size_hint: None,None
+							width:40
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+
+							img_path: ''
+							canvas.after:
+								Rectangle:
+									size: 30, 30
+									pos: self.x+5, self.y+5
+									source: self.img_path # in computer
+
+						Label:
+							id:survey
+							size_hint: 1,None
+							height:40
+							pos_hint: {"center_x":0, "center_y":0.5}
+							text_size: self.size
+							halign:"left"
+							valign:"middle"
+							text:"설문 (4) | 08/22 : SSAFY 강의 만족도 조사"
+							bold: True
+							font_size:25
+							color:15/255,63/255,106/255,1
+
+# #test for Design
+# background_normal:''
+# background_color:0,0,0,0
+# canvas.before:
+# 	Color:
+# 		rgba:0,1,0,1
+# 	Rectangle: 
+# 		size: self.size
+# 		pos : self.pos

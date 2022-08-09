@@ -3,8 +3,8 @@
 		size: root.width, root.height
 		Button: # exit
 			on_release:
-				# root.manager.onStop()
-				root.onStop()
+				root.manager.onStop()
+				# root.onStop()
 			pos_hint: {"right":0.98,"top":0.98}
 			text:"x"
 			bold: True
@@ -30,7 +30,7 @@
 
 		Button: # Home
 			on_release:
-				app.root.current="login"
+				app.root.current="main"
 				root.manager.transition.direction=root.next_page_slide
 			pos_hint: {"right":0.95,"top":0.98}
 			text:"Home"
@@ -56,28 +56,34 @@
 					width:1
 					rounded_rectangle: self.x, self.y, self.width, self.height, 10
 
-		Button:
-			id: img
-			angle:0
-			size_hint: None, None
-			width:150
-			height:150
-			pos_hint: {'center_x': .5, 'center_y': .35}
-			on_release:
-				root.test()
-			canvas.before:
-				PushMatrix
-				Rotate:
-					angle: self.angle
-					origin: self.center
-			canvas.after:
-				PopMatrix
-			Image:
-				id:loading
-				source: ''
-				size:self.parent.size
-				center_x:self.parent.center_x
-				center_y:self.parent.center_y	
+		Label:
+			id: time
+			# text:"잔여시간 :"
+			bold:True
+			font_size: 20
+			text_size:self.size
+			# siez_hint: 
+			halign:'left'
+			valign:'center'
+			color: 95/255,107/255,117/255,1
+			size_hint: .15, None
+			height: 50
+			pos_hint: {"x":0.8,"top":0.94}
+
+		Label:
+			id: title
+			# text:"오늘 저녁 메뉴 선정"
+			bold:True
+			font_size: 40
+			text_size:self.size
+			halign:'left'
+			valign:'center'
+			color: 95/255,107/255,117/255,1
+			size_hint: .7, None
+			height: 50
+			pos_hint: {"x":0.05,"top":0.94}
+
+
 		# Button:
 		# 	angle:90
 		# 	text:"TESTSETSE--A"
@@ -117,36 +123,60 @@
 				# 	PopMatrix
 
 
-		BoxLayout:
-			orientation: "vertical"
+		GridLayout:
+			# orientation: "vertical"
 			size_hint: None, None
-			size: 960, 300
-			pos_hint: {"center_x":0.5, "center_y":0.7}
+			size: 1280, 640
+			pos_hint: {"center_x":0.5, "y":0}
 			padding: 40
 			spacing: 20
 			halign:'center'
+			cols:2
 
 
-			Label: # title
-                id:title
-				text:"대기하세요"
+			Button: # title
+                id:btn1
 				size_hint_y: .8
-				color: 94/255,106/255,117/255,1
-				font_size : 90
+				on_release: root.button_click(1)
+				background_normal:'./icon/btn1.png'
+				background_down:'./icon/btn1_push.png'
+				font_size: 90
 				bold: True
 				halign:'center'
 				valign:'middle'
-
-
-			Label: # sub_title
-				id:sub_title
-				pos_hint: {"center_x":0.5, "center_y":0.5}
-				size_hint: 1, None
-				height:50
-				font_size: 40
+			Button: # title
+                id:btn2
+				on_release: root.button_click(2)
+				background_normal:'./icon/btn2.png'
+				background_down:'./icon/btn2_push.png'
+				size_hint_y: .8
+				# color: 94/255,106/255,117/255,1
+				font_size: 90
 				bold: True
-				color: 0,0,0,1
-
+				halign:'center'
+				valign:'middle'
+			Button: # title
+                id:btn3
+				on_release: root.button_click(3)
+				background_normal:'./icon/btn3.png'
+				background_down:'./icon/btn3_push.png'
+				size_hint_y: .8
+				# color: 94/255,106/255,117/255,1
+				font_size: 90
+				bold: True
+				halign:'center'
+				valign:'middle'
+			Button: # title
+                id:btn4
+				on_release: root.button_click(4)
+				background_normal:'./icon/btn4.png'
+				background_down:'./icon/btn4_push.png'
+				size_hint_y: .8
+				# color: 94/255,106/255,117/255,1
+				font_size: 90
+				bold: True
+				halign:'center'
+				valign:'middle'
 
 
 # #test for Design

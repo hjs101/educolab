@@ -3,8 +3,8 @@
 		size: root.width, root.height
 		Button: # exit
 			on_release:
-				# root.manager.onStop()
-				root.onStop()
+				root.manager.onStop()
+				# root.onStop()
 			pos_hint: {"right":0.98,"top":0.98}
 			text:"x"
 			bold: True
@@ -30,7 +30,7 @@
 
 		Button: # Home
 			on_release:
-				app.root.current="login"
+				app.root.current="main"
 				root.manager.transition.direction=root.next_page_slide
 			pos_hint: {"right":0.95,"top":0.98}
 			text:"Home"
@@ -56,6 +56,60 @@
 					width:1
 					rounded_rectangle: self.x, self.y, self.width, self.height, 10
 
+		Button: # Home
+			on_release:
+				root.next()
+			pos_hint: {"right":0.85,"top":0.98}
+			text:"퀴즈시작"
+			font_size: 20
+			bold: True
+			color: 1,1,1,1
+			size_hint: None, None
+			halign:'center'
+			valign:'bottom'
+			size: 100,30
+			background_normal:''
+			background_color:0,0,0,0
+			canvas.before:
+				Color:
+					rgba: 66/255,75/255,90/255,1
+				RoundedRectangle:
+					size: self.size
+					pos : self.pos
+					radius:[10]
+				Color:
+					rgba: 0,0,0,1
+				Line:
+					width:1
+					rounded_rectangle: self.x, self.y, self.width, self.height, 10
+					
+		Button: # Home
+			on_release:
+				root.next2()
+			pos_hint: {"right":0.750,"top":0.98}
+			text:"결과발표"
+			font_size: 20
+			bold: True
+			color: 1,1,1,1
+			size_hint: None, None
+			halign:'center'
+			valign:'bottom'
+			size: 100,30
+			background_normal:''
+			background_color:0,0,0,0
+			canvas.before:
+				Color:
+					rgba: 66/255,75/255,90/255,1
+				RoundedRectangle:
+					size: self.size
+					pos : self.pos
+					radius:[10]
+				Color:
+					rgba: 0,0,0,1
+				Line:
+					width:1
+					rounded_rectangle: self.x, self.y, self.width, self.height, 10
+
 		Button:
 			id: img
 			angle:0
@@ -64,7 +118,7 @@
 			height:150
 			pos_hint: {'center_x': .5, 'center_y': .35}
 			on_release:
-				root.test()
+				# root.test()
 			canvas.before:
 				PushMatrix
 				Rotate:
@@ -132,7 +186,7 @@
 				text:"대기하세요"
 				size_hint_y: .8
 				color: 94/255,106/255,117/255,1
-				font_size : 90
+				font_size: 90
 				bold: True
 				halign:'center'
 				valign:'middle'
