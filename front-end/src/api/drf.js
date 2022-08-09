@@ -141,11 +141,14 @@ export default {
     quizList: () => QUIZ + 'main/',
     quizCreate: () => QUIZ + 'create/',
     quizDetail: () => QUIZ + 'detail/',
+<<<<<<< HEAD
     quizUpdate: () => QUIZ + '',
 <<<<<<< HEAD
 >>>>>>> 4918ec5 (퀴즈 CRUD 폼 작성)
   }
 =======
+=======
+>>>>>>> a482350 (퀴즈 수정  구현)
   },
 >>>>>>> 9bb5647 (메인 페이지 css)
 }

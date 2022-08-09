@@ -26,6 +26,10 @@
       </div>
     </div>
     
+    <div class="row justify-center q-my-lg">
+      <q-btn @click="deleteQuiz(quizPk)" class="q-mx-lg" color="orange-6">퀴즈 삭제</q-btn>
+      <q-btn @click="updateQuizx(quizPk)" class="q-mx-lg" color="orange-6">퀴즈 수정</q-btn>
+    </div>
     <div class="row justify-center">
       <q-btn color="green-13 q-my-xl q-py-sm text-bold bogi-size" label="퀴즈 시작하기!!" />
     </div>
@@ -46,9 +50,12 @@ export default {
     ...mapGetters(['quizDetail'])
   },
   methods: {
-    ...mapActions(['getQuizDetail'])
+    ...mapActions(['getQuizDetail', 'deleteQuiz']),
+    updateQuizx(quizPk) {
+      this.$router.push({name:'QuizCreate', params: {quizPk : quizPk}})
+    }
   },
-  created() {
+  mounted() {
     this.getQuizDetail(this.quizPk)
   }
 }
