@@ -31,6 +31,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 >>>>>>> ea51fa4 (feat : 과제기능 생성,삭제 구현, 나머지는 더 구현해야함)
 from django.contrib.auth import get_user_model
 from dj_rest_auth.registration.serializers import RegisterSerializer
+from educolab.settings import SECRET_KEY
+import jwt
 
 class UserNameSerializer(serializers.ModelSerializer):
     class Meta:
@@ -170,7 +172,7 @@ class ProfilFileSerializer(serializers.ModelSerializer):
         model = models.UserInfo
         fields = 'profil'
 
-class MyTokenRefershSerializer(TokenObtainPairSerializer):
+class MyTokenRefershSerializer(TokenRefreshSerializer):
         # response 커스텀 
     default_error_messages = {
         'no_active_account': {'message':'username or password is incorrect!',
@@ -181,15 +183,16 @@ class MyTokenRefershSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         
-        refresh = self.get_token(self.user)
-        
+        # refresh = self.get_token(self.user)
+        decode_data = jwt.decode(data['access'], SECRET_KEY, algorithms=['HS256'])
+        print(decode_data)
         # response에 추가하고 싶은 key값들 추가
-        data['name'] = self.user.name
-        data['access'] = str(refresh.access_token)
-        data['userflag'] = self.user.userflag
-        data['email'] = self.user.email
-        data['profil'] = self.user.profil.url
-        data['schoolname']=self.user.school
+        user = models.UserInfo.objects.get(username=decode_data['user_id'])
+        data['name'] = user.name
+        data['userflag'] = user.userflag
+        data['email'] = user.email
+        data['profil'] = user.profil.url
+        data['schoolname']=user.school.name
         return data
 
 class MyTokenObtainPairView(TokenObtainPairView):
