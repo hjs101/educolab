@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from accounts.serializers import UserinfoSerializer
 
 from .models import StudentHomework, TeacherHomework, Files, SubmitHomework
-from accounts.models import SchoolInfo, UserInfo
+from accounts.models import SchoolInfo, UserInfo, PointLog
 from .serializers import StudentHomeworkDetailSerializer, StudentHomeworkMainSerializer, SubmitHomeworkSerializer, SubmitHomeworksubmitSerializer, TeacherHomeworkCreateSerializer, StudentHomeworkCreateSerializer, TeacherHomeworkDetailSerializer, TeacherHomeworkMainSerializer
 
 from datetime import datetime
@@ -221,8 +221,12 @@ class HomeworkCheckView(APIView): # 채점
             username = request.data.get('username')
             point = request.data.get('point')
             student = UserInfo.objects.get(username=username)
-            student.plus_point += point
-            student.acc_point += point
+            if point > 0:
+                student.plus_point += point
+                student.acc_point += point
+            else:
+                student.minus_point += point
+            PointLog.objects.create(teacher=request.user,student=student,content="과제 점수",point=point)
             student.save()
             students = UserinfoSerializer(student)
             return Response(students.data)
