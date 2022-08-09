@@ -33,6 +33,7 @@ class Login_Screen(Screen):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/login/', data=self.data)
 =======
         self.res = requests.post('http://127.0.0.1:8000/accounts/login/', data=self.data)
@@ -40,6 +41,9 @@ class Login_Screen(Screen):
 =======
         self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/login/', data=self.data)
 >>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
+=======
+        self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/login/', data=self.data)
+>>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
 
         if len(self.ID) == 0 or len(self.PW) == 0 or self.res.status_code == 401:
             self.next_flag = 0 ## 현재 페이지 유지 + 팝업

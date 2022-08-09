@@ -3,6 +3,7 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image, AsyncImage
+<<<<<<< HEAD
 import requests
 from myTextInput import limitedTextInput
 from kivy.properties import NumericProperty
@@ -10,6 +11,12 @@ from myPopup import MyPopUp2
 
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
+=======
+import requests, json
+from myTextInput import limitedTextInput
+from kivy.properties import NumericProperty
+from myPopup import MyPopUp2, MyPopUp3
+>>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
 
 class Survey_Select_Screen(Screen):
     percent=NumericProperty(0.7)
@@ -27,6 +34,7 @@ class Survey_Select_Screen(Screen):
         # Builder.load_file('survey_select.kv')
         self.key_color=[0/255, 176/255, 240/255,1]
         self.popup = MyPopUp2()
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -70,6 +78,34 @@ class Survey_Select_Screen(Screen):
         else:
             for i in range(5):
                 self.ids['ans'+str(i+1)].group=str(self.prob_num)+'ans'
+=======
+        self.popup2 = MyPopUp3()
+    
+    def on_pre_enter(self):
+        self.check_flag=True
+        self.end_flag = False
+        self.prob_num=self.manager.prob_num
+        # with open("./login_info.json", 'r', encoding='utf-8') as file:
+        #     data = json.load(file)
+        #     self.acc_token = data["access"]
+        self.res = requests.get(
+            'https://i7c102.p.ssafy.io/api/survey/detail',
+            params={'survey_num': self.manager.content_number},
+            headers={'Authorization' : 'Bearer ' + self.manager.access_api()}
+        )
+        self.data_full = json.loads(self.res.text)
+        self.result=[]
+
+        ##**# 문제 표기
+        self.ids.title.text=self.data_full[0]['survey_name']
+        self.ids.prob.text ="<" + str(self.prob_num) + "번 문항>\n" + self.data_full[self.prob_num]['survey_question']
+        temp_list = str(self.data_full[self.manager.prob_num]['multiple_bogi']).split('/')
+
+        for i in range(5):
+            self.ids['ex'+str(i+1)].text=temp_list[i]
+        for i in range(5):
+            self.ids['ans'+str(i+1)].group=str(self.prob_num)+'ans'
+>>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
         
 
         # 이전 답변이 있다면 복구
@@ -82,6 +118,7 @@ class Survey_Select_Screen(Screen):
         else: self.ids.before.source='./icon/left_button.png'
         if self.prob_num==self.manager.max_prob_num: self.ids.after.source='./icon/None.png'
         else: self.ids.after.source='./icon/right_button.png'
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -102,6 +139,13 @@ class Survey_Select_Screen(Screen):
 >>>>>>> 3a6f217 (Fix : 설문조사 문항 오류 수정)
         self.ids.progress.text=f'{self.percent*100:.1f}%'
 
+=======
+        self.percent=len(self.manager.survey_ans)/self.manager.max_prob_num
+        if self.percent==0: self.percent=0.00001
+        self.ids.progress.text=f'{self.percent*100:.1f}%'
+
+
+>>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
     def next_flag_setup(self, btn_direction): ##### list 옆 페이지로 넘어가는 self.next_flag 정의
         self.next_flag=1
         if btn_direction=="before" and self.prob_num==1:
@@ -116,8 +160,13 @@ class Survey_Select_Screen(Screen):
         if self.next_flag:
             ##**# 다음 페이지의 문항 번호 = self.manager.page_num (업데이트함)
             ##**# 다음 페이지의 문항 종류 = next_page_type (이거 정의해주세요)
+<<<<<<< HEAD
             next_page_type = True  # 객관식
             # next_page_type = False # 주관식
+=======
+            if self.data_full[self.manager.prob_num]['multiple_bogi'] == None: next_page_type = False
+            else: next_page_type = True
+>>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
             #페이지 이동
             if next_page_type: # 객관식 > 객관식
                 if self.name=="Survey_select1": self.next_page="Survey_select2"
@@ -131,10 +180,15 @@ class Survey_Select_Screen(Screen):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 3a6f217 (Fix : 설문조사 문항 오류 수정)
         if self.check_flag:
             self.manager.survey_ans.pop(str(self.prob_num),None)
+=======
+        if self.check_flag:
+            self.manager.survey_ans.pop(self.data_full[self.prob_num]['id'], None)
+>>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
 
             if value==True:
                 self.result.append(ans_num)
@@ -143,6 +197,7 @@ class Survey_Select_Screen(Screen):
             
             self.result.sort()
             if len(self.result)!=0:
+<<<<<<< HEAD
                 self.manager.survey_ans[str(self.prob_num)]=self.result.copy()
             self.manager.survey_ans=dict(sorted(self.manager.survey_ans.items()))
             # print(self.manager.survey_ans)
@@ -172,6 +227,14 @@ class Survey_Select_Screen(Screen):
 =======
 
 >>>>>>> 3a6f217 (Fix : 설문조사 문항 오류 수정)
+=======
+                self.manager.survey_ans[self.data_full[self.prob_num]['id']]=self.result.copy()
+            self.manager.survey_ans=dict(sorted(self.manager.survey_ans.items()))
+
+            self.percent=len(self.manager.survey_ans)/self.manager.max_prob_num
+            self.ids.progress.text=f'{self.percent*100:.1f}%'
+            if self.percent == 1.0: self.end_flag = True
+>>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
 
     def toggle_btn(self, btn): # 체크박스 뿐 아니라 보기를 눌렀을 때 활성화 하기 위한 용도의 함수
         if self.ids[btn].active==True:
@@ -179,6 +242,7 @@ class Survey_Select_Screen(Screen):
         else:
             self.ids[btn].active=True
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -223,10 +287,17 @@ class Survey_Select_Screen(Screen):
 >>>>>>> 3a6f217 (Fix : 설문조사 문항 오류 수정)
             self.popup.ids.alert.text="설문이 완료되었습니다. 종료하시겠습니까?\n설문 종료시 답변을 더 이상 수정할 수 없습니다"
             self.popup.open()
+=======
+    def onPopUp(self, btn_flag):
+        if self.end_flag and btn_flag:
+            self.popup2.ids.alert.text="설문이 완료되었습니다"
+            self.popup2.open()
+>>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
         else:
             self.popup.ids.alert.text="설문이 끝나지 않았습니다. 종료하시겠습니까?\n종료시 현재까지 진행된 내용은 저장하지 않습니다."
             self.popup.open()
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -253,6 +324,14 @@ class Survey_Select_Screen(Screen):
         for i in range(5):
             self.ids['ans'+str(i+1)].active=False
 
+=======
+    def on_leave(self):
+        self.check_flag=False
+        for i in range(5):
+            self.ids['ans'+str(i+1)].active=False
+
+
+>>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
 class survey_test_App(App):
     def build(self):
         Builder.load_file('survey_select.kv')

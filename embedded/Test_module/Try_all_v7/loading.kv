@@ -1,0 +1,38 @@
+<Loading_Screen>:
+	FloatLayout:
+		size: root.width, root.height
+		Button:
+			on_release:
+				root.manager.onStop()
+			pos_hint: {"right":0.98,"top":0.98}
+			text:"x"
+			bold: True
+			color: 1,1,1,1
+			size_hint: None, None
+			halign:'center'
+			valign:'bottom'
+			size : 30,30
+			background_normal:''
+			background_color:0,0,0,0
+			canvas.before:
+				Color:
+					rgba: (1,0,0,1)
+				RoundedRectangle:
+					size: self.size
+					pos : self.pos
+					radius:[10]
+				Color:
+					rgba: 155/255,17/255,30/255,1
+				Line:
+					width:1
+					rounded_rectangle: self.x, self.y, self.width, self.height, 10
+
+# #test for Design
+# background_normal:''
+# background_color:0,0,0,0
+# canvas.before:
+# 	Color:
+# 		rgba:0,1,0,1
+# 	Rectangle: 
+# 		size: self.size
+# 		pos : self.pos
