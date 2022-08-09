@@ -8,6 +8,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div style="height: 2000px">
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -47,6 +48,9 @@
         <hr>
 =======
   <div id="app">
+=======
+  <div>
+>>>>>>> c9ecd87 (퀴즈 임베디드 연동)
     <!-- 교사 navbar -->
     <div v-if="isLoggedIn && currentUser.userflag">
       <div class="bord-bt">
@@ -246,11 +250,12 @@ export default {
 
 <style>
 /* 모든 페이지에서 공통으로 사용할 스타일 정의 */
-  #app {
+  /* #app {
     margin: 0;
     padding: 0;
     height: 100%;
-  }
+    font-size: 1rem;
+  } */
   h3 {
     text-align: center;
   }

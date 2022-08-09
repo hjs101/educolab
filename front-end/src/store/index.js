@@ -18,7 +18,11 @@ import { task } from './modules/task.js'
 >>>>>>> 194924a (Feat: 생성 기능 구현 중)
 =======
 import { survey } from './modules/survey.js'
+<<<<<<< HEAD
 >>>>>>> 452a9d1 (설문조사  등록)
+=======
+import { quiz } from './modules/quiz.js'
+>>>>>>> c9ecd87 (퀴즈 임베디드 연동)
 
 export default createStore({
   state () {
@@ -34,6 +38,7 @@ export default createStore({
   actions() {
   },
   modules: {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -80,5 +85,8 @@ export default createStore({
 =======
     accounts, notice, survey
 >>>>>>> 452a9d1 (설문조사  등록)
+=======
+    accounts, notice, survey, quiz
+>>>>>>> c9ecd87 (퀴즈 임베디드 연동)
   }
 })
