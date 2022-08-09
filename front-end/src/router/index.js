@@ -635,6 +635,7 @@ const routes = [
     component: () => import('@/views/QuizDetailView')
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // 로그아웃
   {
@@ -655,6 +656,36 @@ const routes = [
 =======
   },
 <<<<<<< HEAD
+=======
+  /////////////////////테스트 뷰////////////////////////////////////
+  // 퀴즈 실시간
+  { //대기
+    path: '/quiz/online01/',
+    name: 'Quiz-online-wait',
+    component: () => import('@/views/Quiz01-wait')
+  },
+  { //문제만 띄우기
+    path: '/quiz/online02/',
+    name: 'Quiz-online-title',
+    component: () => import('@/views/Quiz02-title')
+  },
+  { //문제, 보기 띄우기
+    path: '/quiz/online03/',
+    name: 'Quiz-online-prob',
+    component: () => import('@/views/Quiz03-problem')
+  },
+  { //문제 답안 띄우기
+    path: '/quiz/online04/',
+    name: 'Quiz-online-ans',
+    component: () => import('@/views/Quiz04-answer')
+  },
+  { //랭킹 결과 띄우기
+    path: '/quiz/online05/',
+    name: 'Quiz-online-result',
+    component: () => import('@/views/Quiz05-result')
+  },
+  //////////////////////////////////////////////////////////////////
+>>>>>>> 3d004ff (Feat : 실시간 Quiz 개발 환경 추가)
   // 존재하지 않는 페이지
   {
     path: '/:anything',
