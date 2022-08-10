@@ -15,6 +15,7 @@ class QuizQuestions(models.Model):
     quiz_question = models.CharField(max_length=500)
     multiple_bogi = models.CharField(max_length=500)
     answer = models.IntegerField()
+<<<<<<< HEAD
 >>>>>>> cc4ab69 (Fix : 퀴즈 기능 모델 오류)
 
 class QuizQuestions(models.Model):
@@ -34,3 +35,5 @@ class QuizQuestions(models.Model):
 >>>>>>> f25ab0c (Fix : AWS 파일 옮기기)
 =======
 >>>>>>> cc4ab69 (Fix : 퀴즈 기능 모델 오류)
+=======
+>>>>>>> ae59a9c (Feat : 채팅 소켓 진행상황 저장저)
