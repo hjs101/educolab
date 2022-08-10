@@ -138,7 +138,7 @@ export const accounts = {
       access: localStorage.getItem("access") || "",
 <<<<<<< HEAD
       currentUser: {
-        userflag : true
+        userflag : false
       },
       authError: null,
 <<<<<<< HEAD

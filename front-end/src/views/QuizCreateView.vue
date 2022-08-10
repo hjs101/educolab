@@ -1,5 +1,5 @@
 <template>
-  <div class="baseStyle q-px-xl">
+  <div class="baseStyle">
     <h4>퀴즈 등록 페이지</h4>
     <div class="row justify-end q-mx-xl">
       <q-btn class="q-mb-md text-bold q-pa-md" color="green-13">퀴즈 등록</q-btn>

@@ -7,6 +7,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 64e711e (공지사항 상세페이지 버그 수)
 =======
@@ -37,6 +38,9 @@
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <div class="center">
+=======
+    <div class="baseStyle">
+>>>>>>> d127577 (기능별 메인 페이지 구성)
       <h3>제목 : {{ noticeItem.notice.title }}</h3>
       <p>등록일 : {{ noticeItem.notice.updated_at }}</p>
       <p>작성자 : {{ noticeItem.notice.teacher.name }}</p>

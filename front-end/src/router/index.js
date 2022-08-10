@@ -234,6 +234,7 @@ const routes = [
   // 공지사항 작성
   {
     path: '/notice/create/:noticePk?',
+<<<<<<< HEAD
     name: 'NoticeForm',
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -257,6 +258,9 @@ const routes = [
 >>>>>>> 5d02b22 (네브바, 컴포넌트 구성)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+    name: 'NoticeCreate',
+>>>>>>> d127577 (기능별 메인 페이지 구성)
     component: () => import('@/views/NoticeFormView')
   },
 <<<<<<< HEAD
@@ -448,7 +452,7 @@ const routes = [
 
   // 포인트 상점(학생)
   {
-    path: '/student/store',
+    path: '/student/point',
     name: 'StudentStoreView.vue',
     component: () => import('@/views/StudentStoreView')
   },

@@ -59,7 +59,7 @@
     <!-- 교사 navbar -->
     <div v-if="isLoggedIn && currentUser.userflag">
       <div class="bord-bt">
-        <div class="q-py-md q-px-xl row items-center jooa-font font-size2">
+        <div class="q-py-md q-px-xl row items-center jooa-font nav-size">
           <a href="/educolab"><img class="q-mx-lg" src="@/assets/educolab.png" alt="educolab" style="width:4rem; height:4rem;"></a>
           <router-link class="q-px-xl button color5" to="/notice">공지사항</router-link>
           <router-link class="q-px-xl button color5" to="/teacher/task">과제</router-link>
@@ -90,6 +90,7 @@
 
     <!-- 학생 navbar -->
     <div v-if="isLoggedIn && !currentUser.userflag">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -137,9 +138,17 @@
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
 >>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
+=======
+      <div class="bord-bt">
+        <div class="q-py-md q-px-xl row items-center jooa-font nav-size">
+          <a href="/educolab"><img class="q-mx-lg" src="@/assets/educolab.png" alt="educolab" style="width:4rem; height:4rem;"></a>
+          <router-link class="q-px-xl button color5" to="/notice">공지사항</router-link>
+          <router-link class="q-px-xl button color5" to="/student/task">과제</router-link>
+          <router-link class="q-px-xl button color5" to="/student/point">포인트 상점</router-link>
+          <router-link class="q-px-xl button color5" to="/student">마이페이지</router-link>
+>>>>>>> d127577 (기능별 메인 페이지 구성)
           <button @click="logoutBtn">로그아웃</button>
-        </q-bar>
-        <hr>
+        </div>
       </div>
     </div>
 <<<<<<< HEAD
@@ -204,7 +213,6 @@ import { mapGetters, mapActions } from 'vuex'
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
 >>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
-
 
 export default {
   name: 'MainPage',
@@ -344,11 +352,16 @@ export default {
     font-family: "jooa";
   }
 
+<<<<<<< HEAD
   .font-size2 {
     font-size: 1.1rem
   }
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+  .nav-size {font-size: 1.3rem}
+
+>>>>>>> d127577 (기능별 메인 페이지 구성)
   h3 {
     text-align: center;
   }

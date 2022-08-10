@@ -36,7 +36,9 @@ createApp(App).use(store).use(router).mount('#app')
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 import { Quasar } from 'quasar'
 import quasarUserOptions from './quasar-user-options'
+import VueCookies from 'vue-cookies'
 
+<<<<<<< HEAD
 createApp(App).use(Quasar, quasarUserOptions).use(store).use(router).mount('#app')
 <<<<<<< HEAD
 >>>>>>> 34b83a2 (Feat : 퀘이사 UI Framework 적용)
@@ -51,3 +53,10 @@ createApp(App)
 >>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+createApp(App).use(Quasar, quasarUserOptions).use(store).use(router).use(VueCookies).mount('#app')
+
+// Require dependencies
+// Vue.use(VueCookies);
+// Vue.$cookies.config("7d");
+>>>>>>> d127577 (기능별 메인 페이지 구성)

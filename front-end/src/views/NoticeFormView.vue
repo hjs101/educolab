@@ -3,9 +3,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
   <div class="q-px-xl">
+=======
+  <div class="baseStyle">
+>>>>>>> d127577 (기능별 메인 페이지 구성)
     <h1>공지 작성,수정 페이지</h1>
     <!-- {{credentials.classification}}
     <br>

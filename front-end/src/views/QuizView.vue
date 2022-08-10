@@ -44,16 +44,23 @@
     <h1>퀴즈 메인페이지</h1>
 =======
   <div class="baseStyle">
+<<<<<<< HEAD
     <img src="@/assets/quiz.png" alt="quiz">
 >>>>>>> 6ecfa2b (기본 폰트, 스타일 적용)
+=======
+    <img src="@/assets/퀴즈.png" alt="quiz" style="height:150px;">
+>>>>>>> d127577 (기능별 메인 페이지 구성)
       <div class="row justify-end">
-        <q-btn @click="QuizCreate" color="green-13 q-mx-lg q-py-sm text-bold text-size" 
-        label="퀴즈 등록" />
+        <q-btn @click="QuizCreate" class="text-size" 
+        color="green-13 q-mx-lg q-py-sm" label="퀴즈 등록" />
       </div>
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 >>>>>>> 4918ec5 (퀴즈 CRUD 폼 작성)
 =======
+=======
+>>>>>>> d127577 (기능별 메인 페이지 구성)
     <div class="q-pa-md">
       <q-markup-table>
         <thead>
@@ -110,9 +117,6 @@ import { mapActions, mapGetters } from "vuex";
 >>>>>>> c9ecd87 (퀴즈 임베디드 연동)
 
 export default({
-  setup() {
-
-  },
   computed: { 
     ...mapGetters(['quiz'])
   },
@@ -141,13 +145,8 @@ export default({
 </script>
 
 <style scoped>
-  /* #quiz {
-    margin: auto;
-    width: 80%;
-    font-family: "jooa";
-  } */
   .text-size {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   .text-nodec {
     text-decoration: none;
