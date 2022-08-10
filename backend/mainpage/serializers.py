@@ -14,9 +14,12 @@ class EventSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> cda8e1a (feat : 채점 여부 플래그)
+=======
+>>>>>>> 9c48d5b (Fix : back branch와 merge 후 충돌 수정2)
 class MainpageNoticeSerializer(serializers.ModelSerializer):
 
     class Meta:

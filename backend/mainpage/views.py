@@ -9,9 +9,12 @@ from .models import Event
 from notice.models import Notice
 from .serializers import AccRankSerializer, EventSerializer, MainpageNoticeSerializer, MainpageTHomeworkSerializer, MainpageTeacherhomeworkSerializer
 <<<<<<< HEAD
+<<<<<<< HEAD
 from notice.serializers import NoticeMainSerializer
 =======
 >>>>>>> cda8e1a (feat : 채점 여부 플래그)
+=======
+>>>>>>> 9c48d5b (Fix : back branch와 merge 후 충돌 수정2)
 
 from datetime import datetime
 from django.db.models import Sum
