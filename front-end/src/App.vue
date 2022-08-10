@@ -3,13 +3,13 @@
     <!-- 교사 navbar -->
     <div v-if="isLoggedIn && currentUser.userflag">
       <div class="bord-bt">
-        <div class="q-pa-lg row items-center">
+        <div class="q-py-md q-px-xl row items-center jooa-font font-size2">
           <a href="/educolab"><img class="q-mx-lg" src="@/assets/educolab.png" alt="educolab" style="width:4rem; height:4rem;"></a>
-          <router-link class="q-px-lg button color5" to="/notice">공지사항</router-link>
-          <router-link class="q-px-lg button color5" to="/teacher/task">과제</router-link>
-          <router-link class="q-px-lg button color5" to="/quiz">퀴즈</router-link>
-          <router-link class="q-px-lg button color5" to="/survey">설문조사</router-link>
-          <router-link class="q-px-lg button color5" to="/teacher">마이페이지</router-link>
+          <router-link class="q-px-xl button color5" to="/notice">공지사항</router-link>
+          <router-link class="q-px-xl button color5" to="/teacher/task">과제</router-link>
+          <router-link class="q-px-xl button color5" to="/quiz">퀴즈</router-link>
+          <router-link class="q-px-xl button color5" to="/survey">설문조사</router-link>
+          <router-link class="q-px-xl button color5" to="/teacher">마이페이지</router-link>
           <button class="q-px-lg" @click="logoutBtn">로그아웃</button>
         </div>
       </div>
@@ -96,11 +96,19 @@ export default {
     src: url("@/assets/fonts/BMJUA_ttf.ttf");
   }
 
+  .jooa-font {
+    font-family: "jooa"
+  }
+
   /* 컴포넌트 기본 css */
   .baseStyle {
     width: 80%;
     margin: auto;
     font-family: "jooa";
+  }
+
+  .font-size2 {
+    font-size: 1.1rem
   }
   h3 {
     text-align: center;
