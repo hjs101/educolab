@@ -19,32 +19,38 @@ class Main_Screen(Screen):
 
     def on_pre_enter(self):
         with open("./login_info.json", 'r') as file:
-            # 학생정보 db 받아오기
             self.data = json.load(file)
-            self.school_name = self.data["schoolname"] + ' '
-            self.query2 = 'select grade, class_field, name, plus_point, minus_point from accounts_userinfo where email=%s and name=%s'
-            self.args2 = (self.data["email"], self.data["name"])
-            self.cur2 = self.manager.DB.execute(query=self.query2, args=self.args2)
-            for (grade, class_field, name, plus_point, minus_point) in self.cur2:
-                self.student_name = name
-                self.grade = str(grade) + '학년 '
-                self.class_field = str(class_field) + '반 '
-                self.plus_point = str(plus_point)
-                self.minus_point = str(minus_point)
-            self.res = requests.get(
-                'https://i7c102.p.ssafy.io/api/survey/main_stu',
-                headers={'Authorization' : 'Bearer ' + self.manager.access_api()}
-            )
-            self.survey_full = json.loads(self.res.text)
-            self.survey_cnt = len(self.survey_full)
-            self.current_survey = self.survey_full[0]['title']
+        self.school_name = self.data["schoolname"] + ' '
+        self.query1 = 'select username, grade, class_field, name, plus_point, minus_point from accounts_userinfo where email=%s and name=%s'
+        self.args1 = (self.data["email"], self.data["name"])
+        self.cur1 = self.manager.DB.execute(query=self.query1, args=self.args1)
+        for (username, grade, class_field, name, plus_point, minus_point) in self.cur1:
+            self.student_id = username
+            self.student_name = name
+            self.grade = str(grade) + '학년 '
+            self.class_field = str(class_field) + '반 '
+            self.plus_point = str(plus_point)
+            self.minus_point = str(minus_point)
+
+        self.res = requests.get(
+            'https://i7c102.p.ssafy.io/api/survey/main_stu',
+            headers={'Authorization' : 'Bearer ' + self.manager.access_api()}
+        )
+        self.survey_full = json.loads(self.res.text)
+        self.survey_cnt = len(self.survey_full)
+        self.current_survey = self.survey_full[0]['title']
+
+        self.query2 = 'select title from pointshop_ptitle inner join accounts_userinfo_own_title on pointshop_ptitle.id=accounts_userinfo_own_title.ptitle_id where accounts_userinfo_own_title.userinfo_id=%s'
+        self.args2 = (self.student_id, )
+        self.cur2 = self.manager.DB.execute(query=self.query2, args=self.args2)
+        for (title, ) in self.cur2: self.emblem = title
 
         # 적용
         self.ids.userinfo.text=self.school_name + self.grade + self.class_field + self.student_name
         self.ids.good_points.text="상점: " + self.plus_point
         self.ids.bad_points.text="벌점: " + self.minus_point
 
-        self.ids.challenge.text="최초로 퀴즈를 1등한 자"
+        self.ids.challenge.text=self.emblem
         self.ids.homework.text="과제 (4) | 08/22 : SSAFY 멀티캠퍼스 방문 후기 작성"
         self.ids.survey.text="설문 (" + str(self.survey_cnt) + ") | " + self.current_survey
 
