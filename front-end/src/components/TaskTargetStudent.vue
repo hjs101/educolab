@@ -22,7 +22,6 @@
     <message-pop-up
       v-if="confirm.isTrue"
       :message="message"
-      :path="user.path"
       @reverse="confirm.prompt = false"
     />
   </div>
@@ -39,6 +38,8 @@ export default {
   name: 'TaskTargetStudent',
   props: {
     item: Object,
+    deadline: String,
+    checkFlag: Boolean,
   },
   components: {
     MessagePopUp
@@ -50,7 +51,8 @@ export default {
     let point = ref(null)
     let submitState = computed(() => props.item.submit_flag?'제출':'미제출')
     let message = ref(null)
-    let isChecked = ref(false)
+    // 학생별 check_flag도!
+    let isChecked = computed(() => props.deadline >= dayjs().format('YYYY-MM-DD') || props.checkFlag)
     const confirm = reactive({
       prompt: false,
       isTrue: computed(() => confirm.prompt)
@@ -61,6 +63,7 @@ export default {
         method: 'post',
         headers: store.getters.authHeader,
         data: {
+          pk: props.item.id,
           username: props.item.student.username,
           point: point.value * 1,
         },
@@ -81,6 +84,7 @@ export default {
       submitState,
       url,
       point,
+      message,
       confirm,
       checkTask,
       isChecked

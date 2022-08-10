@@ -1,6 +1,5 @@
 import drf from "@/api/drf.js"
 import router from "@/router"
-// import router from "@/router"
 import axios from "axios"
 
 export const task = {
@@ -154,17 +153,18 @@ export const task = {
         'Content-Type': 'multipart/form-data'},
         data,
       })
-      .then((res)=> {
+      .then(()=> {
         // 새로고침 -> currentUser가 날아가면서 오류 생김
-        if (data.get('teacher_flag')) {
+        if (getters.currentUser.userflag) {
+          console.log(data.get('pk'))
           router.push({name: 'TaskDetailView', params: {
             userType: getters.currentUser.userflag? 'teacher': 'student',
             taskType: 'lecture',
-            taskPk: res.data.pk
+            taskPk: data.get('pk')
           }}) 
         } else {
           router.push({name: 'TaskListView', params: {
-            userType: getters.currentUser.userflag? 'teacher': 'student',
+            userType: 'student',
         }})
       }})
       .catch(err => {

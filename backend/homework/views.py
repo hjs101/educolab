@@ -282,7 +282,9 @@ class HomeworkDetailView(APIView):
 
 class HomeworkCheckView(APIView): # 채점
     def post(self, request):
+        print(request.data)
         if request.user.userflag == True:
+            print('true')
             submit = SubmitHomework.objects.get(id=request.data.get('pk'))
             if submit.check_flag == True:
                 return Response({"success" : False, "message" : "이미 채점된 제출입니다"})

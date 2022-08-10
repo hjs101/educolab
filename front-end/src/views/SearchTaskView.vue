@@ -8,13 +8,9 @@
     </router-link>
     <br>
     검색 결과
-    <!-- <div v-for="num in taskLength" :key="num">
-      <div v-if="num === page"> -->
-        <q-list bordered class="rounded-borders" v-for="item in search.list.slice((page-1)*10, page*10)" :key="item.id">
-          <task-item :item = item :teacher="1" :submit="false" />
-        </q-list>
-      <!-- </div>
-    </div> -->
+    <q-list bordered class="rounded-borders" v-for="item in search.list.slice((page-1)*10, page*10)" :key="item.id">
+      <task-item :item = item :teacher="1" :submit="false" />
+    </q-list>
     <the-pagination
       v-if="search.length"
       :limit="search.length"

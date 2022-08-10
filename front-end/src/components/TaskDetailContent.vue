@@ -29,19 +29,19 @@
       <article v-if="isTeacher">
         <!-- 자신이 작성한 상세 페이지에서 -->
         <div v-if="isLecture">
-          <q-btn color="primary" label="채점 완료" @click="checkComplete" />
+          <q-btn color="primary" label="채점 완료" @click="checkComplete" v-if="possibleCheck" />
           <q-list bordered class="rounded-borders" v-for="item in task.student_submit" :key="item.id">
-            <task-target-student :item="item" />
+            <task-target-student :item="item" :deadline="task.homework?.deadline" :checkFlag="task.homework?.check_flag" />
           </q-list>
         </div>
         <!-- 학생이 작성한 과제 상세 페이지에서 -->
-        <div v-else>
+        <div v-else-if="!task.agreement">
           <q-input v-if="task.student" v-model="point" type="number" label="점수" min="-1" max="5"/>
           <div  v-if="!task.homework?.check_flag">
             <q-btn color="primary" label="채점 완료" @click="checkStudent" />
           </div>
-        </div>
           <hr>
+        </div>
       </article>
     </q-card-section>
   </q-card-section>
@@ -76,6 +76,13 @@ export default {
         return props.task.homework['check_flag']? '채점 완료':'채점 미완료'
       } else {
         return props.task['agreement']? '채점 완료':'채점 미완료'
+      }
+    })
+    let possibleCheck = computed(() => {
+      if (props.task.homework?.deadline >= dayjs().format('YYYY-MM-DD') || props.task.homework?.check_flag) {
+        return false
+      } else {
+        return true
       }
     })
     const files = computed(() => {
@@ -146,7 +153,8 @@ export default {
       checkStudent,
       point,
       files,
-      isLecture
+      isLecture,
+      possibleCheck,
     }
   },
 }
