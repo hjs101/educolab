@@ -94,7 +94,7 @@ class WindowManager(ScreenManager):
         self.res = requests.post(
             'https://i7c102.p.ssafy.io/api/survey/submit/',
             headers={'Authorization' : 'Bearer ' + self.access_api()},
-            data=self.send_data
+            json=self.send_data
         )
 
 class masterApp(App):

@@ -71,7 +71,10 @@ class List_Screen(Screen):
             self.ids.after2.source='./icon/right_double.png'
 
     def notice_list(self):
-        res = requests.get('https://i7c102.p.ssafy.io/api/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
+        res = requests.get(
+            'https://i7c102.p.ssafy.io/api/notice/main',
+            headers={'Authorization' : 'Bearer ' + self.manager.access_api()}
+        )
         data_full = json.loads(res.text)
         self.manager.max_page_num = int(len(data_full) / 5) + 1
         data_full.sort(key=lambda x: -x['pk'])
