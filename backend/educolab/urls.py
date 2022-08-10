@@ -201,6 +201,7 @@ urlpatterns = [
     path('api/survey/', include('survey.urls')),
     path('api/mypage/', include('mypage.urls')),
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     path('api/main/', include('mainpage.urls')),
 <<<<<<< HEAD
@@ -209,6 +210,12 @@ urlpatterns = [
     path('api/quiz/', include('quiz.urls')),
     path('api/chat/', include('chat.urls')),
 >>>>>>> ce3d1c2 (채팅 실습해보기)
+=======
+    path('api/mainpage/', include('mainpage.urls')),
+    path('api/quiz/', include('quiz.urls')),
+    path('api/pointshop/', include('pointshop.urls')),
+    path('api/chat/', include('chat.urls')),
+>>>>>>> fee697e (Fix : merge 변경사항 병합)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 >>>>>>> 1d03a62 (Backend file 삽입)
