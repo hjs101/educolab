@@ -22,7 +22,7 @@ class UserinfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = '__all__'
-
+        
 # jwt token 결과 커스텀 
 
 class SchoolInfoSerializer(serializers.ModelSerializer):
