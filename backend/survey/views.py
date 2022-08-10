@@ -170,11 +170,8 @@ class SurveyStatDetailView(APIView):
 class SurveySubmitView(APIView):
     def post(self, req):
 
-        answers = req.POST.getlist('answers')
+        answers = req.data['answers']
         survey = SurveyList.objects.get(id=req.data['survey_num'])
-        print("answers:")
-        print(answers)
-        print(answers)
 
         userauth = survey.target.filter(username=req.user.username).exists()
         if not userauth:
