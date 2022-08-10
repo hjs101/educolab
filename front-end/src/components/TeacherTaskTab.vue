@@ -19,13 +19,13 @@
 
     <q-tab-panels v-model="tab">
       <q-tab-panel name="notCheck">
-        <div v-for="num in number.notCheck" :key="num">
-          <div v-if="num === page.notCheck">
-            <q-list bordered class="rounded-borders" v-for="item in totalList.notCheck.slice((num-1)*10, num*10)" :key="item.pk">
-              <task-item :item = item :teacher="1"/>
-            </q-list>
-          </div>
-        </div>
+        <q-list
+          bordered
+          class="rounded-borders"
+          v-for="item in totalList.notCheck.slice((page.notCheck-1)*10, page.notCheck*10)"
+          :key="item.pk">
+          <task-item :item = item :teacher="1" />
+        </q-list>
         <the-pagination
           v-if="number.notCheck"
           :limit="number.notCheck"
@@ -35,13 +35,13 @@
       </q-tab-panel>
 
       <q-tab-panel name="studentTask">
-        <div v-for="num in number.studentTask" :key="num">
-          <div v-if="num === page.studentTask">
-            <q-list bordered class="rounded-borders" v-for="item in totalList.studentTask.slice((num-1)*10, num*10)" :key="item.pk">
-              <task-item :item = item :teacher="0"/>
-            </q-list>
-          </div>
-        </div>
+        <q-list
+          bordered
+          class="rounded-borders"
+          v-for="item in totalList.studentTask.slice((page.studentTask-1)*10, page.studentTask*10)"
+          :key="item.pk">
+          <task-item :item = item :teacher="0" />
+        </q-list>
         <the-pagination
           v-if="number.studentTask"
           :limit="number.studentTask"
@@ -51,13 +51,13 @@
       </q-tab-panel>
 
       <q-tab-panel name="notDone">
-        <div v-for="num in number.notDone" :key="num">
-          <div v-if="num === page.notDone">
-            <q-list bordered class="rounded-borders" v-for="item in totalList.notDone.slice((num-1)*10, num*10)" :key="item.pk">
-              <task-item :item = item :teacher="1" />
-            </q-list>
-          </div>
-        </div>
+        <q-list
+          bordered
+          class="rounded-borders"
+          v-for="item in totalList.notDone.slice((page.notDone-1)*10, page.notDone*10)"
+          :key="item.pk">
+          <task-item :item = item :teacher="1" />
+        </q-list>
         <the-pagination
           v-if="number.notDone"
           :limit="number.notDone"
@@ -66,13 +66,13 @@
       </q-tab-panel>
 
       <q-tab-panel name="done">
-        <div v-for="num in number.done" :key="num">
-          <div v-if="num === page.done">
-            <q-list bordered class="rounded-borders" v-for="item in totalList.done.slice((num-1)*10, num*10)" :key="item.pk">
-              <task-item :item = item :teacher="1" />
-            </q-list>
-          </div>
-        </div>
+        <q-list
+          bordered
+          class="rounded-borders"
+          v-for="item in totalList.done.slice((page.done-1)*10, page.done*10)"
+          :key="item.pk">
+          <task-item :item = item :teacher="1" />
+        </q-list>
         <the-pagination
           v-if="number.done"
           :limit="number.done"
@@ -127,7 +127,7 @@ export default {
       totalList,
       page,
       number,
-      changePage
+      changePage,
     }
   }
 }

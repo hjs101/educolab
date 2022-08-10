@@ -113,12 +113,17 @@ export const task = {
         data,
       })
         .then(res => {
-          router.push({name: 'TaskDetailView', params: {
-            userType: getters.currentUser.userflag? 'teacher': 'student',
-            taskType: data.get('teacher')? 'lecture':'self',
-            taskPk: res.data.pk
+          if (data.get('teacher_flag')) {
+            router.push({name: 'TaskDetailView', params: {
+              userType: getters.currentUser.userflag? 'teacher': 'student',
+              taskType: 'lecture',
+              taskPk: res.data.pk
+            }}) 
+          } else {
+            router.push({name: 'TaskListView', params: {
+              userType: getters.currentUser.userflag? 'teacher': 'student',
           }})
-        })
+        }})
         .catch(err => {
           // 페이지를 불러올 수 없습니다
           console.log(err.data)
@@ -149,14 +154,19 @@ export const task = {
         'Content-Type': 'multipart/form-data'},
         data,
       })
-      .then(()=> {
+      .then((res)=> {
         // 새로고침 -> currentUser가 날아가면서 오류 생김
-        router.push({name: 'TaskDetailView', params: {
-          userType: data['teacher_flag']? 'teacher': 'student',
-          taskPk: data.get('pk'),
-          taskType: data.get('teacher')? 'lecture':'self',
+        if (data.get('teacher_flag')) {
+          router.push({name: 'TaskDetailView', params: {
+            userType: getters.currentUser.userflag? 'teacher': 'student',
+            taskType: 'lecture',
+            taskPk: res.data.pk
+          }}) 
+        } else {
+          router.push({name: 'TaskListView', params: {
+            userType: getters.currentUser.userflag? 'teacher': 'student',
         }})
-      })
+      }})
       .catch(err => {
         console.log(err)
       })
@@ -191,35 +201,6 @@ export const task = {
           console.log(res.data.message)
           router.push({name: 'TaskListView'})
         }))
-    },
-    checkTask({getters}, data) {
-      axios({
-        url: drf.task.check(),
-        method: 'post',
-        headers: getters.authHeader,
-        data,
-      })
-        .then(((res) => {
-          console.log(res.data)
-        }))
-        .catch((err) => {
-          console.log(err)
-        })
       },
-      checkComplete({getters}, data) {
-        axios({
-          url: drf.task.check(),
-          method: 'post',
-          headers: getters.authHeader,
-          data,
-        })
-          .then(((res) => {
-            
-            console.log(res.data)
-          }))
-          .catch((err) => {
-            console.log(err)
-          })
-        }
     }
   }

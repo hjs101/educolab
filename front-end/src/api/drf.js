@@ -78,6 +78,7 @@ export default {
     create: () => HOMEWORK + 'create/',
     detail: () => HOMEWORK + 'detail/',
     check: () => HOMEWORK + 'check/',
+    checkDone: () => HOMEWORK + 'check/done/',
     submit: () => HOMEWORK + 'submit/',
   },
   file: {

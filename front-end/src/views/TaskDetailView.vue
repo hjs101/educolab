@@ -3,7 +3,7 @@
     <h1>과제 상세 페이지</h1>
     <section>
       <!-- 과제 내용 & 교사용 -->
-      <task-detail-content v-if="!isEmptyTask" :task="task" :isLecture="isLecture" :isTeacher="user.isTeacher"/>
+      <task-detail-content v-if="!isEmptyTask" :pk="pk" :task="task" :isTeacher="user.isTeacher"/>
       <!-- 학생용 -->
       <section v-if="!user.isTeacher">
       <!-- 채점 안 한 과제 -->

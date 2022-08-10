@@ -124,8 +124,11 @@ class HomeworkCreateView(APIView):
             print(request.data)
             homework_serializer = TeacherHomeworkCreateSerializer(data=request.data)
             if homework_serializer.is_valid(raise_exception=True):
+                print('valid')
                 school = request.user.school
+                print(school)
                 school_student= school.school_student.all()
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 print(school_student)
@@ -137,14 +140,23 @@ class HomeworkCreateView(APIView):
 =======
                 students = school_student.filter(grade=homework_serializer.validated_data['grade'],class_field=homework_serializer.validated_data['class_field'],userflag=False)
 >>>>>>> 373b6d1 (feat: 과제 생성 기능 수정, 상세정보 기능 수정, 제출 수정)
+=======
+                print(school_student)
+                students = school_student.filter(grade=homework_serializer.validated_data['grade'],class_field=homework_serializer.validated_data['class_field'],userflag=False)
+                print(students)
+>>>>>>> d6318b5 (Feat : 과제 제출 기능 구현 및 상세 페이지 오류 수정)
                 homework = homework_serializer.save(teacher=request.user,target=students)
+                print(homework)
                 files = request.FILES.getlist("files")
+                print(files)
                 for file in files:
                     fp = Files.objects.create(teacher_homework=homework,atch_file=file,atch_file_name=file)
                     fp.save()
-                
+                print('file')
                 for student in students:
+                    print(student)
                     submit = SubmitHomework.objects.create(student=student,teacher_homework=homework)
+                    print(submit)
                     submit.save()
 
         context = {
@@ -281,8 +293,8 @@ class HomeworkCheckView(APIView): # 채점
                 student.minus_point += point
             PointLog.objects.create(teacher=request.user,student=student,content="과제 점수",point=point)
             student.save()
-            students = UserinfoSerializer(student)
-            return Response(students.data)
+            # students = UserinfoSerializer(student)
+            return Response({"username" : username, "success" : True,"message" : "적용되었습니다"})
 
 class HomeworkCheckDoneView(APIView):
     def post(self, request):

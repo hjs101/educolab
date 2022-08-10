@@ -3,7 +3,7 @@ from accounts.models import UserInfo
 
 from accounts.serializers import SchoolInfoSerializer, UserNameSerializer
 from homework.models import StudentHomework, SubmitHomework, TeacherHomework
-from .models import Event, TimeLine
+from .models import Event
 from notice.models import Notice
 
 class EventSerializer(serializers.ModelSerializer):
@@ -13,12 +13,6 @@ class EventSerializer(serializers.ModelSerializer):
         model = Event
         fields = '__all__'
 
-class TimelineSerializer(serializers.ModelSerializer):
-    user = UserNameSerializer(read_only=True)
-    
-    class Meta:
-        model = TimeLine
-        fields = '__all__'
 
 class MainpageNoticeSerializer(serializers.ModelSerializer):
 

@@ -114,13 +114,13 @@ export default {
     })
     const task = reactive({
       teacher_flag: isTeacher.value,
-      subject: computedTask.subject || null,
-      title: computedTask.title || null,
-      content: computedTask.content || null,
-      grade: computedTask.grade || null,
-      class_field: computedTask.class_field || null,
-      files: computedTask.files || null,
-      deadline: computedTask.deadline || null,
+      subject: taskPk? computedTask.subject: '',
+      title: taskPk? computedTask.title : '',
+      content: taskPk? computedTask.content : '',
+      grade: taskPk? computedTask.grade : '',
+      class_field: taskPk? computedTask.class_field : '',
+      files: taskPk? computedTask.files : '',
+      deadline: taskPk? computedTask.deadline : '',
     })
     const onSubmit = (arg) => {
       let form = new FormData()
@@ -142,7 +142,6 @@ export default {
         store.dispatch('taskUpdate', form)
         console.log('update')
       } else {
-        form.append('pk', taskPk)
         store.dispatch('createTask', form)
         console.log('create')
       }
@@ -161,7 +160,7 @@ export default {
         }
       } else {
         for (let key in task) {
-          task[key] = null
+          task[key] = ''
         }
       }
     }
