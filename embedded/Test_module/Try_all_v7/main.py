@@ -1,3 +1,4 @@
+from fileinput import close
 from kivy.config import Config
 Config.set('kivy','keyboard_mode', 'systemandmulti')
 from kivy.app import App
@@ -91,9 +92,11 @@ class WindowManager(ScreenManager):
                     'answer': self.survey_ans[ans]
                 })
 
+        with open("./login_info.json", 'r', encoding='utf-8') as file:
+            acc_token = json.load(file)["access"]
         self.res = requests.post(
             'https://i7c102.p.ssafy.io/api/survey/submit/',
-            headers={'Authorization' : 'Bearer ' + self.access_api()},
+            headers={'Authorization' : 'Bearer ' + acc_token},
             json=self.send_data
         )
 

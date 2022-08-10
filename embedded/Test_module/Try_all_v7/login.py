@@ -30,7 +30,6 @@ class Login_Screen(Screen):
             'username': self.ID,
             'password': self.PW,
         }
-
         self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/login/', data=self.data)
 
         if len(self.ID) == 0 or len(self.PW) == 0 or self.res.status_code == 401:

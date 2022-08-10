@@ -2,7 +2,7 @@ from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen, NoTransition, SlideTransition
-import requests
+import requests, json
 from kivy.clock import Clock
 
 
@@ -24,8 +24,20 @@ class Loading_Screen(Screen):
 
     def go_page(self,dt):
         ######로그인 flag 정의 요청##########
-        # self.login_flag=True  # main
-        self.login_flag=False # login
+        with open("./login_info.json", 'r') as file:
+            ref_data = json.load(file)
+        if ref_data.get('refresh')!=None:
+            user_data = {}
+            self.login_flag = True
+            user_data.update({"refresh": ref_data['refresh']})
+            res = requests.post(
+                'https://i7c102.p.ssafy.io/api/accounts/login/refresh/',
+                data=ref_data
+            )
+            user_data.update(res.json())
+            with open("./login_info.json", 'w', encoding='utf-8') as file:
+                json.dump(user_data, file)
+        else: self.login_flag=False # login
         ####################################
         if self.login_flag:
             self.manager.transition=NoTransition()

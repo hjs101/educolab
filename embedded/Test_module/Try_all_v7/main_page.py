@@ -31,7 +31,10 @@ class Main_Screen(Screen):
                 self.class_field = str(class_field) + '반 '
                 self.plus_point = str(plus_point)
                 self.minus_point = str(minus_point)
-            self.res = requests.get('https://i7c102.p.ssafy.io/api/survey/main_stu', headers={'Authorization' : 'Bearer ' + self.manager.access_api()})
+            self.res = requests.get(
+                'https://i7c102.p.ssafy.io/api/survey/main_stu',
+                headers={'Authorization' : 'Bearer ' + self.manager.access_api()}
+            )
             self.survey_full = json.loads(self.res.text)
             self.survey_cnt = len(self.survey_full)
             self.current_survey = self.survey_full[0]['title']
