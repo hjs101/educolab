@@ -43,8 +43,8 @@ class Survey_Word_Screen(Screen):
         self.ids.prob.text="<" + str(self.prob_num) + "번 문항>\n" + self.data_full[self.prob_num]['survey_question']
 
         # 이전 답변이 있다면 복구
-        if str(self.prob_num) in self.manager.survey_ans:
-            self.ids.ans.text=self.manager.survey_ans[str(self.prob_num)]
+        if self.data_full[self.prob_num]['id'] in self.manager.survey_ans:
+            self.ids.ans.text=self.manager.survey_ans[self.data_full[self.prob_num]['id']]
 
         # ##icons
         ##icons

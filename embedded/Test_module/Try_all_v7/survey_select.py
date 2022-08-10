@@ -53,8 +53,8 @@ class Survey_Select_Screen(Screen):
         
 
         # 이전 답변이 있다면 복구
-        if str(self.prob_num) in self.manager.survey_ans:
-            for num in  self.manager.survey_ans[str(self.prob_num)]:
+        if self.data_full[self.prob_num]['id'] in self.manager.survey_ans:
+            for num in  self.manager.survey_ans[self.data_full[self.prob_num]['id']]:
                 self.ids['ans'+str(num)].active=True
 
         ##icons
