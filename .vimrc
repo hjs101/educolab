@@ -49,7 +49,6 @@ Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-Plug 'tomasiser/vim-code-dark'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -77,6 +76,7 @@ Plug 'honza/vim-snippets'
 
 " 
 Plug 'valloric/youcompleteme'
+Plug 'tomasiser/vim-code-dark'
 
 " c
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
