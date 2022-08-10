@@ -16,6 +16,7 @@ from rest_framework.renderers import JSONRenderer
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import json
 =======
 
@@ -34,6 +35,9 @@ import json
 =======
 
 >>>>>>> fb49765 (Feat : 진행상황저장 (채팅))
+=======
+import json
+>>>>>>> 1119888 (Fix : 병합후 사라진 코드 복구)
 class SurveyTeacherMainView(APIView) :
     ## 권한 설정 부분(View단위)
     # permission_classes = (IsAuthenticated,)
@@ -59,11 +63,12 @@ class SurveyStudentMainView(APIView) :
         if req.user.userflag:
             return Response({"message" :"학생만 접근 가능합니다."})
         my_survey = SurveyList.objects.filter(target=req.user)
-        
+        my_survey = my_survey.exclude(done_target=req.user)
         print(my_survey)
         survey_serializer = SurveyMainSerializer(my_survey,many=True)
-        
+
         return Response(survey_serializer.data)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -75,6 +80,9 @@ class SurveyStudentMainView(APIView) :
 =======
     
 >>>>>>> fb49765 (Feat : 진행상황저장 (채팅))
+=======
+
+>>>>>>> 1119888 (Fix : 병합후 사라진 코드 복구)
 class SurveyCreateView(APIView):
     def post(self, req):
 
@@ -229,6 +237,7 @@ class SurveySubmitView(APIView):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fb49765 (Feat : 진행상황저장 (채팅))
 
@@ -260,11 +269,15 @@ class SurveySubmitView(APIView):
 =======
         print(answers)
 >>>>>>> acb8517 (Fix : 에러해결)
+=======
+
+>>>>>>> 1119888 (Fix : 병합후 사라진 코드 복구)
         userauth = survey.target.filter(username=req.user.username).exists()
         if not userauth:
             return Response({"message" : "설문 제출 자격이 없습니다."})
 
         done =  survey.done_target.filter(username=req.user.username).exists()
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -286,12 +299,15 @@ class SurveySubmitView(APIView):
 =======
         print(done)
 >>>>>>> fb49765 (Feat : 진행상황저장 (채팅))
+=======
+>>>>>>> 1119888 (Fix : 병합후 사라진 코드 복구)
         if done:
             return Response({"message" : "이미 제출하셨습니다."})
-        for answer in answers:
-            print(answer.get('id'))
-            question = SurveyQuestions.objects.get(id=answer.get('id'))    
 
+        for answer in answers:
+            print(answer['id'])
+            print(type(answer['id']))
+            question = SurveyQuestions.objects.get(id=answer['id'])
             
 >>>>>>> 1d03a62 (Backend file 삽입)
 =======

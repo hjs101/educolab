@@ -67,7 +67,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
 # quiz_room 테이블
 
-# 참여유저, 선생님, 현재 풀고있는 문제, 점수, 대상인원
+# 선생님, 현재 풀고있는 문제, 방 번호
+
+# 참여 유저 테이블 : 학생, 점수, 방 번호
+
+# 문제 정답 테이블 : 학생
 
 # quiz_answer 테이블
 
