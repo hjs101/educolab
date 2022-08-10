@@ -191,6 +191,35 @@ export const task = {
           console.log(res.data.message)
           router.push({name: 'TaskListView'})
         }))
+    },
+    checkTask({getters}, data) {
+      axios({
+        url: drf.task.check(),
+        method: 'post',
+        headers: getters.authHeader,
+        data,
+      })
+        .then(((res) => {
+          console.log(res.data)
+        }))
+        .catch((err) => {
+          console.log(err)
+        })
+      },
+      checkComplete({getters}, data) {
+        axios({
+          url: drf.task.check(),
+          method: 'post',
+          headers: getters.authHeader,
+          data,
+        })
+          .then(((res) => {
+            
+            console.log(res.data)
+          }))
+          .catch((err) => {
+            console.log(err)
+          })
+        }
     }
   }
-}

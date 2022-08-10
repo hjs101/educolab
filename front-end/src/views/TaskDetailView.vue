@@ -3,11 +3,11 @@
     <h1>과제 상세 페이지</h1>
     <section>
       <!-- 과제 내용 & 교사용 -->
-      <task-detail-content :isTeacher="user.isTeacher"/>
+      <task-detail-content v-if="!isEmptyTask" :task="task" :isLecture="isLecture" :isTeacher="user.isTeacher"/>
       <!-- 학생용 -->
       <section v-if="!user.isTeacher">
       <!-- 채점 안 한 과제 -->
-        <student-task-submit v-if="submit.isLecture && !submit.isSubmit" />
+        <student-task-submit v-if="isLecture && !isSubmit" />
         <!-- 채점한 과제 -->
         <student-submit-content v-else />
       </section>
@@ -16,7 +16,7 @@
         <router-link
           class="button"
           :to="{name: 'TaskUpdateView', params: {
-          userType: user.type, taskPk:taskPk
+          userType: user.type, taskPk:pk
         }}">
           <q-btn color="primary" label="수정"/>
         </router-link>
@@ -40,9 +40,10 @@
 </template>
 
 <script>
-import {computed, reactive, ref} from 'vue'
+import {computed, onMounted, reactive} from 'vue'
 import {useStore} from 'vuex'
 import {useRoute} from 'vue-router'
+import {isEmpty} from 'lodash'
 import StudentTaskSubmit from '@/components/StudentTaskSubmit.vue'
 import TaskDetailContent from '@/components/TaskDetailContent.vue'
 import MessagePopUp from '@/components/MessagePopUp.vue'
@@ -55,36 +56,23 @@ export default {
     MessagePopUp,
     StudentSubmitContent,
   },
-  created() {
-    const route = useRoute()
-    const store = useStore()
-    const params = {
-      pk: route.params.taskPk,
-      teacher_flag: route.params.taskType === 'lecture'?1:0,
-    }
-    store.dispatch('taskDetail', params)
-  },
   setup() {
     const route = useRoute()
     const store = useStore()
-    let taskPk = ref(route.params.taskPk)
+    const pk = route.params.taskPk
+    const isLecture = computed(() => route.params.taskType === 'lecture'? 1:0)
+    onMounted(() => {
+      store.dispatch('taskDetail', {
+        pk,
+        teacher_flag: isLecture.value
+      })
+    })
+    const task = computed(() => store.getters.getTask)
+    const isEmptyTask = computed(() => isEmpty(task.value))
+    
     const confirm = reactive({
       prompt: false,
       isTrue: computed(() => confirm.prompt)  
-    })
-    const submit = reactive({
-      task: computed(() => store.getters.getTask),
-      isLecture: computed(() => route.params.taskType === 'lecture'),
-      isSubmit: computed(() => {
-        if (submit.isLecture) {
-          if (submit.task.student_submit) {
-            return submit.task.student_submit[0].submit_flag
-          }
-        } else if (submit.task.my_submit) {
-          return submit.task.my_submit[0].submit_flag
-        }
-        return false
-      })
     })
     const user = reactive({
       type: route.params.userType,
@@ -94,19 +82,33 @@ export default {
     const deleteTask = (signal) => {
       if (signal) {
         const data = {
-          pk: taskPk.value,
+          pk,
           teacher: user.isTeacher,
         }
         store.dispatch('taskDelete', data)
       }
       confirm.prompt = false
     }
+    const isSubmit = computed(() => {
+        if (isLecture.value) {
+          if (task.value.student_submit) {
+            return task.value.student_submit[0].submit_flag
+          }
+        } else if (task.value.my_submit) {
+          return task.value.my_submit[0].submit_flag
+        }
+        return false
+      })
+
     return {
-      taskPk,
       user,
+      task,
+      pk,
       confirm,
       deleteTask,
-      submit
+      isSubmit,
+      isEmptyTask,
+      isLecture
     }
   },
 }

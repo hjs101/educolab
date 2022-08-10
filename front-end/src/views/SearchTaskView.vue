@@ -1,19 +1,23 @@
 <template>
   <article div class="q-gutter-md" style="max-width: 300px">
     <q-input label="제목 검색" v-model="search.query"/>
-    <q-btn color="primary" label="검색" @click="search.search = search.query"/>
+    <!-- a 태그로 바꿀 예정 -->
+    <router-link :to="{name: 'SearchTaskView', params:
+    {userType,}, query: {query: search.query}}" class="button">
+      <q-btn color="primary" label="검색"/>
+    </router-link>
     <br>
     검색 결과
-    <div v-for="num in taskLength" :key="num">
-      <div v-if="num === page">
-        <q-list bordered class="rounded-borders" v-for="item in taskList.slice((num-1)*10, num*10)" :key="item.id">
-          <task-item v-if="item.title.includes(search.search)" :item = item :teacher="1" :submit="false" />
+    <!-- <div v-for="num in taskLength" :key="num">
+      <div v-if="num === page"> -->
+        <q-list bordered class="rounded-borders" v-for="item in search.list.slice((page-1)*10, page*10)" :key="item.id">
+          <task-item :item = item :teacher="1" :submit="false" />
         </q-list>
-      </div>
-    </div>
+      <!-- </div>
+    </div> -->
     <the-pagination
-      v-if="taskLength"
-      :limit="taskLength"
+      v-if="search.length"
+      :limit="search.length"
       @change-page="changePage" />
     <q-btn color="primary" label="메인" />
   </article>
@@ -36,12 +40,15 @@ export default {
     const store = useStore()
     const route = useRoute()
     let {userType} = route.params
+    const taskList = computed(() => userType === 'teacher'? store.getters.getTeacherAll : store.getters.getStudentAll)
     const search = reactive({
       query: route.query.query,
       search: route.query.query,
+      list: computed(() => taskList.value.filter(element => {
+        return element.title.includes(search.search)
+      })),
+      length: computed(() => Math.ceil(search.list.length/10))
     })
-    const taskList = computed(() => userType === 'teacher'? store.getters.getTeacherAll : store.getters.getStudentAll)
-    const taskLength = computed(() => userType === 'teacher'? store.getters.cntTeacherAll : store.getters.cntStudentAll)
     let page = ref(1)
     const changePage = (value) => {
       page.value = value
@@ -54,9 +61,8 @@ export default {
     })
     return {
       taskList,
-      taskLength,
-      store,
       page,
+      userType,
       changePage,
       search
     }
