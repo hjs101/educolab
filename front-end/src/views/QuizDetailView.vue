@@ -1,5 +1,5 @@
 <template>
-  <div class="q-px-xl">
+  <div class="baseStyle">
     <!-- 제목, 퀴즈 문제, 퀴즈 보기 -->
     <div v-for="quizItem in quizDetail" :key="quizItem">
       <h4>{{ quizItem.quiz_name }}</h4>
@@ -26,8 +26,9 @@
       </div>
     </div>
     
-    <div class="row justify-center">
-      <q-btn color="green-13 q-my-xl q-py-sm text-bold bogi-size" label="퀴즈 시작하기!!" />
+    <div class="row justify-center q-my-lg">
+      <q-btn @click="deleteQuiz(quizPk)" class="q-mx-lg" color="orange-6">퀴즈 삭제</q-btn>
+      <q-btn @click="updateQuizx(quizPk)" class="q-mx-lg" color="orange-6">퀴즈 수정</q-btn>
     </div>
   </div>
 </template>
@@ -46,9 +47,12 @@ export default {
     ...mapGetters(['quizDetail'])
   },
   methods: {
-    ...mapActions(['getQuizDetail'])
+    ...mapActions(['getQuizDetail', 'deleteQuiz']),
+    updateQuizx(quizPk) {
+      this.$router.push({name:'QuizCreate', params: {quizPk : quizPk}})
+    }
   },
-  created() {
+  mounted() {
     this.getQuizDetail(this.quizPk)
   }
 }
