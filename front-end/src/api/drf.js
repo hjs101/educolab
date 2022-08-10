@@ -41,6 +41,7 @@ const NOTICE = BASE_URL + '/notice/'
 const SURVEY = BASE_URL + '/survey/'
 const QUIZ = BASE_URL + '/quiz/'
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 9bb5647 (메인 페이지 css)
 =======
 const MY_PAGE = BASE_URL + '/mypage/'
@@ -56,6 +57,9 @@ const QUIZ = BASE_URL + 'quiz/'
 const MY_PAGE = BASE_URL + 'mypage/'
 const HOMEWORK = BASE_URL + 'homework/'
 >>>>>>> 11b73f2 (Feat : 마이페이지 프로필 수정, 삭제 기능 구현 완료)
+=======
+const MainPage = BASE_URL + '/mainpage/'
+>>>>>>> e824b6b (메인페이지 화면 구성)
 
 export default {
   accounts: {
@@ -266,6 +270,7 @@ export default {
   },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 >>>>>>> 11618aa (Fix : 병합해결)
 =======
@@ -296,3 +301,10 @@ export default {
 =======
 }
 >>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
+=======
+
+  mainpage: {
+    mainItem: () => MainPage
+  }
+}
+>>>>>>> e824b6b (메인페이지 화면 구성)

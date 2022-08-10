@@ -23,11 +23,15 @@ import { survey } from './modules/survey.js'
 >>>>>>> 452a9d1 (설문조사  등록)
 =======
 import { quiz } from './modules/quiz.js'
+<<<<<<< HEAD
 >>>>>>> c9ecd87 (퀴즈 임베디드 연동)
 =======
 import { accounts } from './modules/accounts.js'
 import { notice } from './modules/notice.js'
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+import { mainpage } from './modules/mainpage.js'
+>>>>>>> e824b6b (메인페이지 화면 구성)
 
 export default createStore({
   state () {
@@ -43,6 +47,7 @@ export default createStore({
   actions() {
   },
   modules: {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -97,5 +102,8 @@ export default createStore({
 =======
     accounts, notice
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+    accounts, notice, survey, quiz, mainpage
+>>>>>>> e824b6b (메인페이지 화면 구성)
   }
 })

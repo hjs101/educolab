@@ -36,8 +36,9 @@ createApp(App).use(store).use(router).mount('#app')
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 import { Quasar } from 'quasar'
 import quasarUserOptions from './quasar-user-options'
-import VueCookies from 'vue-cookies'
+// import VueCookies from 'vue-cookies'
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 createApp(App).use(Quasar, quasarUserOptions).use(store).use(router).mount('#app')
 <<<<<<< HEAD
@@ -55,6 +56,9 @@ createApp(App)
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
 createApp(App).use(Quasar, quasarUserOptions).use(store).use(router).use(VueCookies).mount('#app')
+=======
+createApp(App).use(Quasar, quasarUserOptions).use(store).use(router).mount('#app')
+>>>>>>> e824b6b (메인페이지 화면 구성)
 
 // Require dependencies
 // Vue.use(VueCookies);
