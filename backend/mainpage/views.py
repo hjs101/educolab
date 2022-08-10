@@ -101,32 +101,3 @@ class EventView(APIView): # 행사 등록,수정,삭제
             "success" : True,
             "message" : "삭제 성공"
         })
-
-class TimelineView(APIView): # 시간표 등록,수정,삭제
-    
-    def post(self, request):
-        timeline_serializer = TimelineSerializer(data=request.data)
-        if timeline_serializer.is_valid(raise_exception=True):
-            timeline_serializer.save(user=request.user)
-            return Response({
-                "success" : True,
-                "message" : "생성 성공"
-            })
-    
-    def put(self, request):
-        timeline = Event.objects.get(id=request.data.get('id'))
-        timeline_serializer = EventSerializer(instance=timeline,data=request.data)
-        if timeline_serializer.is_valid(raise_exception=True):
-            timeline_serializer.save()
-            return Response({
-                "success" : True,
-                "message" : "수정 성공"
-            })
-
-    def delete(self, request):
-        timeline = Event.objects.get(id=request.data.get('id'))
-        timeline.delete()
-        return Response({
-            "success" : True,
-            "message" : "삭제 성공"
-        })
