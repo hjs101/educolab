@@ -27,22 +27,21 @@ class MainpageView(APIView): # 메인페이지 정보 전달 (과제,공지,행�
         # 누적랭킹
         accrank = UserInfo.objects.filter(school=request.user.school).order_by('-acc_point')[:5]
         accrank_serializer = AccRankSerializer(accrank, many=True)
+        
+        # 이달 랭킹
         today = datetime.now().date()
         this_month = today.month - 1
         if this_month == 0:
             this_month = 12
 
-        # 이달 랭킹
         pointlog = PointLog.objects.filter(created_at__month=this_month).values("student").annotate(score=Sum("point")).order_by('-score')[:5]
         print(pointlog)
 
         user = request.user
         if request.user.userflag == True: # 선생님
-            timeline = TimeLine.objects.filter(user=request.user) # 시간표
-            timeline_serializer = TimelineSerializer(timeline, many=True)
 
             # 과제
-            homework = user.T_homework.filter(deadline__lt=today).order_by('deadline')
+            homework = user.T_homework.filter(deadline__gt=today).order_by('deadline')
             homework_serializer = MainpageTHomeworkSerializer(homework, many=True)
 
             context = {
@@ -50,14 +49,13 @@ class MainpageView(APIView): # 메인페이지 정보 전달 (과제,공지,행�
                 "notice" : notice_serializer.data,
                 "acc_rank" : accrank_serializer.data,
                 "month_rank" : pointlog,
-                "timeline" : timeline_serializer.data,
                 "homework" : homework_serializer.data
             }
 
 
         else: # 학생
             # 과제
-            homework = user.T_homework.filter(deadline__lt=today).order_by('deadline')
+            homework = user.T_homework.filter(deadline__gt=today).order_by('deadline')
             homework_serializer = MainpageTeacherhomeworkSerializer(homework, many=True)
             
             context = {
