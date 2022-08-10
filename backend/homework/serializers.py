@@ -4,7 +4,7 @@ from accounts.serializers import UserNameSerializer, HomeworkUserSerializer
 
 class TeacherHomeworkCreateSerializer(serializers.ModelSerializer):
     teacher = UserNameSerializer(read_only=True)
-    target = HomeworkUserSerializer(read_only=True,many=True)
+    target = UserNameSerializer(read_only=True,many=True)
 
     class Meta:
         model = TeacherHomework
@@ -22,10 +22,10 @@ class TeacherHomeworkMainSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TeacherHomework
-        fields = ('id','title','deadline','grade','class_field')
+        fields = ('id','title','deadline','grade','class_field','subject',)
 
 class StudentHomeworkMainSerializer(serializers.ModelSerializer):
-    student = UserNameSerializer(read_only=True)
+    student = HomeworkUserSerializer(read_only=True)
     class Meta:
         model = StudentHomework
         fields = ('id','title','deadline','student',)
@@ -48,11 +48,10 @@ class FileSerializer(serializers.ModelSerializer):
 
 class TeacherHomeworkDetailSerializer(serializers.ModelSerializer):
     teacher = UserNameSerializer(read_only=True)
-    student_submit = SubmitHomeworkSerializer(many=True,read_only=True)
     teacher_file = FileSerializer(many=True,read_only=True)
     class Meta:
         model = TeacherHomework
-        fields = ('id','teacher','grade','class_field','title','subject','content','updated_at','deadline','check_flag','student_submit','teacher_file')
+        fields = ('id','teacher','title','subject','content','updated_at','deadline','check_flag','teacher_file')
 
 class StudentHomeworkDetailSerializer(serializers.ModelSerializer):
     student = UserNameSerializer(read_only=True)

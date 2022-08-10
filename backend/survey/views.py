@@ -37,12 +37,12 @@ class SurveyStudentMainView(APIView) :
         if req.user.userflag:
             return Response({"message" :"학생만 접근 가능합니다."})
         my_survey = SurveyList.objects.filter(target=req.user)
-        
+        my_survey = my_survey.exclude(done_target=req.user)
         print(my_survey)
         survey_serializer = SurveyMainSerializer(my_survey,many=True)
-        
+
         return Response(survey_serializer.data)
-    
+
 class SurveyCreateView(APIView):
     def post(self, req):
 
@@ -52,6 +52,7 @@ class SurveyCreateView(APIView):
 
         
         # survey_serializer
+
         # 설문조사 등록하기 start
         survey_serializer = SurveySerializer(data=req.data['survey'])
         if req.data['survey']['grade'] == 0:
@@ -169,22 +170,24 @@ class SurveyStatDetailView(APIView):
 class SurveySubmitView(APIView):
     def post(self, req):
 
-        answers = req.data['answers']
+        answers = req.POST.getlist('answers')
         survey = SurveyList.objects.get(id=req.data['survey_num'])
-        
+        print("answers:")
+        print(answers)
+        print(answers)
+
         userauth = survey.target.filter(username=req.user.username).exists()
         if not userauth:
             return Response({"message" : "설문 제출 자격이 없습니다."})
 
         done =  survey.done_target.filter(username=req.user.username).exists()
-        print(done)
         if done:
             return Response({"message" : "이미 제출하셨습니다."})
-        for answer in answers:
-            print(answer)
-            question = SurveyQuestions.objects.get(id=answer['id'])
-            
 
+        for answer in answers:
+            print(answer['id'])
+            print(type(answer['id']))
+            question = SurveyQuestions.objects.get(id=answer['id'])
             
             if question.multiple_bogi is not None:
                 if answer['answer'] == 1:

@@ -37,6 +37,5 @@ export default {
     quizList: () => QUIZ + 'main/',
     quizCreate: () => QUIZ + 'create/',
     quizDetail: () => QUIZ + 'detail/',
-    quizUpdate: () => QUIZ + '',
   },
 }

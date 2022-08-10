@@ -73,6 +73,37 @@ export const quiz = {
         data : credentials
       })
         .then(router.push({ name: 'Quiz'}))
+    },
+
+    deleteQuiz({ getters }, quizPk) {
+      axios({
+        url: drf.quiz.quizDetail(),
+        method: 'delete',
+        headers: getters.authHeader,
+        params: {
+          quiz_num : quizPk
+        }
+      })
+        .then(alert('퀴즈가 삭제되었습니다.')),
+        router.push({ name: 'Quiz'})
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    updateQuiz({ getters }, {credentials, quizPk}) {
+      axios({
+        url: drf.quiz.quizDetail(),
+        method: 'put',
+        headers: getters.authHeader,
+        data : credentials,
+        params: {
+          quiz_num : quizPk
+        }
+      })
+        .then(res => {
+          console.log(res)
+        })
     }
   }
 }

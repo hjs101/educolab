@@ -1,5 +1,5 @@
 <template>
-  <div class="q-mx-xl">
+  <div class="baseStyle">
     <h1>설문조사</h1>
     <router-link to="/survey/create"><button>설문조사 등록</button></router-link>
 
@@ -18,7 +18,7 @@
         <tr v-for="survey in survey" :key="survey.pk">
           <td>{{ survey.pk }}</td>
           <router-link :to="{name:'SurveyDetail', params: {surveyPk:`${survey.pk}`}}">
-            <td>{{ survey.title }}</td>
+            <td class="test2">{{ survey.title }}</td>
           </router-link>
           <td>{{ survey.grade }}</td>
           <td>{{ survey.class_field }}</td>
@@ -71,5 +71,8 @@ export default {
   }
   .test {
     position: relative;
+  }
+  .test2 {
+    text-decoration: none;
   }
 </style>

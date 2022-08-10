@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="test">
     <!-- 교사 navbar -->
     <div v-if="isLoggedIn && currentUser.userflag">
       <div class="bord-bt">
@@ -89,12 +89,19 @@ export default {
 
 <style>
 /* 모든 페이지에서 공통으로 사용할 스타일 정의 */
-  /* #app {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-size: 1rem;
-  } */
+
+ /* 폰트 적용 */
+  @font-face {
+    font-family: "jooa";
+    src: url("@/assets/fonts/BMJUA_ttf.ttf");
+  }
+
+  /* 컴포넌트 기본 css */
+  .baseStyle {
+    width: 80%;
+    margin: auto;
+    font-family: "jooa";
+  }
   h3 {
     text-align: center;
   }
@@ -117,27 +124,15 @@ export default {
   .bord-top {
     border-top: 1px solid #99DFF9;
   }
-  .color1 {
-    color: #FF9966;
-  }
-  .color2 {
-    color: #8BFF8B;
-  }
-  .color3 {
-    color: #FFC000;
-  }
-  .color4 {
-    color: #99DFF9;
-  }
-  .color5 {
-    color: black;
-  }
+  .color1 {color: #FF9966;}
+  .color2 {color: #8BFF8B;}
+  .color3 {color: #FFC000;}
+  .color4 {color: #99DFF9;}
+  .color5 {color: black;}
+
   .ftr-size {
     font-size: 0.5rem;
   } 
-  .margin {
-     margin: 0 
-  }
   footer {
     width: 100%;
     height: 100px; /* footer의 높이 */
