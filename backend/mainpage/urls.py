@@ -20,5 +20,9 @@ from . import views
 
 urlpatterns = [
     path('',views.MainpageView.as_view(), name='mainpage'),
+<<<<<<< HEAD
     path('event/', views.EventView.as_view(), name='event'),
+=======
+    path('event/', views.EventView.as_view(), name='event')
+>>>>>>> cda8e1a (feat : 채점 여부 플래그)
 ]

@@ -39,5 +39,6 @@ class SubmitHomework(models.Model):
     content = models.TextField(null=True)
     submit_at = models.DateTimeField(auto_now=True) # 백앤드에서 현재 시간 넣어주기
     submit_flag = models.BooleanField(default=False)
+    check_flag = models.BooleanField(default=False)
     atch_file_name = models.CharField(max_length=45, default="",null=True)
     atch_file = models.FileField(blank=True, upload_to='homework/submit',null=True)

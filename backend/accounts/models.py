@@ -2,7 +2,7 @@ from asyncio.windows_events import NULL
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from pointshop.models import PTitle
+from pointshop.models import PTitle, Icon
 
 # Create your models here.
 
@@ -140,6 +140,7 @@ class UserInfo(AbstractUser):
 =======
     wear_title = models.ForeignKey(PTitle,null=True,on_delete=models.SET_NULL)
     own_title = models.ManyToManyField(PTitle,related_name='title_owner')
+    own_icon = models.ManyToManyField(Icon, related_name='icon_owner')
 
 >>>>>>> 4910d64 (feat : 상점 기능 구현, 마이페이지 칭호 변경 구현)
     
