@@ -4,6 +4,7 @@ COPY requirements.txt ./
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN apt-get -y update
 RUN apt-get install redis-server
 COPY . .
 WORKDIR /var/jenkins_home/workspace/educolab_back/backend
