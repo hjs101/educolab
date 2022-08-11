@@ -40,7 +40,7 @@ class Main_Screen(Screen):
         self.survey_cnt = len(self.survey_full)
         self.current_survey = self.survey_full[0]['title']
 
-        self.query2 = 'select title from pointshop_ptitle inner join accounts_userinfo_own_title on pointshop_ptitle.id=accounts_userinfo_own_title.ptitle_id where accounts_userinfo_own_title.userinfo_id=%s'
+        self.query2 = 'select title from pointshop_ptitle inner join accounts_userinfo on pointshop_ptitle.id=accounts_userinfo.wear_title_id where accounts_userinfo.username=%s'
         self.args2 = (self.student_id, )
         self.cur2 = self.manager.DB.execute(query=self.query2, args=self.args2)
         for (title, ) in self.cur2: self.emblem = title
