@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div v-if="data">
     <h1>{{userType}} 마이 페이지</h1>
-    <my-info v-if="data" :info="data.userinfo" />
-    <point-list v-if="data" :point="data.point_log"/>
+    안녕하세요 {{data.userinfo.name}}님
+    <my-info :info="data.userinfo" />
+    <point-list v-if="!isTeacher" :point="data.point_log"/>
+    <grant-point v-else />
   </div>
 </template>
 
@@ -13,11 +15,13 @@ import {useStore} from 'vuex'
 import axios from 'axios'
 import drf from '@/api/drf.js'
 import MyInfo from '@/components/MyInfo.vue'
-import PointList from '../components/PointList.vue'
+import PointList from '@/components/PointList.vue'
+import GrantPoint from '@/components/GrantPoint.vue'
 export default {
   components: {
     MyInfo,
     PointList,
+    GrantPoint,
     },
   name: 'MyPageView',
   setup() {

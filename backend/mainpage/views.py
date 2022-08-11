@@ -12,6 +12,7 @@ from .serializers import AccRankSerializer, EventSerializer, MainpageNoticeSeria
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e0daa39 (fix : 머지 충돌)
 =======
@@ -21,6 +22,8 @@ from notice.serializers import NoticeMainSerializer
 >>>>>>> cda8e1a (feat : 채점 여부 플래그)
 =======
 >>>>>>> 9c48d5b (Fix : back branch와 merge 후 충돌 수정2)
+=======
+>>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
 
 from datetime import datetime
 from django.db.models import Sum

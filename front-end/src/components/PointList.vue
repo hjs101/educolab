@@ -24,12 +24,12 @@
             <td class="text-center">{{each.content}} ({{each.teacher.name}})</td>
             <td class="text-center">{{each.point}}</td>
           </tr>
-          <the-pagination
-            v-if="cnt.value" 
-            :limit="cnt.value"
-            @change-page="changePage"
-          />
         </tbody>
+        <the-pagination
+          v-if="cnt"
+          :limit="cnt"
+          @change-page="changePage"
+        />
       </q-markup-table>
     </q-card>
   </div>
@@ -37,7 +37,7 @@
 
 <script>
 import {ref} from 'vue'
-import ThePagination from './ThePagination.vue'
+import ThePagination from '@/components/ThePagination.vue'
 export default {
   components: {
     ThePagination
@@ -47,7 +47,7 @@ export default {
     point: Array,
   },
   setup(props) {
-    let cnt = ref(Math.ceil(props.point.length/10))
+    let cnt = Math.ceil(props.point.length/10)
     let page = ref(1)
     const changePage = (value) => {
       page.value = value

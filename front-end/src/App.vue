@@ -107,16 +107,20 @@
         <q-bar style="height:100px;" >
           <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       <div class="q-pa-md q-gutter-sm">
         <q-bar style="height:100px;" >
           <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
           <div class="cursor-pointer"><router-link to="/notice">공지사항</router-link></div>
           <div class="cursor-pointer"><router-link to="/student/task">과제</router-link></div>
           <div class="cursor-pointer"><router-link to="/student/writing">내 필기</router-link></div>
           <div class="cursor-pointer"><router-link to="/student/store">포인트 상점</router-link></div>
           <div class="cursor-pointer"><router-link to="/student">마이페이지</router-link></div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -131,6 +135,8 @@
 >>>>>>> f4abfa5 (Feat : 과제 생성 기능 완료 & 과제 목록 불러오기 진행 중)
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
           <button @click="logoutBtn">로그아웃</button>
         </q-bar>
         <hr>
@@ -170,11 +176,14 @@
     </footer> -->
 >>>>>>> 9bb5647 (메인 페이지 css)
   <router-view />
+<<<<<<< HEAD
   
 =======
 
   <router-view />
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
   </div>
 </template>
 
@@ -186,12 +195,15 @@
 =======
 >>>>>>> e6b54fb (asdu)
 import { mapGetters, mapActions } from 'vuex'
+<<<<<<< HEAD
 import {onBeforeMount} from 'vue'
 import {useStore} from 'vuex'
 import {isEmpty} from 'lodash'
 =======
 import { mapGetters, mapActions } from 'vuex'
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
 
 
 export default {
@@ -232,6 +244,7 @@ export default {
   },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   setup() {
     const store = useStore()
     onBeforeMount(() => {
@@ -243,6 +256,12 @@ export default {
         // 요청 보내기
       }
     })
+=======
+  created() {
+    if (this.isLoggedIn === false) {
+      this.$router.push({name:'login'})
+    }
+>>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
   }
 <<<<<<< HEAD
 =======
@@ -565,9 +584,15 @@ export default {
     position: absolute;  
     bottom: 0;
   }
+  .hidden {
+    visibility: hidden;
+  }
 
 </style>
+<<<<<<< HEAD
 >>>>>>> 9bb5647 (메인 페이지 css)
 =======
 </style>
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)

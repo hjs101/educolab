@@ -618,6 +618,22 @@ const routes = [
     name: 'QuizDetail',
     component: () => import('@/views/QuizDetailView')
   },
+<<<<<<< HEAD
+=======
+  // 로그아웃
+  {
+    path: '/logout',
+    name: 'logout',
+    meta: {
+      reload:true,
+    },
+    redirect: '/educolab/login'
+  },
+  {
+    path: '/',
+    redirect: '/educolab/login'
+  },
+>>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
   // 존재하지 않는 페이지
   {
     path: '/:pathMatch(.*)*',

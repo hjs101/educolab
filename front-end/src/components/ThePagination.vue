@@ -5,7 +5,7 @@
       color="primary"
       :max="limit"
       :max-pages="6"
-      :boundary-links="limit>10"
+      :boundary-links="limit>6"
       direction-links
       @click="changePage"
     />
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-// import { computed } from '@vue/runtime-core'
 import {ref} from 'vue'
 export default {
   name: 'ThePagination',

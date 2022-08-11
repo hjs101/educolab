@@ -21,6 +21,7 @@ from . import views
 urlpatterns = [
     path('',views.MainpageView.as_view(), name='mainpage'),
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('event/', views.EventView.as_view(), name='event')
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -32,4 +33,7 @@ urlpatterns = [
 =======
     path('event/', views.EventView.as_view(), name='event'),
 >>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
+=======
+    path('event/', views.EventView.as_view(), name='event')
+>>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
 ]

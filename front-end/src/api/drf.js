@@ -251,14 +251,32 @@ export default {
     quizDetail: () => QUIZ + 'detail/',
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 >>>>>>> 11618aa (Fix : 병합해결)
 =======
+=======
+  task: {
+    list: () => HOMEWORK + 'main/',
+    create: () => HOMEWORK + 'create/',
+    detail: () => HOMEWORK + 'detail/',
+    check: () => HOMEWORK + 'check/',
+    checkDone: () => HOMEWORK + 'check/done/',
+    submit: () => HOMEWORK + 'submit/',
+  },
+  file: {
+    path: () => BASE_URL,
+  },
+>>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
   myPage: {
     main: () => MY_PAGE + 'main/',
     point: () => MY_PAGE + 'grant/',
     changeProfil: () => MY_PAGE + 'profil/',
     changeTitle: () => MY_PAGE + 'title/',
   },
+<<<<<<< HEAD
 }
 >>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
+=======
+}
+>>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
