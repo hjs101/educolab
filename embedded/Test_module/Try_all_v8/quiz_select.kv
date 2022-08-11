@@ -1,0 +1,190 @@
+<Quiz_Select_Screen>:
+	FloatLayout:
+		size: root.width, root.height
+		Button: # exit
+			on_release:
+				root.manager.onStop()
+				# root.onStop()
+			pos_hint: {"right":0.98,"top":0.98}
+			text:"x"
+			bold: True
+			color: 1,1,1,1
+			size_hint: None, None
+			halign:'center'
+			valign:'bottom'
+			size : 30,30
+			background_normal:''
+			background_color:0,0,0,0
+			canvas.before:
+				Color:
+					rgba: (1,0,0,1)
+				RoundedRectangle:
+					size: self.size
+					pos : self.pos
+					radius:[10]
+				Color:
+					rgba: 155/255,17/255,30/255,1
+				Line:
+					width:1
+					rounded_rectangle: self.x, self.y, self.width, self.height, 10
+
+		Button: # Home
+			on_release:
+				app.root.current="main"
+				root.manager.transition.direction='down'
+			pos_hint: {"right":0.95,"top":0.98}
+			text:"Home"
+			font_size: 20
+			bold: True
+			color: 1,1,1,1
+			size_hint: None, None
+			halign:'center'
+			valign:'bottom'
+			size : 100,30
+			background_normal:''
+			background_color:0,0,0,0
+			canvas.before:
+				Color:
+					rgba: 66/255,75/255,90/255,1
+				RoundedRectangle:
+					size: self.size
+					pos : self.pos
+					radius:[10]
+				Color:
+					rgba: 0,0,0,1
+				Line:
+					width:1
+					rounded_rectangle: self.x, self.y, self.width, self.height, 10
+
+		Label:
+			id: time
+			# text:"잔여시간 :"
+			bold:True
+			font_size: 20
+			text_size:self.size
+			# siez_hint: 
+			halign:'left'
+			valign:'center'
+			color: 95/255,107/255,117/255,1
+			size_hint: .15, None
+			height: 50
+			pos_hint: {"x":0.8,"top":0.94}
+
+		Label:
+			id: title
+			# text:"오늘 저녁 메뉴 선정"
+			bold:True
+			font_size: 40
+			text_size:self.size
+			halign:'left'
+			valign:'center'
+			color: 95/255,107/255,117/255,1
+			size_hint: .7, None
+			height: 50
+			pos_hint: {"x":0.05,"top":0.94}
+
+
+		# Button:
+		# 	angle:90
+		# 	text:"TESTSETSE--A"
+		# 	color:0,0,0,1
+		# 	size_hint: None, None
+		# 	height:150
+		# 	width:150
+		# 	# background_color:0,0,0,0
+
+		# 	pos_hint: {"center_x":0.5,"center_y":0.4}
+
+		# 	rotate: self.angle
+
+		# 	canvas.before:
+		# 		PushMatrix
+		# 		Rotate:
+		# 			angle: root.angle
+		# 			axis: 0,0,1
+		# 			origin: root.center
+		# 	canvas.after:
+		# 		PopMatrix
+				
+
+		# 	# Image:
+			# 	id:loading
+			# 	source: ''
+			# 	size:self.parent.size
+			# 	center_x:self.parent.center_x
+			# 	center_y:self.parent.center_y
+				# canvas.before:
+				# PushMatrix
+				# Rotate:
+				# 	axis:0,0,1
+				# 	angle:60
+				# 	origin:self.center
+				# canvas.after:
+				# 	PopMatrix
+
+
+		GridLayout:
+			# orientation: "vertical"
+			size_hint: None, None
+			size: 1280, 640
+			pos_hint: {"center_x":0.5, "y":0}
+			padding: 40
+			spacing: 20
+			halign:'center'
+			cols:2
+
+
+			Button: # title
+                id:btn1
+				size_hint_y: .8
+				on_release: root.button_click(1)
+				background_normal:'./icon/btn1.png'
+				background_down:'./icon/btn1_push.png'
+				font_size: 90
+				bold: True
+				halign:'center'
+				valign:'middle'
+			Button: # title
+                id:btn2
+				on_release: root.button_click(2)
+				background_normal:'./icon/btn2.png'
+				background_down:'./icon/btn2_push.png'
+				size_hint_y: .8
+				# color: 94/255,106/255,117/255,1
+				font_size: 90
+				bold: True
+				halign:'center'
+				valign:'middle'
+			Button: # title
+                id:btn3
+				on_release: root.button_click(3)
+				background_normal:'./icon/btn3.png'
+				background_down:'./icon/btn3_push.png'
+				size_hint_y: .8
+				# color: 94/255,106/255,117/255,1
+				font_size: 90
+				bold: True
+				halign:'center'
+				valign:'middle'
+			Button: # title
+                id:btn4
+				on_release: root.button_click(4)
+				background_normal:'./icon/btn4.png'
+				background_down:'./icon/btn4_push.png'
+				size_hint_y: .8
+				# color: 94/255,106/255,117/255,1
+				font_size: 90
+				bold: True
+				halign:'center'
+				valign:'middle'
+
+
+# #test for Design
+# background_normal:''
+# background_color:0,0,0,0
+# canvas.before:
+# 	Color:
+# 		rgba:0,1,0,1
+# 	Rectangle: 
+# 		size: self.size
+# 		pos : self.pos
