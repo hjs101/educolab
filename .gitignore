@@ -466,6 +466,7 @@ backend/educolab/my_settings.py
 >>>>>>> 46a97f8 (embedded에 .gitignore 추가)
 =======
 front-end/node_modules
+<<<<<<< HEAD
 >>>>>>> c1b7e5f ( Fix : 버그 수정 중)
 =======
 backend/educolab/my_settings.py
@@ -478,3 +479,6 @@ backend/my_settings.py
 =======
 front-end/node_modules
 >>>>>>> 4bf513d (Fix : git.ignore 최신화)
+=======
+login_info.json
+>>>>>>> 90a0649 (깃이그노어 수정)
