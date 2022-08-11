@@ -25,7 +25,7 @@ from change_title import Change_Title_Screen
 from find_result import Find_result
 from find_renew import Find_renew
 from data.db_init import db_proc
-import requests, json
+import requests, json, websockets, asyncio
 
 
 
@@ -64,6 +64,7 @@ class WindowManager(ScreenManager):
         self.DB=db_proc()
         self.DB.create_db()
         self.before_page=''
+        self.userID = ''
         self.start_page_num=0   #list 시작 게시물 index
         self.page_num=1     #list 현재 페이지
         self.max_page_num=5 #list 최대 페이지
@@ -81,6 +82,14 @@ class WindowManager(ScreenManager):
         with open("./login_info.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
             return data["access"]
+
+    async def send_socket(self, room_num, send_dict):
+        async with websockets.connect("ws://127.0.0.1:8000/api/ws/chat/" + str(room_num) + "/") as websocket:
+            await websocket.send(json.dumps(send_dict))
+
+    async def receive_socket(self, room_num):
+        async with websockets.connect("ws://127.0.0.1:8000/api/ws/chat/" + str(room_num) + "/") as websocket:
+            self.data = await websocket.recv()
 
     def survey_save(self):
         self.send_data = {}

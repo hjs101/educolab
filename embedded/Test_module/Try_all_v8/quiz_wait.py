@@ -4,7 +4,8 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen, NoTransition
 from kivy.properties import NumericProperty
 from kivy.clock import Clock
-import requests
+from threading import Timer, Lock
+import json, websockets, asyncio
 
 
 class Quiz_Waiting_Screen(Screen):
@@ -17,6 +18,11 @@ class Quiz_Waiting_Screen(Screen):
         Window.size = (1280,720)
         Window.borderless=True
     
+    # async def connect(self):
+    #     async with websockets.connect("ws://127.0.0.1:8000/api/ws/chat/" + str(self.room_number) + "/") as websocket:
+    #         await websocket.send(json.dumps(send_dict))
+    #         self.data = await websocket.recv()
+
     def on_pre_enter(self):
         ##### change label #####
         self.room_number=self.manager.get_screen("Quiz_list1").midInput
@@ -28,6 +34,13 @@ class Quiz_Waiting_Screen(Screen):
         self.animate_flag=False
         self.cnt=0
         self.next_flag=0
+        send_dict = {
+            "message": "학생 입장",
+            "id": self.manager.userID,
+            "room_num": self.room_number
+        }
+        asyncio.get_event_loop().run_until_complete(self.manager.send_socket(self.room_number, send_dict))
+        asyncio.get_event_loop().run_until_complete(self.manager.receive_socket(self.room_number))
         
         ##**# socket 통신 초기화 및 입장 신호 작성 요청
         ##**# socket 통신 신호 받는 것은 Thread 이용해야 하는 것 같은 데... 잘 모르겠음
@@ -40,7 +53,7 @@ class Quiz_Waiting_Screen(Screen):
     #     else:
     #         self.animate_flag=True
     #         Clock.unschedule(self.event1)
-
+    
     def next(self): ##**# 임시로 화면 넘기는 버튼. Socket 구현시 삭제/조정 예정
         self.next_flag=1
     def next2(self): ##**# 임시로 화면 넘기는 버튼. Socket 구현시 삭제/조정 예정

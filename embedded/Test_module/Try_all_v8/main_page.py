@@ -25,7 +25,7 @@ class Main_Screen(Screen):
         self.args1 = (self.data["email"], self.data["name"])
         self.cur1 = self.manager.DB.execute(query=self.query1, args=self.args1)
         for (username, grade, class_field, name, plus_point, minus_point) in self.cur1:
-            self.student_id = username
+            self.manager.userID = username
             self.student_name = name
             self.grade = str(grade) + '학년 '
             self.class_field = str(class_field) + '반 '
@@ -41,7 +41,7 @@ class Main_Screen(Screen):
         self.current_survey = self.survey_full[0]['title']
 
         self.query2 = 'select title from pointshop_ptitle inner join accounts_userinfo on pointshop_ptitle.id=accounts_userinfo.wear_title_id where accounts_userinfo.username=%s'
-        self.args2 = (self.student_id, )
+        self.args2 = (self.manager.userID, )
         self.cur2 = self.manager.DB.execute(query=self.query2, args=self.args2)
         for (title, ) in self.cur2: self.emblem = title
 
@@ -63,6 +63,7 @@ class Main_Screen(Screen):
     def for_logout(self):
         with open("./login_info.json", 'w', encoding='utf-8') as file:
             json.dump({}, file)
+        self.manager.userID = ''
 
     def on_leave(self):
         self.manager.before_page=self.name
