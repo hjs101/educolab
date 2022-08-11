@@ -14,6 +14,7 @@ from .serializers import PointlogSerializer,TeacherSerializer, StudentSerializer
 class MypageMainView(APIView):
     def get(self,req):
         ## 학생일 경우
+        print(1, req.data)
         if req.user.userflag == 0:
             score_logs = req.user.point_student.all()
             userinfo_serializer = StudentSerializer(req.user)

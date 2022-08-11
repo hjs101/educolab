@@ -398,8 +398,9 @@ const routes = [
     name: 'SurveyStat',
     component: () => import('@/views/SurveyStatView')
   },
-  // 마이페이지(교사)
+  // 마이페이지
   {
+<<<<<<< HEAD
     path: '/teacher',
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -416,6 +417,11 @@ const routes = [
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     name: 'TeacherPage',
     component: () => import('@/views/TeacherPageView')
+=======
+    path: '/:userType',
+    name: 'MyPage',
+    component: () => import('@/views/MyPageView')
+>>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
   },
 
   // 내 필기(학생)
@@ -431,6 +437,7 @@ const routes = [
     name: 'StudentStoreView.vue',
     component: () => import('@/views/StudentStoreView')
   },
+<<<<<<< HEAD
   
   // 마이 페이지(학생)
   {
@@ -502,6 +509,8 @@ const routes = [
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   },
+=======
+>>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
   // 404 에러
   {
     path: '/404',

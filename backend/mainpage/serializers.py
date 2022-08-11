@@ -16,6 +16,7 @@ class EventSerializer(serializers.ModelSerializer):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e0daa39 (fix : 머지 충돌)
 
@@ -23,6 +24,8 @@ class EventSerializer(serializers.ModelSerializer):
 >>>>>>> cda8e1a (feat : 채점 여부 플래그)
 =======
 >>>>>>> 9c48d5b (Fix : back branch와 merge 후 충돌 수정2)
+=======
+>>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
 class MainpageNoticeSerializer(serializers.ModelSerializer):
 
     class Meta:
