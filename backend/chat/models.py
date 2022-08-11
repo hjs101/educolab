@@ -7,11 +7,13 @@ class QuizRoom(models.Model):
     quiz = models.ForeignKey(QuizList, on_delete=models.CASCADE, related_name="quiz_room")
 
 class QuizUser(models.Model):
-    room = models.ForeignKey(QuizRoom, on_delete=models.CASCADE, related_name="room")
+    room = models.ForeignKey(QuizRoom, on_delete=models.CASCADE, related_name="getuser_byroom")
     student = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name="stu_room")
     score = models.IntegerField(default=0)
 
 class QuizAnswer(models.Model):
-    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name="stu_answer")
+    room = models.ForeignKey(QuizRoom, on_delete=models.CASCADE, related_name="quiz_room")
     question = models.ForeignKey(QuizQuestions, on_delete=models.CASCADE, related_name="quiz_questions")
-    room = models.ForeignKey(QuizRoom, on_delete=models.CASCADE, related_name="room_answer")
+    student = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name="stu_answer")
+    quizuser = models.ForeignKey(QuizUser, on_delete=models.CASCADE, related_name="quiz_user")
+    answerflag = models.BooleanField(default=False)

@@ -22,7 +22,10 @@ urlpatterns = [
     path('',views.MainpageView.as_view(), name='mainpage'),
     path('event/', views.EventView.as_view(), name='event')
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> cda8e1a (feat : 채점 여부 플래그)
 =======
 >>>>>>> 9c48d5b (Fix : back branch와 merge 후 충돌 수정2)
+=======
+>>>>>>> e0daa39 (fix : 머지 충돌)
 ]

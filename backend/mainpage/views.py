@@ -10,6 +10,9 @@ from notice.models import Notice
 from .serializers import AccRankSerializer, EventSerializer, MainpageNoticeSerializer, MainpageTHomeworkSerializer, MainpageTeacherhomeworkSerializer
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e0daa39 (fix : 머지 충돌)
 from notice.serializers import NoticeMainSerializer
 =======
 >>>>>>> cda8e1a (feat : 채점 여부 플래그)

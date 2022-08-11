@@ -15,6 +15,9 @@ class EventSerializer(serializers.ModelSerializer):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e0daa39 (fix : 머지 충돌)
 
 =======
 >>>>>>> cda8e1a (feat : 채점 여부 플래그)

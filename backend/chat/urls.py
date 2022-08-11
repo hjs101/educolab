@@ -22,4 +22,8 @@ from . import views
 urlpatterns = [
     path('index/', views.index, name='index'),
     url(r'^(?P<room_name>[^/]+)/$', views.room, name='room'),
+    path('req/answer/', views.AnswerSubmitView.as_view(), name='answer_submit'),
+    path('req/scoreadd/', views.ScoreAddView.as_view(), name='score_add'),
+    path('req/rank/', views.RankScoreView.as_view(), name='rank'),
+    path('req/stu_result/', views.StudentResultView.as_view(), name='stu_result'),
 ]

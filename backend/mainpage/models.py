@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import SchoolInfo, UserInfo
+from accounts.models import SchoolInfo
 
 # Create your models here.
 class Event(models.Model):

@@ -31,7 +31,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
-
+        send_message = text_data_json['message']
         if message == "방 생성":
             print("방 생성")
             id = text_data_json['id']
@@ -42,7 +42,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 'roomnum':room_num,
                 'quiz':quiz_num
                 }
-            await self.create_room(data)
+            send_message = await self.create_room(data)
         elif message == "퀴즈 시작":
             print("퀴즈 시작")
         elif message == "학생 정답":
@@ -54,7 +54,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
         elif message == "결과 보기":
             print("결과 보기")
         elif message == "퀴즈 종료":
-            print("퀴즈 종료")
+            id = text_data_json['id']
+            room_num = text_data_json['room_num']
+            data = {
+                'teacher':id,
+                'roomnum':room_num
+            }
+            send_message = await self.room_delete(data)
         elif message == "학생 입장":
             print("학생 입장")
             id = text_data_json['id']
@@ -82,17 +88,34 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps({
             'message': message,
         }))
-
+    @database_sync_to_async
+    def room_delete(self, data):
+        quiz_room = QuizRoom.objects.get()
+        quiz_room.delete()
+        return "삭제 성공"
     @database_sync_to_async
     def create_room(self, data):
         quizroom_serializer = QuizRoomSerializer(data=data)
         teacher = UserInfo.objects.get(username=data['teacher'])
+        if teacher.userflag != 1:
+            return "선생님이 아닙니다."
         quiz = QuizList.objects.get(id=data['quiz'])
         if quizroom_serializer.is_valid(raise_exception=True):
             quizroom_serializer.save(teacher=teacher, quiz=quiz)
         return "등록 성공"
     @database_sync_to_async
     def join_student(self, data):
+        isRoom = QuizRoom.objects.filter(roomnum=data['roomnum']).exists()
+        if not isRoom:
+            return "방이 없네요"
+        quiz_room = QuizRoom.objects.get(roomnum=data['roomnum'])
+        student = UserInfo.objects.get(username=data['student'])
+        quiz_userserializer = QuizUserSerializer(data=data)
+        if quiz_userserializer.is_valid(raise_exception=True):
+            quiz_userserializer.save(student=student, room=quiz_room)
+        return "등록 성공"
+    @database_sync_to_async
+    def answer_submit(self, data):
         isRoom = QuizRoom.objects.filter(roomnum=data['roomnum']).exists()
         if not isRoom:
             return "방이 없네요"
