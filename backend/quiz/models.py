@@ -10,7 +10,7 @@ class QuizList(models.Model):
 <<<<<<< HEAD
 =======
 class QuizQuestions(models.Model):
-    survey = models.ForeignKey(QuizList, on_delete=models.CASCADE, related_name="question_quiz")
+    quiz = models.ForeignKey(QuizList, on_delete=models.CASCADE, related_name="question_quiz")
     question_number = models.IntegerField()
     quiz_question = models.CharField(max_length=500)
     multiple_bogi = models.CharField(max_length=500)

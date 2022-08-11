@@ -1,15 +1,15 @@
 # chat/consumers.py
 from channels.db import database_sync_to_async
 import json
-from quiz.models import QuizList
+from accounts.models import UserInfo
+from quiz.models import QuizList, QuizQuestions
 from channels.generic.websocket import AsyncWebsocketConsumer
-
+from .models import QuizRoom, QuizUser, QuizAnswer
+from .serializers import QuizRoomSerializer,QuizUserSerializer
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
-        
-
 
         # Join room group
         await self.channel_layer.group_add(
@@ -28,19 +28,49 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):
-        print(text_data)
+
         text_data_json = json.loads(text_data)
-        print(text_data_json)
         message = text_data_json['message']
-        # 선생님id, 퀴즈번호, 문제
-        quiz_list = await self.get_quizlist()
-        print(quiz_list)
-                # Send message to room group
+
+        if message == "방 생성":
+            print("방 생성")
+            id = text_data_json['id']
+            room_num = text_data_json['room_num']
+            quiz_num = text_data_json['quiz_num']
+            data = {
+                'teacher':id,
+                'roomnum':room_num,
+                'quiz':quiz_num
+                }
+            await self.create_room(data)
+        elif message == "퀴즈 시작":
+            print("퀴즈 시작")
+        elif message == "학생 정답":
+            print("학생 정답")
+        elif message == "문제 종료":
+            print("문제 종료")
+        elif message == "다음 문제":
+            print("다음 문제")
+        elif message == "결과 보기":
+            print("결과 보기")
+        elif message == "퀴즈 종료":
+            print("퀴즈 종료")
+        elif message == "학생 입장":
+            print("학생 입장")
+            id = text_data_json['id']
+            room_num = text_data_json['room_num']
+            data = {
+                'student':id,
+                'roomnum':room_num
+                }
+            send_message = await self.join_student(data)
+        elif message == "학생 퇴장":
+            print("학생 퇴장")
         await self.channel_layer.group_send(
             self.room_group_name,
             {
                 'type': 'chat_message',
-                'message': message,
+                'message': send_message,
             }
         )
 
@@ -54,8 +84,24 @@ class ChatConsumer(AsyncWebsocketConsumer):
         }))
 
     @database_sync_to_async
-    def get_quizlist(self):
-        return QuizList.objects.all()
+    def create_room(self, data):
+        quizroom_serializer = QuizRoomSerializer(data=data)
+        teacher = UserInfo.objects.get(username=data['teacher'])
+        quiz = QuizList.objects.get(id=data['quiz'])
+        if quizroom_serializer.is_valid(raise_exception=True):
+            quizroom_serializer.save(teacher=teacher, quiz=quiz)
+        return "등록 성공"
+    @database_sync_to_async
+    def join_student(self, data):
+        isRoom = QuizRoom.objects.filter(roomnum=data['roomnum']).exists()
+        if not isRoom:
+            return "방이 없네요"
+        quiz_room = QuizRoom.objects.get(roomnum=data['roomnum'])
+        student = UserInfo.objects.get(username=data['student'])
+        quiz_userserializer = QuizUserSerializer(data=data)
+        if quiz_userserializer.is_valid(raise_exception=True):
+            quiz_userserializer.save(student=student, room=quiz_room)
+        return "등록 성공"
 # 1 100
 # 2 90
 # 3 80

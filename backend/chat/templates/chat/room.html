@@ -41,6 +41,9 @@
         var message = messageInputDom.value;
         chatSocket.send(JSON.stringify({
             'message': message,
+            'id': "stu02",
+            "room_num" : roomName,
+            "quiz_num" : "1",
         }));
 
         messageInputDom.value = '';
