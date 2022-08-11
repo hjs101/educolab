@@ -35,8 +35,7 @@ export default {
     const onSubmit = (event) => {
       event.preventDefault()
       let form = new FormData()
-      const task = store.getters.getTask
-      form.append('submit_pk', task['student_submit'][0].id)
+      form.append('submit_pk', change.value?.id)
       form.append('teacher_flag', 1)
       form.append('content', student.content)
       if (student['files'] !== null) {

@@ -8,8 +8,6 @@
       <section v-if="!user.isTeacher">
       <!-- 채점 안 한 과제 -->
         <student-task-submit v-if="isLecture && !isSubmit" />
-        <!-- 채점한 과제 -->
-        <student-submit-content v-else />
       </section>
       <!-- 자신이 만든 페이지에서만 보임 -->
       <div class="buttonGroup">
@@ -50,14 +48,12 @@ import dayjs from 'dayjs'
 import StudentTaskSubmit from '@/components/StudentTaskSubmit.vue'
 import TaskDetailContent from '@/components/TaskDetailContent.vue'
 import MessagePopUp from '@/components/MessagePopUp.vue'
-import StudentSubmitContent from '@/components/StudentSubmitContent.vue'
 export default {
   name: 'TaskDetailView',
   components: {
     StudentTaskSubmit,
     TaskDetailContent,
     MessagePopUp,
-    StudentSubmitContent,
   },
   setup() {
     const route = useRoute()
@@ -103,12 +99,15 @@ export default {
     const isSubmit = computed(() => {
       if (isLecture.value) {
         if (task.value.student_submit) {
-          return task.value.student_submit[0].submit_flag
+          return task.value.student_submit[0]?.submit_flag
+        } else {
+          return ''
         }
       } else if (task.value.my_submit) {
-        return task.value.my_submit[0].submit_flag
+          return task.value.my_submit[0]?.submit_flag
+      } else {
+        return ''
       }
-      return false
     })
 
     return {

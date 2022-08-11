@@ -54,7 +54,7 @@
           class="rounded-borders"
           v-for="item in list.studentCheckedTask.slice((page.studentCheckedTask-1)*10, page.studentCheckedTask*10)"
           :key="item.pk">
-          <task-item :item = item :teacher="0"  :submit="true" />
+          <task-item :item = item :teacher="0"  :submit="true" :over="true" />
         </q-list>
         <the-pagination
           v-if="number.studentCheckedTask"
@@ -69,7 +69,7 @@
           class="rounded-borders"
           v-for="item in list.done.slice((page.done-1)*10, page.done*10)"
           :key="item.pk">
-          <task-item :item = item :teacher="1"  :submit="true" />
+          <task-item :item = item :teacher="1"  :submit="true" :over="true" />
         </q-list>
         <the-pagination
           v-if="number.done"

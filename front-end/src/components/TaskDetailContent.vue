@@ -122,17 +122,18 @@ export default {
         url: drf.task.check(),
         method: 'post',
         headers: store.getters.authHeader,
-        data,
+        data: {
+          ...data,
+          username: props.task.student.username,
+          point: point.value * 1,
+        }
       })
       .then((() => {
         axios({
           url: drf.task.checkDone(),
           method: 'post',
           headers: store.getters.authHeader,
-          data: {
-            username: props.task.student.username,
-            point: point.value * 1,
-          },
+          data,
         })
           .then(((res) => {
             console.log(res.data)

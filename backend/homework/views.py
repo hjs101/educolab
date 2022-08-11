@@ -1,3 +1,4 @@
+from re import sub
 from django.shortcuts import render
 from rest_framework.views import APIView 
 from rest_framework.response import Response
@@ -187,7 +188,6 @@ class HomeworkDetailView(APIView):
                 homework_serializer = TeacherHomeworkDetailSerializer(homework)
                 student_submit = homework.student_submit.all()
                 student_submit_serializer = SubmitHomeworkSerializer(student_submit, many=True)
-                print(1)
                 context = {
                     "homework" : homework_serializer.data,
                     "student_submit" : student_submit_serializer.data
@@ -286,7 +286,9 @@ class HomeworkCheckView(APIView): # 채점
         if request.user.userflag == True:
             print('true')
             submit = SubmitHomework.objects.get(id=request.data.get('pk'))
+            print(submit)
             if submit.check_flag == True:
+                print('true')
                 return Response({"success" : False, "message" : "이미 채점된 제출입니다"})
             username = request.data.get('username')
             point = request.data.get('point')

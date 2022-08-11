@@ -3,11 +3,13 @@
     <q-card-section >
       {{item.id}}
       <div class="text-h6">{{item.title}}</div>
-      <div v-if="teacher" class="text-subtitle2">~ {{item.deadline}}</div>
+      <div class="text-subtitle2" v-if="!over" >~ {{item.deadline}}</div>
     </q-card-section>
-    <q-card-section>
-      {{item.grade || item.student.grade}}학년 {{item.class_field || item.student.class_field}}반
-      <span v-if="!teacher"> {{item.student.name}}</span>
+    <q-card-section v-if="isTeacher">
+      {{item.grade}}학년 {{item.class_field}}반
+      <span v-if="!teacher">
+        {{item.student.name}}
+      </span>
     </q-card-section>
   </q-card>
 </template>
@@ -27,11 +29,13 @@ export default {
     item: Object,
     teacher: Number,
     submit: Boolean,
+    over: Boolean,
   },
   setup(props) {
     const route = useRoute()
     const router = useRouter()
     const {userType} = route.params
+    const isTeacher = computed(() => userType === 'teacher')
     const taskType = computed(() => props.teacher? 'lecture':'self')
     const toDetail = () => {
       if (userType === 'student' && !props.teacher && !props.submit) {
@@ -49,7 +53,8 @@ export default {
     return {
       userType,
       taskType,
-      toDetail
+      toDetail,
+      isTeacher
     }
   }
 }

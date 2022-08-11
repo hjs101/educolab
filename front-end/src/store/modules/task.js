@@ -81,7 +81,8 @@ export const task = {
       }
     },
     TASK_DETAIL: (state, data) => state.task = data,
-  },
+    INIT_TASK: (state) => state.task = {},
+    },
 
   actions: {
     taskList({ getters, commit }) {
@@ -112,7 +113,7 @@ export const task = {
         data,
       })
         .then(res => {
-          if (data.get('teacher_flag')) {
+          if (data.get('teacher_flag') === '1') {
             router.push({name: 'TaskDetailView', params: {
               userType: getters.currentUser.userflag? 'teacher': 'student',
               taskType: 'lecture',
@@ -202,5 +203,8 @@ export const task = {
           router.push({name: 'TaskListView'})
         }))
       },
+    initTask({commit}) {
+      commit('INIT_TASK')
+    },
     }
   }

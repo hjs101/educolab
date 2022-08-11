@@ -45,7 +45,7 @@
         <the-pagination
           v-if="number.studentTask"
           :limit="number.studentTask"
-          target="notCheck"
+          target="studentTask"
           @change-page="changePage"
         />
       </q-tab-panel>

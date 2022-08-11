@@ -82,24 +82,22 @@
 </template>
 
 <script>
-import { reactive, computed} from 'vue'
+import { reactive, computed, onBeforeMount} from 'vue'
 import { useRoute } from 'vue-router'
 import {useStore} from 'vuex'
 export default {
   name: 'TaskFormView',
-  created() {
-    const store = useStore()
-    const route = useRoute()
-    let {taskPk, userType} = route.params
-    if (taskPk) {
-      store.dispatch('taskDetail', {pk: taskPk, teacher_flag: userType === 'teacher'? 1:0})
-    }
-  },
   setup () {
     const route = useRoute()
     const store = useStore()
-    const subjectOptions = store.getters.getSubject
     let {userType, taskPk} = route.params
+    onBeforeMount(() => {
+      if (taskPk) {
+        store.dispatch('initTask')
+        store.dispatch('taskDetail', {pk: taskPk, teacher_flag: userType === 'teacher'? 1:0})
+    }
+    })
+    const subjectOptions = store.getters.getSubject
     let isTeacher = computed(() => userType === 'teacher')
     let type = computed(() => taskPk? '수정':'등록')
     const storeTask = computed(() => store.getters.getTask)
@@ -113,9 +111,9 @@ export default {
       deadline: computed(() => storeTask.value.homework?.deadline || storeTask.value.deadline),
     })
     const task = reactive({
-      teacher_flag: isTeacher.value,
+      teacher_flag: isTeacher.value? 1:0,
       subject: taskPk? computedTask.subject: '',
-      title: taskPk? computedTask.title : '',
+      title: taskPk? computedTask.title: '',
       content: taskPk? computedTask.content : '',
       grade: taskPk? computedTask.grade : '',
       class_field: taskPk? computedTask.class_field : '',
@@ -135,7 +133,6 @@ export default {
       }
       if (arg) {
         form.append('submit_pk', storeTask.value['my_submit'][0].id)
-        form.append('teacher_flag', 0)
         store.dispatch('submitTask', form)
       } else if (taskPk) {
         form.append('pk', taskPk)
@@ -174,6 +171,7 @@ export default {
       onSubmit,
       onReset,
       subjectOptions,
+      computedTask
     }
   }
 }
