@@ -74,6 +74,7 @@ class List_Screen(Screen):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         res = requests.get('https://i7c102.p.ssafy.io/api/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
         print(res.text)
 =======
@@ -88,6 +89,8 @@ class List_Screen(Screen):
         i = 1
         for data in data_full:
 =======
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         res = requests.get('https://i7c102.p.ssafy.io/api/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
         data_full = json.loads(res.text)
         self.manager.max_page_num = int(len(data_full) / 5) + 1
@@ -95,7 +98,10 @@ class List_Screen(Screen):
         i = 1
 
         for data in data_full[self.manager.start_page_num : self.manager.start_page_num + 5]:
+<<<<<<< HEAD
 >>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
             for key in data:
                 if key=='pk': self.ids['num' + str(i)].text = str(data[key])
                 elif key=='teacher': self.ids['writer' + str(i)].text = str(data[key]['name'])
@@ -105,14 +111,18 @@ class List_Screen(Screen):
                 elif key=='title': self.ids['title' + str(i)].text = str(data[key])
             i += 1
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.manager.max_page_num = int(i / 5) + 1
 =======
 >>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
         ##**# 게시물이 5개 미만일때 정보 없는 버튼 비활성화 목적의 flag > 함수 content_btn으로 이어집니다.
         self.deact_flag=(i-1)%5
         if self.deact_flag==0: self.deact_flag=5
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -136,6 +146,8 @@ class List_Screen(Screen):
     def survey_list(self):
         pass
 =======
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         if self.manager.page_num!=self.manager.max_page_num:
             self.deact_flag=5
 
@@ -167,11 +179,15 @@ class List_Screen(Screen):
 
         if self.manager.page_num!=self.manager.max_page_num:
             self.deact_flag=5
+<<<<<<< HEAD
 >>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         ##**# self.deact_flag = 한 페이지에 나와있는 게시물 개수. 상세 내용은 notice_list를 참조해서 작성 요청
         ##**#                   게시물이 5개 미만일때 정보 없는 버튼 비활성화 목적의 flag > 함수 content_btn으로 이어집니다.
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     def content_btn(self, content_num): # List에서 각각의 게시물 들어갈때 페이지 구분 
 <<<<<<< HEAD
@@ -215,6 +231,8 @@ class List_Screen(Screen):
         else:
             self.content_page=self.name
 =======
+=======
+>>>>>>> d61ea9f (fix: embedded update)
     def content_btn(self, content_num): # List에서 각각의 게시물 들어갈때 페이지 구분
         if content_num > self.deact_flag:
             self.content_page=self.name
@@ -245,13 +263,17 @@ class List_Screen(Screen):
             else:
                 self.content_page=self.name
 
+<<<<<<< HEAD
 >>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
         # self.content_number = content_num
         # print("now"+self.content_page)
         ##**# 데이터가 없어서 일단 화면 테스트를 목적으로 임시 주석
         ##**# 함수 survey_list에서 self.deact_flag 만들어 주시고 푸시면 정상 작동
         ##**# 게시물이 5개 미만일때 정보 없는 버튼 비활성화 목적의 flag 활용
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -272,14 +294,20 @@ class List_Screen(Screen):
 >>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
 =======
 >>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
 
     def page_num_reset(self): ##### main 페이지로 넘어갈때 
         self.manager.page_num=1
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         self.manager.start_page_num=0
 >>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
+=======
+        self.manager.start_page_num=0
+>>>>>>> d61ea9f (fix: embedded update)
 
     def next_flag_setup(self, btn_direction): ##### list 옆 페이지로 넘어가는 flag 정의
         self.next_flag=1
@@ -289,16 +317,22 @@ class List_Screen(Screen):
             self.next_flag=0
         
 <<<<<<< HEAD
+<<<<<<< HEAD
         if btn_direction=="before" : self.manager.page_num-=self.next_flag
         if btn_direction=="after" : self.manager.page_num+=self.next_flag
 =======
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         if btn_direction=="before" :
             self.manager.page_num -= self.next_flag
             self.manager.start_page_num -= 5
         if btn_direction=="after" :
             self.manager.page_num += self.next_flag
             self.manager.start_page_num += 5
+<<<<<<< HEAD
 >>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
     def next_page_setup(self, page_hint):  ##### list 옆 페이지로 넘어가는 페이지 정의
         if self.next_flag:
@@ -318,16 +352,22 @@ class List_Screen(Screen):
                 if self.name=='Survey_list1': self.next_page='Survey_list2'
                 if self.name=='Survey_list2': self.next_page='Survey_list1'
 <<<<<<< HEAD
+<<<<<<< HEAD
             if page_hint=="start":self.manager.page_num=1
             if page_hint=="end": self.manager.page_num=self.manager.max_page_num
 =======
+=======
+>>>>>>> d61ea9f (fix: embedded update)
             if page_hint=="start":
                 self.manager.page_num=1
                 self.manager.start_page_num=0
             if page_hint=="end": 
                 self.manager.page_num=self.manager.max_page_num
                 self.manager.start_page_num = 5 * (self.manager.max_page_num - 1)
+<<<<<<< HEAD
 >>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         else:
             self.next_page=self.name
 

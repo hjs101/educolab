@@ -6,6 +6,7 @@ class db_proc:
         self.db = connector.connect(
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             host = '3.36.69.192',
             user = 'educolab',
             password = 'c102_edu',
@@ -19,6 +20,11 @@ class db_proc:
             user = 'educolab',
             password = 'c102_edu',
 >>>>>>> 4c23f18 (안올라온 파일들 있어서...)
+=======
+            host = '3.36.69.192',
+            user = 'educolab',
+            password = 'c102_edu',
+>>>>>>> d61ea9f (fix: embedded update)
             database = 'educolab'
         )
         self.cur = self.db.cursor()
@@ -28,6 +34,7 @@ class db_proc:
         self.cur.execute(query, args)
         return self.cur
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     def db_commit(self):
@@ -40,6 +47,11 @@ class db_proc:
         self.db.commit()
 
 >>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
+=======
+    def db_commit(self):
+        self.db.commit()
+
+>>>>>>> d61ea9f (fix: embedded update)
     def db_close(self):
         print("db 연결 해제")
         self.db.close()

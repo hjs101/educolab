@@ -1,16 +1,21 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from audioop import reverse
 =======
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 =======
 from audioop import reverse
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+from audioop import reverse
+>>>>>>> d61ea9f (fix: embedded update)
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image, AsyncImage
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 import requests, json
@@ -20,6 +25,9 @@ import requests
 =======
 import requests, json
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+import requests, json
+>>>>>>> d61ea9f (fix: embedded update)
 from myTextInput import limitedTextInput
 from kivy.properties import ListProperty
 from myPopup import MyPopUp
@@ -38,19 +46,25 @@ class List_Screen(Screen):
         Window.borderless=True
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         # Builder.load_file('list_page.kv')
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         self.next_page='main'
         self.page_num=0
 
     def on_pre_enter(self):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         # Contents reset
         for i in range(5):
             self.ids['num' + str(i+1)].text=''
@@ -63,6 +77,9 @@ class List_Screen(Screen):
             data = json.load(file)
             self.acc_token = data["access"]
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         if 'Notice' in self.name:
             self.key_color=[151/255, 71/255, 255/255,1]
             self.ids.main_title.text="공지사항"
@@ -83,6 +100,7 @@ class List_Screen(Screen):
         self.ids.middle.text=str(self.manager.page_num)
 
         # icons
+<<<<<<< HEAD
 =======
         ##### key_color and title #####
 =======
@@ -112,6 +130,8 @@ class List_Screen(Screen):
 =======
         # icons
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         if self.manager.page_num==1:
             self.ids.before2.source='./icon/None.png'
             self.ids.before1.source='./icon/None.png'
@@ -128,8 +148,11 @@ class List_Screen(Screen):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
     def notice_list(self):
         res = requests.get('http://127.0.0.1:8000/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
         data_full = json.loads(res.text)
@@ -165,6 +188,9 @@ class List_Screen(Screen):
 
     def content_btn(self, content_num): # List에서 각각의 게시물 들어갈때 페이지 구분 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         if self.name=='Notice_list1' or self.name=='Notice_list2': self.content_page="Notice_info"
         if self.name=='Survey_list1' or self.name=='Survey_list2':
             ##**# 설문조사 1번 문항 : 주관식? 객관식? type_flag
@@ -188,6 +214,7 @@ class List_Screen(Screen):
         #     ### Content_num : 1 ~ 5
         #     print("게시물 "+str(content_num)+"번")
         #     self.content_num = int(self.ids['num' + str(content_num)].text)
+<<<<<<< HEAD
 =======
     def content_btn(self, content_num): ##### 각각의 게시물을 들어갈때 들어가는 페이지 설정 
 =======
@@ -222,6 +249,8 @@ class List_Screen(Screen):
         #     print("게시물 "+str(content_num)+"번")
         #     self.content_num = int(self.ids['num' + str(content_num)].text)
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
 
     def page_num_reset(self): ##### main 페이지로 넘어갈때 

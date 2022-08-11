@@ -44,6 +44,7 @@ class Login_Screen(Screen):
             print("username :" + self.res.json()['name'])
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             self.f = open("login_token.txt", 'w')
             self.f.write(self.res.json()['access'])
             self.f.close()
@@ -54,6 +55,11 @@ class Login_Screen(Screen):
             self.f.write(self.res.json()['access'])
             self.f.close()
 >>>>>>> dbdcd45 (Refactor : v3, v4 구분)
+=======
+            self.f = open("login_token.txt", 'w')
+            self.f.write(self.res.json()['access'])
+            self.f.close()
+>>>>>>> d61ea9f (fix: embedded update)
         else:
             self.popup.ids.alert.text="아이디와 비밀번호를\n다시 확인하여 주십시오"
             self.popup.open()
@@ -64,12 +70,16 @@ class Login_Screen(Screen):
         self.ids.PW_input.text=""
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.manager.before_page=self.name
 =======
 >>>>>>> 210a2e8 (Feat : 메인화면 추가)
 =======
         self.manager.before_page=self.name
 >>>>>>> 01bd712 (Feat : 목록 화면 작성)
+=======
+        self.manager.before_page=self.name
+>>>>>>> d61ea9f (fix: embedded update)
 
 class login_test_App(App):
     def build(self):

@@ -20,12 +20,16 @@ from find_renew import Find_renew
 from data.db_init import db_proc
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import requests, json
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 =======
 import requests, json
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+import requests, json
+>>>>>>> d61ea9f (fix: embedded update)
 
 ##### to remove warning message ######
 Builder.load_file('loading.kv')
@@ -55,12 +59,16 @@ class WindowManager(ScreenManager):
         self.before_page=''
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.start_page_num=0   #list 시작 게시물 index
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 =======
         self.start_page_num=0   #list 시작 게시물 index
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+        self.start_page_num=0   #list 시작 게시물 index
+>>>>>>> d61ea9f (fix: embedded update)
         self.page_num=1     #list 현재 페이지
         self.max_page_num=5 #list 최대 페이지
         self.prob_num=1     #현재 문항 번호
@@ -69,12 +77,16 @@ class WindowManager(ScreenManager):
         self.survey_cnt=0   #설문에 답변한 문항 수
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.content_number=0    #어떤 글?
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 =======
         self.content_number=0    #어떤 글?
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+        self.content_number=0    #어떤 글?
+>>>>>>> d61ea9f (fix: embedded update)
 
     def onStop(self): # 창 종료 버튼
         self.DB.db_close()
@@ -82,8 +94,11 @@ class WindowManager(ScreenManager):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
     def access_api(self):
         with open("./login_info.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -111,6 +126,7 @@ class WindowManager(ScreenManager):
             data=self.send_data
         )
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     def survey_save(self): ##**# 팝업 종료시 Yes를 누르면 이 함수 호출 후 > 팝업 종료 및 페이지 이동
         pass
@@ -118,6 +134,8 @@ class WindowManager(ScreenManager):
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 =======
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
 class masterApp(App):
     def build(self):

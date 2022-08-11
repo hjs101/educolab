@@ -9,12 +9,16 @@ from kivy.properties import ListProperty
 from myPopup import MyPopUp
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import json
 =======
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 =======
 import json
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+import json
+>>>>>>> d61ea9f (fix: embedded update)
 
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
@@ -33,8 +37,11 @@ class Info_Screen(Screen):
     def on_pre_enter(self):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         # self.page_pk = self.manager.get_screen('Notice_list1').content_num
         ##**# Notice_list1, Notice_list2에서 오는 두 가지 경우를 다 따지는 방식
         self.page_pk = self.manager.get_screen(self.manager.before_page).content_num
@@ -43,6 +50,9 @@ class Info_Screen(Screen):
             data = json.load(file)
             self.acc_token = data["access"]
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         if 'Notice' in self.name:
             self.key_color=[151/255, 71/255, 255/255,1]
             self.notice_detail()
@@ -73,6 +83,7 @@ class Info_Screen(Screen):
     #     pass
     # def survey_detail(self):
     #     pass
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
@@ -110,6 +121,8 @@ class Info_Screen(Screen):
     # def survey_detail(self):
     #     pass
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
     def on_leave(self):
         self.manager.before_page=self.name

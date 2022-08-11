@@ -9,12 +9,16 @@ from kivy.properties import StringProperty
 from myPopup import MyPopUp
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from data.db_init import db_proc
 =======
 >>>>>>> 210a2e8 (Feat : 메인화면 추가)
 =======
 from data.db_init import db_proc
 >>>>>>> dbee603 (Refactor: login token 발급)
+=======
+from data.db_init import db_proc
+>>>>>>> d61ea9f (fix: embedded update)
 
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
@@ -29,6 +33,7 @@ class Main_Screen(Screen):
         Window.borderless=True
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.DB = db_proc()
         Builder.load_file('main_page.kv')
     
@@ -41,6 +46,11 @@ class Main_Screen(Screen):
         Builder.load_file('main_page.kv')
     
 >>>>>>> dbee603 (Refactor: login token 발급)
+=======
+        self.DB = db_proc()
+        Builder.load_file('main_page.kv')
+    
+>>>>>>> d61ea9f (fix: embedded update)
     def on_pre_enter(self):
         ##### 여기 문구를 수정해주세요 #####
         self.ids.userinfo.text="싸피중학교 3학년 1반 24번 OOO"
@@ -61,17 +71,23 @@ class Main_Screen(Screen):
         self.ids.survey_icon.img_path='./icon/survey.png'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> dbee603 (Refactor: login token 발급)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
     def go_notice(self):
         pass
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 210a2e8 (Feat : 메인화면 추가)
 =======
 >>>>>>> dbee603 (Refactor: login token 발급)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         
 class main_test_App(App):
     def build(self):

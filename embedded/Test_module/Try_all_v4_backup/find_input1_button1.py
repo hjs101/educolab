@@ -20,6 +20,7 @@ class Find_input1_button1(Screen):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('find_input1_button1.kv')
 =======
         Builder.load_file('find_input1_button1.kv')
@@ -27,6 +28,9 @@ class Find_input1_button1(Screen):
 =======
         # Builder.load_file('find_input1_button1.kv')
 >>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
+=======
+        # Builder.load_file('find_input1_button1.kv')
+>>>>>>> d61ea9f (fix: embedded update)
         self.popup=MyPopUp()
 
     def midBtn(self):

@@ -7,6 +7,7 @@ import requests
 from myTextInput import limitedTextInput
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from kivy.properties import NumericProperty
 from myPopup import MyPopUp2
 =======
@@ -17,11 +18,16 @@ from myPopup import MyPopUp
 from kivy.properties import NumericProperty
 from myPopup import MyPopUp2
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+from kivy.properties import NumericProperty
+from myPopup import MyPopUp2
+>>>>>>> d61ea9f (fix: embedded update)
 
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
 
 class Survey_Select_Screen(Screen):
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     # progress_all:0.8*root.width
@@ -35,6 +41,11 @@ class Survey_Select_Screen(Screen):
     # progress_set:self.progress_all*self.percent
     percent=NumericProperty(0.7)
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+    # progress_all:0.8*root.width
+    # progress_set:self.progress_all*self.percent
+    percent=NumericProperty(0.7)
+>>>>>>> d61ea9f (fix: embedded update)
     def __init__(self, **kwargs):
         super(Survey_Select_Screen, self).__init__(**kwargs)
         Window.top=50
@@ -45,13 +56,19 @@ class Survey_Select_Screen(Screen):
         # Builder.load_file('survey_select.kv')
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         self.key_color=[0/255, 176/255, 240/255,1]
         self.popup = MyPopUp2()
         a=23
         b=3
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         # ##icons
         self.ids.before.source='./icon/left_button.png'
         self.ids.after.source='./icon/right_button.png'
@@ -128,6 +145,7 @@ class Survey_Select_Screen(Screen):
     def checkPopup(self):
         print(self.popup.sig)
 
+<<<<<<< HEAD
 =======
         self.key_color=[151/255, 71/255, 255/255,1]
 
@@ -215,6 +233,8 @@ class Survey_Select_Screen(Screen):
         print(self.popup.sig)
 
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
 
     def onStop(self): # 창 종료 버튼

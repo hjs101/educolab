@@ -44,6 +44,7 @@ class Login_Screen(Screen):
             print("username :" + self.res.json()['name'])
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             self.f = open("login_token.txt", 'w')
             self.f.write(self.res.json()['access'])
             self.f.close()
@@ -54,6 +55,11 @@ class Login_Screen(Screen):
             self.f.write(self.res.json()['access'])
             self.f.close()
 >>>>>>> dbee603 (Refactor: login token 발급)
+=======
+            self.f = open("login_token.txt", 'w')
+            self.f.write(self.res.json()['access'])
+            self.f.close()
+>>>>>>> d61ea9f (fix: embedded update)
         else:
             self.popup.ids.alert.text="아이디와 비밀번호를\n다시 확인하여 주십시오"
             self.popup.open()

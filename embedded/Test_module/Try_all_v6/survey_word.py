@@ -5,10 +5,14 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image, AsyncImage
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 import requests, json
 from myTextInput import limitedTextInput
 from kivy.properties import NumericProperty
 from myPopup import MyPopUp2, MyPopUp3
+<<<<<<< HEAD
 =======
 import requests
 from myTextInput import limitedTextInput
@@ -24,6 +28,8 @@ from myTextInput import limitedTextInput
 from kivy.properties import NumericProperty
 from myPopup import MyPopUp2, MyPopUp3
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
 class Survey_Word_Screen(Screen):
     ##**# self.manager.survey_ans [자료형: dictionary][key: 문항 번호(string)][value: 설문조사 답안(list-객관식/string-주관식)]
@@ -42,6 +48,9 @@ class Survey_Word_Screen(Screen):
         self.popup = MyPopUp2()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         self.popup2 = MyPopUp3()
 
     def on_pre_enter(self):
@@ -60,6 +69,7 @@ class Survey_Word_Screen(Screen):
         ##**# 문제 표기
         self.ids.title.text=self.data_full[0]['survey_name']
         self.ids.prob.text="<" + str(self.prob_num) + "번 문항>\n" + self.data_full[self.prob_num]['survey_question']
+<<<<<<< HEAD
 =======
 =======
         self.popup2 = MyPopUp3()
@@ -87,6 +97,8 @@ class Survey_Word_Screen(Screen):
         self.ids.title.text=self.data_full[0]['survey_name']
         self.ids.prob.text="<" + str(self.prob_num) + "번 문항>\n" + self.data_full[self.prob_num]['survey_question']
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
         # 이전 답변이 있다면 복구
         if str(self.prob_num) in self.manager.survey_ans:
@@ -100,6 +112,7 @@ class Survey_Word_Screen(Screen):
         else: self.ids.after.source='./icon/right_button.png'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.percent=len(self.manager.survey_ans)/self.manager.max_prob_num
         if self.percent==0: self.percent=0.00001
 =======
@@ -109,6 +122,10 @@ class Survey_Word_Screen(Screen):
         self.percent=len(self.manager.survey_ans)/self.manager.max_prob_num
         if self.percent==0: self.percent=0.00001
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+        self.percent=len(self.manager.survey_ans)/self.manager.max_prob_num
+        if self.percent==0: self.percent=0.00001
+>>>>>>> d61ea9f (fix: embedded update)
         self.ids.progress.text=f'{self.percent*100:.1f}%'
 
     def next_flag_setup(self, btn_direction): ##### list 옆 페이지로 넘어가는 self.next_flag 정의
@@ -128,6 +145,7 @@ class Survey_Word_Screen(Screen):
             # next_page_type = True  # 객관식
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             if self.data_full[self.manager.prob_num]['multiple_bogi'] == None: next_page_type = False
             else: next_page_type = True
 =======
@@ -137,6 +155,10 @@ class Survey_Word_Screen(Screen):
             if self.data_full[self.manager.prob_num]['multiple_bogi'] == None: next_page_type = False
             else: next_page_type = True
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+            if self.data_full[self.manager.prob_num]['multiple_bogi'] == None: next_page_type = False
+            else: next_page_type = True
+>>>>>>> d61ea9f (fix: embedded update)
             #페이지 이동
             if next_page_type: # 주관식 > 객관식
                 self.next_page="Survey_select1"
@@ -148,13 +170,19 @@ class Survey_Word_Screen(Screen):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
     def calc(self, text): #정답을 낸 문항 개수를 즉시 반영하기 위한 함수
         if self.check_flag:
             self.manager.survey_ans.pop(self.data_full[self.prob_num]['id'],None)
             self.result=text
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
             if len(text)!=0:
                 self.manager.survey_ans[self.data_full[self.prob_num]['id']]=text
@@ -168,6 +196,7 @@ class Survey_Word_Screen(Screen):
         if self.end_flag and btn_flag:
             self.popup2.ids.alert.text="설문이 완료되었습니다."
             self.popup2.open()
+<<<<<<< HEAD
 =======
     def cnt_setup(self): #정답을 낸 문항 개수를 즉시 반영하기 위한 함수
         self.result=self.ids.ans.text
@@ -201,10 +230,13 @@ class Survey_Word_Screen(Screen):
             self.popup2.ids.alert.text="설문이 완료되었습니다."
             self.popup2.open()
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         else:
             self.popup.ids.alert.text="설문이 끝나지 않았습니다. 종료하시겠습니까?\n종료시 현재까지 진행된 내용은 저장하지 않습니다."
             self.popup.open()
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     def on_leave(self):
@@ -222,6 +254,10 @@ class Survey_Word_Screen(Screen):
     def on_leave(self):
         self.check_flag=False
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+    def on_leave(self):
+        self.check_flag=False
+>>>>>>> d61ea9f (fix: embedded update)
         self.ids.ans.text=""
         
 class survey_test_App(App):

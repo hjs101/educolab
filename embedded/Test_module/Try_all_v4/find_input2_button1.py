@@ -24,12 +24,15 @@ class Find_input2_button1(Screen):
         self.popup=MyPopUp()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         # self.name_temp=''
         # self.username_temp=''
 >>>>>>> dbdcd45 (Refactor : v3, v4 구분)
 =======
 >>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
     def on_pre_enter(self):     
         # 화면 출력 내용 변환
@@ -78,6 +81,7 @@ class find_test_App(App):
         Builder.load_file('find_input2_button2.kv')
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         return Find_input2_button1()
 =======
         return Find_input2_button2()
@@ -85,6 +89,9 @@ class find_test_App(App):
 =======
         return Find_input2_button1()
 >>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
+=======
+        return Find_input2_button1()
+>>>>>>> d61ea9f (fix: embedded update)
 
 if __name__=="__main__":
     find_test_App().run()

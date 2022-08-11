@@ -5,10 +5,14 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image, AsyncImage
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 import requests, json
 from myTextInput import limitedTextInput
 from kivy.properties import NumericProperty
 from myPopup import MyPopUp2, MyPopUp3
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 import requests
@@ -24,6 +28,8 @@ from myPopup import MyPopUp2
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 =======
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
 class Survey_Select_Screen(Screen):
     percent=NumericProperty(0.7)
@@ -43,6 +49,9 @@ class Survey_Select_Screen(Screen):
         self.popup = MyPopUp2()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         self.popup2 = MyPopUp3()
     
     def on_pre_enter(self):
@@ -69,6 +78,7 @@ class Survey_Select_Screen(Screen):
             self.ids['ex'+str(i+1)].text=temp_list[i]
         for i in range(5):
             self.ids['ans'+str(i+1)].group=str(self.prob_num)+'ans'
+<<<<<<< HEAD
 =======
 =======
         self.popup2 = MyPopUp3()
@@ -112,6 +122,8 @@ class Survey_Select_Screen(Screen):
         for i in range(5):
             self.ids['ans'+str(i+1)].group=str(self.prob_num)+'ans'
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         
 
         # 이전 답변이 있다면 복구
@@ -126,11 +138,15 @@ class Survey_Select_Screen(Screen):
         else: self.ids.after.source='./icon/right_button.png'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         self.percent=len(self.manager.survey_ans)/self.manager.max_prob_num
         if self.percent==0: self.percent=0.00001
         self.ids.progress.text=f'{self.percent*100:.1f}%'
 
 
+<<<<<<< HEAD
 =======
         self.percent=self.manager.survey_cnt/self.manager.max_prob_num
         self.ids.progress.text=f'{self.percent*100:.1f}%'
@@ -143,6 +159,8 @@ class Survey_Select_Screen(Screen):
 
 
 >>>>>>> df3a9ba (Fix : 설문 오류 수정)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
     def next_flag_setup(self, btn_direction): ##### list 옆 페이지로 넘어가는 self.next_flag 정의
         self.next_flag=1
         if btn_direction=="before" and self.prob_num==1:
@@ -159,6 +177,7 @@ class Survey_Select_Screen(Screen):
             ##**# 다음 페이지의 문항 종류 = next_page_type (이거 정의해주세요)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             if self.data_full[self.manager.prob_num]['multiple_bogi'] == None: next_page_type = False
             else: next_page_type = True
 =======
@@ -169,6 +188,10 @@ class Survey_Select_Screen(Screen):
             if self.data_full[self.manager.prob_num]['multiple_bogi'] == None: next_page_type = False
             else: next_page_type = True
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+            if self.data_full[self.manager.prob_num]['multiple_bogi'] == None: next_page_type = False
+            else: next_page_type = True
+>>>>>>> d61ea9f (fix: embedded update)
             #페이지 이동
             if next_page_type: # 객관식 > 객관식
                 if self.name=="Survey_select1": self.next_page="Survey_select2"
@@ -181,6 +204,9 @@ class Survey_Select_Screen(Screen):
     def checkbox_click(self, instance, value, ans_num): # 체크박스 클릭시 결과를 넣어준다.
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         if self.check_flag:
             self.manager.survey_ans.pop(self.data_full[self.prob_num]['id'], None)
 
@@ -197,6 +223,7 @@ class Survey_Select_Screen(Screen):
             self.percent=len(self.manager.survey_ans)/self.manager.max_prob_num
             self.ids.progress.text=f'{self.percent*100:.1f}%'
             if self.percent == 1.0: self.end_flag = True
+<<<<<<< HEAD
 =======
         if value==True:
             self.result.append(ans_num)
@@ -230,6 +257,8 @@ class Survey_Select_Screen(Screen):
 =======
             if self.percent == 1.0: self.end_flag = True
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
     def toggle_btn(self, btn): # 체크박스 뿐 아니라 보기를 눌렀을 때 활성화 하기 위한 용도의 함수
         if self.ids[btn].active==True:
@@ -237,6 +266,7 @@ class Survey_Select_Screen(Screen):
         else:
             self.ids[btn].active=True
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     def onPopUp(self, btn_flag):
@@ -272,18 +302,28 @@ class Survey_Select_Screen(Screen):
             self.popup2.ids.alert.text="설문이 완료되었습니다"
             self.popup2.open()
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+    def onPopUp(self, btn_flag):
+        if self.end_flag and btn_flag:
+            self.popup2.ids.alert.text="설문이 완료되었습니다"
+            self.popup2.open()
+>>>>>>> d61ea9f (fix: embedded update)
         else:
             self.popup.ids.alert.text="설문이 끝나지 않았습니다. 종료하시겠습니까?\n종료시 현재까지 진행된 내용은 저장하지 않습니다."
             self.popup.open()
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
     def on_leave(self):
         self.check_flag=False
         for i in range(5):
             self.ids['ans'+str(i+1)].active=False
 
 
+<<<<<<< HEAD
 =======
     def on_pre_leave(self):
         # 데이터 저장
@@ -304,6 +344,8 @@ class Survey_Select_Screen(Screen):
 
 
 >>>>>>> df3a9ba (Fix : 설문 오류 수정)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 class survey_test_App(App):
     def build(self):
         Builder.load_file('survey_select.kv')

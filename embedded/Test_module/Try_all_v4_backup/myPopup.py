@@ -3,6 +3,7 @@ from kivy.lang import Builder
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Builder.load_file('myPopup.kv')
 =======
 Builder.load_file('myPopup.kv')
@@ -10,6 +11,9 @@ Builder.load_file('myPopup.kv')
 =======
 # Builder.load_file('myPopup.kv')
 >>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
+=======
+# Builder.load_file('myPopup.kv')
+>>>>>>> d61ea9f (fix: embedded update)
 
 class MyPopUp(Popup):
 	pass

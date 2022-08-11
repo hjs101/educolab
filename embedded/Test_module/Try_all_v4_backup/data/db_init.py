@@ -18,6 +18,7 @@ class db_proc:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     def db_commit(self):
         self.db.commit()
         
@@ -28,6 +29,11 @@ class db_proc:
         self.db.commit()
         
 >>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
+=======
+    def db_commit(self):
+        self.db.commit()
+        
+>>>>>>> d61ea9f (fix: embedded update)
     def db_close(self):
         print("db 연결 해제")
         self.db.close()

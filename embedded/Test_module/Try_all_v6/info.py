@@ -11,6 +11,7 @@ import json
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
@@ -18,6 +19,8 @@ import json
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 =======
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 class Info_Screen(Screen):
     key_color=ListProperty([1,1,1,1])
     def __init__(self, **kwargs):
@@ -27,6 +30,7 @@ class Info_Screen(Screen):
         Window.clearcolor = (242/255,245/255,247/255,1)
         Window.size = (1280,720)
         Window.borderless=True
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -48,6 +52,10 @@ class Info_Screen(Screen):
 
     def on_pre_enter(self):
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+
+    def on_pre_enter(self):
+>>>>>>> d61ea9f (fix: embedded update)
         with open("./login_info.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
             self.acc_token = data["access"]
@@ -70,6 +78,7 @@ class Info_Screen(Screen):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         res = requests.get('https://i7c102.p.ssafy.io/api/notice/detail', params={'notice_num': self.manager.content_number}, headers={'Authorization' : 'Bearer ' + self.acc_token})
 =======
         res = requests.get('http://127.0.0.1:8000/notice/detail', params={'notice_num': self.page_pk}, headers={'Authorization' : 'Bearer ' + self.acc_token})
@@ -89,12 +98,16 @@ class Info_Screen(Screen):
 =======
         res = requests.get('https://i7c102.p.ssafy.io/api/notice/detail', params={'notice_num': self.manager.content_number}, headers={'Authorization' : 'Bearer ' + self.acc_token})
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+        res = requests.get('https://i7c102.p.ssafy.io/api/notice/detail', params={'notice_num': self.manager.content_number}, headers={'Authorization' : 'Bearer ' + self.acc_token})
+>>>>>>> d61ea9f (fix: embedded update)
         data = json.loads(res.text)['notice']
         self.ids.title.text=data['title']
         temp = str(data['updated_at']).split('T')
         self.ids.info.text="작성자: " + data['teacher']['name'] + " | 작성날짜: " + temp[0] + " | 조회수: " + str(data['views'])
         self.ids.content.text=data['content']
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -109,6 +122,8 @@ class Info_Screen(Screen):
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 =======
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
     def on_leave(self):
         self.manager.before_page=self.name
 

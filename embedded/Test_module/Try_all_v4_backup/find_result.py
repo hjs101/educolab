@@ -17,6 +17,7 @@ class Find_result(Screen):
         Window.borderless=True
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('find_result.kv')
 =======
         Builder.load_file('find_result.kv')
@@ -24,6 +25,9 @@ class Find_result(Screen):
 =======
         # Builder.load_file('find_result.kv')
 >>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
+=======
+        # Builder.load_file('find_result.kv')
+>>>>>>> d61ea9f (fix: embedded update)
         # self.IDresult = ''
         
     def on_pre_enter(self):

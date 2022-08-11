@@ -18,6 +18,7 @@ class Find_renew(Screen):
         Window.borderless=True
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('find_renew.kv')
 =======
         Builder.load_file('find_renew.kv')
@@ -25,6 +26,9 @@ class Find_renew(Screen):
 =======
         # Builder.load_file('find_renew.kv')
 >>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
+=======
+        # Builder.load_file('find_renew.kv')
+>>>>>>> d61ea9f (fix: embedded update)
         # self.name_temp=''
         # self.username_temp=''
         # self.email_temp=''

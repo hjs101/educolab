@@ -53,12 +53,16 @@ class Find_renew(Screen):
         self.ids.right_info_text=""
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.manager.before_page=self.name
 =======
 >>>>>>> 210a2e8 (Feat : 메인화면 추가)
 =======
         self.manager.before_page=self.name
 >>>>>>> 01bd712 (Feat : 목록 화면 작성)
+=======
+        self.manager.before_page=self.name
+>>>>>>> d61ea9f (fix: embedded update)
 
 class find_test_App(App):
     def build(self):

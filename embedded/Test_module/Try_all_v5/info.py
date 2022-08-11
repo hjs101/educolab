@@ -9,12 +9,16 @@ from kivy.properties import ListProperty
 from myPopup import MyPopUp
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import json
 =======
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 =======
 import json
 >>>>>>> a0202aa (Feat: notice 구현 완료)
+=======
+import json
+>>>>>>> d61ea9f (fix: embedded update)
 
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
@@ -33,13 +37,19 @@ class Info_Screen(Screen):
     def on_pre_enter(self):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> a0202aa (Feat: notice 구현 완료)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         self.page_pk = self.manager.get_screen('Notice_list1').content_num
         with open("./login_info.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
             self.acc_token = data["access"]
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         if 'Notice' in self.name:
             self.key_color=[151/255, 71/255, 255/255,1]
             self.notice_detail()
@@ -67,6 +77,7 @@ class Info_Screen(Screen):
         pass
     def survey_detail(self):
         pass
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> a0202aa (Feat: notice 구현 완료)
@@ -101,6 +112,8 @@ class Info_Screen(Screen):
     def survey_detail(self):
         pass
 >>>>>>> a0202aa (Feat: notice 구현 완료)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
     def on_leave(self):
         self.manager.before_page=self.name

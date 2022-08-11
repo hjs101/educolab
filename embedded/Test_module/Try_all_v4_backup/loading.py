@@ -19,6 +19,7 @@ class Loading_Screen(Screen):
         Window.borderless=True
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('loading.kv')
 =======
         Builder.load_file('loading.kv')
@@ -26,6 +27,9 @@ class Loading_Screen(Screen):
 =======
         # Builder.load_file('loading.kv')
 >>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
+=======
+        # Builder.load_file('loading.kv')
+>>>>>>> d61ea9f (fix: embedded update)
 
     def on_pre_enter(self):
         Clock.schedule_once(self.go_page,0)

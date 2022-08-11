@@ -13,12 +13,16 @@ from main_page import Main_Screen
 from list_page import List_Screen
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from info import Info_Screen
 =======
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
 =======
 from info import Info_Screen
 >>>>>>> 42a2e09 (Feat : 공지사항 상세 내용 추가)
+=======
+from info import Info_Screen
+>>>>>>> d61ea9f (fix: embedded update)
 
 from find_result import Find_result
 from find_renew import Find_renew
@@ -26,8 +30,11 @@ from data.db_init import db_proc
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 ##### to remove warning message ######
 Builder.load_file('loading.kv')
 Builder.load_file('login.kv')
@@ -45,10 +52,13 @@ Builder.load_file('info.kv')
 ###########################################
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
 =======
 >>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
 class WindowManager(ScreenManager):
     def __init__(self, **kwargs):

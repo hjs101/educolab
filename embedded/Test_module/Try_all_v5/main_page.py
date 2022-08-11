@@ -63,6 +63,7 @@ class Main_Screen(Screen):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         with open("./login_info.json", 'w', encoding='utf-8') as file:
             json.dump({}, file)
 =======
@@ -81,6 +82,10 @@ class Main_Screen(Screen):
         with open("./login_info.json", 'w', encoding='utf-8') as file:
             json.dump({}, file)
 >>>>>>> c595370 (Refactor: 아 이것도 빼먹었다 ㅎ)
+=======
+        with open("./login_info.json", 'w', encoding='utf-8') as file:
+            json.dump({}, file)
+>>>>>>> d61ea9f (fix: embedded update)
 
     def on_leave(self):
         self.manager.before_page=self.name

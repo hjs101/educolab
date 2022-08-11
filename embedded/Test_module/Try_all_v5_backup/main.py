@@ -14,6 +14,7 @@ from list_page import List_Screen
 from info import Info_Screen
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from survey_select import Survey_Select_Screen
 from survey_word import Survey_Word_Screen
 =======
@@ -22,6 +23,10 @@ from survey_word import Survey_Word_Screen
 from survey_select import Survey_Select_Screen
 from survey_word import Survey_Word_Screen
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+from survey_select import Survey_Select_Screen
+from survey_word import Survey_Word_Screen
+>>>>>>> d61ea9f (fix: embedded update)
 
 from find_result import Find_result
 from find_renew import Find_renew
@@ -43,6 +48,7 @@ Builder.load_file('list_page.kv')
 Builder.load_file('info.kv')
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 Builder.load_file('survey_select.kv')
 Builder.load_file('survey_word.kv')
@@ -53,6 +59,11 @@ Builder.load_file('survey_word.kv')
 Builder.load_file('survey_select.kv')
 Builder.load_file('survey_word.kv')
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+
+Builder.load_file('survey_select.kv')
+Builder.load_file('survey_word.kv')
+>>>>>>> d61ea9f (fix: embedded update)
 ###########################################
 
 
@@ -64,8 +75,11 @@ class WindowManager(ScreenManager):
         self.before_page=''
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         self.page_num=1     #list 현재 페이지
         self.max_page_num=5 #list 최대 페이지
         self.prob_num=1     #현재 문항 번호
@@ -73,12 +87,15 @@ class WindowManager(ScreenManager):
         self.survey_ans={}  #설문 답안
         self.survey_cnt=0   #설문에 답변한 문항 수
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         self.page_num=1 #list page_num
         self.max_page_num=5 #list max page_num
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
     def onStop(self): # 창 종료 버튼
         self.DB.db_close()
@@ -86,6 +103,7 @@ class WindowManager(ScreenManager):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     def survey_save(self): ##**# 팝업 종료시 Yes를 누르면 이 함수 호출 후 > 팝업 종료 및 페이지 이동
         pass
     
@@ -96,6 +114,11 @@ class WindowManager(ScreenManager):
         pass
     
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+    def survey_save(self): ##**# 팝업 종료시 Yes를 누르면 이 함수 호출 후 > 팝업 종료 및 페이지 이동
+        pass
+    
+>>>>>>> d61ea9f (fix: embedded update)
 
 class masterApp(App):
     def build(self):

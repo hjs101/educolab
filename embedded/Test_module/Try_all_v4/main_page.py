@@ -5,6 +5,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image, AsyncImage
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import requests, json
 =======
 import requests
@@ -12,6 +13,9 @@ import requests
 =======
 import requests, json
 >>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
+=======
+import requests, json
+>>>>>>> d61ea9f (fix: embedded update)
 from myTextInput import limitedTextInput
 from kivy.properties import StringProperty
 from myPopup import MyPopUp
@@ -33,8 +37,11 @@ class Main_Screen(Screen):
         ##### 여기 문구를 수정해주세요 #####
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         with open("./login_info.json", 'r') as file:
             # 학생정보 db 받아오기
             self.data = json.load(file)
@@ -58,6 +65,7 @@ class Main_Screen(Screen):
         self.ids.good_points.text="상점: " + self.plus_point
         self.ids.bad_points.text="벌점: " + self.minus_point
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.ids.challenge.text="최초로 퀴즈를 1등한 자"
 =======
         self.ids.userinfo.text="싸피중학교 3학년 1반 24번 OOO"
@@ -68,6 +76,9 @@ class Main_Screen(Screen):
 =======
         self.ids.challenge.text="최초로 퀴즈를 1등한 자"
 >>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
+=======
+        self.ids.challenge.text="최초로 퀴즈를 1등한 자"
+>>>>>>> d61ea9f (fix: embedded update)
         self.ids.homework.text="과제 (4) | 08/22 : SSAFY 멀티캠퍼스 방문 후기 작성"
         self.ids.survey.text="설문 (5) | 08/22 : SSAFY 강의 만족도 조사"
         ##################################
@@ -75,11 +86,14 @@ class Main_Screen(Screen):
         self.ids.profile.img_path='./profile.jpg' # profile in Computer
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         #icons
 >>>>>>> dbdcd45 (Refactor : v3, v4 구분)
 =======
 >>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         self.ids.userinfo_icon.img_path='./icon/info.png'
         self.ids.challenge_icon.img_path='./icon/challenge.png'
         self.ids.good_points_icon.img_path='./icon/plus.png'
@@ -87,6 +101,7 @@ class Main_Screen(Screen):
         self.ids.homework_icon.img_path='./icon/homework.png'
         self.ids.survey_icon.img_path='./icon/survey.png'
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -102,6 +117,8 @@ class Main_Screen(Screen):
 >>>>>>> dbdcd45 (Refactor : v3, v4 구분)
 =======
 >>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
     def on_leave(self):
         self.manager.before_page=self.name
         

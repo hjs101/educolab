@@ -10,6 +10,7 @@ class MyPopUp2(Popup): #with 2 buttons
 	pass
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 class MyPopUp3(Popup): #with 2 buttons
 	pass
@@ -20,3 +21,8 @@ class MyPopUp3(Popup): #with 2 buttons
 class MyPopUp3(Popup): #with 2 buttons
 	pass
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+
+class MyPopUp3(Popup): #with 2 buttons
+	pass
+>>>>>>> d61ea9f (fix: embedded update)

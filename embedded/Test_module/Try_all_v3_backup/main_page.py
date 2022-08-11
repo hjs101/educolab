@@ -41,6 +41,7 @@ class Main_Screen(Screen):
         self.ids.survey_icon.img_path='./icon/survey.png'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     def go_notice(self):
         pass
@@ -50,6 +51,8 @@ class Main_Screen(Screen):
         pass
     def go_survey(self):
         pass
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
     def go_notice(self):
         pass
@@ -62,6 +65,7 @@ class Main_Screen(Screen):
 
     def on_leave(self):
         self.manager.before_page=self.name
+<<<<<<< HEAD
 =======
 >>>>>>> 210a2e8 (Feat : 메인화면 추가)
 =======
@@ -69,6 +73,8 @@ class Main_Screen(Screen):
     def on_leave(self):
         self.manager.before_page=self.name
 >>>>>>> 01bd712 (Feat : 목록 화면 작성)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         
 class main_test_App(App):
     def build(self):

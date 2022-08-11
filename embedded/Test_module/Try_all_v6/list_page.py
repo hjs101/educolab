@@ -73,6 +73,7 @@ class List_Screen(Screen):
     def notice_list(self):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         res = requests.get('https://i7c102.p.ssafy.io/api/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
         data_full = json.loads(res.text)
         self.manager.max_page_num = int(len(data_full) / 5) + 1
@@ -143,6 +144,11 @@ class List_Screen(Screen):
         res = requests.get('https://i7c102.p.ssafy.io/api/survey/main_stu', headers={'Authorization' : 'Bearer ' + self.acc_token})
         data_full = json.loads(res.text)
         self.manager.max_page_num = int(len(data_full) / 5) + 1
+=======
+        res = requests.get('https://i7c102.p.ssafy.io/api/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
+        data_full = json.loads(res.text)
+        self.manager.max_page_num = int(len(data_full) / 5) + 1
+>>>>>>> d61ea9f (fix: embedded update)
         data_full.sort(key=lambda x: -x['pk'])
         i = 1
 
@@ -155,8 +161,11 @@ class List_Screen(Screen):
                     self.ids['date' + str(i)].text = str(temp[0])
                 elif key=='title': self.ids['title' + str(i)].text = str(data[key])
             i += 1
+<<<<<<< HEAD
 =======
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
         ##**# 게시물이 5개 미만일때 정보 없는 버튼 비활성화 목적의 flag > 함수 content_btn으로 이어집니다.
         self.deact_flag=(i-1)%5
@@ -165,10 +174,13 @@ class List_Screen(Screen):
         if self.manager.page_num!=self.manager.max_page_num:
             self.deact_flag=5
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         pass
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 =======
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
     def memo_list(self):
         pass
@@ -197,7 +209,10 @@ class List_Screen(Screen):
 
         if self.manager.page_num!=self.manager.max_page_num:
             self.deact_flag=5
+<<<<<<< HEAD
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         ##**# self.deact_flag = 한 페이지에 나와있는 게시물 개수. 상세 내용은 notice_list를 참조해서 작성 요청
         ##**#                   게시물이 5개 미만일때 정보 없는 버튼 비활성화 목적의 flag > 함수 content_btn으로 이어집니다.
 
@@ -206,17 +221,23 @@ class List_Screen(Screen):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         if content_num > self.deact_flag: self.content_page=self.name
         else:
             self.manager.content_number = int(self.ids['num' + str(content_num)].text)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
 =======
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         if self.name=='Notice_list1' or self.name=='Notice_list2': 
             if content_num>self.deact_flag:
                 self.content_page=self.name
@@ -224,6 +245,9 @@ class List_Screen(Screen):
                 self.content_page="Notice_info"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         elif self.name=='Survey_list1' or self.name=='Survey_list2':
             self.res = requests.get('https://i7c102.p.ssafy.io/api/survey/detail', params={'survey_num': self.manager.content_number}, headers={'Authorization' : 'Bearer ' + self.acc_token})
             self.temp_data = json.loads(self.res.text)
@@ -232,6 +256,7 @@ class List_Screen(Screen):
                 self.type_flag=False #주관식
             else: self.type_flag=True  #객관식
 
+<<<<<<< HEAD
 =======
         if self.name=='Notice_list1' or self.name=='Notice_list2': self.content_page="Notice_info"
 =======
@@ -261,12 +286,15 @@ class List_Screen(Screen):
             else: self.type_flag=True  #객관식
 
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
             if self.type_flag:
                 self.content_page="Survey_select1"
             else:
                 self.content_page="Survey_word1"
             ##**# 설문조사 하나의 전체 문항개수 = self.manager.max_prob_num
             ##**# 설문조사 하나의 현재 문항개수 = self.manager.prob_num
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -287,12 +315,18 @@ class List_Screen(Screen):
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
 =======
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+        else:
+            self.content_page=self.name
+
+>>>>>>> d61ea9f (fix: embedded update)
 
         # self.content_number = content_num
         # print("now"+self.content_page)
         ##**# 데이터가 없어서 일단 화면 테스트를 목적으로 임시 주석
         ##**# 함수 survey_list에서 self.deact_flag 만들어 주시고 푸시면 정상 작동
         ##**# 게시물이 5개 미만일때 정보 없는 버튼 비활성화 목적의 flag 활용
+<<<<<<< HEAD
 =======
 
 =======
@@ -322,10 +356,13 @@ class List_Screen(Screen):
         ##**# 함수 survey_list에서 self.deact_flag 만들어 주시고 푸시면 정상 작동
         ##**# 게시물이 5개 미만일때 정보 없는 버튼 비활성화 목적의 flag 활용
 >>>>>>> 76eca37 (Fix : 공지사항 상세페이지 연결 오류 해결)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
 
     def page_num_reset(self): ##### main 페이지로 넘어갈때 
         self.manager.page_num=1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         self.manager.start_page_num=0
@@ -334,6 +371,9 @@ class List_Screen(Screen):
 =======
         self.manager.start_page_num=0
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+        self.manager.start_page_num=0
+>>>>>>> d61ea9f (fix: embedded update)
 
     def next_flag_setup(self, btn_direction): ##### list 옆 페이지로 넘어가는 flag 정의
         self.next_flag=1
@@ -344,8 +384,11 @@ class List_Screen(Screen):
         
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         if btn_direction=="before" :
             self.manager.page_num -= self.next_flag
             self.manager.start_page_num -= 5
@@ -353,12 +396,15 @@ class List_Screen(Screen):
             self.manager.page_num += self.next_flag
             self.manager.start_page_num += 5
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         if btn_direction=="before" : self.manager.page_num-=self.next_flag
         if btn_direction=="after" : self.manager.page_num+=self.next_flag
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 =======
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
     def next_page_setup(self, page_hint):  ##### list 옆 페이지로 넘어가는 페이지 정의
         if self.next_flag:
@@ -379,8 +425,11 @@ class List_Screen(Screen):
                 if self.name=='Survey_list2': self.next_page='Survey_list1'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
             if page_hint=="start":
                 self.manager.page_num=1
                 self.manager.start_page_num=0
@@ -388,12 +437,15 @@ class List_Screen(Screen):
                 self.manager.page_num=self.manager.max_page_num
                 self.manager.start_page_num = 5 * (self.manager.max_page_num - 1)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             if page_hint=="start":self.manager.page_num=1
             if page_hint=="end": self.manager.page_num=self.manager.max_page_num
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
 =======
 >>>>>>> c2b1e4f (Feat: 각종 게시물 리스트 구현 완)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         else:
             self.next_page=self.name
 

@@ -5,11 +5,15 @@ from kivy.lang import Builder
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 class MyPopUp(Popup): #with No buttons
 	pass
 
 class MyPopUp2(Popup): #with 2 buttons
 	pass
+<<<<<<< HEAD
 =======
 class MyPopUp(Popup):
 	pass
@@ -23,3 +27,5 @@ class MyPopUp(Popup): #with No buttons
 class MyPopUp2(Popup): #with 2 buttons
 	pass
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+>>>>>>> d61ea9f (fix: embedded update)

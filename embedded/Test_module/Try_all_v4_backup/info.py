@@ -22,6 +22,7 @@ class Info_Screen(Screen):
         Window.borderless=True
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('info.kv')
 =======
         Builder.load_file('info.kv')
@@ -29,6 +30,9 @@ class Info_Screen(Screen):
 =======
         # Builder.load_file('info.kv')
 >>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
+=======
+        # Builder.load_file('info.kv')
+>>>>>>> d61ea9f (fix: embedded update)
 
     def on_pre_enter(self):
         if 'Notice' in self.name:

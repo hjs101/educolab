@@ -112,6 +112,7 @@ class Find_input2_button2(Screen):
                 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/find_username/', data=self.data)
 =======
                 self.res = requests.post('http://127.0.0.1:8000/accounts/find_username/', data=self.data)
@@ -119,6 +120,9 @@ class Find_input2_button2(Screen):
 =======
                 self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/find_username/', data=self.data)
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+                self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/find_username/', data=self.data)
+>>>>>>> d61ea9f (fix: embedded update)
                 if self.res.json()['success']: self.username = self.res.json()['username']
             elif self.name == "PW_email":
                 self.data = {
@@ -126,6 +130,7 @@ class Find_input2_button2(Screen):
                     'email': self.leftInput,
                     'username': self.username_temp
                 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/send_pw_email/', data=self.data)
@@ -141,6 +146,11 @@ class Find_input2_button2(Screen):
                 # debug
                 if self.res.json()['success']: print(self.res.json()['auth_num'])
 >>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
+=======
+                self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/send_pw_email/', data=self.data)
+                # debug
+                if self.res.json()['success']: print(self.res.json()['auth_num'])
+>>>>>>> d61ea9f (fix: embedded update)
             if self.res.json()['success']: self.left_next_flag = True
         #######################################################
             if self.left_next_flag:

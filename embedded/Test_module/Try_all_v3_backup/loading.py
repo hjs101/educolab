@@ -37,6 +37,7 @@ class Loading_Screen(Screen):
             self.manager.transition=SlideTransition()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     def on_leave(self):
         self.manager.before_page=self.name
 =======
@@ -45,6 +46,10 @@ class Loading_Screen(Screen):
     def on_leave(self):
         self.manager.before_page=self.name
 >>>>>>> 01bd712 (Feat : 목록 화면 작성)
+=======
+    def on_leave(self):
+        self.manager.before_page=self.name
+>>>>>>> d61ea9f (fix: embedded update)
 
 class loading_test_App(App):
     def build(self):

@@ -22,6 +22,7 @@ class Find_input2_button2(Screen):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('find_input2_button2.kv')
 =======
         Builder.load_file('find_input2_button2.kv')
@@ -29,6 +30,9 @@ class Find_input2_button2(Screen):
 =======
         # Builder.load_file('find_input2_button2.kv')
 >>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
+=======
+        # Builder.load_file('find_input2_button2.kv')
+>>>>>>> d61ea9f (fix: embedded update)
         self.popup=MyPopUp()
         # self.name_temp=''
         # self.username_temp=''

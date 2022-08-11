@@ -6,6 +6,7 @@ class db_proc:
         self.db = connector.connect(
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             host = '3.36.69.192',
             user = 'educolab',
             password = 'c102_edu',
@@ -19,6 +20,11 @@ class db_proc:
             user = 'educolab',
             password = 'c102_edu',
 >>>>>>> dbee603 (Refactor: login token 발급)
+=======
+            host = '3.36.69.192',
+            user = 'educolab',
+            password = 'c102_edu',
+>>>>>>> d61ea9f (fix: embedded update)
             database = 'educolab'
         )
         self.cur = self.db.cursor()

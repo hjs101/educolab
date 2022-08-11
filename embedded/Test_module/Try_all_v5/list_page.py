@@ -1,16 +1,21 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from audioop import reverse
 =======
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 =======
 from audioop import reverse
 >>>>>>> a0202aa (Feat: notice 구현 완료)
+=======
+from audioop import reverse
+>>>>>>> d61ea9f (fix: embedded update)
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image, AsyncImage
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 import requests, json
@@ -20,6 +25,9 @@ import requests
 =======
 import requests, json
 >>>>>>> c515355 (Feat: notice request 구현 시작!)
+=======
+import requests, json
+>>>>>>> d61ea9f (fix: embedded update)
 from myTextInput import limitedTextInput
 from kivy.properties import ListProperty
 from myPopup import MyPopUp
@@ -38,19 +46,25 @@ class List_Screen(Screen):
         Window.borderless=True
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         # Builder.load_file('list_page.kv')
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 =======
 >>>>>>> c515355 (Feat: notice request 구현 시작!)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         self.next_page='main'
         self.page_num=0
 
     def on_pre_enter(self):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> a0202aa (Feat: notice 구현 완료)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         ######## 여기 컨텐츠 받아와서 넣으셔야 합니다 #####
         for i in range(5):
             self.ids['num' + str(i+1)].text=''
@@ -59,6 +73,9 @@ class List_Screen(Screen):
             self.ids['title'+str(i+1)].text=''
         #################################################
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
         ##### key_color and title #####
         with open("./login_info.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -81,6 +98,7 @@ class List_Screen(Screen):
             self.survey_list()
 
         self.ids.middle.text=str(self.manager.page_num)
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> a0202aa (Feat: notice 구현 완료)
@@ -111,6 +129,8 @@ class List_Screen(Screen):
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 =======
 >>>>>>> c515355 (Feat: notice request 구현 시작!)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
         ##icons
         if self.manager.page_num==1:
@@ -129,6 +149,9 @@ class List_Screen(Screen):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d61ea9f (fix: embedded update)
     def notice_list(self):
         res = requests.get('http://127.0.0.1:8000/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
         data_full = json.loads(res.text)
@@ -144,6 +167,7 @@ class List_Screen(Screen):
                 elif key=='title': self.ids['title' + str(i)].text = str(data[key])
             i += 1
         self.manager.max_page_num = int(i / 5) + 1
+<<<<<<< HEAD
 =======
     def notice_list(self):
         res = requests.get('http://127.0.0.1:8000/notice/main', headers={'Authorization' : 'Bearer ' + self.acc_token})
@@ -165,6 +189,8 @@ class List_Screen(Screen):
             i += 1
         self.manager.max_page_num = int(i / 5) + 1
 >>>>>>> a0202aa (Feat: notice 구현 완료)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
     def memo_list(self):
         pass
     def quiz_list(self):
@@ -173,10 +199,13 @@ class List_Screen(Screen):
         pass
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 =======
 >>>>>>> c515355 (Feat: notice request 구현 시작!)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
     def content_btn(self, content_num): ##### 각각의 게시물을 들어갈때 들어가는 페이지 설정 
         if self.name=='Notice_list1' or self.name=='Notice_list2': self.content_page="Notice_info"
         else : self.content_page=self.name
@@ -185,12 +214,16 @@ class List_Screen(Screen):
         print("게시물 "+str(content_num)+"번")
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.content_num = int(self.ids['num' + str(content_num)].text)
 =======
 >>>>>>> a84fab8 (Refactor : 기능 및 화면 조정)
 =======
         self.content_num = int(self.ids['num' + str(content_num)].text)
 >>>>>>> a0202aa (Feat: notice 구현 완료)
+=======
+        self.content_num = int(self.ids['num' + str(content_num)].text)
+>>>>>>> d61ea9f (fix: embedded update)
 
 
     def page_num_reset(self): ##### main 페이지로 넘어갈때 

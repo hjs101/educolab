@@ -37,6 +37,7 @@ class Find_result(Screen):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     def on_leave(self):
         self.manager.before_page=self.name
 
@@ -47,6 +48,11 @@ class Find_result(Screen):
         self.manager.before_page=self.name
 
 >>>>>>> 01bd712 (Feat : 목록 화면 작성)
+=======
+    def on_leave(self):
+        self.manager.before_page=self.name
+
+>>>>>>> d61ea9f (fix: embedded update)
 class find_test_App(App):
     def build(self):
         Builder.load_file('find_result.kv')

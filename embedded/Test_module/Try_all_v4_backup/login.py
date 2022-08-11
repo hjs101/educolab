@@ -5,12 +5,16 @@ from kivy.uix.screenmanager import Screen
 import requests
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 from pymysql import NULL
 from myTextInput import limitedTextInput
 from myPopup import MyPopUp
 import json
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 from myTextInput import limitedTextInput
@@ -18,6 +22,8 @@ from myPopup import MyPopUp
 >>>>>>> 207a577 (Refactor : v4_backup 추가)
 =======
 >>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
+=======
+>>>>>>> d61ea9f (fix: embedded update)
 
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
@@ -32,6 +38,7 @@ class Login_Screen(Screen):
         Window.borderless=True
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         # Builder.load_file('login.kv')
 =======
         Builder.load_file('login.kv')
@@ -39,6 +46,9 @@ class Login_Screen(Screen):
 =======
         # Builder.load_file('login.kv')
 >>>>>>> 5b2cccd (Fix : 실행시 Warning 메세지 제거)
+=======
+        # Builder.load_file('login.kv')
+>>>>>>> d61ea9f (fix: embedded update)
         self.popup = MyPopUp()
 
     def loginbtn(self):
@@ -62,6 +72,7 @@ class Login_Screen(Screen):
             self.login_next_page="main"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             with open("./login_info.json", 'w', encoding='utf-8') as file:
                 json.dump(self.res.json(), file)
 =======
@@ -76,6 +87,10 @@ class Login_Screen(Screen):
             with open("./login_info.json", 'w', encoding='utf-8') as file:
                 json.dump(self.res.json(), file)
 >>>>>>> c9b8538 (Refactor : 기능 및 화면 조정)
+=======
+            with open("./login_info.json", 'w', encoding='utf-8') as file:
+                json.dump(self.res.json(), file)
+>>>>>>> d61ea9f (fix: embedded update)
         else:
             self.popup.ids.alert.text="아이디와 비밀번호를\n다시 확인하여 주십시오"
             self.popup.open()

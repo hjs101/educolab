@@ -51,12 +51,16 @@ class Find_input1_button2(Screen):
         self.ids.mid_input.text=""
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.manager.before_page=self.name
 =======
 >>>>>>> 210a2e8 (Feat : 메인화면 추가)
 =======
         self.manager.before_page=self.name
 >>>>>>> 01bd712 (Feat : 목록 화면 작성)
+=======
+        self.manager.before_page=self.name
+>>>>>>> d61ea9f (fix: embedded update)
         
 
 class find_test_App(App):

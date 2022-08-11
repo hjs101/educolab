@@ -9,6 +9,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 42a2e09 (Feat : 공지사항 상세 내용 추가)
 <br>
@@ -22,11 +23,18 @@
 <<<<<<< HEAD
 =======
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+  <br>
+- **notice_v0** : 공지사항 목록 및 상세 화면 디자인<br>
+- **Try_all_v3** : v2_backup + 로그인 토큰 저장 기능<br>
+- **Try_all_v3_backup** : v3 + 공지사항 목록 화면 추가<br>
+>>>>>>> d61ea9f (fix: embedded update)
 - **Try_all_v4** : v3_backup + 메인페이지 업데이트 기능 추가 <br>
 - **Try_all_v4_backup** : v4 + 공지사항 상세 페이지 추가<br>
 - **Try_all_v5** : v4_backup + 공지사항 목록 및 상세내용 보기 기능 추가 <br>
 - **Try_all_v5_backup** : v5 + 설문조사 화면 추가<br>
 - **Try_all_v6** : v5_backup + 설문조사 기능 추가<br>
+<<<<<<< HEAD
 <<<<<<< HEAD
 - **Try_all_v6_backup** : v6 + 퀴즈 화면 추가 예정 <br>
 <<<<<<< HEAD
@@ -46,3 +54,7 @@
 - **Try_all_v6_backup** : v6 + 퀴즈 화면 추가<br>
 - **Try_all_v7** : v6_backup + 설문조사 상세페이지 추가<br>
 >>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
+=======
+- **Try_all_v6_backup** : v6 + 퀴즈 화면 추가<br>
+- **Try_all_v7** : v6_backup + 설문조사 상세페이지 추가<br>
+>>>>>>> d61ea9f (fix: embedded update)

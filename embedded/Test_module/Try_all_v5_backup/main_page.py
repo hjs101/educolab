@@ -62,6 +62,7 @@ class Main_Screen(Screen):
     def for_logout(self):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         with open("./login_info.json", 'w', encoding='utf-8') as file:
             json.dump({}, file)
 =======
@@ -71,6 +72,10 @@ class Main_Screen(Screen):
         with open("./login_info.json", 'w', encoding='utf-8') as file:
             json.dump({}, file)
 >>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
+=======
+        with open("./login_info.json", 'w', encoding='utf-8') as file:
+            json.dump({}, file)
+>>>>>>> d61ea9f (fix: embedded update)
 
     def on_leave(self):
         self.manager.before_page=self.name
