@@ -175,6 +175,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['refresh'] = str(refresh)
         data['access'] = str(refresh.access_token)
         data['userflag'] = self.user.userflag
+<<<<<<< HEAD
         data['email'] = self.user.email
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -197,6 +198,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 =======
 =======
 >>>>>>> fc9ea5f (머지)
+=======
+        data['username'] = self.user.username
+>>>>>>> 855ec29 (Refactor : 로그인/새로고침 시 주는 정보 세팅)
         data['profil'] = self.user.profil.url
 >>>>>>> 2b5572c (Feat : 프로필 사진 변경 구현)
         data['schoolname']=self.user.school.name
@@ -228,7 +232,7 @@ class MyTokenRefershSerializer(TokenRefreshSerializer):
         user = models.UserInfo.objects.get(username=decode_data['user_id'])
         data['name'] = user.name
         data['userflag'] = user.userflag
-        data['email'] = user.email
+        data['username'] = user.username
         data['profil'] = user.profil.url
         data['schoolname']=user.school.name
         return data
