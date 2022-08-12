@@ -245,6 +245,7 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   setup() {
     const store = useStore()
     onBeforeMount(() => {
@@ -312,6 +313,13 @@ export default {
 =======
   }
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+  // created() {
+  //   if (this.isLoggedIn === false) {
+  //     this.$router.push({name:'login'})
+  //   }
+  // }
+>>>>>>> bf6f861 (Feat : 교사 상/벌점 부여 기능 구현 완료)
 }
 </script>
 
@@ -587,7 +595,10 @@ export default {
   .hidden {
     visibility: hidden;
   }
-
+  .active {
+    color: blue;
+    font-weight: bold;
+  }
 </style>
 <<<<<<< HEAD
 >>>>>>> 9bb5647 (메인 페이지 css)

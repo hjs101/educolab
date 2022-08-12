@@ -61,13 +61,6 @@
   </div>
 </template>
 
-<style>
-  .active {
-    color: blue;
-    font-weight: bold;
-  }
-</style>
-
 <script>
 import {reactive} from '@vue/reactivity'
 import {computed} from 'vue'

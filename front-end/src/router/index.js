@@ -23,6 +23,7 @@ const routes = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 =======
@@ -120,6 +121,8 @@ const routes = [
     component: () => import('@/views/MainPageView')
   },
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> bf6f861 (Feat : 교사 상/벌점 부여 기능 구현 완료)
   // 아이디 & 비밀번호 찾기
   {
     path: '/find/:info',
@@ -132,12 +135,24 @@ const routes = [
     name: 'changeInfo',
     component: () => import('@/views/FindView')
   },
-  // 회원정보 조회
+  // 로그인
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
     path: '/my-info',
     name: 'readMyInfo',
     component: () => import('@/views/FindView')
+=======
+    path: '/educolab/login',
+    name: 'login',
+    component: () => import ('@/views/LoginView')
+  },
+  // 메인페이지 
+  {
+    path: '/educolab',
+    name: 'educolab',
+    component: () => import('@/components/MainPage')
+>>>>>>> bf6f861 (Feat : 교사 상/벌점 부여 기능 구현 완료)
   },
   // 회원가입
 >>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
@@ -624,13 +639,9 @@ const routes = [
   {
     path: '/logout',
     name: 'logout',
-    meta: {
-      reload:true,
-    },
-    redirect: '/educolab/login'
-  },
-  {
-    path: '/',
+    // meta: {
+    //   reload:true,
+    // },
     redirect: '/educolab/login'
   },
 >>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
@@ -642,12 +653,20 @@ const routes = [
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
 =======
   },
+<<<<<<< HEAD
   // 존재하지 않는 페이지
   {
     path: '/:anything',
     redirect: '/404'
   },
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+  // 로그인 페이지로 이동
+  {
+    path: '/',
+    redirect: '/educolab/login'
+  },
+>>>>>>> bf6f861 (Feat : 교사 상/벌점 부여 기능 구현 완료)
 ]
 
 const router = createRouter({

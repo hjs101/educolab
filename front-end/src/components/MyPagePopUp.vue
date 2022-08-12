@@ -7,14 +7,24 @@
 
       <q-card-section v-if="changeMode">
         <div class="text-h6 center">비밀번호 입력이 필요합니다</div>
-        <q-input label="password"/>
+        <q-input label="비밀번호"/>
       </q-card-section >
-      
-      <q-card-section v-else>
-        <q-card v-for="item in items" :key="item.id" @click="selectAlias(item.id, item.title)">
-          <q-card-section>
-            <!-- 이미지 -->
+      <!-- 칭호 -->
+      <q-card-section v-else-if="type">
+        <q-card v-for="item in items" :key="item.id" @click="selectAlias(0,item.id, item.title)">
+          <q-card-section :class="{active: item.id === alias.id}">
             <!-- 칭호명 -->
+            <p>{{item.title}}</p>
+          </q-card-section>
+        </q-card>
+      </q-card-section>
+      <!-- 배지 -->
+      <q-card-section v-else>
+        <q-card v-for="item in items" :key="item.id" @click="selectAlias(1,item.id, item.title)">
+          <q-card-section :class="{active: item.id === alias.id}">
+            <!-- 이미지 -->
+            <img :src="badge" >
+            <!-- 배지명 -->
             <p>{{item.title}}</p>
           </q-card-section>
         </q-card>
@@ -34,6 +44,7 @@
 <script>
 import { reactive, ref } from '@vue/reactivity'
 import { useRouter} from 'vue-router'
+import badge from '@/assets/quiz.png'
 export default {
   name: 'PasswordInput',
   props: {
@@ -41,6 +52,7 @@ export default {
     path: String,
     changeMode: Boolean,
     items: Array,
+    type: Boolean,
   },
   setup(props, {emit}) {
     const router = useRouter()
@@ -58,8 +70,8 @@ export default {
       alias.name = name
     }
     const move = () => {
-      // 비밀번호 맞는지 확인 필요
       if (props.changeMode) {
+        // 백에 데이터 보내 비밀번호 맞는지 확인 -> 맞으면 회원정보 수정 페이지로
         router.push(props.path)
         router.go(1)
       } else {
@@ -71,6 +83,7 @@ export default {
       move,
       prompt,
       alias,
+      badge,
       selectAlias,
       doNothing
     }
