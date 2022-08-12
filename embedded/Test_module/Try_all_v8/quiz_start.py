@@ -6,9 +6,8 @@ from kivy.uix.screenmanager import Screen
 from kivy.properties import StringProperty
 from myTextInput import limitedTextInput
 from myPopup import MyPopUp
-import websockets, json, asyncio
-
-# self.midInput = 입력받은 텍스트
+import json, asyncio
+from data.websocket_info import ws_proc
 
 class Quiz_Start_Screen(Screen):
     def __init__(self, **kwargs):
@@ -19,34 +18,27 @@ class Quiz_Start_Screen(Screen):
         Window.size = (1280,720)
         Window.borderless=True
         self.popup=MyPopUp()
+        self.ws=ws_proc()
 
     def midBtn(self):
         self.midInput = self.ids.mid_input.text
 
-    # async def connect(self):
-    #     async with websockets.connect("ws://127.0.0.1:8000/api/ws/chat/" + str(self.midInput) + "/") as websocket:
-    #         send_dict = {
-    #             "message": "학생 입장",
-    #             "id": self.manager.userID,
-    #             "room_num": self.midInput
-    #         }
-    #         await websocket.send(json.dumps(send_dict))
-    #         self.data = await websocket.recv()
-
     def onPopUp(self): # 팝업 및 다음 페이지 경로 지정
         if len(self.midInput)==8 and self.midInput.isdigit():
-            send_dict = {
+            self.send_sockmsg = {
                 "message": "학생 입장",
                 "id": self.manager.userID,
                 "room_num": self.midInput
             }
-            asyncio.get_event_loop().run_until_complete(self.manager.send_socket(self.midInput, send_dict))
-            asyncio.get_event_loop().run_until_complete(self.manager.receive_socket(self.midInput))
+            self.ws.ws_connect(self.midInput, self.send_sockmsg)
+            self.data = self.ws.data
+
             if json.loads(self.data)["message"] == "방이 없네요":
                 self.popup.ids.alert.text="방이 없네요"
                 self.popup.open()
                 self.next_page = self.name
-            else: self.next_page = 'Quiz_wait'
+            else:
+                self.next_page = 'Quiz_wait'
         else:
             self.popup.ids.alert.text="방 번호는 8자리 숫자입니다."
             self.popup.open()

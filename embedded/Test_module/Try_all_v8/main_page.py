@@ -21,8 +21,8 @@ class Main_Screen(Screen):
         with open("./login_info.json", 'r') as file:
             self.data = json.load(file)
         self.school_name = self.data["schoolname"] + ' '
-        self.query1 = 'select username, grade, class_field, name, plus_point, minus_point from accounts_userinfo where email=%s and name=%s'
-        self.args1 = (self.data["email"], self.data["name"])
+        self.query1 = 'select username, grade, class_field, name, plus_point, minus_point from accounts_userinfo where username=%s and name=%s'
+        self.args1 = (self.data["username"], self.data["name"])
         self.cur1 = self.manager.DB.execute(query=self.query1, args=self.args1)
         for (username, grade, class_field, name, plus_point, minus_point) in self.cur1:
             self.manager.userID = username

@@ -25,7 +25,8 @@ from change_title import Change_Title_Screen
 from find_result import Find_result
 from find_renew import Find_renew
 from data.db_init import db_proc
-import requests, json, websockets, asyncio
+from data.websocket_info import *
+import requests, json, asyncio
 
 
 
@@ -53,14 +54,14 @@ Builder.load_file('quiz_select.kv')
 Builder.load_file('quiz_result.kv')
 Builder.load_file('quiz_start.kv')
 Builder.load_file('change_title.kv')
-
-
 ###########################################
 
 
 class WindowManager(ScreenManager):
     def __init__(self, **kwargs):
         super(WindowManager, self).__init__(**kwargs)
+        self.ws = ws_proc()
+        self.wsapp = wsapp_proc()
         self.DB=db_proc()
         self.DB.create_db()
         self.before_page=''
@@ -73,23 +74,26 @@ class WindowManager(ScreenManager):
         self.survey_ans={}  #설문 답안
         self.survey_cnt=0   #설문에 답변한 문항 수
         self.content_number=0    #어떤 글?
+        self.room_num=0
+
+    def access_quiz(self, quiz_flag, send_msg, recv_msg=""):
+        if quiz_flag:
+            self.wsapp.wsapp_connect(self.room_num)
+            self.wsapp.on_open(send_msg)
+            self.wsapp.on_message(recv_msg)
+        else:
+            print("디스커넥트")
+            self.wsapp.on_close()
 
     def onStop(self): # 창 종료 버튼
         self.DB.db_close()
+        self.wsapp.on_close()
         App.get_running_app().stop()
 
     def access_api(self):
         with open("./login_info.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
             return data["access"]
-
-    async def send_socket(self, room_num, send_dict):
-        async with websockets.connect("ws://127.0.0.1:8000/api/ws/chat/" + str(room_num) + "/") as websocket:
-            await websocket.send(json.dumps(send_dict))
-
-    async def receive_socket(self, room_num):
-        async with websockets.connect("ws://127.0.0.1:8000/api/ws/chat/" + str(room_num) + "/") as websocket:
-            self.data = await websocket.recv()
 
     def survey_save(self):
         self.send_data = {}

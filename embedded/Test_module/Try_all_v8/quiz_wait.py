@@ -5,7 +5,7 @@ from kivy.uix.screenmanager import Screen, NoTransition
 from kivy.properties import NumericProperty
 from kivy.clock import Clock
 from threading import Timer, Lock
-import json, websockets, asyncio
+import json, websocket, asyncio
 
 
 class Quiz_Waiting_Screen(Screen):
@@ -34,13 +34,13 @@ class Quiz_Waiting_Screen(Screen):
         self.animate_flag=False
         self.cnt=0
         self.next_flag=0
-        send_dict = {
+        self.send_msg = {
             "message": "학생 입장",
             "id": self.manager.userID,
             "room_num": self.room_number
         }
-        asyncio.get_event_loop().run_until_complete(self.manager.send_socket(self.room_number, send_dict))
-        asyncio.get_event_loop().run_until_complete(self.manager.receive_socket(self.room_number))
+        self.recv_msg=""
+        self.manager.access_quiz(True, self.send_msg, self.recv_msg)
         
         ##**# socket 통신 초기화 및 입장 신호 작성 요청
         ##**# socket 통신 신호 받는 것은 Thread 이용해야 하는 것 같은 데... 잘 모르겠음
