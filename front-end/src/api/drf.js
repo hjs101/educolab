@@ -8,6 +8,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const PROFIL = 'http://127.0.0.1:8000'
@@ -44,6 +45,17 @@ const QUIZ = BASE_URL + '/quiz/'
 =======
 const MY_PAGE = BASE_URL + '/mypage/'
 >>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
+=======
+const FILE = 'http://127.0.0.1:8000'
+// const FILE = 'https://i7c102.p.ssafy.io'
+const BASE_URL = FILE + '/api/'
+const ACCOUNTS = BASE_URL + 'accounts/'
+const NOTICE = BASE_URL + 'notice/'
+const SURVEY = BASE_URL + 'survey/'
+const QUIZ = BASE_URL + 'quiz/'
+const MY_PAGE = BASE_URL + 'mypage/'
+const HOMEWORK = BASE_URL + 'homework/'
+>>>>>>> 11b73f2 (Feat : 마이페이지 프로필 수정, 삭제 기능 구현 완료)
 
 export default {
   accounts: {
@@ -267,13 +279,14 @@ export default {
     submit: () => HOMEWORK + 'submit/',
   },
   file: {
-    path: () => BASE_URL,
+    path: () => FILE,
+    change: () => '/api/media/accounts/profils/',
+    default: () => '/api/media/accounts/profils/profile1.jpg'
   },
 >>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
   myPage: {
     main: () => MY_PAGE + 'main/',
     point: () => MY_PAGE + 'grant/',
-    profil: () => PROFIL,
     changeProfil: () => MY_PAGE + 'profil/',
     changeTitle: () => MY_PAGE + 'title/',
   },

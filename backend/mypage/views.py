@@ -8,8 +8,6 @@ from pointshop.models import PTitle
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 from accounts.serializers import UserinfoSerializer
 from .serializers import PointlogSerializer,TeacherSerializer, StudentSerializer,SearchStudentSerializer
-# Create your views here.
-
 
 class MypageMainView(APIView):
     def get(self,req):
@@ -74,9 +72,17 @@ class ProfilChangeView(APIView):
         user.profil = req.FILES["profil"]
         
         user.save()
-        
+
         return Response({
-            "success" : True
+            "success" : True,
+        })
+
+    def delete(self, req):
+        user = req.user
+        user.profil = 'accounts/profils/profile1.jpg'
+        user.save()
+        return Response({
+            "success" : True,
         })
 <<<<<<< HEAD
 

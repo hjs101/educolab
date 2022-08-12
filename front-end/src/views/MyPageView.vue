@@ -1,7 +1,7 @@
 <template>
   <div v-if="data">
     <h1>{{userType}} 마이 페이지</h1>
-    안녕하세요 {{data.userinfo.name}}님
+    <h3> 안녕하세요 {{data.userinfo.name}}님</h3>
     <my-info :info="data.userinfo" />
     <point-list v-if="!isTeacher" :point="data.point_log"/>
     <grant-point v-else />

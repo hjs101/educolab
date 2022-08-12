@@ -4,7 +4,11 @@
     <q-card-section horizontal>
       <label for="profil">
         <!-- 프로필 이미지 있을 때 -->
-        <img :src="profil" class="cursor-pointer size-100">
+        <img
+          :src="profil.change"
+          class="cursor-pointer"
+          width="100"
+          oncontextmenu="return false">
         <!-- <q-img
           :src="profil"
           size="100px"
@@ -15,8 +19,9 @@
         type="file"
         class="hidden"
         id="profil"
-        @update:model-value="val => { files = val }"
-        @input="changeProfil"/>
+        @input="changeProfil"
+        accept="image/gif, image/jpeg, image/png"
+      />
       <!-- 배지가 없을 때만 뜸 -->
       <q-icon
         v-if="!info.userflag"
@@ -24,7 +29,9 @@
         size="50px"
         color="grey-13"
         @click="myTitle(false)"
-        class="cursor-pointer" />
+        class="cursor-pointer"
+        oncontextmenu="return false"
+        />
       <!-- 배지가 있을 경우 -->
       <!-- <q-img
 
@@ -78,19 +85,12 @@
   </q-card>
 </template>
 
-<style scoped>
-  .size-100 {
-    width: 100px;
-  }
-</style>
-
 <script>
 import {useStore} from 'vuex'
 import { computed, reactive, ref } from 'vue'
 import dayjs from 'dayjs'
 import axios from 'axios'
 import drf from '@/api/drf.js'
-import img from '@/assets/profile1.jpg'
 import MyPagePopUp from '@/components/MyPagePopUp.vue'
 export default {
   name: 'MyInfo',
@@ -106,8 +106,11 @@ export default {
     let title = ref(props.info.wear_title?.title)
     const date = dayjs(props.info.birthday)
     const birthday = `${date.get('y')}년 ${date.get('M')+1}월 ${date.get('D')}일생`
-    let profil = img
-    // let profil = ref(drf.myPage.profil()+props.info.profil)
+    // let profil = img
+    let profil = reactive({
+      path: props.info.profil,
+      change: computed(() => drf.file.path() + profil.path)
+      })
     let computedProfil = computed(() => profil.value)
     let files = null
     const change = reactive({
@@ -148,8 +151,9 @@ export default {
     }
     const changeProfil = () => {
       // 자세한 건 수정 필요
-      let form = new FormData()
-      form.append('files', [files])
+      const photo = document.getElementById('profil')
+      const form = new FormData()
+      form.append('profil', photo.files[0])
       axios({
         url: drf.myPage.changeProfil(),
         method: 'put',
@@ -161,12 +165,24 @@ export default {
       })
         .then(() => {
           // 프로필 적용
+          profil.path = drf.file.change() + photo.files[0].name
+          console.log(profil.path)
+          console.log('적용되었습니다')
         })
     }
     const deleteProfil = () => {
       // 기본 프로필 이미지 주소
-      files = null
-      // profil.value = drf.myPage.profil()+props.info.profil
+      axios({
+        url: drf.myPage.changeProfil(),
+        method: 'delete',
+        headers: store.getters.authHeader,
+      })
+        .then(() => {
+          // 프로필 적용
+          profil.path = drf.file.default()
+          console.log(profil.path)
+          console.log('적용되었습니다')
+        })
     }
     return {
       school,
