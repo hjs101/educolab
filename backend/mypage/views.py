@@ -101,7 +101,11 @@ class TitleChangeView(APIView):
         return Response({
             "success" : True
         })
+<<<<<<< HEAD
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
 >>>>>>> fc9ea5f (머지)
+=======
+
+>>>>>>> 4b05e8c (Fix : 학생 입장 리턴값 수정)

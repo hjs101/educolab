@@ -32,6 +32,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
         send_message = text_data_json['message']
+        nickname = ""
         if message == "방 생성":
             print("방 생성")
             id = text_data_json['id']
@@ -69,7 +70,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 'student':id,
                 'roomnum':room_num
                 }
-            send_message = await self.join_student(data)
+            resp = await self.join_student(data)
+            send_message = resp['message']
+            nickname = resp['nickname']
         elif message == "학생 퇴장":
             print("학생 퇴장")
         await self.channel_layer.group_send(
@@ -77,17 +80,20 @@ class ChatConsumer(AsyncWebsocketConsumer):
             {
                 'type': 'chat_message',
                 'message': send_message,
+                'nickname' : nickname
             }
         )
 
     # Receive message from room group
     async def chat_message(self, event):
         message = event['message']
-
+        nickname = event['nickname']
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
             'message': message,
+            'nickname' : nickname
         }))
+
     @database_sync_to_async
     def room_delete(self, data):
         quiz_room = QuizRoom.objects.get()
@@ -113,7 +119,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
         quiz_userserializer = QuizUserSerializer(data=data)
         if quiz_userserializer.is_valid(raise_exception=True):
             quiz_userserializer.save(student=student, room=quiz_room)
-        return "등록 성공"
+        if student.wear_title is not None:
+            nick ="[" +  student.wear_title.title +  "]"+ student.name
+        else :
+            nick = student.name
+        return {"message":"등록 성공", "nickname":nick}
     @database_sync_to_async
     def answer_submit(self, data):
         isRoom = QuizRoom.objects.filter(roomnum=data['roomnum']).exists()

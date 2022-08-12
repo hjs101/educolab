@@ -22,7 +22,7 @@
     chatSocket.onmessage = function(e) {
         var data = JSON.parse(e.data);
         var message = data['message'];
-        var id = data['id'];
+        var id = data['nickname'];
         console.log(id)
         document.querySelector('#chat-log').value += (message + '\n');
     };
@@ -43,7 +43,7 @@
         var message = messageInputDom.value;
         chatSocket.send(JSON.stringify({
             'message': message,
-            'id': "teacher01",
+            'id': "stu01",
             "room_num" : roomName,
             "quiz_num" : "1",
         }));
