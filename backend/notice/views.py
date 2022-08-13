@@ -181,7 +181,6 @@ class NoticeCreateView(APIView):
 <<<<<<< HEAD
         print(req.data['files'])
 
-        print(files)
         for file in files:
 <<<<<<< HEAD
             fp = Files.objects.create(notice=notice[0], atch_file=file, atch_file_name=file)
