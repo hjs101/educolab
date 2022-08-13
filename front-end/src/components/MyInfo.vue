@@ -58,21 +58,13 @@
 
     <q-card-actions>
       <q-btn flat @click="deleteProfil">프로필 삭제</q-btn>
-      <q-btn color="primary" flat @click="confirmPassword('info')">
+      <q-btn color="primary" flat @click="toChangePage('info')">
         정보 수정
       </q-btn>
-      <q-btn color="primary" flat @click="confirmPassword('password')">
+      <q-btn color="primary" flat @click="toChangePage('password')">
         비밀번호 변경
       </q-btn>
     </q-card-actions>
-    <!-- 비밀번호 입력 창 -->
-    <my-page-pop-up
-      v-if="change.mode"
-      :title="change.title"
-      :path="change.path"
-      :changeMode="true"
-      @reverse="change.prompt = false"
-    />
     <!-- 업적/칭호 적용 창 -->
     <my-page-pop-up
       v-if="apply.mode && !info.userflag"
@@ -88,6 +80,7 @@
 <script>
 import {useStore} from 'vuex'
 import { computed, reactive, ref } from 'vue'
+import {useRouter} from 'vue-router'
 import dayjs from 'dayjs'
 import axios from 'axios'
 import drf from '@/api/drf.js'
@@ -102,6 +95,7 @@ export default {
   },
   setup(props) {
     const store = useStore()
+    const router = useRouter()
     const school = store.getters.currentUser.schoolname
     let title = ref(props.info.wear_title?.title)
     const date = dayjs(props.info.birthday)
@@ -112,22 +106,11 @@ export default {
       })
     let computedProfil = computed(() => profil.value)
     let files = null
-    const change = reactive({
-      prompt: false,
-      title: null,
-      path: null,
-      mode: computed(() => change.prompt),
-    })
     const apply = reactive({
       prompt: false,
       title: null,
       mode: computed(() => apply.prompt),
     })
-    const confirmPassword = (path) => {
-      change.path = '/change/' + path
-      change.title = path === 'info'?'회원정보 수정':'비밀번호 변경'
-      change.prompt = true
-    }
     let type = ref(null)
     const myTitle = (title) => {
       type.value = title
@@ -183,9 +166,18 @@ export default {
           console.log('적용되었습니다')
         })
     }
+    const toChangePage = (path) => {
+      if (path === 'password') {
+        store.dispatch('changePwInfo', {name: props.info.name, email: props.info.email, username: props.info.username})
+        router.push('/change/password')
+      } else {
+        store.dispatch('changeInfo', props.info)
+        router.push('/change/info')
+
+      }
+    }
     return {
       school,
-      change,
       apply,
       title,
       type,
@@ -193,11 +185,11 @@ export default {
       files,
       profil,
       computedProfil,
-      confirmPassword,
       myTitle,
       applyTitle,
       changeProfil,
-      deleteProfil
+      deleteProfil,
+      toChangePage
     }
   },
 }

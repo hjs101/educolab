@@ -165,25 +165,25 @@ export const accounts = {
       ],
       userInfo: {
         username: null,
-        password1: null,
-        password2: null,
         name: null,
         school: null,
-        homeroom_teacher_flag: null,
         grade: null,
-        class_field: null,
-        subject: null,
-        phone_number: null,
-        birthday: null,
         email: null,
-        userflag: null,
+        class_field: null,
+        phone_number: null,
+        own_title: null,
         plus_point: null,
         minus_point: null,
-        profil: null,
+        acc_point: null,
+        wear_title: null,
+        birthday: null,
+        homeroom_teacher_flag: null,
+        userflag: null,
       },
       findPw: {
         name: null,
         email: null,
+        username: null
       }
     }
 >>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
@@ -324,7 +324,7 @@ export const accounts = {
       for (let key in data) {
         state.findPw[key] = data[key]
       }
-    }
+    },
   },
 =======
     SET_PERMISSION: (state, permission) => state.hasPermission = permission,
@@ -769,7 +769,7 @@ export const accounts = {
     },
     changePwInfo({commit}, data) {
       commit("CHANGE_PW_INFO", data)
-    }
+    },
     // back에 현재 사용자 정보 요청 (토큰 보내면 )
 =======
       commit("SET_USER_TYPE", userType)

@@ -186,6 +186,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 import {reactive, ref} from '@vue/reactivity'
@@ -196,12 +197,21 @@ import {reactive} from '@vue/reactivity'
 import {reactive} from '@vue/reactivity'
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 import {computed} from 'vue'
+=======
+import {computed, onMounted, reactive} from 'vue'
+import { useStore } from 'vuex'
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
 import ConfirmAuthNumber from '@/components/ConfirmAuthNumber.vue'
 export default {
   name: 'EmailConfirm',
+  props: {
+    fullEmail: String,
+    type: String,
+  },
   components: {
     ConfirmAuthNumber,
   },
+<<<<<<< HEAD
   setup () {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -217,6 +227,12 @@ export default {
     const emailOptions = [
       '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력'
     ]
+=======
+  setup (props) {
+    const store = useStore()
+    const emailOptions = store.getters.getEmail
+    let mail = props.fullEmail.split('@')
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
     const email = reactive({
       address: null,
       username: '',
@@ -372,6 +388,17 @@ export default {
 =======
       }),
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+    })
+    onMounted(() => {
+      if (props.type === 'change') {
+        if (emailOptions.indexOf(`@${mail[1]}`) !== -1) {
+          email.address = `@${mail[1]}`
+          email.username = mail[0]
+        } else {
+          email.address = '직접 입력'
+          email.username = props.fullEmail
+        }
+      }
     })
     
     return {

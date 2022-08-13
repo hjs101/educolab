@@ -13,10 +13,9 @@
     color="teal"
     label="휴대전화번호"
     v-model="phoneNumber"
-    maxlength="13"
-    :value="phoneNumber.value"
-    @change="sendData"
     mask="###-####-####"
+    maxlength="13"
+    @change="sendData"
     clearable
     :dense="false"
     lazy-rules
@@ -37,13 +36,20 @@
 
   export default {
     name:'userPhoneNumber',
-    setup() {
+    props: {
+      number: String,
+    },
+    setup(props) {
       const store = useStore()
-      let phoneNumber = ref('')
+      let phoneNumber = ref( `${props.number?.slice(0,3)}-${props.number?.slice(3,7)}-${props.number?.slice(7,11)}` || '')
       const sendData = () => {
         const value = phoneNumber.value.split('-')
-        const convertNumber = value[0] + value[1] + value[2]
-        store.dispatch('changeData', {phone_number: convertNumber})
+        const convertNumber = {phone_number: value[0] + value[1] + value[2]}
+        if (props.type !== 'change') {
+          store.dispatch('changeData', convertNumber)
+        } else {
+          store.dispatch('changeInfo', convertNumber)
+        }
       }
       return {
         sendData,

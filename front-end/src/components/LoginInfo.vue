@@ -2,6 +2,7 @@
   <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <q-input
       color="teal"
       label="아이디"
@@ -21,6 +22,9 @@
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <div class="row justify-between">
+=======
+    <div class="row justify-between" v-if="!changeMode">
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
       <q-input
         color="teal"
         label="아이디"
@@ -33,7 +37,13 @@
         ]"
       />
       <q-btn label="중복 확인" color="teal" @click="confirmUsername" class="col-2" />
+      <message-pop-up
+        v-if="computedData.confirm"
+        :message="computedData.message"
+        @reverse="userData.confirm = false"
+      />
     </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> bf45305 ( Fix : 버그 수정)
 =======
@@ -86,6 +96,8 @@
 >>>>>>> bf45305 ( Fix : 버그 수정)
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
     <q-input
       color="teal"
       label="비밀번호"
@@ -148,6 +160,7 @@ import {computed} from 'vue'
 import axios from 'axios'
 import drf from '@/api/drf.js'
 import {useStore} from 'vuex'
+<<<<<<< HEAD
 =======
 import {accounts} from '@/api/drf.js'
 // import axios from 'axios';
@@ -171,8 +184,17 @@ import axios from 'axios'
 import drf from '@/api/drf.js'
 import {useStore} from 'vuex'
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+import MessagePopUp from './MessagePopUp.vue'
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
 export default {
   name: 'LoginInfo',
+  props: {
+    changeMode: Boolean,
+  },
+  components: {
+    MessagePopUp
+  },
   setup () {
     const store = useStore()
 <<<<<<< HEAD
@@ -224,10 +246,14 @@ export default {
       validUsername: computed(() => userData.confirm),
 =======
       validUsername: computed(() => userData.valid),
+<<<<<<< HEAD
 >>>>>>> bf45305 ( Fix : 버그 수정)
 =======
       validUsername: computed(() => userData.valid),
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+      confirm: computed(() => userData.confirm),
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
       message: computed(() => computedData.validUsername? '사용 가능한 아이디입니다':'중복된 아이디입니다. 다른 아이디를 입력해주세요')
     })
     const confirmUsername = () => {
@@ -345,7 +371,11 @@ export default {
 >>>>>>> bf45305 ( Fix : 버그 수정)
 =======
         if (userData.password1.length > 5) {
-          store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
+          if (!props?.changeMode) {
+            store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
+          } else {
+            store.dispatch('changePw', {password1: userData.password1, password2: userData.password2})
+          }
         }
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       } else {

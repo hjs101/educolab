@@ -2,9 +2,9 @@
   <div>
     <!-- 인증 버튼 -->
     <q-btn
-      v-if="params.userType"
+      v-if="params.userType || params.userData === 'info'"
       color="teal"
-      label="이메일 인증"
+      :label="params.userType? '이메일 인증':'이메일 변경'"
       class="col-2"
       @click="isValidEmail"/>
     <q-btn
@@ -27,7 +27,7 @@
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <!-- 인증 실패 팝업 (일치하는 회원정보가 없음) -->
     <message-pop-up 
-      v-if="email.prompt && email.isFail"
+      v-if="email.confirm && email.isFail"
       title="인증 실패"
       :message="email.message"
 <<<<<<< HEAD
@@ -35,7 +35,7 @@
     />
     <!-- 인증 번호를 보냈음을 알림 -->
     <message-pop-up
-      v-if="email.prompt && !email.isFail"
+      v-if="email.confirm && !email.isFail"
       message="인증번호가 전송되었습니다"
       @reverse="email.prompt = false"
 =======
@@ -44,7 +44,7 @@
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     />
     <!-- 인증 번호 입력 창 -->
-    <div v-if="email.prompt && !email.isFail" class="row justify-between">
+    <div v-if="!email.isFail" class="row justify-between">
       <q-input
         color="teal"
         v-model="number.inputNum"
@@ -102,20 +102,25 @@ export default {
     const router = useRouter()
     const store = useStore()
     const params = reactive({
-      info: route.params.info? route.params.info : null,
-      userType: route.params.userType? route.params.userType : null,
+      userData: route.params.userData || null,
+      info: route.params.info || null,
+      userType: route.params.userType || null,
     })
     const email = reactive({
       authNum: null,
       valid: false,
       message: null,
       prompt: false,
-      isFail: computed(() => !!email.message)
+      isFail: computed(() => !email.valid),
+      confirm: computed(() => email.prompt),
     })
     const isValidEmail = () => {
-      // if는 find, else는 signup
+      // if는 find, else는 signup, change info
+      let url = null
+      // find
       if (params.info) {
         if (props.data.email && props.data.name && props.data.username) {
+<<<<<<< HEAD
           axios.post(drf.accounts.sendPwEmail(), props.data)
             .then(res => {
               if (res.data.success) {
@@ -149,7 +154,34 @@ export default {
             email.message = '비어있는 항목을 채워주세요'
           }
           email.prompt = true
+=======
+          url = drf.accounts.sendPwEmail()
+        } 
+      } else if (props.data.email) {
+        url = drf.accounts.sendEmail()
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
       }
+      if (url) {
+        axios({
+          url,
+          method: 'post',
+          data: props.data
+        })
+          .then(res => {
+            if ( (params.info && res.data.success) || props.data.email ) {
+              start()
+              console.log(res.data['auth_num'])
+              email.authNum = res.data['auth_num']
+              email.valid = true
+            } else {
+              email.message = res.data.message
+            }
+          })
+          .catch(err => console.dir(err))
+      } else {
+        email.message = '비어있는 항목을 채워주세요'
+      }
+      email.prompt =  true
     }
     const number = reactive({
       inputNum: null,
@@ -188,9 +220,9 @@ export default {
       alert = true
     }
     onBeforeMount (() => {
-      if (!params.userType && params.info !== 'password') {
-        router.push('/404')
-      }
+      // if (!params.userType && params.info !== 'password') {
+      //   router.push('/404')
+      // }
     })
     return {
       params,

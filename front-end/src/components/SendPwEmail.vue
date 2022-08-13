@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
     <div v-if="info">
       <q-input
         color="teal"
@@ -22,6 +23,16 @@
       :data="data"
     />
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+    <q-input
+      color="teal"
+      v-model="data.username"
+      label="아이디"
+      lazy-rules
+      :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요']"
+    />
+    <confirm-auth-number :data="data"/>
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
   </div>
 
 </template>
@@ -32,29 +43,28 @@ import {computed} from 'vue'
 <<<<<<< HEAD
 import {useStore} from 'vuex'
 import {useRoute} from 'vue-router'
+<<<<<<< HEAD
 import { reactive} from '@vue/reactivity'
 =======
 import {useRoute} from 'vue-router'
 import { reactive, ref } from '@vue/reactivity'
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
 import ConfirmAuthNumber from '@/components/ConfirmAuthNumber.vue'
-import ChangePassword from '@/components/ChangePassword.vue'
+// import ChangePassword from '@/components/ChangePassword.vue'
 export default {
   name: 'SendPwEmail',
   components: {
     ConfirmAuthNumber,
-    ChangePassword
+    // ChangePassword
     },
 <<<<<<< HEAD
   setup(){
     const route = useRoute()
     const store = useStore()
     let info = computed(() => route.params.info)
-    const data = reactive({
-      name: computed(() => store.getters.getInfo.name),
-      email: computed(() => store.getters.getInfo.email),
-      username: null
-    })
+    let data = computed(() => store.getters.getInfo)
     return {
       data,
       info

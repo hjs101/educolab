@@ -43,7 +43,6 @@
 
 <script>
 import { reactive, ref } from '@vue/reactivity'
-import { useRouter} from 'vue-router'
 import badge from '@/assets/quiz.png'
 export default {
   name: 'PasswordInput',
@@ -55,7 +54,6 @@ export default {
     type: Boolean,
   },
   setup(props, {emit}) {
-    const router = useRouter()
     let prompt = ref(true)
     const doNothing = () => {
       prompt = false
@@ -71,9 +69,7 @@ export default {
     }
     const move = () => {
       if (props.changeMode) {
-        // 백에 데이터 보내 비밀번호 맞는지 확인 -> 맞으면 회원정보 수정 페이지로
-        router.push(props.path)
-        router.go(1)
+        emit('reverse', false)
       } else {
         emit('reverse', true, alias.id, alias.name)
       }

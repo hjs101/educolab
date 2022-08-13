@@ -42,11 +42,15 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import {ref} from '@vue/reactivity'
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+import {ref, onBeforeMount} from 'vue'
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
 import {useStore} from 'vuex'
 =======
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
@@ -62,9 +66,12 @@ import {useStore} from 'vuex'
 export default {
   name: 'UserBirthday',
   props: {
+    date: String,
     userType: String,
+    type: String,
   },
   setup(props) {
+<<<<<<< HEAD
     let birthday = ref(props.userType === 'student'?'2008-01-01':'1972-01-01')
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -76,9 +83,22 @@ export default {
 >>>>>>> e6b54fb (asdu)
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
     const store = useStore()
+    let birthday = ref(props.userType === 'student'?'2008-01-01':'1972-01-01')
+    onBeforeMount(() => {
+      if (props.date) {
+        birthday.value = props.date
+      }
+    })
     const sendData = () => {
-      store.dispatch('changeData', {birthday:birthday.value})
+      const data = {birthday:birthday.value}
+      if (props.type === 'change') {
+        store.dispatch('changeInfo', data)
+      } else {
+        store.dispatch('changeData', data)
+      }
     }
 <<<<<<< HEAD
 <<<<<<< HEAD

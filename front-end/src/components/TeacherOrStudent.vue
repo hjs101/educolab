@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
 =======
@@ -13,12 +14,16 @@
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <q-select v-if="userType === 'teacher'"
+=======
+    <q-select v-if="isTeacher"
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
       color="teal"
       v-model="subject"
       label="과목"
       :options="subjectOptions"
       :value="subject.value"
     />
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -37,12 +42,29 @@
     <!-- 담임여부 -->
 =======
 >>>>>>> bf6f861 (Feat : 교사 상/벌점 부여 기능 구현 완료)
+=======
+    <div v-if="isTeacher && changeType">
+      교사 유형
+      <q-radio
+        dense
+        v-model="homeroom.type"
+        :val="true"
+        label="담임"
+        @click="sendData({homeroom_teacher_flag: true})"/>
+      <q-radio
+        dense
+        v-model="homeroom.type"
+        :val="false"
+        label="담임 아님"
+        @click="sendData({homeroom_teacher_flag: false})" />
+    </div>
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
     
 >>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <!-- 학년/반 (학생) -->
-    <div v-else>
+    <div v-if="!isTeacher || homeroom.computedType">
       <q-select
         color="teal"
         v-model="grade"
@@ -121,6 +143,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {ref} from '@vue/reactivity'
 import {useStore} from 'vuex'
 import {watch} from 'vue'
@@ -142,11 +165,19 @@ import {ref} from '@vue/reactivity'
 import {useStore} from 'vuex'
 import {watch} from 'vue'
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+import {useStore} from 'vuex'
+import {computed, ref, watch, reactive} from 'vue'
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
 export default {
   name: 'TeacherOrStudent',
   props: {
     userType: String,
+    data: Object,
+    type: String,
+    homeroomFlag: Boolean,
   },
+<<<<<<< HEAD
   setup() {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -154,11 +185,20 @@ export default {
 <<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+  setup(props) {
+>>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
     const store = useStore()
     const subjectOptions = store.getters.getSubject
-    let subject = ref('')
-    let grade = ref('')
-    let classField = ref('')
+    const isTeacher = computed(() => props.userType === 'teacher')
+    const changeType = computed(() => props.type === 'change')
+    let subject = ref(props.data?.subject || '')
+    let grade = ref(props.data?.grade || '')
+    let classField = ref(props.data?.classField || '')
+    let homeroom = reactive({
+      type: changeType.value? props.homeroomFlag: null,
+      computedType: computed(() => homeroom.type)
+    })
     watch(subject, () => {
       sendData({subject:subject.value})
     })
@@ -166,11 +206,18 @@ export default {
       sendData({grade:grade.value})
     })
     const sendData = (data) => {
-      store.dispatch('changeData', data)
+      if (changeType.value) {
+        store.dispatch('changeInfo', data)
+      } else {
+        store.dispatch('changeData', data)
+      }
     }
     return {
       subjectOptions,
       sendData,
+      isTeacher,
+      homeroom,
+      changeType,
       subject,
       grade,
       classField
