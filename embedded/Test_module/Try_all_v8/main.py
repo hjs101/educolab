@@ -26,7 +26,8 @@ from find_result import Find_result
 from find_renew import Find_renew
 from data.db_init import db_proc
 from data.websocket_info import *
-import requests, json, threading
+from threading import Lock
+import requests, json
 
 
 
@@ -74,16 +75,17 @@ class WindowManager(ScreenManager):
         self.survey_cnt=0   #설문에 답변한 문항 수
         self.content_number=0    #어떤 글?
         self.room_num=0
-        self.recv_msg=""
+        self.quiz_flag = False
+        self.lock = Lock()
 
-    def access_quiz(self, quiz_flag, send_msg):
-        if quiz_flag:
-            print("보낸 메세지: {}".format(send_msg))
-            self.ws.connect_ws(self.room_num)
-            self.recv_msg = self.ws.recv_data()
-            print("받은 메세지: {}".format(self.recv_msg))
+    def access_quiz(self, send_msg):
+        if self.quiz_flag:
+            self.ws.connect_ws(self.room_num, send_msg)
+            self.lock.acquire()
+            self.recv_data = self.ws.recv_data()
+            print(self.recv_data)
+            self.lock.release()
         else:
-            print("디스커넥트")
             self.ws.close_ws()
             
     def onStop(self): # 창 종료 버튼

@@ -18,26 +18,25 @@ class Quiz_Start_Screen(Screen):
         Window.size = (1280,720)
         Window.borderless=True
         self.popup=MyPopUp()
-        self.ws=ws_proc()
 
     def midBtn(self):
         self.midInput = self.ids.mid_input.text
 
     def onPopUp(self): # 팝업 및 다음 페이지 경로 지정
         if len(self.midInput)==8 and self.midInput.isdigit():
-            self.send_sockmsg = {
+            self.send_msg = {
                 "message": "학생 입장",
                 "id": self.manager.userID,
                 "room_num": self.midInput
             }
-            self.ws.connect_ws(self.midInput, self.send_sockmsg)
-            self.data = self.ws.recv_data()
-            self.ws.close_ws()
+            self.manager.quiz_flag = True
+            self.manager.access_quiz(self.send_msg)
 
-            if json.loads(self.data)["message"] == "방이 없네요":
+            if json.loads(self.manager.recv_data)["message"] == "방이 없네요":
                 self.popup.ids.alert.text="방이 없네요"
                 self.popup.open()
                 self.next_page = self.name
+                self.manager.quiz_flag = False
             else:
                 self.next_page = 'Quiz_wait'
         else:

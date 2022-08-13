@@ -34,12 +34,13 @@ class Quiz_Waiting_Screen(Screen):
         self.animate_flag=False
         self.cnt=0
         self.next_flag=0
-        self.send_msg = {
-            "message": "학생 입장",
-            "id": self.manager.userID,
-            "room_num": self.room_number
-        }
-        self.manager.access_quiz(True, self.send_msg)
+        # self.send_msg = {
+        #     "message": "학생 입장",
+        #     "id": self.manager.userID,
+        #     "room_num": self.room_number
+        # }
+        # self.manager.quiz_flag = True
+        # self.manager.access_quiz(self.send_msg)
         
         ##**# socket 통신 초기화 및 입장 신호 작성 요청
         ##**# socket 통신 신호 받는 것은 Thread 이용해야 하는 것 같은 데... 잘 모르겠음

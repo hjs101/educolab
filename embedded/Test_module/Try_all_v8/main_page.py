@@ -18,6 +18,8 @@ class Main_Screen(Screen):
         Window.borderless=True
 
     def on_pre_enter(self):
+        self.manager.quiz_flag = False
+        self.manager.access_quiz("")
         with open("./login_info.json", 'r') as file:
             self.data = json.load(file)
         self.school_name = self.data["schoolname"] + ' '
