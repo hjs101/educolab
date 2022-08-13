@@ -88,7 +88,11 @@
             <td class="text-center text-size">{{ timeInfo(quiz.updated_at) }}</td>
             <!-- 퀴즈 시작 버튼에서 함수 구현 -->
             <td class="text-center text-size">
+<<<<<<< HEAD
               <q-btn @click="startQUiz" class="button-size" color="amber-9">Go Quiz!</q-btn>
+=======
+              <q-btn @click="startQUiz(quiz.pk)" color="indigo-13">Go Quiz!</q-btn>
+>>>>>>> 7ae675e (Feat : 웹 퀴즈 기능 완료)
             </td>
           </tr>
         </tbody>
@@ -168,10 +172,9 @@ export default({
     QuizCreate() {
       this.$router.push({name:'QuizCreate'})
     },
-    
     // 여기서 구현 진행하시면 됩니다..
-    startQUiz() {
-      console.log('test')
+    startQUiz(quizPk) {
+      this.$router.push({name:'QuizWait', params:{ quizPk: quizPk }})
     }
   },
   created() {

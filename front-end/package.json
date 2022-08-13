@@ -36,8 +36,13 @@
     "quasar": "^2.0.0",
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     "vue": "^3.2.13",
+<<<<<<< HEAD
     "vue-cookies": "^1.8.1",
+=======
+    "vue-native-websocket-vue3": "^3.1.6",
+>>>>>>> 7ae675e (Feat : 웹 퀴즈 기능 완료)
     "vue-router": "^4.0.3",
+    "vue-socket.io": "^3.0.10",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

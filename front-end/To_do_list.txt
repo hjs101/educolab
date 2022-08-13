@@ -22,3 +22,7 @@ https://tjddnjs625.tistory.com/29
 * nav 바 지우는 방법(정석호)
 * 데이터 연동 관련해서 물어보기(정석호)
 * 퀴즈 데이터 테스트 케이스 있는지 확인하기(한진성)
+
+
+2022.08.10
+$npm install --save vue-socket.io

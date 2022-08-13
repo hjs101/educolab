@@ -61,6 +61,7 @@ const SURVEY = BASE_URL + '/survey/'
 const QUIZ = BASE_URL + '/quiz/'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 9bb5647 (메인 페이지 css)
 =======
 const MY_PAGE = BASE_URL + '/mypage/'
@@ -120,6 +121,9 @@ const MainPage = BASE_URL + 'mainpage/'
 =======
 const POINT_SHOP = BASE_URL + 'pointshop/'
 >>>>>>> 98f515c (Feat : 포인트 상점 목록 불러오기 구현 완료)
+=======
+const CHAT = BASE_URL + '/chat/'
+>>>>>>> 7ae675e (Feat : 웹 퀴즈 기능 완료)
 
 export default {
   accounts: {
@@ -395,6 +399,8 @@ export default {
     quizList: () => QUIZ + 'main/',
     quizCreate: () => QUIZ + 'create/',
     quizDetail: () => QUIZ + 'detail/',
+    quizScore: ()=>CHAT +'req/scoreadd/',
+    quizRank:()=>CHAT+'req/rank/',
   },
 <<<<<<< HEAD
 <<<<<<< HEAD

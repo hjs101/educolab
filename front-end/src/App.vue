@@ -194,6 +194,7 @@
         </div>
       </div>
     </footer> -->
+<<<<<<< HEAD
 >>>>>>> 9bb5647 (메인 페이지 css)
 =======
   <div style="height:1500px">
@@ -292,6 +293,9 @@
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
 >>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
+=======
+  <router-view :key="$route.fullPath" />
+>>>>>>> 7ae675e (Feat : 웹 퀴즈 기능 완료)
   </div>
 </template>
 

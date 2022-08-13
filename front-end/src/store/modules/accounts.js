@@ -263,6 +263,7 @@ export const accounts = {
     // getStudentInfo: state => state.studentInfo,
     // getTeacherInfo: state => state.teacherInfo,
     getSubject: state => state.teacherInfo.subject,
+    getUsername: state => state.currentUser.username,
   },
   mutations: {
 <<<<<<< HEAD
@@ -530,6 +531,7 @@ export const accounts = {
           const access = res.data.access
           dispatch("saveToken", access)
           commit("SET_CURRENT_USER", res.data)
+<<<<<<< HEAD
 =======
 
     currentingUser({ commit }) {
@@ -560,6 +562,8 @@ export const accounts = {
           dispatch("saveToken", access)
           commit("CURRENTING_USER", res.data)
 >>>>>>> eb5987b (로그인  버그 수정)
+=======
+>>>>>>> 7ae675e (Feat : 웹 퀴즈 기능 완료)
           router.push({ name: "educolab" })
         })
         .catch((err) => {
