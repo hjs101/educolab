@@ -45,12 +45,14 @@ class ScoreAddView(APIView):
         room_num = req.GET['room_num']
         quiz_answer_user = QuizAnswer.objects.filter(room=room_num,question=qestion_num).order_by('id')
         count = 0
+        ans_cnt = 0
         for user in quiz_answer_user:
+            ans_cnt +=1
             user.quizuser.score += (100 - count*10)
             user.quizuser.save()
             if count < 5:
                 count +=1
-        return Response({"success":True})
+        return Response({"success":True, "ans_cnt":ans_cnt})
 class RankScoreView(APIView):
     def get(self, req):
         room_num = req.GET['room_num']
