@@ -28,8 +28,8 @@
     </div>
     
     <div class="row justify-center q-my-lg">
+      <q-btn @click="updateQuiz(quizPk)" class="q-mx-lg" color="orange-6">퀴즈 수정</q-btn>
       <q-btn @click="deleteQuiz(quizPk)" class="q-mx-lg" color="orange-6">퀴즈 삭제</q-btn>
-      <q-btn @click="updateQuizx(quizPk)" class="q-mx-lg" color="orange-6">퀴즈 수정</q-btn>
     </div>
   </div>
 </template>
@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     ...mapActions(['getQuizDetail', 'deleteQuiz']),
-    updateQuizx(quizPk) {
+    updateQuiz(quizPk) {
       this.$router.push({name:'QuizCreate', params: {quizPk : quizPk}})
     }
   },

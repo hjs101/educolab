@@ -12,6 +12,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div style="height: 2000px">
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -188,36 +189,63 @@
 =======
   <div style="height:1500px">
 
+=======
+  <div style="height:1200px">
+>>>>>>> 38a5ff1 (공지사항  수정 해결)
       <!-- 교사 navbar -->
-      <div v-if="isLoggedIn && currentUser.userflag">
-        <div class="bord-bt">
-          <div class="q-py-md q-px-xl row items-center jooa-font nav-size">
-            <a href="/educolab"><img class="q-mx-lg" src="@/assets/educolab.png" alt="educolab" style="width:4rem; height:4rem;"></a>
-            <router-link class="q-px-xl button color5" to="/notice">공지사항</router-link>
-            <router-link class="q-px-xl button color5" to="/teacher/task">과제</router-link>
-            <router-link class="q-px-xl button color5" to="/quiz">퀴즈</router-link>
-            <router-link class="q-px-xl button color5" to="/survey">설문조사</router-link>
-            <router-link class="q-px-xl button color5" to="/teacher">마이페이지</router-link>
-            <button class="q-px-lg" @click="logoutBtn">로그아웃</button>
+      <div v-if="isLoggedIn && currentUser.userflag" class="jooa-font">
+        <div class="navBar q-px-xl q-py-md bord-bt">
+          <a href="/educolab"><img src="@/assets/educolab.png" alt="educolab" style="width:4rem; height:4rem;"></a>
+          <div class="navBarUi nav-size">
+            <router-link class="q-ml-xl button color5 navBarLi" to="/notice">공지사항</router-link>
+            <router-link class="q-ml-xl button color5 navBarLi" to="/teacher/task">과제</router-link>
+            <router-link class="q-ml-xl button color5 navBarLi" to="/quiz">퀴즈</router-link>
+            <router-link class="q-ml-xl button color5 navBarLi" to="/survey">설문조사</router-link>
+            <router-link class="q-ml-xl button color5 navBarLi" to="/teacher">마이페이지</router-link>
+            <button @click="logoutBtn" class="q-ml-xl">로그아웃</button>
+          </div>
+          
+          <div class="navBar_tool">
+            <div v-if="onNavList">
+              <div @click="activeNav" class="column items-center q-px-md bg-grey-13">
+                <router-link class="text-subtitle2 button color5 navBarLi" to="/notice" flat>공지사항</router-link>
+                <router-link class="text-subtitle2 button color5 navBarLi" to="/student/task" flat>과제</router-link>
+                <router-link class="text-subtitle2 button color5 navBarLi" to="/student/point" flat>포인트 상점</router-link>
+                <router-link class="text-subtitle2 button color5 navBarLi" to="/student">마이페이지</router-link>
+              </div>
+            </div>
+            <q-icon @click="activeNav" class="cursor-pointer" name="mdi-menu" />
           </div>
         </div>
       </div>
   
       <!-- 학생 navbar -->
-      <div v-if="isLoggedIn && !currentUser.userflag">
-        <div class="bord-bt">
-          <div class="q-py-md q-px-xl row items-center jooa-font nav-size">
-            <a href="/educolab"><img class="q-mx-lg" src="@/assets/educolab.png" alt="educolab" style="width:4rem; height:4rem;"></a>
-            <router-link class="q-px-xl button color5" to="/notice">공지사항</router-link>
-            <router-link class="q-px-xl button color5" to="/student/task">과제</router-link>
-            <router-link class="q-px-xl button color5" to="/student/point">포인트 상점</router-link>
-            <router-link class="q-px-xl button color5" to="/student">마이페이지</router-link>
-            <button class="q-px-lg" @click="logoutBtn">로그아웃</button>
+      <div class="jooa-font" v-if="isLoggedIn && !currentUser.userflag">
+        <div class="navBar q-px-xl q-py-md bord-bt">
+          <a href="/educolab"><img src="@/assets/educolab.png" alt="educolab" style="width:4rem; height:4rem;"></a>
+          <div class="navBarUi nav-size">
+            <router-link class="q-ml-xl button color5 navBarLi" to="/notice" flat>공지사항</router-link>
+            <router-link class="q-ml-xl button color5 navBarLi" to="/student/task" flat>과제</router-link>
+            <router-link class="q-ml-xl button color5 navBarLi" to="/student/point" flat>포인트 상점</router-link>
+            <router-link class="q-ml-xl button color5 navBarLi" to="/student">마이페이지</router-link>
+            <button @click="logoutBtn" class="q-ml-xl">로그아웃</button>
+          </div>
+ 
+          <div class="navBar_tool">
+            <div v-if="onNavList">
+              <div @click="activeNav" class="column items-center q-px-md bg-grey-13">
+                <router-link class="text-subtitle2 button color5 navBarLi" to="/notice" flat>공지사항</router-link>
+                <router-link class="text-subtitle2 button color5 navBarLi" to="/student/task" flat>과제</router-link>
+                <router-link class="text-subtitle2 button color5 navBarLi" to="/student/point" flat>포인트 상점</router-link>
+                <router-link class="text-subtitle2 button color5 navBarLi" to="/student">마이페이지</router-link>
+              </div>
+            </div>
+            <q-icon @click="activeNav" class="cursor-pointer" name="mdi-menu" />
           </div>
         </div>
       </div>
 
-      <footer class="bord-top bg-blue-grey-12 q-py-sm">
+      <!-- <footer class="bord-top bg-blue-grey-12 q-py-sm">
         <div class="row justify-start items-center">
           <img class="q-mx-xl" src="@/assets/footerlogo.png" alt="educolab" style="width:5rem; height:5rem;">
           <div class="ftr-size">
@@ -226,9 +254,14 @@
             <p>교사에게는 편리한, 학생에게는 학습욕구를 팽창시켜드립니다!!</p>
           </div>
         </div>
+<<<<<<< HEAD
     </footer>
 
 >>>>>>> e824b6b (메인페이지 화면 구성)
+=======
+    </footer> -->
+    
+>>>>>>> 38a5ff1 (공지사항  수정 해결)
   <router-view />
 <<<<<<< HEAD
   
@@ -241,6 +274,7 @@
   </div>
 </template>
 
+<<<<<<< HEAD
 <script>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -376,6 +410,8 @@ export default {
 }
 </script>
 
+=======
+>>>>>>> 38a5ff1 (공지사항  수정 해결)
 <style>
 /* 모든 페이지에서 공통으로 사용할 스타일 정의 */
 <<<<<<< HEAD
@@ -390,11 +426,22 @@ export default {
     font-family: "jooa"
   }
 
+  .navBar {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .navBarUi {
+    display: flex;
+    align-items: center;
+  }
+
   /* 컴포넌트 기본 css */
   .baseStyle {
     width: 80%;
     margin: auto;
     font-family: "jooa";
+    min-width: 450px;
   }
 
 <<<<<<< HEAD
@@ -414,12 +461,12 @@ export default {
     text-decoration: none;
   }
   .buttonGroup {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  gap: 10px;
-  margin: 100px 0px;
-  }
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    margin: 100px 0px;
+    }
   .center {
     text-align: center;
   }
@@ -646,9 +693,10 @@ export default {
   } 
   footer {
     position: absolute;
-    bottom: -700px;
+    bottom: -1000px;
     width: 100%
   }
+<<<<<<< HEAD
   .hidden {
     visibility: hidden;
   }
@@ -664,3 +712,80 @@ export default {
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
 >>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
+=======
+  .navBarLi:hover {
+    border-bottom: 2px solid #8BFF8B;
+  }
+  .navBar_tool {
+    position: absolute;
+    right: 32px;
+    font-size: 2rem;
+    color: #FF9966;
+    display : none;
+  }
+
+  @media screen and (max-width: 840px) {
+    .navBar {
+      display: flex;
+      flex-direction: column;
+    }
+    .navBarUi {
+      display: flex;
+      flex-direction: column;
+      display: none;
+    }
+    .navBar_tool {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+import { mapGetters, mapActions } from 'vuex'
+
+export default {
+  name: 'MainPage',
+  data() {
+    return {
+      isHovering : true,
+      onNavList : false,
+    }
+  },
+  computed: {
+    ...mapGetters(['isLoggedIn', 'currentUser']),
+    flag() {
+      const flag = this.currentUser.userflag
+      return flag
+    },
+  },
+  methods: {
+    ...mapActions(['logout']),
+    logoutBtn() {
+      if (this.isLoggedIn) {
+        this.logout()
+      } else {
+        this.$router.back()
+      }
+    },
+    selectedHovering() {
+      this.isHovering = true
+    },
+    unselectedHovering() {
+      this.isHovering = false
+    },
+    activeNav() {
+      if(this.onNavList == true) {
+        this.onNavList = false
+      } else {
+        this.onNavList = true
+      }
+    }
+  },
+  created() {
+    if (this.isLoggedIn === false) {
+      this.$router.push({name:'login'})
+    }
+  }
+}
+</script>
+>>>>>>> 38a5ff1 (공지사항  수정 해결)

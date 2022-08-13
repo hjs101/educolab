@@ -117,6 +117,7 @@ import { mapActions, mapGetters } from "vuex";
 >>>>>>> c9ecd87 (퀴즈 임베디드 연동)
 
 export default({
+  name: 'QuizView',
   computed: { 
     ...mapGetters(['quiz'])
   },

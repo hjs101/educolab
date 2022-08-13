@@ -17,7 +17,7 @@
       <span class="bogi-size">보기 4.</span><q-input outlined v-model="num4" style="width:40%" placeholder="보기를 입력해주세요."/>
     </div>
     <div>
-      <p class="title-size">제출 답안</p>
+      <p class="q-pt-sm title-size">제출 답안</p>
       <q-input class="answer-border" outlined v-model="credentials.answer" style="width:40px;"></q-input>
     </div>        
     <hr>
@@ -82,6 +82,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+ p {
+  margin : 0;
+ }
 </style>

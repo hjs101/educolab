@@ -9,6 +9,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const PROFIL = 'http://127.0.0.1:8000'
@@ -36,6 +37,10 @@ const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 >>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
+=======
+// const BASE_URL = 'https://i7c102.p.ssafy.io/api'
+const BASE_URL = 'http://127.0.0.1:8000/api'
+>>>>>>> 38a5ff1 (공지사항  수정 해결)
 const ACCOUNTS = BASE_URL + '/accounts/'
 const NOTICE = BASE_URL + '/notice/'
 const SURVEY = BASE_URL + '/survey/'

@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -51,8 +52,36 @@
         <br>
 <<<<<<< HEAD
 >>>>>>> 3646f0b (공지사항 파일 업로드)
+=======
+  <div class="row justify-center q-my-xl">
+    <div class="notice_form">
+        <div class="row start items-center">
+          <p class="title-size">[{{ noticeDetail.notice.classification }}]</p>
+          <p class="title-size">{{ noticeDetail.notice.title }}</p>
+        </div>
+        <p class="item-size text-start q-pl-sm text-grey-13">{{ noticeDetail.notice.teacher.name }}</p>
+>>>>>>> 38a5ff1 (공지사항  수정 해결)
 
+        <q-card class="bg-green-13">
+          <q-card-section>
+            <p class="item-size text-right">{{ timeInfo(noticeDetail.notice.updated_at) }}</p>
+          </q-card-section>
+          <q-card-section>
+            <p class="content-size bg-white text-center" style="min-height:500px">{{ noticeDetail.notice.content }}</p>
+          </q-card-section>
+        </q-card>
+      <hr>
+
+      <div class="q-py-sm q-pl-sm">
+        <p class="text-size text-grey-13 q-pb-sm">첨부파일 ({{ noticeDetail.files.length }}) </p> 
+        <div v-for="file in noticeDetail.files" :key="file">
+          <q-btn @click="openFile(file.atch_file)" color="grey-12" class="text-black">
+          <q-icon name="mdi-paperclip"/>
+          {{ file.atch_file_name }}
+          </q-btn>
+        </div> 
       </div>
+<<<<<<< HEAD
     </div>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -75,41 +104,66 @@
 >>>>>>> 3646f0b (공지사항 파일 업로드)
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+      <hr>
+
+      <div class="row justify-center q-my-md q-gutter-lg">
+        <q-btn class="text-size" @click="updateNotice(noticePk)" color="orange-6 q-py-sm">공지사항 수정</q-btn>
+        <q-btn class="text-size" @click="deleteNotice(noticePk)" color="orange-6 q-py-sm">공지사항 삭제</q-btn>
+      </div>
+
+      <div class="btn-mag row justify-center">
+        <q-btn @click="goNotice" class="text-size q-px-lg q-py-sm" color="green-13" label="목록" />
+      </div> 
+    </div>  
+>>>>>>> 38a5ff1 (공지사항  수정 해결)
   </div>
-    
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import { ref } from 'vue'
 
 export default {
-  data() {
-    const index = this.$route.params.noticePk
+  setup() {
     return {
-      // noticeItem : this.noticeItem,
-      index : index
+      model: ref(null)
+    }
+  },
+  data() {
+    return {
+      noticePk : this.$route.params.noticePk
     }
   },
   computed: {
-    ...mapGetters(['noticeItem'])
+    ...mapGetters(['noticeDetail'])
   },
   methods: {
-    ...mapActions(['deleteNotice']),
-    updateData() {
-      this.$router.push({
-        name: 'NoticeForm',
-        params : {
-          noticePk : this.index
-        }
-      })
+    ...mapActions(['deleteNotice', 'getNoticeDetail']),
+    timeInfo(time) {
+      const d = new Date(time)
+      return d.getFullYear() + ". " + (d.getMonth()+1) + ". " + d.getDate()
+    },
+    updateData(noticePk) {
+      this.$router.push({name: 'NoticeCreate', params : {noticePk : noticePk}})
     },
     openFile(url) {
-      window.open('http://127.0.0.1:8000'+ url)
+      window.open('https://i7c102.p.ssafy.io/'+ url)
+    },
+    goNotice() {
+      this.$router.push({name:'Notice'})
+    },
+    updateNotice(noticePk) {
+      this.$router.push({name:'NoticeCreate', params:{ noticePk: noticePk}})
     }
+  },
+  created() {
+    this.getNoticeDetail(this.noticePk)
   }
 }
 </script>
 
+<<<<<<< HEAD
 <style>
 
 <<<<<<< HEAD
@@ -127,3 +181,42 @@ export default {
 =======
 </style>
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+<style scoped>
+  .title-size {
+    font-size : 4vmin;
+  }
+  .content-size {
+    font-size : 3vmin;
+  }
+  .item-size {
+    font-size: 2vmin;
+  }
+  .my-card {
+    width: 70%
+  }
+  p {
+    margin: 0;
+  }
+  h3 {
+    margin: 0;
+  }
+  .notice_form {
+    width: 60%;
+    /* margin : 0; */
+    font-family: "jooa";
+  }
+  .color1 {
+    color: #FF9966;
+  }
+  .text-size {
+    font-size: 1.3rem;
+  }
+  .bord-bt {
+    border-bottom: 1px solid #99DFF9;
+  }
+  .btn-mag {
+    margin-top: 100px;
+  }
+</style>
+>>>>>>> 38a5ff1 (공지사항  수정 해결)

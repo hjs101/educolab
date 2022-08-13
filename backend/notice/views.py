@@ -316,8 +316,9 @@ class NoticeUpdateView(APIView):
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         notice_serializer = NoticeSerializer(notice, data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
-            notice = notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))
-
+            print('valid')
+            notice = notice_serializer.save(teacher=req.user, school=req.user.school)
+            print(notice)
         notice_files = notice.notice_file.all()
         notice_files.delete()
 

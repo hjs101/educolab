@@ -260,8 +260,12 @@ const routes = [
 >>>>>>> e6b54fb (asdu)
 =======
     name: 'NoticeCreate',
+<<<<<<< HEAD
 >>>>>>> d127577 (기능별 메인 페이지 구성)
     component: () => import('@/views/NoticeFormView')
+=======
+    component: () => import('@/views/NoticeCreateView')
+>>>>>>> 38a5ff1 (공지사항  수정 해결)
   },
 <<<<<<< HEAD
 
@@ -295,7 +299,7 @@ const routes = [
   // 과제(학생)
   {
     path: '/student/task',
-    name: 'StudentTaskListView',
+    name: 'StudentTask',
     component: () => import('@/views/StudentTaskListView')
 <<<<<<< HEAD
 =======

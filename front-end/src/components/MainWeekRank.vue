@@ -23,7 +23,10 @@ export default {
 </script>
 
 <style scoped>
- .card-bt {
-  border-bottom: 1px solid #FF9966
- }
+  .my-card {
+    width:400px;  
+  }
+  .card-bt {
+    border-bottom: 1px solid #FF9966
+  }
 </style>

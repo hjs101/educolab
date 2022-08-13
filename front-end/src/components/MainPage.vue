@@ -20,14 +20,16 @@
       </q-card>
     </div>
 
-    <div class="row justify-evenly q-py-xl">
-      <main-notice :mainNotice="mainNotice"></main-notice>
-      <main-homework :mainHomework="mainHomework"></main-homework>
+    <div class="row">
+      <main-notice class="col-md-6 col-xs-12 q-py-lg flex justify-center" :mainNotice="mainNotice"></main-notice>
+      <main-homework class="col-md-6 col-xs-12 q-py-lg flex justify-center" :mainHomework="mainHomework"></main-homework>
+      <main-acc-rank class="col-md-6 col-xs-12 q-py-lg flex justify-center"  :mainAccRank="mainAccRank"></main-acc-rank>
+      <main-week-rank class="col-md-6 col-xs-12 q-py-lg flex justify-center" :mainWeekRank="mainWeekRank"></main-week-rank>
     </div>
+    <!-- <div class="row">
+    </div> -->
 
-    <div class="row justify-evenly q-py-xl">
-      <main-acc-rank :mainAccRank="mainAccRank"></main-acc-rank>
-      <main-week-rank :mainWeekRank="mainWeekRank"></main-week-rank>
+    <div class="row justify-evenly">
     </div>
   </div>  
 </template>

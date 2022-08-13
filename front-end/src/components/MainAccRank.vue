@@ -1,4 +1,5 @@
 <template>
+  <div>
     <q-card class="my-card bg-cyan-13">
 
       <q-card-section class="row justify-between items-center card-bt">
@@ -42,6 +43,7 @@
           </tbody>
         </q-markup-table>
     </q-card>
+  </div>
 </template>
 
 <script>

@@ -29,31 +29,6 @@
         </tbody>
       </q-markup-table>
     </div>
-    <!-- <table>
-      <thead>
-        <tr>
-          <th>번호</th>
-          <th>제목</th>
-          <th>학년</th>
-          <th>반</th>
-          <th>생성일</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="survey in survey" :key="survey.pk">
-          <td>{{ survey.pk }}</td>
-          <router-link :to="{name:'SurveyDetail', params: {surveyPk:`${survey.pk}`}}">
-            <td class="test2">{{ survey.title }}</td>
-          </router-link>
-          <td>{{ survey.grade }}</td>
-          <td>{{ survey.class_field }}</td>
-          <td>{{ timeInfo(survey.updated_at) }}</td> 
-          <router-link :to="{name:'SurveyStat', params: {surveyPk:`${survey.pk}`}}">
-            <button @click="surveyStat(survey.pk)">통계보기</button>
-          </router-link>
-        </tr> 
-      </tbody>
-    </table> -->
     <hr>
 
   <router-view />
@@ -84,7 +59,7 @@ export default {
       this.$router.push({name:'SurveyCreate'})
     },
     surveyDetail(surveyPk) {
-      this.$router.push({name:'surveyDetail', params:{ surveyPk:surveyPk }})
+      this.$router.push({name:'SurveyDetail', params:{ surveyPk:surveyPk }})
     },
     surveyStat(surveyPk) {
       this.getSurveyStat(surveyPk)
