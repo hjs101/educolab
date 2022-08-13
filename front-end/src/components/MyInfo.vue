@@ -106,7 +106,6 @@ export default {
     let title = ref(props.info.wear_title?.title)
     const date = dayjs(props.info.birthday)
     const birthday = `${date.get('y')}년 ${date.get('M')+1}월 ${date.get('D')}일생`
-    // let profil = img
     let profil = reactive({
       path: props.info.profil,
       change: computed(() => drf.file.path() + profil.path)
