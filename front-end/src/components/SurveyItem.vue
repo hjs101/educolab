@@ -1,27 +1,28 @@
 <template>
   <div>
     <div @change="onSurvey({...credentials})">
-      <select v-model="selected">
-        <option value="">==문항 선택==</option>
-        <option value="choice">객관식 설문조사</option>
-        <option value="question">주관식 설문조사</option>
-      </select>
-      <br>
-  
-      <div class="surveymargin" v-if="selected === 'question'">
-        문항 {{ survey }}. <input class="inputWidth" type="text" placeholder="주관식 문항을 입력해주세요." v-model="credentials.survey_question">
+      <div class="q-py-md">
+        <q-select class="button-size q-ml-sm" style="width:150px;" outlined v-model="selected" 
+        :options="selSelected" label="문항 선택" emit-value map-options/>
       </div>
-  
-      <div v-else-if="selected === 'choice'"><br>
-        문항 {{ survey }}. <input class="inputWidth" type="text" placeholder="객관식 문항을 입력해주세요." v-model="credentials.survey_question">
-        <div class="surveymargin">
-          선택지 1. <input type="text" v-model="num1">
-          선택지 2. <input type="text" v-model="num2">
-          선택지 3. <input type="text" v-model="num3">
-          선택지 4. <input type="text" v-model="num4">
-          선택지 5. <input type="text" v-model="num5">
+
+      <div class="row items-center" v-if="selected === 'question'">
+        <span class="q-mx-lg text-center text-size">문항 {{ survey }}.</span>
+        <q-input outlined class="text-size" label="주관식 문항" v-model="credentials.survey_question" style="width: 685px;" />
+      </div>
+      
+      <div class="row items-center" v-else-if="selected === 'choice'"><br>
+        <span class="q-mx-lg text-center text-size">문항 {{ survey }}.</span>
+        <q-input outlined class="text-size" label="객관식 문항" v-model="credentials.survey_question" style="width: 685px;"/>
+
+        <div class="row items-center q-py-md q-px-lg">
+          <q-input outlined class="text-size q-my-md" label="보기 1" style="width:685px;" v-model="num1" />
+          <q-input outlined class="text-size q-mb-md" label="보기 2" style="width:685px;" v-model="num2" />
+          <q-input outlined class="text-size q-mb-md" label="보기 3" style="width:685px;" v-model="num3" />
+          <q-input outlined class="text-size q-mb-md" label="보기 4" style="width:685px;" v-model="num4" />
         </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -58,6 +59,16 @@ export default {
     return {
       credentials,
       selected,
+      selSelected: [
+        {
+          label: '객관식',
+          value: 'choice'
+        },
+        {
+          label: '주관식',
+          value: 'question'
+        },
+      ],
       num1,
       num2,
       num3,
@@ -99,7 +110,10 @@ export default {
   .inputWidth {
     width: 50%;
   }
-  .surveymargin {
-    margin: 40px;
+  .text-size {
+    font-size: 1.2rem;
+  }
+  .button-size {
+    font-size: 1.1rem;
   }
 </style>

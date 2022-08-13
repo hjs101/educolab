@@ -8,19 +8,19 @@
 
     <!-- 설문조사 전체 조회 -->
     <div class="q-pa-md">
-      <q-markup-table>
+      <q-markup-table class="survey-full">
         <thead>
           <tr>
             <th class="text-left text-size">번호</th>
             <th class="text-center text-size">제목</th>
             <th class="text-center text-size">학년</th>
             <th class="text-center text-size">반</th>
-            <th class="text-center text-size">생성일</th>
+            <th class="text-center text-size">등록(수정)일</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="survey in survey" :key="survey.pk">
-            <td class="text-left text-size">{{ survey.pk }}</td>
+          <tr v-for="(survey, index) in survey.slice((page-1)*10, page*10)" :key="index">
+            <td class="text-left text-size">{{ index+1+((page-1)*10) }}</td>
             <td @click="surveyDetail(survey.pk)" class="text-size cursor-pointer">{{ survey.title }}</td>
             <td class="text-center text-size">{{ survey.grade }}</td>
             <td class="text-center text-size">{{ survey.class_field }}</td>
@@ -28,25 +28,53 @@
           </tr>
         </tbody>
       </q-markup-table>
-    </div>
-    <hr>
 
-  <router-view />
+      <q-markup-table class="survey-small">
+        <thead>
+          <tr>
+            <th class="text-center text-size">제목</th>
+            <th class="text-center text-size">학년</th>
+            <th class="text-center text-size">반</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(survey,index) in survey.slice((page-1)*10, page*10)" :key="index">
+            <td @click="surveyDetail(survey.pk)" class="text-size cursor-pointer">{{ survey.title }}</td>
+            <td class="text-center text-size">{{ survey.grade }}</td>
+            <td class="text-center text-size">{{ survey.class_field }}</td>
+          </tr>
+        </tbody>
+      </q-markup-table>
+    </div>
+    
+    <div>
+      <the-pagi-nation v-if="surveyLength" :limit="surveyLength" @change-page="changePage">
+      </the-pagi-nation>
+    </div>   
+
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import { ref } from 'vue'
+import ThePagiNation from '@/components/ThePagination.vue'
 
 export default {
   name : 'SurveyView',
-  data() {
+  components: {ThePagiNation},
+  setup() {
+    let page = ref(1)
+    const changePage = (value) => {
+      page.value = value
+    }
     return {
-      onButton : false,
+      page,
+      changePage
     }
   },
   computed: {
-    ...mapGetters(['survey',]),
+    ...mapGetters(['survey', 'surveyLength']),
   },
   methods : {
     ...mapActions(['surveyList', 'getSurveyDetail', 'getSurveyStat']),
@@ -73,8 +101,19 @@ export default {
 </script>
 
 <style scoped>
-  .text-size {font-size:1.2rem;}
+  .text-size {font-size:1.4rem;}
   .surveyMargin {margin-right : 10px;}
   .test {position: relative;}
   .test2 {text-decoration: none;}
+  .survey-small {
+    display: none;
+  }
+  @media screen and (max-width: 815px) {
+    .survey-full {
+      display: none;
+    }
+    .survey-small {
+      display: block;
+    }
+  }
 </style>

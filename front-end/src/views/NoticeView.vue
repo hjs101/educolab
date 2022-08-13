@@ -95,12 +95,12 @@
       <q-markup-table class="notice-full">
         <thead>
           <tr>
-            <th class="text-left text-size">번호</th>
-            <th class="text-center text-size">분류</th>
-            <th class="text-center text-size">제목</th>
-            <th class="text-center text-size">작성자</th>
-            <th class="text-center text-size">등록(수정)일</th>
-            <th class="text-center text-size">조회수</th>
+            <th class="text-left text-size"><span>번호</span></th>
+            <th class="text-center text-size"><span>번호</span></th>
+            <th class="text-center text-size"><span>분류</span></th>
+            <th class="text-center text-size"><span>제목</span></th>
+            <th class="text-center text-size"><span>등록(수정)일</span></th>
+            <th class="text-center text-size"><span>조회수</span></th>
           </tr>
         </thead>
         <tbody>
@@ -124,7 +124,6 @@
           <tr>
             <th class="text-center text-size">분류</th>
             <th class="text-center text-size">제목</th>
-            <!-- <th class="text-center text-size">등록(수정)일</th> -->
           </tr>
         </thead>
         <tbody>
@@ -134,7 +133,6 @@
             <td v-else-if="notice.classification === '행사'" class="text-size text-center text-green-13">{{ notice.classification }}</td>
 
             <td @click="noticeDetail(notice.pk)" class="cursor-pointer text-size">{{ notice.title }}</td>
-            <!-- <td class="text-center text-size">{{ timeInfo(notice.updated_at) }}</td> -->
           </tr>
         </tbody>
       </q-markup-table>
@@ -165,7 +163,6 @@ export default {
     const changePage = (value) => {
       page.value = value
     }
-    // length: computed(() => Math.ceil(search.list.length/10))
     return {
       page,
       changePage

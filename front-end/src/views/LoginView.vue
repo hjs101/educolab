@@ -4,11 +4,15 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   <div class="q-mx">
+=======
+  <div style="height:900px;" class="q-mx column justify-center">
+>>>>>>> 7f2a492 (설문조사  sass)
     <h3>LOGIN</h3>
     <account-error-list></account-error-list>
     <!-- form 부분 -->
@@ -162,9 +166,23 @@
     <!-- 여기에 회원가입 / ID 찾기 / 비밀번호 찾기 -->
     <button-group :currentUrl="currentUrl"/>
     <router-view></router-view>
+<<<<<<< HEAD
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   </div>
+=======
+>>>>>>> 7f2a492 (설문조사  sass)
 
+    <footer class="bord-top bg-blue-grey-12 q-py-sm">
+      <div class="row justify-start items-center">
+        <img class="q-mx-xl" src="@/assets/footerlogo.png" alt="educolab" style="width:5rem; height:5rem;">
+        <div class="ftr-size">
+          <span class="text-bold">"교육과 서비스의 조화" edu colab!!</span><hr>
+          <span>edu colab는 학습 역량 증진 / 교육 연계 보조 / 수업의 질 향상을 목표로 합니다.</span>
+          <p>교사에게는 편리한, 학생에게는 학습욕구를 팽창시켜드립니다!!</p>
+        </div>
+      </div>
+    </footer>
+  </div>
 </template>
 
 <<<<<<< HEAD
@@ -219,6 +237,11 @@
 >>>>>>> e6b54fb (asdu)
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%
   }
 </style>
 

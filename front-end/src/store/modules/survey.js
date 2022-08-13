@@ -19,7 +19,8 @@ export const survey = {
     surveyItem : state => state.surveyItem,
     surveyBogi : state => state.surveyBogi,
     surveyStat : state => state.surveyStat,
-    surveyQuestion: state => state.surveyQuestion
+    surveyQuestion: state => state.surveyQuestion,
+    surveyLength: state => Math.ceil(state.survey.length/10)
   },
 
   mutations: {
@@ -46,10 +47,12 @@ export const survey = {
         })
     },
     onSurvey({ commit }, data) {
+      console.log(data)
       commit('SURVEY_DATA', data)
     },
     submitSurvey({ getters }, credentials) {
       credentials.question = getters.surveyData
+      console.log(getters.surveyData)
       console.log(credentials)
       axios({
         url: drf.survey.surveyCreate(),
@@ -99,17 +102,15 @@ export const survey = {
           console.log(err)
         })
     },
-    updateSurvey({ getters }, {credentials, surveyPk}) {
+    updateSurvey({ getters }, credentials) {
       credentials.question = getters.surveyData
-      credentials.survey_num = surveyPk
+      console.log(credentials.question)
+      console.log(credentials)
       axios({
         url: drf.survey.surveyUpdate(),
         method: 'put',
         headers: getters.authHeader,
         data : credentials,
-        params : {
-          survey_num : surveyPk
-        }
       })
         .then(res => {
           console.log(res)

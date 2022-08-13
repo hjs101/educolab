@@ -1,52 +1,50 @@
 <template>
-  <div>
-    <h1>{{ getTitle }}</h1>
-    <div class="center">
-      설문조사 제목 : <input class="inputWidth" type="text" placeholder="설문조사 제목을 입력해주세요." v-model="credentials.survey.title"><br>
+  <div class="baseStyle">
+    <h4>{{ getTitle }}</h4>
+
+    <div class="row q-mr-xl justify-end">
+      <q-btn class="delete-size" @click="addSurvey" color="orange-6"  label="문항 추가" />
     </div>
 
-    <!-- 학년 선택-->
-    <select v-model="credentials.survey.grade">
-      <option value="0">전체</option>
-      <option value="1">1학년</option>
-      <option value="2">2학년</option>
-      <option value="3">3학년</option>
-    </select>
+    <div class="row q-gutter-md">
+      <q-select class="button-size" style="width:100px;" outlined v-model="credentials.survey.grade" :options="selGrade" label="학년" emit-value map-options/>
+      <q-select class="button-size" style="width:100px;" outlined v-model="credentials.survey.class_field" :options="selClassField" label="반" emit-value map-options/>
+    </div>
 
-    <!-- 반 선택-->
-    <select v-model="credentials.survey.class_field">
-      <option value="0">전체</option>
-      <option value="1">1반</option>
-      <option value="2">2반</option>
-      <option value="4">4반</option>
-      <option value="5">5반</option>
-      <option value="6">6반</option>
-      <option value="7">7반</option>
-      <option value="8">8반</option>
-      <option value="9">9반</option>
-      <option value="10">10반</option>
-    </select>
+    <div class="row q-mt-xl">
+      <span class="q-py-md q-mx-lg text-center text-size">제목</span>
+      <q-input class="text-size" outlined v-model="credentials.survey.title" label="title" style="width: 700px;" required/>
+    </div>
+    <hr>
     
-    <!-- 문항 선택 -->
-    <button class="surveymargin" @click="addSurvey">문항 추가</button>
     <form class="surveymargin">
       <div class="surveymargin" v-for="survey in surveyList" :key="survey">
+        <div class="row justify-end q-mt-md q-mr-xl">
+          <q-btn @click="deleteSurvey(survey, $event)" class="delete-size" color="orange-6">문항 삭제</q-btn>
+        </div>
           <survey-item 
           :survey="survey"
           :surveyPk="surveyPk"/>
-          <button @click="deleteSurvey(survey, $event)">설문문항 삭제</button>
           <hr>
       </div>
     </form>
-    <button @click="surveyPk ? updateSurvey({credentials, surveyPk}) : submitSurvey(credentials)">
-    {{ surveyPk ? '설문조사 수정' : '설문조사 등록'}}
-    </button>
 
+    <div class="row justify-center q-my-xl">
+      <q-btn class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
+      <q-btn @click="surveyPk ? updateSurvey(credentials) : submitSurvey(credentials)"
+      class="text-size q-px-xl q-py-md q-mx-lg q-py-sm" color="blue-6">
+      {{ surveyPk ? '수정' : '등록'}}
+      </q-btn>
+    </div>
+    
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import { useRoute } from 'vue-router'
+import { reactive } from 'vue'
+import { ref } from 'vue'
 import SurveyItem from '../components/SurveyItem.vue'
 
 export default {
@@ -61,16 +59,84 @@ export default {
   },
   data() {
     return {
-      surveyPk : this.$route.params.surveyPk,
-      credentials : {
-        survey: {
-          title: '',
-          grade: '',
-          class_field: '',
-        },
-        question: {},
-      },
       surveyList : 2
+    }
+  },
+  setup() {
+    const route = useRoute()
+    let surveyPk = ref(route.params.surveyPk)
+    const credentials = reactive({
+      survey_num : surveyPk,
+      survey : {
+        title : '',
+        grade : '',
+        class_field: '',
+      },
+      question: {}
+    })
+    return {
+      credentials,
+      surveyPk,
+      selGrade: [
+        {
+          label: '전체',
+          value: 0
+        },
+        {
+          label: '1학년',
+          value: 1
+        },
+        {
+          label: '2학년',
+          value: 2
+        },
+        {
+          label: '3학년',
+          value: 3
+        }
+      ],
+      selClassField: [
+        {
+          label: '전체',
+          value: 0
+        },
+        {
+          label: '1반',
+          value: 1
+        },        {
+          label: '2반',
+          value: 2
+        },        {
+          label: '3반',
+          value: 3
+        },        {
+          label: '4반',
+          value: 4
+        },        {
+          label: '4반',
+          value: 4
+        },        {
+          label: '5반',
+          value: 5
+        },        {
+          label: '6반',
+          value: 6
+        },
+        {
+          label: '7반',
+          value: 7
+        },        {
+          label: '8반',
+          value: 8
+        },        {
+          label: '9반',
+          value: 9
+        },
+        {
+          label: '10반',
+          value: 10
+        },
+      ]
     }
   },
   methods: {
@@ -104,8 +170,17 @@ export default {
   .inputWidth {
     width: 50%;
   }
-  .surveymargin {
-    margin: 40px;
+  .button-color {
+    border: 2px solid orange;
+  }
+  .text-size {
+    font-size: 1.2rem;
+  }
+  .button-size {
+    font-size: 1.1rem;
+  }
+  .delete-size {
+    font-size: 1rem;
   }
 </style>
 
