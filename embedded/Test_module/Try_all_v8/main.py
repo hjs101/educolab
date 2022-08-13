@@ -26,7 +26,7 @@ from find_result import Find_result
 from find_renew import Find_renew
 from data.db_init import db_proc
 from data.websocket_info import *
-import requests, json, asyncio
+import requests, json, threading
 
 
 
@@ -61,7 +61,6 @@ class WindowManager(ScreenManager):
     def __init__(self, **kwargs):
         super(WindowManager, self).__init__(**kwargs)
         self.ws = ws_proc()
-        self.wsapp = wsapp_proc()
         self.DB=db_proc()
         self.DB.create_db()
         self.before_page=''
@@ -75,19 +74,21 @@ class WindowManager(ScreenManager):
         self.survey_cnt=0   #설문에 답변한 문항 수
         self.content_number=0    #어떤 글?
         self.room_num=0
+        self.recv_msg=""
 
-    def access_quiz(self, quiz_flag, send_msg, recv_msg=""):
+    def access_quiz(self, quiz_flag, send_msg):
         if quiz_flag:
-            self.wsapp.wsapp_connect(self.room_num)
-            self.wsapp.on_open(send_msg)
-            self.wsapp.on_message(recv_msg)
+            print("보낸 메세지: {}".format(send_msg))
+            self.ws.connect_ws(self.room_num)
+            self.recv_msg = self.ws.recv_data()
+            print("받은 메세지: {}".format(self.recv_msg))
         else:
             print("디스커넥트")
-            self.wsapp.on_close()
-
+            self.ws.close_ws()
+            
     def onStop(self): # 창 종료 버튼
         self.DB.db_close()
-        self.wsapp.on_close()
+        self.ws.close_ws()
         App.get_running_app().stop()
 
     def access_api(self):

@@ -39,8 +39,7 @@ class Quiz_Waiting_Screen(Screen):
             "id": self.manager.userID,
             "room_num": self.room_number
         }
-        self.recv_msg=""
-        self.manager.access_quiz(True, self.send_msg, self.recv_msg)
+        self.manager.access_quiz(True, self.send_msg)
         
         ##**# socket 통신 초기화 및 입장 신호 작성 요청
         ##**# socket 통신 신호 받는 것은 Thread 이용해야 하는 것 같은 데... 잘 모르겠음

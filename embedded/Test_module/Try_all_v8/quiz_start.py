@@ -30,8 +30,9 @@ class Quiz_Start_Screen(Screen):
                 "id": self.manager.userID,
                 "room_num": self.midInput
             }
-            self.ws.ws_connect(self.midInput, self.send_sockmsg)
-            self.data = self.ws.data
+            self.ws.connect_ws(self.midInput, self.send_sockmsg)
+            self.data = self.ws.recv_data()
+            self.ws.close_ws()
 
             if json.loads(self.data)["message"] == "방이 없네요":
                 self.popup.ids.alert.text="방이 없네요"
