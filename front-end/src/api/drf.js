@@ -15,6 +15,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const PROFIL = 'http://127.0.0.1:8000'
@@ -77,6 +78,10 @@ const FILE = 'https://i7c102.p.ssafy.io'
 // const FILE = 'http://127.0.0.1:8000'
 const FILE = 'https://i7c102.p.ssafy.io'
 >>>>>>> 8149c1f (Fix : Aws 서버로 ip변경)
+=======
+const FILE = 'http://127.0.0.1:8000'
+// const FILE = 'https://i7c102.p.ssafy.io'
+>>>>>>> c7b9d1a (Fix: master branch와 병합 전 commit)
 const BASE_URL = FILE + '/api/'
 const ACCOUNTS = BASE_URL + 'accounts/'
 const NOTICE = BASE_URL + 'notice/'
