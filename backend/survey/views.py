@@ -142,7 +142,14 @@ class SurveyDetailView(APIView):
         question_serializer = QuestionDetailSerializer(questions, many=True)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         survey_name = [{"survey_name" : survey.title}]
+=======
+        survey_name = [{"survey_name" : survey.title,
+                        "survey_grade" : survey.grade,
+                        "survey_class" : survey.class_field
+                        }]
+>>>>>>> 54d5d96 (Feat : 설문조사 데이터 내용 추가)
         print(question_serializer.data)
         return Response(survey_name+question_serializer.data)
 =======
