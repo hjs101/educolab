@@ -39,7 +39,7 @@ class MainpageView(APIView): # 메인페이지 정보 전달 (과제,공지,행�
         event_serializer = EventSerializer(event, many=True)
 
         # 공지
-        notice = Notice.objects.filter(school=request.user.school)[:5]
+        notice = Notice.objects.filter(school=request.user.school).order_by('-pk')[:5]
         notice_serializer = MainpageNoticeSerializer(notice, many=True)
 
         # 누적랭킹

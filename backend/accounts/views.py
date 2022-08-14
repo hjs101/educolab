@@ -25,6 +25,7 @@ from sre_constants import SUCCESS
 >>>>>>> 1d03a62 (Backend file 삽입)
 from django.shortcuts import render
 from django.core.mail import send_mail
+from django.contrib.auth.hashers import check_password
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
@@ -466,6 +467,7 @@ class ChangePWView(APIView):
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         return Response(context)
 >>>>>>> d2fc3f3 (feat : 비밀번호 초기화 및 변경 기능 구현)
 =======
@@ -474,3 +476,13 @@ class ChangePWView(APIView):
 =======
         return Response(context)
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+        return Response(context)
+
+class CheckPasswordView(APIView):
+
+    def post(self, request):
+        input_password = request.data.get('password')
+        check = check_password(input_password,request.user.password)
+        return Response({"success" : check})
+>>>>>>> 5ee470c (feat : pw 확인 기능 구현)

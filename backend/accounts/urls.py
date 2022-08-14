@@ -125,5 +125,6 @@ urlpatterns = [
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
 =======
     path('change_pw/', views.ChangePWView.as_view(), name="changepw"),
+    path('check_pw/', views.CheckPasswordView.as_view(), name='check_pw'),
 ]
 >>>>>>> 1d03a62 (Backend file 삽입)
