@@ -39,7 +39,7 @@
           <q-btn color="black" class="text-bold" flat @click="myTitle(true)">
             {{computedTitle}}
           </q-btn>
-          | 현재 상점(누적 상점)/벌점 +{{info.plus_point}} ({{info.acc_point}}) /-{{info.minus_point}}
+          | 현재(누적) 상점/벌점 +{{info.plus_point}} ({{info.acc_point}}) / {{info.minus_point}}
         </span>
         <br>
         이메일과 전화번호는 데이터 값에 포함되지만 출력하지 않음

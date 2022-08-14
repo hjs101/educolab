@@ -7,7 +7,10 @@
 
       <q-card-section v-if="changeMode">
         <div class="text-h6 center">비밀번호 입력이 필요합니다</div>
-        <q-input label="비밀번호" v-model="confirm.password"/>
+        <q-input
+          label="비밀번호"
+          type="password"
+          v-model="confirm.password"/>
       </q-card-section >
       <!-- 칭호 테스트 중-->
       <q-card-section v-else-if="type">
@@ -58,6 +61,7 @@ import {useRouter} from 'vue-router'
 import axios from 'axios'
 import drf from '@/api/drf.js'
 import { computed, reactive } from 'vue'
+import { useStore } from 'vuex'
 export default {
   name: 'PasswordInput',
   props: {
@@ -69,13 +73,14 @@ export default {
   },
   setup(props, {emit}) {
     const router = useRouter()
+    const store = useStore()
     const confirm = reactive({
       password: null,
-      prompt: true
+      prompt: true,
     })
     const doNothing = () => {
       if (props.changeMode) {
-        router.push('/educolab')
+        router.back()
         emit('reverse', true)
       } else {
         confirm.prompt = false
@@ -101,28 +106,25 @@ export default {
       {id:4, title: '배고파'}
     ]
     const move = () => {
-      console.log(props.changeMode)
       if (props.changeMode) {
         axios({
-        url: drf.accounts.checkPw(),
-        method: 'post',
-        data: {
-          password: confirm.password
+          url: drf.accounts.checkePw(),
+          method: 'post',
+          headers: store.getters.authHeader,
+          data: {
+            password: confirm.password
           }
         })
-        .then(({data}) => {
-          // 성공했음을 알리는 팝업
-          console.log(data.success)
-          // password.message = data.message
+        .then(() => {
           emit('reverse', false)
+          confirm.prompt = false
         })
         .catch(({response}) => {
           console.log(response)
+          confirm.password = null
+          confirm.prompt = true
           // 실패했음을 알림
           // password.message = response.data.message
-        })
-        .finally(() => {
-          confirm.prompt = true
         })
       } else {
         emit('reverse', true, alias.id, alias.name)
