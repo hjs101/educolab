@@ -22,4 +22,5 @@ urlpatterns = [
     path('',views.MainpageView.as_view(), name='mainpage'),
     path('title/', views.PtitleView.as_view()),
     path('icon/', views.IconView.as_view()),
+    path('icon/register/',views.IconRegisterView.as_view())
 ]

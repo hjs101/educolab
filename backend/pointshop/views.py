@@ -57,7 +57,7 @@ class IconRegisterView(APIView):
         price = request.data.get('price')
         content = request.data.get('content')
         file = request.FILES.get("file")
-        icon = Icon.objects.create(title=title,price=price,content=content,file=file)
+        icon = Icon.objects.create(title=title,price=price,content=content,icon=file)
         icon.save()
 
         return Response({"success" : True, "message" : "등록 완료"})
