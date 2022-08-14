@@ -91,10 +91,12 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def chat_message(self, event):
         message = event['message']
         nickname = event['nickname']
+        proc_pk = event['proc_pk']
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
             'message': message,
-            'nickname' : nickname
+            'nickname' : nickname,
+            'proc_pk' : proc_pk
         }))
 
     @database_sync_to_async
