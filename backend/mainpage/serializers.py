@@ -33,7 +33,7 @@ class MainpageNoticeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Notice
-        fields = ('classification','title',)
+        fields = ('classification','title','updated_at',)
 
 class MainpageTHomeworkSerializer(serializers.ModelSerializer):
 
