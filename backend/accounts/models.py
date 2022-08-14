@@ -181,6 +181,7 @@ class PointLog(models.Model):
     point = models.IntegerField()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b9da983 (Feat : mypage 구현중)
 =======
     created_at = models.DateField(auto_now=True)
@@ -191,3 +192,8 @@ class PointLog(models.Model):
 =======
     created_at = models.DateField(auto_now=True)
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+    acc_point = models.IntegerField(null=True)
+    acc_minus = models.IntegerField(null=True)
+    created_at = models.DateField(auto_now=True)
+>>>>>>> 7d09758 (Feat : 내림차순 정렬, 포인트 로그 관련 정보 수정)

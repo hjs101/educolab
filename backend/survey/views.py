@@ -55,7 +55,7 @@ class SurveyTeacherMainView(APIView) :
         
         ## 2. 쿼리로 작성자가 user인 설문조사 목록을 가져온다.
         teacher = UserInfo.objects.get(username=req.user.username)
-        survey = teacher.survey_teacher.all()
+        survey = teacher.survey_teacher.all().order_by('-updated_at')
 
         print(survey)
         # notices = Notice.objects.select_related('school').filter(school_id=schoolCode)
@@ -70,7 +70,7 @@ class SurveyStudentMainView(APIView) :
         if req.user.userflag:
             return Response({"message" :"학생만 접근 가능합니다."})
         my_survey = SurveyList.objects.filter(target=req.user)
-        my_survey = my_survey.exclude(done_target=req.user)
+        my_survey = my_survey.exclude(done_target=req.user).order_by('-updated_at')
         print(my_survey)
         survey_serializer = SurveyMainSerializer(my_survey,many=True)
 

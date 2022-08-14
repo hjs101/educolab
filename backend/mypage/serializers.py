@@ -11,6 +11,11 @@ from accounts.serializers import UserNameSerializer
 
 # jwt token 결과 커스텀 
 
+class ProfilSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ['profil']
+
 class PointlogSerializer(serializers.ModelSerializer):
     teacher = UserNameSerializer(read_only=True)
     student = UserNameSerializer(read_only=True)
@@ -18,6 +23,7 @@ class PointlogSerializer(serializers.ModelSerializer):
         model = PointLog
         fields = '__all__'
 class TeacherSerializer(serializers.ModelSerializer):
+    profil = ProfilSerializer(read_only=True)
     class Meta:
         model = get_user_model()
         fields = ['username','email','userflag','name','birthday','phone_number','subject','homeroom_teacher_flag','grade','class_field','profil']
@@ -26,6 +32,7 @@ class StudentSerializer(serializers.ModelSerializer):
 <<<<<<< HEAD
     wear_title = TitleSerializer(read_only=True)
     own_title = TitleSerializer(read_only=True,many=True)
+    profil = ProfilSerializer(read_only=True)
 
     class Meta:
         model = get_user_model()

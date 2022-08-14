@@ -17,7 +17,6 @@ class QuizUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuizUser
         fields = '__all__'
-        
 class QuizAnswerSerializer(serializers.ModelSerializer):
     room = QuizRoomSerializer(read_only=True)
     question = QuestionSerializer(read_only=True)

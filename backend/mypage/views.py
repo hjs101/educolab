@@ -18,7 +18,7 @@ class MypageMainView(APIView):
         ## 학생일 경우
         print(1, req.data)
         if req.user.userflag == 0:
-            score_logs = req.user.point_student.all()
+            score_logs = req.user.point_student.all().order_by('-id')
             userinfo_serializer = StudentSerializer(req.user)
             point_serializer = PointlogSerializer(score_logs,many=True)
             return Response({
@@ -67,8 +67,13 @@ class PointGrantView(APIView):
             student.minus_point += point
         student.save()
         # 포인트 로그에 기록
-        
-        log_serializer = PointlogSerializer(data=req.data['log'])
+        data = req.data['log']
+        update = {
+            "acc_point" : student.plus_point,
+            "acc_minus" : student.minus_point
+        }
+        data.update(update)
+        log_serializer = PointlogSerializer(data=data)
         if log_serializer.is_valid(raise_exception=True):
             log_serializer.save(teacher = req.user, student = student)
         return Response({"success":True})
@@ -78,7 +83,7 @@ class ProfilChangeView(APIView):
         user = req.user
 
         user.profil = req.FILES["profil"]
-        
+
         user.save()
 
         return Response({

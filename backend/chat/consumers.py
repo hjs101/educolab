@@ -80,7 +80,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
             {
                 'type': 'chat_message',
                 'message': send_message,
-                'nickname' : nickname
+                'nickname' : nickname,
+                'proc_pk' : proc_pk
             }
         )
 
