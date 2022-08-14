@@ -447,6 +447,13 @@ export default {
   .baseStyle {
     width: 80%;
     margin: auto;
+    /* font-family: "jooa"; */
+    min-width: 450px;
+    height:1200px;
+  }
+  .testStyle {
+    width: 80%;
+    margin: auto;
     font-family: "jooa";
     min-width: 450px;
     height:1200px;

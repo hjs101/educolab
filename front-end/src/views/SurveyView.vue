@@ -2,7 +2,7 @@
   <div class="baseStyle">
     <img src="@/assets/설문조사.png" alt="survey" style="height:200px;">
     <div class="row justify-end">
-      <q-btn @click="surveyCreate" class="text-size q-mx-lg q-py-sm"
+      <q-btn @click="surveyCreate" class="button-size q-mx-lg q-py-sm"
       color="green-13" label="설문 등록" />
     </div>
 
@@ -105,6 +105,9 @@ export default {
   .surveyMargin {margin-right : 10px;}
   .test {position: relative;}
   .test2 {text-decoration: none;}
+  .button-size {
+    font-size: 1rem;
+  }
   .survey-small {
     display: none;
   }

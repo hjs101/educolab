@@ -1,5 +1,5 @@
 <template>
-  <div class="baseStyle">
+  <div class="testStyle">
     <div v-for="surveyItem in surveyItem" :key="surveyItem">
       <h4>{{ surveyItem.survey_name }}</h4>
       <div class="q-mx-md" v-if="surveyItem.question_number">

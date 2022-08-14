@@ -191,10 +191,10 @@ export default {
 =======
 <style scoped>
   .title-size {
-    font-size : 4vmin;
+    font-size : 3vmin;
   }
   .content-size {
-    font-size : 3vmin;
+    font-size : 2.5vmin;
   }
   .item-size {
     font-size: 2vmin;
@@ -211,13 +211,13 @@ export default {
   .notice_form {
     width: 60%;
     /* margin : 0; */
-    font-family: "jooa";
+    /* font-family: "jooa"; */
   }
   .color1 {
     color: #FF9966;
   }
   .text-size {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
   .bord-bt {
     border-bottom: 1px solid #99DFF9;

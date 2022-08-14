@@ -1,5 +1,5 @@
 <template>
-  <div class="baseStyle">
+  <div class="testStyle">
     <h4>{{ getTitle }}</h4>
 
     <div class="row q-mr-xl justify-end">

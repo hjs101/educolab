@@ -85,36 +85,39 @@
 
 =======
   <div class="baseStyle">
-    <img src="@/assets/공지사항.png" alt="notice" style="height:150px;">
-    <div class="row justify-end">
+    <!-- <img src="@/assets/공지사항.png" alt="notice" style="height:150px;"> -->
+      <h4 class="text-center">공지사항</h4>
+      <hr>
+    <div class="row justify-end q-mt-lg">
       <q-btn @click="noticeCreate" class="text-size q-mx-lg q-py-sm" 
-      color="green-13" label="글 쓰기" />
+      color="blue-6" label="글 쓰기" />
     </div>
 
     <div class="q-pa-md">
       <q-markup-table class="notice-full">
         <thead>
-          <tr>
-            <th class="text-left text-size"><span>번호</span></th>
-            <th class="text-center text-size"><span>번호</span></th>
-            <th class="text-center text-size"><span>분류</span></th>
-            <th class="text-center text-size"><span>제목</span></th>
-            <th class="text-center text-size"><span>등록(수정)일</span></th>
-            <th class="text-center text-size"><span>조회수</span></th>
+          <tr class="text-center text-size">
+            <th class="text-size">번호</th>
+            <th class="text-size">분류</th>
+            <th class="text-size">제목</th>
+            <th class="text-size">작성자</th>
+            <th class="text-size">등록(수정)일</th>
+            <th class="text-size">조회수</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(notice, index) in notice2.slice((page-1)*10, page*10)" :key="index">
-            <td class="text-left text-size">{{ index+1+((page-1)*10) }}</td>
+          <tr v-for="(notice, index) in notice2.slice((page-1)*10, page*10)" :key="index"
+          class="text-center">
+            <td class="text-size">{{ index+1+((page-1)*10) }}</td>
 
-            <td v-if="notice.classification === '변경'" class="text-size text-center text-pink-13">{{ notice.classification }}</td>
-            <td v-else-if="notice.classification === '공지'" class="text-size text-center text-indigo-13">{{ notice.classification }}</td>
-            <td v-else-if="notice.classification === '행사'" class="text-size text-center text-green-13">{{ notice.classification }}</td>
+            <td v-if="notice.classification === '변경'" class="text-size text-pink-13">{{ notice.classification }}</td>
+            <td v-else-if="notice.classification === '공지'" class="text-size text-indigo-13">{{ notice.classification }}</td>
+            <td v-else-if="notice.classification === '행사'" class="text-size text-green-13">{{ notice.classification }}</td>
 
-            <td @click="noticeDetail(notice.pk)" class="cursor-pointer text-size">{{ notice.title }}</td>
-            <td class="text-center text-size">{{ notice.teacher.name }}</td>
-            <td class="text-center text-size">{{ timeInfo(notice.updated_at) }}</td>
-            <td class="text-center text-size">{{ notice.views }}</td>
+            <td @click="noticeDetail(notice.pk)" class="cursor-pointer text-left text-size">{{ notice.title }}</td>
+            <td class="text-size">{{ notice.teacher.name }}</td>
+            <td class="text-size">{{ timeInfo(notice.updated_at) }}</td>
+            <td class="text-size">{{ notice.views }}</td>
           </tr>
         </tbody>
       </q-markup-table>
@@ -204,11 +207,15 @@ export default {
 =======
 <style scoped>
 <<<<<<< HEAD
+<<<<<<< HEAD
   .text-size{font-size: 1.2rem;}
 >>>>>>> d127577 (기능별 메인 페이지 구성)
 =======
   .text-size{font-size: 1.4rem;}
 >>>>>>> 38a5ff1 (공지사항  수정 해결)
+=======
+  .text-size{font-size: 1rem;}
+>>>>>>> 71858f1 (설문조사 sass)
   .searchWrap{border-radius:5px; text-align:center; padding:20px 0; margin-bottom:10px;}
   .tbList th{border-top:1px solid #888;}
 	.tbList th, .tbList td{border-bottom:1px solid #eee; padding:5px 0;}

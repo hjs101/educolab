@@ -68,7 +68,7 @@
         <q-card-section>
           <div class="text-h6 center">{{confirm.message}}</div>
         </q-card-section >
-        <q-card-actions align="center">
+        <q-card-actions text-align="center">
           <button-group v-if="confirm.isSuccess" :currentUrl="type.currentUrl" @click="initInfo"/>
           <q-btn v-else color="primary" label="확인" v-close-popup/>
         </q-card-actions>
