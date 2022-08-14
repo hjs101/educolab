@@ -3,17 +3,11 @@
     <h5 class="text-center">내 정보</h5>
     <q-card-section horizontal>
       <label for="profil">
-        <!-- 프로필 이미지 있을 때 -->
         <img
           :src="profil.change"
           class="cursor-pointer"
           width="100"
           oncontextmenu="return false">
-        <!-- <q-img
-          :src="profil"
-          size="100px"
-          class="cursor-pointer"
-        /> -->
       </label>
       <input
         type="file"
@@ -45,9 +39,9 @@
         </span>
         <span v-if="!info.userflag">
           <q-btn color="black" class="text-bold" flat @click="myTitle(true)">
-            {{info.wear_title.title}}
+            {{computedTitle}}
           </q-btn>
-          | 상점/벌점 +{{info.plus_point}} ({{info.acc_point}}) /-{{info.minus_point}}
+          | 현재 상점(누적 상점)/벌점 +{{info.plus_point}} ({{info.acc_point}}) /-{{info.minus_point}}
         </span>
         <br>
         이메일과 전화번호는 데이터 값에 포함되지만 출력하지 않음
@@ -98,6 +92,7 @@ export default {
     const router = useRouter()
     const school = store.getters.currentUser.schoolname
     let title = ref(props.info.wear_title?.title)
+    let computedTitle = computed(() => title.value)
     const date = dayjs(props.info.birthday)
     const birthday = `${date.get('y')}년 ${date.get('M')+1}월 ${date.get('D')}일생`
     let profil = reactive({
@@ -118,7 +113,9 @@ export default {
       apply.prompt = true
     }
     const applyTitle = (val, pk, name) => {
+      console.log(val, pk, name)
       if (val && name !== title.value ) {
+        console.log('신호 보낼 것')
         axios({
           url: drf.myPage.changeTitle(),
           method: 'put',
@@ -127,6 +124,7 @@ export default {
         })
           .then(() => {
             title.value = name
+            console.log('성공')
           })
       }
       apply.prompt = false
@@ -148,6 +146,7 @@ export default {
         .then(() => {
           // 프로필 적용
           profil.path = drf.file.change() + photo.files[0].name
+          
           console.log(profil.path)
           console.log('적용되었습니다')
         })
@@ -189,7 +188,8 @@ export default {
       applyTitle,
       changeProfil,
       deleteProfil,
-      toChangePage
+      toChangePage,
+      computedTitle
     }
   },
 }

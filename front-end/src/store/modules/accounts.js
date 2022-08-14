@@ -164,23 +164,8 @@ export const accounts = {
       emailOptions: [
         '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력',
       ],
-      userInfo: {
-        username: null,
-        name: null,
-        school: null,
-        grade: null,
-        email: null,
-        class_field: null,
-        phone_number: null,
-        own_title: null,
-        plus_point: null,
-        minus_point: null,
-        acc_point: null,
-        wear_title: null,
-        birthday: null,
-        homeroom_teacher_flag: null,
-        userflag: null,
-      },
+      userInfo: {},
+      profil: null,
       findPw: {
         name: null,
         email: null,
@@ -235,6 +220,7 @@ export const accounts = {
     getEmail: state => state.emailOptions,
     isValidEmail: state => state.validEmail,
     getUserInfo: state => state.userInfo,
+    getProfil: state => state.profil,
     getInfo: state => state.findPw,
 >>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
   },
@@ -319,7 +305,11 @@ export const accounts = {
     SET_USER_TYPE: (state, userType) => (state.userType = userType),
     CHANGE_INFO: (state, data) => {
       for (let key in data) {
-        state.userInfo[key] = data[key]
+        if (key !== 'profil') {
+          state.userInfo[key] = data[key]
+        } else {
+          state.profil = data[key]
+        }
       }
     },
     CHANGE_PW_INFO: (state, data) => {

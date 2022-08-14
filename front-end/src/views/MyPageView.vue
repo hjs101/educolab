@@ -2,7 +2,7 @@
   <div v-if="data.computedMy">
     <h1>{{userType}} 마이 페이지</h1>
     <h3> 안녕하세요 {{data.my.userinfo.name}}님</h3>
-    <my-info :info="data.my.userinfo" />
+    <my-info :info="data.my.userinfo" :profilImg="data.my.userinfo.profil" />
     <point-list v-if="!isTeacher" :point="data.my.point_log"/>
     <grant-point v-else />
   </div>

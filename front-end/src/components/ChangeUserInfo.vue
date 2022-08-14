@@ -5,7 +5,7 @@
       label="아이디"
       v-model="user.username"
       disable />
-      <a href="/change/password">
+      <a href="/change/password" class="button">
         <q-btn color="primary" label="비밀번호 변경" />
       </a>
     <search-school type="change" :schoolname="user.schoolname" />
@@ -32,9 +32,9 @@
     <q-btn color="primary" flat label="취소" />
     <message-pop-up
       v-if="confirm.presentState"
-      message="수정되었습니다"
+      :message="confirm.message"
       :reload="true"
-      path=""
+      path="/educolab"
     />
   </main>
 </template>
@@ -77,17 +77,22 @@ export default {
     })
     const confirm = reactive({
       prompt: false,
+      message: '',
       presentState: computed(() => confirm.prompt)
     })
     const updateInfo = () => {
+      const data= store.getters.getUserInfo
       axios({
         url: drf.myPage.main(),
         method: 'put',
         headers: store.getters.authHeader,
-        data: store.getters.getUserInfo
+        data,
       })
       .then(() => {
-        
+        confirm.message = "수정되었습니다"
+      })
+      .catch(() => {
+        confirm.message = "오류가 발생했습니다"
       })
       .finally(() => {
         confirm.prompt = true

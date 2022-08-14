@@ -9,19 +9,30 @@
         <div class="text-h6 center">비밀번호 입력이 필요합니다</div>
         <q-input label="비밀번호" v-model="confirm.password"/>
       </q-card-section >
-      <!-- 칭호 -->
+      <!-- 칭호 테스트 중-->
       <q-card-section v-else-if="type">
+        <q-btn
+        flat
+        v-for="sample in samples"
+        :key="sample.id"
+        :text-color="sample.id === alias.computedId? 'blue':'black'"
+        @click="selectAlias(0,sample.id, sample.title)">
+          <!-- 칭호명 -->
+          {{sample.title}}
+        </q-btn>
+      </q-card-section>
+      <!-- 칭호  -->
+      <!-- <q-card-section v-else-if="type">
         <q-card v-for="item in items" :key="item.id" @click="selectAlias(0,item.id, item.title)">
           <q-card-section :class="{active: item.id === alias.id}">
-            <!-- 칭호명 -->
             <p>{{item.title}}</p>
           </q-card-section>
         </q-card>
-      </q-card-section>
+      </q-card-section> -->
       <!-- 배지 -->
       <q-card-section v-else>
         <q-card v-for="item in items" :key="item.id" @click="selectAlias(1,item.id, item.title)">
-          <q-card-section :class="{active: item.id === alias.id}">
+          <q-card-section :text-color="sample.id === alias.computedId? 'blue':'black'">
             <!-- 이미지 -->
             <img :src="badge" >
             <!-- 배지명 -->
@@ -44,6 +55,7 @@
 <script>
 import { reactive} from '@vue/reactivity'
 import badge from '@/assets/quiz.png'
+import { computed } from '@vue/runtime-core'
 export default {
   name: 'PasswordInput',
   props: {
@@ -65,11 +77,21 @@ export default {
     const alias = reactive({
       name: null,
       id: null,
+      computedId: computed(() => alias.id)
     })
-    const selectAlias = (id, name) => {
-      alias.id = id
-      alias.name = name
+    // 여기에 뱃지
+    const selectAlias = (option, id, name) => {
+      console.log('선택', option, id, name)
+      if (option === 0) {
+        alias.id = id
+        alias.name = name
+      }
     }
+    const samples = [
+      {id:2, title: '개미는 뚠뚠'},
+      {id:3, title: '내가 바로 과제 마스터'},
+      {id:4, title: '배고파'}
+    ]
     const move = () => {
       if (props.changeMode) {
         // 비밀번호 확인 (url, 데이터)
@@ -105,7 +127,8 @@ export default {
       alias,
       badge,
       selectAlias,
-      doNothing
+      doNothing,
+      samples
     }
   }
 }
