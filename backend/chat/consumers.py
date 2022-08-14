@@ -113,7 +113,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         quiz = QuizList.objects.get(id=data['quiz'])
         if quizroom_serializer.is_valid(raise_exception=True):
             quizroom_serializer.save(teacher=teacher, quiz=quiz)
-        return "등록 성공"
+        return "방 생성 성공"
     @database_sync_to_async
     def join_student(self, data):
         isRoom = QuizRoom.objects.filter(roomnum=data['roomnum']).exists()
