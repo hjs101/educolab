@@ -166,6 +166,7 @@ class UserInfo(AbstractUser):
 =======
     wear_title = models.ForeignKey(PTitle,null=True,on_delete=models.SET_NULL)
     own_title = models.ManyToManyField(PTitle,related_name='title_owner')
+    wear_icon = models.ForeignKey(Icon,null=True,on_delete=models.SET_NULL)
     own_icon = models.ManyToManyField(Icon, related_name='icon_owner')
 
 >>>>>>> 4910d64 (feat : 상점 기능 구현, 마이페이지 칭호 변경 구현)

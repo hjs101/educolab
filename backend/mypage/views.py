@@ -3,9 +3,13 @@ from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from accounts.models import UserInfo
 <<<<<<< HEAD
+<<<<<<< HEAD
 from pointshop.models import PTitle
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+from pointshop.models import PTitle, Icon
+>>>>>>> fe8161f (feat : 아이콘 등록)
 from accounts.serializers import UserinfoSerializer
 from .serializers import PointlogSerializer,TeacherSerializer, StudentSerializer,SearchStudentSerializer
 
@@ -102,6 +106,7 @@ class TitleChangeView(APIView):
             "success" : True
         })
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
@@ -109,3 +114,17 @@ class TitleChangeView(APIView):
 =======
 
 >>>>>>> 4b05e8c (Fix : 학생 입장 리턴값 수정)
+=======
+
+class IconChangeView(APIView):
+    def put(self,request):
+        user = request.user
+
+        user.wear_icon = Icon.objects.get(id=request.data.get('pk'))
+
+        user.save()
+
+        return Response({
+            "success" : True
+        })
+>>>>>>> fe8161f (feat : 아이콘 등록)

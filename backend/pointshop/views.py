@@ -48,3 +48,16 @@ class IconView(APIView):
             request.user.own_title.add(buy_icon)
             request.user.save()
             return Response({"success" : True, "message" : "구매가 완료되었습니다"})
+
+
+class IconRegisterView(APIView):
+
+    def post(self, request):
+        title = request.data.get('title')
+        price = request.data.get('price')
+        content = request.data.get('content')
+        file = request.FILES.get("file")
+        icon = Icon.objects.create(title=title,price=price,content=content,file=file)
+        icon.save()
+
+        return Response({"success" : True, "message" : "등록 완료"})
