@@ -15,6 +15,7 @@
       class="col-8 offset-2 col-md-1 offset-md-1"
       @click="isValidEmail"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <!-- 인증 번호를 보냈음을 알림 또는 빈 항목이 있음을 알림 (프론트) -->
     <message-pop-up
@@ -26,13 +27,16 @@
     />
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <!-- 인증 실패 팝업 (일치하는 회원정보가 없음) -->
+=======
+    <!-- 인증 번호 보냈음을 알림 & 인증 실패 팝업 (일치하는 회원정보가 없음) -->
+>>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
     <message-pop-up 
-      v-if="email.confirm && email.isFail"
-      title="인증 실패"
+      v-if="email.confirm"
       :message="email.message"
 <<<<<<< HEAD
       @reverse="email.prompt = false"
     />
+<<<<<<< HEAD
     <!-- 인증 번호를 보냈음을 알림 -->
     <message-pop-up
       v-if="email.confirm && !email.isFail"
@@ -43,6 +47,8 @@
       success=""
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     />
+=======
+>>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
     <!-- 인증 번호 입력 창 -->
     <div v-if="!email.isFail" class="row justify-between">
       <q-input
@@ -60,15 +66,20 @@
       </p>
       <!-- 인증 번호 일치 여부 팝업-->
       <message-pop-up
-        v-if="alert"
+        v-if="alert.computedState"
         title="인증 번호 확인"
         message="인증되었습니다"
+<<<<<<< HEAD
 <<<<<<< HEAD
         @reverse="alert = false"
 =======
         path=""
         :success="email.valid"
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+        path="/change/password"
+        @reverse="alert.state = false"
+>>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
       />
     </div>
   </div>
@@ -77,7 +88,7 @@
 
 <script>
 import {reactive, ref} from '@vue/reactivity'
-import {useRoute, useRouter} from 'vue-router'
+import {useRoute} from 'vue-router'
 import {computed, onBeforeMount} from 'vue'
 import {useStore} from 'vuex'
 import axios from 'axios'
@@ -99,7 +110,6 @@ export default {
   },
   setup (props) {
     const route = useRoute()
-    const router = useRouter()
     const store = useStore()
     const params = reactive({
       userData: route.params.userData || null,
@@ -115,7 +125,7 @@ export default {
       confirm: computed(() => email.prompt),
     })
     const isValidEmail = () => {
-      // if는 find, else는 signup, change info
+      // if는 find pw, else는 signup, change info
       let url = null
       // find
       if (params.info) {
@@ -159,7 +169,13 @@ export default {
         } 
       } else if (props.data.email) {
         url = drf.accounts.sendEmail()
+<<<<<<< HEAD
 >>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
+=======
+      } else {
+        email.message = '비어있는 항목을 채워주세요'
+        email.prompt =  true
+>>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
       }
       if (url) {
         axios({
@@ -168,20 +184,20 @@ export default {
           data: props.data
         })
           .then(res => {
-            if ( (params.info && res.data.success) || props.data.email ) {
+            if ( (params.info && res.data.success) || props.data.email) {
               start()
+              console.log(res.data)
               console.log(res.data['auth_num'])
               email.authNum = res.data['auth_num']
+              email.message = "인증번호가 전송되었습니다"
               email.valid = true
             } else {
               email.message = res.data.message
             }
+            email.prompt =  true
           })
           .catch(err => console.dir(err))
-      } else {
-        email.message = '비어있는 항목을 채워주세요'
       }
-      email.prompt =  true
     }
     const number = reactive({
       inputNum: null,
@@ -190,7 +206,10 @@ export default {
       isValidNumber: computed(() => email.authNum === number.inputNum),
       isAuthNum: computed(() => !!email.authNum),
     }) 
-    let alert = ref(false)
+    const alert = reactive({
+      state: false,
+      computedState: computed(() => alert.state)
+      })
     let limit = ref(180)
     const start = () => {
       limit.value = 180
@@ -210,14 +229,13 @@ export default {
     const sendData = () => {
       if (number.isValidNumber) {
         if (route.params.info === 'password') {
-          alert = true
-          email.valid = false
-          router.push('/change/password')
+          alert.state = true
           } else {
-            store.dispatch('changeData', props.data)
+          store.dispatch('changeData', props.data)
         }
+        store.dispatch('changeValid', true)
       }
-      alert = true
+      alert.state = true
     }
     onBeforeMount (() => {
       // if (!params.userType && params.info !== 'password') {

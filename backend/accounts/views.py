@@ -355,10 +355,14 @@ class SendPWEmailView(APIView):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         name = request.POST.get('name','')
         email = request.POST.get('email','')
         username = request.POST.get('username','')
 =======
+=======
+        print(request.data)
+>>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
         name = request.data.get('name')
         email = request.data.get('email')
         username = request.data.get('username')

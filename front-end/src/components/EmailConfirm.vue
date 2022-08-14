@@ -231,17 +231,21 @@ export default {
   setup (props) {
     const store = useStore()
     const emailOptions = store.getters.getEmail
+<<<<<<< HEAD
     let mail = props.fullEmail.split('@')
 >>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
+=======
+    let mail = computed(() => props.fullEmail?.split('@'))
+>>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
     const email = reactive({
       address: null,
       username: '',
       fullEmail: computed(() => {
-        if (email.address) {
-          if (email.address === '직접 입력') {
-            return email.username
-          } else {
+        if (email.address && email.username) {
+          if (email.address.startsWith('@')) {
             return email.username+email.address
+          } else {
+            return email.username
           }
         } else {
           return null
@@ -391,9 +395,9 @@ export default {
     })
     onMounted(() => {
       if (props.type === 'change') {
-        if (emailOptions.indexOf(`@${mail[1]}`) !== -1) {
-          email.address = `@${mail[1]}`
-          email.username = mail[0]
+        if (emailOptions.indexOf(`@${mail.value[1]}`) !== -1) {
+          email.address = `@${mail.value[1]}`
+          email.username = mail.value[0]
         } else {
           email.address = '직접 입력'
           email.username = props.fullEmail

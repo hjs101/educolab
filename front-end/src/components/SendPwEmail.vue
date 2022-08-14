@@ -52,12 +52,10 @@ import { reactive, ref } from '@vue/reactivity'
 =======
 >>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
 import ConfirmAuthNumber from '@/components/ConfirmAuthNumber.vue'
-// import ChangePassword from '@/components/ChangePassword.vue'
 export default {
   name: 'SendPwEmail',
   components: {
     ConfirmAuthNumber,
-    // ChangePassword
     },
 <<<<<<< HEAD
   setup(){

@@ -135,6 +135,7 @@ export const accounts = {
         userflag: true,
       },
       userType: null,
+      validEmail: false,
       access: localStorage.getItem("access") || "",
 <<<<<<< HEAD
       currentUser: {
@@ -161,7 +162,7 @@ export const accounts = {
 =======
       ],
       emailOptions: [
-        '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력'
+        '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력',
       ],
       userInfo: {
         username: null,
@@ -183,7 +184,7 @@ export const accounts = {
       findPw: {
         name: null,
         email: null,
-        username: null
+        username: null,
       }
     }
 >>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
@@ -232,6 +233,7 @@ export const accounts = {
 >>>>>>> 194924a (Feat: 생성 기능 구현 중)
 =======
     getEmail: state => state.emailOptions,
+    isValidEmail: state => state.validEmail,
     getUserInfo: state => state.userInfo,
     getInfo: state => state.findPw,
 >>>>>>> fa227ef (Feat & Fix : 과제 생성/수정 기능 완료, 나머지 기능 진행 중, 회원 관리 부분 컴포넌트화 및 버그 수정 중)
@@ -315,16 +317,19 @@ export const accounts = {
 <<<<<<< HEAD
 <<<<<<< HEAD
     SET_USER_TYPE: (state, userType) => (state.userType = userType),
-    CHANGE_INFO(state, data) {
+    CHANGE_INFO: (state, data) => {
       for (let key in data) {
         state.userInfo[key] = data[key]
       }
     },
-    CHANGE_PW_INFO(state, data) {
+    CHANGE_PW_INFO: (state, data) => {
       for (let key in data) {
         state.findPw[key] = data[key]
       }
     },
+    CHANGE_VALID: (state, data) => {
+      state.validEmail = data
+    }
   },
 =======
     SET_PERMISSION: (state, permission) => state.hasPermission = permission,
@@ -401,7 +406,6 @@ export const accounts = {
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     },
     login({ commit, dispatch }, credentials) {
-      // 로그인 함수 구현
       axios({
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -520,8 +524,15 @@ export const accounts = {
           commit("SET_AUTH_ERROR", err.response.data)
         });
     },
+<<<<<<< HEAD
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     signup({state, getters}) {
+=======
+    changeValid({commit}, data) {
+      commit("CHANGE_VALID", data)
+    },
+    signup({state, getters, dispatch}) {
+>>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
       let data = null
       if (getters.getUserType == "student") {
         data = state.studentInfo
@@ -542,6 +553,7 @@ export const accounts = {
         .catch(({response}) => {
           if (response.data?.email) {
             window.alert(response.data.email[0])
+            dispatch('changeValid', false)
           } else {
 <<<<<<< HEAD
 >>>>>>> fb19966 (Feat : 비밀번호 변경 기능 완료 & 팝업 컴포넌트화 (수정할 부분 있음))

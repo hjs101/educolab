@@ -34,7 +34,7 @@
       @click="findId"
     />
     <message-pop-up
-      v-if="confirm.prompt"
+      v-if="confirm.computedPrompt"
       :message="confirm.message"
       :button="confirm.idSuccess"
       @reverse="confirm.prompt = false"
@@ -66,7 +66,17 @@ export default {
     const userInfo = reactive({
       name : null,
       email: '',
-      fullEmail: computed(() => userInfo.email + address.value),
+      fullEmail: computed(() => {
+        if (userInfo.email && address.value) {
+          if (address.value.startsWith('@')) {
+            return userInfo.email + address.value
+          } else {
+            return userInfo.email
+          }
+        } else {
+          return null
+        }
+      }),
       computedName: computed(() => userInfo.name),
     })
     const confirm = reactive({

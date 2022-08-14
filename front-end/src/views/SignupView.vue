@@ -66,6 +66,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <q-btn color="primary" label="SIGN UP" @submit="submitData"/>
 =======
         <login-info @to-signup="changeData"/>
@@ -111,7 +112,19 @@
 =======
         <q-btn color="primary" label="SIGN UP" class="submitButton" @click="submitData"/>
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+        <q-btn
+          color="primary"
+          label="SIGN UP"
+          class="submitButton"
+          @click="submitData"/>
+>>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
       </div>
+      <message-pop-up
+        v-if="prompt.computedConfirm"
+        message="이메일 인증을 진행해주세요"
+        @reverse="prompt.confirm = false"
+      />
     </q-form>
   </div>
 </template>
@@ -146,7 +159,7 @@ import {useRoute, useRouter} from 'vue-router'
 import {useRoute, useRouter} from 'vue-router'
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 import {useStore} from 'vuex'
-import {onBeforeMount} from 'vue'
+import {computed, onBeforeMount, reactive} from 'vue'
 import LoginInfo from '@/components/LoginInfo.vue'
 import SearchSchool from '@/components/SearchSchool.vue'
 import EmailConfirm from '@/components/EmailConfirm.vue'
@@ -154,7 +167,9 @@ import TeacherOrStudent from '@/components/TeacherOrStudent.vue'
 import UserBirthday from '@/components/UserBirthday.vue'
 import UserPhoneNumber from '@/components/UserPhoneNumber.vue'
 import UserName from '@/components/UserName.vue'
+import MessagePopUp from '@/components/MessagePopUp.vue'
 
+<<<<<<< HEAD
 // import { onMounted } from '@vue/runtime-core'
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -179,6 +194,8 @@ import UserPhoneNumber from '@/components/UserPhoneNumber.vue'
 >>>>>>> e6b54fb (asdu)
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
 export default {
   name: "SignupView",
   components: {
@@ -199,14 +216,25 @@ export default {
     UserBirthday,
     UserPhoneNumber,
     UserName,
+    MessagePopUp,
   },
   setup () {
     const store = useStore()
     const route = useRoute()
     const router = useRouter()
     const userType = route.params.userType
+    const prompt = reactive({
+      confirm: false,
+      computedConfirm: computed(() => prompt.confirm)
+    })
     const submitData = () => {
-      store.dispatch('signup')
+      // 모든 항목이 다 채워져 있을 경우에만 회원 가입
+      if (store.getters.isValidEmail) {
+        store.dispatch('signup')
+      } else {
+        // 이메일 인증을 진행해주세요 팝업
+        prompt.confirm = true
+      }
     }
     onBeforeMount(() => {
       if (userType !== 'student' && userType !== 'teacher') {
@@ -218,6 +246,7 @@ export default {
     return {
       userType,
       router,
+      prompt,
       submitData
     }
   },

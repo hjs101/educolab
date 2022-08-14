@@ -69,7 +69,9 @@
           <router-link class="q-px-xl button color5" to="/quiz">퀴즈</router-link>
           <router-link class="q-px-xl button color5" to="/survey">설문조사</router-link>
           <router-link class="q-px-xl button color5" to="/teacher">마이페이지</router-link>
-          <button class="q-px-lg" @click="logoutBtn">로그아웃</button>
+          <a href="/">
+            <button class="q-px-lg" @click="logoutBtn">로그아웃</button>
+          </a>
         </div>
 >>>>>>> 9bb5647 (메인 페이지 css)
 =======
@@ -128,6 +130,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 =======
@@ -165,6 +168,11 @@
     
 >>>>>>> c942112 (로그인 프론트와 백 연결)
 =======
+=======
+          <a href="/">
+            <button @click="logoutBtn">로그아웃</button>
+          </a>
+>>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
         </q-bar>
         <hr>
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <q-dialog persistant v-model="prompt">
+  <q-dialog persistant v-model="confirm.prompt">
     <q-card style="min-width: 350px">
       <q-card-section>
         <div class="text-h6">{{title}}</div>
@@ -7,7 +7,7 @@
 
       <q-card-section v-if="changeMode">
         <div class="text-h6 center">비밀번호 입력이 필요합니다</div>
-        <q-input label="비밀번호"/>
+        <q-input label="비밀번호" v-model="confirm.password"/>
       </q-card-section >
       <!-- 칭호 -->
       <q-card-section v-else-if="type">
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { reactive, ref } from '@vue/reactivity'
+import { reactive} from '@vue/reactivity'
 import badge from '@/assets/quiz.png'
 export default {
   name: 'PasswordInput',
@@ -54,9 +54,12 @@ export default {
     type: Boolean,
   },
   setup(props, {emit}) {
-    let prompt = ref(true)
+    const confirm = reactive({
+      password: null,
+      prompt: true
+    })
     const doNothing = () => {
-      prompt = false
+      confirm.prompt = false
       emit('reverse', false)
     }
     const alias = reactive({
@@ -69,15 +72,36 @@ export default {
     }
     const move = () => {
       if (props.changeMode) {
+        // 비밀번호 확인 (url, 데이터)
+        // axios({
+        // url: drf.accounts.changePw(),
+        // method: 'post',
+        // data: {
+        //   password: confirm.password
+        //   }
+        // })
+        // .then(({data}) => {
+        //   // 성공했음을 알리는 팝업
+        //   console.log(data)
+        //   password.message = data.message
+        //   emit('reverse', false)
+        // })
+        // .catch(({response}) => {
+        //   // 실패했음을 알림
+        //   // password.message = response.data.message
+        // })
+        // .finally(() => {
+        //   // password.prompt = true
+        // })
         emit('reverse', false)
       } else {
         emit('reverse', true, alias.id, alias.name)
       }
-      prompt = false
+      confirm.prompt = false
     }
     return {
       move,
-      prompt,
+      confirm,
       alias,
       badge,
       selectAlias,

@@ -5,7 +5,9 @@
       label="아이디"
       v-model="user.username"
       disable />
-    <q-btn color="primary" label="비밀번호 변경" />
+      <a href="/change/password">
+        <q-btn color="primary" label="비밀번호 변경" />
+      </a>
     <search-school type="change" :schoolname="user.schoolname" />
     <teacher-or-student
       type="change"
@@ -26,9 +28,11 @@
       :fullEmail="user.email"
     />
     <q-btn color="primary" label="수정" @click="updateInfo"/>
+    <!-- 취소 시 어떤 페이지로 이동할 것인가 -->
     <q-btn color="primary" flat label="취소" />
     <message-pop-up
-      message=""
+      v-if="confirm.presentState"
+      message="수정되었습니다"
       :reload="true"
       path=""
     />
@@ -37,7 +41,7 @@
 
 <script>
 import { useStore } from 'vuex'
-import {reactive} from 'vue'
+import {computed, reactive} from 'vue'
 import drf from '@/api/drf.js'
 import axios from 'axios'
 import EmailConfirm from '@/components/EmailConfirm.vue'
@@ -58,18 +62,22 @@ export default {
   },
   setup() {
     const store = useStore()
-    const userInfo = store.getters.getUserInfo
+    const userInfo = computed(() => store.getters.getUserInfo)
     const user = reactive({
-      name: userInfo.name,
-      username: userInfo.username,
+      name: userInfo.value.name,
+      username: userInfo.value.username,
       schoolname: store.getters.currentUser.schoolname,
-      email: userInfo.email,
-      grade: userInfo.grade,
-      classField: userInfo.class_field,
-      phone: userInfo.phone_number,
-      birthday: userInfo.birthday,
-      subject: userInfo.subject,
-      homeroomFlag: userInfo.homeroom_teacher_flag
+      email: userInfo.value.email,
+      grade: userInfo.value.grade,
+      classField: userInfo.value.class_field,
+      phone: userInfo.value.phone_number,
+      birthday: userInfo.value.birthday,
+      subject: userInfo.value.subject,
+      homeroomFlag: userInfo.value.homeroom_teacher_flag
+    })
+    const confirm = reactive({
+      prompt: false,
+      presentState: computed(() => confirm.prompt)
     })
     const updateInfo = () => {
       axios({
@@ -81,10 +89,14 @@ export default {
       .then(() => {
         
       })
+      .finally(() => {
+        confirm.prompt = true
+      })
     }
     return {
       userInfo,
       user,
+      confirm,
       updateInfo
     }
   }
