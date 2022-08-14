@@ -33,6 +33,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         message = text_data_json['message']
         send_message = text_data_json['message']
         nickname = ""
+        proc_pk = ""
         if message == "방 생성":
             print("방 생성")
             id = text_data_json['id']
@@ -45,6 +46,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 }
             send_message = await self.create_room(data)
         elif message == "퀴즈 시작":
+            proc_pk = text_data_json['probPk']
             print("퀴즈 시작")
         elif message == "학생 정답":
             print("학생 정답")
