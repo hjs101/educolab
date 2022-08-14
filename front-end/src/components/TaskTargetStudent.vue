@@ -3,7 +3,7 @@
     <q-expansion-item
       expand-separator
       :label="item.student.name"
-      :caption="submitState+date"
+      :caption="`${submitState+date}/${check.state}`"
     >
       <q-card>
         <q-card-section>
@@ -40,6 +40,7 @@ export default {
     item: Object,
     deadline: String,
     checkFlag: Boolean,
+    totalCheckFlag: Boolean,
   },
   components: {
     MessagePopUp
@@ -48,6 +49,16 @@ export default {
     const store = useStore()
     const date = props.item.submit_flag?` (${dayjs(props.item['submit_at']).format('YYYY-MM-DD HH:mm')})`:''
     const url = drf.file.path()+props.item['atch_file']
+    let check = reactive({
+      flag : props.checkFlag || props.totalCheckFlag,
+      state: computed(() => {
+        if (props.checkFlag || props.totalCheckFlag || check.flag) {
+          return '채점완료'
+        } else {
+          return '미채점'
+        }
+      })
+    })
     let point = ref(null)
     let submitState = computed(() => props.item.submit_flag?'제출':'미제출')
     let message = ref(null)
@@ -71,6 +82,7 @@ export default {
         .then(((res) => {
           message.value = res.data.message
           isChecked.value = true
+          check.flag = true
         }))
         .catch(() => {
           message.value = '오류가 발생했습니다'
@@ -87,7 +99,8 @@ export default {
       message,
       confirm,
       checkTask,
-      isChecked
+      isChecked,
+      check
     }
   }
 }

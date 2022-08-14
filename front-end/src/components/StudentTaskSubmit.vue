@@ -35,7 +35,7 @@ export default {
     const onSubmit = (event) => {
       event.preventDefault()
       let form = new FormData()
-      form.append('submit_pk', change.value?.id)
+      form.append('submit_pk', change.value[0].id)
       form.append('teacher_flag', 1)
       form.append('content', student.content)
       if (student['files'] !== null) {

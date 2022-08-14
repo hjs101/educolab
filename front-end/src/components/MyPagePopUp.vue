@@ -53,9 +53,11 @@
 </template>
 
 <script>
-import { reactive} from '@vue/reactivity'
+import {useRouter} from 'vue-router'
 // import badge from '@/assets/quiz.png'
-import { computed } from '@vue/runtime-core'
+import axios from 'axios'
+import drf from '@/api/drf.js'
+import { computed, reactive } from 'vue'
 export default {
   name: 'PasswordInput',
   props: {
@@ -66,13 +68,19 @@ export default {
     type: Boolean,
   },
   setup(props, {emit}) {
+    const router = useRouter()
     const confirm = reactive({
       password: null,
       prompt: true
     })
     const doNothing = () => {
-      confirm.prompt = false
-      emit('reverse', false)
+      if (props.changeMode) {
+        router.push('/educolab')
+        emit('reverse', true)
+      } else {
+        confirm.prompt = false
+        emit('reverse', false)
+      }
     }
     const alias = reactive({
       name: null,
@@ -93,33 +101,33 @@ export default {
       {id:4, title: '배고파'}
     ]
     const move = () => {
+      console.log(props.changeMode)
       if (props.changeMode) {
-        // 비밀번호 확인 (url, 데이터)
-        // axios({
-        // url: drf.accounts.changePw(),
-        // method: 'post',
-        // data: {
-        //   password: confirm.password
-        //   }
-        // })
-        // .then(({data}) => {
-        //   // 성공했음을 알리는 팝업
-        //   console.log(data)
-        //   password.message = data.message
-        //   emit('reverse', false)
-        // })
-        // .catch(({response}) => {
-        //   // 실패했음을 알림
-        //   // password.message = response.data.message
-        // })
-        // .finally(() => {
-        //   // password.prompt = true
-        // })
-        emit('reverse', false)
+        axios({
+        url: drf.accounts.checkPw(),
+        method: 'post',
+        data: {
+          password: confirm.password
+          }
+        })
+        .then(({data}) => {
+          // 성공했음을 알리는 팝업
+          console.log(data.success)
+          // password.message = data.message
+          emit('reverse', false)
+        })
+        .catch(({response}) => {
+          console.log(response)
+          // 실패했음을 알림
+          // password.message = response.data.message
+        })
+        .finally(() => {
+          confirm.prompt = true
+        })
       } else {
         emit('reverse', true, alias.id, alias.name)
+        confirm.prompt = false
       }
-      confirm.prompt = false
     }
     return {
       move,

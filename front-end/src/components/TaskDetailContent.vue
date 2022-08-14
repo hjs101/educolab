@@ -31,7 +31,11 @@
         <div v-if="isLecture">
           <q-btn color="primary" label="채점 완료" @click="checkComplete" v-if="possibleCheck" />
           <q-list bordered class="rounded-borders" v-for="item in task.student_submit" :key="item.id">
-            <task-target-student :item="item" :deadline="task.homework?.deadline" :checkFlag="task.homework?.check_flag" />
+            <task-target-student
+              :item="item"
+              :deadline="task.homework?.deadline"
+              :totalCheckFlag="task.homework?.check_flag"
+              :checkFlag="item.check_flag"/>
           </q-list>
         </div>
         <!-- 학생이 작성한 과제 상세 페이지에서 -->

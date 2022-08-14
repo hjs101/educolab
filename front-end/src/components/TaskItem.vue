@@ -6,7 +6,7 @@
       <div class="text-subtitle2" v-if="!over" >~ {{item.deadline}}</div>
     </q-card-section>
     <q-card-section v-if="isTeacher">
-      {{item.grade}}학년 {{item.class_field}}반
+      {{item.grade || item.student?.grade}}학년 {{item.class_field || item.student?.class_field}}반
       <span v-if="!teacher">
         {{item.student.name}}
       </span>
