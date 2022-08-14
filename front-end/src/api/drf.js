@@ -11,6 +11,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const PROFIL = 'http://127.0.0.1:8000'
@@ -59,6 +60,10 @@ const MY_PAGE = BASE_URL + '/mypage/'
 =======
 const FILE = 'http://127.0.0.1:8000'
 // const FILE = 'https://i7c102.p.ssafy.io'
+=======
+// const FILE = 'http://127.0.0.1:8000'
+const FILE = 'https://i7c102.p.ssafy.io'
+>>>>>>> 519727a (Fix: front_user 브랜치와 병합)
 const BASE_URL = FILE + '/api/'
 const ACCOUNTS = BASE_URL + 'accounts/'
 const NOTICE = BASE_URL + 'notice/'
@@ -66,10 +71,13 @@ const SURVEY = BASE_URL + 'survey/'
 const QUIZ = BASE_URL + 'quiz/'
 const MY_PAGE = BASE_URL + 'mypage/'
 const HOMEWORK = BASE_URL + 'homework/'
+<<<<<<< HEAD
 >>>>>>> 11b73f2 (Feat : 마이페이지 프로필 수정, 삭제 기능 구현 완료)
 =======
 const MainPage = BASE_URL + '/mainpage/'
 >>>>>>> e824b6b (메인페이지 화면 구성)
+=======
+>>>>>>> 519727a (Fix: front_user 브랜치와 병합)
 
 export default {
   accounts: {
@@ -163,6 +171,25 @@ export default {
     noticeUpdate: () => NOTICE + 'update/'
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+  survey: {
+    surveyList: () => SURVEY + 'main/',    
+    surveyCreate: () => SURVEY + 'create/',
+    surveyDetail: () => SURVEY + 'detail/',
+    surveyUpdate: () => SURVEY + 'update/',
+    surveyStat : () => SURVEY + 'stat/',
+    surveyQuestion : () => SURVEY + 'stat/detail/'
+  },
+
+  quiz: {
+    quizList: () => QUIZ + 'main/',
+    quizCreate: () => QUIZ + 'create/',
+    quizDetail: () => QUIZ + 'detail/',
+  },
+
+>>>>>>> 519727a (Fix: front_user 브랜치와 병합)
   task: {
     list: () => HOMEWORK + 'main/',
     create: () => HOMEWORK + 'create/',
@@ -172,6 +199,7 @@ export default {
     submit: () => HOMEWORK + 'submit/',
   },
   file: {
+<<<<<<< HEAD
     path: () => BASE_URL,
 =======
 
@@ -294,6 +322,8 @@ export default {
     submit: () => HOMEWORK + 'submit/',
   },
   file: {
+=======
+>>>>>>> 519727a (Fix: front_user 브랜치와 병합)
     path: () => FILE,
     change: () => '/api/media/accounts/profils/',
     default: () => '/api/media/accounts/profils/profile1.jpg'
@@ -307,6 +337,7 @@ export default {
   },
 <<<<<<< HEAD
 }
+<<<<<<< HEAD
 >>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
 =======
 }
@@ -318,3 +349,6 @@ export default {
   }
 }
 >>>>>>> e824b6b (메인페이지 화면 구성)
+=======
+}
+>>>>>>> 519727a (Fix: front_user 브랜치와 병합)
