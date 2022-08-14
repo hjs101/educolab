@@ -34,7 +34,7 @@
         <q-card v-for="item in items" :key="item.id" @click="selectAlias(1,item.id, item.title)">
           <q-card-section :text-color="sample.id === alias.computedId? 'blue':'black'">
             <!-- 이미지 -->
-            <img :src="badge" >
+            <!-- <img :src="badge" > -->
             <!-- 배지명 -->
             <p>{{item.title}}</p>
           </q-card-section>
@@ -54,7 +54,7 @@
 
 <script>
 import { reactive} from '@vue/reactivity'
-import badge from '@/assets/quiz.png'
+// import badge from '@/assets/quiz.png'
 import { computed } from '@vue/runtime-core'
 export default {
   name: 'PasswordInput',
@@ -125,7 +125,7 @@ export default {
       move,
       confirm,
       alias,
-      badge,
+      // badge,
       selectAlias,
       doNothing,
       samples

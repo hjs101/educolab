@@ -92,6 +92,7 @@ export default createStore({
     accounts,
     notice,
     task,
+<<<<<<< HEAD
 >>>>>>> 194924a (Feat: 생성 기능 구현 중)
 =======
     accounts, notice, survey
@@ -105,5 +106,10 @@ export default createStore({
 =======
     accounts, notice, survey, quiz, mainpage
 >>>>>>> e824b6b (메인페이지 화면 구성)
+=======
+    survey,
+    quiz,
+    mainpage
+>>>>>>> 13e9331 (프로젝트  최신 버전)
   }
 })

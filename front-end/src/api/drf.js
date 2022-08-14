@@ -12,6 +12,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const PROFIL = 'http://127.0.0.1:8000'
@@ -58,6 +59,8 @@ const QUIZ = BASE_URL + '/quiz/'
 const MY_PAGE = BASE_URL + '/mypage/'
 >>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
 =======
+=======
+>>>>>>> 13e9331 (프로젝트  최신 버전)
 const FILE = 'http://127.0.0.1:8000'
 // const FILE = 'https://i7c102.p.ssafy.io'
 =======
@@ -72,12 +75,16 @@ const QUIZ = BASE_URL + 'quiz/'
 const MY_PAGE = BASE_URL + 'mypage/'
 const HOMEWORK = BASE_URL + 'homework/'
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 11b73f2 (Feat : 마이페이지 프로필 수정, 삭제 기능 구현 완료)
 =======
 const MainPage = BASE_URL + '/mainpage/'
 >>>>>>> e824b6b (메인페이지 화면 구성)
 =======
 >>>>>>> 519727a (Fix: front_user 브랜치와 병합)
+=======
+const MainPage = BASE_URL + 'mainpage/'
+>>>>>>> 13e9331 (프로젝트  최신 버전)
 
 export default {
   accounts: {
@@ -137,6 +144,7 @@ export default {
 =======
     changePw: () => ACCOUNTS + 'change_pw/',
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
 =======
     // changeInfo: () => ACCOUNTS + 
@@ -163,6 +171,9 @@ export default {
 >>>>>>> 7dba180 (Test : 배포테스트)
   },
 
+=======
+  },
+>>>>>>> 13e9331 (프로젝트  최신 버전)
   notice: {
 <<<<<<< HEAD
     noticeList: () => NOTICE + 'main/',
@@ -189,7 +200,13 @@ export default {
     quizDetail: () => QUIZ + 'detail/',
   },
 
+<<<<<<< HEAD
 >>>>>>> 519727a (Fix: front_user 브랜치와 병합)
+=======
+  mainpage: {
+    mainItem: () => MainPage
+  },
+>>>>>>> 13e9331 (프로젝트  최신 버전)
   task: {
     list: () => HOMEWORK + 'main/',
     create: () => HOMEWORK + 'create/',
@@ -199,6 +216,7 @@ export default {
     submit: () => HOMEWORK + 'submit/',
   },
   file: {
+<<<<<<< HEAD
 <<<<<<< HEAD
     path: () => BASE_URL,
 =======
@@ -324,6 +342,8 @@ export default {
   file: {
 =======
 >>>>>>> 519727a (Fix: front_user 브랜치와 병합)
+=======
+>>>>>>> 13e9331 (프로젝트  최신 버전)
     path: () => FILE,
     change: () => '/api/media/accounts/profils/',
     default: () => '/api/media/accounts/profils/profile1.jpg'
@@ -335,6 +355,7 @@ export default {
     changeProfil: () => MY_PAGE + 'profil/',
     changeTitle: () => MY_PAGE + 'title/',
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 <<<<<<< HEAD
@@ -352,3 +373,6 @@ export default {
 =======
 }
 >>>>>>> 519727a (Fix: front_user 브랜치와 병합)
+=======
+}
+>>>>>>> 13e9331 (프로젝트  최신 버전)
