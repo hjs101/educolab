@@ -339,6 +339,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 
 # 우선 모두 연결해 놓았습니다.
 <<<<<<< HEAD
+<<<<<<< HEAD
 CORS_ALLOW_ALL_ORIGINS = True
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -400,6 +401,9 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080"
 ]
+=======
+CORS_ALLOW_ORIGINS_ALL = True
+>>>>>>> be0df67 (fix : 우선 다시 연결)
 
 CORS_ALLOW_CREDENTIALS = True
 >>>>>>> 4f92e2a (fix : 다양한 기능 수정)
