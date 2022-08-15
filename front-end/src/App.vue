@@ -494,6 +494,7 @@ export default {
     gap: 10px;
     margin: 100px 0px;
     }
+<<<<<<< HEAD
   .center {
     text-align: center;
   }
@@ -703,6 +704,8 @@ export default {
 </style>
 >>>>>>> e6b54fb (asdu)
 =======
+=======
+>>>>>>> 98f515c (Feat : 포인트 상점 목록 불러오기 구현 완료)
   .bord-bt {
     border-bottom: 1px solid #99DFF9;
   }

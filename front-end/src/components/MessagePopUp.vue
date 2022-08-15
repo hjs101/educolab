@@ -34,7 +34,7 @@
       <q-card-actions align="center">
         <q-btn color="primary" v-if="!button" label="확인" @click="move" v-close-popup/>
         <button-group v-else :currentUrl="currentUrl"/>
-        <q-btn color="primary" v-if="cancel" label="취소" @click="doNothing" v-close-popup/>
+        <q-btn color="primary" flat v-if="cancel" label="취소" @click="doNothing" v-close-popup/>
       </q-card-actions>
     </q-card>
   </q-dialog>

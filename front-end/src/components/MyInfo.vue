@@ -1,5 +1,5 @@
 <template>
-  <q-card class="q-pa-md" oncontextmenu="return false" onselectstart="return false">
+  <q-card class="q-pa-md">
     <h5 class="text-center">내 정보</h5>
     <q-card-section horizontal>
       <!-- 프로필 -->

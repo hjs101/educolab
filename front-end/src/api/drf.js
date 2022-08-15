@@ -16,6 +16,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const PROFIL = 'http://127.0.0.1:8000'
@@ -82,6 +83,10 @@ const FILE = 'https://i7c102.p.ssafy.io'
 const FILE = 'http://127.0.0.1:8000'
 // const FILE = 'https://i7c102.p.ssafy.io'
 >>>>>>> c7b9d1a (Fix: master branch와 병합 전 commit)
+=======
+// const FILE = 'http://127.0.0.1:8000'
+const FILE = 'https://i7c102.p.ssafy.io'
+>>>>>>> 98f515c (Feat : 포인트 상점 목록 불러오기 구현 완료)
 const BASE_URL = FILE + '/api/'
 const ACCOUNTS = BASE_URL + 'accounts/'
 const NOTICE = BASE_URL + 'notice/'
@@ -99,7 +104,11 @@ const MainPage = BASE_URL + '/mainpage/'
 >>>>>>> 519727a (Fix: front_user 브랜치와 병합)
 =======
 const MainPage = BASE_URL + 'mainpage/'
+<<<<<<< HEAD
 >>>>>>> 13e9331 (프로젝트  최신 버전)
+=======
+const POINT_SHOP = BASE_URL + 'pointshop/'
+>>>>>>> 98f515c (Feat : 포인트 상점 목록 불러오기 구현 완료)
 
 export default {
   accounts: {
@@ -377,6 +386,7 @@ export default {
   },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 <<<<<<< HEAD
 >>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
@@ -396,3 +406,12 @@ export default {
 =======
 }
 >>>>>>> 13e9331 (프로젝트  최신 버전)
+=======
+  pointShop: {
+    main: () => POINT_SHOP + '',
+    buyTitle: () => POINT_SHOP + 'title/',
+    buyIcon: () => POINT_SHOP + 'icon/',
+    // registerIcon: () => POINT_SHOP + 'icon/register/',
+  },
+}
+>>>>>>> 98f515c (Feat : 포인트 상점 목록 불러오기 구현 완료)
