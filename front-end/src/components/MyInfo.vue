@@ -129,6 +129,7 @@ export default {
           url,
           method: "put",
           headers: store.getters.authHeader,
+<<<<<<< HEAD
           data: { pk },
         }).then(() => {
           if (props.type) {
@@ -137,6 +138,17 @@ export default {
             icon.value = name;
           }
         });
+=======
+          data: {pk,}
+        })
+          .then(() => {
+            if (props.type) {
+              title.value = name
+            } else {
+              icon.value = name
+            }
+          })
+>>>>>>> 4d6ec88 (Feat: 칭호 배지  적용 부분 진행 중 2)
       }
       apply.prompt = false;
     };

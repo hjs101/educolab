@@ -211,8 +211,12 @@ const POINT_SHOP = BASE_URL + "pointshop/";
 
 export default {
   accounts: {
+<<<<<<< HEAD
     login: () => ACCOUNTS + "login_web/",
 >>>>>>> 20f8665 (Fix : 빌드 에러 해결)
+=======
+    login: () => ACCOUNTS + "login/",
+>>>>>>> 7485bf3 (fix : refresh 원상복구)
     logout: () => ACCOUNTS + "logout/",
     signup: () => ACCOUNTS + "registration/",
     schoolInfo: () => ACCOUNTS + "schoolinfo/",

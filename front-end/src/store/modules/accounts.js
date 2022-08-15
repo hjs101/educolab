@@ -515,8 +515,7 @@ export const accounts = {
         .then((res) => {
           const access = res.data.access
           dispatch("saveToken", access)
-          console.log(res.data.userinfo)
-          commit("SET_CURRENT_USER", res.data.userinfo)
+          commit("SET_CURRENT_USER", res.data)
           router.push({ name: "educolab" })
         })
         .catch((err) => {
