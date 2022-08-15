@@ -506,8 +506,8 @@ class LoginView(APIView):
 
     def post(self, request):
         response = Response()
-        username = request.data.get('username')
-        password = request.data.get('password')
+        username = request.data.get('username',None)
+        password = request.data.get('password',None)
         user = authenticate(username=username,password=password)
         if user is not None:
             if user.is_active:
@@ -521,6 +521,7 @@ class LoginView(APIView):
                     samesite = settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
                 )
                 csrf.get_token(request)
+                print(data)
                 response.data = {"success" : True, "message" : "Login 성공","access" : data['access']}
                 return response
         else:

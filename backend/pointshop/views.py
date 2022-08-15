@@ -27,6 +27,7 @@ class PtitleView(APIView):
         if request.user in buy_user: 
             return Response({"success" : False, "message" : "이미 구매한 칭호입니다"})
         else:
+            print(request.u)
             if request.user.plus_point < buy_title.price:
                 return Response({"success" : False, "message" : "포인트가 모자랍니다"})
             request.user.plus_point -= buy_title.price
@@ -37,6 +38,7 @@ class PtitleView(APIView):
 class IconView(APIView):
 
     def post(self, request):
+        print(request.user)
         buy_icon = Icon.objects.get(id=request.data.get('pk'))
         buy_user = buy_icon.icon_owner.all()
         if request.user in buy_user:
@@ -45,7 +47,7 @@ class IconView(APIView):
             if request.user.plus_point < buy_icon.price:
                 return Response({"success" : False, "message" : "포인트가 모자랍니다"})
             request.user.plus_point -= buy_icon.price
-            request.user.own_title.add(buy_icon)
+            request.user.own_icon.add(buy_icon)
             request.user.save()
 
             return Response({"success" : True, "message" : "구매가 완료되었습니다"})

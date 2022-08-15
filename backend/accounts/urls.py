@@ -107,8 +107,12 @@ urlpatterns = [
 >>>>>>> 4f92e2a (fix : 다양한 기능 수정)
 =======
     path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+<<<<<<< HEAD
     path('login_1/', views.LoginView.as_view()),
 >>>>>>> e0aec52 (fix : login 수정)
+=======
+    path('login_web/', views.LoginView.as_view()),
+>>>>>>> 3d9bf43 (fix : cors 적용)
 	path('login/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('login/refresh/', MyTokenRefershView.as_view(), name='token_refresh'),
     path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
