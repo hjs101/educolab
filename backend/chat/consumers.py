@@ -119,7 +119,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
     def join_student(self, data):
         isRoom = QuizRoom.objects.filter(roomnum=data['roomnum']).exists()
         if not isRoom:
-            return "방이 없네요"
+            return {"message":"방이 없네요", "nickname":nick}
         quiz_room = QuizRoom.objects.get(roomnum=data['roomnum'])
         student = UserInfo.objects.get(username=data['student'])
         quiz_userserializer = QuizUserSerializer(data=data)
