@@ -514,6 +514,7 @@ export const accounts = {
 >>>>>>> 73fb905 (fix : 프론트쪽 login 주소 변경)
         .then((res) => {
           console.log(res.data)
+          console.log(111)
           const access = res.data.access
           dispatch("saveToken", access)
           commit("SET_CURRENT_USER", res.data)
