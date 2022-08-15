@@ -33,14 +33,24 @@ class Change_Title_Screen(Screen):
         self.rank=1
 
         ##**# 보기를 여기서 수정해주세요
-        self.query1 = 'select title from pointshop_ptitle inner join accounts_userinfo_own_title on pointshop_ptitle.id=accounts_userinfo_own_title.ptitle_id where accounts_userinfo_own_title.userinfo_id=%s'
+        self.query1 = '''
+            select title from pointshop_ptitle 
+            inner join accounts_userinfo_own_title 
+            on pointshop_ptitle.id=accounts_userinfo_own_title.ptitle_id 
+            where accounts_userinfo_own_title.userinfo_id=%s
+        '''
         self.args1 = (self.manager.userID, )
         self.cur1 = self.manager.DB.execute(query=self.query1, args=self.args1)
         for (title, ) in self.cur1: 
             self.multi.append(title)
 
         ##**# 현재 칭호를 여기로 세팅해주세요
-        self.query2 = 'select title from pointshop_ptitle inner join accounts_userinfo on pointshop_ptitle.id=accounts_userinfo.wear_title_id where accounts_userinfo.username=%s'
+        self.query2 = '''
+            select title from pointshop_ptitle 
+            inner join accounts_userinfo 
+            on pointshop_ptitle.id=accounts_userinfo.wear_title_id 
+            where accounts_userinfo.username=%s
+        '''
         self.args2 = (self.manager.userID, )
         self.cur2 = self.manager.DB.execute(query=self.query2, args=self.args2)
         for (title, ) in self.cur2: self.now_title=title
@@ -65,9 +75,15 @@ class Change_Title_Screen(Screen):
         print(self.result, ans_num)
 
     def save_title(self):
-        query = 'update accounts_userinfo set wear_icon_id=%s where username=%s'
-        args = (self.now_title, self.manager.userID)
+        query = '''
+            update accounts_userinfo 
+            inner join pointshop_ptitle on pointshop_ptitle.title=%s 
+            set accounts_userinfo.wear_title_id=pointshop_ptitle.id 
+            where accounts_userinfo.username=%s
+        '''
+        args = (self.result[0], self.manager.userID)
         cur = self.manager.DB.execute(query=query, args=args)
+        self.manager.DB.db_commit()
         ##**# 여기서 타이틀 저장 기능 작성해주세면 됩니다.
         ##**# 타이틀은 self.result=["test3"] 이런식으로 저장되어 있습니다.
 
@@ -81,7 +97,6 @@ class Change_Title_Screen(Screen):
         for i in range(len(self.multi)):
             self.ids.grid.remove_widget(self.temp_check_list[i])
             self.ids.grid.remove_widget(self.temp_button_list[i])       
-        self.result=[]
         self.manager.before_page=self.name
 
     def toggle_btn(self, ans_num):

@@ -1,4 +1,3 @@
-from re import L
 from mysql import connector
 
 class db_proc:
