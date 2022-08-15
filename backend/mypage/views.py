@@ -25,6 +25,7 @@ class MypageMainView(APIView):
             'point_log' : point_serializer.data
             })
         userinfo_serializer = TeacherSerializer(req.user)
+        print(userinfo_serializer.data)
         return Response({'userinfo':userinfo_serializer.data})
 
     ## 회원정보수정(담임등록 포함)
