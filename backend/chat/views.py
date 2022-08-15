@@ -29,12 +29,6 @@ class AnswerSubmitView(APIView):
         room_num = req.data['room_num']
         question = QuizQuestions.objects.get(id=quiz_num)
         answerflag = False
-        print(answer)
-        print(quiz_num)
-        print(room_num)
-        print(question.answer)
-        print(type(answer))
-        print(type(question.answer))
         if question.answer == answer:
             print("kkk")
             answerflag = True
@@ -53,9 +47,6 @@ class ScoreAddView(APIView):
         quiz_answer_user = QuizAnswer.objects.filter(room=room_num,question=qestion_num).order_by('id')
         count = 0
         ans_cnt = 0
-        print(qestion_num)
-        print(room_num)
-        print(quiz_answer_user)
         for user in quiz_answer_user:
             ans_cnt +=1
             user.quizuser.score += (100 - count*10)
@@ -99,10 +90,15 @@ class StudentResultView(APIView):
         room = QuizRoom.objects.get(roomnum=room_num)
         students = room.getuser_byroom.order_by('-score')
         rank = 1
+        print(students)
         for student in students:
+            print("lll")
             if student == req.user:
+                print("kkk")
                 break;
             rank+=1
+        print(rank)
+        
         return Response({
             "question_cnt" : cnt,
             "rank" : rank,

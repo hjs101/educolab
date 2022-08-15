@@ -101,7 +101,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def room_delete(self, data):
-        quiz_room = QuizRoom.objects.get(roomnum=data['roomnum'], teacher=data['id'])
+        quiz_room = QuizRoom.objects.get(roomnum=data['roomnum'], teacher=data['teacher'])
         quiz_room.delete()
         return "삭제 성공"
     
