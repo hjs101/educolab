@@ -16,6 +16,7 @@ class Main_Screen(Screen):
         Window.clearcolor = (242/255,245/255,247/255,1)
         Window.size = (1280,720)
         Window.borderless=True
+        self.emblem = ""
 
     def on_pre_enter(self):
         self.manager.quiz_flag = False
