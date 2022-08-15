@@ -26,9 +26,8 @@ from find_result import Find_result
 from find_renew import Find_renew
 from data.db_init import db_proc
 from data.websocket_info import *
-from threading import Lock
-import requests, json
-
+from threading import *
+import requests, json, websocket
 
 
 ##### to remove warning message ######
@@ -76,15 +75,14 @@ class WindowManager(ScreenManager):
         self.content_number=0    #어떤 글?
         self.room_num=0
         self.quiz_flag = False
-        self.lock = Lock()
+        self.ans_prob = []
 
-    def access_quiz(self, send_msg):
+    def access_quiz(self, send_msg, cmd):
         if self.quiz_flag:
-            self.ws.connect_ws(self.room_num, send_msg)
-            self.lock.acquire()
-            self.recv_data = self.ws.recv_data()
-            print(self.recv_data)
-            self.lock.release()
+            if cmd == "connect":
+                self.ws.connect_ws(self.room_num, send_msg)
+            elif cmd == "receive":
+                self.recv_data = self.ws.recv_data()
         else:
             self.ws.close_ws()
             

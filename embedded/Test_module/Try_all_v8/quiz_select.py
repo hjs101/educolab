@@ -4,7 +4,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen, NoTransition
 from kivy.properties import NumericProperty
 from kivy.clock import Clock
-import requests
+import requests, json
 
 
 class Quiz_Select_Screen(Screen):
@@ -18,9 +18,8 @@ class Quiz_Select_Screen(Screen):
     
     def on_pre_enter(self):
         ##### change label #####
-        self.quiz_prob_num=self.manager.prob_num
-        self.ids.title.text=f'오늘 저녁 메뉴는 뭔가요? - {self.quiz_prob_num}번'
-        self.cnt_time=5
+        self.ids.title.text=f'{self.manager.prob_num}번'
+        self.cnt_time=20
         self.ids.time.text=f'잔여시간 : {self.cnt_time}초'
 
         self.event1=Clock.schedule_interval(self.update_count, 1)
@@ -40,6 +39,18 @@ class Quiz_Select_Screen(Screen):
         # self.ans=ans
         Clock.unschedule(self.event1)
         self.manager.transition=NoTransition()
+        self.res = requests.post(
+            'https://i7c102.p.ssafy.io/api/chat/req/answer/',
+            headers={'Authorization': 'Bearer ' + self.manager.access_api()},
+            data={
+                "answer": ans,
+                "quiz_question_id": self.manager.prob_num,
+                "room_num": self.manager.room_num
+            }
+        )
+        if self.res.json()["answerflag"]:
+            self.manager.ans_prob.append(self.manager.prob_num)
+        self.manager.prob_num += 1
         self.manager.current="Quiz_wait"
         ##**# Quiz 답변 socket 전송 : 답변=ans [int]
         ##########################

@@ -8,6 +8,7 @@ from myTextInput import limitedTextInput
 from myPopup import MyPopUp
 import json, asyncio
 from data.websocket_info import ws_proc
+from threading import *
 
 class Quiz_Start_Screen(Screen):
     def __init__(self, **kwargs):
@@ -24,13 +25,15 @@ class Quiz_Start_Screen(Screen):
 
     def onPopUp(self): # 팝업 및 다음 페이지 경로 지정
         if len(self.midInput)==8 and self.midInput.isdigit():
+            self.manager.room_num = self.midInput
             self.send_msg = {
                 "message": "학생 입장",
                 "id": self.manager.userID,
-                "room_num": self.midInput
+                "room_num": self.manager.room_num
             }
             self.manager.quiz_flag = True
-            self.manager.access_quiz(self.send_msg)
+            self.manager.access_quiz(self.send_msg, "connect")
+            self.manager.access_quiz("", "receive")
 
             if json.loads(self.manager.recv_data)["message"] == "방이 없네요":
                 self.popup.ids.alert.text="방이 없네요"

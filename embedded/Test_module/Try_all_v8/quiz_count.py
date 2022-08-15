@@ -23,7 +23,7 @@ class Quiz_Count_Screen(Screen):
         self.ids.title.text=f'{self.count}'
         # self.ids.sub_title.text= f'대기 인원 : {self.people_num}'
         # self.ids.loading.source='./icon/Loading.png'
-        self.event1=Clock.schedule_interval(self.update_count, 0.3)
+        self.event1=Clock.schedule_interval(self.update_count, 1)
         # self.animate_flag=False
         # self.cnt=0
         # self.next_flag=False

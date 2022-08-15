@@ -1,3 +1,4 @@
+import json
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
@@ -20,9 +21,23 @@ class Quiz_Result_Screen(Screen):
     def on_pre_enter(self):
         ##### change label #####
         self.key_color=[77/255, 166/255, 96/255,1]
-        self.rank=1
-        self.ids.title.text=f'당신은 순위에 들지 못했습니다'
-        self.ids.content.text=f'1번 : O\n2번 : O\n3번 : O\n4번 : X\n5번 : O\n6번 : O\n7번 : X\n8번 : X\n9번 : O\n10번 : X\n11번 : O'
+        self.res = requests.post(
+            'https://i7c102.p.ssafy.io/api/chat/req/stu_result/',
+            headers={'Authorization': 'Bearer ' + self.manager.access_api()},
+            data={
+                "room_num": self.manager.room_num
+            }
+        )
+        self.ids.title.text=f'당신은 {json.loads(self.res.json()["rank"])}위 입니다\n'
+        self.ids.title.text+=f'{json.loads(self.res.json()["question_cnt"])}개 맞추셨네요!\n'
+        self.ids.content.text=f'<맞춘 문제>\n'
+        
+        i == 0
+        for ans in json.loads(self.res.json()["answers"]):
+            self.ids.content.text += f'{ans}번, '
+            if self.i % 4 == 0: self.ids.content.text += f'\n'
+            i += 1
+        self.ids.content.text.rstrip(", ")
         # self.ids.title.text=f'당신은 {self.rank}위 입니다'
         # self.ids.sub_title.text= f'대기 인원 : {self.people_num}'
         # self.ids.loading.source='./icon/Loading.png'
@@ -50,7 +65,6 @@ class Quiz_Result_Screen(Screen):
         self.manager.transition=SlideTransition()
         self.manager.transition.direction='down'
         self.manager.current='main'
-
 
     def onStop(self): # 창 종료 버튼
         App.get_running_app().stop()

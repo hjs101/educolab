@@ -1,23 +1,30 @@
+from asyncio.windows_events import NULL
 import websocket
 import json
-from threading import *
 websocket.enableTrace(True)
 
 class ws_proc:
     def __init__(self, **kwargs):
         super(ws_proc, self).__init__(**kwargs)
         self.ws = websocket.WebSocket()
-        self.lock = Lock()
+        self.next_flag = 0
 
     def connect_ws(self, room_num, send_msg):
-        self.ws.connect("ws://127.0.0.1:8000/api/ws/chat/" + str(room_num) + "/")
+        self.ws.connect("wss://i7c102.p.ssafy.io/api/ws/chat/" + str(room_num) + "/")
         print("보낸 메세지: {}".format(json.dumps(send_msg)))
         self.ws.send(json.dumps(send_msg))
 
     def recv_data(self):
-        self.data = self.ws.recv()
-        print("받은 메세지: {}".format(self.data))
-        return self.data
+        while True:
+            self.data = self.ws.recv()
+            print("받은 메세지: {}".format(self.data))
+            if json.loads(self.data)["message"] == "퀴즈 시작":
+                print("다음문제 메세지")
+                self.next_flag=1
+            elif json.loads(self.data)["message"] == "퀴즈 종료":
+                print("퀴즈 종료 메세지")
+                self.next_flag=-1
+            return self.data
 
     def close_ws(self):
         print("디스커넥트")
