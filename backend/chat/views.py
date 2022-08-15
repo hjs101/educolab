@@ -53,6 +53,9 @@ class ScoreAddView(APIView):
         quiz_answer_user = QuizAnswer.objects.filter(room=room_num,question=qestion_num).order_by('id')
         count = 0
         ans_cnt = 0
+        print(qestion_num)
+        print(room_num)
+        print(quiz_answer_user)
         for user in quiz_answer_user:
             ans_cnt +=1
             user.quizuser.score += (100 - count*10)
