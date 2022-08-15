@@ -3,24 +3,25 @@
     <h4>{{ getTitle }}</h4>
 
     <div class="row q-mr-xl justify-end">
-      <q-btn class="delete-size" @click="addSurvey" color="orange-6"  label="문항 추가" />
+      <q-btn class="text-size" @click="addSurvey" color="orange-6"  label="문항 추가" />
     </div>
 
     <div class="row q-gutter-md">
-      <q-select class="button-size" style="width:100px;" outlined v-model="credentials.survey.grade" :options="selGrade" label="학년" emit-value map-options/>
-      <q-select class="button-size" style="width:100px;" outlined v-model="credentials.survey.class_field" :options="selClassField" label="반" emit-value map-options/>
+      <q-select class="text-size" style="width:100px;" outlined v-model="credentials.survey.grade" :options="selGrade" label="학년" emit-value map-options/>
+      <q-select class="text-size" style="width:100px;" outlined v-model="credentials.survey.class_field" :options="selClassField" label="반" emit-value map-options/>
     </div>
 
     <div class="row q-mt-xl">
       <span class="q-py-md q-mx-lg text-center text-size">제목</span>
-      <q-input class="text-size" outlined v-model="credentials.survey.title" label="title" style="width: 700px;" required/>
+      <q-input class="text-size" outlined v-model="credentials.survey.title" 
+      style="width: 700px;" placeholder="설문 제목을 입력해주세요." required/>
     </div>
     <hr>
     
     <form class="surveymargin">
       <div class="surveymargin" v-for="survey in surveyList" :key="survey">
         <div class="row justify-end q-mt-md q-mr-xl">
-          <q-btn @click="deleteSurvey(survey, $event)" class="delete-size" color="orange-6">문항 삭제</q-btn>
+          <q-btn @click="deleteSurvey(survey, $event)" class="text-size" color="orange-6">문항 삭제</q-btn>
         </div>
           <survey-item 
           :survey="survey"
@@ -174,7 +175,7 @@ export default {
     border: 2px solid orange;
   }
   .text-size {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .button-size {
     font-size: 1.1rem;

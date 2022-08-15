@@ -45,6 +45,7 @@
 =======
   <div class="baseStyle">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <img src="@/assets/quiz.png" alt="quiz">
 >>>>>>> 6ecfa2b (기본 폰트, 스타일 적용)
 =======
@@ -61,32 +62,50 @@
 =======
 =======
 >>>>>>> d127577 (기능별 메인 페이지 구성)
+=======
+    <h4 class="text-center">Quiz</h4>
+    <hr>
+    <div class="row justify-end q-mt-lg">
+      <q-btn @click="QuizCreate" class="create-btn q-mx-lg q-py-sm" 
+      color="blue-6" label="퀴즈 등록" />
+    </div>
+
+>>>>>>> 61e042d (설문조사  통계 sass)
     <div class="q-pa-md">
       <q-markup-table>
         <thead>
-          <tr>
-            <th class="text-left text-size">번호</th>
+          <tr class="text-center">
+            <th class="text-size">번호</th>
             <th class="text-center text-size">제목</th>
             <th class="text-center text-size">등록일</th>           
             <th class="text-center text-size">퀴즈 시작</th> 
           </tr>
         </thead>
         <tbody>
-          <tr v-for="quiz in quiz" :key="quiz">
-            <td class="text-left text-size">{{ quiz.pk }}</td>
-              <td @click="quizDetail(quiz.pk)" class="text-size cursor-pointer">{{ quiz.title }}</td>
+          <tr v-for="(quiz, index) in quiz.slice((page-1)*10, page*10)" :key="index">
+            <td class="text-size">{{ index+1+((page-1)*10) }}</td>
+              <td @click="quizDetail(quiz.pk)" class="text-size cursor-pointer text-left">{{ quiz.title }}</td>
             <td class="text-center text-size">{{ timeInfo(quiz.updated_at) }}</td>
             <!-- 퀴즈 시작 버튼에서 함수 구현 -->
             <td class="text-center text-size">
-              <q-btn @click="startQUiz" color="indigo-13">Go Quiz!</q-btn>
+              <q-btn @click="startQUiz" class="button-size" color="amber-9">Go Quiz!</q-btn>
             </td>
           </tr>
         </tbody>
       </q-markup-table>
     </div>
+<<<<<<< HEAD
 >>>>>>> c9ecd87 (퀴즈 임베디드 연동)
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+
+    <div>
+      <the-pagi-nation v-if="quizLength" :limit="quizLength" @change-page="changePage">
+      </the-pagi-nation>
+    </div>
+
+>>>>>>> 61e042d (설문조사  통계 sass)
   </div>
 </template>
 
@@ -114,12 +133,28 @@ export default {
 =======
 =======
 import { mapActions, mapGetters } from "vuex";
+<<<<<<< HEAD
 >>>>>>> c9ecd87 (퀴즈 임베디드 연동)
+=======
+import { ref } from 'vue'
+import ThePagiNation from '@/components/ThePagination.vue'
+>>>>>>> 61e042d (설문조사  통계 sass)
 
 export default({
   name: 'QuizView',
+  components: { ThePagiNation },
+  setup() {
+    let page = ref(1)
+    const changePage = (value) => {
+      page.value = value
+    }
+    return {
+      page,
+      changePage,
+    }
+  },
   computed: { 
-    ...mapGetters(['quiz'])
+    ...mapGetters(['quiz', 'quizLength'])
   },
   methods: {
     ...mapActions(['quizList']),
@@ -146,15 +181,17 @@ export default({
 </script>
 
 <style scoped>
-  .text-size {
-    font-size: 1.4rem;
-  }
+  .text-size { font-size: 2vmin; }
   .button-size {
-    font-size: 1rem;
+    font-size: 1.6vmin;
   }
   .text-nodec {
     text-decoration: none;
   }
+  .button-magn {
+    margin-right: 200px;
+  }
+  .create-btn {font-size: 1rem;}
 </style>
 >>>>>>> 4918ec5 (퀴즈 CRUD 폼 작성)
 =======

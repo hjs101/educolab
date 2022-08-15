@@ -249,7 +249,13 @@
                 <router-link class="text-subtitle2 button color5 navBarLi" to="/notice" flat>공지사항</router-link>
                 <router-link class="text-subtitle2 button color5 navBarLi" to="/student/task" flat>과제</router-link>
                 <router-link class="text-subtitle2 button color5 navBarLi" to="/student/point" flat>포인트 상점</router-link>
+<<<<<<< HEAD
                 <router-link class="text-subtitle2 button color5 navBarLi" to="/student">마이페이지</router-link>
+=======
+          <!-- <a href="/"> -->
+                  <router-link class="text-subtitle2 button color5 navBarLi" to="/student">마이페이지</router-link>
+          <!-- </a> -->
+>>>>>>> 61e042d (설문조사  통계 sass)
               </div>
             </div>
             <q-icon @click="activeNav" class="cursor-pointer" name="mdi-menu" />
@@ -455,14 +461,6 @@ export default {
   .baseStyle {
     width: 80%;
     margin: auto;
-    /* font-family: "jooa"; */
-    min-width: 450px;
-    height:1200px;
-  }
-  .testStyle {
-    width: 80%;
-    margin: auto;
-    font-family: "jooa";
     min-width: 450px;
     height:1200px;
   }
@@ -720,6 +718,7 @@ export default {
   .ftr-size {
     font-size: 0.9rem;
   } 
+<<<<<<< HEAD
   footer {
     position: absolute;
     bottom: -1000px;
@@ -742,6 +741,8 @@ export default {
 =======
 >>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
 =======
+=======
+>>>>>>> 61e042d (설문조사  통계 sass)
   .navBarLi:hover {
     border-bottom: 2px solid #8BFF8B;
   }

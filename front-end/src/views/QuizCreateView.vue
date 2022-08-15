@@ -41,7 +41,7 @@
       </div>
     </form>
 
-    <button @click="quizPk? updateQuiz({credentials, quizPk}) : createQuiz(credentials)">
+    <button @click="quizPk? updateQuiz(credentials) : createQuiz(credentials)">
     {{ quizPk? '퀴즈 수정' : '퀴즈 등록'}}
     </button>
   </div>
@@ -49,7 +49,7 @@
 
 <script>
 import QuizItem from '@/components/QuizItem.vue'
-import {useRoute} from 'vue-router'
+import { useRoute } from 'vue-router'
 import { reactive } from '@vue/reactivity'
 import { ref } from 'vue'
 import { mapActions, mapGetters } from 'vuex'
@@ -60,7 +60,8 @@ export default {
   setup() {
     const route = useRoute()
     let quizPk = ref(route.params.quizPk)
-    let credentials = reactive({
+    const credentials = reactive({
+      quiz_num : quizPk,
       quiz: {
         title : ref('')
       },
@@ -80,7 +81,7 @@ export default {
     ...mapGetters(['quizDetail', 'quizData'])
   },
   methods: {
-    ...mapActions(['createQuiz', 'getQuizDetail']),
+    ...mapActions(['createQuiz', 'getQuizDetail', 'updateQuiz']),
     addQuiz() {
       this.quizList++,
       this.quizData.push({})

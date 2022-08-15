@@ -46,7 +46,7 @@
     <div class="row justify-center q-mt-xl q-gutter-md">
         <q-btn class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
         <q-btn @click="noticePk? updateNotice(credentials) : createNotice(credentials)" class="text-size q-px-xl q-py-md" 
-        color="blue-6 q-mx-lg q-py-sm">
+        color="blue-6">
         <p>{{ noticePk? '수정' : '등록'}}</p>
         </q-btn>  
     </div>

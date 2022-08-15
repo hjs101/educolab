@@ -16,6 +16,7 @@ export const quiz = {
     quiz : state => state.quiz,
     quizDetail : state => state.quizDetail,
     quizData : state => state.quizData,
+    quizLength: state => Math.ceil(state.quiz.length/10),
   },
 
   mutations: {
@@ -91,18 +92,18 @@ export const quiz = {
         })
     },
 
-    updateQuiz({ getters }, {credentials, quizPk}) {
+    updateQuiz({ getters }, credentials) {
+      credentials.question = getters.quizData
+      console.log(credentials)
       axios({
         url: drf.quiz.quizDetail(),
         method: 'put',
         headers: getters.authHeader,
         data : credentials,
-        params: {
-          quiz_num : quizPk
-        }
       })
         .then(res => {
           console.log(res)
+          router.push({ name : 'Quiz' })
         })
     }
   }

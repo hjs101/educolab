@@ -3,33 +3,55 @@
   <div class="baseStyle">
     <!-- 제목, 퀴즈 문제, 퀴즈 보기 -->
     <div v-for="quizItem in quizDetail" :key="quizItem">
-      <h4>{{ quizItem.quiz_name }}</h4>
-      <div v-if="quizItem.question_number">
-        <p class="title-size">퀴즈 {{ quizItem.question_number}}번: {{ quizItem.quiz_question }}</p>
-        <div class="row justify-start bogi-size">          
-          <p class="q-mx-md q-px-md bogi-border">① {{ quizItem.multiple_bogi[0]}}</p>
-          <p class="q-mx-md q-px-md bogi-border">② {{ quizItem.multiple_bogi[1]}}</p>
-          <p class="q-mx-md q-px-md bogi-border">③ {{ quizItem.multiple_bogi[2]}}</p>
-          <p class="q-mx-md q-px-md bogi-border">④ {{ quizItem.multiple_bogi[3]}}</p>
-        </div>
-      </div>
+      <h4 class="title-size">{{ quizItem.quiz_name }}</h4>
+      <q-card class="row" v-if="quizItem.question_number" style="width:80%">
+        <q-card-section>
+          <p class="bogi-size">퀴즈 {{ quizItem.question_number}} . {{ quizItem.quiz_question }}</p>
+          <div class="center">
+            <div class="column items-start bogi-size">
+              <div class="row items-center q-ml-md">
+                <p>보기 1.</p>
+                <p class="q-mx-md" style="max-width:1000px;">
+                {{ quizItem.multiple_bogi[0]}}</p>
+              </div>
+              <div class="row items-center q-ml-md">
+                <p>보기 2.</p>
+                <p class="q-mx-md" style="max-width:1000px;">
+                {{ quizItem.multiple_bogi[1]}}</p>                
+              </div>
+              <div class="row items-center q-ml-md">
+                <p>보기 3.</p>
+                <p class="q-mx-md" style="max-width:1000px;">
+                {{ quizItem.multiple_bogi[2]}}</p>                 
+              </div>
+              <div class="row items-center q-ml-md">
+                <p>보기 4.</p>
+                <p class="q-mx-md" style="max-width:1000px;">
+                {{ quizItem.multiple_bogi[3]}}</p>                   
+              </div>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
     </div>
     <!-- 퀴즈 답 -->
-    <div>
-      <p class="title-size q-mt-xl q-mx-lg">제출답안 </p>
-      <div class="row title-size ">
-        <div v-for="quizItem in quizDetail" :key="quizItem">
-          <div class="row" v-if="quizItem.question_number">
-            <p class="q-px-sm question-border2">{{ quizItem.question_number }}</p>
-            <p class="question-border q-px-sm">{{ quizItem.answer }}번</p>
+    <q-card class="q-mt-xl" style="width:80%">
+      <q-card-section class="bogi-size">
+        <p class="answer-size">제출답안</p>
+        <div class="row bogi-size">
+          <div v-for="quizItem in quizDetail" :key="quizItem">
+            <div class="q-ml-sm row" v-if="quizItem.question_number">
+              <p class="q-ml-md q-mr-xs question-border2">답안 {{ quizItem.question_number }}.</p>
+              <p class="question-border">{{ quizItem.answer }}번</p>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </q-card-section>
+    </q-card>
     
-    <div class="row justify-center q-my-lg">
-      <q-btn @click="updateQuiz(quizPk)" class="q-mx-lg" color="orange-6">퀴즈 수정</q-btn>
-      <q-btn @click="deleteQuiz(quizPk)" class="q-mx-lg" color="orange-6">퀴즈 삭제</q-btn>
+    <div class="row justify-center q-mt-xl q-gutter-md">
+      <q-btn @click="deleteQuiz(quizPk)" class="text-size q-px-xl q-py-md" color="red-6">삭제</q-btn>
+      <q-btn @click="updateQuiz(quizPk)" class="text-size q-px-xl q-py-md" color="blue-6">수정</q-btn>
     </div>
   </div>
 </template>
@@ -60,6 +82,7 @@ export default {
 </script>
 
 <style scoped>
+<<<<<<< HEAD
 .bogi-border {
   border-style: inset;
 }
@@ -89,3 +112,15 @@ export default {
   </div>
 </template>
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+  .title-size {
+    font-size : 3vmin;
+  }
+  .bogi-size {
+    font-size : 2vmin;
+  }
+  .answer-size {
+    font-size : 2.5vmin
+  }
+</style>
+>>>>>>> 61e042d (설문조사  통계 sass)

@@ -1,30 +1,40 @@
 <template>
-  <div class="testStyle">
+  <div class="baseStyle">
     <div v-for="surveyItem in surveyItem" :key="surveyItem">
-      <h4>{{ surveyItem.survey_name }}</h4>
-      <div class="q-mx-md" v-if="surveyItem.question_number">
-        <p class="title-size">설문문항 {{ surveyItem.question_number }} : {{ surveyItem.survey_question }}</p>
-        <survey-bogi
-        :bogi="surveyItem.multiple_bogi"
-        :surveyItem="surveyItem"
-        :qusNumber="surveyItem.question_number"></survey-bogi>
-      </div>
+      <h4 class="title-size">{{ surveyItem.survey_name }}</h4>
+      <q-card class="row" v-if="surveyItem.question_number" style="width:80%">
+        <q-card-section>
+          <p class="text-size">설문문항 {{ surveyItem.question_number }} . {{ surveyItem.survey_question }}</p>
+          <survey-bogi
+          :bogi="surveyItem.multiple_bogi"
+          :surveyItem="surveyItem"
+          :qusNumber="surveyItem.question_number"></survey-bogi>
+        </q-card-section>
+      </q-card>
     </div>
 
     <div class="row justify-center q-mt-xl q-gutter-md">
-      <q-btn @click="deleteSurvey(surveyPk)" class="text-size q-px-xl q-py-sm" color="red-6">삭제</q-btn>
-      <q-btn @click="updateSurvey(surveyPk)" class="text-size q-px-xl q-py-sm" color="blue-6">수정</q-btn>
+      <q-btn @click="deleteSurvey(surveyPk)" class="text-size q-px-xl q-py-md" color="red-6">삭제</q-btn>
+      <q-btn @click="updateSurvey(surveyPk)" class="text-size q-px-xl q-py-md" color="blue-6">수정</q-btn>
     </div>
+    
   </div>
+  
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import SurveyBogi from '@/components/SurveyBogi.vue'
+// import { ref } from 'vue'
 
 export default {
   name : 'SurveyDetailView',
   components: { SurveyBogi, },
+  // setup() {
+  //   return {
+  //     alert: ref(false)
+  //   }
+  // },
   data() {
     return {
       surveyPk : this.$route.params.surveyPk
@@ -47,10 +57,13 @@ export default {
 
 <style scoped>
   .title-size {
-    font-size : 1.5rem;
+    font-size : 3vmin;
   }
   .text-size {
-    font-size: 1.2rem;
+    font-size: 2vmin;
+  }
+  p {
+    margin: 0;
   }
 
 </style>

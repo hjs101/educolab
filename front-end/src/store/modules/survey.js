@@ -9,7 +9,7 @@ export const survey = {
       surveyData: [{}, {}],
       surveyBogi : [],
       surveyStat: {},
-      surveyQuestion: {}
+      surveyQuestion: {},
     }
   },
   
@@ -20,7 +20,7 @@ export const survey = {
     surveyBogi : state => state.surveyBogi,
     surveyStat : state => state.surveyStat,
     surveyQuestion: state => state.surveyQuestion,
-    surveyLength: state => Math.ceil(state.survey.length/10)
+    surveyLength: state => Math.ceil(state.survey.length/10),
   },
 
   mutations: {
@@ -29,7 +29,7 @@ export const survey = {
     SURVEY_ITEM: (state, surveyItem) => state.surveyItem = surveyItem,
     SURVEY_BOGI: (state, surveyBogi) => state.surveyBogi = surveyBogi,
     SURVEY_STAT: (state, surveyStat) => state.surveyStat = surveyStat,
-    SURVEY_QUESTION: (state, surveyQuestion) => state.surveyQuestion = surveyQuestion
+    SURVEY_QUESTION: (state, surveyQuestion) => state.surveyQuestion = surveyQuestion,
   },
 
   actions: {
@@ -104,8 +104,6 @@ export const survey = {
     },
     updateSurvey({ getters }, credentials) {
       credentials.question = getters.surveyData
-      console.log(credentials.question)
-      console.log(credentials)
       axios({
         url: drf.survey.surveyUpdate(),
         method: 'put',
@@ -128,6 +126,20 @@ export const survey = {
         }
       })
         .then(res => {
+          const totalQuestion = res.data.questions
+          for (var i=0; i < totalQuestion.length; i++) {
+            if (totalQuestion[i].multiple_bogi) {
+              const bogi = totalQuestion[i].multiple_bogi.split('/')
+              totalQuestion[i].multiple_bogi = bogi
+            }
+          }
+          for (var j=0; j < totalQuestion.length; j++) {
+            const totalNum = totalQuestion[j].num1 + totalQuestion[j].num2 + totalQuestion[j].num3 + totalQuestion[j].num4 + totalQuestion[j].num5
+            const purcentNum = [(totalQuestion[j].num1 / totalNum)*100, (totalQuestion[j].num2 / totalNum)*100, 
+            (totalQuestion[j].num3 / totalNum)*100, (totalQuestion[j].num4 / totalNum)*100, (totalQuestion[j].num5 / totalNum)*100]
+            totalQuestion[j].purcentNum = purcentNum
+          }
+          console.log(res.data)
           commit('SURVEY_STAT', res.data)
         })
         .catch(err => {
@@ -136,6 +148,7 @@ export const survey = {
     },
 
     onQuestion({ getters, commit }, questionPk) {
+      console.log(questionPk)
       axios({
         url: drf.survey.surveyQuestion(),
         method: 'get',
@@ -147,6 +160,9 @@ export const survey = {
         .then(res => {
           console.log(res.data)
           commit('SURVEY_QUESTION', res.data)
+        })
+        .catch(err => {
+          console.log(err)
         })
     },
   },

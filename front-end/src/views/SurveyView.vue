@@ -1,9 +1,10 @@
 <template>
   <div class="baseStyle">
-    <img src="@/assets/설문조사.png" alt="survey" style="height:200px;">
-    <div class="row justify-end">
-      <q-btn @click="surveyCreate" class="button-size q-mx-lg q-py-sm"
-      color="green-13" label="설문 등록" />
+    <h4 class="text-center">설문조사</h4>
+    <hr>
+    <div class="row justify-end q-mt-lg">
+      <q-btn @click="surveyCreate" class="text-size q-mx-lg q-py-sm"
+      color="blue-6" label="설문 등록" />
     </div>
 
     <!-- 설문조사 전체 조회 -->
@@ -11,20 +12,22 @@
       <q-markup-table class="survey-full">
         <thead>
           <tr>
-            <th class="text-left text-size">번호</th>
+            <th class="text-center text-size">번호</th>
             <th class="text-center text-size">제목</th>
             <th class="text-center text-size">학년</th>
             <th class="text-center text-size">반</th>
             <th class="text-center text-size">등록(수정)일</th>
+            <th class="text-center text-size">설문 통계</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(survey, index) in survey.slice((page-1)*10, page*10)" :key="index">
-            <td class="text-left text-size">{{ index+1+((page-1)*10) }}</td>
+            <td class="text-center text-size">{{ index+1+((page-1)*10) }}</td>
             <td @click="surveyDetail(survey.pk)" class="text-size cursor-pointer">{{ survey.title }}</td>
             <td class="text-center text-size">{{ survey.grade }}</td>
             <td class="text-center text-size">{{ survey.class_field }}</td>
             <td class="text-center text-size">{{ timeInfo(survey.updated_at) }}</td>
+            <td @click="onSurveyStat(survey.pk)" class="cursor-pointer text-center text-size">통계보기</td>
           </tr>
         </tbody>
       </q-markup-table>
@@ -35,6 +38,7 @@
             <th class="text-center text-size">제목</th>
             <th class="text-center text-size">학년</th>
             <th class="text-center text-size">반</th>
+            <th class="text-center text-size">설문 통계</th>
           </tr>
         </thead>
         <tbody>
@@ -42,11 +46,12 @@
             <td @click="surveyDetail(survey.pk)" class="text-size cursor-pointer">{{ survey.title }}</td>
             <td class="text-center text-size">{{ survey.grade }}</td>
             <td class="text-center text-size">{{ survey.class_field }}</td>
+            <td @click="onSurveyStat(survey.pk)" class="cursor-pointer text-center text-size">통계보기</td>
           </tr>
         </tbody>
       </q-markup-table>
     </div>
-    
+
     <div>
       <the-pagi-nation v-if="surveyLength" :limit="surveyLength" @change-page="changePage">
       </the-pagi-nation>
@@ -70,28 +75,29 @@ export default {
     }
     return {
       page,
-      changePage
+      changePage,
+      alert : ref(false)
     }
   },
   computed: {
-    ...mapGetters(['survey', 'surveyLength']),
+    ...mapGetters(['survey', 'surveyLength', ]),
   },
   methods : {
-    ...mapActions(['surveyList', 'getSurveyDetail', 'getSurveyStat']),
+    ...mapActions(['surveyList', 'getSurveyDetail',]),
     timeInfo(time) {
       const d = new Date(time)
       return d.getFullYear() + ". " + (d.getMonth()+1) + ". " + d.getDate()
     },
-
     surveyCreate() {
       this.$router.push({name:'SurveyCreate'})
     },
     surveyDetail(surveyPk) {
       this.$router.push({name:'SurveyDetail', params:{ surveyPk:surveyPk }})
     },
-    surveyStat(surveyPk) {
-      this.getSurveyStat(surveyPk)
-    }
+    onSurveyStat(surveyPk) {
+      this.$router.push({name:'SurveyStat', params:{ surveyPk: surveyPk}},)
+    },
+
   },
   created() {
     this.surveyList()
@@ -101,7 +107,7 @@ export default {
 </script>
 
 <style scoped>
-  .text-size {font-size:1.4rem;}
+  .text-size {font-size:1rem;}
   .surveyMargin {margin-right : 10px;}
   .test {position: relative;}
   .test2 {text-decoration: none;}

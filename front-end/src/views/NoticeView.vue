@@ -85,9 +85,8 @@
 
 =======
   <div class="baseStyle">
-    <!-- <img src="@/assets/공지사항.png" alt="notice" style="height:150px;"> -->
-      <h4 class="text-center">공지사항</h4>
-      <hr>
+    <h4 class="text-center">공지사항</h4>
+    <hr>
     <div class="row justify-end q-mt-lg">
       <q-btn @click="noticeCreate" class="text-size q-mx-lg q-py-sm" 
       color="blue-6" label="글 쓰기" />
@@ -208,6 +207,7 @@ export default {
 <style scoped>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   .text-size{font-size: 1.2rem;}
 >>>>>>> d127577 (기능별 메인 페이지 구성)
 =======
@@ -303,6 +303,10 @@ export default {
   .notice-small {
     display: none;
   }
+=======
+  .text-size{ font-size: 1rem; }
+  .notice-small { display: none; }
+>>>>>>> 61e042d (설문조사  통계 sass)
 
   @media screen and (max-width: 950px) {
     .notice-full {

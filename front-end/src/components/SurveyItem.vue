@@ -2,20 +2,22 @@
   <div>
     <div @change="onSurvey({...credentials})">
       <div class="q-py-md">
-        <q-select class="button-size q-ml-sm" style="width:150px;" outlined v-model="selected" 
+        <q-select class="text-size q-ml-sm" style="width:150px;" outlined v-model="selected" 
         :options="selSelected" label="문항 선택" emit-value map-options/>
       </div>
 
       <div class="row items-center" v-if="selected === 'question'">
         <span class="q-mx-lg text-center text-size">문항 {{ survey }}.</span>
-        <q-input outlined class="text-size" label="주관식 문항" v-model="credentials.survey_question" style="width: 685px;" />
+        <q-input outlined class="text-size" v-model="credentials.survey_question" 
+        style="width: 685px;" placeholder="설문 문항을 입력해주세요." />
       </div>
       
       <div class="row items-center" v-else-if="selected === 'choice'"><br>
         <span class="q-mx-lg text-center text-size">문항 {{ survey }}.</span>
-        <q-input outlined class="text-size" label="객관식 문항" v-model="credentials.survey_question" style="width: 685px;"/>
+        <q-input outlined class="text-size" v-model="credentials.survey_question" 
+        style="width: 685px;" placeholder="설문 문항을 입력해주세요." />
 
-        <div class="row items-center q-py-md q-px-lg">
+        <div class="q-py-md q-px-lg">
           <q-input outlined class="text-size q-my-md" label="보기 1" style="width:685px;" v-model="num1" />
           <q-input outlined class="text-size q-mb-md" label="보기 2" style="width:685px;" v-model="num2" />
           <q-input outlined class="text-size q-mb-md" label="보기 3" style="width:685px;" v-model="num3" />
@@ -111,7 +113,7 @@ export default {
     width: 50%;
   }
   .text-size {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .button-size {
     font-size: 1.1rem;
