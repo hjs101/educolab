@@ -93,7 +93,7 @@ class StudentResultView(APIView):
         print(students)
         for student in students:
             print("lll")
-            if student == req.user:
+            if student.student == req.user:
                 print("kkk")
                 break;
             rank+=1
