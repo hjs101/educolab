@@ -86,8 +86,15 @@ class StudentResultView(APIView):
         for answer in answers:
             data.append(answer.question.question_number)
         print(answers)
-        
+        room = QuizRoom.objects.get(roomnum=room_num)
+        students = room.getuser_byroom.order_by('-score')
+        rank = 1
+        for student in students:
+            if student == req.user:
+                break;
+            rank+=1
         return Response({
             "question_cnt" : cnt,
+            "rank" : rank,
             "answers" : data,
         })
