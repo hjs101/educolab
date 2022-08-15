@@ -43,7 +43,7 @@
       <q-card class="q-pa-md row">
         <h5 class="text-center col-12">배지</h5>
         <div
-          class="q-pa-sm col-6"
+          class="q-pa-sm col-4"
           v-for="icon in items.icons.slice((page.icon-1)*10, page.icon*10)"
           :key="icon.id">
           <point-item :icon="icon"/>

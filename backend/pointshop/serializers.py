@@ -18,3 +18,9 @@ class TitleSerializer(serializers.ModelSerializer):
     class Meta:
         model = PTitle
         fields = ('id','title',)
+
+class IconSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Icon
+        fields = ('id','title', 'icon',)

@@ -408,7 +408,7 @@ export default {
 >>>>>>> 13e9331 (프로젝트  최신 버전)
 =======
   pointShop: {
-    main: () => POINT_SHOP + '',
+    main: () => POINT_SHOP,
     buyTitle: () => POINT_SHOP + 'title/',
     buyIcon: () => POINT_SHOP + 'icon/',
     // registerIcon: () => POINT_SHOP + 'icon/register/',

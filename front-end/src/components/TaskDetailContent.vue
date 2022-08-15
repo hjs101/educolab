@@ -29,7 +29,7 @@
       <article v-if="isTeacher">
         <!-- 자신이 작성한 상세 페이지에서 -->
         <div v-if="isLecture">
-          <q-btn color="primary" label="채점 완료" @click="checkComplete" v-if="possibleCheck" />
+          <q-btn color="primary" label="채점 완료" @click="checkComplete" v-if="check.possible" />
           <q-list bordered class="rounded-borders" v-for="item in task.student_submit" :key="item.id">
             <task-target-student
               :item="item"
@@ -37,6 +37,13 @@
               :totalCheckFlag="task.homework?.check_flag"
               :checkFlag="item.check_flag"/>
           </q-list>
+          <!-- 채점 완료 팝업 -->
+          <message-pop-up
+            v-if="check.confirm"
+            message="채점이 완료되었습니다"
+            path="/teacher/task"
+            @reverse="check.prompt = false"
+          />
         </div>
         <!-- 학생이 작성한 과제 상세 페이지에서 -->
         <div v-else-if="!task.agreement">
@@ -45,6 +52,12 @@
             <q-btn color="primary" label="채점 완료" @click="checkStudent" />
           </div>
           <hr>
+          <message-pop-up
+            v-if="check.confirmStudent"
+            message="채점이 완료되었습니다"
+            path="/teacher/task"
+            @reverse="check.student = false"
+          />
         </div>
       </article>
     </q-card-section>
@@ -53,16 +66,18 @@
 
 <script>
 import {useStore} from 'vuex'
-import {computed, ref} from 'vue'
+import {computed, reactive, ref} from 'vue'
 import {useRoute} from 'vue-router'
 import drf from '@/api/drf.js'
 import dayjs from 'dayjs'
 import axios from 'axios'
 import TaskTargetStudent from '@/components/TaskTargetStudent.vue'
+import MessagePopUp from '@/components/MessagePopUp.vue'
 export default {
   name: 'TaskDetailContent',
   components: {
     TaskTargetStudent,
+    MessagePopUp
   },
   props: {
     isTeacher: Boolean,
@@ -75,20 +90,27 @@ export default {
     const url = drf.file.path()
     let isLecture = ref(computed(() => route.params.taskType === 'lecture'? 1:0))
     let point = ref(null)
-    let checkState = computed(() => {
-      if (isLecture.value) {
-        return props.task.homework['check_flag']? '채점 완료':'채점 미완료'
-      } else {
-        return props.task['agreement']? '채점 완료':'채점 미완료'
-      }
+    const check = reactive({
+      state: computed(() => {
+        if (isLecture.value) {
+          return props.task.homework['check_flag']? '채점 완료':'채점 미완료'
+        } else {
+          return props.task['agreement']? '채점 완료':'채점 미완료'
+        }
+      }),
+      prompt: false,
+      confirm: computed(() => check.prompt),
+      possible: computed(() => {
+        if (props.task.homework?.deadline >= dayjs().format('YYYY-MM-DD') || props.task.homework?.check_flag) {
+          return false
+        } else {
+          return true
+        }
+      }),
+      student: false,
+      confirmStudent: computed(() => check.student)
     })
-    let possibleCheck = computed(() => {
-      if (props.task.homework?.deadline >= dayjs().format('YYYY-MM-DD') || props.task.homework?.check_flag) {
-        return false
-      } else {
-        return true
-      }
-    })
+    
     const files = computed(() => {
       if (isLecture.value) {
         return props.task.homework?.teacher_file
@@ -114,9 +136,9 @@ export default {
         headers: store.getters.authHeader,
         data,
       })
-        .then(((res) => {
-          console.log(res.data)
-        }))
+        .then(() => {
+          check.prompt = true
+        })
         .catch((err) => {
           console.log(err)
         })
@@ -139,8 +161,8 @@ export default {
           headers: store.getters.authHeader,
           data,
         })
-          .then(((res) => {
-            console.log(res.data)
+          .then((() => {
+            check.student = true
           }))
           .catch((err) => {
             console.log(err)
@@ -153,13 +175,12 @@ export default {
     return {
       url,
       date,
-      checkState,
+      check,
       checkComplete,
       checkStudent,
       point,
       files,
       isLecture,
-      possibleCheck,
     }
   },
 }

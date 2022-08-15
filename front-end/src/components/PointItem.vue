@@ -2,7 +2,7 @@
   <q-card>
     <q-card-section>
       {{item.id}}
-      <img v-if="icon" :src="img">
+      <img v-if="icon" :src="img" width="100">
       <br>
       이름 {{item.title}}
       <br>
@@ -51,7 +51,7 @@ export default {
     })
     const buy = reactive({
       title: `${item.type} 구매 확인`,
-      message: `구매 후에는 포인트가 차감됩니다. \n 정말 ${item.type} ${item.title} 을/를 구매하시겠습니까?`,
+      message: `구매 후에는 포인트가 차감됩니다. 정말 ${item.type} ${item.title} 을/를 구매하시겠습니까?`,
       prompt: false,
       state: computed(() => buy.prompt)
     })
@@ -72,6 +72,10 @@ export default {
           headers: store.getters.authHeader,
           data: {pk: item.id}
         })
+          .then((res) => {
+            console.log(res.data)
+          })
+        buy.prompt = false
       }
     }
     let img = drf.file.path() + props.icon?.icon

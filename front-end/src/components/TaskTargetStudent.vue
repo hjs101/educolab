@@ -12,7 +12,7 @@
           <div v-for="(file, idx) in item['atch_file_name']" :key="idx">
             <a :href="url+item['atch_file'][idx]">{{file}}</a>
           </div>
-          <div v-if="!isChecked">
+          <div v-if="!isChecked && !check.computedFlag">
             <q-input type="number" v-model="point" label="점수" min="-1" max="5"/>
             <q-btn color="primary" label="채점하기" @click="checkTask"/>
           </div>
@@ -51,6 +51,7 @@ export default {
     const url = drf.file.path()+props.item['atch_file']
     let check = reactive({
       flag : props.checkFlag || props.totalCheckFlag,
+      computedFlag: computed(() => check.checkFlag),
       state: computed(() => {
         if (props.checkFlag || props.totalCheckFlag || check.flag) {
           return '채점완료'
@@ -62,7 +63,6 @@ export default {
     let point = ref(null)
     let submitState = computed(() => props.item.submit_flag?'제출':'미제출')
     let message = ref(null)
-    // 학생별 check_flag도!
     let isChecked = computed(() => props.deadline >= dayjs().format('YYYY-MM-DD') || props.checkFlag)
     const confirm = reactive({
       prompt: false,
@@ -81,7 +81,6 @@ export default {
       })
         .then(((res) => {
           message.value = res.data.message
-          isChecked.value = true
           check.flag = true
         }))
         .catch(() => {

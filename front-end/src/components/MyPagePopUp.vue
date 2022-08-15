@@ -13,34 +13,31 @@
           type="password"
           v-model="confirm.password"/>
       </q-card-section >
-      <!-- 칭호 테스트 완료 (추후 samples -> items)-->
+      <!-- 칭호 테스트 완료 -->
       <q-card-section v-else-if="type">
         <q-btn
         flat
-        v-for="sample in samples"
-        :key="sample.id"
-        :text-color="sample?.id === alias.computedId? 'blue':'black'"
-        @click="selectAlias(0,sample.id, sample.title)">
+        v-for="title in titles"
+        :key="title.id"
+        :text-color="title?.id === alias.computedId? 'blue':'black'"
+        @click="selectAlias(0,title.id, title.title)">
           <!-- 칭호명 -->
-          {{sample.title}}
+          {{title.title}}
         </q-btn>
       </q-card-section>
       <!-- 배지 -->
       <q-card-section v-else>
         <q-card
-          v-for="item in items"
-          :key="item.id"
-          @click="selectAlias(1,item.id, item.title)"
-          class="cursor-pointer"
-          oncontextmenu="return false">
+          v-for="icon in icons"
+          :key="icon.id"
+          @click="selectAlias(1,icon.id, icon.title)"
+          class="cursor-pointer">
           <q-card-section>
-            <!-- 이미지 -->
-            <img :src="educolab" >
-            <!-- 배지명 -->
+            <img :src="url+icon.icon" >
             <br>
-            <span
-              :class="{active:item.id === badge.computedId}"
-            >{{item.title}}</span>
+            <span :class="{active:icon.id === icon.computedId}">
+              {{icon.title}}
+            </span>
           </q-card-section>
         </q-card>
       </q-card-section>
@@ -69,7 +66,8 @@ export default {
     title: String,
     path: String,
     changeMode: Boolean,
-    items: Array,
+    titles: Array,
+    icons: Array,
     type: Boolean,
   },
   setup(props, {emit}) {
@@ -91,6 +89,7 @@ export default {
         emit('reverse', false)
       }
     }
+    let url = drf.file.path()
     const alias = reactive({
       name: null,
       id: null,
@@ -99,7 +98,7 @@ export default {
     const badge = reactive({
       name: null,
       id: null,
-      computedId: computed(() => badge.id)
+      computedId: computed(() => badge.id),
     })
     const selectAlias = (option, id, name) => {
       console.log('선택', option, id, name)
@@ -111,11 +110,11 @@ export default {
         badge.name = name
       }
     }
-    const samples = [
-      {id:2, title: '개미는 뚠뚠'},
-      {id:3, title: '내가 바로 과제 마스터'},
-      {id:4, title: '배고파'}
-    ]
+    // const samples = [
+    //   {id:2, title: '개미는 뚠뚠'},
+    //   {id:3, title: '내가 바로 과제 마스터'},
+    //   {id:4, title: '배고파'}
+    // ]
     const move = () => {
       if (props.changeMode) {
         axios({
@@ -157,9 +156,9 @@ export default {
       alias,
       selectAlias,
       doNothing,
-      samples,
       badge,
-      educolab
+      educolab,
+      url
     }
   }
 }

@@ -16,22 +16,22 @@
         @input="changeProfil"
         accept="image/gif, image/jpeg, image/png"
       />
-      <!-- 배지가 없을 때-->
-      <q-icon
-        v-if="!info.userflag"
-        name="mdi-plus-circle-outline"
-        size="50px"
-        color="grey-13"
-        @click="myTitle(false)"
-        class="cursor-pointer"
+      <!-- 배지-->
+      <div v-if="!info.userflag">
+        <q-icon
+          v-if="!info.wear_icon"
+          name="mdi-plus-circle-outline"
+          size="50px"
+          color="grey-13"
+          @click="myTitle(false)"
+          class="cursor-pointer"
         />
-      <!-- 배지가 있을 경우 -->
-        <!-- <img
-          v-if="badge.id"
+        <img
+          v-else
           :src="profil.change"
           class="cursor-pointer"
-          width="100"
-          oncontextmenu="return false"> -->
+          width="50">
+      </div>
       <q-card-section>
         아이디 {{info.username}} | 생년월일 {{birthday}}
         <br>
@@ -67,7 +67,8 @@
       :title="apply.title"
       :changeMode="false"
       :type="type"
-      :items="info.own_title"
+      :titles="info.own_title"
+      :icons="info.own_icon"
       @reverse="applyTitle"
     />
   </q-card>
@@ -97,11 +98,14 @@ export default {
     let computedTitle = computed(() => title.value)
     const date = dayjs(props.info.birthday)
     const birthday = `${date.get('y')}년 ${date.get('M')+1}월 ${date.get('D')}일생`
-    let profil = reactive({
+    const profil = reactive({
       path: props.info.profil,
       change: computed(() => drf.file.path() + profil.path)
-      })
-    let computedProfil = computed(() => profil.value)
+    })
+    const badge = reactive({
+      path: props.info.wear_icon,
+      change: computed(() => drf.file.path() + badge.path)
+    })
     let files = null
     const apply = reactive({
       prompt: false,
@@ -187,7 +191,7 @@ export default {
       birthday,
       files,
       profil,
-      computedProfil,
+      badge,
       myTitle,
       applyTitle,
       changeProfil,
