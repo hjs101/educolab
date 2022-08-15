@@ -24,7 +24,7 @@ def room(request, room_name):
     
 class AnswerSubmitView(APIView):
     def post(self, req):
-        answer = req.data['answer']
+        answer = int(req.data['answer'])
         quiz_num = req.data['quiz_question_id']
         room_num = req.data['room_num']
         question = QuizQuestions.objects.get(id=quiz_num)
