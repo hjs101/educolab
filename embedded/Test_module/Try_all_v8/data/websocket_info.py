@@ -21,10 +21,11 @@ class ws_proc:
                 print("다음문제 메세지")
                 self.quiz_pk = json.loads(self.data)["proc_pk"]
                 self.next_flag=1
+                return self.data
             elif json.loads(self.data)["message"] == "결과 보기":
                 print("퀴즈 종료 메세지")
                 self.next_flag=-1
-            return self.data
+                return self.data
 
     def close_ws(self):
         print("디스커넥트")
