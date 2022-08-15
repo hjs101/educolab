@@ -95,6 +95,7 @@ export default {
     const router = useRouter()
     const school = store.getters.currentUser.schoolname
     let title = ref(props.info.wear_title?.title)
+    let icon = ref(props.info.wear_icon?.title)
     let computedTitle = computed(() => title.value)
     const date = dayjs(props.info.birthday)
     const birthday = `${date.get('y')}년 ${date.get('M')+1}월 ${date.get('D')}일생`
@@ -118,24 +119,28 @@ export default {
       apply.title = title? '보유 업적 목록': '보유 배지 목록'
       apply.prompt = true
     }
-    const applyTitle = (val, pk, type, name) => {
-      console.log(val, pk, type, name)
+    const applyTitle = (val, type, pk, name) => {
+      console.log(val, type, pk, name)
       if (val && name !== title.value ) {
         let url = null
-        if (type) {
+        if (type.value) {
           url = drf.myPage.changeTitle()
         } else {
           url = drf.myPage.changeIcon()
         }
+        console.log(url)
         axios({
           url,
           method: 'put',
           headers: store.getters.authHeader,
           data: {pk,}
         })
-          .then(() => {
-            title.value = name
-            console.log('성공')
+          .then((res) => {
+            if (props.type) {
+              title.value = name
+            } else {
+              icon.value = name
+            }
           })
       }
       apply.prompt = false
@@ -187,6 +192,7 @@ export default {
       school,
       apply,
       title,
+      icon,
       type,
       birthday,
       files,

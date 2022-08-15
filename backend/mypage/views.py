@@ -94,7 +94,8 @@ class ProfilChangeView(APIView):
 
     def delete(self, req):
         user = req.user
-        user.profil = 'accounts/profils/profile1.jpg'
+        user.profil ='accounts/profils/profile1.jpg'
+        print(user.profil)
         user.save()
         return Response({
             "success" : True,
@@ -126,9 +127,7 @@ class TitleChangeView(APIView):
 class IconChangeView(APIView):
     def put(self,request):
         user = request.user
-
         user.wear_icon = Icon.objects.get(id=request.data.get('pk'))
-
         user.save()
 
         return Response({
