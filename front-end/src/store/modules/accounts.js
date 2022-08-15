@@ -396,6 +396,7 @@ export const accounts = {
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     },
     login({ commit, dispatch }, credentials) {
+<<<<<<< HEAD
       axios({
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -504,6 +505,13 @@ export const accounts = {
             console.log(state.state.sudentInfo)
 =======
 =======
+=======
+      axios.post(
+        drf.accounts.login(),
+        credentials,
+        { withCredentials: true }
+      )
+>>>>>>> 73fb905 (fix : 프론트쪽 login 주소 변경)
         .then((res) => {
           const access = res.data.access
           dispatch("saveToken", access)
