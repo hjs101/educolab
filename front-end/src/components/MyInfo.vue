@@ -6,8 +6,7 @@
         <img
           :src="profil.change"
           class="cursor-pointer"
-          width="100"
-          oncontextmenu="return false">
+          width="100">
       </label>
       <input
         type="file"
@@ -24,7 +23,6 @@
         color="grey-13"
         @click="myTitle(false)"
         class="cursor-pointer"
-        oncontextmenu="return false"
         />
       <!-- 배지가 있을 경우 -->
       <!-- <q-img

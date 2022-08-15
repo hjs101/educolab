@@ -447,13 +447,6 @@ const routes = [
 >>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
   },
 
-  // 내 필기(학생)
-  {
-    path: '/student/writing',
-    name: 'StudentWritingView.vue',
-    component: () => import('@/views/StudentWritingView')
-  },
-
   // 포인트 상점(학생)
   {
     path: '/student/point',

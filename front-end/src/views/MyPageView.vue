@@ -1,5 +1,8 @@
 <template>
-  <div v-if="data.computedMy">
+  <div
+    v-if="data.computedMy"
+    oncontextmenu="return false"
+    onselectstart="return false">
     <h1>{{userType}} 마이 페이지</h1>
     <h3> 안녕하세요 {{data.my.userinfo.name}}님</h3>
     <my-info :info="data.my.userinfo" :profilImg="data.my.userinfo.profil" />
