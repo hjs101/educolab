@@ -34,18 +34,6 @@ class Quiz_Waiting_Screen(Screen):
         self.p = Thread(target=self.manager.ws.recv_data, daemon=True)
         self.p.start()
         
-        ##**# socket 통신 초기화 및 입장 신호 작성 요청
-        ##**# socket 통신 신호 받는 것은 Thread 이용해야 하는 것 같은 데... 잘 모르겠음
-
-    ### event 참고자료
-    # def test(self):
-    #     if self.animate_flag:
-    #         self.animate_flag=False
-    #         self.event1()
-    #     else:
-    #         self.animate_flag=True
-    #         Clock.unschedule(self.event1)
-    
     def update_image(self, dt):
         ##**# 대기 인원 업데이트
         self.ids.sub_title.text= f'방 번호 : {self.room_number}'
@@ -54,12 +42,10 @@ class Quiz_Waiting_Screen(Screen):
         if self.manager.ws.next_flag > 0 : # 퀴즈로 넘어가기
             Clock.unschedule(self.event1)
             self.manager.transition=NoTransition()
-            # self.manager.transition.direction=NoTransition()
             self.manager.current="Quiz_count"
         if self.manager.ws.next_flag < 0 : # 결과로 넘어가기
             Clock.unschedule(self.event1)
             self.manager.transition=NoTransition()
-            # self.manager.transition.direction=NoTransition()
             self.manager.current="Quiz_result"               
         self.manager.ws.next_flag = 0
         ####################################################
