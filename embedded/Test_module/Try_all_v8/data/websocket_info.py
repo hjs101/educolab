@@ -13,6 +13,10 @@ class ws_proc:
         print("보낸 메세지: {}".format(json.dumps(send_msg)))
         self.ws.send(json.dumps(send_msg))
 
+    def recv_data_temp(self):
+        self.data = self.ws.recv()
+        return self.data
+
     def recv_data(self):
         while True:
             self.data = self.ws.recv()

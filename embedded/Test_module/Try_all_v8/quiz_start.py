@@ -33,7 +33,7 @@ class Quiz_Start_Screen(Screen):
             }
             self.manager.quiz_flag = True
             self.manager.access_quiz(self.send_msg, "connect")
-            self.manager.access_quiz("", "receive")
+            self.manager.access_quiz("", "stu_join")
 
             if json.loads(self.manager.recv_data)["message"] == "방이 없네요":
                 self.popup.ids.alert.text="방이 없네요"

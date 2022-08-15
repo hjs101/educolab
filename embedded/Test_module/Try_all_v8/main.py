@@ -82,7 +82,11 @@ class WindowManager(ScreenManager):
                 self.ws.connect_ws(self.room_num, send_msg)
             elif cmd == "receive":
                 self.recv_data = self.ws.recv_data()
+            elif cmd == "stu_join":
+                self.recv_data = self.ws.recv_data_temp()
         else:
+            self.room_num = 0
+            self.prob_num = 1
             self.ws.close_ws()
             
     def onStop(self): # 창 종료 버튼
