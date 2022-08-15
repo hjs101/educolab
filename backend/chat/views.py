@@ -29,7 +29,12 @@ class AnswerSubmitView(APIView):
         room_num = req.data['room_num']
         question = QuizQuestions.objects.get(id=quiz_num)
         answerflag = False
+        print(answer)
+        print(quiz_num)
+        print(room_num)
+        print(question.data)
         if question.answer == answer:
+            print("kkk")
             answerflag = True
             quiz_answer_serializer = QuizAnswerSerializer(data = {"answerflag":answerflag})
             room = QuizRoom.objects.get(roomnum=room_num)

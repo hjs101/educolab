@@ -101,9 +101,12 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def room_delete(self, data):
-        quiz_room = QuizRoom.objects.get()
+        if self.req.user != self.Userinfo.objects.get(username=data['id']):
+            return "잘못된 접근입니다."
+        quiz_room = QuizRoom.objects.get(roomnum=data['roomnum'])
         quiz_room.delete()
         return "삭제 성공"
+    
     @database_sync_to_async
     def create_room(self, data):
         quizroom_serializer = QuizRoomSerializer(data=data)
