@@ -400,8 +400,8 @@ REST_FRAMEWORK = {
 =======
 =======
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080/",
-    "http://192.168.0.15:8080/",
+    "http://localhost:8080",
+    "http://192.168.0.15:8080",
 ]
 =======
 CORS_ALLOW_ORIGINS_ALL = True
