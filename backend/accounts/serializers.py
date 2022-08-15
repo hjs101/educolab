@@ -214,7 +214,11 @@ class ProfilFileSerializer(serializers.ModelSerializer):
         fields = 'profil'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 class MyTokenRefershSerializer(TokenRefreshSerializer):
+=======
+class MyTokenRefreshSerializer(TokenRefreshSerializer):
+>>>>>>> 3c56f07 (feat : 지난주 랭킹 구현)
         # response 커스텀 
     default_error_messages = {
         'no_active_account': {'message':'username or password is incorrect!',
@@ -248,6 +252,7 @@ from dj_rest_auth.registration.serializers import RegisterSerializer
 >>>>>>> 559df98 ( Feat : 버그 수정)
 =======
     
+<<<<<<< HEAD
 class MyTokenRefershView(TokenRefreshView):
     serializer_class = MyTokenRefershSerializer
 >>>>>>> b9da983 (Feat : mypage 구현중)
@@ -297,6 +302,10 @@ class MyTokenObtainPairView(TokenObtainPairView):
 class MyTokenRefershView(TokenRefreshView):
     serializer_class = MyTokenRefershSerializer
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+class MyTokenRefreshView(TokenRefreshView):
+    serializer_class = MyTokenRefreshSerializer
+>>>>>>> 3c56f07 (feat : 지난주 랭킹 구현)
 
 class CustomRegisterSerializer(RegisterSerializer):
     userflag =serializers.BooleanField()

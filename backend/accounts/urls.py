@@ -27,7 +27,7 @@ from rest_framework_simplejwt.views import (
 <<<<<<< HEAD
     TokenVerifyView,
 )
-from .serializers import MyTokenObtainPairView, MyTokenRefershView
+from .serializers import MyTokenObtainPairView, MyTokenRefreshView
 ##aaadd
 urlpatterns = [
 <<<<<<< HEAD
@@ -118,9 +118,14 @@ urlpatterns = [
     path('login_web/', views.LoginView.as_view()),
 >>>>>>> a550878 (feat : 쿠키 보내기, fix: 과제 로그에도 가진 포인트 추가)
 	path('login/verify/', TokenVerifyView.as_view(), name='token_verify'),
+<<<<<<< HEAD
     path('login/refresh/', MyTokenRefershView.as_view(), name='token_refresh'),
     path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+    path('login/refresh/', MyTokenRefreshView.as_view(), name='token_refresh'),
+    path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'), 
+>>>>>>> 3c56f07 (feat : 지난주 랭킹 구현)
     path('check_username/', views.CheckUsernameView.as_view(), name='checkusername'), 
     path('find_username/', views.FindUsernameView.as_view(), name='findusername'),
     path('send_signup_email/', views.SendSignupEmailView.as_view(), name='sendsignupemail'),
