@@ -13,6 +13,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const PROFIL = 'http://127.0.0.1:8000'
@@ -67,6 +68,10 @@ const FILE = 'http://127.0.0.1:8000'
 // const FILE = 'http://127.0.0.1:8000'
 const FILE = 'https://i7c102.p.ssafy.io'
 >>>>>>> 519727a (Fix: front_user 브랜치와 병합)
+=======
+// const FILE = 'http://127.0.0.1:8000'
+const FILE = 'https://i7c102.p.ssafy.io'
+>>>>>>> 9b08e30 (설문조사  주관식 답변  sass)
 const BASE_URL = FILE + '/api/'
 const ACCOUNTS = BASE_URL + 'accounts/'
 const NOTICE = BASE_URL + 'notice/'
