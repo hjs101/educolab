@@ -32,7 +32,7 @@ class AnswerSubmitView(APIView):
         print(answer)
         print(quiz_num)
         print(room_num)
-        print(question.data)
+        print(question.answer)
         if question.answer == answer:
             print("kkk")
             answerflag = True
