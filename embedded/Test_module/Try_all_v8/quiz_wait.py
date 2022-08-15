@@ -46,11 +46,6 @@ class Quiz_Waiting_Screen(Screen):
     #         self.animate_flag=True
     #         Clock.unschedule(self.event1)
     
-    def next(self):
-        pass ##**# 임시로 화면 넘기는 버튼. Socket 구현시 삭제/조정 예정
-    def next2(self):
-        pass ##**# 임시로 화면 넘기는 버튼. Socket 구현시 삭제/조정 예정
-
     def update_image(self, dt):
         ##**# 대기 인원 업데이트
         self.ids.sub_title.text= f'방 번호 : {self.room_number}'
@@ -60,13 +55,13 @@ class Quiz_Waiting_Screen(Screen):
             Clock.unschedule(self.event1)
             self.manager.transition=NoTransition()
             # self.manager.transition.direction=NoTransition()
-            self.manager.ws.next_flag = 0
             self.manager.current="Quiz_count"
         if self.manager.ws.next_flag < 0 : # 결과로 넘어가기
             Clock.unschedule(self.event1)
             self.manager.transition=NoTransition()
             # self.manager.transition.direction=NoTransition()
             self.manager.current="Quiz_result"               
+        self.manager.ws.next_flag = 0
         ####################################################
 
         self.cnt+=1

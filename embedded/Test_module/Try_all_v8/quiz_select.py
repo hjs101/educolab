@@ -44,12 +44,12 @@ class Quiz_Select_Screen(Screen):
             headers={'Authorization': 'Bearer ' + self.manager.access_api()},
             data={
                 "answer": ans,
-                "quiz_question_id": self.manager.prob_num,
+                "quiz_question_id": self.manager.ws.quiz_pk,
                 "room_num": self.manager.room_num
             }
         )
         if self.res.json()["answerflag"]:
-            self.manager.ans_prob.append(self.manager.prob_num)
+            print("정답입니다~")
         self.manager.prob_num += 1
         self.manager.current="Quiz_wait"
         ##**# Quiz 답변 socket 전송 : 답변=ans [int]

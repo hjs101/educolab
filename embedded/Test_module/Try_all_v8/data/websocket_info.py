@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 import websocket
 import json
 websocket.enableTrace(True)
@@ -20,8 +19,9 @@ class ws_proc:
             print("받은 메세지: {}".format(self.data))
             if json.loads(self.data)["message"] == "퀴즈 시작":
                 print("다음문제 메세지")
+                self.quiz_pk = json.loads(self.data)["proc_pk"]
                 self.next_flag=1
-            elif json.loads(self.data)["message"] == "퀴즈 종료":
+            elif json.loads(self.data)["message"] == "결과 보기":
                 print("퀴즈 종료 메세지")
                 self.next_flag=-1
             return self.data

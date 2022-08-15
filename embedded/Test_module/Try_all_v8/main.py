@@ -75,7 +75,6 @@ class WindowManager(ScreenManager):
         self.content_number=0    #어떤 글?
         self.room_num=0
         self.quiz_flag = False
-        self.ans_prob = []
 
     def access_quiz(self, send_msg, cmd):
         if self.quiz_flag:

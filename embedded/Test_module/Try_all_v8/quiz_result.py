@@ -21,23 +21,23 @@ class Quiz_Result_Screen(Screen):
     def on_pre_enter(self):
         ##### change label #####
         self.key_color=[77/255, 166/255, 96/255,1]
-        self.res = requests.post(
+        self.res = requests.get(
             'https://i7c102.p.ssafy.io/api/chat/req/stu_result/',
             headers={'Authorization': 'Bearer ' + self.manager.access_api()},
-            data={
+            params={
                 "room_num": self.manager.room_num
             }
         )
-        self.ids.title.text=f'당신은 {json.loads(self.res.json()["rank"])}위 입니다\n'
-        self.ids.title.text+=f'{json.loads(self.res.json()["question_cnt"])}개 맞추셨네요!\n'
+        print(self.res.text)
+        self.ids.title.text=f'당신은 {json.loads(self.res.text)["rank"]}위 입니다\n'
+        self.ids.title.text+=f'{len(json.loads(self.res.text)["answers"])}개 맞추셨네요!\n'
         self.ids.content.text=f'<맞춘 문제>\n'
-        
-        i == 0
-        for ans in json.loads(self.res.json()["answers"]):
-            self.ids.content.text += f'{ans}번, '
-            if self.i % 4 == 0: self.ids.content.text += f'\n'
+
+        i = 0
+        for ans in json.loads(self.res.text)["answers"]:
+            self.ids.content.text += f'{ans}번\t'
+            if i % 4 == 0: self.ids.content.text += f'\n'
             i += 1
-        self.ids.content.text.rstrip(", ")
         # self.ids.title.text=f'당신은 {self.rank}위 입니다'
         # self.ids.sub_title.text= f'대기 인원 : {self.people_num}'
         # self.ids.loading.source='./icon/Loading.png'
