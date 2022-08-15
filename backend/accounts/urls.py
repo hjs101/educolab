@@ -39,6 +39,7 @@ urlpatterns = [
 >>>>>>> 6f9cfef (style : 모델 변경)
 =======
     path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+<<<<<<< HEAD
 	path('login/verify/', TokenVerifyView.as_view(), name='token_verify'),
 <<<<<<< HEAD
     path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
@@ -113,6 +114,9 @@ urlpatterns = [
 =======
     path('login_web/', views.LoginView.as_view()),
 >>>>>>> 3d9bf43 (fix : cors 적용)
+=======
+    path('login_web/', views.LoginView.as_view()),
+>>>>>>> a550878 (feat : 쿠키 보내기, fix: 과제 로그에도 가진 포인트 추가)
 	path('login/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('login/refresh/', MyTokenRefershView.as_view(), name='token_refresh'),
     path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),
