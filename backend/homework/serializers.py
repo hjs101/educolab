@@ -61,7 +61,11 @@ class SubmitHomeworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubmitHomework
 <<<<<<< HEAD
+<<<<<<< HEAD
         fields = ('id','student','content','submit_at','submit_flag','atch_file_name','atch_file')
+=======
+        fields = ('id','student','content','submit_at','submit_flag','atch_file_name','atch_file','check_flag',)
+>>>>>>> 4f92e2a (fix : 다양한 기능 수정)
 
 class SubmitHomeworksubmitSerializer(serializers.ModelSerializer):
     class Meta:

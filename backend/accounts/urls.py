@@ -32,6 +32,8 @@ from .serializers import MyTokenObtainPairView, MyTokenRefershView
 urlpatterns = [
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     path('/login', views.login, name = "login"),
 =======
 >>>>>>> 6f9cfef (style : 모델 변경)
@@ -99,6 +101,14 @@ urlpatterns = [
 =======
 =======
     path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+=======
+    path('login_1/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('login/', views.LoginView.as_view()),
+>>>>>>> 4f92e2a (fix : 다양한 기능 수정)
+=======
+    path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('login_1/', views.LoginView.as_view()),
+>>>>>>> e0aec52 (fix : login 수정)
 	path('login/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('login/refresh/', MyTokenRefershView.as_view(), name='token_refresh'),
     path('schoolinfo/', views.SchoolInfoView.as_view(), name='schoolinfo'),

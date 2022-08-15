@@ -47,6 +47,7 @@ class IconView(APIView):
             request.user.plus_point -= buy_icon.price
             request.user.own_title.add(buy_icon)
             request.user.save()
+
             return Response({"success" : True, "message" : "구매가 완료되었습니다"})
 
 

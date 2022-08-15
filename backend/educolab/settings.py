@@ -338,6 +338,7 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
 
 # 우선 모두 연결해 놓았습니다.
+<<<<<<< HEAD
 CORS_ALLOW_ALL_ORIGINS = True
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -395,6 +396,13 @@ REST_FRAMEWORK = {
 =======
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
 =======
+=======
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080"
+]
+
+CORS_ALLOW_CREDENTIALS = True
+>>>>>>> 4f92e2a (fix : 다양한 기능 수정)
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -412,6 +420,13 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=5),
     'USER_ID_FIELD': 'username',
+
+    'AUTH_COOKIE': 'refresh_token',
+    'AUTH_COOKIE_DOMAIN': None,
+    'AUTH_COOKIE_SECURE': False,
+    'AUTH_COOKIE_HTTP_ONLY': False,
+    'AUTH_COOKIE_PATH': '/',
+    'AUTH_COOKIE_SAMESITE': 'Lax'
 }
 
 REST_AUTH_REGISTER_SERIALIZERS = {

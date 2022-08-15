@@ -26,10 +26,15 @@ from sre_constants import SUCCESS
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import check_password
+from django.contrib.auth import authenticate
+from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.middleware import csrf
+
 
 from .serializers import SchoolInfoSerializer
 from .models import SchoolInfo, UserInfo
@@ -485,4 +490,39 @@ class CheckPasswordView(APIView):
         input_password = request.data.get('password')
         check = check_password(input_password,request.user.password)
         return Response({"success" : check})
+<<<<<<< HEAD
 >>>>>>> 5ee470c (feat : pw 확인 기능 구현)
+=======
+
+def get_tokens_for_user(user):
+    refresh = RefreshToken.for_user(user)
+    return {
+        'refresh': str(refresh),
+        'access': str(refresh.access_token)
+    }
+
+class LoginView(APIView):
+    permission_classes = [ AllowAny,]
+
+    def post(self, request):
+        response = Response()
+        username = request.data.get('username')
+        password = request.data.get('password')
+        user = authenticate(username=username,password=password)
+        if user is not None:
+            if user.is_active:
+                data = get_tokens_for_user(user)
+                response.set_cookie(
+                    key= settings.SIMPLE_JWT['AUTH_COOKIE'],
+                    value = data['refresh'],
+                    expires = settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME'],
+                    secure = settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
+                    httponly = settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+                    samesite = settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
+                )
+                csrf.get_token(request)
+                response.data = {"success" : True, "message" : "Login 성공","access" : data['access']}
+                return response
+        else:
+            return Response({"success" : False, "message": "올바른 번호를 입력하세요"}, status=status.HTTP_404_NOT_FOUND)
+>>>>>>> 4f92e2a (fix : 다양한 기능 수정)
