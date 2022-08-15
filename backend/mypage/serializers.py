@@ -25,7 +25,7 @@ class PointlogSerializer(serializers.ModelSerializer):
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ['username','email','userflag','name','birthday','phone_number','subject','homeroom_teacher_flag','grade','class_field','profil']
+        fields = ['username','email','userflag','name','birthday','phone_number','subject','homeroom_teacher_flag','grade','class_field', 'profil']
         
 class StudentSerializer(serializers.ModelSerializer):
 <<<<<<< HEAD

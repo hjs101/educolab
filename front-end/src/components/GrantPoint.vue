@@ -1,9 +1,9 @@
 <template>
-  <q-form
+  <q-form class="q-py-lg" 
     @submit="grantPoint"
     @reset="initForm"
     >
-    <q-card>
+    <q-card  class="q-pa-xl">
       <q-card-section>
         <div class="text-h6">상/벌점</div>
       </q-card-section>

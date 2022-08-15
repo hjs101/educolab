@@ -1,7 +1,8 @@
 <template>
-  <q-card class="my-card">
+  <q-card class="q-pa-md" oncontextmenu="return false" onselectstart="return false">
     <h5 class="text-center">내 정보</h5>
     <q-card-section horizontal>
+      <!-- 프로필 -->
       <label for="profil">
         <img
           :src="profil.change"
@@ -15,7 +16,7 @@
         @input="changeProfil"
         accept="image/gif, image/jpeg, image/png"
       />
-      <!-- 배지가 없을 때만 뜸 -->
+      <!-- 배지가 없을 때-->
       <q-icon
         v-if="!info.userflag"
         name="mdi-plus-circle-outline"
@@ -25,9 +26,12 @@
         class="cursor-pointer"
         />
       <!-- 배지가 있을 경우 -->
-      <!-- <q-img
-
-      /> -->
+        <!-- <img
+          v-if="badge.id"
+          :src="profil.change"
+          class="cursor-pointer"
+          width="100"
+          oncontextmenu="return false"> -->
       <q-card-section>
         아이디 {{info.username}} | 생년월일 {{birthday}}
         <br>
@@ -110,12 +114,17 @@ export default {
       apply.title = title? '보유 업적 목록': '보유 배지 목록'
       apply.prompt = true
     }
-    const applyTitle = (val, pk, name) => {
-      console.log(val, pk, name)
+    const applyTitle = (val, pk, type, name) => {
+      console.log(val, pk, type, name)
       if (val && name !== title.value ) {
-        console.log('신호 보낼 것')
+        let url = null
+        if (type) {
+          url = drf.myPage.changeTitle()
+        } else {
+          url = drf.myPage.changeIcon()
+        }
         axios({
-          url: drf.myPage.changeTitle(),
+          url,
           method: 'put',
           headers: store.getters.authHeader,
           data: {pk,}
@@ -144,8 +153,6 @@ export default {
         .then(() => {
           // 프로필 적용
           profil.path = drf.file.change() + photo.files[0].name
-          
-          console.log(profil.path)
           console.log('적용되었습니다')
         })
     }
@@ -170,7 +177,6 @@ export default {
       } else {
         store.dispatch('changeInfo', props.info)
         router.push('/change/info')
-
       }
     }
     return {

@@ -29,15 +29,17 @@ class MypageMainView(APIView):
 
     ## 회원정보수정(담임등록 포함)
     def put(self,req):
-        print(req.data)
         if req.user.userflag:
+<<<<<<< HEAD
             print(1)
             userinfo_serializer = TeacherUpdateSerializer(req.user, data=req.data)
             print(userinfo_serializer)
+=======
+            userinfo_serializer = TeacherSerializer(req.user, data=req.data)
+>>>>>>> 0a91d41 (Feat : 비밀번호 확인, 회원정보 변경 기능 구현 완료, 약간의 스타일 적용)
         else:
             userinfo_serializer = StudentUpdateSerializer(req.user, data=req.data)
         if userinfo_serializer.is_valid(raise_exception=True):
-            print('valid')
             userinfo_serializer.save(school = req.user.school, password = req.user.password)
         return Response({
             "success":True,

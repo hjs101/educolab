@@ -768,6 +768,12 @@ export default {
       display: flex;
     }
   }
+  .active {
+    color: #5097de
+  }
+  .red {
+    color: red;
+  }
 </style>
 
 <script>

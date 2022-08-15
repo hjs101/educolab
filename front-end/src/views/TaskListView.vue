@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <h1>{{userType}} 과제 페이지</h1>
+  <main class="baseStyle">
+    <h3>{{userType}} 과제 페이지</h3>
     <section class="q-pa-md">
       <article div class="q-gutter-md" style="max-width: 300px">
         <q-input label="과제 검색" v-model="query"/>

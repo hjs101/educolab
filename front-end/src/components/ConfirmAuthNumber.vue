@@ -71,6 +71,7 @@
         message="인증되었습니다"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         @reverse="alert = false"
 =======
         path=""
@@ -78,6 +79,9 @@
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
         path="/change/password"
+=======
+        :path="params.info?'/change/password':''"
+>>>>>>> 0a91d41 (Feat : 비밀번호 확인, 회원정보 변경 기능 구현 완료, 약간의 스타일 적용)
         @reverse="alert.state = false"
 >>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
       />
@@ -228,8 +232,11 @@ export default {
     })
     const sendData = () => {
       if (number.isValidNumber) {
-        if (route.params.info === 'password') {
+        // 비밀번호 찾기
+        if (params.info === 'password') {
           alert.state = true
+          } else if (params.userData === 'info') {
+            store.dispatch('changeInfo', props.data)
           } else {
           store.dispatch('changeData', props.data)
         }

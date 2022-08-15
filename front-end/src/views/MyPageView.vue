@@ -1,10 +1,16 @@
 <template>
+<<<<<<< HEAD
   <div
     v-if="data.computedMy"
     oncontextmenu="return false"
     onselectstart="return false">
     <h1>{{userType}} 마이 페이지</h1>
     <h3> 안녕하세요 {{data.my.userinfo.name}}님</h3>
+=======
+  <div v-if="data.computedMy" class="baseStyle">
+    <h3>{{userType}} 마이 페이지</h3>
+    <h5> 안녕하세요 {{data.my.userinfo.name}}님</h5>
+>>>>>>> 0a91d41 (Feat : 비밀번호 확인, 회원정보 변경 기능 구현 완료, 약간의 스타일 적용)
     <my-info :info="data.my.userinfo" :profilImg="data.my.userinfo.profil" />
     <point-list v-if="!isTeacher" :point="data.my.point_log"/>
     <grant-point v-else />

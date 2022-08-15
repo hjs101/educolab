@@ -1,10 +1,10 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-py-lg" oncontextmenu="return false" onselectstart="return false" >
     <q-card>
       <q-card-section>
-        <div class="text-h6">상/벌점 내역</div>
+        <div class="text-h6">내 상/벌점</div>
       </q-card-section>
-      <q-markup-table>
+      <q-markup-table class="q-pa-xl">
         <thead>
           <tr>
             <!-- <th class="text-center">번호</th> -->

@@ -1,7 +1,12 @@
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <q-card flat bordered>
     <h1>과제 상세 페이지</h1>
+=======
+  <main flat bordered class="baseStyle">
+    <h3>과제 상세 페이지</h3>
+>>>>>>> 0a91d41 (Feat : 비밀번호 확인, 회원정보 변경 기능 구현 완료, 약간의 스타일 적용)
     <section>
       <!-- 과제 내용 & 교사용 -->
       <task-detail-content v-if="!isEmptyTask" :pk="pk" :task="task" :isTeacher="user.isTeacher"/>
@@ -37,7 +42,7 @@
         </router-link>
       </div>
     </section>
-  </q-card>
+  </main>
 </template>
 
 <script>

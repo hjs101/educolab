@@ -6,40 +6,41 @@
       </q-card-section>
 
       <q-card-section v-if="changeMode">
-        <div class="text-h6 center">비밀번호 입력이 필요합니다</div>
+        <div :class="{red: confirm.computedMatch}">{{confirm.computedMessage}}</div>
         <q-input
+          clearable
           label="비밀번호"
           type="password"
           v-model="confirm.password"/>
       </q-card-section >
-      <!-- 칭호 테스트 중-->
+      <!-- 칭호 테스트 완료 (추후 samples -> items)-->
       <q-card-section v-else-if="type">
         <q-btn
         flat
         v-for="sample in samples"
         :key="sample.id"
-        :text-color="sample.id === alias.computedId? 'blue':'black'"
+        :text-color="sample?.id === alias.computedId? 'blue':'black'"
         @click="selectAlias(0,sample.id, sample.title)">
           <!-- 칭호명 -->
           {{sample.title}}
         </q-btn>
       </q-card-section>
-      <!-- 칭호  -->
-      <!-- <q-card-section v-else-if="type">
-        <q-card v-for="item in items" :key="item.id" @click="selectAlias(0,item.id, item.title)">
-          <q-card-section :class="{active: item.id === alias.id}">
-            <p>{{item.title}}</p>
-          </q-card-section>
-        </q-card>
-      </q-card-section> -->
       <!-- 배지 -->
       <q-card-section v-else>
-        <q-card v-for="item in items" :key="item.id" @click="selectAlias(1,item.id, item.title)">
-          <q-card-section :text-color="sample.id === alias.computedId? 'blue':'black'">
+        <q-card
+          v-for="item in items"
+          :key="item.id"
+          @click="selectAlias(1,item.id, item.title)"
+          class="cursor-pointer"
+          oncontextmenu="return false">
+          <q-card-section>
             <!-- 이미지 -->
-            <!-- <img :src="badge" > -->
+            <img :src="educolab" >
             <!-- 배지명 -->
-            <p>{{item.title}}</p>
+            <br>
+            <span
+              :class="{active:item.id === badge.computedId}"
+            >{{item.title}}</span>
           </q-card-section>
         </q-card>
       </q-card-section>
@@ -57,7 +58,7 @@
 
 <script>
 import {useRouter} from 'vue-router'
-// import badge from '@/assets/quiz.png'
+import educolab from '@/assets/educolab.png'
 import axios from 'axios'
 import drf from '@/api/drf.js'
 import { computed, reactive } from 'vue'
@@ -77,6 +78,9 @@ export default {
     const confirm = reactive({
       password: null,
       prompt: true,
+      incorrect: false,
+      computedMatch: computed(() => confirm.incorrect),
+      computedMessage: computed(() => confirm.incorrect? '비밀번호가 틀렸습니다':'비밀번호 입력이 필요합니다')
     })
     const doNothing = () => {
       if (props.changeMode) {
@@ -92,12 +96,19 @@ export default {
       id: null,
       computedId: computed(() => alias.id)
     })
-    // 여기에 뱃지
+    const badge = reactive({
+      name: null,
+      id: null,
+      computedId: computed(() => badge.id)
+    })
     const selectAlias = (option, id, name) => {
       console.log('선택', option, id, name)
       if (option === 0) {
         alias.id = id
         alias.name = name
+      } else {
+        badge.id = id
+        badge.name = name
       }
     }
     const samples = [
@@ -115,9 +126,14 @@ export default {
             password: confirm.password
           }
         })
-        .then(() => {
-          emit('reverse', false)
-          confirm.prompt = false
+        .then((res) => {
+          if (!res.data.success) {
+            confirm.incorrect = true
+            confirm.prompt = true
+          } else {
+            confirm.prompt = false
+          }
+            emit('reverse', false, res.data.success)
         })
         .catch(({response}) => {
           console.log(response)
@@ -127,7 +143,11 @@ export default {
           // password.message = response.data.message
         })
       } else {
-        emit('reverse', true, alias.id, alias.name)
+        if (props.type) {
+          emit('reverse', true, props.type, alias.id, alias.name)
+        } else {
+          emit('reverse', true, props.type,badge.id, badge.name)
+        }
         confirm.prompt = false
       }
     }
@@ -135,10 +155,11 @@ export default {
       move,
       confirm,
       alias,
-      // badge,
       selectAlias,
       doNothing,
-      samples
+      samples,
+      badge,
+      educolab
     }
   }
 }

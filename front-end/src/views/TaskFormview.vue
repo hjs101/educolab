@@ -1,6 +1,10 @@
 <template>
+<<<<<<< HEAD
   <main>
 <<<<<<< HEAD
+=======
+  <main class="baseStyle">
+>>>>>>> 0a91d41 (Feat : 비밀번호 확인, 회원정보 변경 기능 구현 완료, 약간의 스타일 적용)
     <h1>{{userType}} 과제 {{type}} 페이지 {{taskPk}}</h1>
     <section class="q-pa-md" style="max-width: 400px">
       <q-form

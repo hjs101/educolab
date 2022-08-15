@@ -1,5 +1,5 @@
 <template>
-  <article div class="q-gutter-md" style="max-width: 300px">
+  <article div class="q-gutter-md baseStyle" style="max-width: 300px" >
     <q-input label="제목 검색" v-model="search.query"/>
     <!-- a 태그로 바꿀 예정 -->
     <router-link :to="{name: 'SearchTaskView', params:

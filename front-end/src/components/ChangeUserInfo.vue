@@ -82,6 +82,7 @@ export default {
     })
     const updateInfo = () => {
       const data= store.getters.getUserInfo
+      console.log(data)
       axios({
         url: drf.myPage.main(),
         method: 'put',

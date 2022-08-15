@@ -1,4 +1,4 @@
-<template>
+<template class="baseStyle">
 <!-- 비밀번호 입력 전까지 뜨지 않게 -->
   <main class="q-mx">
     <h3>CHANGE {{type.title}}</h3>
@@ -11,9 +11,9 @@
         <change-user-info v-if="type.isTypeInfo"/>
         <!-- 비밀번호 변경 -->
         <login-info v-if="!type.isTypeInfo" :changeMode="true"/>
-        <!-- 비밀번호 입력 팝업 -->
       </section>
     </q-form>
+    <!-- 비밀번호 입력 팝업 -->
     <my-page-pop-up
       v-if="change.mode"
       :title="change.title"
@@ -68,10 +68,15 @@ export default {
       password: false,
       state: computed(() => correct.password)
     })
-    const render = (res) => {
-      if (res === false) {
-        // 비밀번호 일치
-        correct.password = true
+    const render = (type, success) => {
+      if (!type) {
+        if (success) {
+          // 비밀번호 일치
+          correct.password = true
+        } else {
+          console.log(false)
+          change.prompt = true
+        }
       }
     }
     return {
