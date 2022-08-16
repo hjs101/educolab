@@ -61,8 +61,13 @@ class RankScoreView(APIView):
         students = room.getuser_byroom.order_by('-score')
         data = []
         cnt = 1;
+        score_log = students[0].score
+        acc = 1;
         for student in students:
-            print(cnt)
+            if score_log == student.score:
+                acc +=1
+            else :
+                acc = 1
             data.append({
                 "rank" : cnt,
                 "title" : "" if student.student.wear_title is None else student.student.wear_title.title ,
@@ -72,7 +77,6 @@ class RankScoreView(APIView):
             cnt +=1
             if cnt > 5:
                 break
-        print(data)
         return Response({
             "ranks" : data,
         })
