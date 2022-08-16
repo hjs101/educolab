@@ -404,7 +404,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://192.168.0.15:8080",
     "https://i7c102.p.ssafy.io",
-    "http://118.222.223.154"
+    "http://118.222.223.154",
+    "http://182.215.159.6"
 ]
 =======
 CORS_ALLOW_ORIGINS_ALL = True
