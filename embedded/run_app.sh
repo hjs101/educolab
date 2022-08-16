@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ../venv/bin/activate
+source ~/Documents/venv/bin/activate
 echo "run script"
-python3 ./embedded/educolab_app/main.py
+python3 ./educolab_app/main.py
 deactivate

@@ -3,7 +3,6 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 import requests
-from pymysql import NULL
 from myTextInput import limitedTextInput
 from myPopup import MyPopUp
 import json
