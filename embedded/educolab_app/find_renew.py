@@ -32,6 +32,7 @@ class Find_renew(Screen):
         self.rightInput=self.ids.right_input.text
 
         ##### 비밀번호 일치 확인
+<<<<<<< HEAD
         if(self.leftInput == self.rightInput and len(self.leftInput) > 0):
             self.data = {
                 'name': self.name_temp,
@@ -53,10 +54,31 @@ class Find_renew(Screen):
 =======
             self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/change_pw/', data=self.data)
 >>>>>>> d61ea9f (fix: embedded update)
+=======
+        self.data = {
+            'name': self.name_temp,
+            'email': self.email_temp,
+            'username': self.username_temp,
+            'password1': self.leftInput,
+            'password2': self.rightInput,
+        }
+        self.res = requests.post(
+            'https://i7c102.p.ssafy.io/api/accounts/change_pw/',
+            data=self.data
+        )
+
+        if self.res.json()["success"] and len(self.leftInput) > 0:
+
+>>>>>>> 0b154d1 (Fix : 임베디드 변경사항 추가)
             self.next_page = "PW_result"
             self.ids.right_info.text = ""
         else:
-            self.ids.right_info.text="비밀번호가\n일치하지 않습니다"
+            if self.res.json()["message"] == "비밀번호가 일치하지 않습니다":
+                self.ids.right_info.text="비밀번호가\n일치하지 않습니다"
+            elif self.res.json()["message"] == "비밀번호는 8자 이상, 영문과 숫자를 혼합해야합니다":
+                self.ids.right_info.text="비밀번호는 8자 이상,\n영문과 숫자를\n혼합해야 합니다"
+            else:
+                self.ids.right_info.text="변경할 비밀번호를\n입력해주세요"
             self.next_page=self.name
 
     def on_leave(self): # 페이지 이동시 기존 입력값 지우기

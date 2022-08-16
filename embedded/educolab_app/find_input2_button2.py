@@ -19,11 +19,8 @@ class Find_input2_button2(Screen):
         Window.clearcolor = (242/255,245/255,247/255,1)
         Window.size = (1280,720)
         Window.borderless=True
-
-        # Builder.load_file('find_input2_button2.kv')
         self.popup=MyPopUp()
-        # self.name_temp=''
-        # self.username_temp=''
+
 
     def on_pre_enter(self):     
         # 화면 출력 내용 변환
@@ -32,6 +29,9 @@ class Find_input2_button2(Screen):
         self.ids.right_sub_title.text="인증번호"
         self.ids.left_btn.text="인증번호 받기"
         self.ids.right_btn.text="ID/PW 찾기"
+        self.popup.ids.alert.text=""
+        self.right_next_flag = False
+        self.left_next_flag = False
         if(self.name=='ID_phone'):
             self.ids.title.text="Find ID"
             self.ids.left_sub_title.text="전화번호"
@@ -88,8 +88,7 @@ class Find_input2_button2(Screen):
         self.manager.before_page=self.name
 
     def left_onPopUp(self): # 왼쪽 버튼 클릭시 팝업 및 다음 페이지 경로 지정
-        self.left_next_flag = False
-        if(self.name=="PW_name"):
+        if self.name=="PW_name":
             self.query = 'select name, username from accounts_userinfo where name=%s and username=%s'
             self.args = (self.leftInput, self.rightInput)
             self.cur = self.manager.DB.execute(query=self.query, args=self.args)
@@ -163,18 +162,21 @@ class Find_input2_button2(Screen):
                 self.left_next_page=self.name
 
     def right_onPopUp(self): # 오른쪽 버튼 클릭시 팝업 및 다음 페이지 경로 지정
-        self.right_next_flag = False
         if self.name == "ID_email" and self.left_next_flag:
             self.right_next_flag = True
         elif self.name == "PW_email":
-            if (self.res.json()['auth_num'] == self.rightInput) and self.left_next_flag:
+            if self.left_next_flag == False: pass
+            elif (self.res.json()['auth_num'] == self.rightInput) and self.left_next_flag:
                 self.right_next_flag = True
     #######################################################
         if self.right_next_flag:
             if self.name == 'ID_email': self.right_next_page = "ID_result"
             elif self.name == 'PW_email': self.right_next_page = "PW_renew"
         else:
-            self.popup.ids.alert.text="다시 입력하여 주십시오"
+            if self.left_next_flag == False:
+                self.popup.ids.alert.text="다시 입력하여 주십시오"
+            elif self.res.json()['auth_num']!=self.rightInput:
+                self.popup.ids.alert.text="인증번호가 틀렸습니다"
             self.popup.open()
             self.right_next_page=self.name
 
