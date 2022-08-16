@@ -7,6 +7,7 @@ import requests, json
 from myTextInput import limitedTextInput
 from kivy.properties import StringProperty
 from myPopup import MyPopUp
+from urllib import request
 
 class Main_Screen(Screen):
     def __init__(self, **kwargs):
@@ -25,18 +26,20 @@ class Main_Screen(Screen):
             self.data = json.load(file)
         self.school_name = self.data["schoolname"] + ' '
         self.query1 = '''
-            select username, grade, class_field, name, plus_point, minus_point 
+            select username, grade, class_field, name, plus_point, minus_point, profil 
             from accounts_userinfo where username=%s and name=%s
         '''
         self.args1 = (self.data["username"], self.data["name"])
         self.cur1 = self.manager.DB.execute(query=self.query1, args=self.args1)
-        for (username, grade, class_field, name, plus_point, minus_point) in self.cur1:
+        for (username, grade, class_field, name, plus_point, minus_point, profil) in self.cur1:
             self.manager.userID = username
             self.student_name = name
             self.grade = str(grade) + '학년 '
             self.class_field = str(class_field) + '반 '
             self.plus_point = str(plus_point)
             self.minus_point = str(minus_point)
+            self.profile_url = "https://i7c102.p.ssafy.io/api/media/{}".format(profil)
+            self.profile_savename = "./icon/profile.jpg"
 
         self.res = requests.get(
             'https://i7c102.p.ssafy.io/api/survey/main_stu',
@@ -45,6 +48,7 @@ class Main_Screen(Screen):
         self.survey_full = json.loads(self.res.text)
         self.survey_cnt = len(self.survey_full)
         self.current_survey = self.survey_full[0]['title']
+        request.urlretrieve(self.profile_url, self.profile_savename)
 
         self.query2 = '''
             select title from pointshop_ptitle 
@@ -64,7 +68,7 @@ class Main_Screen(Screen):
         self.ids.challenge.text=self.emblem
         self.ids.survey.text="설문 (" + str(self.survey_cnt) + ") | " + self.current_survey
 
-        self.ids.profile.img_path='./icon/profile.jpg' # profile in Computer
+        self.ids.profile.img_path='./icon/profile.jpg'
         self.ids.userinfo_icon.img_path='./icon/info.png'
         self.ids.challenge_icon.source='./icon/challenge.png'
         self.ids.good_points_icon.img_path='./icon/plus.png'

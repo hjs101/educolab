@@ -1,12 +1,9 @@
-from msilib.schema import Environment
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen, NoTransition
 from kivy.properties import NumericProperty
 from kivy.clock import Clock
-from threading import Timer, Lock
-import json, websocket, asyncio
 from threading import *
 
 class Quiz_Waiting_Screen(Screen):
