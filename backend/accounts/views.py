@@ -466,7 +466,7 @@ class ChangePWView(APIView):
                 "success" : False,
                 "message" : "비밀번호는 8자 이상, 영문과 숫자를 혼합해야합니다"
             }
-        if not password1.isalpha() and not password1.isdecimal():
+        if password1.isalpha() or password1.isdecimal():
             context = {
                 "success" : False,
                 "message" : "비밀번호는 8자 이상, 영문과 숫자를 혼합해야합니다"
