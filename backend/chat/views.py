@@ -63,25 +63,22 @@ class RankScoreView(APIView):
         cnt = 1;
         score_log = students[0].score
         acc = 0;
-        flag = True
         for student in students:
-
+            if score_log == student.score and student != students[0]:
+                acc +=1
+            elif  student == students[0]:
+                cnt=1
+            else :
+                cnt +=1
+                cnt += acc
+                acc = 0
             data.append({
                 "rank" : cnt,
                 "title" : "" if student.student.wear_title is None else student.student.wear_title.title ,
                 "name" : student.student.name,
                 "score" : student.score,
             })
-            if score_log == student.score and not flag:
-                acc +=1
-            else :
-                cnt +=1
-                cnt += acc
-                acc = 0
-                
-            if flag:
-                flag = False
-                
+
             if cnt > 5:
                 break
         return Response({
