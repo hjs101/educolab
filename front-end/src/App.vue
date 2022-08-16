@@ -205,7 +205,7 @@
   <div>
 >>>>>>> 7f2a492 (설문조사  sass)
       <!-- 교사 navbar -->
-    <div v-if="isLoggedIn && currentUser.userflag" class="jooa-font">
+    <div v-if="flag && currentUser.userflag" class="jooa-font">
         <div class="navBar q-px-xl q-py-md bord-bt">
           <a href="/educolab"><img src="@/assets/educolab.png" alt="educolab" style="width:4rem; height:4rem;"></a>
           <div class="navBarUi nav-size">
@@ -232,7 +232,7 @@
     </div>
 
     <!-- 학생 navbar -->
-    <div class="jooa-font" v-if="isLoggedIn && !currentUser.userflag">
+    <div class="jooa-font" v-if="flag && !currentUser.userflag">
         <div class="navBar q-px-xl q-py-md bord-bt">
           <a href="/educolab"><img src="@/assets/educolab.png" alt="educolab" style="width:4rem; height:4rem;"></a>
           <div class="navBarUi nav-size">
@@ -792,6 +792,10 @@ export default {
   },
   computed: {
     ...mapGetters(['isLoggedIn', 'currentUser']),
+    flag() {
+      if (this.isLoggedIn) return true
+      return false
+    }
   },
   methods: {
     ...mapActions(['logout', 'currentingUser']),
@@ -817,9 +821,8 @@ export default {
     }
   },
   created() {
-    this.currentingUser()
-    if (this.isLoggedIn === false) {
-      this.$router.back()
+    if (this.isLoggedIn) {
+      this.currentingUser()
     }
   }
 }

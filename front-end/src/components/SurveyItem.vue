@@ -22,6 +22,7 @@
           <q-input outlined class="text-size q-mb-md" label="보기 2" style="width:685px;" v-model="num2" />
           <q-input outlined class="text-size q-mb-md" label="보기 3" style="width:685px;" v-model="num3" />
           <q-input outlined class="text-size q-mb-md" label="보기 4" style="width:685px;" v-model="num4" />
+          <q-input outlined class="text-size q-mb-md" label="보기 5" style="width:685px;" v-model="num5" />
         </div>
       </div>
 

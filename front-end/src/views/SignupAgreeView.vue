@@ -123,11 +123,16 @@
 import { ref } from '@vue/reactivity'
 import useProvision from '@/components/UseProvision.vue'
 import useInfo from '@/components/UseInfo.vue'
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'signupAgreeView',
   components: {
     useProvision,
     useInfo
+  },
+  computed: {
+    ...mapGetters(['isLoggedIn'])
   },
   setup () {
     let isChecked = ref(false)
@@ -135,6 +140,7 @@ export default {
       isChecked
     }
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -178,5 +184,12 @@ export default {
 >>>>>>> e6b54fb (asdu)
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+  created() {
+    if (this.isLoggedIn) {
+      this.$router.back()
+    }
+  }
+>>>>>>> ef40aec (버그 수정)
 }
 </script>

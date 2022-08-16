@@ -51,6 +51,8 @@ export default {
   mounted() {
     if (this.isLoggedIn) {
       this.getMainPage()
+    } else {
+      this.$router.push({ name: 'login'})
     }
   }
 }

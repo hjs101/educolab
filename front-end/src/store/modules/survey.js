@@ -6,7 +6,7 @@ export const survey = {
   state() {
     return {
       survey : {},
-      surveyData: [{}, {}],
+      surveyData: [{}],
       surveyBogi : [],
       surveyStat: {},
       surveyQuestion: {},

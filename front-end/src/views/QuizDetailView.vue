@@ -77,6 +77,9 @@ export default {
     ...mapActions(['getQuizDetail', 'deleteQuiz']),
     updateQuiz(quizPk) {
       this.$router.push({name:'QuizCreate', params: {quizPk : quizPk}})
+    },
+    goSurvey() {
+      this.$router.push({name:'Quiz'})
     }
   },
   mounted() {

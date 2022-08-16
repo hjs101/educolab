@@ -312,7 +312,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['authError'])
+    ...mapGetters(['authError', 'isLoggedIn'])
   },
   methods: {
     ...mapActions(['login'])
@@ -326,10 +326,13 @@ export default {
       if (store.getters.isLoggedIn) {
         console.log(router)
         console.log(route)
-        // 메인 페이지로 이동
-        // router.push('/signup')
       }
     })
+  },
+  created() {
+    if (this.isLoggedIn) {
+      this.$router.back()
+    }
   }
 }
 <<<<<<< HEAD

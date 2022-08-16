@@ -1,5 +1,5 @@
 <template>
-  <div class="testStyle">
+  <div class="baseStyle">
     <h4>{{ getTitle }}</h4>
 
     <div class="row q-mr-xl justify-end">
@@ -60,7 +60,7 @@ export default {
   },
   data() {
     return {
-      surveyList : 2
+      surveyList : 1
     }
   },
   setup() {

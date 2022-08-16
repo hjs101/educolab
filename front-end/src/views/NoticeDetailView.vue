@@ -1,5 +1,6 @@
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -54,6 +55,9 @@
 >>>>>>> 3646f0b (공지사항 파일 업로드)
 =======
   <div class="row justify-center q-my-xl">
+=======
+  <div class="BASE">
+>>>>>>> ef40aec (버그 수정)
     <div>
       <div class="q-mb-md">
         <div class="row justify-between items-center">
