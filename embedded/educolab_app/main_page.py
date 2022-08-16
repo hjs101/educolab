@@ -39,7 +39,7 @@ class Main_Screen(Screen):
             self.plus_point = str(plus_point)
             self.minus_point = str(minus_point)
             self.profile_url = "https://i7c102.p.ssafy.io/api/media/{}".format(profil)
-            self.profile_savename = "./icon/profile.jpg"
+            self.profile_savename = "profile.jpg"
 
         self.res = requests.get(
             'https://i7c102.p.ssafy.io/api/survey/main_stu',
@@ -68,7 +68,7 @@ class Main_Screen(Screen):
         self.ids.challenge.text=self.emblem
         self.ids.survey.text="설문 (" + str(self.survey_cnt) + ") | " + self.current_survey
 
-        self.ids.profile.img_path='./icon/profile.jpg'
+        self.ids.profile.img_path=self.profile_savename
         self.ids.userinfo_icon.img_path='./icon/info.png'
         self.ids.challenge_icon.source='./icon/challenge.png'
         self.ids.good_points_icon.img_path='./icon/plus.png'
