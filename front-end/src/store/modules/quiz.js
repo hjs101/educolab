@@ -45,6 +45,21 @@ export const quiz = {
     QUIZ_DETAIL : (state, quizDetail) => state.quizDetail = quizDetail,
     QUIZ_DETAIL_LEN : (state, quizDetail) => state.online.quizDetail_len = quizDetail.length,
     QUIZ_DATA : (state, data) => state.quizData[data.question_number-1] = data,
+    RANK_SCORE: (state)=>{
+      let temp=[]
+      console.log(state.online.ranking_list)
+      for(let i of state.online.ranking_list){
+        console.log(i)
+        if(temp.length===0){
+          temp.push(i.score)
+        }
+        else if(temp[0]!==i.score){
+            temp.push(i.score)
+        }
+      }
+      console.log(temp)
+      return temp;
+    },
     SOCKET_COUNT_FLAG : (state,flag)=>{
       state.online_cnt_flag=flag
     },
@@ -60,6 +75,7 @@ export const quiz = {
       
       state.online.socket.addEventListener("message", (event) => {
         state.online.result = JSON.parse(event.data)//['message'] //test용
+        // console.log("받기")
         console.log(state.online.result)
         // console.log(state.online.result.split('/'))
         if (state.online.cnt_flag===true && state.online.result['message']==="등록 성공"){
@@ -74,7 +90,7 @@ export const quiz = {
         console.log(event)
         console.log("Successfully connected to the echo websocket server...")
         state.online.socket.send(JSON.stringify({
-          message: '방 입장',
+          message: '방 생성',
           id:state.online.username, //수정해야함
           room_num: state.online.RoomNumber,
           quiz_num: state.online.quizPK
@@ -82,11 +98,15 @@ export const quiz = {
       })
     },
     SOCKET_SEND :(state, data)=>{
+      // console.log("보내기")
       // console.log(data)
       state.online.socket.send(JSON.stringify(data));
     },
     SOCKET_CLOSE :(state)=>{
-      state.online.socket.close()
+      if (state.online.socket!==null){
+        state.online.socket.close()
+        state.online.socket=null;
+      }
     }
   },
 
@@ -199,8 +219,18 @@ export const quiz = {
       })
         .then(res=>{
           // console.log(res.data)
-          commit('RANKING_LIST', res.data.ranks) //임시
+          commit('RANKING_LIST', res.data.ranks) //임시'
         })
+        // .then(res=>{
+        //   let result=commit('RANK_SCORE')
+        //   console.log(result)
+        //   console.log(res)
+        // })
+        // .then(res=>{
+        //   let result=commit('RANK_SCORE')
+        //   console.log(result)
+        //   console.log(res)
+        // })
     },
     ///////////////////////////
   }
