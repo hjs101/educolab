@@ -53,6 +53,10 @@
       <q-btn @click="deleteQuiz(quizPk)" class="text-size q-px-xl q-py-md" color="red-6">삭제</q-btn>
       <q-btn @click="updateQuiz(quizPk)" class="text-size q-px-xl q-py-md" color="blue-6">수정</q-btn>
     </div>
+
+    <div class="btn-mag row justify-center">
+      <q-btn @click="goSurvey" class="text-size q-px-xl q-py-md" color="grey-8" label="목록"></q-btn>
+    </div>
   </div>
 </template>
 
@@ -122,5 +126,12 @@ export default {
   .answer-size {
     font-size : 2.5vmin
   }
+<<<<<<< HEAD
 </style>
 >>>>>>> 61e042d (설문조사  통계 sass)
+=======
+  .btn-mag {
+    margin-top: 100px;
+  }
+</style>
+>>>>>>> 25ff8b9 (설문조사 주관식 버그 수정)

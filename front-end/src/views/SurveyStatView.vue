@@ -52,16 +52,27 @@
       </q-card>
     </div>
     
+    <div class="btn-mag row justify-center">
+      <q-btn @click="goSurvey" class="text-size q-px-xl q-py-md" color="grey-8" label="목록"></q-btn>
+    </div>
     <!-- 주관식 답변 (모달) -->
     <q-dialog v-model="openModal">
       <q-card style="min-width:80%; min-height:80%">
-        <q-card-section class="q-mt-md">
-          <p class="title-size">{{ surveyQuestion[0].question.survey_question }}</p>
-        </q-card-section>
+        <div v-if="surveyQuestion[0]">
+          <q-card-section class="q-mt-md">
+            <p class="title-size">{{ surveyQuestion[0].question.survey_question }}</p>
+          </q-card-section>
+  
+          <q-card-section v-for="(question,index) in surveyQuestion" :key="index">
+            <p class="text-size question-bod q-pa-sm"> {{ question.content }}</p>
+          </q-card-section>
+        </div>
 
-        <q-card-section v-for="(question,index) in surveyQuestion" :key="index">
-          <p class="text-size question-bod q-pa-sm"> {{ question.content }}</p>
-        </q-card-section>
+        <div v-else-if="!surveyQuestion[0]">
+          <q-card-section class="q-mt-md">
+            <p class="title-size">현재 답변한 내용이 없습니다.</p>
+          </q-card-section>
+        </div>
 
       </q-card>
     </q-dialog>
@@ -89,7 +100,10 @@ export default {
     ...mapGetters(['surveyStat', 'surveyQuestion'])
   },
   methods: {
-    ...mapActions(['getSurveyStat', 'onQuestion'])
+    ...mapActions(['getSurveyStat', 'onQuestion']),
+    goSurvey() {
+      this.$router.push({name:'Survey'})
+    }
   },
   mounted() {
     this.getSurveyStat(this.surveyPk)
@@ -119,5 +133,8 @@ export default {
   .question-bod {
     border: 2px solid grey;
     border-radius: 10px;
+  }
+  .btn-mag {
+    margin-top: 100px;
   }
 </style>
