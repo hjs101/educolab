@@ -520,9 +520,16 @@ class LoginView(APIView):
                     httponly = settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
                     samesite = settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
                 )
+                userinfo = {
+                    "name" : user.name,
+                    "userflag" : user.userflag,
+                    "username" : user.username,
+                    "profil" : user.profil.url,
+                    "schoolname" : user.school.name
+                }
                 csrf.get_token(request)
                 print(data)
-                response.data = {"success" : True, "message" : "Login 성공","access" : data['access']}
+                response.data = {"success" : True, "message" : "Login 성공","access" : data['access'],"userinfo" : userinfo}
                 return response
         else:
             return Response({"success" : False, "message": "올바른 번호를 입력하세요"}, status=status.HTTP_404_NOT_FOUND)
