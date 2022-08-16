@@ -1,8 +1,9 @@
 <template>
-  <div class="q-mx">
+  <div class="baseStyle">
     <h3>SIGN UP</h3>
     <!-- form 부분 -->
     <q-form
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -38,14 +39,22 @@
 >>>>>>> e6b54fb (asdu)
 =======
       class="q-gutter row justify-content-around"
+=======
+    class="q-mt-md row justify-center"
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
     >
-      <div class="col-6 offset-3 col-md-4 offset-md-4">
+      <div class="col-6">
       <!-- 여기에 아이디, 비밀번호 입력 창 -->
+<<<<<<< HEAD
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         <login-info/>
+=======
+        <login-info class="q-my-md"/>
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
         <!-- 학교 검색 버튼 -->
-        <search-school />
+        <search-school class="q-my-md" />
         <!-- 이름 & 전화번호 -->
+<<<<<<< HEAD
         <user-name />
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -55,12 +64,16 @@
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         <user-phone-number />
+=======
+        <user-name class="q-my-md" />
+        <user-phone-number class="q-my-md" />
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
         <!-- 생년월일-->
-        <user-birthday :userType="userType" />
+        <user-birthday :userType="userType"  class="q-my-md"/>
         <!-- 교사와 학생에 따라 다른 항목-->
-        <teacher-or-student :userType="userType" />
+        <teacher-or-student :userType="userType" class="q-my-md" />
         <!-- 이메일 -->
-        <email-confirm />
+        <email-confirm class="q-my-md" />
         <!-- 회원가입 버튼 -->
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -116,7 +129,7 @@
         <q-btn
           color="primary"
           label="SIGN UP"
-          class="submitButton"
+          class="submitButton q-mt-sm"
           @click="submitData"/>
 >>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
       </div>

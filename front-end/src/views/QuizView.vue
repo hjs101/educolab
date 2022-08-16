@@ -83,9 +83,15 @@
         </thead>
         <tbody>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <tr v-for="(quiz, index) in quiz.slice((page-1)*10, page*10)" :key="index">
             <td class="text-size">{{ index+1+((page-1)*10) }}</td>
               <td @click="quizDetail(quiz.pk)" class="text-size cursor-pointer text-left">{{ quiz.title }}</td>
+=======
+          <tr v-for="quiz in quiz.slice((page-1)*10, page*10)" :key="quiz">
+            <td class="text-left text-size">{{ quiz.pk }}</td>
+              <td @click="quizDetail(quiz.pk)" class="text-size cursor-pointer">{{ quiz.title }}</td>
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
             <td class="text-center text-size">{{ timeInfo(quiz.updated_at) }}</td>
 =======
           <tr
@@ -114,6 +120,10 @@
           </tr>
         </tbody>
       </q-markup-table>
+      <the-pagination
+        v-if="quizLength" 
+        :limit="quizLength"
+        @change-page="changePage" />
     </div>
 <<<<<<< HEAD
 >>>>>>> c9ecd87 (퀴즈 임베디드 연동)
@@ -131,6 +141,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -173,6 +184,16 @@ export default({
       page,
       changePage,
     }
+=======
+import { mapActions, mapGetters } from 'vuex'
+import {ref} from 'vue'
+import ThePagination from '@/components/ThePagination.vue'
+
+export default({
+  name: 'QuizView',
+  components: {
+    ThePagination,
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
   },
   computed: { 
     ...mapGetters(['quiz', 'quizLength'])
@@ -196,6 +217,16 @@ export default({
   },
   created() {
     this.quizList()
+  },
+  setup() {
+    let page = ref(1)
+    const changePage = (value) => {
+      page.value = value
+    }
+    return {
+      page,
+      changePage
+    }
   }
 })
 </script>

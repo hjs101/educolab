@@ -1,5 +1,6 @@
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <q-dialog persistant v-model="prompt">
 <<<<<<< HEAD
 =======
@@ -24,14 +25,17 @@
       </q-card>
     </q-dialog>
 =======
+=======
+  <q-dialog persistant v-model="prompt" class="content-center">
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
     <q-card style="min-width: 350px">
       <q-card-section v-if="title">
-        <div class="text-h6">{{title}}</div>
+        <div class="text-h6 text-center">{{title}}</div>
       </q-card-section>
       <q-card-section>
-        <div class="text-h6 center">{{message}}</div>
+        <div class="text-h6 text-center">{{message}}</div>
       </q-card-section >
-      <q-card-actions align="center">
+      <q-card-actions class="row justify-center align-center">
         <q-btn color="primary" v-if="!button" label="확인" @click="move" v-close-popup/>
         <button-group v-else :currentUrl="currentUrl"/>
         <q-btn color="primary" flat v-if="cancel" label="취소" @click="doNothing" v-close-popup/>

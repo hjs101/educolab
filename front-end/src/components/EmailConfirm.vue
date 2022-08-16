@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <q-input v-model="email.username" :suffix="email.address !== '직접 입력'? email.address: ''" input-class="text-right" label-slot clearable stack-label>
 =======
     <q-input v-model="email" :suffix="emailAddress" input-class="text-right" label-slot clearable stack-label>
@@ -33,16 +34,20 @@
     <q-btn color="primary" label="이메일 인증" class="buttonGroup" @click="isValidEmail"/>
 =======
     <div class="row justify-between">
+=======
+    <div class="row justify-between align-baseline">
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
       <q-input
         color="teal"
         v-model="email.username"
         input-class="text-right"
         class="col-5"
-        label-slot
         clearable
         stack-label
+        label="Email"
         lazy-rules
         :rules="[ val => val && val.length > 0 || '이메일을 입력해주세요']"
+<<<<<<< HEAD
         required
 =======
     <div class="row justify-between">
@@ -177,6 +182,21 @@
     </div>
     <confirm-auth-number :data="{email:email.fullEmail}"/>
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+        required />
+      <!-- 이메일 주소 선택 -->
+      <q-select
+        v-model="email.address"
+        :options="emailOptions"
+        color="teal"
+        class="col-4"
+        label="이메일 주소 선택"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || '이메일 주소를 선택해주세요']"
+        required/>
+      <confirm-auth-number :data="{email:email.fullEmail}"/>
+    </div>
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
   </div>
 </template>
 

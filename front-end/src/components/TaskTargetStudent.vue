@@ -12,9 +12,16 @@
           <div v-for="(file, idx) in item['atch_file_name']" :key="idx">
             <a :href="url+item['atch_file'][idx]">{{file}}</a>
           </div>
-          <div v-if="!isChecked && !check.computedFlag">
-            <q-input type="number" v-model="point" label="점수" min="-1" max="5"/>
-            <q-btn color="primary" label="채점하기" @click="checkTask"/>
+          <div v-if="!isChecked && !check.computedFlag" class="row justify-evenly">
+            <q-input
+              type="number"
+              v-model="point"
+              label="과제 점수"
+              min="-1"
+              max="5"
+              class="col-9"  
+            />
+            <q-btn color="primary" label="채점하기" @click="checkTask" class="col-2" />
           </div>
         </q-card-section>
       </q-card>

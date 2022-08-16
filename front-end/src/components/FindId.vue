@@ -1,38 +1,43 @@
 
 <template>
-  <div v-if="type.type">
-    <q-input
-      color="teal"
-      v-model="userInfo.name"
-      label="이름"
-      @change="changeData({name:userInfo.name})"
-      lazy-rules
-      :rules="[ val => val && val.length > 0 || '이름을 입력해주세요']"
-    />
-    <q-input
-      color="teal"
-      v-model="userInfo.email"
-      label="이메일"
-      @change="changeData({email:userInfo.fullEmail})"
-      lazy-rules
-      :rules="[
-        val => val !== null && val !== '' || '이메일을 입력해주세요',
-      ]"
-    />
-    <q-select
-      v-model="address"
-      :options="emailOptions"
-      class="col-4"
-      label="이메일 주소 선택"
-      required
-    />
-    <q-btn
-      color="amber"
-      label="FIND ID"
-      v-if="type.isTypeId"
-      class="col-8 offset-2 col-md-1 offset-md-1"
-      @click="findId"
-    />
+  <div v-if="type.type" class="q-my-lg">
+    <div class="row justify-center">
+      <q-input
+        class="col-4"
+        color="teal"
+        v-model="userInfo.name"
+        label="이름"
+        @change="changeData({name:userInfo.name})"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || '이름을 입력해주세요']"
+      />
+      <span class="col-12"></span>
+      <q-input
+        class="col-2 q-mr-md"
+        color="teal"
+        v-model="userInfo.email"
+        label="이메일"
+        @change="changeData({email:userInfo.fullEmail})"
+        lazy-rules
+        :rules="[
+          val => val !== null && val !== '' || '이메일을 입력해주세요',
+        ]"
+      />
+      <q-select
+        v-model="address"
+        :options="emailOptions"
+        color="teal"
+        class="col-2"
+        label="이메일 주소 선택"
+        required
+      />
+      <span class="col-12"></span>
+      <q-btn
+        class="col-5 q-my-lg text-size"
+        color="amber"
+        v-if="type.isTypeId"
+        @click="findId">FIND ID</q-btn>
+    </div>
     <message-pop-up
       v-if="confirm.computedPrompt"
       :message="confirm.message"
@@ -122,3 +127,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .text-size {
+    font-size: 1rem;
+  }
+</style>

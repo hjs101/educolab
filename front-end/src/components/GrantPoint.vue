@@ -5,69 +5,80 @@
     >
     <q-card  class="q-pa-xl">
       <q-card-section>
-        <div class="text-h6">상/벌점</div>
+        <div class="text-h6 text-center">상/벌점</div>
       </q-card-section>
       <q-card-section>
         <q-form
           @submit="searchStudent"
+          class="row q-ma-lg justify-between align-center"
           >
+          <span class="text-size q-mr-sm q-py-lg">학생명</span>
           <q-input
-            label="학생명"
+            class="col-8 q-mr-lg"
             v-model="searchKey"
             lazy-rules
             :rules="[ val => val && val.length > 0 || '학생명을 입력해주세요',
             val => val.length >= 2 || '정확한 검색을 위해 두 글자 이상 입력해주세요']"
           />
-          <q-btn color="primary" type="submit">검색</q-btn>
+          <q-btn class="col-2 text-size" color="primary" type="submit">학생 검색</q-btn>
+          <div v-if="students.result">
+            <q-btn
+              flat
+              class="q-my-sm text-size q-mx-lg"
+              v-for="student in students.list"
+              :key="student.username"
+              :text-color="students.selected === student.username? 'blue':'black'"
+              @click="grant.student = student.username">
+              {{student.name}} ({{student.grade}}학년 {{student.class_field}}반)
+            </q-btn>
+          </div>
         </q-form>
-        <div v-if="students.result">
-          <q-btn
-            flat
-            v-for="student in students.list"
-            :key="student.username"
-            :text-color="students.selected === student.username? 'blue':'black'"
-            @click="grant.student = student.username">
-            {{student.name}} ({{student.grade}}학년 {{student.class_field}}반)
-          </q-btn>
-        </div>
-        <div>
-          유형
-          <q-radio
-            dense
-            v-model="grant.pointflag"
-            :val="true"
-            label="상점" />
-          <q-radio
-            dense
-            v-model="grant.pointflag"
-            :val="false"
-            label="벌점" />
-        </div>
-        <div>
-          <q-input
-            v-model="grant.log.point"
-            type="number"
-            label="점수"
-            :min="limit.min"
-            :max="limit.max"
-            lazy-rules
-            required
-            :rules="[ val => val && val.length > 0 || '점수를 입력해주세요',
-            () => limit.selectedType !== null || '유형을 선택해주세요',
-            val => val >= limit.min && val <= limit.max || '적절하지 않은 값입니다']"
-          />
-          <q-input
-            v-model="grant.log.content"
-            label="사유"
-            required
-            lazy-rules
-            :rules="[ val => val && val.length > 0 || '샤유를 입력해주세요']"
-          />
-        </div>
+          <div class="q-ma-lg">
+            <span class="q-py-lg q-mr-lg text-size" style="width:70px; text-align:center">유형</span>
+            <q-radio
+              class="q-mr-lg text-size"
+              dense
+              v-model="grant.pointflag"
+              :val="true">
+            상점
+            </q-radio>
+            <q-radio
+              class="text-size"
+              dense
+              v-model="grant.pointflag"
+              :val="false">
+            벌점
+            </q-radio>
+          </div>
+          <div class="row q-ma-lg">
+            <span class="q-py-lg q-mr-lg text-size">점수</span>
+            <q-input
+              v-model="grant.log.point"
+              class="col-8"
+              type="number"
+              :min="limit.min"
+              :max="limit.max"
+              lazy-rules
+              required
+              :rules="[ val => val && val.length > 0 || '점수를 입력해주세요',
+              () => limit.selectedType !== null || '유형을 선택해주세요',
+              val => val >= limit.min && val <= limit.max || '적절하지 않은 값입니다']"
+            />
+          </div>
+          <div class="row align-center q-mx-lg">
+            <span class="q-py-lg q-mr-lg text-size">사유</span>
+            <q-input
+              class="col-8"
+              v-model="grant.log.content"
+              required
+              lazy-rules
+              :rules="[ val => val && val.length > 0 || '샤유를 입력해주세요']"
+            />
+          </div>
       </q-card-section>
-      <q-card-actions>
-        <q-btn label="초기화" flat type="reset"/>
-        <q-btn label="점수 부여" color="primary" type="submit"/>
+      <q-card-actions class="row justify-center">
+        <q-btn  class="q-my-lg text-size q-mx-lg" label="초기화" flat type="reset"/>
+        <q-btn  class="q-my-lg text-size q-mx-lg" label="점수 부여" color="primary" type="submit"/>
       </q-card-actions>
     </q-card>
     <message-pop-up
@@ -177,3 +188,13 @@ export default {
   },
 }
 </script>
+
+
+<style scoped>
+  p {
+    margin: 0;
+  }
+  .text-size {
+    font-size: 1rem;
+  }
+</style>

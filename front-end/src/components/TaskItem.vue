@@ -1,7 +1,17 @@
 <template>
-  <q-card @click="toDetail">
+  <div>
+    <td class="cursor-pointer text-left text-size">{{ item.title }}</td>
+    <!-- <td class="text-size">{{ item.teacher.name }}</td> -->
+    <td class="text-size" v-if="isTeacher">
+      {{item.grade || item.student?.grade}}학년 {{item.class_field || item.student?.class_field}}반
+      <span v-if="!teacher">
+        {{item.student.name}}
+      </span>
+      </td>
+    <td class="text-size" v-if="!over">{{ item.deadline }}</td>
+  </div>
+  <!-- <q-card @click="toDetail">
     <q-card-section >
-      {{item.id}}
       <div class="text-h6">{{item.title}}</div>
       <div class="text-subtitle2" v-if="!over" >~ {{item.deadline}}</div>
     </q-card-section>
@@ -11,7 +21,7 @@
         {{item.student.name}}
       </span>
     </q-card-section>
-  </q-card>
+  </q-card> -->
 </template>
 
 <style>
@@ -27,6 +37,7 @@ export default {
   name: 'TaskItem',
   props: {
     item: Object,
+    page: Number,
     teacher: Number,
     submit: Boolean,
     over: Boolean,

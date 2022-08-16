@@ -1,17 +1,24 @@
 <template>
   <q-card>
-    <q-card-section>
-      {{item.id}}
-      <img v-if="icon" :src="img" width="100">
+    <q-card-section class="row justify-center text-center">
+      <q-card v-if="icon" class="size100 col-12">
+        <img :src="img">
+      </q-card>
+      <div class="text-h6 col-12 q-pa-md">
+        {{item.title}}
+      </div>
       <br>
-      이름 {{item.title}}
+      <div class="col-12">
+        {{item.content}}
+      </div>
       <br>
-      설명 {{item.content}}
-      <br>
-      가격 {{item.price}} 포인트
     </q-card-section>
-    <q-card-actions>
-      <q-btn color="primary" @click="confirmBuying">구매하기</q-btn>
+    <q-card-actions class="row justify-center">
+      <q-btn
+        color="primary"
+        @click="confirmBuying"
+        class="q-mb-md"
+        :label="`${item.price} 포인트`" />
     </q-card-actions>
     <!-- 경고 및 구매/적용 창 --> 
     <message-pop-up
@@ -24,6 +31,11 @@
   </q-card>
 </template>
 
+<style scoped>
+  .size100 {
+    width: 100px;
+  }
+</style>
 <script>
 import MessagePopUp from '@/components/MessagePopUp.vue'
 import { computed, reactive } from 'vue'

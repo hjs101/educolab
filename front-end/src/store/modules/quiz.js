@@ -45,6 +45,7 @@ export const quiz = {
     quizDetail : state => state.quizDetail,
     quizData : state => state.quizData,
 <<<<<<< HEAD
+<<<<<<< HEAD
     quizLength: state => Math.ceil(state.quiz.length/10),
 =======
     socket: state=>state.online.socket,
@@ -55,6 +56,9 @@ export const quiz = {
     username: state=>state.online.username,
     ranking_list:state=>state.online.ranking_list,
 >>>>>>> 7ae675e (Feat : 웹 퀴즈 기능 완료)
+=======
+    quizLength : state => Math.ceil(state.quiz/10),
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
   },
 
   mutations: {

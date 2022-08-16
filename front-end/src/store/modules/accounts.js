@@ -530,6 +530,7 @@ export const accounts = {
         .then((res) => {
           const access = res.data.access
           dispatch("saveToken", access)
+<<<<<<< HEAD
           commit("SET_CURRENT_USER", res.data)
 <<<<<<< HEAD
 =======
@@ -564,6 +565,9 @@ export const accounts = {
 >>>>>>> eb5987b (로그인  버그 수정)
 =======
 >>>>>>> 7ae675e (Feat : 웹 퀴즈 기능 완료)
+=======
+          // commit("SET_CURRENT_USER", res.data)
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
           router.push({ name: "educolab" })
         })
         .catch((err) => {

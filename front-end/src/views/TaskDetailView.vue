@@ -5,8 +5,12 @@
     <h1>과제 상세 페이지</h1>
 =======
   <main flat bordered class="baseStyle">
+<<<<<<< HEAD
     <h3>과제 상세 페이지</h3>
 >>>>>>> 0a91d41 (Feat : 비밀번호 확인, 회원정보 변경 기능 구현 완료, 약간의 스타일 적용)
+=======
+    <h5 class="text-center">과제</h5>
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
     <section>
       <!-- 과제 내용 & 교사용 -->
       <task-detail-content v-if="!isEmptyTask" :pk="pk" :task="task" :isTeacher="user.isTeacher"/>
@@ -19,7 +23,7 @@
       <div class="buttonGroup">
         <div v-if="user.editPossible">
           <router-link
-            class="button"
+            class="button q-mx-sm"
             :to="{name: 'TaskUpdateView', params: {
             userType: user.type, taskPk:pk
           }}">

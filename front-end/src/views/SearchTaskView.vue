@@ -1,21 +1,32 @@
 <template>
-  <article div class="q-gutter-md baseStyle" style="max-width: 300px" >
-    <q-input label="제목 검색" v-model="search.query"/>
-    <!-- a 태그로 바꿀 예정 -->
-    <router-link :to="{name: 'SearchTaskView', params:
-    {userType,}, query: {query: search.query}}" class="button">
-      <q-btn color="primary" label="검색"/>
-    </router-link>
-    <br>
-    검색 결과
-    <q-list bordered class="rounded-borders" v-for="item in search.list.slice((page-1)*10, page*10)" :key="item.id">
-      <task-item :item = item :teacher="1" :submit="false" />
+  <article div class="baseStyle">
+    <h4 class="text-center">과제 검색</h4>
+    <hr>
+    <div class="q-pa-md">
+      <article class="row items-baseline justify-evenly">
+        <q-input label="과제 제목검색" v-model="query" class="col-8" />
+        <router-link class="button" :to="{name: 'SearchTaskView', params:{userType,}, query:{query,}}" >
+          <q-btn color="primary" label="검색" class="col-3" />
+        </router-link>
+      </article>
+    </div>
+    <h6 class="text-center q-pa-sm">검색 결과</h6>
+    <q-list
+      bordered
+      class="rounded-borders">
+      <task-list-table
+        :list="search.list"
+        :page="page"
+        :teacher="0"
+      />
     </q-list>
     <the-pagination
       v-if="search.length"
       :limit="search.length"
       @change-page="changePage" />
-    <q-btn color="primary" label="메인" />
+    <a :href="`/${userType}/task`" class="button row justify-center q-pa-lg">
+      <q-btn color="primary" label="과제 메인" />
+    </a>
   </article>
 </template>
 
@@ -23,13 +34,13 @@
 import {onBeforeMount, ref, computed, reactive} from 'vue'
 import {useStore} from 'vuex'
 import {useRoute} from 'vue-router'
-import TaskItem from '@/components/TaskItem.vue'
-import ThePagination from '../components/ThePagination.vue'
+import TaskListTable from '@/components/TaskListTable.vue'
+import ThePagination from '@/components/ThePagination.vue'
 // import {isEmpty} from 'lodash'
 export default {
   name: 'SearchTask',
   components: {
-    TaskItem,
+    TaskListTable,
     ThePagination
   },
   setup() {

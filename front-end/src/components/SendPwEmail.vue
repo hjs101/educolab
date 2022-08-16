@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
 <<<<<<< HEAD
     <div v-if="info">
@@ -24,15 +25,24 @@
     />
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
+=======
+  <div class="row justify-center align-center">
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
     <q-input
+      class="col-4"
       color="teal"
       v-model="data.username"
       label="아이디"
       lazy-rules
       :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요']"
     />
+<<<<<<< HEAD
     <confirm-auth-number :data="data"/>
 >>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
+=======
+    <span class="col-12"></span>
+    <confirm-auth-number class="col-12" :data="data"/>
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
   </div>
 
 </template>

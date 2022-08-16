@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 =======
   <main class="baseStyle">
+<<<<<<< HEAD
 >>>>>>> 0a91d41 (Feat : 비밀번호 확인, 회원정보 변경 기능 구현 완료, 약간의 스타일 적용)
     <h1>{{userType}} 과제 {{type}} 페이지 {{taskPk}}</h1>
     <section class="q-pa-md" style="max-width: 400px">
@@ -34,8 +35,40 @@
 
         <!-- 교사에게만 보임 -->
         <div v-if="isTeacher">
+=======
+    <h4>과제 {{type}}</h4>
+    <q-form
+      @reset="onReset">
+      <div class="row">
+        <span class="q-py-md q-mr-lg text-size" style="width:70px; text-align:center">제목</span>
+        <q-input class="text-size" outlined v-model="task.title" label="title" style="width: 700px;" required/>
+      </div>
+      <hr>
+      <div class="row">
+        <span class="q-py-md q-mr-lg text-size" style="width:70px; text-align:center">내용</span>
+        <div style="width:700px">
+          <q-editor
+            class="text-size"
+            style="min-height:500px; max-height:100%;"
+            v-model="task.content"
+            label="content"
+            :definitions="{
+              bold: {label: 'Bold', icon: null, tip: 'My bold tooltip'}
+            }"
+            required/>
+        </div>
+      </div>
+      <hr>
+      <!-- 교사에게만 보임 -->
+      <div v-if="isTeacher">
+        <div class="row">
+          <span class="q-py-md q-mr-lg text-size" style="width:70px; text-align:center">과목 </span>
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
           <q-select
+            class="text-size"
+            style="width: 300px;"
             outlined
+<<<<<<< HEAD
             v-model="task.subject"
             label="과목"
             :options="subjectOptions"
@@ -51,11 +84,20 @@
         <!-- 교사에게만 보임 -->
         <div v-if="isTeacher">
 >>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
+=======
+            v-model="task.subject" label="과목" :options="subjectOptions" required/>
+        </div>
+        <hr>
+        <div class="row">
+          <span class="q-py-md q-mr-lg text-size" style="width:70px; text-align:center">학년</span>
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
           <q-input
             outlined
+            style="width: 300px;"
             type="number"
             :min="1"
             :max="3"
+<<<<<<< HEAD
             label="학년"
 <<<<<<< HEAD
             v-model="task.grade"
@@ -66,12 +108,18 @@
             :rules="[
             val => val === '' || val === null || val > 0 && val < 4 || '값이 올바르지 않습니다'
           ]"
+=======
+            v-model="task.grade"
+            required
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
           />
+          <span class="q-py-md q-mr-lg text-size" style="width:70px; text-align:center">반</span>
           <q-input
             outlined
+            style="width: 300px;"
             type="number"
-            label="반"
             :min="1"
+<<<<<<< HEAD
             :max="20"
 <<<<<<< HEAD
             v-model="task.class_field"
@@ -82,16 +130,25 @@
             :rules="[
             val => val === '' || val === null || val > 0 && val < 21 || '값이 올바르지 않습니다'
             ]"
+=======
+            :max="10"
+            v-model="task.class_field"
+            required
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
           />
 <<<<<<< HEAD
         </div>
+        <hr>
+      </div>
+      <div class="row">
+        <span class="q-py-md q-ml-sm q-mr-lg text-size" style="width: 70px; text-align:center">제출기한</span>
         <q-input
           outlined
           stack-label
           type="date"
-          label="제출기한"
           v-model="task.deadline"
         />
+<<<<<<< HEAD
         <q-input
 =======
           <q-input
@@ -126,6 +183,24 @@
         </div>
       </q-form>
     </section>
+=======
+      </div>
+      <hr>
+      <div class="row items-center">
+        <span class="q-py-md q-ml-sm q-mr-lg text-size" style="width: 70px; text-align:center">첨부파일</span>
+        <input class="text-size" type="file" @change="onFileSelected" multiple>
+      </div>
+      <hr>
+      <div class="row justify-center q-mt-xl q-gutter-md">
+        <q-btn label="초기화" type="reset" color="primary" flat class="q-ml-sm" />
+        <q-btn :label="type" color="primary" @click="onSubmit(false)"  class="text-size q-px-xl q-py-md" />
+        <q-btn v-if="!isTeacher" label="제출" color="primary" @click="onSubmit(true)"  class="text-size q-px-xl q-py-md"/>
+        <router-link class="button" :to="{name:'TaskListView', params: {userType,}}">
+          <q-btn label="목록" color="primary"  class="text-size q-px-xl q-py-md" />
+        </router-link>
+      </div>
+    </q-form>
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
   </main>
 </template>
 
@@ -256,6 +331,7 @@ export default {
       }
     }
 
+<<<<<<< HEAD
     return {
       task,
       accept,
@@ -275,3 +351,13 @@ setup() {
   credential
 }
 >>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
+=======
+<style scoped>
+  p {
+    margin: 0;
+  }
+  .text-size {
+    font-size: 1rem;
+  }
+</style>
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)

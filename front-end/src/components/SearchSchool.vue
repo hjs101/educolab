@@ -12,6 +12,7 @@
 =======
   <div class="row justify-between">
     <q-input color="teal" label="학교" v-model="school.name" disable class="col-9"/>
+<<<<<<< HEAD
     <q-btn label="학교 검색" color="teal" @click="prompt.prompt = true" class="col-2"/>
 >>>>>>> bf45305 ( Fix : 버그 수정)
 =======
@@ -19,6 +20,9 @@
     <q-input color="teal" label="학교" v-model="school.name" disable class="col-9"/>
     <q-btn label="학교 검색" color="teal" @click="prompt.prompt = true" class="col-2"/>
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+    <q-btn label="학교 검색" color="teal" @click="prompt.prompt = true" />
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
     <!-- 학교 검색 팝업 -->
     <q-dialog v-model="prompt.prompt" persistent>
       <q-card style="min-width: 350px">

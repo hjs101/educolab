@@ -3,29 +3,32 @@
     <q-tabs
       v-model="tab"
       dense
-      class="text-grey"
+      class="text-grey q-pt-sm"
       active-color="primary"
       indicator-color="primary"
       align="justify"
       narrow-indicator
     >
-      <q-tab name="notCheck" label="채점 가능한 과제 목록" />
-      <q-tab name="studentTask" label="학생이 신청한 과제 목록" />
-      <q-tab name="notDone" label="제출 중인 과제 목록" />
-      <q-tab name="done" label="채점한 과제 목록" />
+      <q-tab class="text-size" name="notCheck">채점 가능한 과제 목록</q-tab>
+      <q-tab class="text-size" name="studentTask">학생이 신청한 과제 목록</q-tab>
+      <q-tab class="text-size" name="notDone">제출 중인 과제 목록</q-tab>
+      <q-tab class="text-size" name="done">채점한 과제 목록</q-tab>
     </q-tabs>
 
     <q-separator />
 
     <q-tab-panels v-model="tab">
       <q-tab-panel name="notCheck">
-        <q-list
+        <div
           bordered
-          class="rounded-borders"
-          v-for="item in totalList.notCheck.slice((page.notCheck-1)*10, page.notCheck*10)"
-          :key="item.pk">
-          <task-item :item = item :teacher="1" />
-        </q-list>
+          class="rounded-borders">
+          <task-list-table
+            :list="totalList.notCheck"
+            :page="page.notCheck"
+            :teacher="1"
+            :submit="false"
+          />
+        </div>
         <the-pagination
           v-if="number.notCheck"
           :limit="number.notCheck"
@@ -35,13 +38,16 @@
       </q-tab-panel>
 
       <q-tab-panel name="studentTask">
-        <q-list
+        <div
           bordered
-          class="rounded-borders"
-          v-for="item in totalList.studentTask.slice((page.studentTask-1)*10, page.studentTask*10)"
-          :key="item.pk">
-          <task-item :item = item :teacher="0" />
-        </q-list>
+          class="rounded-borders">
+          <task-list-table
+            :list="totalList.studentTask"
+            :page="page.studentTask"
+            :teacher="0"
+            :submit="false"
+          />
+        </div>
         <the-pagination
           v-if="number.studentTask"
           :limit="number.studentTask"
@@ -51,13 +57,16 @@
       </q-tab-panel>
 
       <q-tab-panel name="notDone">
-        <q-list
+        <div
           bordered
-          class="rounded-borders"
-          v-for="item in totalList.notDone.slice((page.notDone-1)*10, page.notDone*10)"
-          :key="item.pk">
-          <task-item :item = item :teacher="1" />
-        </q-list>
+          class="rounded-borders">
+          <task-list-table
+            :list="totalList.notDone"
+            :page="page.notDone"
+            :teacher="1"
+            :submit="true"
+          />
+        </div>
         <the-pagination
           v-if="number.notDone"
           :limit="number.notDone"
@@ -66,13 +75,15 @@
       </q-tab-panel>
 
       <q-tab-panel name="done">
-        <q-list
+        <div
           bordered
-          class="rounded-borders"
-          v-for="item in totalList.done.slice((page.done-1)*10, page.done*10)"
-          :key="item.pk">
-          <task-item :item = item :teacher="1" />
-        </q-list>
+          class="rounded-borders">
+          <task-list-table
+            :list="totalList.done"
+            :page="page.done"
+            :teacher="1"
+          />
+        </div>
         <the-pagination
           v-if="number.done"
           :limit="number.done"
@@ -87,13 +98,13 @@
 <script>
 import {computed, reactive, ref} from 'vue'
 import {useStore} from 'vuex'
-import TaskItem from '@/components/TaskItem.vue'
+import TaskListTable from '@/components/TaskListTable.vue'
 import ThePagination from '@/components/ThePagination.vue'
 export default {
   name: 'TeacherTaskTab',
   components: {
-    TaskItem,
-    ThePagination,
+    TaskListTable,
+    ThePagination
   },
   emits: [
     'change-page',
@@ -132,3 +143,24 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .text-size{font-size: 1rem;}
+  .searchWrap{border-radius:5px; text-align:center; padding:20px 0; margin-bottom:10px;}
+  .tbList th{border-top:1px solid #888;}
+	.tbList th, .tbList td{border-bottom:1px solid #eee; padding:5px 0;}
+	.tbList td.txt_left{text-align:left;}
+  .btn{margin-bottom:40px;}
+  .notice-small {
+    display: none;
+  }
+
+  @media screen and (max-width: 950px) {
+    .notice-full {
+      display: none;
+    }
+    .notice-small {
+      display: block;
+    }
+  }
+</style>

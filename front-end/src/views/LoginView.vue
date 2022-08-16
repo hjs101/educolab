@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 =======
@@ -17,16 +18,20 @@
 =======
   <div style="height:800px;" class="q-mx column justify-center">
 >>>>>>> eb5987b (로그인  버그 수정)
+=======
+  <div style="height:700px;" class="q-mx column justify-center">
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
     <h3>LOGIN</h3>
     <account-error-list></account-error-list>
     <!-- form 부분 -->
     <q-form
       @submit="login(credentials)"
-      class="q-gutter row"
+      class="row justify-center"
     >
     <!-- 여기에 아이디, 비밀번호 입력 창 -->
-      <div class="input col-8 offset-2 col-md-3 offset-md-4">
+      <div class="row justify-end">
         <q-input
+          class="col-10"
           color="teal"
           v-model="credentials.username"
 <<<<<<< HEAD
@@ -68,6 +73,7 @@
         />
 
         <q-input
+          class="col-10"
           color="teal"
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -131,7 +137,9 @@
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
       <q-btn
         color="secondary"
+        class="q-ml-xl"
         label="LOGIN"
+<<<<<<< HEAD
         class="col-8 offset-2 col-md-1 offset-md-1"
 <<<<<<< HEAD
         @click="login(credentials)"/>
@@ -171,6 +179,8 @@
 >>>>>>> c780a28 (Feat : 아이디 찾기 기능 완료 & 비밀번호 찾기 진행 중)
 =======
 =======
+=======
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
         type="submit"/>
 >>>>>>> 885b034 (Feat : 칭호 적용)
     </q-form>
@@ -184,7 +194,7 @@
 =======
 >>>>>>> 7f2a492 (설문조사  sass)
 
-    <footer class="bord-top bg-blue-grey-12 q-py-sm">
+    <footer class="bord-top bg-blue-grey-12 q-py-sm fixed-bottom" width="100%">
       <div class="row justify-start items-center">
         <img class="q-mx-xl" src="@/assets/footerlogo.png" alt="educolab" style="width:5rem; height:5rem;">
         <div class="ftr-size">
@@ -250,11 +260,11 @@
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   }
-  footer {
+  /* footer {
     position: absolute;
     bottom: 0;
     width: 100%
-  }
+  } */
 </style>
 
 <script>

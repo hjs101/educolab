@@ -6,15 +6,21 @@
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     <h3 v-if="type.type">FIND {{type.title}}</h3>
     <!-- form 부분 -->
+<<<<<<< HEAD
     <q-form
       class="q-gutter row">
 <<<<<<< HEAD
       <section class="input col-8 offset-2 col-md-3 offset-md-4">
+=======
+    <q-form class="column justify-center">
+      <section>
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
       <!-- 여기에 이름, 이메일 입력 창 -->
         <find-id />
         <send-pw-email v-if="!type.isTypeId" />
       </section>
     </q-form>
+<<<<<<< HEAD
     <!-- 여기에 회원가입 로그인 비밀번호 찾기 -->
     <button-group v-if="type.type" :currentUrl="type.currentUrl"/>
   </main>
@@ -71,6 +77,8 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
+=======
+>>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
     <!-- 여기에 회원가입 로그인 비밀번호 찾기 -->
     <button-group v-if="type.type" :currentUrl="type.currentUrl" @click="initInfo"/>
   </div>

@@ -2,27 +2,27 @@
   <div class="q-py-lg" oncontextmenu="return false" onselectstart="return false" >
     <q-card>
       <q-card-section>
-        <div class="text-h6">내 상/벌점</div>
+        <h5 class="text-center">내 상/벌점</h5>
       </q-card-section>
-      <q-markup-table class="q-pa-xl">
+      <q-markup-table class="q-px-xl">
         <thead>
           <tr>
             <!-- <th class="text-center">번호</th> -->
-            <th class="text-center">날짜</th>
-            <th class="text-center">상세 내역</th>
-            <th class="text-center">추가 점수</th>
-            <th class="text-center">현재 상점</th>
-            <th class="text-center">누적 벌점</th>
+            <th class="text-center text-size">날짜</th>
+            <th class="text-center text-size">상세 내역</th>
+            <th class="text-center text-size">추가 점수</th>
+            <th class="text-center text-size">현재 상점</th>
+            <th class="text-center text-size">누적 벌점</th>
           </tr>
         </thead>
         <tbody v-for="each in point.slice((page-1)*10, page*10)" :key="each.id">
           <tr>
             <!-- <td class="text-center">{{each.id}}</td> -->
-            <td class="text-center">{{each.created_at}}</td>
-            <td class="text-center">{{each.content}} ({{each.teacher.name}})</td>
-            <td class="text-center">{{each.point}}</td>
-            <td class="text-center">{{each.acc_point}}</td>
-            <td class="text-center">{{each.acc_minus}}</td>
+            <td class="text-center text-size">{{each.created_at}}</td>
+            <td class="text-center text-size">{{each.content}} ({{each.teacher.name}})</td>
+            <td class="text-center text-size">{{each.point}}</td>
+            <td class="text-center text-size">{{each.acc_point}}</td>
+            <td class="text-center text-size">{{each.acc_minus}}</td>
           </tr>
         </tbody>
         <the-pagination
@@ -60,3 +60,12 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .text-size{font-size: 1rem;}
+  .searchWrap{border-radius:5px; text-align:center; padding:20px 0; margin-bottom:10px;}
+  .tbList th{border-top:1px solid #888;}
+	.tbList th, .tbList td{border-bottom:1px solid #eee; padding:5px 0;}
+	.tbList td.txt_left{text-align:left;}
+  .btn{margin-bottom:40px;}
+</style>

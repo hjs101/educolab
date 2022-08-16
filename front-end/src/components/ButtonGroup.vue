@@ -2,16 +2,16 @@
   <div class="buttonGroup">
 <<<<<<< HEAD
     <a href="/signup" class="button" v-if="currentUrl !== 'signup'">
-      <q-btn color="primary" label="SIGN UP" v-close-popup/>
+      <q-btn color="primary" class="text-size" label="SIGN UP" v-close-popup />
     </a>
     <a href="/" class="button" v-if="currentUrl !== 'login'">
-      <q-btn color="teal" label="LOG IN" v-close-popup/>
+      <q-btn color="teal" class="text-size" label="LOG IN" v-close-popup/>
     </a>
     <a href="/find/id" class="button" v-if="currentUrl !== 'findId'">
-      <q-btn color="amber" label="FIND ID" />
+      <q-btn color="amber" class="text-size" label="FIND ID" />
     </a>
     <a href="/find/password" class="button" v-if="currentUrl !== 'findPw'">
-      <q-btn color="light" text-color="black" label="FIND PW" v-close-popup />
+      <q-btn color="light"  class="text-size" text-color="black" label="FIND PW" v-close-popup />
     </a>
 =======
     <router-link to="/signup" class="button" v-if="currentUrl !== 'signup'">
@@ -38,3 +38,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .text-size {
+    font-size: 1rem;
+  }
+</style>

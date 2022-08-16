@@ -1,36 +1,58 @@
 <template>
-  <q-card-section>
-    <q-card-section>
-      {{task.homework?.id || task.id}}
-      <div class="text-h6">{{task.homework?.title || task.title}}</div>
-      {{date}}
-    </q-card-section>
-
-    <q-card-section class="q-pt-none">
-      <header>
-        <span v-if="isLecture.value"> {{task.homework['check_flag']? '채점 완료':'채점 미완료'}}</span>
-        <span v-else> {{task.agreement? '채점 완료':'채점 미완료'}}</span>
-      </header>
-      <article>
-        제출기한 : {{task.homework?.deadline || task.deadline}}
-        <br>
-        <!-- 학생용 과제 제출 안 한 상세 페이지에는 안 보이게 -->
-        <div>
-          내용 : {{task.homework?.content || task.content}}
-          <br>
-          첨부파일 :
-          <div v-for="file in files" :key="file">
-            <a :href="url+file['atch_file']" class="button">{{file['atch_file_name']}}</a>
+  <div class="row justify-center q-my-xl">
+    <div class="notice_form">
+        <hr>
+        <div class="row justify-between items-center">
+          <div class="row start items-center">
+            <p class="title-size">{{ task.homework?.title || task.title }}</p>
           </div>
+          <p class="item-size text-right q-px-md"> {{date}}</p>
         </div>
-      </article>
+        <span class="item-size text-start q-pl-sm text-grey-13">
+          <span v-if="isLecture.value"> {{task.homework['check_flag']? '채점 완료':'채점 미완료'}}</span>
+          <span v-else> {{task.agreement? '채점 완료':'채점 미완료'}}</span>
+        </span>
+        <span class="item-size text-end q-pl-sm text-grey-13">
+          ( ~{{task.homework?.deadline || task.deadline}}) 
+        </span>
+        <hr>
+
+        <div>
+          <q-card class="bord">
+            <q-card-section>
+              <p class="content-size bg-white" style="min-height:500px">{{task.homework?.content || task.content}}</p>
+            </q-card-section>
+          </q-card>
+        </div>
+      <hr>
+
+      <div class="q-py-sm q-pl-sm">
+        <p class="text-size text-grey-13 q-pb-sm">첨부파일 ({{ files.length }}) </p> 
+        <div v-for="file in files" :key="file">
+          <q-btn @click="openFile(url+file['atch_file'])" color="grey-12" class="text-black">
+          <q-icon name="mdi-paperclip"/>
+          {{ file.atch_file_name }}
+          </q-btn>
+        </div> 
+      </div>
       <hr>
       <!-- 교사용 -->
       <article v-if="isTeacher">
         <!-- 자신이 작성한 상세 페이지에서 -->
-        <div v-if="isLecture">
-          <q-btn color="primary" label="채점 완료" @click="checkComplete" v-if="check.possible" />
-          <q-list bordered class="rounded-borders" v-for="item in task.student_submit" :key="item.id">
+        <div v-if="isLecture" class="q-my-md row">
+          <span class="col-3 align-baseline text-h6"> 학생 목록 </span>
+          <q-btn
+            color="primary"
+            label="채점 완료"
+            @click="checkComplete"
+            v-if="check.possible"
+            class="offset-7 col-2 q-my-md"
+            />
+          <q-list
+            bordered
+            class="rounded-borders col-12"
+            v-for="item in task.student_submit"
+            :key="item.id">
             <task-target-student
               :item="item"
               :deadline="task.homework?.deadline"
@@ -46,11 +68,23 @@
           />
         </div>
         <!-- 학생이 작성한 과제 상세 페이지에서 -->
-        <div v-else-if="!task.agreement">
-          <q-input v-if="task.student" v-model="point" type="number" label="점수" min="-1" max="5"/>
-          <div  v-if="!task.homework?.check_flag">
-            <q-btn color="primary" label="채점 완료" @click="checkStudent" />
-          </div>
+        <div v-else-if="!task.agreement" class="row justify-center items-baseline">
+          <q-input
+            v-if="task.student"
+            v-model="point"
+            type="number"
+            label="점수"
+            min="-1"
+            max="5"
+            class="q-ml-md col-9" 
+          />
+          <q-btn
+            v-if="!task.homework?.check_flag"
+            color="primary"
+            label="채점 완료"
+            @click="checkStudent"
+            class="q-ml-md col-2"
+          />
           <hr>
           <message-pop-up
             v-if="check.confirmStudent"
@@ -60,8 +94,8 @@
           />
         </div>
       </article>
-    </q-card-section>
-  </q-card-section>
+    </div>  
+  </div>
 </template>
 
 <script>
@@ -118,6 +152,9 @@ export default {
         return props.task.student_file
       }
     })
+    const openFile = (url) => {
+      window.open(drf.file.path() + url)
+    }
     const date = computed(() => {
       if (!isLecture.value) {
         return dayjs(props.task.updated_at).format('YYYY-MM-DD HH:mm')
@@ -180,8 +217,50 @@ export default {
       checkStudent,
       point,
       files,
+      openFile,
       isLecture,
     }
   },
 }
 </script>
+
+<style scoped>
+  .title-size {
+    font-size : 3vmin;
+  }
+  .content-size {
+    font-size : 2.5vmin;
+  }
+  .item-size {
+    font-size: 2vmin;
+  }
+  .my-card {
+    width: 70%
+  }
+  p {
+    margin: 0;
+  }
+  h3 {
+    margin: 0;
+  }
+  .notice_form {
+    width: 60%;
+    /* margin : 0; */
+    /* font-family: "jooa"; */
+  }
+  .color1 {
+    color: #FF9966;
+  }
+  .text-size {
+    font-size: 1rem;
+  }
+  .bord-bt {
+    border-bottom: 1px solid #99DFF9;
+  }
+  .btn-mag {
+    margin-top: 100px;
+  }
+  .bord {
+    border: 1px solid ;
+  }
+</style>
