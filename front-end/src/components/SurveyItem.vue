@@ -12,19 +12,21 @@
         style="width: 685px;" placeholder="설문 문항을 입력해주세요." />
       </div>
       
-      <div class="row items-center" v-else-if="selected === 'choice'"><br>
-        <span class="q-mx-lg text-center text-size">문항 {{ survey }}.</span>
-        <q-input outlined class="text-size" v-model="credentials.survey_question" 
-        style="width: 685px;" placeholder="설문 문항을 입력해주세요." />
-
-        <div class="q-py-md q-px-lg">
-          <q-input outlined class="text-size q-my-md" label="보기 1" style="width:685px;" v-model="num1" />
-          <q-input outlined class="text-size q-mb-md" label="보기 2" style="width:685px;" v-model="num2" />
-          <q-input outlined class="text-size q-mb-md" label="보기 3" style="width:685px;" v-model="num3" />
-          <q-input outlined class="text-size q-mb-md" label="보기 4" style="width:685px;" v-model="num4" />
-          <q-input outlined class="text-size q-mb-md" label="보기 5" style="width:685px;" v-model="num5" />
+      <div class="column items-start" v-else-if="selected === 'choice'"><br>
+        <div class="row items-center">
+          <span class="q-mx-lg text-center text-size">문항 {{ survey }}.</span>
+          <q-input outlined class="text-size" v-model="credentials.survey_question" 
+          style="width: 685px;" placeholder="설문 문항을 입력해주세요." />
+        </div>
+        <div class="q-mt-lg q-ml-lg">
+          <q-input outlined class="text-size" label="보기 1" style="width:685px;" v-model="num1" /><br>
+          <q-input outlined class="text-size" label="보기 2" style="width:685px;" v-model="num2" /><br>
+          <q-input outlined class="text-size" label="보기 3" style="width:685px;" v-model="num3" /><br>
+          <q-input outlined class="text-size" label="보기 4" style="width:685px;" v-model="num4" /><br>
+          <q-input outlined class="text-size" label="보기 5" style="width:685px;" v-model="num5" />
         </div>
       </div>
+      <hr>
 
     </div>
   </div>
