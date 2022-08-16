@@ -246,6 +246,9 @@ class NoticeDetailView(APIView):
         return Response({"message" : "잘못된 접근입니다."})
 
     def delete(self, req):
+        if not req.user.userflag:
+            return Response({"message : 선생님만 접근 가능합니다."})
+        
         notice_id = req.GET['notice_num']
 
         ## 공지사항 번호로 공지사항 인스턴스 가져오기

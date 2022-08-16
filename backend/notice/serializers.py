@@ -21,8 +21,12 @@ class NoticeMainSerializer(serializers.ModelSerializer):
 >>>>>>> 53d5343 (Feat : 데이터 변경사항 수정)
 =======
         model = models.Notice
+<<<<<<< HEAD
         fields = ['pk','classification','title','updated_at','views','teacher']
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+        fields = ['pk','classification','title','created_at','views','teacher']
+>>>>>>> 9f5dc40 (Refactor : 공지사항 기능 수정)
 
 class NoticeSerializer(serializers.ModelSerializer):
     teacher = UserNameSerializer(read_only=True)

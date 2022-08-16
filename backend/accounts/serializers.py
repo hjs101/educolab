@@ -228,17 +228,19 @@ class MyTokenRefreshSerializer(TokenRefreshSerializer):
     # 유효성 검사
     def validate(self, attrs):
         data = super().validate(attrs)
-        
+        print(data)
         # refresh = self.get_token(self.user)
         decode_data = jwt.decode(data['access'], SECRET_KEY, algorithms=['HS256'])
-        print(decode_data)
         # response에 추가하고 싶은 key값들 추가
         user = models.UserInfo.objects.get(username=decode_data['user_id'])
-        data['name'] = user.name
-        data['userflag'] = user.userflag
-        data['username'] = user.username
-        data['profil'] = user.profil.url
-        data['schoolname']=user.school.name
+        userinfo = {
+            "name" : user.name,
+            "userflag" : user.userflag,
+            "username" : user.username,
+            "profil" : user.profil.url,
+            "schoolname" : user.school.name
+        }
+        data['userinfo'] = userinfo
         return data
 
 class MyTokenObtainPairView(TokenObtainPairView):
