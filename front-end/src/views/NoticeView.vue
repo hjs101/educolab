@@ -187,7 +187,11 @@ export default {
     }
   },
   created() {
-    this.noticeList()
+    if (!this.isLoggedIn) {
+      this.$router.push('/educolab/login/')
+    } else {
+      this.noticeList()
+    }
   }
 }
 

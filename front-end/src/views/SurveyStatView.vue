@@ -97,7 +97,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['surveyStat', 'surveyQuestion'])
+    ...mapGetters(['surveyStat', 'surveyQuestion', 'isLoggedIn', 'currentUser'])
   },
   methods: {
     ...mapActions(['getSurveyStat', 'onQuestion']),
@@ -106,7 +106,13 @@ export default {
     }
   },
   mounted() {
-    this.getSurveyStat(this.surveyPk)
+    if (!this.isLoggedIn) {
+      this.$router.push('/educolab/login')
+    } else if (!this.currentUser.userflag) {
+      this.$router.push('/educolab')
+    } else {
+      this.getSurveyStat(this.surveyPk)
+    }
   }
 }
 </script>

@@ -53,10 +53,8 @@ export default {
         if (type.type !== 'password') {
           router.push('/404')
         }
-      } else if (store.getters.isLoggedIn) {
-          // 로그인됐을 경우
-      } else {
-        // 로그인되지 않았을 경우
+      } else if (!store.getters.isLoggedIn && type.isTypeInfo) {
+          router.push('/educolab')
       }
     })
     const change = reactive({

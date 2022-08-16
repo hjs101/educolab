@@ -278,11 +278,15 @@
 // import { reactive } from '@vue/reactivity'
 import { mapGetters, mapActions, useStore } from 'vuex'
 import {onBeforeMount} from 'vue'
+<<<<<<< HEAD
 import {useRouter, useRoute} from 'vue-router'
 =======
 // import { reactive } from '@vue/reactivity'
 import { mapGetters, mapActions } from 'vuex'
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+import {useRouter} from 'vue-router'
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
 import AccountErrorList from '@/components/AccountErrorList.vue'
 import ButtonGroup from '@/components/ButtonGroup.vue'
 
@@ -331,11 +335,14 @@ export default {
   setup () {
     const store = useStore()
     const router = useRouter()
-    const route = useRoute()
     onBeforeMount(() => {
       if (store.getters.isLoggedIn) {
+<<<<<<< HEAD
         console.log(router)
         console.log(route)
+=======
+        router.push('/educolab')
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
       }
     })
   },

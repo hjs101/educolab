@@ -48,11 +48,19 @@ export default {
   methods: {
     ...mapActions(['getMainPage'])
   },
+<<<<<<< HEAD
   mounted() {
     if (this.isLoggedIn) {
       this.getMainPage()
     } else {
       this.$router.push({ name: 'login'})
+=======
+  created() {
+    if (!this.isLoggedIn) {
+      this.$router.push('/educolab/login')
+    } else {
+      this.getMainPage()
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
     }
   }
 }

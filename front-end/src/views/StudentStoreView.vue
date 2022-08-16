@@ -90,6 +90,7 @@ import {onBeforeMount, reactive, ref, computed} from 'vue'
 import axios from 'axios'
 import drf from '@/api/drf.js'
 import {useStore} from 'vuex'
+import {useRouter} from 'vue-router'
 import PointItem from '@/components/PointItem.vue'
 import ThePagination from '@/components/ThePagination.vue'
 import MessagePopUp from '@/components/MessagePopUp.vue'
@@ -101,9 +102,15 @@ export default {
   },
   setup() {
     const store = useStore()
+    const router = useRouter()
     let items = ref(null)
     let tab = ref('alias')
     onBeforeMount(() => {
+      if (!this.isLoggedIn) {
+      router.push('/educolab/login')
+    } else if (store.getters.currentUser.userflag) {
+      router.push('/educolab')
+    } else {
       axios({
         url: drf.pointShop.main(),
         methods: 'get',
@@ -113,6 +120,7 @@ export default {
           items.value = res.data
           console.log(items)
         })
+    }
     })
     const confirm = reactive({
       message: '구매되었습니다. 바로 적용하시겠습니까?',

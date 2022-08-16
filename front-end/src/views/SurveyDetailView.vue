@@ -43,7 +43,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['surveyItem', 'surveyBogi'])
+    ...mapGetters(['surveyItem', 'surveyBogi', 'isLoggedIn', 'currentUser'])
   },
   methods: {
     ...mapActions(['getSurveyDetail', 'deleteSurvey']),
@@ -56,7 +56,13 @@ export default {
     
   },
   created() {
-    this.getSurveyDetail(this.surveyPk)
+    if (!this.isLoggedIn) {
+      this.$router.push('/educolab/login')
+    } else if (!this.currentUser.userflag) {
+      this.$router.push('/educolab')
+    } else {
+      this.getSurveyDetail(this.surveyPk)
+    }
   }
 }
 </script>

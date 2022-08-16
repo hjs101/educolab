@@ -196,7 +196,7 @@ export default({
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
   },
   computed: { 
-    ...mapGetters(['quiz', 'quizLength'])
+    ...mapGetters(['quiz', 'quizLength', 'isLoggedIn', 'currentUser'])
   },
   methods: {
     ...mapActions(['quizList']),
@@ -216,7 +216,13 @@ export default({
     }
   },
   created() {
-    this.quizList()
+    if (!this.isLoggedIn) {
+      this.$router.push('/educolab/login/')
+    } else if (!this.currentUser.flag) {
+      this.$router.push('/login/')
+    } else {
+      this.quizList()
+    }
   },
   setup() {
     let page = ref(1)

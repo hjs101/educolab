@@ -207,10 +207,14 @@
 <script>
 <<<<<<< HEAD
 import { reactive, computed, onBeforeMount} from 'vue'
+<<<<<<< HEAD
 =======
 import { ref, reactive, computed } from 'vue'
 >>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
 import { useRoute } from 'vue-router'
+=======
+import { useRoute, useRouter } from 'vue-router'
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
 import {useStore} from 'vuex'
 export default {
   name: 'TaskFormView',
@@ -218,9 +222,15 @@ export default {
     const route = useRoute()
     const store = useStore()
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    const router = useRouter()
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
     let {userType, taskPk} = route.params
     onBeforeMount(() => {
-      if (taskPk) {
+      if (!this.isLoggedIn) {
+      router.push('/educolab/login')
+    } else if (taskPk) {
         store.dispatch('initTask')
         store.dispatch('taskDetail', {pk: taskPk, teacher_flag: userType === 'teacher'? 1:0})
     }

@@ -33,7 +33,7 @@
       />
       <span class="col-12"></span>
       <q-btn
-        class="col-5 q-my-lg text-size"
+        class="col-4 q-my-lg text-size"
         color="amber"
         v-if="type.isTypeId"
         @click="findId">FIND ID</q-btn>

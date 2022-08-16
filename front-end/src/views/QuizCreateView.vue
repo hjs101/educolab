@@ -106,8 +106,17 @@ export default {
       this.$router.push({name:'Quiz'})
     }
   },
+<<<<<<< HEAD
   created() {
     if (this.quizPk) {
+=======
+  mounted() {
+    if (!this.isLoggedIn) {
+      this.$router.push('/educolab/login/')
+    } else if (!this.currentUser.flag) {
+      this.$router.push('/login/')
+    } else if (this.quizPk) {
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
       this.getQuizDetail(this.quizPk)
       this.credentials.quiz.title = this.quizDetail[0].quiz_name
     } 

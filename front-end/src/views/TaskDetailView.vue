@@ -52,7 +52,7 @@
 <script>
 import {computed, onMounted, reactive} from 'vue'
 import {useStore} from 'vuex'
-import {useRoute} from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 import {isEmpty} from 'lodash'
 import dayjs from 'dayjs'
 import StudentTaskSubmit from '@/components/StudentTaskSubmit.vue'
@@ -67,14 +67,19 @@ export default {
   },
   setup() {
     const route = useRoute()
+    const router = useRouter()
     const store = useStore()
     const pk = route.params.taskPk
     const isLecture = computed(() => route.params.taskType === 'lecture'? 1:0)
     onMounted(() => {
-      store.dispatch('taskDetail', {
-        pk,
-        teacher_flag: isLecture.value
-      })
+      if (store.getters.isLoggedIn) {
+        store.dispatch('taskDetail', {
+          pk,
+          teacher_flag: isLecture.value
+        })
+      } else {
+        router.push('/login')
+      }
     })
     const task = computed(() => store.getters.getTask)
     const isEmptyTask = computed(() => isEmpty(task.value))

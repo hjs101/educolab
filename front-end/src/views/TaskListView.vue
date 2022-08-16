@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import {useRoute} from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 import {useStore} from 'vuex'
 import { computed, onBeforeMount, onMounted, ref } from 'vue'
 import StudentTaskTab from '@/components/StudentTaskTab.vue'
@@ -36,13 +36,18 @@ export default {
   },
   setup () {
     const route = useRoute()
+    const router = useRouter()
     const store = useStore()
     const {userType} = route.params
     const isTeacher = computed(() => userType === 'teacher')
     let search = ref(false)
     let query = ref(null)
     onBeforeMount(() => {
-      store.dispatch('taskList')
+      if (!this.isLoggedIn) {
+        router.push('/educolab/login')
+      } else {
+        store.dispatch('taskList')
+      }
     })
     onMounted(() => {
     })

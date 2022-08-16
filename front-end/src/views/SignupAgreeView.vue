@@ -123,8 +123,14 @@
 import { ref } from '@vue/reactivity'
 import useProvision from '@/components/UseProvision.vue'
 import useInfo from '@/components/UseInfo.vue'
+<<<<<<< HEAD
 import { mapGetters } from 'vuex'
 
+=======
+import { onBeforeMount } from '@vue/runtime-core'
+import {useStore} from 'vuex'
+import { useRouter } from 'vue-router'
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
 export default {
   name: 'signupAgreeView',
   components: {
@@ -135,7 +141,14 @@ export default {
     ...mapGetters(['isLoggedIn'])
   },
   setup () {
+    const store = useStore()
+    const router = useRouter()
     let isChecked = ref(false)
+    onBeforeMount(() => {
+      if (store.getter.isLoggedIn) {
+        router.push('/educolab')
+      }
+    })
     return {
       isChecked
     }

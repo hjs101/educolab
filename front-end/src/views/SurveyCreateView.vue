@@ -65,7 +65,11 @@ export default {
   components: { SurveyItem },
   name: 'SurveyCreateView',
   computed: {
+<<<<<<< HEAD
     ...mapGetters(['surveyData', 'survey', 'surveyItem']),
+=======
+    ...mapGetters(['surveyData', 'survey', 'isLoggedIn', 'currentUser']),
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
     getTitle() {
       if (this.surveyPk) return "설문조사 수정"
       return "설문조사 등록"
@@ -160,10 +164,31 @@ export default {
       this.surveyData.push({})
     },
     deleteSurvey(survey, event) {
+<<<<<<< HEAD
       if (confirm('문항을 정말 삭제하시겠습니까?')) {
         event.preventDefault()
         this.surveyList = this.surveyList - 1
         this.surveyData.splice(survey-1, 1)
+=======
+      event.preventDefault()
+      this.surveyList = this.surveyList - 1
+      this.surveyData.splice(survey-1, 1)
+    },
+  },
+  mounted() {
+    if (!this.isLoggedIn) {
+      this.$router.push('/educolab/login')
+    } else if (!this.currentUser.userflag) {
+      this.$router.push('/educolab')
+    } else if (this.surveyPk) {
+      for (var i=0; i < this.survey.length; i++) {
+        if (this.surveyPk == this.survey[i].pk) {
+          this.credentials.survey.title = this.survey[i].title
+          this.credentials.survey.grade = this.survey[i].grade
+          this.credentials.survey.class_field = this.survey[i].class_field
+          return
+        }
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
       }
     },
     goSurvey() {

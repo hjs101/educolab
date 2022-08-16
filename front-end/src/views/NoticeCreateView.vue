@@ -90,7 +90,11 @@ export default {
     ...mapActions(['createNotice', 'getNoticeDetail', 'updateNotice', 'createFileNotice']),
   },
   mounted() {
-    if (this.noticePk) {
+    if (!this.isLoggedIn) {
+      this.$router.push('/educolab/login/')
+    } else if (!this.currentUser.flag) {
+      this.$router.push('/educolab/')
+    } else if (this.noticePk) {
       this.getNoticeDetail(this.noticePk)
       this.credentials.classification = this.noticeDetail.notice.classification
       this.credentials.title = this.noticeDetail.notice.title

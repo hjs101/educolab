@@ -33,11 +33,11 @@
           @click="selectAlias(1,icon.id, icon.title)"
           class="cursor-pointer">
           <q-card-section>
-            <img :src="url+icon.icon" >
+            <img :src="url+icon.icon" width="50px" >
             <br>
-            <span :class="{active:icon.id === icon.computedId}">
+            <q-btn flat :text-color="icon?.id === alias.computedId? 'blue':'black'">
               {{icon.title}}
-            </span>
+            </q-btn>
           </q-card-section>
         </q-card>
       </q-card-section>

@@ -267,6 +267,7 @@
           </div>
         </div>
     </div>
+<<<<<<< HEAD
 
 <<<<<<< HEAD
       <!-- <footer class="bord-top bg-blue-grey-12 q-py-sm">
@@ -288,6 +289,9 @@
 >>>>>>> 38a5ff1 (공지사항  수정 해결)
 =======
 >>>>>>> 7f2a492 (설문조사  sass)
+=======
+    <!-- <the-spinner v-if="computedLoad"/> -->
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
   <router-view />
 <<<<<<< HEAD
   
@@ -789,20 +793,31 @@ export default {
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+// import TheSpinner from './components/TheSpinner.vue'
 
 export default {
+  // components: { TheSpinner },
   name: 'MainPage',
   data() {
     return {
       isHovering : true,
       onNavList : false,
+      load: true,
     }
   },
   computed: {
     ...mapGetters(['isLoggedIn', 'currentUser']),
     flag() {
+<<<<<<< HEAD
       if (this.isLoggedIn) return true
       return false
+=======
+      const flag = this.currentUser.userflag
+      return flag
+    },
+    computedLoad() {
+      return this.load
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
     }
   },
   methods: {
@@ -830,6 +845,7 @@ export default {
   },
   created() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (this.isLoggedIn) {
       this.currentingUser()
     }
@@ -838,6 +854,8 @@ export default {
     //   this.$router.push({name:'login'})
     // }
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
+=======
+>>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
   }
 }
 </script>

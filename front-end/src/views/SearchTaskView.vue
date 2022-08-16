@@ -33,10 +33,10 @@
 <script>
 import {onBeforeMount, ref, computed, reactive} from 'vue'
 import {useStore} from 'vuex'
-import {useRoute} from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 import TaskListTable from '@/components/TaskListTable.vue'
 import ThePagination from '@/components/ThePagination.vue'
-// import {isEmpty} from 'lodash'
+import {isEmpty} from 'lodash'
 export default {
   name: 'SearchTask',
   components: {
@@ -46,6 +46,7 @@ export default {
   setup() {
     const store = useStore()
     const route = useRoute()
+    const router = useRouter()
     let {userType} = route.params
     const taskList = computed(() => userType === 'teacher'? store.getters.getTeacherAll : store.getters.getStudentAll)
     const search = reactive({
@@ -61,10 +62,11 @@ export default {
       page.value = value
     }
     onBeforeMount(() => {
-      // console.dir(taskList)
-      // if (isEmpty(taskList)) {
-      //   store.dispatch('taskList')
-      // }
+      if (!store.getters.isLoggedIn) {
+        router.push('educolab/login/')
+      } else if (isEmpty(taskList)) {
+        store.dispatch('taskList')
+      }
     })
     return {
       taskList,
