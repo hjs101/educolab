@@ -461,7 +461,17 @@ class ChangePWView(APIView):
                 "message" : "비밀번호가 일치하지 않습니다"
             }
             return Response(context)
-
+        if len(password1) < 8:
+            context = {
+                "success" : False,
+                "message" : "비밀번호는 8자 이상, 영문과 숫자를 혼합해야합니다"
+            }
+        if not password1.isalpha() and not password1.isdecimal():
+            context = {
+                "success" : False,
+                "message" : "비밀번호는 8자 이상, 영문과 숫자를 혼합해야합니다"
+            }
+            return Response(context)
         userinfo = UserInfo.objects.get(name=name,email=email,username=username)
         userinfo.set_password(password1)
         userinfo.save()
