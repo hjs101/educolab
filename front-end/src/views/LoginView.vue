@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 =======
@@ -13,6 +14,9 @@
 =======
   <div style="height:900px;" class="q-mx column justify-center">
 >>>>>>> 7f2a492 (설문조사  sass)
+=======
+  <div style="height:800px;" class="q-mx column justify-center">
+>>>>>>> eb5987b (로그인  버그 수정)
     <h3>LOGIN</h3>
     <account-error-list></account-error-list>
     <!-- form 부분 -->

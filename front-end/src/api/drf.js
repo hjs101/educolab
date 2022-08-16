@@ -123,6 +123,7 @@ const POINT_SHOP = BASE_URL + 'pointshop/'
 
 export default {
   accounts: {
+<<<<<<< HEAD
     login: () => ACCOUNTS + 'login_web/',
     logout: () => ACCOUNTS + 'logout/',
 <<<<<<< HEAD
@@ -217,6 +218,9 @@ export default {
 =======
     login: () => ACCOUNTS + "login/",
 >>>>>>> 7485bf3 (fix : refresh 원상복구)
+=======
+    login: () => ACCOUNTS + "login/",
+>>>>>>> eb5987b (로그인  버그 수정)
     logout: () => ACCOUNTS + "logout/",
     signup: () => ACCOUNTS + "registration/",
     schoolInfo: () => ACCOUNTS + "schoolinfo/",
@@ -232,7 +236,11 @@ export default {
 >>>>>>> 14aeb99 (Feat: 교사 출제 과제 제출 기능 구현)
 =======
     checkePw: () => ACCOUNTS + "check_pw/",
+<<<<<<< HEAD
 >>>>>>> 20f8665 (Fix : 빌드 에러 해결)
+=======
+    currenting: () => ACCOUNTS + "login/refresh/"
+>>>>>>> eb5987b (로그인  버그 수정)
   },
 
 =======

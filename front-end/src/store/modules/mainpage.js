@@ -34,11 +34,10 @@ export const mainpage = {
         headers: getters.authHeader
       })
         .then(res => {
-          console.log(res)
           commit('MAIN_NOTICE', res.data.notice)
           commit('MAIN_HOMEWORK', res.data.homework)
           commit('MAIN_ACC_RANK', res.data.acc_rank)
-          commit('MAIN_WEEK_RANK', res.data.month_rank)
+          commit('MAIN_WEEK_RANK', res.data.week_rank)
         })
     }
   }

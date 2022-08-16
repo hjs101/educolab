@@ -134,12 +134,15 @@ export const accounts = {
         email: null,
         userflag: true,
       },
+      access : localStorage.getItem('access') || '' ,
       userType: null,
       validEmail: false,
+<<<<<<< HEAD
       access: localStorage.getItem("access") || "",
 <<<<<<< HEAD
+=======
+>>>>>>> eb5987b (로그인  버그 수정)
       currentUser: {
-        userflag : true
       },
       authError: null,
 <<<<<<< HEAD
@@ -285,7 +288,6 @@ export const accounts = {
   mutations: {
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     SET_TOKEN: (state, access) => (state.access = access),
-    SET_CURRENT_USER: (state, user) => (state.currentUser = user),
     SET_AUTH_ERROR: (state, error) => (state.authError = error),
     CHANGE_DATA(state, data) {
       if (state.userType === "student") {
@@ -319,7 +321,18 @@ export const accounts = {
     },
     CHANGE_VALID: (state, data) => {
       state.validEmail = data
-    }
+    },
+    CURRENTING_USER: (state, currentUser) => {
+      for (let key in currentUser) {
+        if (key === 'access') {
+          state.access = currentUser.access
+        } else if (key === 'refresh') {
+          localStorage.setItem("refresh", currentUser.refresh)
+        } else {
+          state.currentUser[key] = currentUser[key]
+        }
+      }
+    } 
   },
 =======
     SET_PERMISSION: (state, permission) => state.hasPermission = permission,
@@ -371,6 +384,7 @@ export const accounts = {
       commit("SET_TOKEN", "");
       localStorage.setItem("access", "")
     },
+<<<<<<< HEAD
     initInfo({state, getters, dispatch}) {
       if (getters.getUserType == "student") {
         for (let key in state.studentInfo) {
@@ -516,6 +530,36 @@ export const accounts = {
           const access = res.data.access
           dispatch("saveToken", access)
           commit("SET_CURRENT_USER", res.data)
+=======
+
+    currentingUser({ commit }) {
+      if (localStorage.getItem("refresh")) {
+        axios({
+          url : drf.accounts.currenting(),
+          method : 'post',
+          data : {
+            'refresh' : localStorage.getItem("refresh")
+          }
+        })
+          .then(res => {
+            console.log(res.data)
+            commit("CURRENTING_USER", res.data)
+          })
+      }
+    },
+
+    login({ commit, dispatch }, credentials) {
+      axios({
+        url: drf.accounts.login(),
+        method : 'post',
+        data : credentials
+      })
+        .then(res => {
+          console.log(res.data)
+          const access = res.data.access
+          dispatch("saveToken", access)
+          commit("CURRENTING_USER", res.data)
+>>>>>>> eb5987b (로그인  버그 수정)
           router.push({ name: "educolab" })
         })
         .catch((err) => {
@@ -780,6 +824,7 @@ export const accounts = {
     changePwInfo({commit}, data) {
       commit("CHANGE_PW_INFO", data)
     },
+<<<<<<< HEAD
     // back에 현재 사용자 정보 요청 (토큰 보내면 )
 =======
       commit("SET_USER_TYPE", userType)
@@ -790,3 +835,7 @@ export const accounts = {
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   },
 };
+=======
+  }
+}
+>>>>>>> eb5987b (로그인  버그 수정)
