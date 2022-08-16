@@ -24,8 +24,13 @@
           <tr v-for="(survey, index) in survey.slice((page-1)*10, page*10)" :key="index">
             <td class="text-center text-size">{{ index+1+((page-1)*10) }}</td>
             <td @click="surveyDetail(survey.pk)" class="text-size cursor-pointer">{{ survey.title }}</td>
-            <td class="text-center text-size">{{ survey.grade }}</td>
-            <td class="text-center text-size">{{ survey.class_field }}</td>
+
+            <td v-if="survey.grade===0" class="text-center text-size">전체</td>
+            <td v-else-if="survey.grade!==0" class="text-center text-size">{{ survey.grade }}</td>
+
+            <td v-if="survey.class_field===0" class="text-center text-size">전체</td>
+            <td v-else-if="survey.class_field!==0" class="text-center text-size">{{ survey.class_field }}</td>
+
             <td class="text-center text-size">{{ timeInfo(survey.updated_at) }}</td>
             <td @click="onSurveyStat(survey.pk)" class="cursor-pointer text-center text-size">통계보기</td>
           </tr>
@@ -44,8 +49,13 @@
         <tbody>
           <tr v-for="(survey,index) in survey.slice((page-1)*10, page*10)" :key="index">
             <td @click="surveyDetail(survey.pk)" class="text-size cursor-pointer">{{ survey.title }}</td>
-            <td class="text-center text-size">{{ survey.grade }}</td>
-            <td class="text-center text-size">{{ survey.class_field }}</td>
+
+            <td v-if="survey.grade===0" class="text-center text-size">전체</td>
+            <td v-else-if="survey.grade!==0" class="text-center text-size">{{ survey.grade }}</td>
+
+            <td v-if="survey.class_field===0" class="text-center text-size">전체</td>
+            <td v-else-if="survey.class_field!==0" class="text-center text-size">{{ survey.class_field }}</td>
+            
             <td @click="onSurveyStat(survey.pk)" class="cursor-pointer text-center text-size">통계보기</td>
           </tr>
         </tbody>

@@ -55,7 +55,7 @@
     </div>
 
     <div class="btn-mag row justify-center">
-      <q-btn @click="goSurvey" class="text-size q-px-xl q-py-md" color="grey-8" label="목록"></q-btn>
+      <q-btn @click="goQuiz" class="text-size q-px-xl q-py-md" color="grey-8" label="목록"></q-btn>
     </div>
   </div>
 </template>
@@ -78,7 +78,7 @@ export default {
     updateQuiz(quizPk) {
       this.$router.push({name:'QuizCreate', params: {quizPk : quizPk}})
     },
-    goSurvey() {
+    goQuiz() {
       this.$router.push({name:'Quiz'})
     }
   },

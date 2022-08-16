@@ -10,6 +10,7 @@ export const survey = {
       surveyBogi : [],
       surveyStat: {},
       surveyQuestion: {},
+      surveyItem : {}
     }
   },
   

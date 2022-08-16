@@ -18,20 +18,33 @@
     </div>
     <hr>
     
-    <form class="surveymargin">
-      <div class="surveymargin" v-for="survey in surveyList" :key="survey">
-        <div class="row justify-end q-mt-md q-mr-xl">
-          <q-btn @click="deleteSurvey(survey, $event)" class="text-size" color="orange-6">문항 삭제</q-btn>
-        </div>
-          <survey-item 
+    <form>
+      <div v-if="surveyPk">
+        <div v-for="survey in surveyItem.length-1" :key="survey">
+          <div class="row justify-end q-mt-xl q-mr-xl">
+            <q-btn @click="deleteSurvey(quiz, $event)" class="text-size" color="orange-6">문제 삭제</q-btn>
+          </div>
+          <survey-item
           :survey="survey"
-          :surveyPk="surveyPk"/>
-          <hr>
+          :surveyPk="surveyPk"
+          />
+        </div>
+      </div>
+
+      <div v-else>
+        <div v-for="survey in surveyList" :key="survey">
+          <div class="row justify-end q-mt-md q-mr-xl">
+            <q-btn @click="deleteSurvey(survey, $event)" class="text-size" color="orange-6">문항 삭제</q-btn>
+          </div>
+            <survey-item 
+            :survey="survey"
+            :surveyPk="surveyPk"/>
+        </div>
       </div>
     </form>
 
     <div class="row justify-center q-my-xl">
-      <q-btn class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
+      <q-btn @click="goSurvey" class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
       <q-btn @click="surveyPk ? updateSurvey(credentials) : submitSurvey(credentials)"
       class="text-size q-px-xl q-py-md q-mx-lg q-py-sm" color="blue-6">
       {{ surveyPk ? '수정' : '등록'}}
@@ -52,7 +65,7 @@ export default {
   components: { SurveyItem },
   name: 'SurveyCreateView',
   computed: {
-    ...mapGetters(['surveyData', 'survey']),
+    ...mapGetters(['surveyData', 'survey', 'surveyItem']),
     getTitle() {
       if (this.surveyPk) return "설문조사 수정"
       return "설문조사 등록"
@@ -147,21 +160,34 @@ export default {
       this.surveyData.push({})
     },
     deleteSurvey(survey, event) {
-      event.preventDefault()
-      this.surveyList = this.surveyList - 1
-      this.surveyData.splice(survey-1, 1)
-    },
-  },
-  mounted() {
-    if (this.surveyPk) {
-      for (var i=0; i < this.survey.length; i++) {
-        if (this.surveyPk == this.survey[i].pk) {
-          this.credentials.survey.title = this.survey[i].title
-          this.credentials.survey.grade = this.survey[i].grade
-          this.credentials.survey.class_field = this.survey[i].class_field
-          return
-        }
+      if (confirm('문항을 정말 삭제하시겠습니까?')) {
+        event.preventDefault()
+        this.surveyList = this.surveyList - 1
+        this.surveyData.splice(survey-1, 1)
       }
+    },
+    goSurvey() {
+      if (confirm('페이지에서 나가시겠습니까? 글은 저장되지 않습니다.'))
+      this.$router.push({name:'Survey'})
+    }
+  },
+  created() {
+    // if (this.surveyPk) {
+    //   for (var i=0; i < this.survey.length; i++) {
+    //     if (this.surveyPk == this.survey[i].pk) {
+    //       this.credentials.survey.title = this.survey[i].title
+    //       this.credentials.survey.grade = this.survey[i].grade
+    //       this.credentials.survey.class_field = this.survey[i].class_field
+    //       return
+    //     }
+    //   }
+    // }
+    if (this.surveyPk) {
+      this.getSurveyDetail(this.surveyPk)
+      console.log(this.surveyItem)
+      this.credentials.survey.title = this.surveyItem[0].survey_name
+      this.credentials.survey.grade = this.surveyItem[0].survey_grade
+      this.credentials.survey.class_field = this.surveyItem[0].survey_class
     }
   }
 }

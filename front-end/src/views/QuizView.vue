@@ -82,10 +82,27 @@
           </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
           <tr v-for="(quiz, index) in quiz.slice((page-1)*10, page*10)" :key="index">
             <td class="text-size">{{ index+1+((page-1)*10) }}</td>
               <td @click="quizDetail(quiz.pk)" class="text-size cursor-pointer text-left">{{ quiz.title }}</td>
             <td class="text-center text-size">{{ timeInfo(quiz.updated_at) }}</td>
+=======
+          <tr
+            v-for="(quiz, index) in quiz.slice((page - 1) * 10, page * 10)"
+            :key="index"
+          >
+            <td class="text-center text-size">{{ index + 1 + (page - 1) * 10 }}</td>
+            <td
+              @click="quizDetail(quiz.pk)"
+              class="text-size cursor-pointer text-left"
+            >
+              {{ quiz.title }}
+            </td>
+            <td class="text-center text-size">
+              {{ timeInfo(quiz.updated_at) }}
+            </td>
+>>>>>>> 2b10460 (프론트 버그 수정)
             <!-- 퀴즈 시작 버튼에서 함수 구현 -->
             <td class="text-center text-size">
 <<<<<<< HEAD

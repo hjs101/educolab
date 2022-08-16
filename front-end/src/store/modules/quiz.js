@@ -7,6 +7,7 @@ export const quiz = {
   state() {
     return {
       quiz: {},
+<<<<<<< HEAD
       quizDetail : {},
       quizData: [{}, {}],
       online:{
@@ -21,6 +22,22 @@ export const quiz = {
         quizDetail_len:0,
       }
     }
+=======
+      quizDetail: {},
+      quizData: [{}],
+      online: {
+        username: "",
+        socket: null,
+        RoomNumber: 0,
+        quizPK: 0,
+        ans_list: [],
+        cnt_flag: true,
+        ans_good_num: 0,
+        ranking_list: [],
+        quizDetail_len: 0,
+      },
+    };
+>>>>>>> 2b10460 (프론트 버그 수정)
   },
 
   getters: {
@@ -130,7 +147,16 @@ export const quiz = {
         method: 'get',
         headers: getters.authHeader,
         params: {
+<<<<<<< HEAD
           quiz_num : quizPk
+=======
+          quiz_num: quizPk,
+        },
+      }).then((res) => {
+        for (var i = 1; i < res.data.length; i++) {
+          const bogi = res.data[i].multiple_bogi.split("/");
+          res.data[i].multiple_bogi = bogi;
+>>>>>>> 2b10460 (프론트 버그 수정)
         }
       })
         .then(res => {

@@ -18,8 +18,10 @@
       <q-btn @click="updateSurvey(surveyPk)" class="text-size q-px-xl q-py-md" color="blue-6">수정</q-btn>
     </div>
     
+    <div class="btn-mag row justify-center">
+      <q-btn @click="goSurvey" class="text-size q-px-xl q-py-md" color="grey-8" label="목록"></q-btn>
+    </div>
   </div>
-  
 </template>
 
 <script>
@@ -47,7 +49,11 @@ export default {
     ...mapActions(['getSurveyDetail', 'deleteSurvey']),
     updateSurvey(surveyPk) {
       this.$router.push({name:'SurveyCreate', params:{surveyPk:surveyPk}})
+    },
+    goSurvey() {
+      this.$router.push({name:'Survey'})
     }
+    
   },
   created() {
     this.getSurveyDetail(this.surveyPk)
@@ -65,5 +71,7 @@ export default {
   p {
     margin: 0;
   }
-
+  .btn-mag {
+    margin-top: 100px;
+  }
 </style>
