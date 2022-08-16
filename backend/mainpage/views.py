@@ -7,6 +7,7 @@ from homework.models import TeacherHomework
 
 from .models import Event
 from notice.models import Notice
+<<<<<<< HEAD
 from .serializers import AccRankSerializer, EventSerializer, MainpageNoticeSerializer, MainpageTHomeworkSerializer, MainpageTeacherhomeworkSerializer
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -27,6 +28,12 @@ from notice.serializers import NoticeMainSerializer
 >>>>>>> 9c48d5b (Fix : back branch와 merge 후 충돌 수정2)
 =======
 >>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
+=======
+from .serializers import AccRankSerializer, EventSerializer, MainpageNoticeSerializer, MainpageTHomeworkSerializer, MainpageTeacherhomeworkSerializer, WeekRankSerializer
+from notice.serializers import NoticeMainSerializer
+from accounts.serializers import HomeworkUserSerializer
+
+>>>>>>> eb9e382 (fix : 메인페이지 과제에 유저정보 추가)
 
 import datetime
 from django.db.models import Sum
@@ -53,7 +60,10 @@ class MainpageView(APIView): # 메인페이지 정보 전달 (과제,공지,행�
         last_week = today - datetime.timedelta(days=last_day)
         final = today - datetime.timedelta(days=today_num+1)
 
-        pointlog = PointLog.objects.filter(created_at__range=[last_week,final]).values("student").annotate(score=Sum("point")).order_by('-score')[:5]
+        pointlogs = PointLog.objects.filter(created_at__range=[last_week,final]).values("student").annotate(score=Sum("point")).order_by('-score')[:5]
+        for pointlog in pointlogs:
+            pointlog["student"] = UserInfo.objects.get(username=pointlog["student"])
+        pointlogs_serializer = WeekRankSerializer(pointlogs, many=True)
 
         user = request.user
         if request.user.userflag == True: # 선생님
@@ -66,7 +76,7 @@ class MainpageView(APIView): # 메인페이지 정보 전달 (과제,공지,행�
                 "event" : event_serializer.data,
                 "notice" : notice_serializer.data,
                 "acc_rank" : accrank_serializer.data,
-                "week_rank" : pointlog,
+                "week_rank" : pointlogs_serializer.data,
                 "homework" : homework_serializer.data
             }
 
@@ -80,7 +90,7 @@ class MainpageView(APIView): # 메인페이지 정보 전달 (과제,공지,행�
                 "event" : event_serializer.data,
                 "notice" : notice_serializer.data,
                 "acc_rank" : accrank_serializer.data,
-                "month_rank" : pointlog,
+                "week_rank" : pointlogs_serializer.data,
                 "homework" : homework_serializer.data
             }
         

@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from accounts.models import UserInfo
 
-from accounts.serializers import SchoolInfoSerializer, UserNameSerializer
+from accounts.serializers import SchoolInfoSerializer, HomeworkUserSerializer
+from accounts.models import PointLog
 from homework.models import StudentHomework, SubmitHomework, TeacherHomework
 from .models import Event
 from notice.models import Notice
@@ -46,6 +47,10 @@ class AccRankSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserInfo
         fields = ('username','name','grade','class_field','acc_point')
+
+class WeekRankSerializer(serializers.Serializer):
+    student = HomeworkUserSerializer(read_only=True)
+    score = serializers.IntegerField()
 
 class MainpageTeacherhomeworkSerializer(serializers.ModelSerializer):
 
