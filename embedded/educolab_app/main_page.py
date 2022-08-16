@@ -23,7 +23,7 @@ class Main_Screen(Screen):
         self.manager.quiz_flag = False
         self.manager.access_quiz("", "")
         with open("./login_info.json", 'r') as file:
-            self.data = json.load(file)["userinfo"]
+            self.data = json.load(file)
         self.school_name = self.data["schoolname"] + ' '
         self.query1 = '''
             select username, grade, class_field, name, plus_point, minus_point, profil 
