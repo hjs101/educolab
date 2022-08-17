@@ -3,11 +3,17 @@
     <h4 class="text-center">과제 검색</h4>
     <hr>
     <div class="q-pa-md">
-      <article class="row items-baseline justify-evenly">
-        <q-input label="과제 제목검색" v-model="query" class="col-8" />
-        <router-link class="button" :to="{name: 'SearchTaskView', params:{userType,}, query:{query,}}" >
-          <q-btn color="primary" label="검색" class="col-3" />
-        </router-link>
+      <article class="row items-baseline justify-center">
+        <q-input
+          label="과제 제목검색"
+          v-model="search.query"
+          class="col-5 q-mr-md"
+          @keyup.enter="refresh"/>
+        <q-btn
+          color="primary"
+          label="검색"
+          class="col-1 text-size q-mx-lg q-py-sm"
+          @click="refresh" />
       </article>
     </div>
     <h6 class="text-center q-pa-sm">검색 결과</h6>
@@ -61,10 +67,14 @@ export default {
     const changePage = (value) => {
       page.value = value
     }
+    const refresh = () => {
+      router.push({name: 'SearchTaskView', params:{userType,}, query:{query:search.query}})
+      router.go(1)
+    }
     onBeforeMount(() => {
       if (!store.getters.isLoggedIn) {
         router.push('educolab/login/')
-      } else if (isEmpty(taskList)) {
+      } else if (isEmpty(taskList.value)) {
         store.dispatch('taskList')
       }
     })
@@ -73,8 +83,13 @@ export default {
       page,
       userType,
       changePage,
-      search
+      search,
+      refresh
     }
   }
 }
 </script>
+
+<style scoped>
+  .text-size{font-size: 1rem;}
+</style>

@@ -3,11 +3,17 @@
     <h4 class="text-center">과제</h4>
     <hr>
     <section class="q-pa-md">
-      <article class="row items-baseline justify-evenly">
-        <q-input label="과제 제목검색" v-model="query" class="col-8" />
-        <router-link class="button" :to="{name: 'SearchTaskView', params:{userType,}, query:{query,}}" >
-          <q-btn color="primary" label="검색" class="col-3 text-size q-mx-lg q-py-sm" />
-        </router-link>
+      <article class="row items-baseline justify-center">
+        <q-input
+          label="과제 제목검색"
+          v-model="query"
+          class="col-5 q-mr-md"
+          @keyup.enter="toSearch" />
+        <q-btn
+          color="primary"
+          label="검색"
+          class="col-1 text-size q-mx-lg q-py-sm"
+          @click="toSearch" />
       </article>
       <article>
         <router-link
@@ -49,11 +55,15 @@ export default {
         store.dispatch('taskList')
       }
     })
+    const toSearch = () => {
+      router.push({name: 'SearchTaskView', params:{userType,}, query:{query:query.value,}})
+    }
     return {
       userType,
       isTeacher,
       search,
       query,
+      toSearch
     }
   }
 }
