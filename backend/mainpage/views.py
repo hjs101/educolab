@@ -60,7 +60,7 @@ class MainpageView(APIView): # 메인페이지 정보 전달 (과제,공지,행�
         last_week = today - datetime.timedelta(days=last_day)
         final = today - datetime.timedelta(days=today_num+1)
 
-        pointlogs = PointLog.objects.filter(created_at__range=[last_week,final]).values("student").annotate(score=Sum("point")).order_by('-score')[:5]
+        pointlogs = PointLog.objects.filter(school=request.user.school,created_at__range=[last_week,final]).values("student").annotate(score=Sum("point")).order_by('-score')[:5]
         for pointlog in pointlogs:
             pointlog["student"] = UserInfo.objects.get(username=pointlog["student"])
         pointlogs_serializer = WeekRankSerializer(pointlogs, many=True)
