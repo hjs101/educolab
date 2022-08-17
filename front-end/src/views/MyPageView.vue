@@ -62,7 +62,7 @@ export default {
       })
     }
     onBeforeMount(() => {
-      if (!this.isLoggedIn) {
+      if (!store.getters.isLoggedIn) {
       router.push('/educolab/login')
       } else {
         pageMain()

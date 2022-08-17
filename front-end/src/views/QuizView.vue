@@ -88,8 +88,12 @@
           <tr v-for="(quiz, index) in quiz.slice((page-1)*10, page*10)" :key="index">
 =======
         <tbody v-if="quiz">
+<<<<<<< HEAD
           <tr v-for="(quiz, index) in quiz?.slice((page-1)*10, page*10)" :key="index">
 >>>>>>> d6821ad (Fix : 오류 수정)
+=======
+          <tr v-for="(quiz, index) in quiz.slice((page-1)*10, page*10)" :key="index">
+>>>>>>> f9fc9e0 (Fix : 제한 사항 오류 수정)
             <td class="text-size">{{ index+1+((page-1)*10) }}</td>
               <td @click="quizDetail(quiz.pk)" class="text-size cursor-pointer text-left">{{ quiz.title }}</td>
 =======
@@ -223,7 +227,7 @@ export default({
   created() {
     if (!this.isLoggedIn) {
       this.$router.push('/educolab/login')
-    } else if (!this.currentUser.flag) {
+    } else if (!this.currentUser.userflag) {
       this.$router.push('/educolab')
     } else {
       this.quizList()

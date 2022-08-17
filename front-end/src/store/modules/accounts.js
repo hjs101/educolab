@@ -384,6 +384,7 @@ export const accounts = {
     removeToken({ commit }) {
       commit("SET_TOKEN", "");
       localStorage.setItem("access", "")
+      localStorage.setItem("refresh", "")
     },
 <<<<<<< HEAD
     initInfo({state, getters, dispatch}) {
@@ -562,12 +563,15 @@ export const accounts = {
           const access = res.data.access
           dispatch("saveToken", access)
           commit("CURRENTING_USER", res.data)
+<<<<<<< HEAD
 >>>>>>> eb5987b (로그인  버그 수정)
 =======
 >>>>>>> 7ae675e (Feat : 웹 퀴즈 기능 완료)
 =======
           // commit("SET_CURRENT_USER", res.data)
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
+=======
+>>>>>>> f9fc9e0 (Fix : 제한 사항 오류 수정)
           router.push({ name: "educolab" })
         })
         .catch((err) => {

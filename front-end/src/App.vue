@@ -846,8 +846,14 @@ export default {
   created() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (this.isLoggedIn) {
       this.currentingUser()
+=======
+    this.currentingUser()
+    if (!this.isLoggedIn) {
+      this.$router.push('/educolab/login')
+>>>>>>> f9fc9e0 (Fix : 제한 사항 오류 수정)
     }
 =======
     // if (this.isLoggedIn === false) {

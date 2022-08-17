@@ -64,7 +64,7 @@ import { ref } from 'vue'
 export default {
   name: 'NoticeCreateView',
   computed : {
-    ...mapGetters(['noticeDetail']),
+    ...mapGetters(['noticeDetail', 'isLoggedIn', 'currentUser']),
     getTitle() {
       if (this.noticePk) return "공지사항 수정 페이지"
       return "공지사항 등록 페이지"
@@ -92,7 +92,7 @@ export default {
   mounted() {
     if (!this.isLoggedIn) {
       this.$router.push('/educolab/login/')
-    } else if (!this.currentUser.flag) {
+    } else if (!this.currentUser.userflag) {
       this.$router.push('/educolab/')
     } else if (this.noticePk) {
       this.getNoticeDetail(this.noticePk)

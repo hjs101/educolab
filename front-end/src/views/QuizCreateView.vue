@@ -117,7 +117,7 @@ export default {
   mounted() {
     if (!this.isLoggedIn) {
       this.$router.push('/educolab/login/')
-    } else if (!this.currentUser.flag) {
+    } else if (!this.currentUser.userflag) {
       this.$router.push('/login/')
     } else if (this.quizPk) {
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
