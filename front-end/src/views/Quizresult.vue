@@ -1,5 +1,7 @@
 <template>
   <div class="back">
+      {{ranking_heights}}
+      {{typeof(ranking_heights)}}
     <div class="base">
       <div style="padding:5px 0">
         <span style="color:#FEC002;" class="logo">edu  </span>
@@ -45,7 +47,7 @@ export default {
     this.rankQuiz(this.RoomNumber)
   },
   computed: {
-    ...mapGetters(['username','RoomNumber','ranking_list','quizDetail'])
+    ...mapGetters(['username','RoomNumber','ranking_list','quizDetail', 'ranking_heights'])
   },
   methods: {
     ...mapActions(['rankQuiz']),

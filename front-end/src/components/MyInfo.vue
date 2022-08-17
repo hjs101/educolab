@@ -66,9 +66,9 @@
           학교 <b class="text-size">{{school}}</b>
         </span>
         <span v-if="!info.userflag || info.homeroom_teacher_flag">
-          학년/반
+          <span>&nbsp;{{info.userflag? '담당 반':'학년/반'}}</span>
           <b class="text-size">
-            {{info.grade}}학년  {{info.class_field}}반
+            &nbsp;{{info.grade}}학년  {{info.class_field}}반
           </b>
         </span>
         <br>
@@ -82,7 +82,6 @@
 
     <q-separator />
       
-
     <q-card-actions class="col-12">
       <q-btn flat @click="deleteProfil">프로필 삭제</q-btn>
       <q-btn color="primary" flat @click="toChangePage('info')">
@@ -137,7 +136,7 @@ export default {
       change: computed(() => drf.file.path() + profil.path),
     });
     const badge = reactive({
-      path: props.info.wear_icon.icon,
+      path: props.info.wear_icon?.icon,
       change: computed(() => drf.file.path() + badge.path),
     });
     let files = null;
@@ -220,22 +219,16 @@ export default {
         },
         data: form,
       }).then(() => {
-        // 프로필 적용
         profil.path = drf.file.change() + photo.files[0].name;
-        console.log("적용되었습니다");
       });
     };
     const deleteProfil = () => {
-      // 기본 프로필 이미지 주소
       axios({
         url: drf.myPage.changeProfil(),
         method: "delete",
         headers: store.getters.authHeader,
       }).then(() => {
-        // 프로필 적용
         profil.path = drf.file.default();
-        console.log(profil.path);
-        console.log("적용되었습니다");
       });
     };
     const toChangePage = (path) => {

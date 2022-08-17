@@ -57,7 +57,7 @@ export default {
           this.cnt=""
           this.prob_flag=true
         }
-        if(this.quizTime.cnt===26){
+        if(this.quizTime.cnt===10){
           console.log(this.ansgoodData)
           this.ansgoodQuiz(this.ansgoodData)
           this.result_flag=true
