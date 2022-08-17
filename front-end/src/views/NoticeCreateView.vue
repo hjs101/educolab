@@ -39,7 +39,7 @@
 
     <div class="row items-center">
       <span class="q-py-md q-ml-sm q-mr-lg text-size" style="width: 70px; text-align:center">첨부파일</span>
-      <input class="text-size" type="file" @change="onFileSelected" multiple>
+      <q-file outlined label="첨부 파일" v-model="credentials.files" style="width: 700px;" multiple/>
     </div>
     <hr>
 
