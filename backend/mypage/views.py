@@ -1,6 +1,7 @@
 from django.urls import is_valid_path
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
+<<<<<<< HEAD
 from accounts.models import UserInfo
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -8,6 +9,9 @@ from pointshop.models import PTitle
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
+=======
+from accounts.models import UserInfo, SchoolInfo
+>>>>>>> 194aa9b (fix: 학교 수정 fix)
 from pointshop.models import PTitle, Icon
 >>>>>>> fe8161f (feat : 아이콘 등록)
 from accounts.serializers import UserinfoSerializer
@@ -41,7 +45,8 @@ class MypageMainView(APIView):
         else:
             userinfo_serializer = StudentUpdateSerializer(req.user, data=req.data)
         if userinfo_serializer.is_valid(raise_exception=True):
-            userinfo_serializer.save(school = req.user.school, password = req.user.password)
+            school = SchoolInfo.objects.get(code=req.data.get('school'))
+            userinfo_serializer.save(school = school, password = req.user.password)
         return Response({
             "success":True,
             "pk" : req.user.username
