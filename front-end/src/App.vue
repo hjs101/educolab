@@ -185,9 +185,9 @@
           <div v-if="onNavList">
             <div @click="activeNav" class="column items-center q-px-md bg-grey-13">
               <router-link class="text-subtitle2 button color5 navBarLi" to="/notice" flat>공지사항</router-link>
-              <router-link class="text-subtitle2 button color5 navBarLi" to="/student/task" flat >과제</router-link>
-              <router-link class="text-subtitle2 button color5 navBarLi" to="/student/point" flat >포인트 상점</router-link>
-              <router-link class="text-subtitle2 button color5 navBarLi" to="/student" >마이페이지</router-link>
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/teacher/task" flat >과제</router-link>
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/quiz" flat >퀴즈</router-link>
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/teacher" >마이페이지</router-link>
               <span @click="logoutBtn" class="text-subtitle2 button color5 cursor-pointer navBarLi">로그아웃</span>
             </div>
           </div>
