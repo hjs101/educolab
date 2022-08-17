@@ -1,6 +1,7 @@
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <q-dialog persistant v-model="prompt">
 <<<<<<< HEAD
 =======
@@ -28,6 +29,9 @@
 =======
   <q-dialog persistant v-model="prompt" class="content-center">
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
+=======
+  <q-dialog persistant v-model="prompt" no-esc-dismiss class="content-center">
+>>>>>>> 96e4e58 (Fix : 배지 출력 안 되는 오류 수정)
     <q-card style="min-width: 350px">
       <q-card-section v-if="title">
         <div class="text-h6 text-center">{{title}}</div>

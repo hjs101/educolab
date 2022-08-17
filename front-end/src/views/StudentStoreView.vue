@@ -12,8 +12,8 @@
         align="justify"
         narrow-indicator
       >
-        <q-tab name="alias" label="칭호" />
-        <q-tab name="badge" label="배지" />
+        <q-tab class="text-size" name="alias" label="칭호" />
+        <q-tab class="text-size" name="badge" label="배지" />
       </q-tabs>
 
       <q-separator />
@@ -140,3 +140,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .text-size {
+    font-size: 1rem;
+  }
+</style>

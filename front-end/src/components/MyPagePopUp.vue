@@ -1,6 +1,6 @@
 <template>
-  <q-dialog persistant v-model="confirm.prompt">
-    <q-card style="min-width: 350px">
+  <q-dialog persistant v-model="confirm.prompt" no-esc-dismiss>
+    <q-card style="min-width: 500px">
       <q-card-section>
         <div class="text-h6">{{title}}</div>
       </q-card-section>
@@ -13,7 +13,7 @@
           type="password"
           v-model="confirm.password"/>
       </q-card-section >
-      <!-- 칭호 테스트 완료 -->
+      <!-- 칭호 -->
       <q-card-section v-else-if="type">
         <q-btn
         flat
@@ -21,21 +21,20 @@
         :key="title.id"
         :text-color="title?.id === alias.computedId? 'blue':'black'"
         @click="selectAlias(0,title.id, title.title)">
-          <!-- 칭호명 -->
           {{title.title}}
         </q-btn>
       </q-card-section>
       <!-- 배지 -->
-      <q-card-section v-else>
+      <q-card-section v-else class="row justify-evenly align-center">
         <q-card
           v-for="icon in icons"
           :key="icon.id"
-          @click="selectAlias(1,icon.id, icon.title)"
-          class="cursor-pointer">
-          <q-card-section>
-            <img :src="url+icon.icon" width="50px" >
+          @click="selectAlias(1,icon.id, icon.title, icon.icon)"
+          class="cursor-pointer q-mb-lg">
+          <q-card-section class="justify-center row">
+            <img :src="url+icon.icon" style="width:50px; height:50px" class="col-12">
             <br>
-            <q-btn flat :text-color="icon?.id === alias.computedId? 'blue':'black'">
+            <q-btn flat :text-color="icon?.id === alias.computedId? 'blue':'black'" class="col-12">
               {{icon.title}}
             </q-btn>
           </q-card-section>
@@ -69,6 +68,7 @@ export default {
     titles: Array,
     icons: Array,
     type: Boolean,
+    reload: Boolean
   },
   setup(props, {emit}) {
     const router = useRouter()
@@ -98,9 +98,10 @@ export default {
     const badge = reactive({
       name: null,
       id: null,
+      url: null,
       computedId: computed(() => badge.id),
     })
-    const selectAlias = (option, id, name) => {
+    const selectAlias = (option, id, name, url) => {
       console.log('선택', option, id, name)
       if (option === 0) {
         alias.id = id
@@ -108,6 +109,7 @@ export default {
       } else {
         badge.id = id
         badge.name = name
+        badge.url = url
       }
     }
     // const samples = [
@@ -145,7 +147,7 @@ export default {
         if (props.type) {
           emit('reverse', true, props.type, alias.id, alias.name)
         } else {
-          emit('reverse', true, props.type,badge.id, badge.name)
+          emit('reverse', true, props.type,badge.id, badge.name, badge.url)
         }
         confirm.prompt = false
       }

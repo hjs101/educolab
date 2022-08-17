@@ -49,28 +49,39 @@
           class="cursor-pointer"
           @click="myTitle(false)"
           width="50">
+        <q-btn
+          v-if="!info.userflag"
+          color="black"
+          class="text-bold text-size d-inline"
+          flat @click="myTitle(true)"
+          :label="computedTitle" />
       </div>
-      <q-card-section class="q-mx-md">
-        <span class="text-size">
-          아이디 {{info.username}} | 생년월일 {{birthday}} | 학교 {{school}}
+      <q-separator />
+        <q-card-section class="q-ml-md">
+        <span>
+          아이디 <b class="text-size"> {{info.username}} </b>
+          생년월일 <b class="text-size">{{birthday}}</b>
+          <br>
+          <br>
+          학교 <b class="text-size">{{school}}</b>
+        </span>
+        <span v-if="!info.userflag || info.homeroom_teacher_flag">
+          학년/반
+          <b class="text-size">
+            {{info.grade}}학년  {{info.class_field}}반
+          </b>
         </span>
         <br>
-        <span v-if="!info.userflag || info.homeroom_teacher_flag" class="text-size">
-          {{info.grade}}학년  {{info.class_field}}반 |
-        </span>
+        <br>
         <span v-if="!info.userflag">
-          <q-btn
-            color="black"
-            class="text-bold text-size"
-            flat @click="myTitle(true)"
-            :label="computedTitle" />
-          | 현재(누적) 상점/벌점 +{{info.plus_point}} ({{info.acc_point}}) / {{info.minus_point}}
+          현재(누적) 상점/벌점 &nbsp; <b class="text-size">+{{info.plus_point}} ({{info.acc_point}}) / {{info.minus_point}}</b>
         </span>
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
       </q-card-section>
     </q-card-section>
 
     <q-separator />
+      
 
     <q-card-actions class="col-12">
       <q-btn flat @click="deleteProfil">프로필 삭제</q-btn>
@@ -126,7 +137,7 @@ export default {
       change: computed(() => drf.file.path() + profil.path),
     });
     const badge = reactive({
-      path: props.info.wear_icon,
+      path: props.info.wear_icon.icon,
       change: computed(() => drf.file.path() + badge.path),
     });
     let files = null;
@@ -141,6 +152,7 @@ export default {
       apply.title = title ? "보유 업적 목록" : "보유 배지 목록";
       apply.prompt = true;
     };
+<<<<<<< HEAD
     const applyTitle = (val, type, pk, name) => {
 <<<<<<< HEAD
       console.log(val, type, pk, name);
@@ -149,6 +161,9 @@ export default {
         if (type.value) {
           url = drf.myPage.changeTitle();
 =======
+=======
+    const applyTitle = (val, type, pk, name, path) => {
+>>>>>>> 96e4e58 (Fix : 배지 출력 안 되는 오류 수정)
       if (val && name !== title.value ) {
         let url = null
         if (type) {
@@ -179,7 +194,12 @@ export default {
               title.value = name
             } else {
               icon.value = name
+<<<<<<< HEAD
               // badge.path = 
+=======
+              badge.path = path
+              console.log('path')
+>>>>>>> 96e4e58 (Fix : 배지 출력 안 되는 오류 수정)
             }
           })
 >>>>>>> 4d6ec88 (Feat: 칭호 배지  적용 부분 진행 중 2)
