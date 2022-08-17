@@ -88,7 +88,7 @@
     <h4 class="text-center">공지사항</h4>
     <hr>
     <div class="row justify-end q-mt-lg">
-      <q-btn @click="noticeCreate" class="text-size q-mx-lg q-py-sm" 
+      <q-btn v-if="currentUser.userflag" @click="noticeCreate" class="text-size q-mx-lg q-py-sm" 
       color="blue-6" label="글 쓰기" />
     </div>
 
@@ -171,7 +171,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['notice2', 'noticeLenth', 'isLoggedIn'])
+    ...mapGetters(['notice2', 'noticeLenth', 'isLoggedIn', 'currentUser'])
   },
   methods: {
     ...mapActions(['noticeList']),

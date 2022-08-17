@@ -2,13 +2,19 @@
   <div>
     <q-card class="my-card bg-green-13">
 
-      <q-card-section class="row justify-between items-center card-bt">
-        <div v-if="currentUser.userflag" class="text-h6">채점 안한 과제</div>
-        <div v-else-if="!currentUser.userflag" class="text-h6">제출 안한 과제</div>
-        <div @click="goTask" class="text-subtitle2 cursor-pointer">더보기 ></div>
+      <q-card-section>
+        <div class="row justify-between items-center" v-if="currentUser.userflag">
+          <div class="text-h6">채점 안한 과제</div>
+          <div @click="goTaskTeacher" class="text-subtitle2 cursor-pointer">더보기 ></div>
+        </div>
+
+        <div class="row justify-between items-center" v-else-if="!currentUser.userflag">
+          <div class="text-h6">제출 안한 과제</div>
+          <div @click="goTaskStudent" class="text-subtitle2 cursor-pointer">더보기 ></div>
+        </div>
       </q-card-section>
 
-      <q-markup-table>
+      <q-markup-table style="height: 250px;">
         <tbody v-for="(mainHomework,index) in mainHomework" :key="index" class="card-pad">
           <tr>
             <td class="text-size">{{ index + 1}} . </td>
@@ -33,7 +39,10 @@ export default {
     ...mapGetters(['currentUser'])
   },
   methods: {
-    goTask() {
+    goTaskTeacher() {
+      this.$router.push({name:'TeacherTask'})
+    },
+    goTaskStudent() {
       this.$router.push({name:'StudentTask'})
     }
   }

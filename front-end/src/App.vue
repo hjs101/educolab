@@ -18,6 +18,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
     <!-- 교사 navbar -->
+<<<<<<< HEAD
     <div v-if="isLoggedIn && currentUser.userflag">
 =======
     <!-- 교사 navbar -->
@@ -154,6 +155,86 @@
           <router-link class="q-px-xl button color5" to="/student">마이페이지</router-link>
 >>>>>>> d127577 (기능별 메인 페이지 구성)
           <button @click="logoutBtn">로그아웃</button>
+=======
+    <div v-if="flag && currentUser.userflag" class="jooa-font">
+      <div class="navBar q-px-xl q-py-md bord-bt">
+      <a href="/educolab"><img src="@/assets/educolab.png" alt="educolab" style="width: 4rem; height: 4rem"/></a>
+        <div class="navBarUi nav-size">
+          <div class="row justify-end">
+            <div class="row items-center">
+              <router-link class="q-ml-xl button color5 navBarLi" to="/notice">공지사항</router-link>
+              <router-link class="q-ml-xl button color5 navBarLi" to="/teacher/task">과제</router-link>
+              <router-link class="q-ml-xl button color5 navBarLi" to="/quiz">퀴즈</router-link>
+              <router-link class="q-ml-xl button color5 navBarLi" to="/survey">설문조사</router-link>
+              <router-link class="q-ml-xl button color5 navBarLi" to="/teacher">마이페이지</router-link>
+              <span @click="logoutBtn" class="q-ml-xl cursor-pointer navBarLi">로그아웃</span>
+            </div>
+            <div class="row">
+              <div class="row justify-end items-center q-ml-xl">
+                <img :src="ProImg" style="width:70px; width:70px;">
+                <div>
+                  <div class="text-bold profil-size">{{ currentUser.name }}</div>
+                  <div class="profil-size">{{ currentUser.schoolname }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="navBar_tool">
+          <div v-if="onNavList">
+            <div @click="activeNav" class="column items-center q-px-md bg-grey-13">
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/notice" flat>공지사항</router-link>
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/student/task" flat >과제</router-link>
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/student/point" flat >포인트 상점</router-link>
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/student" >마이페이지</router-link>
+              <span @click="logoutBtn" class="text-subtitle2 button color5 cursor-pointer navBarLi">로그아웃</span>
+            </div>
+          </div>
+          <q-icon @click="activeNav" class="cursor-pointer" name="mdi-menu" />
+        </div>
+      </div>     
+    </div>
+
+    <!-- 학생 navbar -->
+    <div class="jooa-font" v-if="flag && !currentUser.userflag">
+      <div class="navBar q-px-xl q-py-md bord-bt">
+        <a href="/educolab"><img src="@/assets/educolab.png" alt="educolab" style="width: 4rem; height: 4rem"/></a>
+        <div class="navBarUi nav-size">
+          <div class="row justify-end">
+            <div class="row items-center">
+              <router-link class="q-ml-xl button color5 navBarLi" to="/notice" flat>공지사항</router-link>
+              <router-link class="q-ml-xl button color5 navBarLi" to="/student/task" flat >과제</router-link>
+              <router-link class="q-ml-xl button color5 navBarLi" to="/student/point" flat >포인트 상점</router-link>
+              <router-link class="q-ml-xl button color5 navBarLi" to="/student">마이페이지</router-link>
+              <span @click="logoutBtn" class="q-ml-xl cursor-pointer navBarLi">로그아웃</span>
+            </div>
+            <div class="row">
+              <div class="row justify-end items-center q-ml-xl">
+                <img :src="ProImg" style="width:70px; width:70px;">
+                <div>
+                  <div class="text-bold profil-size">{{ currentUser.name }}</div>
+                  <div class="profil-size">{{ currentUser.schoolname }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="navBar_tool">
+          <div v-if="onNavList">
+            <div @click="activeNav" class="column items-center q-px-md bg-grey-13">
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/notice" flat >공지사항</router-link>
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/student/task" flat >과제</router-link>
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/student/point" flat >포인트 상점</router-link>
+              <!-- <a href="/"> -->
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/student" >마이페이지</router-link>
+              <!-- </a> -->
+              <span @click="logoutBtn" class="text-subtitle2 button color5 cursor-pointer navBarLi">로그아웃</span>
+            </div>
+          </div>
+          <q-icon @click="activeNav" class="cursor-pointer" name="mdi-menu" />
+>>>>>>> 21cf2ca (프론트 버그 수정)
         </div>
       </div>
     </div>
@@ -620,6 +701,7 @@ export default {
 
 <style>
 /* 모든 페이지에서 공통으로 사용할 스타일 정의 */
+<<<<<<< HEAD
   h3 {
     text-align: center;
   }
@@ -627,6 +709,54 @@ export default {
     text-decoration: none;
   }
   .buttonGroup {
+=======
+
+/* 폰트 적용 */
+@font-face {
+  font-family: "jooa";
+  src: url("@/assets/fonts/BMJUA_ttf.ttf");
+}
+
+.jooa-font {
+  font-family: "jooa";
+}
+
+.navBar {
+  display: flex;
+  flex-direction: row;
+}
+
+/* 컴포넌트 기본 css */
+.baseStyle {
+  width: 80%;
+  margin: auto;
+  min-width: 450px;
+  height: 1200px;
+}
+.surveyStyle {
+  width: 80%;
+  margin: auto;
+  min-width: 450px;
+  height: 1200px;
+}
+.mainStyle {
+  width: 80%;
+  margin: auto;
+  min-width: 450px;
+  height: 800px;
+}
+.nav-size {
+  font-size: 1.3rem;
+}
+
+h3 {
+  text-align: center;
+}
+.button {
+  text-decoration: none;
+}
+.buttonGroup {
+>>>>>>> 21cf2ca (프론트 버그 수정)
   display: flex;
   justify-content: center;
   text-align: center;
@@ -636,6 +766,7 @@ export default {
     text-align: center;
   }
 
+<<<<<<< HEAD
 </style>
 
 <script>
@@ -794,6 +925,50 @@ export default {
 <script>
 import { mapGetters, mapActions } from 'vuex'
 // import TheSpinner from './components/TheSpinner.vue'
+=======
+.ftr-size {
+  font-size: 0.9rem;
+}
+.navBarLi:hover {
+  border-bottom: 2px solid #8bff8b;
+}
+.navBar_tool {
+  position: absolute;
+  right: 32px;
+  font-size: 2rem;
+  color: #ff9966;
+  display: none;
+}
+.profil-size {
+  font-size: 0.5rem
+}
+
+@media screen and (max-width: 1050px) {
+  .navBar {
+    display: flex;
+    flex-direction: column;
+  }
+  .navBarUi {
+    display: flex;
+    flex-direction: column;
+    display: none;
+  }
+  .navBar_tool {
+    display: flex;
+  }
+}
+.active {
+  color: #5097de;
+}
+.red {
+  color: red;
+}
+</style>
+
+<script>
+import { mapGetters, mapActions } from "vuex";
+import drf from '@/api/drf.js'
+>>>>>>> 21cf2ca (프론트 버그 수정)
 
 export default {
   // components: { TheSpinner },
@@ -815,9 +990,14 @@ export default {
       const flag = this.currentUser.userflag
       return flag
     },
+<<<<<<< HEAD
     computedLoad() {
       return this.load
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
+=======
+    ProImg() {
+      return drf.file.path() + this.currentUser.profil
+>>>>>>> 21cf2ca (프론트 버그 수정)
     }
   },
   methods: {

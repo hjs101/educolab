@@ -198,7 +198,7 @@
       <div class="row justify-start items-center">
         <img class="q-mx-xl" src="@/assets/footerlogo.png" alt="educolab" style="width:5rem; height:5rem;">
         <div class="ftr-size">
-          <span class="text-bold">"교육과 서비스의 조화" edu colab!!</span><hr>
+          <span class="text-bold">"교육과 서비스의 청량한 조화" edu colab!!</span><hr>
           <span>edu colab는 학습 역량 증진 / 교육 연계 보조 / 수업의 질 향상을 목표로 합니다.</span>
           <p>교사에게는 편리한, 학생에게는 학습욕구를 팽창시켜드립니다!!</p>
         </div>
