@@ -46,7 +46,7 @@ class MypageMainView(APIView):
             userinfo_serializer = StudentUpdateSerializer(req.user, data=req.data)
         if userinfo_serializer.is_valid(raise_exception=True):
             school = SchoolInfo.objects.get(code=req.data.get('school'))
-            userinfo_serializer.save(school = school, password = req.user.password)
+            userinfo_serializer.save(school = school)
         return Response({
             "success":True,
             "pk" : req.user.username
