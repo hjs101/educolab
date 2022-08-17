@@ -70,7 +70,7 @@ export default {
       email: userInfo.value.email,
       grade: userInfo.value.grade,
       classField: userInfo.value.class_field,
-      phone_number: userInfo.value.phone_number,
+      phone: userInfo.value.phone_number,
       birthday: userInfo.value.birthday,
       subject: userInfo.value.subject,
       homeroomFlag: userInfo.value.homeroom_teacher_flag
