@@ -1,6 +1,7 @@
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -60,6 +61,10 @@
 >>>>>>> ef40aec (버그 수정)
     <div>
       <div class="q-mb-md">
+=======
+  <div class="baseStyle">
+      <div class="q-mt-md">
+>>>>>>> 43b06d2 (버그 수정)
         <div class="row justify-between items-center">
           <div class="row start items-center">
             <p class="title-size">[{{ noticeDetail.notice.classification }}]</p>
@@ -81,7 +86,7 @@
       </div>
 >>>>>>> 61e042d (설문조사  통계 sass)
 
-        <div class="row justify-center">
+        <div>
           <q-card class="bord">
             <q-card-section>
               <p class="content-size bg-white" style="min-height:500px">{{ noticeDetail.notice.content }}</p>
@@ -133,8 +138,12 @@
       <div class="btn-mag row justify-center">
         <q-btn @click="goNotice" class="text-size q-px-xl q-py-md" color="grey-8" label="목록" />
       </div> 
+<<<<<<< HEAD
     </div>  
 >>>>>>> 38a5ff1 (공지사항  수정 해결)
+=======
+
+>>>>>>> 43b06d2 (버그 수정)
   </div>
 </template>
 

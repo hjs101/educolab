@@ -100,7 +100,7 @@
             <th class="text-size">분류</th>
             <th class="text-size">제목</th>
             <th class="text-size">작성자</th>
-            <th class="text-size">등록(수정)일</th>
+            <th class="text-size">등록일</th>
             <th class="text-size">조회수</th>
           </tr>
         </thead>
@@ -115,7 +115,7 @@
 
             <td @click="noticeDetail(notice.pk)" class="cursor-pointer text-left text-size">{{ notice.title }}</td>
             <td class="text-size">{{ notice.teacher.name }}</td>
-            <td class="text-size">{{ timeInfo(notice.updated_at) }}</td>
+            <td class="text-size">{{ timeInfo(notice.created_at) }}</td>
             <td class="text-size">{{ notice.views }}</td>
           </tr>
         </tbody>

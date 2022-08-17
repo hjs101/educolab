@@ -9,34 +9,34 @@
         <tbody class="text-center" v-for="(mainWeekRank, index) in mainWeekRank" :key="index">
           <tr v-if="index+1 == 1" class="bg-pink-13">
             <td class="text-size">{{ index+1 }}등.</td>
-            <td class="text-size">{{ mainWeekRank.student }}</td>
-            <td class="text-size">학년</td>
-            <td class="text-size">반</td>
+            <td class="text-size">{{ mainWeekRank.student.name }}</td>
+            <td class="text-size">{{ mainWeekRank.student.grade}}학년</td>
+            <td class="text-size">{{ mainWeekRank.student.class_field }}반</td>
             <td class="text-size">{{ mainWeekRank.score }}p</td>
           </tr>
 
           <tr v-else-if="index+1 == 2" class="bg-indigo-13">
             <td class="text-size">{{ index+1 }}등.</td>
-            <td class="text-size">{{ mainWeekRank.student }}</td>
-            <td class="text-size">학년</td>
-            <td class="text-size">반</td>
+            <td class="text-size">{{ mainWeekRank.student.name }}</td>
+            <td class="text-size">{{ mainWeekRank.student.grade }}학년</td>
+            <td class="text-size">{{ mainWeekRank.student.class_field }}반</td>
             <td class="text-size">{{ mainWeekRank.score }}p</td>
           </tr>
 
           <tr v-else-if="index+1 == 3" class="bg-green-13">
             <td class="text-size">{{ index+1 }}등.</td>
-            <td class="text-size">{{ mainWeekRank.student }}</td>
-            <td class="text-size">학년</td>
-            <td class="text-size">반</td>
+            <td class="text-size">{{ mainWeekRank.student.name }}</td>
+            <td class="text-size">{{ mainWeekRank.student.grade }}학년</td>
+            <td class="text-size">{{ mainWeekRank.student.class_field }}반</td>
             <td class="text-size">{{ mainWeekRank.score }}p</td>
           </tr>
 
           <tr v-else>
-            <td>{{ index+1 }}등.</td>
-            <td>{{ mainWeekRank.student }}</td>
-            <td>학년</td>
-            <td>반</td>
-            <td>{{ mainWeekRank.score }}p</td>
+            <td class="text-size">{{ index+1 }}등.</td>
+            <td class="text-size">{{ mainWeekRank.student.name }}</td>
+            <td class="text-size">{{ mainWeekRank.student.grade }}학년</td>
+            <td class="text-size">{{ mainWeekRank.student.class_field }}반</td>
+            <td class="text-size">{{ mainWeekRank.score }}p</td>
           </tr>
         </tbody>
       </q-markup-table>

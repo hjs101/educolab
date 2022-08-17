@@ -3,14 +3,11 @@
     <div class="q-pa-md row justify-center q-gutter-md">
       <q-card class="my-card bg-secondary text-white">
         <q-card-section>
-          <div class="text-h6">name님 환영합니다</div>
-          <div class="text-subtitle2">학교 정보</div>
+          <img :src="ProImg" style="width:50px; width:50px;">
+          <div class="text-size">{{ currentUser.name }}</div>
+          <div class="text-size">{{ currentUser.schoolname }}</div>
         </q-card-section>
-  
-        <q-card-section>
-          <p>이미지, 칭호, 업적 들어갈 자리</p>
-        </q-card-section>
-  
+
         <q-separator dark />
   
         <q-card-actions>
@@ -37,13 +34,23 @@ import MainNotice from '@/components/MainNotice.vue'
 import MainHomework from '@/components/MainHomework.vue'
 import MainWeekRank from '@/components/MainWeekRank.vue'
 import MainAccRank from '@/components/MainAccRank.vue'
+import drf from '@/api/drf.js'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'MainPage',
   components: { MainNotice, MainHomework, MainWeekRank, MainAccRank},
+  // setup() {
+  //   let ProImg = drf.file.path() + this.currentUser?.profil
+  //   return {
+  //     ProImg
+  //   }
+  // },
   computed: {
-    ...mapGetters(['mainNotice', 'mainHomework', 'mainWeekRank', 'mainAccRank', 'isLoggedIn'])
+    ...mapGetters(['mainNotice', 'mainHomework', 'mainWeekRank', 'mainAccRank', 'isLoggedIn', 'currentUser']),
+    ProImg() {
+      return drf.file.path() + this.currentUser.profil
+    }
   },
   methods: {
     ...mapActions(['getMainPage'])
@@ -68,3 +75,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+ .text-size {
+  font-size: 1rem;
+ }
+</style>
