@@ -494,6 +494,7 @@ front-end/node_modules
 >>>>>>> 4bf513d (Fix : git.ignore 최신화)
 =======
 login_info.json
+<<<<<<< HEAD
 >>>>>>> 90a0649 (깃이그노어 수정)
 =======
 backend/educolab/my_settings.py
@@ -516,3 +517,6 @@ login_info.json
 =======
 front-end/node_modules/*
 >>>>>>> e702bd9 (ppt ÆÄÀÏ Ã߰¡)
+=======
+profile
+>>>>>>> e0cb278 (fix: nyam)
