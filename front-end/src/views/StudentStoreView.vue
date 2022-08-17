@@ -28,7 +28,7 @@
                   class="q-pa-sm col-4"
                   v-for="title in items.titles.slice((page.title-1)*10, page.title*10)"
                   :key="title.id">
-                  <point-item :title="title"/>
+                  <point-item :title="title" @reverse="success" />
                 </div>
                 <the-pagination
                   v-if="page.titleLength"
@@ -52,7 +52,7 @@
                   class="q-pa-sm col-4"
                   v-for="icon in items.icons.slice((page.icon-1)*10, page.icon*10)"
                   :key="icon.id">
-                  <point-item :icon="icon"/>
+                  <point-item :icon="icon" @reverse="success" />
                 </div>
                 <the-pagination
                   v-if="page.iconLength"
@@ -67,13 +67,10 @@
         </q-tab-panel>
       </q-tab-panels>
     </q-card>
-    <!-- 구매 성공을 알림 & 적용 여부 선택-->
+    <!-- 구매 성공을 알림 -->
     <message-pop-up
       v-if="confirm.computedState"
       :message="confirm.message"
-      :cancel="true"
-      path="/student"
-      :reload="true"
       @reverse="confirm.prompt = false"
     />
   </main>
@@ -117,7 +114,7 @@ export default {
     }
     })
     const confirm = reactive({
-      message: '구매되었습니다. 바로 적용하시겠습니까?',
+      message: null,
       prompt: false,
       computedState: computed(() => confirm.prompt),
     })
@@ -130,12 +127,18 @@ export default {
     const changePage = (val, target) => {
       page[target] = val
     }
+    const success = (message) => {
+      console.log(message)
+      confirm.message = message
+      confirm.prompt = true
+    }
     return {
       items,
       tab,
       page,
       confirm,
-      changePage
+      changePage,
+      success
     }
   },
 }

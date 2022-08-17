@@ -1,19 +1,24 @@
 <template>
   <q-form
     @submit="onSubmit"
-    @reset="onReset">
-    <span>과제 제출</span>
+    @reset="onReset"
+    class="row justify-center align-center">
+    <b class="q-mb-lg text-size">과제 제출</b>
+    <span class="col-12"></span>
     <q-input
+      class="col-7"
       v-model="student.content"
       outlined
       label="내용"
       type="textarea"
     />
     <q-input
+      class="col-7 q-my-md"
       @update:model-value="val => { student.files = val }"
       multiple
       type="file"
     />
+    <span class="col-12"></span>
     <q-btn color="primary" type="reset" flat label="초기화"/>
     <q-btn color="primary" type="submit" label="과제 제출"/>
   </q-form>
@@ -58,3 +63,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .text-size {
+    font-size: 1rem;
+  }
+</style>

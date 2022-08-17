@@ -78,7 +78,6 @@ export default {
     }
     const move = () => {
       if (props.path) {
-        // 새로고침
         router.push(props.path)
         if (props.reload) {
           router.go(1)

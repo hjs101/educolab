@@ -51,7 +51,7 @@ export default {
     title: Object,
     icon: Object,
   },
-  setup(props) {
+  setup(props, {emit}) {
     // 현재 포인트 정보 필요
     const store = useStore()
     const item = reactive({
@@ -78,6 +78,8 @@ export default {
         } else {
           url = drf.pointShop.buyIcon()
         }
+        let message = null
+        console.log(url)
         axios({
           url,
           method: 'post',
@@ -86,8 +88,15 @@ export default {
         })
           .then((res) => {
             console.log(res.data)
+            message = res.data.message
           })
-        buy.prompt = false
+          .catch(() => {
+            message = '오류가 발생했습니다'
+          })
+          .finally(() => {
+            buy.prompt = false
+            emit('reverse', message)
+          })
       }
     }
     let img = drf.file.path() + props.icon?.icon
