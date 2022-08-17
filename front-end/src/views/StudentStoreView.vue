@@ -100,7 +100,7 @@ export default {
     let items = ref(null)
     let tab = ref('alias')
     onBeforeMount(() => {
-      if (!this.isLoggedIn) {
+      if (!store.getters.isLoggedIn) {
       router.push('/educolab/login')
     } else if (store.getters.currentUser.userflag) {
       router.push('/educolab')

@@ -148,10 +148,10 @@ export default {
       })
 <<<<<<< HEAD
     onBeforeMount (() => {
-      if (!type.isTypeId && type.type !== 'password') {
-        router.push('/404')
-      } else if (store.getters.isLoggedIn) {
+      if (store.getters.isLoggedIn) {
         router.push('/educolab')
+      } else if (!type.isTypeId && type.type !== 'password') {
+        router.push('/404')
       }
     })
     return {

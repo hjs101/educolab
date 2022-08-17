@@ -228,7 +228,7 @@ export default {
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
     let {userType, taskPk} = route.params
     onBeforeMount(() => {
-      if (!this.isLoggedIn) {
+      if (!store.getters.isLoggedIn) {
       router.push('/educolab/login')
     } else if (taskPk) {
         store.dispatch('initTask')

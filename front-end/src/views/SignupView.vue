@@ -250,10 +250,10 @@ export default {
       }
     }
     onBeforeMount(() => {
-      if (userType !== 'student' && userType !== 'teacher') {
-        router.push('/404')
-      } else if (store.getters.isLoggedIn) {
+      if (store.getters.isLoggedIn) {
         router.push('/educolab')
+      } else if (userType !== 'student' && userType !== 'teacher') {
+        router.push('/404')
       } else {
         store.dispatch('setUserType', userType)
       }

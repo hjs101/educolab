@@ -106,7 +106,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['survey', 'surveyLength', 'currentUser' ]),
+    ...mapGetters(['survey', 'surveyLength', 'currentUser', 'isLoggedIn' ]),
   },
   methods : {
     ...mapActions(['surveyList', 'getSurveyDetail',]),

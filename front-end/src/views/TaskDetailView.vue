@@ -78,7 +78,7 @@ export default {
           teacher_flag: isLecture.value
         })
       } else {
-        router.push('/login')
+        router.push('/educolab/login')
       }
     })
     const task = computed(() => store.getters.getTask)

@@ -25,7 +25,7 @@
 <script>
 import {useRoute, useRouter} from 'vue-router'
 import {useStore} from 'vuex'
-import { computed, onBeforeMount, onMounted, ref } from 'vue'
+import { computed, onBeforeMount, ref } from 'vue'
 import StudentTaskTab from '@/components/StudentTaskTab.vue'
 import TeacherTaskTab from '@/components/TeacherTaskTab.vue'
 export default {
@@ -48,8 +48,6 @@ export default {
       } else {
         store.dispatch('taskList')
       }
-    })
-    onMounted(() => {
     })
     return {
       userType,

@@ -82,11 +82,15 @@ export default {
     }
   },
   computed: {
+<<<<<<< HEAD
     ...mapGetters(['quizDetail', 'quizData']),
     getTitle() {
       if (this.quizPk) return "퀴즈 수정"
       return "퀴즈 등록"
     }
+=======
+    ...mapGetters(['quizDetail', 'quizData', 'isLoggedIn', 'currentUser'])
+>>>>>>> d50ec00 (Fix : 접근제한 오류 수정)
   },
   methods: {
     ...mapActions(['createQuiz', 'getQuizDetail', 'updateQuiz']),
