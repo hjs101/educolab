@@ -83,7 +83,7 @@ class MainpageView(APIView): # 메인페이지 정보 전달 (과제,공지,행�
 
         else: # 학생
             # 과제
-            homework = user.T_homework.filter(deadline__gt=today).order_by('deadline')
+            homework = user.teacher_homework.filter(deadline__gt=today).order_by('deadline')
             homework_serializer = MainpageTeacherhomeworkSerializer(homework, many=True)
             
             context = {
