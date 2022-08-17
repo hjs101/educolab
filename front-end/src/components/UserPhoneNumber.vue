@@ -11,7 +11,7 @@
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   <q-input
     color="teal"
-    label="휴대전화번호"
+    label="전화번호"
     v-model="phoneNumber"
     mask="###-####-####"
     maxlength="13"
@@ -38,6 +38,7 @@
     name:'userPhoneNumber',
     props: {
       number: String,
+      type: String,
     },
     setup(props) {
       const store = useStore()

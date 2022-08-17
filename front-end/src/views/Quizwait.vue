@@ -1,5 +1,5 @@
 <template>
-  <div class="back">
+  <div class="back" style="height:650px;" >
     <div class="base">
       <div style="padding:5px 0">
         <span style="color:#FEC002;" class="logo">edu  </span>

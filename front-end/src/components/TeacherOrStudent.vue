@@ -175,7 +175,7 @@ export default {
     userType: String,
     data: Object,
     type: String,
-    homeroomFlag: Boolean,
+    homeroomFlag: Number,
   },
 <<<<<<< HEAD
   setup() {
