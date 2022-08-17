@@ -2,14 +2,6 @@
   <main class="baseStyle" >
     <h4 class="text-center">포인트 상점</h4>
     <hr>
-    <!-- 회원 정보 -->
-    <q-card class="q-my-lg bg-secondary text-white">
-      <q-card-section>
-        <div class="text-h6">name</div>
-        <div class="text-subtitle2">학교 정보</div>
-        <p>이미지, 칭호, 업적 들어갈 자리</p>
-      </q-card-section>
-    </q-card>
     <q-card>
       <q-tabs
         v-model="tab"
@@ -80,6 +72,8 @@
       v-if="confirm.computedState"
       :message="confirm.message"
       :cancel="true"
+      path="/student"
+      :reload="true"
       @reverse="confirm.prompt = false"
     />
   </main>

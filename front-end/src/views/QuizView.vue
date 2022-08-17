@@ -81,10 +81,15 @@
             <th class="text-center text-size">퀴즈 시작</th> 
           </tr>
         </thead>
+<<<<<<< HEAD
         <tbody>
 <<<<<<< HEAD
 <<<<<<< HEAD
           <tr v-for="(quiz, index) in quiz.slice((page-1)*10, page*10)" :key="index">
+=======
+        <tbody v-if="quiz">
+          <tr v-for="(quiz, index) in quiz?.slice((page-1)*10, page*10)" :key="index">
+>>>>>>> d6821ad (Fix : 오류 수정)
             <td class="text-size">{{ index+1+((page-1)*10) }}</td>
               <td @click="quizDetail(quiz.pk)" class="text-size cursor-pointer text-left">{{ quiz.title }}</td>
 =======

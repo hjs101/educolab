@@ -43,7 +43,7 @@ export default {
     let search = ref(false)
     let query = ref(null)
     onBeforeMount(() => {
-      if (!this.isLoggedIn) {
+      if (!store.getters.isLoggedIn) {
         router.push('/educolab/login')
       } else {
         store.dispatch('taskList')
