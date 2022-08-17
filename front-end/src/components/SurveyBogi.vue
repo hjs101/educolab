@@ -39,7 +39,7 @@ import { mapGetters } from 'vuex'
 export default {
   name : 'surveyBogi',
   props: {
-    bogi : Number,
+    bogi : String,
     surveyItem : Object,
     qusNumber : Number,
   },
