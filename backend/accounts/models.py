@@ -175,6 +175,7 @@ class UserInfo(AbstractUser):
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     
 class PointLog(models.Model):
+    school = models.ForeignKey(SchoolInfo, on_delete=models.CASCADE, related_name="point_school",null=True)
     teacher = models.ForeignKey(UserInfo, on_delete=models.DO_NOTHING, related_name="point_teacher", null=True)
     student = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name="point_student", null=True)
     content = models.CharField(max_length=45)

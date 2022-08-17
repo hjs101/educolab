@@ -82,7 +82,7 @@ class PointGrantView(APIView):
         data.update(update)
         log_serializer = PointlogSerializer(data=data)
         if log_serializer.is_valid(raise_exception=True):
-            log_serializer.save(teacher = req.user, student = student)
+            log_serializer.save(teacher = req.user, student = student,school=req.user.school)
         return Response({"success":True})
 
 class ProfilChangeView(APIView):
