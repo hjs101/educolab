@@ -21,6 +21,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const PROFIL = 'http://127.0.0.1:8000'
@@ -209,6 +210,9 @@ const FILE = "https://i7c102.p.ssafy.io";
 // const FILE = "https://i7c102.p.ssafy.io";
 const FILE = "http://127.0.0.1:8000";
 >>>>>>> c960255 (Fix :  전화 번호 변경 오류 수정 완료)
+=======
+const FILE = "https://i7c102.p.ssafy.io";
+>>>>>>> c04fbc1 (Fix : 수정하지 않은 부분 수정해 push)
 const BASE_URL = FILE + "/api/";
 const ACCOUNTS = BASE_URL + "accounts/";
 const NOTICE = BASE_URL + "notice/";
