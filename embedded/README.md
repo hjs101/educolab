@@ -213,6 +213,7 @@
 -   ### Raspberry Pi
     > HW : Raspberry Pi 4 Model B Rev 1.2  
     > SW : Raspbian GNU/Linux 11 (bullseye)
+-   ### Python: 3.9.2
 -   ### Kivy : 2.1.0
 -   ### websocket-client : 1.3.3
 -   ### mysql-connector-python: 8.0.30
