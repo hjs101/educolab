@@ -44,7 +44,7 @@
     <hr>
 
     <div class="row justify-center q-mt-xl q-gutter-md">
-        <q-btn class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
+        <q-btn @click="goNotice" class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
         <q-btn @click="noticePk? updateNotice(credentials) : createNotice(credentials)" class="text-size q-px-xl q-py-md" 
         color="blue-6">
         <p>{{ noticePk? '수정' : '등록'}}</p>
@@ -88,6 +88,10 @@ export default {
   },
   methods: {
     ...mapActions(['createNotice', 'getNoticeDetail', 'updateNotice', 'createFileNotice']),
+    goNotice() {
+      if (confirm('페이지에서 나가시겠습니까? 글은 저장되지 않습니다.'))
+      this.$router.push({name:'Notice'})
+    }
   },
   mounted() {
     if (!this.isLoggedIn) {

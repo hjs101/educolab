@@ -44,7 +44,7 @@ export default {
     border-bottom: 1px solid #FFC000;
   }
   .text-size {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   .clsif-border {
     border-radius: 30px;

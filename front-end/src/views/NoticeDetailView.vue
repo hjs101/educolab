@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -63,6 +64,9 @@
       <div class="q-mb-md">
 =======
   <div class="baseStyle">
+=======
+  <div class="noticeDetailStyle">
+>>>>>>> 5264803 (프론트 버그 수정2)
       <div class="q-mt-md">
 >>>>>>> 43b06d2 (버그 수정)
         <div class="row justify-between items-center">
@@ -95,7 +99,7 @@
         </div>
       <hr>
     
-      <div class="row q-py-sm q-pl-sm">
+      <div class="q-py-sm q-pl-sm">
         <p class="text-size text-grey-13 q-pb-sm">첨부파일 ({{ noticeDetail.files.length }}) </p> 
         <div v-for="file in noticeDetail.files" :key="file">
           <q-btn @click="openFile(file.atch_file)" color="grey-12" class="text-black">
@@ -214,6 +218,12 @@ export default {
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
 <style scoped>
+  .noticeDetailStyle {
+    width: 60%;
+    margin: auto;
+    min-width: 450px;
+    height: 1200px;
+  }
   .title-size {
     font-size : 3vmin;
   }

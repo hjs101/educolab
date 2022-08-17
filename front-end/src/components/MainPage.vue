@@ -22,12 +22,6 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'MainPage',
   components: { MainNotice, MainHomework, MainWeekRank, MainAccRank},
-  // setup() {
-  //   let ProImg = drf.file.path() + this.currentUser?.profil
-  //   return {
-  //     ProImg
-  //   }
-  // },
   computed: {
     ...mapGetters(['mainNotice', 'mainHomework', 'mainWeekRank', 'mainAccRank', 'isLoggedIn', 'currentUser']),
     ProImg() {
@@ -59,6 +53,12 @@ export default {
 </script>
 
 <style scoped>
+  .mainStyle {
+    width: 80%;
+    margin: auto;
+    min-width: 450px;
+    height: 800px;
+  }
  .text-size {
   font-size: 1rem;
  }

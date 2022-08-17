@@ -138,6 +138,7 @@ export const accounts = {
       userType: null,
       validEmail: false,
 <<<<<<< HEAD
+<<<<<<< HEAD
       access: localStorage.getItem("access") || "",
 <<<<<<< HEAD
 =======
@@ -163,6 +164,18 @@ export const accounts = {
     }
 >>>>>>> 9c886eb (Feat : 이메일 인증 부분 수정 & 아이디/비밀번호 찾기 기능 완료 & 비밀번호 변경 기능 진행 중)
 =======
+=======
+      currentUser: {},
+      authError: '',
+      subjectOptions: [
+        "국어",
+        "수학",
+        "사회",
+        "과학",
+        "보건",
+        "기술가정",
+        "기타",
+>>>>>>> 5264803 (프론트 버그 수정2)
       ],
       emailOptions: [
         '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력',
@@ -575,7 +588,14 @@ export const accounts = {
           router.push({ name: "educolab" })
         })
         .catch((err) => {
+<<<<<<< HEAD
           commit("SET_AUTH_ERROR", err.response.data)
+=======
+          console.log(err.response.data)
+          if (err.response.data.message == 'username or password is incorrect!') {
+            alert('아이디 또는 비밀번호를 확인해주세요.')
+          }
+>>>>>>> 5264803 (프론트 버그 수정2)
         });
     },
 <<<<<<< HEAD

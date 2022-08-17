@@ -20,9 +20,12 @@
 >>>>>>> eb5987b (로그인  버그 수정)
 =======
   <div style="height:700px;" class="q-mx column justify-center">
+<<<<<<< HEAD
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
+=======
+
+>>>>>>> 5264803 (프론트 버그 수정2)
     <h3>LOGIN</h3>
-    <account-error-list></account-error-list>
     <!-- form 부분 -->
     <q-form
       @submit="login(credentials)"
@@ -185,6 +188,10 @@
 >>>>>>> 885b034 (Feat : 칭호 적용)
     </q-form>
 
+    <div class="text-center account-error-list">
+      <p>{{ Error }}</p>
+    </div>
+
     <!-- 여기에 회원가입 / ID 찾기 / 비밀번호 찾기 -->
     <button-group :currentUrl="currentUrl"/>
     <router-view></router-view>
@@ -260,11 +267,9 @@
 =======
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   }
-  /* footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%
-  } */
+  .account-error-list {
+    color: red;
+  }
 </style>
 
 <script>
@@ -286,14 +291,18 @@ import { mapGetters, mapActions } from 'vuex'
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 =======
 import {useRouter} from 'vue-router'
+<<<<<<< HEAD
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
 import AccountErrorList from '@/components/AccountErrorList.vue'
+=======
+// import AccountErrorList from '@/components/AccountErrorList.vue'
+>>>>>>> 5264803 (프론트 버그 수정2)
 import ButtonGroup from '@/components/ButtonGroup.vue'
 
 export default {
   name: 'LoginView',
   components: {
-    AccountErrorList,
+    // AccountErrorList,
     ButtonGroup
   },
 <<<<<<< HEAD
@@ -326,7 +335,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['authError', 'isLoggedIn'])
+    ...mapGetters(['authError', 'isLoggedIn']),
+    Error() {
+      return this.authError
+    }
   },
   methods: {
     ...mapActions(['login'])

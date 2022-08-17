@@ -15,13 +15,18 @@
       </q-card-section>
 
       <q-markup-table style="height: 250px;">
-        <tbody v-for="(mainHomework,index) in mainHomework" :key="index" class="card-pad">
+        <tbody v-if="EmptyHomework">
           <tr>
-            <td class="text-size">{{ index + 1}} . </td>
-            <td class="text-size">{{ mainHomework.title}}</td>
-            <td class="text-size">{{ mainHomework.deadline}}까지</td>
+            <td class="text-size">해당 과제가 없습니다.</td>
           </tr>
         </tbody>
+          <tbody v-for="(mainHomework,index) in mainHomework" :key="index" class="card-pad">
+            <tr>
+              <td class="text-size">{{ index + 1}} . </td>
+              <td class="text-size">{{ mainHomework.title}}</td>
+              <td class="text-size">{{ mainHomework.deadline}}까지</td>
+            </tr>
+          </tbody>
       </q-markup-table>
     </q-card>
 
@@ -30,21 +35,26 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { isEmpty } from 'lodash'
+
 export default {
   name: 'MainHomework',
   props: {
     mainHomework: Object,
   },
   computed: {
-    ...mapGetters(['currentUser'])
+    ...mapGetters(['currentUser']),
+    EmptyHomework() {
+      return isEmpty(this.mainHomework)
+    }
   },
   methods: {
     goTaskTeacher() {
-      this.$router.push({name:'TeacherTask'})
+      this.$router.push('/teacher/task')
     },
     goTaskStudent() {
-      this.$router.push({name:'StudentTask'})
-    }
+      this.$router.push('/student/task')
+    },
   }
 }
 </script>
