@@ -47,7 +47,8 @@ class Main_Screen(Screen):
         )
         self.survey_full = json.loads(self.res.text)
         self.survey_cnt = len(self.survey_full)
-        self.current_survey = self.survey_full[0]['title']
+        if self.survey_cnt != 0:
+            self.current_survey = self.survey_full[0]['title']
         request.urlretrieve(self.profile_url, self.profile_savename)
 
         self.query2 = '''
@@ -66,7 +67,9 @@ class Main_Screen(Screen):
         self.ids.bad_points.text="벌점: " + self.minus_point
 
         self.ids.challenge.text=self.emblem
-        self.ids.survey.text="설문 (" + str(self.survey_cnt) + ") | " + self.current_survey
+        if self.survey_cnt != 0:
+            self.ids.survey.text="설문 (" + str(self.survey_cnt) + ") | " + self.current_survey
+        else: self.ids.survey.text=""
 
         self.ids.profile.img_path=self.profile_savename
         self.ids.userinfo_icon.img_path='./icon/info.png'
