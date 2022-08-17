@@ -355,7 +355,16 @@ class HomeworkDetailView(APIView):
             homework = TeacherHomework.objects.get(pk=homework_pk)
             homework_serializer = TeacherHomeworkCreateSerializer(instance = homework,data=request.data)
             if homework_serializer.is_valid(raise_exception=True):
-                homework_serializer.save()
+                
+                submit = homework.student_submit.all()
+                submit.delete()
+
+                students = request.user.school.school_studnet.filter(grade=homework_serializer.validated_data['grade'],class_field=homework_serializer.validated_data['class_field'],userflag=False)
+                homework_serializer.save(target=students)
+
+                for student in students:
+                    submit = SubmitHomework.objects.create(student=student,teacher_homework=homework)
+                    submit.save()
 
                 d_files = homework.teacher_file.all()
                 d_files.delete()
