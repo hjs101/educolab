@@ -142,7 +142,7 @@ export default {
     const router = useRouter()
     let isChecked = ref(false)
     onBeforeMount(() => {
-      if (store.getter.isLoggedIn) {
+      if (store.getters.isLoggedIn) {
         router.push('/educolab')
       }
     })
@@ -150,6 +150,7 @@ export default {
       isChecked
     }
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -201,5 +202,7 @@ export default {
     }
   }
 >>>>>>> ef40aec (버그 수정)
+=======
+>>>>>>> 0e1a210 (Fix: 접근제한 오류 수정)
 }
 </script>

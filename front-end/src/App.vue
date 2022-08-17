@@ -851,6 +851,7 @@ export default {
       this.currentingUser()
 =======
     this.currentingUser()
+<<<<<<< HEAD
     if (!this.isLoggedIn) {
       this.$router.push('/educolab/login')
 >>>>>>> f9fc9e0 (Fix : 제한 사항 오류 수정)
@@ -864,5 +865,9 @@ export default {
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
   }
 }
+=======
+  },
+};
+>>>>>>> 0e1a210 (Fix: 접근제한 오류 수정)
 </script>
 >>>>>>> 38a5ff1 (공지사항  수정 해결)
