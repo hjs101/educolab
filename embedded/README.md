@@ -92,7 +92,7 @@
 =======
 > 본 내용은 educolab embedded 분야의 포팅매뉴얼을 기술한다.  
 > 학생용 스마트기기 서비스의 일종으로 크로스플랫폼 사용자 인터페이스의 오픈소스 파이썬 라이브러리인 kivy를 이용하여 본 서비스를 제작하였다.  
-> Raspberry Pi(이하 RPi)를 기준으로 기술하며, 개발을 Windows로 할 때의 매뉴얼도 간단히 기술한다.
+> Raspberry Pi(이하 RPi)를 기준으로 기술한다.
 
 <br>
 <br>
@@ -114,9 +114,12 @@
 
     ![RPi_interface](./README_pic/Keyboard.png)<br>
 
-    모두 완료하였다면, RPi를 재부팅 후 Windows Terminal ssh로 접근하는 것을 권장한다(Microsoft Store에 검색해보자).  
-     Windows Terminal에 `ssh [사용자이름]@[RPi의 ip주소]`로 접속한다.  
-     ssh에 접속했다면, 다음의 명령어를 순차적으로 수행하여 패키지를 설치한다.<br>
+    이를 수행한 뒤 RPi의 WiFi 연결까지 모두 완료하였다면, RPi를 재부팅 후 Windows Terminal ssh로 접근하는 것을 권장한다(Microsoft Store에 검색해보자).  
+    Windows Terminal에 `ssh [사용자이름]@[RPi의 ip주소]`로 접속한다.  
+    ip 주소와 사용자 이름은 RPi의 이 화면을 참고한다<br><br>
+    ![RPi_interface](./README_pic/ifconfig.png)<br>
+
+    ssh에 접속했다면, 다음의 명령어를 순차적으로 수행하여 패키지를 설치한다.<br>
 
     ```sh
     sudo apt-get update
@@ -181,4 +184,37 @@
     만약 이와 같은 화면이 나온다면 성공한 것이다.<br>
 
     ![RPi_interface](./README_pic/Login_page.png)<br>
+<<<<<<< HEAD
 >>>>>>> bc8211d (feat: embedded 포팅매뉴얼 업데이트)
+=======
+
+    <br>
+
+# 그 외...
+
+-   ## 포트포워딩과 보안(포드포워딩 부분을 다듬은 뒤에 보안(fail2ban) 작성하자)
+
+    ipTime, SK broadband, LG Uplus, KT 공유기 등 공유기 별로 포트포워딩 방법이 다르니 이에 맞춰서 포트포워딩 한다.  
+    ssh의 경우 내부 포트는 22, vnc의 경우는 5900이다.  
+    외부 포트는 아무 포트로 설정 가능하지만, 되도록 10000 이상으로 설정하고, ssh와 vnc의 외부 포트는 다르게 설정하자.  
+    ip 주소는 RPi의 ip 주소를 설정하면 된다.  
+    이를 설정하는 이유는 백엔드 포팅매뉴얼에서도 알려 주겠지만 공유기의 public ip 주소를 server의 whitelist에 추가하기 위해 필요하다.  
+    이를 모두 설정해 주면 본인 집 뿐만 아니라 다른 지역에서도 본인 집에 있는 RPi로 접근할 수 있다. 즉, 작은 server가 생성된다는 뜻!  
+    ssh로 접근하는 방법은 `ssh [사용자이름]@[공유기의 public ip 주소] -p [외부 포트 번호]`이고, vnc는 `[공유기의 public ip 주소]:[외부 포트 번호]`로 진입한다.
+
+    <br>
+
+-   ## 여기부터 나머지 작성해 그러면 알겠지?
+
+    <br>
+
+# Embedded 기술 스택
+
+-   ### Raspberry Pi
+    > HW : Raspberry Pi 4 Model B Rev 1.2  
+    > SW : Raspbian GNU/Linux 11 (bullseye)
+-   ### Kivy : 2.1.0
+-   ### websocket-client : 1.3.3
+-   ### mysql-connector-python: 8.0.30
+-   ### requests: 2.28.1
+>>>>>>> 8c36ecd (embedded README update)
