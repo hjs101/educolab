@@ -441,9 +441,7 @@ class HomeworkCheckView(APIView): # 채점
                 student.minus_point += point
             submit.check_flag=True
             submit.save()
-            print()
-            point = PointLog.objects.create(teacher=request.user,student=student,content="과제 점수",point=point,acc_minus=request.user.minus_point,acc_point=request.user.plus_point)
-            point.save()
+            point = PointLog.objects.create(teacher=request.user,student=student,content="과제 점수",point=point,acc_minus=student.minus_point,acc_point=student.plus_point)
             student.save()
 <<<<<<< HEAD
             # students = UserinfoSerializer(student)
