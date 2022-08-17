@@ -5,7 +5,7 @@
 >>>>>>> 3f7c837 (Update README.md)
 
 ## EduColab 소개!
-[<img src="/uploads/85e4097f8177ffa87cc5b0dd1a7df106/educolab.37f5cd03.png" width="250">](유튜브 주소 들어갈 예정)
+[<img src="/uploads/85e4097f8177ffa87cc5b0dd1a7df106/educolab.37f5cd03.png" width="250">](https://유튜브 주소 들어갈 예정)
 
 시연 시나리오 : [시연 시나리오](시연시나리오 링크 들어갈 예정)
 
