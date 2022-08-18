@@ -228,7 +228,6 @@ export default {
       this.credentials.survey.title = this.surveyItem[0]?.survey_name
       this.credentials.survey.grade = this.surveyItem[0]?.survey_grade
       this.credentials.survey.class_field = this.surveyItem[0]?.survey_class
-      console.log(this.surveyItemLength)
       this.surveyTotalData(this.surveyItem.slice(1,this.surveyItemLength))
       this.surveyList = this.surveyItemLength-1
 

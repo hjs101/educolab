@@ -31,7 +31,7 @@
           <q-btn v-if="files?.atch_file" @click="openFile(url+files?.atch_file)" color="grey-12" class="text-black">
             <q-icon name="mdi-paperclip"/>
             {{ files?.atch_file_name }}
-            </q-btn>
+          </q-btn>
         </div>
       </div>
       <hr>

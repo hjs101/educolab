@@ -27,6 +27,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const PROFIL = 'http://127.0.0.1:8000'
@@ -245,6 +246,9 @@ const FILE = "https://i7c102.p.ssafy.io";
 =======
 const FILE = "https://i7c102.p.ssafy.io";
 >>>>>>> e2eb7b4 (Fix : 퀴즈 수정 부분 오류 수정)
+=======
+const FILE = "https://i7c102.p.ssafy.io";
+>>>>>>> 2dcb8d1 (Fix : 첨부파일 부분 수정)
 const BASE_URL = FILE + "/api/";
 const ACCOUNTS = BASE_URL + "accounts/";
 const NOTICE = BASE_URL + "notice/";
