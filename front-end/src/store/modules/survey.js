@@ -1,6 +1,7 @@
 import drf from "@/api/drf.js"
 import router from "@/router"
 import axios from "axios"
+import { isEmpty } from "lodash"
 
 export const survey = {
   state() {
@@ -52,19 +53,28 @@ export const survey = {
       commit('SURVEY_DATA', data)
     },
     submitSurvey({ getters }, credentials) {
-      credentials.question = getters.surveyData
-      console.log(getters.surveyData)
-      console.log(credentials)
-      axios({
-        url: drf.survey.surveyCreate(),
-        method: 'post',
-        headers : getters.authHeader,
-        data : credentials
-      })
-        .then(res => {
-          console.log(res.data)
-          router.push({ name: 'Survey' })
-        })
+      const {survey} = credentials
+      if (survey.title && survey.grade && survey.class_field) {
+        if (isEmpty(...credentials.question)) {
+          alert('설문은 한 문항 이상 작성되어야 합니다')
+        } else {
+          credentials.question = getters.surveyData
+          console.log(getters.surveyData)
+          console.log(credentials)
+          axios({
+            url: drf.survey.surveyCreate(),
+            method: 'post',
+            headers : getters.authHeader,
+            data : credentials
+          })
+            .then(res => {
+              console.log(res.data)
+              router.push({ name: 'Survey' })
+            })
+        }
+      } else {
+        alert('빈 항목을 채워주세요')
+      }
     },
     getSurveyDetail({ getters, commit }, surveyPk) {
       axios({
@@ -104,17 +114,27 @@ export const survey = {
         })
     },
     updateSurvey({ getters }, credentials) {
-      credentials.question = getters.surveyData
-      axios({
-        url: drf.survey.surveyUpdate(),
-        method: 'put',
-        headers: getters.authHeader,
-        data : credentials,
-      })
-        .then(res => {
-          console.log(res)
-          router.push({ name : 'Survey' })
-        })
+      const {survey} = credentials
+      console.log(credentials)
+      if (credentials.survey_num && survey.title && survey.grade && survey.class_field) {
+        if (isEmpty(...credentials.question)) {
+          alert('설문은 한 문항 이상 작성되어야 합니다')
+        } else {
+          credentials.question = getters.surveyData
+          axios({
+            url: drf.survey.surveyUpdate(),
+            method: 'put',
+            headers: getters.authHeader,
+            data : credentials,
+          })
+            .then(res => {
+              console.log(res)
+              router.push({ name : 'Survey' })
+            })
+        } 
+      } else {
+        alert('빈 항목을 채워주세요')
+      }
     },
 
     getSurveyStat({ getters, commit }, surveyPk) {

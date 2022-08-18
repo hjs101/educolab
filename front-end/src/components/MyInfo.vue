@@ -61,6 +61,9 @@
         <span>
           아이디 <b class="text-size"> {{info.username}} </b>
           생년월일 <b class="text-size">{{birthday}}</b>
+          <span v-if="info.userflag">
+            담당과목 <b class="text-size">{{info.subject}}</b>
+          </span>
           <br>
           <br>
           학교 <b class="text-size">{{school}}</b>
@@ -197,9 +200,13 @@ export default {
               // badge.path = 
 =======
               badge.path = path
+<<<<<<< HEAD
               console.log('path')
 >>>>>>> 96e4e58 (Fix : 배지 출력 안 되는 오류 수정)
+=======
+>>>>>>> 1771885 (Fix : 과제 스타일 및 수정, 생성 시 오류 해결)
             }
+            router.go()
           })
 >>>>>>> 4d6ec88 (Feat: 칭호 배지  적용 부분 진행 중 2)
       }

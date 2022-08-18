@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 5d02b22 (네브바, 컴포넌트 구성)
 =======
@@ -63,6 +64,9 @@
 =======
 >>>>>>> d127577 (기능별 메인 페이지 구성)
 =======
+=======
+  <div class="baseStyle" v-if="!emptyQuiz">
+>>>>>>> 1771885 (Fix : 과제 스타일 및 수정, 생성 시 오류 해결)
     <h4 class="text-center">Quiz</h4>
     <hr>
     <div class="row justify-end q-mt-lg">
@@ -197,6 +201,7 @@ export default({
 import { mapActions, mapGetters } from 'vuex'
 import {ref} from 'vue'
 import ThePagination from '@/components/ThePagination.vue'
+import {isEmpty} from 'lodash'
 
 export default({
   name: 'QuizView',
@@ -205,7 +210,10 @@ export default({
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
   },
   computed: { 
-    ...mapGetters(['quiz', 'quizLength', 'isLoggedIn', 'currentUser'])
+    ...mapGetters(['quiz', 'quizLength', 'isLoggedIn', 'currentUser']),
+    emptyQuiz() {
+      return isEmpty(this.quiz)
+    }
   },
   methods: {
     ...mapActions(['quizList']),

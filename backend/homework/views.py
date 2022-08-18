@@ -186,8 +186,10 @@ class HomeworkCreateView(APIView):
             homework_serializer = StudentHomeworkCreateSerializer(data=request.data)
             
             if homework_serializer.is_valid(raise_exception=True):
+                print('valid')
                 teacher = UserInfo.objects.get(school=request.user.school,class_field=request.user.class_field,grade=request.user.grade,userflag=True)
                 homework = homework_serializer.save(student=request.user,teacher=teacher)
+<<<<<<< HEAD
 =======
             homework_serializer = StudentHomeworkCreateSerializer(data=request.data)
             
@@ -196,10 +198,16 @@ class HomeworkCreateView(APIView):
                 homework = homework_serializer.save(student=request.user,teacher=teacher)
 
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+                print('homework')
+>>>>>>> 1771885 (Fix : 과제 스타일 및 수정, 생성 시 오류 해결)
                 files = request.FILES.getlist("files")
+                print(files)
                 for file in files:
                     fp = Files.objects.create(student_homework=homework,atch_file=file,atch_file_name=file)
+                    print('save')
                     fp.save()
+                print('file 오류 아님')
                 
                 submit = SubmitHomework.objects.create(student_homework=homework,student=request.user)
                 submit.save()

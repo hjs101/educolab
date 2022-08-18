@@ -1,6 +1,8 @@
 <template>
 <<<<<<< HEAD
   <div class="baseStyle">
+    <h4 class="text-center">Quiz</h4>
+    <hr>
     <!-- 제목, 퀴즈 문제, 퀴즈 보기 -->
     <div v-for="quizItem in quizDetail" :key="quizItem">
       <h4 class="title-size">{{ quizItem.quiz_name }}</h4>

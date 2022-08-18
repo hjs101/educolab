@@ -27,7 +27,7 @@ class PtitleView(APIView):
         if request.user in buy_user: 
             return Response({"success" : False, "message" : "이미 구매한 칭호입니다"})
         else:
-            print(request.u)
+            print(request.user)
             if request.user.plus_point < buy_title.price:
                 return Response({"success" : False, "message" : "포인트가 모자랍니다"})
             request.user.plus_point -= buy_title.price

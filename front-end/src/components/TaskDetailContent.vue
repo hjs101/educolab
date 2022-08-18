@@ -1,5 +1,5 @@
 <template>
-  <div class="noticeDetailStyle">
+  <div>
     <div class="q-mt-md">
         <hr>
         <div class="row justify-between items-center">

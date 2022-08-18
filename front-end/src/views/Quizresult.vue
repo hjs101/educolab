@@ -1,7 +1,5 @@
 <template>
   <div class="back">
-      {{ranking_heights}}
-      {{typeof(ranking_heights)}}
     <div class="base">
       <div style="padding:5px 0">
         <span style="color:#FEC002;" class="logo">edu  </span>

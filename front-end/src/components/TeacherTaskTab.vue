@@ -10,7 +10,7 @@
       narrow-indicator
     >
       <q-tab class="text-size" name="notCheck">채점 가능한 과제 목록</q-tab>
-      <q-tab class="text-size" name="studentTask">학생이 신청한 과제 목록</q-tab>
+      <q-tab v-if="homeroom" class="text-size" name="studentTask">학생이 신청한 과제 목록</q-tab>
       <q-tab class="text-size" name="notDone">제출 중인 과제 목록</q-tab>
       <q-tab class="text-size" name="done">채점한 과제 목록</q-tab>
     </q-tabs>
@@ -133,12 +133,14 @@ export default {
     const changePage = (value, target) => {
       page[target] = value
     }
+    const homeroom = computed(() => store.getters.currentUser.homeroom_teacher_flag)
     return {
       tab,
       totalList,
       page,
       number,
       changePage,
+      homeroom
     }
   }
 }

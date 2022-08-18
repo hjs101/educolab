@@ -7,7 +7,7 @@
     >
       <q-card>
         <q-card-section>
-          {{item.content}}
+            {{item.content}}
           <div>
             <div v-for="(file, idx) in item['atch_file_name']" :key="idx">
               <a :href="url+item['atch_file'][idx]">{{file}}</a>
@@ -112,3 +112,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .text-size {
+    font-size: 1rem;
+  }
+</style>

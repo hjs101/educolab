@@ -1,5 +1,7 @@
 <template>
   <div class="baseStyle">
+    <h4 class="text-center">설문조사</h4>
+    <hr>
     <div v-for="surveyItem in surveyItem" :key="surveyItem">
       <h4 class="title-size">{{ surveyItem.survey_name }}</h4>
       <q-card class="row" v-if="surveyItem.question_number" style="width:80%">

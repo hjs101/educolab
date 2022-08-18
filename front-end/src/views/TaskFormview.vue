@@ -46,10 +46,12 @@
       <hr>
       <div class="row">
         <span class="q-py-md q-mr-lg text-size" style="width:70px; text-align:center">내용</span>
-        <div style="width:700px">
-          <q-editor
+        <div style="width:700px;">
+          <q-input
+            rows="20"
+            type="textarea"
+            outlined
             class="text-size"
-            style="min-height:500px; max-height:100%;"
             v-model="task.content"
             label="content"
             :definitions="{
@@ -188,7 +190,13 @@
       <hr>
       <div class="row items-center">
         <span class="q-py-md q-ml-sm q-mr-lg text-size" style="width: 70px; text-align:center">첨부파일</span>
-        <q-file outlined label="첨부 파일" v-model="task.files" style="width: 700px;" multiple/>
+        <q-input
+          type="file"
+          outlined
+          label-stack
+          @update:model-value="val => { student.files = val }"
+          v-model="task.files"
+          style="width: 700px;" />
       </div>
       <hr>
       <div class="row justify-center q-mt-xl q-gutter-md">
@@ -200,7 +208,15 @@
         </router-link>
       </div>
     </q-form>
+<<<<<<< HEAD
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
+=======
+    <message-pop-up
+      v-if="confirm.state"
+      :message="confirm.message"
+      @reverse="confirm.prompt = false"
+    />
+>>>>>>> 1771885 (Fix : 과제 스타일 및 수정, 생성 시 오류 해결)
   </main>
 </template>
 
@@ -216,7 +232,9 @@ import { useRoute } from 'vue-router'
 import { useRoute, useRouter } from 'vue-router'
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
 import {useStore} from 'vuex'
+import MessagePopUp from '../components/MessagePopUp.vue'
 export default {
+  components: { MessagePopUp },
   name: 'TaskFormView',
   setup () {
     const route = useRoute()
@@ -231,15 +249,13 @@ export default {
       if (!store.getters.isLoggedIn) {
       router.push('/educolab/login')
     } else if (taskPk) {
-        store.dispatch('initTask')
-        store.dispatch('taskDetail', {pk: taskPk, teacher_flag: userType === 'teacher'? 1:0})
+        store.dispatch('editTask', {pk: taskPk, teacher_flag: userType === 'teacher'? 1:0})
     }
     })
     const subjectOptions = store.getters.getSubject
     let isTeacher = computed(() => userType === 'teacher')
     let type = computed(() => taskPk? '수정':'등록')
-    const storeTask = computed(() => store.getters.getTask)
-    const confirmPk = computed(() => storeTask.value.homework?.id === taskPk)
+    const storeTask = computed(() => store.getters.getEditTask)
     const computedTask = reactive({
       subject: computed(() => storeTask.value.homework?.subject),
       title: computed(() => storeTask.value.homework?.title || storeTask.value.title),
@@ -248,6 +264,11 @@ export default {
       class_field: computed(() => storeTask.value.homework?.class_field),
       files: computed(() => storeTask.value.homework?.files || storeTask.value['student_file']),
       deadline: computed(() => storeTask.value.homework?.deadline || storeTask.value.deadline),
+    })
+    const confirm = reactive({
+      prompt: false,
+      message: '',
+      state: computed(() => confirm.prompt)
     })
     const task = reactive({
       teacher_flag: isTeacher.value? 1:0,
@@ -259,16 +280,25 @@ export default {
       files: taskPk? computedTask.files : '',
       deadline: taskPk? computedTask.deadline : '',
     })
+    const isValid = computed(() => {
+      if (task.title && task.content && task.deadline ) {
+        if (isTeacher.value) {
+          if (task.subject && task.grade && task.class_field) {
+            return true
+          } else {
+            return false
+          }
+        } else {
+          return true
+        }
+      } else {
+        return false
+      }
+    })
     const onSubmit = (arg) => {
       let form = new FormData()
       for (let key in task) {
-        if (key === 'files' && task[key]) {
-          for (let i=0; i < task.files.length; i++) {
-            form.append(key, task[key][i])
-          }
-        } else {
-          form.append(key, task[key])
-        }
+        form.append(key, task[key])
       }
       if (arg) {
         form.append('submit_pk', storeTask.value['my_submit'][0].id)
@@ -278,8 +308,13 @@ export default {
         store.dispatch('taskUpdate', form)
         console.log('update')
       } else {
-        store.dispatch('createTask', form)
-        console.log('create')
+        if (isValid.value) {
+          store.dispatch('createTask', form)
+          console.log('create')
+        } else {
+          confirm.message = '필수 항목을 채워주세요'
+          confirm.prompt = true
+        }
       }
     }
     const onReset = () => {
@@ -310,7 +345,7 @@ export default {
       onReset,
       subjectOptions,
       computedTask,
-      confirmPk
+      confirm
     }
   }
 }

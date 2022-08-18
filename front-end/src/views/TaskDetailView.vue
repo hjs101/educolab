@@ -1,6 +1,7 @@
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <q-card flat bordered>
     <h1>과제 상세 페이지</h1>
 =======
@@ -12,13 +13,16 @@
     <h5 class="text-center">과제</h5>
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
     <section>
+=======
+  <main flat bordered class="noticeDetailStyle row justify-center">
+    <h4 class="text-center col-12">과제</h4>
+    <section class="col-6">
+>>>>>>> 1771885 (Fix : 과제 스타일 및 수정, 생성 시 오류 해결)
       <!-- 과제 내용 & 교사용 -->
-      <task-detail-content v-if="!isEmptyTask" :pk="pk" :task="task" :isTeacher="user.isTeacher"/>
+      <task-detail-content class="col-6" v-if="!isEmptyTask" :pk="pk" :task="task" :isTeacher="user.isTeacher"/>
       <!-- 학생용 -->
-      <section v-if="!user.isTeacher">
       <!-- 채점 안 한 과제 -->
-        <student-task-submit v-if="isLecture && !task.homework?.check_flag" />
-      </section>
+      <student-task-submit class="col-6" v-if="!user.isTeacher && isLecture && !task.homework?.check_flag" />
       <!-- 자신이 만든 페이지에서만 보임 -->
       <div class="buttonGroup">
         <div v-if="user.editPossible">
@@ -42,7 +46,10 @@
           />
         </div>
         <router-link :to="user.path" class="button">
-          <q-btn color="primary" label="목록"/>
+          <q-btn
+            color="primary"
+            label="목록"
+            class="text-size q-mx-lg q-py-sm"/>
         </router-link>
       </div>
     </section>

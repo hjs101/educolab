@@ -18,6 +18,7 @@ export const task = {
         checkedSelfTask: [],
       },
       task: {},
+      taskEdit: {},
     }
   },
   
@@ -39,6 +40,7 @@ export const task = {
     getCheckedSelfTask: state => state.student.checkedSelfTask,
     cntCheckedSelfTask: (state, getters) => Math.ceil(getters.getCheckedSelfTask.length/10),
     getTask: state => state.task,
+    getEditTask: state => state.taskEdit,
     getTeacherAll: (state, getters) => [
     ...getters.getTeacherDone, ...getters.getTeacherNotCheck, ...getters.getTeacherNotDone, ...getters.getTeacherStudentTask
     ],
@@ -81,7 +83,7 @@ export const task = {
       }
     },
     TASK_DETAIL: (state, data) => state.task = data,
-    INIT_TASK: (state) => state.task = {},
+    TASK_EDIT: (state, data) => state.taskEdit = data,
     },
 
   actions: {
@@ -103,7 +105,8 @@ export const task = {
           console.log(err.data)
         })
     },
-    createTask({ getters}, data) {
+    createTask({ commit, getters}, data) {
+      console.log(data)
       axios({
         url: drf.task.create(),
         method : 'post',
@@ -114,12 +117,14 @@ export const task = {
       })
         .then(res => {
           if (data.get('teacher_flag') === '1') {
+            commit('TASK_EDIT', {})
             router.push({name: 'TaskDetailView', params: {
               userType: getters.currentUser.userflag? 'teacher': 'student',
               taskType: 'lecture',
               taskPk: res.data.pk
             }}) 
           } else {
+            commit('TASK_EDIT', {})
             router.push({name: 'TaskListView', params: {
               userType: getters.currentUser.userflag? 'teacher': 'student',
           }})
@@ -130,7 +135,6 @@ export const task = {
         })
     },
     taskDetail({ getters, commit }, params) {
-      console.log(params)
       axios({
         url: drf.task.detail(),
         method: 'get',
@@ -145,7 +149,22 @@ export const task = {
           console.log(err)
         })
     },
-    taskUpdate({ getters }, data) {
+    editTask({ getters, commit }, params) {
+      axios({
+        url: drf.task.detail(),
+        method: 'get',
+        headers: getters.authHeader,
+        params,
+      })
+        .then(res => {
+          console.log(res.data)
+          commit('TASK_EDIT', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    taskUpdate({getters, commit }, data) {
       axios({
         url: drf.task.detail(),
         method: 'put',
@@ -155,15 +174,15 @@ export const task = {
         data,
       })
       .then(()=> {
-        // 새로고침 -> currentUser가 날아가면서 오류 생김
         if (getters.currentUser.userflag) {
-          console.log(data.get('pk'))
+          commit('TASK_EDIT', {})
           router.push({name: 'TaskDetailView', params: {
             userType: getters.currentUser.userflag? 'teacher': 'student',
             taskType: 'lecture',
             taskPk: data.get('pk')
           }}) 
         } else {
+          commit('TASK_EDIT', {})
           router.push({name: 'TaskListView', params: {
             userType: 'student',
         }})
@@ -172,7 +191,7 @@ export const task = {
         console.log(err)
       })
     },
-    taskDelete({ getters}, data) {
+    taskDelete({getters}, data) {
       console.log(data)
       axios({
         url: drf.task.detail(),
@@ -189,7 +208,7 @@ export const task = {
         // .catch(err => {
         // })
     },
-    submitTask({getters}, data) {
+    submitTask({commit, getters}, data) {
       axios({
         url: drf.task.submit(),
         method: 'post',
@@ -199,12 +218,10 @@ export const task = {
         data,
       })
         .then(((res) => {
+          commit('TASK_EDIT', {})
           console.log(res.data.message)
           router.push({name: 'TaskListView'})
         }))
       },
-    initTask({commit}) {
-      commit('INIT_TASK')
-    },
     }
   }

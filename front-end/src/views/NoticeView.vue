@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -85,6 +86,9 @@
 
 =======
   <div class="baseStyle">
+=======
+  <div class="baseStyle" v-if="!emptyNotice">
+>>>>>>> 1771885 (Fix : 과제 스타일 및 수정, 생성 시 오류 해결)
     <h4 class="text-center">공지사항</h4>
     <hr>
     <div class="row justify-end q-mt-lg">
@@ -105,7 +109,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(notice, index) in notice2.slice((page-1)*10, page*10)" :key="index"
+          <tr v-for="(notice, index) in notice2?.slice((page-1)*10, page*10)" :key="index"
           class="text-center">
             <td class="text-size">{{ index+1+((page-1)*10) }}</td>
 
@@ -144,8 +148,8 @@
 =======
 
     <div>
-      <the-pagi-nation v-if="noticeLenth" :limit="noticeLenth" @change-page="changePage">
-      </the-pagi-nation>
+      <the-pagination v-if="noticeLenth" :limit="noticeLenth" @change-page="changePage">
+      </the-pagination>
     </div>   
 
 >>>>>>> 38a5ff1 (공지사항  수정 해결)
@@ -155,11 +159,12 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { ref } from 'vue'
-import ThePagiNation from '@/components/ThePagination.vue'
+import ThePagination from '@/components/ThePagination.vue'
+import {isEmpty} from 'lodash'
 
 export default {
   name: "NoticeView",
-  components: {ThePagiNation},
+  components: {ThePagination},
   setup() {
     let page = ref(1)
     const changePage = (value) => {
@@ -171,7 +176,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['notice2', 'noticeLenth', 'isLoggedIn', 'currentUser'])
+    ...mapGetters(['notice2', 'noticeLenth', 'isLoggedIn', 'currentUser']),
+    emptyNotice() {
+      return isEmpty(this.notice2)
+    }
   },
   methods: {
     ...mapActions(['noticeList']),
