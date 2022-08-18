@@ -66,10 +66,14 @@ export default {
   name: 'SurveyCreateView',
   computed: {
 <<<<<<< HEAD
+<<<<<<< HEAD
     ...mapGetters(['surveyData', 'survey', 'surveyItem']),
 =======
     ...mapGetters(['surveyData', 'survey', 'isLoggedIn', 'currentUser']),
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
+=======
+    ...mapGetters(['surveyData', 'survey', 'surveyItem' ,'isLoggedIn', 'currentUser']),
+>>>>>>> c3f5feb (Fix : 설문조사 등록 시 몇 가지 경우 수정)
     getTitle() {
       if (this.surveyPk) return "설문조사 수정"
       return "설문조사 등록"
@@ -212,10 +216,10 @@ export default {
     // }
     if (this.surveyPk) {
       this.getSurveyDetail(this.surveyPk)
-      console.log(this.surveyItem)
-      this.credentials.survey.title = this.surveyItem[0].survey_name
-      this.credentials.survey.grade = this.surveyItem[0].survey_grade
-      this.credentials.survey.class_field = this.surveyItem[0].survey_class
+      this.credentials.survey.title = this.surveyItem[0]?.survey_name
+      this.credentials.survey.grade = this.surveyItem[0]?.survey_grade
+      this.credentials.survey.class_field = this.surveyItem[0]?.survey_class
+      // console.log(this.credentials.survey)
     }
   }
 }

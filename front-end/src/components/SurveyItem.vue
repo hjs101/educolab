@@ -41,7 +41,7 @@ export default {
   name: 'SurveyItem',
   props: {
     survey: Number,
-    surveyPk: Number
+    surveyPk: String
   },
   setup(props) {
     let selected = ref('')

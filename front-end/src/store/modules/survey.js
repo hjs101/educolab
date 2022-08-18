@@ -11,7 +11,7 @@ export const survey = {
       surveyBogi : [],
       surveyStat: {},
       surveyQuestion: {},
-      surveyItem : {}
+      surveyItem : []
     }
   },
   
@@ -86,6 +86,7 @@ export const survey = {
         }
       })
         .then(res => {
+          console.log(res.data)
           for(var i = 1; i < res.data.length; i++) {
             if (res.data[i].multiple_bogi) {
               const surveyBogi = res.data[i].multiple_bogi.split('/')
