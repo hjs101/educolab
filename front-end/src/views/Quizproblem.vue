@@ -128,7 +128,7 @@ export default {
       this.sendMessage({
         message:"퀴즈 종료", 
         room_num:this.RoomNumber, 
-        id:this.all.username})
+        id:this.username})
       this.closeSocket()
       this.$router.push({name:'Quiz'})
     },

@@ -206,6 +206,7 @@ export default {
 =======
 // const FILE = 'http://127.0.0.1:8000'
 const FILE = "https://i7c102.p.ssafy.io";
+<<<<<<< HEAD
 =======
 // const FILE = "https://i7c102.p.ssafy.io";
 const FILE = "http://127.0.0.1:8000";
@@ -213,6 +214,9 @@ const FILE = "http://127.0.0.1:8000";
 =======
 const FILE = "https://i7c102.p.ssafy.io";
 >>>>>>> c04fbc1 (Fix : 수정하지 않은 부분 수정해 push)
+=======
+// const FILE = "http://127.0.0.1:8000/";
+>>>>>>> ed2b7a7 (Fix : 교사 과제 검색 기능 오류 해결)
 const BASE_URL = FILE + "/api/";
 const ACCOUNTS = BASE_URL + "accounts/";
 const NOTICE = BASE_URL + "notice/";

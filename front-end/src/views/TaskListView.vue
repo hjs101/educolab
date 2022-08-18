@@ -71,9 +71,4 @@ export default {
 
 <style scoped>
   .text-size{font-size: 1rem;}
-  .searchWrap{border-radius:5px; text-align:center; padding:20px 0; margin-bottom:10px;}
-  .tbList th{border-top:1px solid #888;}
-	.tbList th, .tbList td{border-bottom:1px solid #eee; padding:5px 0;}
-	.tbList td.txt_left{text-align:left;}
-  .btn{margin-bottom:40px;}
 </style>

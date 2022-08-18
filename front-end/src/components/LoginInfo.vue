@@ -35,7 +35,7 @@
         label="아이디"
         v-model="userData.username"
         lazy-rules
-        class="col-8"
+        class="col-8 alp"
         maxlength="20"
         :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요',
         val => val && val.length > 4 ||'아이디는 최소 5자리 이상이어야 합니다'
@@ -111,7 +111,7 @@
       color="teal"
       label="비밀번호"
       type="password"
-      class="col-8"
+      class="col-8 han"
       v-model="userData.password1"
       maxlength="20"
       lazy-rules
@@ -124,8 +124,10 @@
       color="teal"
       label="비밀번호 확인"
       type="password"
+      style="ime-mode:disabled"
       v-model="userData.password2"
       @keyup="isCorrect"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -143,6 +145,9 @@
 =======
       class="col-8"
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
+=======
+      class="col-8 han"
+>>>>>>> ed2b7a7 (Fix : 교사 과제 검색 기능 오류 해결)
       minlength="5"
       maxlength="20"
 >>>>>>> bf45305 ( Fix : 버그 수정)
@@ -171,6 +176,21 @@
     </article>
   </section>
 </template>
+
+<style scoped>
+  .alp {
+    -webkit-ime-mode:disabled;
+    -moz-ime-mode:disabled;
+    -ms-ime-mode:disabled;
+    ime-mode:disabled;
+  }
+  .han {
+    -webkit-ime-mode:active;
+    -moz-ime-mode:active;
+    -ms-ime-mode:active;
+    ime-mode:active;
+  }
+</style>
 
 <script>
 import {reactive} from '@vue/reactivity'

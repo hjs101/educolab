@@ -17,15 +17,15 @@
       </article>
     </div>
     <h6 class="text-center q-pa-sm">검색 결과</h6>
-    <q-list
+    <div
       bordered
       class="rounded-borders">
       <task-list-table
         :list="search.list"
         :page="page"
-        :teacher="0"
+        :search="true"
       />
-    </q-list>
+    </div>
     <the-pagination
       v-if="search.length"
       :limit="search.length"
@@ -84,7 +84,8 @@ export default {
       userType,
       changePage,
       search,
-      refresh
+      refresh,
+      store
     }
   }
 }

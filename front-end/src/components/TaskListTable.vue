@@ -19,11 +19,13 @@
         class="text-center">
         <td class="text-size">{{ index+1+((data.page-1)*10) }}</td> 
         <td class="cursor-pointer text-left text-size" @click="toDetail(item.id)">{{ item.title }}</td>
-        <td class="text-size" v-if="!isTeacher && teacher">{{ item.subject }}</td>
+        <td class="text-size" v-if="!search && !isTeacher && teacher">{{ item.subject }}</td>
         <td class="text-size" v-if="isTeacher">
-          {{item.grade || item.student?.grade}}학년 {{item.class_field || item.student?.class_field}}반
+          <span v-if="!search">
+            {{item.grade || item.student?.grade}}학년 {{item.class_field || item.student?.class_field}}반
+          </span>
           <span v-if="!teacher">
-            {{item.student.name}}
+            {{item.student?.name || name}}
           </span>
           </td>
         <td class="text-size" v-if="!over">{{ item.deadline }}</td>
@@ -35,6 +37,7 @@
 <script>
 import { computed, reactive } from '@vue/runtime-core'
 import {useRoute, useRouter} from 'vue-router'
+import {useStore} from 'vuex'
 export default {
   name: 'TaskListTable',
   props: {
@@ -43,11 +46,14 @@ export default {
     teacher: Number,
     submit: Boolean,
     over: Boolean,
+    search: Boolean,
   },
   setup(props) {
     const route = useRoute()
     const router = useRouter()
+    const store = useStore()
     const {userType} = route.params
+    const name = computed(() => store.getters.currentUser.name)
     const isTeacher = computed(() => userType === 'teacher')
     const taskType = computed(() => props.teacher? 'lecture':'self')
     const data = reactive({
@@ -73,7 +79,8 @@ export default {
       taskType,
       toDetail,
       isTeacher,
-      data
+      data,
+      name
     }
   }
 }
