@@ -156,15 +156,15 @@ class SurveyDetailView(APIView):
     def put(self, req):
         quiz_id = req.data['quiz_num']
         quiz = QuizList.objects.get(pk=quiz_id)
-
         quiz_serializer = QuizSerializer(quiz, data=req.data['quiz'])
-
+        print(quiz_serializer)
         if quiz_serializer.is_valid(raise_exception=True):
             quiz = quiz_serializer.save(teacher = req.user)
 
         quiz_questions = quiz.question_quiz.all()
 
         quiz_questions.delete()
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 class SurveyUpdateView(APIView):
@@ -204,6 +204,8 @@ class SurveyUpdateView(APIView):
 =======
         print(req.data)
 >>>>>>> 1a24399 (Test : 퀴즈 테스느)
+=======
+>>>>>>> e2eb7b4 (Fix : 퀴즈 수정 부분 오류 수정)
         for question in req.data['question']:
             question_serializer = QuestionUpdateSerializer(data=question)
             if question_serializer.is_valid(raise_exception=True):
