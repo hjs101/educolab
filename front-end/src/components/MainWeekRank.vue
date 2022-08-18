@@ -6,6 +6,11 @@
       </q-card-section>
 
       <q-markup-table>
+        <tbody v-if="EmptyWeekRank">
+          <tr>
+            <td class="text-size bg-orange-13">아직 저번주에 대한 랭킹 데이터가 없어요 ㅠㅠ</td>
+          </tr>
+        </tbody>
         <tbody class="text-center" v-for="(mainWeekRank, index) in mainWeekRank" :key="index">
           <tr v-if="index+1 == 1" class="bg-pink-13">
             <td class="text-size">{{ index+1 }}등.</td>
@@ -45,8 +50,15 @@
 </template>
 
 <script>
+import { isEmpty } from 'lodash'
+
 export default {
   name: 'MainWeekRank',
+  computed: {
+    EmptyWeekRank() {
+      return isEmpty(this.mainWeekRank)
+    }
+  },
   props: {
     mainWeekRank: Object
   }

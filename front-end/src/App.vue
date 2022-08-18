@@ -943,7 +943,7 @@ import { mapGetters, mapActions } from 'vuex'
   display: none;
 }
 .profil-size {
-  font-size: 0.5rem
+  font-size: 1rem
 }
 
 @media screen and (max-width: 1050px) {

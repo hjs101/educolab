@@ -194,8 +194,6 @@ export default {
           .then(res => {
             if ( (params.info && res.data.success) || props.data.email) {
               start()
-              console.log(res.data)
-              console.log(res.data['auth_num'])
               email.authNum = res.data['auth_num']
               email.message = "인증번호가 전송되었습니다"
               email.valid = true

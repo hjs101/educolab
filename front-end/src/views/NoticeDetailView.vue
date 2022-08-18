@@ -99,7 +99,7 @@
         <div>
           <q-card class="bord">
             <q-card-section>
-              <p class="content-size bg-white" style="min-height:500px">{{ noticeDetail.notice?.content }}</p>
+              <p v-html="content" class="content-size bg-white" style="min-height:500px"></p>
             </q-card-section>
           </q-card>
         </div>
@@ -173,7 +173,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['noticeDetail', 'isLoggedIn', 'currentUser'])
+    ...mapGetters(['noticeDetail', 'isLoggedIn', 'currentUser']),
+    content() {
+      return this.noticeDetail.notice?.content.split('\n').join('<br>')
+    }
   },
   methods: {
     ...mapActions(['deleteNotice', 'getNoticeDetail']),

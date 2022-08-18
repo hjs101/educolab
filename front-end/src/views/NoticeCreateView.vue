@@ -31,7 +31,8 @@
           :definitions="{
             bold: {label: 'Bold', icon: null, tip: 'My bold tooltip'}
           }"
-        required/>
+          paragraph-tag
+          required/>
       </div>
     </div>
 

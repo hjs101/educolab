@@ -3,7 +3,6 @@
     <div class="row" v-for="(errors, field) in authError" :key="field">
       {{ errors }}
       <div v-for="(error, idx) in errors" :key="idx">
-        <!-- <span class="row">{{ error }}</span> -->
       </div>
     </div>
   </div>

@@ -497,7 +497,6 @@ export default {
               }
           })
           .then(({data}) => {
-            console.log(data)
             password.message = data.message
             if (data.success) {
               password.prompt = true

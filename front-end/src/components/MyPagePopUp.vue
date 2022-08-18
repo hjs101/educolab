@@ -102,7 +102,6 @@ export default {
       computedId: computed(() => badge.id),
     })
     const selectAlias = (option, id, name, url) => {
-      console.log('선택', option, id, name)
       if (option === 0) {
         alias.id = id
         alias.name = name
