@@ -194,7 +194,7 @@
           type="file"
           outlined
           label-stack
-          @update:model-value="val => { student.files = val }"
+          @update:model-value="val => { student.files = val[0] }"
           v-model="task.files"
           style="width: 700px;" />
       </div>

@@ -16,7 +16,7 @@
     <q-input
       outlined
       class="col-7 q-my-md"
-      @update:model-value="val => { student.files = val }"
+      @update:model-value="val => { student.file = val[0] }"
       type="file"
     />
     <div class="buttonGroup">
@@ -48,14 +48,14 @@ export default {
     const change = computed(() => storeTask.value.student_submit)
     const student = reactive({
       content: change.value? change.value[0].content: null,
-      files: change.value? change.value[0].atch_file_name: null
+      file: change.value? change.value[0].atch_file_name: null
     })
     const onSubmit = () => {
       let form = new FormData()
       form.append('submit_pk', change.value[0].id)
       form.append('teacher_flag', 1)
       form.append('content', student.content)
-      form.append('files', student.files)
+      form.append('files', student.file)
       store.dispatch('submitTask', form)
     }
     const onReset = () => {

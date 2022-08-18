@@ -84,7 +84,7 @@ export default {
   },
   data() {
     return {
-      surveyList : this.surveyItemLength || 1
+      surveyList : 1
     }
   },
   setup() {
@@ -226,6 +226,8 @@ export default {
       this.credentials.survey.class_field = this.surveyItem[0]?.survey_class
       console.log(this.surveyItemLength)
       this.surveyTotalData(this.surveyItem.slice(1,this.surveyItemLength))
+      this.surveyList = this.surveyItemLength - 1
+
       // console.log(this.credentials.survey)
     }
   }
