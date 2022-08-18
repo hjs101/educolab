@@ -2,24 +2,30 @@
   <div @change="onQuiz({...credentials})">
     <div class="q-my-lg row items-center">
       <span class="text-size q-mx-md text-center">퀴즈 {{ quiz }}.</span>
-      <q-input class="text-size" outlined v-model="credentials.quiz_question" style="width:50%" placeholder="문제를 입력해주세요."/>
+      <q-input class="text-size" outlined v-model="credentials.quiz_question" style="width:50%" placeholder="문제를 입력해주세요."
+      lazy-rules
+      :rules="[ val => val && val.length > 0 || '문제를 입력해주세요']"
+      />
     </div>
     <div class="column items-start q-mx-md">
-      <q-input outlined style="width:685px;" class="text-size" label="보기 1" v-model="num1"/><hr>
-      <q-input outlined style="width:685px;" class="text-size" label="보기 2" v-model="num2"/><hr>
-      <q-input outlined style="width:685px;" class="text-size" label="보기 3" v-model="num3"/><hr>
-      <q-input outlined style="width:685px;" class="text-size" label="보기 4" v-model="num4"/>
+      <q-input outlined style="width:685px;" class="text-size" label="보기 1" v-model="num1"
+      lazy-rules
+      :rules="[ val => val && val.length > 0 || '보기를 입력해주세요']"/><hr>
+      <q-input outlined style="width:685px;" class="text-size" label="보기 2" v-model="num2"
+      lazy-rules
+      :rules="[ val => val && val.length > 0 || '보기를 입력해주세요']"/><hr>
+      <q-input outlined style="width:685px;" class="text-size" label="보기 3" v-model="num3"
+      lazy-rules
+      :rules="[ val => val && val.length > 0 || '보기를 입력해주세요']"/><hr>
+      <q-input outlined style="width:685px;" class="text-size" label="보기 4" v-model="num4"
+      lazy-rules
+      :rules="[ val => val && val.length > 0 || '보기를 입력해주세요']"/>
     </div>     
     <div class="q-mx-md">
       <p class="text-size">제출 답안</p>
-      <q-input class="answer-border q-ml-sm" outlined v-model="credentials.answer" style="width:40px;"></q-input>
+      <q-input class="answer-border q-ml-sm" outlined v-model="credentials.answer" style="width:40px;" />
     </div>  
     <hr>
-    <!-- <div class="row">
-      <div class="row q-mb-xl items-center" v-for="answer in quizList" :key="answer">
-        <p class="bogi-size">답안 {{ answer }}.</p>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -32,7 +38,7 @@ export default {
   name: 'QuizItem',
   props: {
     quiz: Number,
-    quizPk: Number,
+    quizPk: String,
   },
   setup(props) {
     let num1 = ref('')
@@ -40,9 +46,9 @@ export default {
     let num3 = ref('')
     let num4 = ref('')
     let credentials = reactive({
-      quiz_question : ref(''),
+      quiz_question : '',
       question_number: props.quiz,
-      answer : ref(''), 
+      answer : '', 
       multiple_bogi: computed(() => {
         return `${num1.value}/${num2.value}/${num3.value}/${num4.value}/` 
       }),
@@ -64,7 +70,6 @@ export default {
   created() {
     if (this.quizPk) {
       this.getQuizDetail(this.quizPk)
-      console.log(this.quizDetail)
       for (var i=1; i < this.quizDetail.length; i++) {
         if (this.quiz === i) {
           this.credentials.quiz_question = this.quizDetail[i].quiz_question
@@ -81,9 +86,6 @@ export default {
 </script>
 
 <style scoped>
-  /* p {
-    margin : 0;
-  } */
   .text-size {
     font-size: 1rem;
   }

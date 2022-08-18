@@ -14,13 +14,17 @@
     <div class="row q-mt-xl">
       <span class="q-py-md q-mx-lg text-center text-size">제목</span>
       <q-input class="text-size" outlined v-model="credentials.survey.title" 
-      style="width: 700px;" placeholder="설문 제목을 입력해주세요." required/>
+      style="width: 700px;" placeholder="설문 제목을 입력해주세요." />
     </div>
     <hr>
     
-    <form>
+    <q-form>
       <div v-if="surveyPk">
+<<<<<<< HEAD
         <div v-for="survey in surveyList" :key="survey">
+=======
+        <div v-for="survey in surveyData.length-1" :key="survey">
+>>>>>>> e9e9cab (퀴즈 버그 수정)
           <div class="row justify-end q-mt-xl q-mr-xl">
             <q-btn @click="deleteSurvey(quiz, $event)" class="text-size" color="orange-6">문제 삭제</q-btn>
           </div>
@@ -41,7 +45,7 @@
             :surveyPk="surveyPk"/>
         </div>
       </div>
-    </form>
+    </q-form>
 
     <div class="row justify-center q-my-xl">
       <q-btn @click="goSurvey" class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
@@ -67,6 +71,7 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     ...mapGetters(['surveyData', 'survey', 'surveyItem']),
 =======
     ...mapGetters(['surveyData', 'survey', 'isLoggedIn', 'currentUser']),
@@ -77,6 +82,9 @@ export default {
 =======
     ...mapGetters(['surveyData', 'survey', 'surveyItem' ,'isLoggedIn', 'currentUser', 'surveyItemLength']),
 >>>>>>> 5879b5c (Fix : 설문조사 수정 부분 오류 수정)
+=======
+    ...mapGetters(['surveyData', 'survey', 'isLoggedIn', 'currentUser', 'surveyItem']),
+>>>>>>> e9e9cab (퀴즈 버그 수정)
     getTitle() {
       if (this.surveyPk) return "설문조사 수정"
       return "설문조사 등록"
@@ -139,7 +147,12 @@ export default {
         },        {
           label: '4반',
           value: 4
+<<<<<<< HEAD
         },         {
+=======
+        },
+        {
+>>>>>>> e9e9cab (퀴즈 버그 수정)
           label: '5반',
           value: 5
         },        {
@@ -209,18 +222,9 @@ export default {
     }
   },
   created() {
-    // if (this.surveyPk) {
-    //   for (var i=0; i < this.survey.length; i++) {
-    //     if (this.surveyPk == this.survey[i].pk) {
-    //       this.credentials.survey.title = this.survey[i].title
-    //       this.credentials.survey.grade = this.survey[i].grade
-    //       this.credentials.survey.class_field = this.survey[i].class_field
-    //       return
-    //     }
-    //   }
-    // }
     if (this.surveyPk) {
       this.getSurveyDetail(this.surveyPk)
+<<<<<<< HEAD
       this.credentials.survey.title = this.surveyItem[0]?.survey_name
       this.credentials.survey.grade = this.surveyItem[0]?.survey_grade
       this.credentials.survey.class_field = this.surveyItem[0]?.survey_class
@@ -229,6 +233,13 @@ export default {
       this.surveyList = this.surveyItemLength-1
 
       // console.log(this.credentials.survey)
+=======
+      console.log(this.surveyItem)
+      console.log(this.surveyData)
+      this.credentials.survey.title = this.surveyItem[0].survey_name
+      this.credentials.survey.grade = this.surveyItem[0].survey_grade
+      this.credentials.survey.class_field = this.surveyItem[0].survey_class
+>>>>>>> e9e9cab (퀴즈 버그 수정)
     }
   }
 }

@@ -176,6 +176,7 @@ export const quiz = {
         })
     },
 
+<<<<<<< HEAD
     // 퀴즈 번호, 보기, 답 가져오기 
     onQuiz( { commit }, data) {
       console.log(data)
@@ -185,13 +186,30 @@ export const quiz = {
     createQuiz( { getters }, credentials) {
       credentials.question = getters.quizData
       console.log(credentials)
+=======
+    // 퀴즈 번호, 보기, 답 가져오기
+    onQuiz({ commit }, data) {
+      // console.log(data)
+      // console.log(getters.quizData)
+      commit("QUIZ_DATA", data);
+    },
+
+    createQuiz({ getters }, credentials) {
+      credentials.question = getters.quizData;
+>>>>>>> e9e9cab (퀴즈 버그 수정)
       axios({
         url: drf.quiz.quizCreate(),
         method: 'post',
         headers: getters.authHeader,
+<<<<<<< HEAD
         data : credentials
       })
         .then(router.push({ name: 'Quiz'}))
+=======
+        data: credentials,
+      })
+        .then(router.push({ name: "Quiz" }));
+>>>>>>> e9e9cab (퀴즈 버그 수정)
     },
 
     deleteQuiz({ getters }, quizPk) {
@@ -217,12 +235,20 @@ export const quiz = {
         url: drf.quiz.quizDetail(),
         method: 'put',
         headers: getters.authHeader,
+<<<<<<< HEAD
         data : credentials,
       })
         .then(res => {
           console.log(res)
           router.push({ name : 'Quiz' })
         })
+=======
+        data: credentials,
+      })
+        .then(
+        router.push({ name: "Quiz" })
+        )
+>>>>>>> e9e9cab (퀴즈 버그 수정)
     },
     ////////////////////////////////
     ansgoodQuiz({getters,commit}, data) {

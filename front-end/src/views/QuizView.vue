@@ -110,7 +110,7 @@
           <tr
             v-for="(quiz, index) in quiz.slice((page - 1) * 10, page * 10)"
             :key="index"
-          >
+            >
             <td class="text-center text-size">{{ index + 1 + (page - 1) * 10 }}</td>
             <td
               @click="quizDetail(quiz.pk)"

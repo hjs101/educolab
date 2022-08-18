@@ -7,18 +7,22 @@
       color="orange-6" label="문제 추가" />
     </div>
 
-    <div class="row q-mt-xl">
-        <span class="q-py-md q-mx-lg text-center text-size">제목</span>
-        <q-input class="text-size" outlined v-model="credentials.quiz.title" 
-        style="width: 700px;" placeholder="퀴즈 제목을 입력해주세요."/>
-    </div>
-    <hr>
+    <q-form>
+      <div class="row q-mt-xl">
+          <span class="q-py-md q-mx-lg text-center text-size">제목</span>
+          <q-input class="text-size" outlined v-model="credentials.quiz.title" 
+          style="width: 700px;" placeholder="퀴즈 제목을 입력해주세요." 
+          lazy-rules
+          :rules="[ val => val && val.length > 0 || '제목을 입력해주세요']"
+          autofocus
+          />
+      </div>
+      <hr>
 
-    <form>
       <div v-if="quizPk">
         <div v-for="quiz in quizDetail.length-1" :key="quiz">
           <div class="row justify-end q-mt-xl q-mr-xl">
-            <q-btn @click="deleteQuiz(quiz, $event)" class="text-size" color="orange-6">문제 삭제</q-btn>
+            <q-btn @click.prevent="deleteQuiz(quiz, $event)" class="text-size" color="orange-6">문제 삭제</q-btn>
           </div>
           <quiz-item
           :quiz="quiz"
@@ -38,15 +42,15 @@
           />
         </div>
       </div>
-    </form>
 
-    <div class="row justify-center q-my-xl">
-      <q-btn @click="goQuiz" class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
-      <q-btn @click="surveyPk ? updateQuiz(credentials) : createQuiz(credentials)"
-      class="text-size q-px-xl q-py-md q-mx-lg q-py-sm" color="blue-6">
-      {{ quizPk ? '수정' : '등록'}}
-      </q-btn>
-    </div>
+      <div class="row justify-center q-my-xl">
+        <q-btn @click="goQuiz" class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
+        <q-btn @click="quizPk ? updateQuiz(credentials) : createQuiz(credentials)"
+        class="text-size q-px-xl q-py-md q-mx-lg q-py-sm" color="blue-6">
+        {{ quizPk ? '수정' : '등록'}}
+        </q-btn>
+      </div>
+    </q-form>
 
   </div>
 </template>
@@ -111,9 +115,12 @@ export default {
     }
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   created() {
     if (this.quizPk) {
 =======
+=======
+>>>>>>> e9e9cab (퀴즈 버그 수정)
   mounted() {
     if (!this.isLoggedIn) {
       this.$router.push('/educolab/login/')
@@ -122,7 +129,14 @@ export default {
     } else if (this.quizPk) {
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
       this.getQuizDetail(this.quizPk)
+      console.log(this.getQuizDetail)
       this.credentials.quiz.title = this.quizDetail[0].quiz_name
+
+      this.quizData = this.quizDetail
+      for (var i=1; i < this.quizData.length; i++) {
+        console.log(this.quizData[i])
+      }
+      // console.log(this.quizData)
     } 
   }
 }

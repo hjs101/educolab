@@ -10,7 +10,9 @@
           <survey-bogi
           :bogi="surveyItem.multiple_bogi"
           :surveyItem="surveyItem"
-          :qusNumber="surveyItem.question_number"></survey-bogi>
+          :qusNumber="surveyItem.question_number">
+          </survey-bogi>
+          
         </q-card-section>
       </q-card>
     </div>
