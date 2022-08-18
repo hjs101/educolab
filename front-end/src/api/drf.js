@@ -23,6 +23,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // const BASE_URL = 'https://i7c102.p.ssafy.io/api'
 const BASE_URL = 'http://127.0.0.1:8000/api'
 const PROFIL = 'http://127.0.0.1:8000'
@@ -226,6 +227,10 @@ const FILE = "https://i7c102.p.ssafy.io";
 // const FILE = "https://i7c102.p.ssafy.io";
 const FILE = "http://127.0.0.1:8000";
 >>>>>>> c32fe51 (Fix : 과제 생성 오류 수정)
+=======
+const FILE = "https://i7c102.p.ssafy.io";
+// const FILE = "http://127.0.0.1:8000";
+>>>>>>> 0ef8c72 (fix: drf수정)
 const BASE_URL = FILE + "/api/";
 const ACCOUNTS = BASE_URL + "accounts/";
 const NOTICE = BASE_URL + "notice/";
