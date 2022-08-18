@@ -19,7 +19,7 @@ class Quiz_Select_Screen(Screen):
     def on_pre_enter(self):
         ##### change label #####
         self.ids.title.text=f'{self.manager.prob_num}번'
-        self.cnt_time=20
+        self.cnt_time=5
         self.ids.time.text=f'잔여시간 : {self.cnt_time}초'
 
         self.event1=Clock.schedule_interval(self.update_count, 1)
