@@ -168,12 +168,13 @@ export const accounts = {
       currentUser: {},
       authError: '',
       subjectOptions: [
-        "국어",
-        "수학",
-        "사회",
         "과학",
-        "보건",
+        "국어",
         "기술가정",
+        "사회",
+        "수학",
+        "보건",
+        "한국사",
         "기타",
 >>>>>>> 5264803 (프론트 버그 수정2)
       ],
@@ -810,10 +811,15 @@ export const accounts = {
     },
     logout({ dispatch }) {
       dispatch("removeToken");
+<<<<<<< HEAD
       router.push({ name: "login" }).catch((err) => {
         console.log(err.respone);
       });
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+      router.push({ name: "login" });
+      router.go(1)
+>>>>>>> 110d2da (Fix : 비밀번호 변경 시 팝업 경로 수정 및 경우에 따른 팝업 메시지 수정)
     },
     setUserType({ commit }, userType) {
       // 로그인할 때

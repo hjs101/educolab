@@ -167,7 +167,7 @@
               <router-link class="q-ml-xl button color5 navBarLi" to="/quiz">퀴즈</router-link>
               <router-link class="q-ml-xl button color5 navBarLi" to="/survey">설문조사</router-link>
               <router-link class="q-ml-xl button color5 navBarLi" to="/teacher">마이페이지</router-link>
-              <span @click="logoutBtn" class="q-ml-xl cursor-pointer navBarLi">로그아웃</span>
+              <a href="/" @click="logoutBtn" class="button color5 q-ml-xl cursor-pointer navBarLi">로그아웃</a>
             </div>
             <div class="row">
               <div class="row justify-end items-center q-ml-xl">
@@ -187,8 +187,9 @@
               <router-link class="text-subtitle2 button color5 navBarLi" to="/notice" flat>공지사항</router-link>
               <router-link class="text-subtitle2 button color5 navBarLi" to="/teacher/task" flat >과제</router-link>
               <router-link class="text-subtitle2 button color5 navBarLi" to="/quiz" flat >퀴즈</router-link>
+              <router-link class="text-subtitle2 button color5 navBarLi" to="/survey">설문조사</router-link>
               <router-link class="text-subtitle2 button color5 navBarLi" to="/teacher" >마이페이지</router-link>
-              <span @click="logoutBtn" class="text-subtitle2 button color5 cursor-pointer navBarLi">로그아웃</span>
+              <a href="/"  @click="logoutBtn" class=" button text-subtitle2 button color5 cursor-pointer navBarLi">로그아웃</a>
             </div>
           </div>
           <q-icon @click="activeNav" class="cursor-pointer" name="mdi-menu" />
@@ -207,7 +208,7 @@
               <router-link class="q-ml-xl button color5 navBarLi" to="/student/task" flat >과제</router-link>
               <router-link class="q-ml-xl button color5 navBarLi" to="/student/point" flat >포인트 상점</router-link>
               <router-link class="q-ml-xl button color5 navBarLi" to="/student">마이페이지</router-link>
-              <span @click="logoutBtn" class="q-ml-xl cursor-pointer navBarLi">로그아웃</span>
+              <a href="/" @click="logoutBtn" class="q-ml-xl color5 button cursor-pointer navBarLi">로그아웃</a>
             </div>
             <div class="row">
               <div class="row justify-end items-center q-ml-xl">
@@ -227,10 +228,8 @@
               <router-link class="text-subtitle2 button color5 navBarLi" to="/notice" flat >공지사항</router-link>
               <router-link class="text-subtitle2 button color5 navBarLi" to="/student/task" flat >과제</router-link>
               <router-link class="text-subtitle2 button color5 navBarLi" to="/student/point" flat >포인트 상점</router-link>
-              <!-- <a href="/"> -->
               <router-link class="text-subtitle2 button color5 navBarLi" to="/student" >마이페이지</router-link>
-              <!-- </a> -->
-              <span @click="logoutBtn" class="text-subtitle2 button color5 cursor-pointer navBarLi">로그아웃</span>
+              <a href="/" @click="logoutBtn" class="text-subtitle2 color5 cursor-pointer navBarLi">로그아웃</a>
             </div>
           </div>
           <q-icon @click="activeNav" class="cursor-pointer" name="mdi-menu" />
