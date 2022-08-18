@@ -186,8 +186,12 @@ class HomeworkCreateView(APIView):
             homework_serializer = StudentHomeworkCreateSerializer(data=request.data)
             
             if homework_serializer.is_valid(raise_exception=True):
+<<<<<<< HEAD
                 print('valid')
                 teacher = UserInfo.objects.get(school=request.user.school,class_field=request.user.class_field,grade=request.user.grade,userflag=True)
+=======
+                teacher = UserInfo.objects.get(school=request.user.school,class_field=request.user.class_field,grade=request.user.grade,userflag=True,homeroom_teacher_flag=True)
+>>>>>>> 3ed528e (fix : 학생 담임선생님에게 요청하도록 fix)
                 homework = homework_serializer.save(student=request.user,teacher=teacher)
 <<<<<<< HEAD
 =======
