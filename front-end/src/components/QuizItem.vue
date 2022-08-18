@@ -67,9 +67,8 @@ export default {
   methods: {
     ...mapActions(['onQuiz', 'getQuizDetail'])
   },
-  mounted() {
+  created() {
     if (this.quizPk) {
-      this.getQuizDetail(this.quizPk)
       for (var i=1; i < this.quizDetail.length; i++) {
         if (this.quiz === i) {
           this.credentials.quiz_question = this.quizDetail[i].quiz_question
@@ -78,10 +77,12 @@ export default {
           this.num2 = this.quizDetail[i].multiple_bogi[1]
           this.num3 = this.quizDetail[i].multiple_bogi[2]
           this.num4 = this.quizDetail[i].multiple_bogi[3]
-        }
-        this.quizData[i-1] = this.quizDetail[i]
-        if (this.quizData[i-1].multiple_bogi) {
-          this.quizData[i-1].multiple_bogi = this.quizData[i-1].multiple_bogi.join('/')
+
+          this.quizData[i-1] = this.quizDetail[i]
+          if (this.quizData[i-1].multiple_bogi) {
+            this.quizData[i-1].multiple_bogi = this.quizData[i-1].multiple_bogi.join("/")
+            console.log(this.quizData)
+          }
         }
       }
     }

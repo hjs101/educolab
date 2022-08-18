@@ -20,7 +20,7 @@
       <hr>
 
       <div v-if="quizPk">
-        <div v-for="quiz in quizData.length" :key="quiz">
+        <div v-for="quiz in quizDetail.length-1" :key="quiz">
           <div class="row justify-end q-mt-xl q-mr-xl">
             <q-btn @click.prevent="deleteQuiz(quiz, $event)" class="text-size" color="orange-6">문제 삭제</q-btn>
           </div>
@@ -99,14 +99,14 @@ export default {
   methods: {
     ...mapActions(['createQuiz', 'getQuizDetail', 'updateQuiz']),
     addQuiz() {
-      this.quizList++,
-      this.quizData.push({})
+      this.quizList++
+      // this.quizData.push({})
     },
     deleteQuiz(quiz, event) {
       if (confirm('문제를 정말 삭제하시겠습니까?')) {
         event.preventDefault()
         this.quizList = this.quizList - 1
-        this.quizData.splice(quiz-1, 1)
+        // this.quizData.splice(quiz-1, 1)
       }
     },
     goQuiz() {
@@ -134,7 +134,6 @@ export default {
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
       this.getQuizDetail(this.quizPk)
       this.credentials.quiz.title = this.quizDetail[0].quiz_name
-      // console.log(this.quizDetail)
     } 
   }
 }

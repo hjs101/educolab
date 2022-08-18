@@ -36,7 +36,6 @@ export const quiz = {
         ranking_list: [],
         quizDetail_len: 0,
       },
-      quiz_length: 0,
     };
 >>>>>>> 2b10460 (프론트 버그 수정)
   },
@@ -73,8 +72,11 @@ export const quiz = {
     quizDetail_len: (state) => state.online.quizDetail_len,
     username: (state) => state.online.username,
     ranking_list: (state) => state.online.ranking_list,
+<<<<<<< HEAD
     quiz_length: (state) => state.quiz_length
 >>>>>>> f247ee0 (퀴즈 수정페이지 버그 수정)
+=======
+>>>>>>> 1f2b28d (퀴즈 버그 수정3)
   },
 
   mutations: {
@@ -208,7 +210,7 @@ export const quiz = {
           }
           commit("QUIZ_DETAIL", res.data);
           commit("QUIZ_DETAIL_LEN", res.data);
-          commit("QUIZ_LEN", res.data.length)
+          // commit("QUIZ_LEN", res.data.length)
       });
 >>>>>>> 93e53ce (퀴즈 버그 수정....)
     },
