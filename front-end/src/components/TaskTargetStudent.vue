@@ -9,9 +9,7 @@
         <q-card-section>
             {{item.content}}
           <div>
-            <div v-for="(file, idx) in item['atch_file_name']" :key="idx">
-              <a :href="url+item['atch_file'][idx]">{{file}}</a>
-            </div>
+            <a :href="url+item['atch_file']">{{item['atch_file_name']}}</a>
           </div>
           <div v-if="!isChecked && !check.computedFlag" class="row justify-evenly">
             <q-input
@@ -30,7 +28,7 @@
     <message-pop-up
       v-if="confirm.isTrue"
       :message="message"
-      @reverse="confirm.prompt = false"
+      @reverse="buttonConfirm"
     />
   </div>
 </template>
@@ -42,6 +40,7 @@ import dayjs from 'dayjs'
 import drf from '@/api/drf.js'
 import axios from 'axios'
 import MessagePopUp from '@/components/MessagePopUp.vue'
+import { useRouter } from 'vue-router'
 export default {
   name: 'TaskTargetStudent',
   props: {
@@ -54,6 +53,7 @@ export default {
     MessagePopUp
   },
   setup(props) {
+    const router = useRouter()
     const store = useStore()
     const date = props.item.submit_flag?` (${dayjs(props.item['submit_at']).format('YYYY-MM-DD HH:mm')})`:''
     const url = drf.file.path()+props.item['atch_file']
@@ -98,6 +98,10 @@ export default {
           confirm.prompt = true
         })
     }
+    const buttonConfirm = () => {
+      confirm.prompt = true
+      router.go()
+    }
     return {
       date,
       submitState,
@@ -107,7 +111,8 @@ export default {
       confirm,
       checkTask,
       isChecked,
-      check
+      check,
+      buttonConfirm
     }
   }
 }

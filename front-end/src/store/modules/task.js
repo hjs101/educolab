@@ -149,21 +149,6 @@ export const task = {
           console.log(err)
         })
     },
-    editTask({ getters, commit }, params) {
-      axios({
-        url: drf.task.detail(),
-        method: 'get',
-        headers: getters.authHeader,
-        params,
-      })
-        .then(res => {
-          console.log(res.data)
-          commit('TASK_EDIT', res.data)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    },
     taskUpdate({getters, commit }, data) {
       axios({
         url: drf.task.detail(),
@@ -217,11 +202,12 @@ export const task = {
         'Content-Type': 'multipart/form-data'},
         data,
       })
-        .then(((res) => {
+        .then((() => {
           commit('TASK_EDIT', {})
-          console.log(res.data.message)
+          alert('제출되었습니다')
           router.push({name: 'TaskListView'})
         }))
+        .catch(() => alert('오류가 발생했습니다'))
       },
     }
   }

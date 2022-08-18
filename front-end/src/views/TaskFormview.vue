@@ -38,10 +38,10 @@
 =======
     <h4>과제 {{type}}</h4>
     <q-form
-      @reset="onReset">
+      v-if="!taskPk || computedTask">
       <div class="row">
         <span class="q-py-md q-mr-lg text-size" style="width:70px; text-align:center">제목</span>
-        <q-input class="text-size" outlined v-model="task.title" label="title" style="width: 700px;" required/>
+        <q-input class="text-size" outlined :value="computedTask.title" label="title" style="width: 700px;" />
       </div>
       <hr>
       <div class="row">
@@ -54,21 +54,19 @@
             class="text-size"
             v-model="task.content"
             label="content"
-            :definitions="{
-              bold: {label: 'Bold', icon: null, tip: 'My bold tooltip'}
-            }"
             required/>
         </div>
       </div>
       <hr>
       <!-- 교사에게만 보임 -->
-      <div v-if="isTeacher">
+      <div v-if="task.teacher_flag">
         <div class="row">
           <span class="q-py-md q-mr-lg text-size" style="width:70px; text-align:center">과목 </span>
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
           <q-select
             class="text-size"
             style="width: 300px;"
+<<<<<<< HEAD
             outlined
 <<<<<<< HEAD
             v-model="task.subject"
@@ -88,6 +86,9 @@
 >>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
 =======
             v-model="task.subject" label="과목" :options="subjectOptions" required/>
+=======
+            outlined />
+>>>>>>> 1978796 (Fix : 설문조사, 과제  수정 부분 오류 수정)
         </div>
         <hr>
         <div class="row">
@@ -112,8 +113,11 @@
           ]"
 =======
             v-model="task.grade"
+<<<<<<< HEAD
             required
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
+=======
+>>>>>>> 1978796 (Fix : 설문조사, 과제  수정 부분 오류 수정)
           />
           <span class="q-py-md q-mr-lg text-size" style="width:70px; text-align:center">반</span>
           <q-input
@@ -135,8 +139,11 @@
 =======
             :max="10"
             v-model="task.class_field"
+<<<<<<< HEAD
             required
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
+=======
+>>>>>>> 1978796 (Fix : 설문조사, 과제  수정 부분 오류 수정)
           />
 <<<<<<< HEAD
         </div>
@@ -194,13 +201,13 @@
           type="file"
           outlined
           label-stack
-          @update:model-value="val => { student.files = val[0] }"
-          v-model="task.files"
+          @update:model-value="val => { files = val }"
+          multiple
+          v-model="files"
           style="width: 700px;" />
       </div>
       <hr>
       <div class="row justify-center q-mt-xl q-gutter-md">
-        <q-btn label="초기화" type="reset" color="primary" flat class="q-ml-sm" />
         <q-btn :label="type" color="primary" @click="onSubmit(false)"  class="text-size q-px-xl q-py-md" />
         <q-btn v-if="!isTeacher" label="제출" color="primary" @click="onSubmit(true)"  class="text-size q-px-xl q-py-md"/>
         <router-link class="button" :to="{name:'TaskListView', params: {userType,}}">
@@ -222,6 +229,7 @@
 
 <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { reactive, computed, onBeforeMount} from 'vue'
 <<<<<<< HEAD
 =======
@@ -229,6 +237,9 @@ import { ref, reactive, computed } from 'vue'
 >>>>>>> 0e01249 (Feat : 객관식 문항 /로 구분해 저장 기능 완료)
 import { useRoute } from 'vue-router'
 =======
+=======
+import { reactive, computed, onBeforeMount, ref} from 'vue'
+>>>>>>> 1978796 (Fix : 설문조사, 과제  수정 부분 오류 수정)
 import { useRoute, useRouter } from 'vue-router'
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
 import {useStore} from 'vuex'
@@ -248,14 +259,18 @@ export default {
     onBeforeMount(() => {
       if (!store.getters.isLoggedIn) {
       router.push('/educolab/login')
-    } else if (taskPk) {
-        store.dispatch('editTask', {pk: taskPk, teacher_flag: userType === 'teacher'? 1:0})
-    }
-    })
+      } else if (taskPk) {
+        store.dispatch('taskDetail', {pk: taskPk, teacher_flag: userType === 'teacher'? 1:0})
+    }})
     const subjectOptions = store.getters.getSubject
-    let isTeacher = computed(() => userType === 'teacher')
     let type = computed(() => taskPk? '수정':'등록')
-    const storeTask = computed(() => store.getters.getEditTask)
+    const confirm = reactive({
+      prompt: false,
+      message: '',
+      state: computed(() => confirm.prompt)
+    })
+    const storeTask = computed(() => store.getters.getTask)
+    const files = ref(null)
     const computedTask = reactive({
       subject: computed(() => storeTask.value.homework?.subject),
       title: computed(() => storeTask.value.homework?.title || storeTask.value.title),
@@ -265,13 +280,8 @@ export default {
       files: computed(() => storeTask.value.homework?.files || storeTask.value['student_file']),
       deadline: computed(() => storeTask.value.homework?.deadline || storeTask.value.deadline),
     })
-    const confirm = reactive({
-      prompt: false,
-      message: '',
-      state: computed(() => confirm.prompt)
-    })
     const task = reactive({
-      teacher_flag: isTeacher.value? 1:0,
+      teacher_flag: userType === 'teacher'?1:0,
       subject: taskPk? computedTask.subject: '',
       title: taskPk? computedTask.title: '',
       content: taskPk? computedTask.content : '',
@@ -282,7 +292,7 @@ export default {
     })
     const isValid = computed(() => {
       if (task.title && task.content && task.deadline ) {
-        if (isTeacher.value) {
+        if (task.teacher_flag) {
           if (task.subject && task.grade && task.class_field) {
             return true
           } else {
@@ -301,7 +311,7 @@ export default {
         form.append(key, task[key])
       }
       if (arg) {
-        form.append('submit_pk', storeTask.value['my_submit'][0].id)
+        form.append('submit_pk', task['my_submit'][0].id)
         store.dispatch('submitTask', form)
       } else if (taskPk) {
         form.append('pk', taskPk)
@@ -317,35 +327,16 @@ export default {
         }
       }
     }
-    const onReset = () => {
-      if (taskPk) {
-        for (let key in task) {
-          if (key === 'teacher') {
-              task[key] = store.getters.currentUser.username
-            } else if (key === 'subject') {
-              task[key] = store.getters.currentUser.subject
-            } else {
-            task[key] = storeTask.value[key]
-          }
-        }
-      } else {
-        for (let key in task) {
-          task[key] = ''
-        }
-      }
-    }
     return {
       task,
-      storeTask,
       userType,
       taskPk,
       type,
-      isTeacher,
       onSubmit,
-      onReset,
       subjectOptions,
+      confirm,
       computedTask,
-      confirm
+      files
     }
   }
 }
