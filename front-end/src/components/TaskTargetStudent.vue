@@ -9,7 +9,13 @@
         <q-card-section>
             {{item.content}}
           <div>
+<<<<<<< HEAD
             <a :href="url+item['atch_file']">{{item['atch_file_name']}}</a>
+=======
+            <div v-for="(file, idx) in item['atch_file_name']" :key="idx">
+              <a :href="item['atch_file'][idx]">{{file}}</a>
+            </div>
+>>>>>>> 6cda58e (fix : 파일주소 변경 실험)
           </div>
           <div v-if="!isChecked && !check.computedFlag" class="row justify-evenly">
             <q-input
