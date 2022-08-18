@@ -28,7 +28,7 @@
             {{item.student?.name || name}}
           </span>
           </td>
-        <td class="text-size" v-if="!over">{{ item.deadline }}</td>
+        <td class="text-size">{{ item.deadline }}</td>
       </tr>
     </tbody>
   </q-markup-table>
@@ -45,7 +45,6 @@ export default {
     page: Number,
     teacher: Number,
     submit: Boolean,
-    over: Boolean,
     search: Boolean,
   },
   setup(props) {

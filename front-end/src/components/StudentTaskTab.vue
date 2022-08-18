@@ -12,7 +12,7 @@
       <q-tab class="text-size" name="notDone" label="제출 가능한 과제" />
       <q-tab class="text-size" name="studentTask" label="미제출 자율 학습" />
       <q-tab class="text-size" name="studentCheckedTask" label="제출한 자율 학습" />
-      <q-tab class="text-size" name="done" label="기한이 지난 과제 목록" />
+      <q-tab class="text-size" name="done" label="제출한 과제 목록" />
     </q-tabs>
 
     <q-separator />
@@ -62,7 +62,6 @@
             :page="page.studentCheckedTask"
             :teacher="0"
             :submit="true"
-            :over="true"
           />
         </div>
         <the-pagination

@@ -27,13 +27,12 @@
       <hr>
 
       <div class="q-py-sm q-pl-sm">
-        <p class="text-size text-grey-13 q-pb-sm">첨부파일 ({{ files?.length }}) </p> 
-        <div v-for="file in files" :key="file">
-          <q-btn @click="openFile(url+file['atch_file'])" color="grey-12" class="text-black">
-          <q-icon name="mdi-paperclip"/>
-          {{ file.atch_file_name }}
-          </q-btn>
-        </div> 
+        <p class="text-size text-grey-13 q-pb-sm">첨부파일 ({{ files? 1:0 }}) </p>
+          <q-btn @click="openFile(url+files['atch_file'])" color="grey-12" class="text-black">
+            <q-icon name="mdi-paperclip"/>
+            {{ files.atch_file_name }}
+            </q-btn>
+        </div>
       </div>
       <hr>
       <!-- 교사용 -->
@@ -94,7 +93,6 @@
           />
         </div>
       </article>
-    </div>  
   </div>
 </template>
 
@@ -143,7 +141,7 @@ export default {
       }),
       student: false,
       confirmStudent: computed(() => check.student)
-    })
+  })
     
     const files = computed(() => {
       if (isLecture.value) {
@@ -153,7 +151,7 @@ export default {
       }
     })
     const openFile = (url) => {
-      window.open(drf.file.path() + url)
+      window.open(url)
     }
     const date = computed(() => {
       if (!isLecture.value) {
