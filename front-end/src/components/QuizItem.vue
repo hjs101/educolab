@@ -79,7 +79,7 @@ export default {
           this.num3 = this.quizDetail[i].multiple_bogi[2]
           this.num4 = this.quizDetail[i].multiple_bogi[3]
 
-          this.quizDetail[i]
+          this.quizDetail[i].multiple_bogi = this.quizDetail[i].multiple_bogi.join('/')
           return
         }
       }
