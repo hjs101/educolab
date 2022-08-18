@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # 목차
 =======
 #  EduColab ( 교육과 서비스의 청량한 조화! )
 >>>>>>> 3f7c837 (Update README.md)
+=======
+#  EduColab ( 교육과 기술의 청량한 조화! )
+>>>>>>> e8c7aca (Update README.md)
 
 ## EduColab 소개!
 <img src="/uploads/85e4097f8177ffa87cc5b0dd1a7df106/educolab.37f5cd03.png" width="250">
