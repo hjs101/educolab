@@ -57,7 +57,7 @@ export const survey = {
     submitSurvey({ getters }, credentials) {
       console.log(credentials)
       const {survey} = credentials
-      if (survey.title && survey.grade && survey.class_field) {
+      if (survey.title && survey.grade !== null && survey.class_field !== null) {
         credentials.question = getters.surveyData
         console.log(getters.surveyData)
         console.log(credentials)
@@ -125,7 +125,7 @@ export const survey = {
     updateSurvey({ getters }, credentials) {
       const {survey} = credentials
       console.log(credentials)
-      if (credentials.survey_num && survey.title && survey.grade && survey.class_field) {
+      if (credentials.survey_num && survey.title && survey.grade !== null  && survey.class_field  !== null ) {
         credentials.question = getters.surveyData
         if (isEmpty(...credentials.question)) {
           alert('설문은 한 문항 이상 작성되어야 합니다')

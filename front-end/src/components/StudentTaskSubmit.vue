@@ -33,6 +33,7 @@
         label="과제 제출"
         class="text-size q-mx-lg q-py-sm"
       />
+      <message-pop-up />
     </div>
   </q-form>
 </template>
@@ -40,9 +41,13 @@
 <script>
 import {computed, reactive} from 'vue'
 import {useStore} from 'vuex'
+import MessagePopUp from './MessagePopUp.vue'
 export default {
-  name: 'StudentTaskSubmit',
-  setup() {
+    name: 'StudentTaskSubmit',
+    props: {
+      MessagePopUp,
+    },
+    setup() {
     const store = useStore()
     const storeTask = computed(() => store.getters.getTask)
     const change = computed(() => storeTask.value.student_submit)
