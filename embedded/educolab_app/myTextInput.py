@@ -13,7 +13,7 @@ class limitedTextInput(TextInput):
     def insert_text(self, substring, from_undo=False):
         if self.trigger==True:
             self.trigger=False
-            Clock.schedule_once(self.my_callback,0.01)
+            Clock.schedule_once(self.my_callback,0.1)
         else:
             substring=""
         if len(self.text)>=self.max_input_num and self.max_input_num > 0:

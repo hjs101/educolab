@@ -5,10 +5,12 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image, AsyncImage
 import requests, json
 from myTextInput import limitedTextInput
-from kivy.properties import NumericProperty
+from kivy.properties import NumericProperty,BooleanProperty
 from myPopup import MyPopUp2, MyPopUp3
+from kivy.clock import Clock
 
 class Survey_Word_Screen(Screen):
+    trigger=BooleanProperty(True)
     ##**# self.manager.survey_ans [자료형: dictionary][key: 문항 번호(string)][value: 설문조사 답안(list-객관식/string-주관식)]
     ##**# 1번 문항의 주관식 답안 예시 {'1': "안녕하세요"}
     ##**# survey_select.py에서도 같은 형식이라 중복되는 부분이 있습니다.
@@ -92,6 +94,8 @@ class Survey_Word_Screen(Screen):
             self.manager.survey_ans=dict(sorted(self.manager.survey_ans.items()))
 
             self.percent=len(self.manager.survey_ans)/self.manager.max_prob_num
+            if self.percent==0: self.percent=0.00001
+
             self.ids.progress.text=f'{self.percent*100:.1f}%'
             if self.percent == 1.0: self.end_flag = True
 
@@ -102,6 +106,39 @@ class Survey_Word_Screen(Screen):
         else:
             self.popup.ids.alert.text="설문이 끝나지 않았습니다. 종료하시겠습니까?\n종료시 현재까지 진행된 내용은 저장하지 않습니다."
             self.popup.open()
+
+    def l_btn(self):
+        if self.trigger==True:
+            self.trigger=False 
+
+            self.next_flag_setup("before")
+            self.next_page_setup()
+            # root.cnt_setup()
+            self.manager.current=self.next_page
+            self.manager.transition.direction="right"
+            print(self.manager.survey_ans)
+
+            Clock.schedule_once(self.my_callback,0.1)
+        else:
+            pass
+            
+    def my_callback(self,dt):
+        self.trigger=True 
+
+    def r_btn(self):
+        if self.trigger==True:
+            self.trigger=False
+
+            self.next_flag_setup("after")
+            self.next_page_setup()
+            # root.cnt_setup()
+            self.manager.current=self.next_page
+            self.manager.transition.direction="left"
+            print(self.manager.survey_ans)
+
+            Clock.schedule_once(self.my_callback,0.1)
+        else:
+            pass
 
     def on_leave(self):
         self.check_flag=False
