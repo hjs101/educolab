@@ -121,7 +121,9 @@ export const quiz = {
     SOCKET_SEND :(state, data)=>{
       // console.log("보내기")
       // console.log(data)
-      state.online.socket.send(JSON.stringify(data));
+      if(state.online.socket!==null){
+        state.online.socket.send(JSON.stringify(data));
+      }
     },
     SOCKET_CLOSE :(state)=>{
       if (state.online.socket!==null){
