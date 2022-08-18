@@ -1,5 +1,5 @@
 <template>
-  <div class="back" style="height:650px;" >
+  <div class="back" >
     <div class="base">
       <div style="padding:5px 0">
         <span style="color:#FEC002;" class="logo">edu  </span>
@@ -39,8 +39,10 @@ export default {
   },
   beforeRouteLeave(to,from,next){
     if(to.fullPath.includes(from.fullPath.split('/wait')[0]+'/prob/1')===false){
-      console.log(from.fullPath.split('/wait')[0]+'/prob/1')
-      console.log(to.fullPath)
+      this.sendMessage({
+        message:"퀴즈 종료", 
+        room_num:this.all.RoomNumber, 
+        id:this.all.username})
       this.closeSocket()
     }
     next()
@@ -87,6 +89,10 @@ export default {
 
     quiz_end(){
       this.sendMessage({
+        message:"퀴즈 종료", 
+        room_num:this.all.RoomNumber, 
+        id:this.all.username})
+      this.console.log({
         message:"퀴즈 종료", 
         room_num:this.all.RoomNumber, 
         id:this.all.username})

@@ -38,6 +38,10 @@ export default {
       }
     },
   beforeRouteLeave(to,from,next){
+    this.sendMessage({
+      message:"퀴즈 종료", 
+      room_num:this.RoomNumber, 
+      id:this.username})
     this.closeSocket()
     next()
   },

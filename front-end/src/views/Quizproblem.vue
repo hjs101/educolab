@@ -57,7 +57,7 @@ export default {
           this.cnt=""
           this.prob_flag=true
         }
-        if(this.quizTime.cnt===10){
+        if(this.quizTime.cnt===11){
           console.log(this.ansgoodData)
           this.ansgoodQuiz(this.ansgoodData)
           this.result_flag=true
@@ -93,14 +93,17 @@ export default {
   },
   beforeRouteLeave(to,from,next){
     if(to.fullPath.includes('/prob/')===false && to.fullPath.includes('/result')===false){
-      console.log(to.fullPath)
+      this.sendMessage({
+        message:"퀴즈 종료", 
+        room_num:this.RoomNumber, 
+        id:this.username})
       this.closeSocket()
     }
     clearInterval(this.quizTime.timer)
     next()
   },
   computed: { 
-    ...mapGetters(['socket','quizDetail','RoomNumber','ans_good_num','quizDetail_len']),
+    ...mapGetters(['username','socket','quizDetail','RoomNumber','ans_good_num','quizDetail_len']),
   },
   methods: {
     ...mapActions(['ansgoodQuiz']),

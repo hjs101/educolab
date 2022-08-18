@@ -204,8 +204,28 @@
 
     <br>
 
--   ## 여기부터 나머지 작성해 그러면 알겠지?
+-   ## kivy 한글 글꼴 설정
+    kivy에서는 한글 입력 및 출력이 가능하지만, 한글 글꼴을 세팅하지 않으면 입/출력 모두 정상적으로 나타나지 않고 깨진다.  <br>
+    따라서 다음과 같은 방법으로 한글 글꼴을 베이스로 세팅하고 프로그램을 실행하는 것이 이상적이다.
+    해당 프로그램에서 개발 과정에서 사용된 글꼴을 베이스로 예시를 작성하였다.
 
+    1. 구글 폰트에서 글꼴 다운로드 <br>
+    구글폰트(`https://fonts.google.com/`)에서 원하는 한글 폰트를 찾는다. <br>
+    나눔고딕(Nanum Gothic)을 선택하고, 우측 상단의 Download family 버튼을 선택하여 폰트를 다운로드한다. <br>
+    2. 폰트 파일 경로 설정<br> 
+    kivy 사용시 실행하는 파일(main.py)를 기준으로 폰트의 경로를 설정한다. <br>
+    해당 파일을 기준으로 `data` 폴더를 생성하고, data 폴더 내부에 `fonts` 폴더를 생성한다.<br>
+    다운로드 받은 폰트의 압축을 풀어 `fonts` 폴더에 저장한다. <br>
+    1. kivy default 설정 파일 변경<br>
+    `home` 경로에서 `.kivy` 폴더로 이동한다. <br>
+    Windows 10 기준 `C:\Users\(사용자이름)\.kivy` 혹은 라즈베리 파이 기준 `~/.kivy` 경로로 이동<br>
+    내부의 `config.ini` 파일을 열어 `default_font` 속성을 찾은 뒤 다음과 같이 수정한다.<br>
+
+
+        ``` python
+        # default_font = [폰트 이름, 기본 글꼴 경로, italic 글꼴 경로, bold 글꼴 경로, italic-bold 글꼴 경로]
+        default_font = ['Nanum', 'data/fonts/NanumGothic-Regular.ttf', 'data/fonts/NanumGothic-Bold.ttf', 'data/fonts/NanumGothic-ExtraBold.ttf']
+        ```
     <br>
 
 # Embedded 기술 스택
