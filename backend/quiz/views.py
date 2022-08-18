@@ -165,6 +165,7 @@ class SurveyDetailView(APIView):
         quiz_questions = quiz.question_quiz.all()
 
         quiz_questions.delete()
+<<<<<<< HEAD
 =======
 class SurveyUpdateView(APIView):
     def get(self, req):
@@ -200,6 +201,9 @@ class SurveyUpdateView(APIView):
         survey_questions.delete()
 >>>>>>> f25ab0c (Fix : AWS 파일 옮기기)
 
+=======
+        print(req.data)
+>>>>>>> 1a24399 (Test : 퀴즈 테스느)
         for question in req.data['question']:
             question_serializer = QuestionUpdateSerializer(data=question)
             if question_serializer.is_valid(raise_exception=True):

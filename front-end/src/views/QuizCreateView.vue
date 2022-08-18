@@ -43,6 +43,7 @@
         </div>
       </div>
 
+<<<<<<< HEAD
       <div class="row justify-center q-my-xl">
         <q-btn @click="goQuiz" class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
         <q-btn @click="quizPk ? updateQuiz(credentials) : createQuiz(credentials)"
@@ -51,6 +52,15 @@
         </q-btn>
       </div>
     </q-form>
+=======
+    <div class="row justify-center q-my-xl">
+      <q-btn @click="goQuiz" class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
+      <q-btn @click="quizPk ? updateQuiz(credentials) : createQuiz(credentials)"
+      class="text-size q-px-xl q-py-md q-mx-lg q-py-sm" color="blue-6">
+      {{ quizPk ? '수정' : '등록'}}
+      </q-btn>
+    </div>
+>>>>>>> 1a24399 (Test : 퀴즈 테스느)
 
   </div>
 </template>
