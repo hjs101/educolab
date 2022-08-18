@@ -56,32 +56,32 @@
 					width:1
 					rounded_rectangle: self.x, self.y, self.width, self.height, 10
 
-		Button: # Home
-			on_release:
-				root.next()
-			pos_hint: {"right":0.85,"top":0.98}
-			text:"넘어가기"
-			font_size: 20
-			bold: True
-			color: 1,1,1,1
-			size_hint: None, None
-			halign:'center'
-			valign:'bottom'
-			size: 100,30
-			background_normal:''
-			background_color:0,0,0,0
-			canvas.before:
-				Color:
-					rgba: 66/255,75/255,90/255,1
-				RoundedRectangle:
-					size: self.size
-					pos : self.pos
-					radius:[10]
-				Color:
-					rgba: 0,0,0,1
-				Line:
-					width:1
-					rounded_rectangle: self.x, self.y, self.width, self.height, 10
+		# Button: # Home
+		# 	on_release:
+		# 		root.next()
+		# 	pos_hint: {"right":0.85,"top":0.98}
+		# 	text:"넘어가기"
+		# 	font_size: 20
+		# 	bold: True
+		# 	color: 1,1,1,1
+		# 	size_hint: None, None
+		# 	halign:'center'
+		# 	valign:'bottom'
+		# 	size: 100,30
+		# 	background_normal:''
+		# 	background_color:0,0,0,0
+		# 	canvas.before:
+		# 		Color:
+		# 			rgba: 66/255,75/255,90/255,1
+		# 		RoundedRectangle:
+		# 			size: self.size
+		# 			pos : self.pos
+		# 			radius:[10]
+		# 		Color:
+		# 			rgba: 0,0,0,1
+		# 		Line:
+		# 			width:1
+		# 			rounded_rectangle: self.x, self.y, self.width, self.height, 10
 
 
 		# Button:
