@@ -20,7 +20,7 @@
       <hr>
 
       <div v-if="quizPk">
-        <div v-for="quiz in quizDetail.length-1" :key="quiz">
+        <div v-for="quiz in quizList" :key="quiz">
           <div class="row justify-end q-mt-xl q-mr-xl">
             <q-btn @click.prevent="deleteQuiz(quiz, $event)" class="text-size" color="orange-6">문제 삭제</q-btn>
           </div>
@@ -66,18 +66,18 @@
 </template>
 
 <script>
-import QuizItem from '@/components/QuizItem.vue'
 import { useRoute } from 'vue-router'
 import { reactive } from '@vue/reactivity'
 import { ref } from 'vue'
 import { mapActions, mapGetters } from 'vuex'
+import QuizItem from '@/components/QuizItem.vue'
 
 export default {
   name: 'QuizCreateView',
   components: { QuizItem },
   setup() {
     const route = useRoute()
-    let quizPk = ref(route.params.quizPk)
+    const { quizPk } = route.params
     const credentials = reactive({
       quiz_num : quizPk,
       quiz: {
@@ -85,6 +85,7 @@ export default {
       },
       question : {},
     })
+    // let quizDetail = null
     return {
       credentials,
       quizPk,
@@ -97,7 +98,11 @@ export default {
   },
   computed: {
 <<<<<<< HEAD
+<<<<<<< HEAD
     ...mapGetters(['quizDetail', 'quizData']),
+=======
+    ...mapGetters(['quizDetail', 'quizData', 'isLoggedIn', 'currentUser', 'quizItemLength']),
+>>>>>>> 2f26b40 (퀴즈 수정 버그 4)
     getTitle() {
       if (this.quizPk) return "퀴즈 수정"
       return "퀴즈 등록"
@@ -107,17 +112,19 @@ export default {
 >>>>>>> d50ec00 (Fix : 접근제한 오류 수정)
   },
   methods: {
-    ...mapActions(['createQuiz', 'getQuizDetail', 'updateQuiz']),
+    ...mapActions(['createQuiz', 'getQuizDetail', 'updateQuiz', 'quizTotalData']),
     addQuiz() {
       this.quizList++
-      // this.quizData.push({})
+      this.quizData.push({})
     },
     deleteQuiz(quiz, event) {
-      if (confirm('문제를 정말 삭제하시겠습니까?')) {
-        event.preventDefault()
-        this.quizList = this.quizList - 1
-        // this.quizData.splice(quiz-1, 1)
-      }
+      if (quiz === 1 && this.quizList === 1) {
+        alert('퀴즈는 한 문제 이상 작성되어야 합니다.')
+      } else if (confirm('문제를 정말 삭제하시겠습니까?')) {
+          event.preventDefault()
+          this.quizList = this.quizList - 1
+          this.quizData.splice(quiz-1, 1)
+        }
     },
     goQuiz() {
       if (confirm('페이지에서 나가시겠습니까? 글은 저장되지 않습니다.'))
@@ -144,6 +151,8 @@ export default {
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
       this.getQuizDetail(this.quizPk)
       this.credentials.quiz.title = this.quizDetail[0].quiz_name
+      this.quizTotalData(this.quizDetail.slice(1, this.quizItemLength))
+      this.quizList = this.quizItemLength-1
     } 
   }
 }

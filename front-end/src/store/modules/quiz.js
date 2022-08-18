@@ -8,6 +8,7 @@ export const quiz = {
     return {
       quiz: {},
 <<<<<<< HEAD
+<<<<<<< HEAD
       quizDetail : {},
       quizData: [{}, {}],
       online:{
@@ -24,6 +25,9 @@ export const quiz = {
     }
 =======
       quizDetail: {},
+=======
+      quizDetail: [],
+>>>>>>> 2f26b40 (퀴즈 수정 버그 4)
       quizData: [{}],
       online: {
         username: "",
@@ -65,6 +69,7 @@ export const quiz = {
     quizDetail: (state) => state.quizDetail,
     quizData: (state) => state.quizData,
     quizLength: (state) => Math.ceil(state.quiz.length / 10),
+    quizItemLength : state => state.quizDetail.length,
     socket: (state) => state.online.socket,
     ans_list: (state) => state.online.ans_list,
     RoomNumber: (state) => state.online.RoomNumber,
@@ -80,6 +85,7 @@ export const quiz = {
   },
 
   mutations: {
+<<<<<<< HEAD
     SURVEY_LIST : (state, quiz) => state.quiz = quiz,
     QUIZ_DETAIL : (state, quizDetail) => state.quizDetail = quizDetail,
     QUIZ_DETAIL_LEN : (state, quizDetail) => state.online.quizDetail_len = quizDetail.length,
@@ -94,6 +100,26 @@ export const quiz = {
         }
         else if(temp[0]!==i.score){
             temp.push(i.score)
+=======
+    SURVEY_LIST: (state, quiz) => (state.quiz = quiz),
+    QUIZ_DETAIL: (state, quizDetail) => state.quizDetail = quizDetail,
+    QUIZ_DETAIL_LEN: (state, quizDetail) =>
+      (state.online.quizDetail_len = quizDetail.length),
+    QUIZ_DATA: (state, data) =>
+      (state.quizData[data.question_number - 1] = data),
+
+    QUIZ_TOTAL_DATA : (state, data) => state.quizData = data, 
+
+    RANK_SCORE: (state) => {
+      let temp = [];
+      console.log(state.online.ranking_list);
+      for (let i of state.online.ranking_list) {
+        console.log(i);
+        if (temp.length === 0) {
+          temp.push(i.score);
+        } else if (temp[0] !== i.score) {
+          temp.push(i.score);
+>>>>>>> 2f26b40 (퀴즈 수정 버그 4)
         }
       }
       console.log(temp)
@@ -205,8 +231,10 @@ export const quiz = {
       })
         .then((res) => {
           for (var i = 1; i < res.data.length; i++) {
-            const bogi = res.data[i].multiple_bogi.split('/');
-            res.data[i].multiple_bogi = bogi;
+            if (res.data[i].multiple_bogi) {
+              const bogi = res.data[i].multiple_bogi.split('/');
+              res.data[i].multiple_bogi = bogi;
+            }
           }
           commit("QUIZ_DETAIL", res.data);
           commit("QUIZ_DETAIL_LEN", res.data);
@@ -230,7 +258,7 @@ export const quiz = {
     onQuiz({ commit }, data) {
       // console.log(data)
       // console.log(getters.quizData)
-      commit("QUIZ_DATA", data);
+      commit('QUIZ_DATA', data);
     },
 
     createQuiz({ getters }, credentials) {
@@ -288,6 +316,11 @@ export const quiz = {
         router.push({ name: "Quiz" })
         )
 >>>>>>> e9e9cab (퀴즈 버그 수정)
+    },
+
+    quizTotalData({ commit }, data) {
+      console.log(data)
+      commit('QUIZ_TOTAL_DATA', data)
     },
     ////////////////////////////////
 <<<<<<< HEAD

@@ -69,8 +69,9 @@ export default {
   },
   created() {
     if (this.quizPk) {
+      console.log(this.quizDetail)
       for (var i=1; i < this.quizDetail.length; i++) {
-        if (this.quiz === i) {
+        if (this.quiz === this.quizDetail[i].question_number) {
           this.credentials.quiz_question = this.quizDetail[i].quiz_question
           this.credentials.answer = this.quizDetail[i].answer
           this.num1 = this.quizDetail[i].multiple_bogi[0]
@@ -78,11 +79,8 @@ export default {
           this.num3 = this.quizDetail[i].multiple_bogi[2]
           this.num4 = this.quizDetail[i].multiple_bogi[3]
 
-          this.quizData[i-1] = this.quizDetail[i]
-          if (this.quizData[i-1].multiple_bogi) {
-            this.quizData[i-1].multiple_bogi = this.quizData[i-1].multiple_bogi.join("/")
-            console.log(this.quizData)
-          }
+          this.quizDetail[i]
+          return
         }
       }
     }
