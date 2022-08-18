@@ -119,7 +119,7 @@ class Survey_Select_Screen(Screen):
 
                 self.ids.progress.text=f'{self.percent*100:.1f}%'
                 if self.percent == 1.0: self.end_flag = True
-            Clock.schedule_once(self.my_callback,0.1)
+            Clock.schedule_once(self.my_callback,0.3)
         else:
             pass
 
@@ -153,7 +153,7 @@ class Survey_Select_Screen(Screen):
             self.manager.transition.direction="right"
             print(self.manager.survey_ans)
 
-            Clock.schedule_once(self.my_callback,0.1)
+            Clock.schedule_once(self.my_callback,1)
         else:
             pass
 
@@ -168,7 +168,7 @@ class Survey_Select_Screen(Screen):
             self.manager.transition.direction="left"
             print(self.manager.survey_ans)
 
-            Clock.schedule_once(self.my_callback,0.1)
+            Clock.schedule_once(self.my_callback,1)
         else:
             pass
 

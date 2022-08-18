@@ -6,14 +6,17 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image, AsyncImage
 import requests, json
 from myTextInput import limitedTextInput
-from kivy.properties import ListProperty
+from kivy.properties import ListProperty ,BooleanProperty
 from myPopup import MyPopUp
+from kivy.clock import Clock
 
 ## self.ID  = 입력받은 ID
 ## self.PW  = 입력받은 ID
 
 class List_Screen(Screen):
     key_color=ListProperty([1,1,1,1])
+    trigger=BooleanProperty(True)
+
     def __init__(self, **kwargs):
         super(List_Screen, self).__init__(**kwargs)
         Window.top=50
@@ -202,7 +205,56 @@ class List_Screen(Screen):
     def on_leave(self):
         self.manager.before_page=self.name
 
-        
+    def my_callback(self,dt):
+        self.trigger=True 
+
+    def r_btn(self):
+        if self.trigger==True:
+            self.trigger=False 
+
+            self.next_flag_setup("after")
+            self.next_page_setup('')
+            self.manager.current=self.next_page
+            self.manager.transition.direction="left"
+
+            Clock.schedule_once(self.my_callback,1)
+        else:
+            pass
+
+    def l_btn(self):
+        if self.trigger==True:
+            self.trigger=False 
+
+            self.next_flag_setup("before")
+            self.next_page_setup("")
+            self.manager.current=self.next_page
+            self.manager.transition.direction="right"
+
+            Clock.schedule_once(self.my_callback,1)
+
+    def rr_btn(self):
+        if self.trigger==True:
+            self.trigger=False 
+
+            self.next_flag_setup("after")
+            self.next_page_setup("end")
+            self.manager.current=self.next_page
+            self.manager.transition.direction="left"
+
+            Clock.schedule_once(self.my_callback,1)
+
+
+    def ll_btn(self):
+        if self.trigger==True:
+            self.trigger=False 
+            self.next_flag_setup("before")
+            self.next_page_setup("start")
+            self.manager.current=self.next_page
+            self.manager.transition.direction="right"
+
+            Clock.schedule_once(self.my_callback,1)
+
+
 class list_test_App(App):
     def build(self):
         Builder.load_file('list_page.kv')

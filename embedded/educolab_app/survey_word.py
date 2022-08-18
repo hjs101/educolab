@@ -118,7 +118,7 @@ class Survey_Word_Screen(Screen):
             self.manager.transition.direction="right"
             print(self.manager.survey_ans)
 
-            Clock.schedule_once(self.my_callback,0.1)
+            Clock.schedule_once(self.my_callback,1)
         else:
             pass
             
@@ -136,7 +136,7 @@ class Survey_Word_Screen(Screen):
             self.manager.transition.direction="left"
             print(self.manager.survey_ans)
 
-            Clock.schedule_once(self.my_callback,0.1)
+            Clock.schedule_once(self.my_callback,1)
         else:
             pass
 

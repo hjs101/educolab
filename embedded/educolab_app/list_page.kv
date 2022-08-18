@@ -730,10 +730,11 @@
 					width:70
 					background_color:0,0,0,0
 					on_release:
-						root.next_flag_setup("before")
-						root.next_page_setup("start")
-						app.root.current=root.next_page
-						root.manager.transition.direction="right"
+						root.ll_btn()
+						# root.next_flag_setup("before")
+						# root.next_page_setup("start")
+						# app.root.current=root.next_page
+						# root.manager.transition.direction="right"
 					Image:
 						id:before2
 						source: ''
@@ -746,10 +747,11 @@
 					width:70
 					background_color:0,0,0,0
 					on_release:
-						root.next_flag_setup("before")
-						root.next_page_setup("")
-						app.root.current=root.next_page
-						root.manager.transition.direction="right"
+						root.l_btn()
+						# root.next_flag_setup("before")
+						# root.next_page_setup("")
+						# app.root.current=root.next_page
+						# root.manager.transition.direction="right"
 					Image:
 						id:before1
 						source: ''
@@ -783,10 +785,11 @@
 					width:70
 					background_color:0,0,0,0
 					on_release:
-						root.next_flag_setup("after")
-						root.next_page_setup('')
-						app.root.current=root.next_page
-						root.manager.transition.direction="left"
+						root.r_btn()
+						# root.next_flag_setup("after")
+						# root.next_page_setup('')
+						# app.root.current=root.next_page
+						# root.manager.transition.direction="left"
 					Image:
 						id:after1
 						source: ''
@@ -799,10 +802,11 @@
 					width:70
 					background_color:0,0,0,0
 					on_release:
-						root.next_flag_setup("after")
-						root.next_page_setup("end")
-						app.root.current=root.next_page
-						root.manager.transition.direction="left"
+						root.rr_btn()
+						# root.next_flag_setup("after")
+						# root.next_page_setup("end")
+						# app.root.current=root.next_page
+						# root.manager.transition.direction="left"
 					Image:
 						id:after2
 						source: ''
