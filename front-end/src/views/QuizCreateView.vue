@@ -134,14 +134,7 @@ export default {
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
       this.getQuizDetail(this.quizPk)
       this.credentials.quiz.title = this.quizDetail[0].quiz_name
-
-      for (var i=1; i < this.quizDetail.length; i++) {
-        this.quizData[i-1] = this.quizDetail[i]
-        if (this.quizData[i-1].multiple_bogi) {
-          this.quizData[i-1].multiple_bogi = this.quizData[i-1].multiple_bogi.join('/')
-        }
-        console.log(this.quizData)
-      }
+      // console.log(this.quizDetail)
     } 
   }
 }
