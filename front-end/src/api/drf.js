@@ -214,6 +214,7 @@ export default {
 const FILE = "https://i7c102.p.ssafy.io";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // const FILE = "https://i7c102.p.ssafy.io";
 const FILE = "http://127.0.0.1:8000";
@@ -249,6 +250,9 @@ const FILE = "https://i7c102.p.ssafy.io";
 =======
 const FILE = "https://i7c102.p.ssafy.io";
 >>>>>>> 2dcb8d1 (Fix : 첨부파일 부분 수정)
+=======
+// const FILE = "http://127.0.0.1:8000";
+>>>>>>> 1fd66ba (Fix : 퀴즈 부분 수정 전)
 const BASE_URL = FILE + "/api/";
 const ACCOUNTS = BASE_URL + "accounts/";
 const NOTICE = BASE_URL + "notice/";
