@@ -495,6 +495,7 @@ front-end/node_modules
 =======
 login_info.json
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 90a0649 (깃이그노어 수정)
 =======
 backend/educolab/my_settings.py
@@ -520,3 +521,6 @@ front-end/node_modules/*
 =======
 profile
 >>>>>>> e0cb278 (fix: nyam)
+=======
+profile.jpg
+>>>>>>> a1eae9b (깃 이그노어 수정)
