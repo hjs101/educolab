@@ -1,6 +1,6 @@
 <template>
-  <div class="row justify-center q-my-xl">
-    <div class="notice_form">
+  <div class="noticeDetailStyle">
+    <div class="q-mt-md">
         <hr>
         <div class="row justify-between items-center">
           <div class="row start items-center">
@@ -223,6 +223,13 @@ export default {
 </script>
 
 <style scoped>
+  .noticeDetailStyle {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 450px;
+    height: 800px;
+  }
   .title-size {
     font-size : 3vmin;
   }

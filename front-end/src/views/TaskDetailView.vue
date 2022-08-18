@@ -17,7 +17,7 @@
       <!-- 학생용 -->
       <section v-if="!user.isTeacher">
       <!-- 채점 안 한 과제 -->
-        <student-task-submit v-if="isLecture && !isSubmit" />
+        <student-task-submit v-if="isLecture && !task.homework.check_flag" />
       </section>
       <!-- 자신이 만든 페이지에서만 보임 -->
       <div class="buttonGroup">
@@ -111,19 +111,19 @@ export default {
       }
       confirm.prompt = false
     }
-    const isSubmit = computed(() => {
-      if (isLecture.value) {
-        if (task.value.student_submit) {
-          return task.value.student_submit[0]?.submit_flag
-        } else {
-          return ''
-        }
-      } else if (task.value.my_submit) {
-          return task.value.my_submit[0]?.submit_flag
-      } else {
-        return ''
-      }
-    })
+    // const isSubmit = computed(() => {
+    //   if (isLecture.value) {
+    //     if (task.value.student_submit) {
+    //       return task.value.student_submit[0]?.submit_flag
+    //     } else {
+    //       return ''
+    //     }
+    //   } else if (task.value.my_submit) {
+    //       return task.value.my_submit[0]?.submit_flag
+    //   } else {
+    //     return ''
+    //   }
+    // })
 
     return {
       user,
@@ -131,7 +131,7 @@ export default {
       pk,
       confirm,
       deleteTask,
-      isSubmit,
+      // isSubmit,
       isEmptyTask,
       isLecture
     }

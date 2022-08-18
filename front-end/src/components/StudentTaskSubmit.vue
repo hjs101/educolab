@@ -3,7 +3,7 @@
     @submit="onSubmit"
     @reset="onReset"
     class="row justify-center align-center">
-    <b class="q-mb-lg text-size">과제 제출</b>
+    <span class="q-mb-lg title-size">과제 제출</span>
     <span class="col-12"></span>
     <q-input
       class="col-7"
@@ -67,5 +67,8 @@ export default {
 <style scoped>
   .text-size {
     font-size: 1rem;
+  }
+  .title-size {
+    font-size : 3vmin;
   }
 </style>
