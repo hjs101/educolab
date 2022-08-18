@@ -92,10 +92,6 @@ export default {
         message:"퀴즈 종료", 
         room_num:this.all.RoomNumber, 
         id:this.all.username})
-      this.console.log({
-        message:"퀴즈 종료", 
-        room_num:this.all.RoomNumber, 
-        id:this.all.username})
       this.closeSocket()
       this.$router.push({name:'Quiz'})
     },
