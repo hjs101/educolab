@@ -6,9 +6,12 @@
 >>>>>>> 3f7c837 (Update README.md)
 =======
 #  EduColab ( 교육과 기술의 청량한 조화! )
+<<<<<<< HEAD
 >>>>>>> e8c7aca (Update README.md)
 
 ## EduColab 소개!
+=======
+>>>>>>> 763412a (Update README.md)
 <img src="/uploads/85e4097f8177ffa87cc5b0dd1a7df106/educolab.37f5cd03.png" width="250">
 
 [UCC 링크](유튜브 주소 들어갈 예정)
@@ -29,28 +32,30 @@ Embeded : 여동준, 이국희
 ## 핵심 서비스
 
 ### 설문조사 등록
-![005_설문조사_등록](/uploads/070aa7add47598e25c6d4decc6e06a9a/005_설문조사_등록.gif)
+![선생_013_설문조사_등록](/uploads/1dd1b65146c0f9b696f1ac4dca000f9a/선생_013_설문조사_등록.gif)
 
 ### 설문조사 제출
-![006_설문조사_제출](/uploads/035fed5f85a9a8e47e970bb893be1959/006_설문조사_제출.gif)
+![학생_임베디드__003_설문조사_제출](/uploads/be5d1c289a81ddc4b8c20fea8b30a2a5/학생_임베디드__003_설문조사_제출.gif)
 
 ### 설문조사 통계
-![007_설문조사_통계](/uploads/7a6bacfe072a66413c1b491a3ae16211/007_설문조사_통계.gif)
+![선생_017_설문조사_통계](/uploads/275cf0fd357a5e5410a5f66a44090d3e/선생_017_설문조사_통계.gif)
 
 ### 과제 등록
-![001_과제등록](/uploads/5a64a8847b6c7beec4190f9ef6760270/001_과제등록.gif)
+![선생_005_과제_등록](/uploads/afb438ad80d257f7091f5fd42ec05d34/선생_005_과제_등록.gif)
 
 ### 과제 제출
-![002_과제_제출](/uploads/49e9d8fe6e88875508a647e4892d5cd0/002_과제_제출.gif)
+![학생_004_과제_제출](/uploads/d3c93c60a3e82bcc1e6cd7f975e7326a/학생_004_과제_제출.gif)
 
 ### 과제 채점
-![004_과제_채점2](/uploads/b4c11d273d05545c23d945639e95e737/004_과제_채점2.gif)
+![선생_006_과제_채점](/uploads/dc331e6614f9369e357abefbc14f92c4/선생_006_과제_채점.gif)
+
+![선생_007_과제_채점2](/uploads/03f0de57631ceecc38a1a66f6c1b5a05/선생_007_과제_채점2.gif)
 
 ### 퀴즈
-![008_퀴즈-1](/uploads/e15e2660b0bf625d0a0580d0be36e564/008_퀴즈-1.gif)
+![공통_001_퀴즈](/uploads/207d3fbc1d9445c31f5d29623b675f0d/공통_001_퀴즈.gif)
 
 ### 포인트 상점
-![009_포인트상점](/uploads/05a80fe0d11375c23479ba7958b29543/009_포인트상점.gif)
+![학생_007_포인트상점](/uploads/87ac0201dce594e06aff43b0b792887e/학생_007_포인트상점.gif)
 
 ## ✨ 주요 기능
 ---
