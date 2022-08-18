@@ -116,12 +116,16 @@ export default {
   },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   created() {
     if (this.quizPk) {
 =======
 =======
 >>>>>>> e9e9cab (퀴즈 버그 수정)
   mounted() {
+=======
+  created() {
+>>>>>>> 56f3b7f (퀴즈 수정 버그2)
     if (!this.isLoggedIn) {
       this.$router.push('/educolab/login/')
     } else if (!this.currentUser.userflag) {
@@ -134,7 +138,7 @@ export default {
       for (var i=1; i < this.quizDetail.length; i++) {
         this.quizData[i-1] = this.quizDetail[i]
         if (this.quizData[i-1].multiple_bogi) {
-          this.quizData[i-1].multiple_bogi = this.quizData[i-1].multiple_bogi.join('/') + '/'
+          this.quizData[i-1].multiple_bogi = this.quizData[i-1].multiple_bogi.join('/')
         }
         console.log(this.quizData)
       }
