@@ -28,9 +28,9 @@
 
       <div class="q-py-sm q-pl-sm">
         <p class="text-size text-grey-13 q-pb-sm">첨부파일 ({{ files? 1:0 }}) </p>
-          <q-btn @click="openFile(url+files['atch_file'])" color="grey-12" class="text-black">
+          <q-btn v-if="files?.atch_file" @click="openFile(url+files?.atch_file)" color="grey-12" class="text-black">
             <q-icon name="mdi-paperclip"/>
-            {{ files.atch_file_name }}
+            {{ files?.atch_file_name }}
             </q-btn>
         </div>
       </div>
@@ -145,9 +145,9 @@ export default {
     
     const files = computed(() => {
       if (isLecture.value) {
-        return props.task.homework?.teacher_file
+        return props.task.homework?.teacher_file[0]
       } else {
-        return props.task.student_file
+        return props.task.student_file[0]
       }
     })
     const openFile = (url) => {
