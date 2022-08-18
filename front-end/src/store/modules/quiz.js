@@ -36,11 +36,13 @@ export const quiz = {
         ranking_list: [],
         quizDetail_len: 0,
       },
+      quiz_length: 0,
     };
 >>>>>>> 2b10460 (프론트 버그 수정)
   },
 
   getters: {
+<<<<<<< HEAD
     quiz : state => state.quiz,
     quizDetail : state => state.quizDetail,
     quizData : state => state.quizData,
@@ -59,6 +61,20 @@ export const quiz = {
 =======
     quizLength : state => Math.ceil(state.quiz/10),
 >>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
+=======
+    quiz: (state) => state.quiz,
+    quizDetail: (state) => state.quizDetail,
+    quizData: (state) => state.quizData,
+    quizLength: (state) => Math.ceil(state.quiz.length / 10),
+    socket: (state) => state.online.socket,
+    ans_list: (state) => state.online.ans_list,
+    RoomNumber: (state) => state.online.RoomNumber,
+    ans_good_num: (state) => state.online.ans_good_num,
+    quizDetail_len: (state) => state.online.quizDetail_len,
+    username: (state) => state.online.username,
+    ranking_list: (state) => state.online.ranking_list,
+    quiz_length: (state) => state.quiz_length
+>>>>>>> f247ee0 (퀴즈 수정페이지 버그 수정)
   },
 
   mutations: {
@@ -81,8 +97,16 @@ export const quiz = {
       console.log(temp)
       return temp;
     },
+<<<<<<< HEAD
     SOCKET_COUNT_FLAG : (state,flag)=>{
       state.online_cnt_flag=flag
+=======
+    // 일단 대기
+    QUIZ_LEN: (state, length) => state.length = length,
+
+    SOCKET_COUNT_FLAG: (state, flag) => {
+      state.online_cnt_flag = flag;
+>>>>>>> f247ee0 (퀴즈 수정페이지 버그 수정)
     },
     ANS_GOOD_NUM:(state,data)=>state.online.ans_good_num=data,
     RANKING_LIST:(state,data)=>state.online.ranking_list=data,
@@ -147,7 +171,7 @@ export const quiz = {
     },
 
     // 퀴즈 상세
-    getQuizDetail({ getters, }, quizPk) {
+    getQuizDetail({ getters, commit }, quizPk) {
       axios({
         url: drf.quiz.quizDetail(),
         method: 'get',
@@ -178,14 +202,13 @@ export const quiz = {
 =======
       })
         .then((res) => {
-          console.log(res.data)
           for (var i = 1; i < res.data.length; i++) {
             const bogi = res.data[i].multiple_bogi.split('/');
-            console.log(bogi)
-        //     res.data[i].multiple_bogi = bogi;
+            res.data[i].multiple_bogi = bogi;
           }
-        // commit("QUIZ_DETAIL", res.data);
-        // commit("QUIZ_DETAIL_LEN", res.data);
+          commit("QUIZ_DETAIL", res.data);
+          commit("QUIZ_DETAIL_LEN", res.data);
+          commit("QUIZ_LEN", res.data.length)
       });
 >>>>>>> 93e53ce (퀴즈 버그 수정....)
     },
@@ -244,6 +267,7 @@ export const quiz = {
 
     updateQuiz({ getters }, credentials) {
       credentials.question = getters.quizData
+      console.log(credentials)
       axios({
         url: drf.quiz.quizDetail(),
         method: 'put',

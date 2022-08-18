@@ -20,7 +20,7 @@
       <hr>
 
       <div v-if="quizPk">
-        <div v-for="quiz in quizDetail.length-1" :key="quiz">
+        <div v-for="quiz in quizData.length" :key="quiz">
           <div class="row justify-end q-mt-xl q-mr-xl">
             <q-btn @click.prevent="deleteQuiz(quiz, $event)" class="text-size" color="orange-6">문제 삭제</q-btn>
           </div>
