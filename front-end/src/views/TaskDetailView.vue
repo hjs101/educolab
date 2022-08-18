@@ -17,7 +17,7 @@
       <!-- 학생용 -->
       <section v-if="!user.isTeacher">
       <!-- 채점 안 한 과제 -->
-        <student-task-submit v-if="isLecture && !task.homework.check_flag" />
+        <student-task-submit v-if="isLecture && !task.homework?.check_flag" />
       </section>
       <!-- 자신이 만든 페이지에서만 보임 -->
       <div class="buttonGroup">
