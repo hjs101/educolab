@@ -19,6 +19,7 @@ export const survey = {
     survey : state => state.survey,
     surveyData : state => state.surveyData,
     surveyItem : state => state.surveyItem,
+    surveyItemLength : state => state.surveyItem.length,
     surveyBogi : state => state.surveyBogi,
     surveyStat : state => state.surveyStat,
     surveyQuestion: state => state.surveyQuestion,
@@ -28,6 +29,7 @@ export const survey = {
   mutations: {
     SURVEY_LIST : (state, survey) => state.survey = survey,
     SURVEY_DATA: (state, data) => state.surveyData[data.question_number-1] = data,
+    SURVEY_TOTAL_DATA: (state, data) => state.surveyData = data,
     SURVEY_ITEM: (state, surveyItem) => state.surveyItem = surveyItem,
     SURVEY_BOGI: (state, surveyBogi) => state.surveyBogi = surveyBogi,
     SURVEY_STAT: (state, surveyStat) => state.surveyStat = surveyStat,
@@ -53,14 +55,15 @@ export const survey = {
       commit('SURVEY_DATA', data)
     },
     submitSurvey({ getters }, credentials) {
+      console.log(credentials)
       const {survey} = credentials
       if (survey.title && survey.grade && survey.class_field) {
+        credentials.question = getters.surveyData
+        console.log(getters.surveyData)
+        console.log(credentials)
         if (isEmpty(...credentials.question)) {
           alert('설문은 한 문항 이상 작성되어야 합니다')
         } else {
-          credentials.question = getters.surveyData
-          console.log(getters.surveyData)
-          console.log(credentials)
           axios({
             url: drf.survey.surveyCreate(),
             method: 'post',
@@ -76,6 +79,11 @@ export const survey = {
         alert('빈 항목을 채워주세요')
       }
     },
+    surveyTotalData({commit}, data) {
+      console.log(data)
+      commit('SURVEY_TOTAL_DATA', data)
+    }
+    ,
     getSurveyDetail({ getters, commit }, surveyPk) {
       axios({
         url: drf.survey.surveyDetail(),
@@ -118,10 +126,10 @@ export const survey = {
       const {survey} = credentials
       console.log(credentials)
       if (credentials.survey_num && survey.title && survey.grade && survey.class_field) {
+        credentials.question = getters.surveyData
         if (isEmpty(...credentials.question)) {
           alert('설문은 한 문항 이상 작성되어야 합니다')
         } else {
-          credentials.question = getters.surveyData
           axios({
             url: drf.survey.surveyUpdate(),
             method: 'put',

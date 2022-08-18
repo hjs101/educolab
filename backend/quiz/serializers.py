@@ -26,6 +26,7 @@ class QuestionDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.QuizQuestions
         fields= ['id','question_number', 'quiz_question', 'multiple_bogi','answer']
+<<<<<<< HEAD
 =======
 
 
@@ -71,3 +72,12 @@ class QuestionsAnswerSerializer(serializers.ModelSerializer):
         model = models.SurveyQuestionsAnswer
         fields = "__all__"
 >>>>>>> f25ab0c (Fix : AWS 파일 옮기기)
+=======
+        
+class QuestionUpdateSerializer(serializers.ModelSerializer):
+    quiz = QuizSerializer(read_only=True)
+    class Meta:
+        model = models.QuizQuestions
+        fields=['question_number', 'quiz_question', 'multiple_bogi','answer', 'quiz']
+
+>>>>>>> b125449 (Refactor : 백엔드 Question update 수정)

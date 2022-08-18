@@ -89,9 +89,9 @@ export default {
   },
   created() {
     if (this.surveyPk) {
-      this.getSurveyDetail(this.surveyPk)
+      // this.getSurveyDetail(this.surveyPk)
       for (var i=1; i < this.surveyItem.length; i++) {
-        if (this.survey == this.surveyItem[i].question_number) {
+        if (this.survey === this.surveyItem[i].question_number) {
           this.credentials.survey_question = this.surveyItem[this.survey].survey_question
           if (this.surveyItem[this.survey].multiple_bogi === null) {
             this.selected = 'question'

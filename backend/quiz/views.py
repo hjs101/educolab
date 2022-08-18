@@ -6,7 +6,11 @@ from rest_framework.permissions import IsAuthenticated
 from accounts.serializers import UserNameSerializer
 from accounts.models import SchoolInfo,UserInfo
 <<<<<<< HEAD
+<<<<<<< HEAD
 from .serializers import QuizMainSerializer, QuizSerializer, QuestionSerializer,QuestionDetailSerializer
+=======
+from .serializers import QuizMainSerializer, QuizSerializer, QuestionSerializer,QuestionDetailSerializer, QuestionUpdateSerializer
+>>>>>>> b125449 (Refactor : 백엔드 Question update 수정)
 from .models import QuizList
 =======
 from survey.serializers import SurveySerializer,QuestionStatDetailSerializer, QuestionSerializer, SurveyMainSerializer,QuestionDetailSerializer,QuestionStatSerializer, QuestionsAnswerSerializer
@@ -197,7 +201,7 @@ class SurveyUpdateView(APIView):
 >>>>>>> f25ab0c (Fix : AWS 파일 옮기기)
 
         for question in req.data['question']:
-            question_serializer = QuestionSerializer(data=question)
+            question_serializer = QuestionUpdateSerializer(data=question)
             if question_serializer.is_valid(raise_exception=True):
 <<<<<<< HEAD
                 question_serializer.save(quiz=quiz)

@@ -47,8 +47,8 @@ export default {
     const storeTask = computed(() => store.getters.getTask)
     const change = computed(() => storeTask.value.student_submit)
     const student = reactive({
-      content: change.value? change.value[0].content: '',
-      files: change.value? change.value[0].atch_file_name: ''
+      content: change.value? change.value[0].content: null,
+      files: change.value? change.value[0].atch_file_name: null
     })
     const onSubmit = () => {
       let form = new FormData()
