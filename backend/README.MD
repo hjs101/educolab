@@ -48,3 +48,9 @@ DB_PORT='사용하는 데이터 베이스 PORT'
 EMAIL_HOST_USER='이메일 인증 시 메일 보내는 이메일'
 EMAIL_HOST_PASSWORD='이메일 인증 시 메일 보내는 이메일 비밀번호’
 ```
+
+## Backend 기술스택
+
+- Python : 3.9.5 이상 버전
+- Django : 3.2.12
+- Redis : 7.0.4
