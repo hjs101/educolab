@@ -14,9 +14,9 @@
 >>>>>>> 763412a (Update README.md)
 <img src="/uploads/85e4097f8177ffa87cc5b0dd1a7df106/educolab.37f5cd03.png" width="250">
 
-[UCC 링크](https://youtu.be/ESee2Ut4Xcg)
+### UCC : [링크](https://youtu.be/ESee2Ut4Xcg)
 
-시연 시나리오 : [시연 시나리오](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/exec/%EC%8B%9C%EC%97%B0%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4.md)
+### 시연 시나리오 : [링크](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/exec/%EC%8B%9C%EC%97%B0%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4.md)
 
 ## ✨Overview
 1. 수업에 도움을 주는 서비스! : 교사는 설문조사를 통해 수업을 개선, 퀴즈와 과제 기능을 수업에 활용!
