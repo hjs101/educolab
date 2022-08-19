@@ -164,12 +164,15 @@ class NoticeCreateView(APIView):
     def post(self, req):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         print(req.data)
 =======
 >>>>>>> 1d03a62 (Backend file 삽입)
 =======
         print(req.data)
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> 9e9bfd9 (style : print 모두 제거)
         if not req.user.userflag:
             return Response({"message : 선생님만 접근 가능합니다."})
         # notice = Notice()
@@ -288,7 +291,6 @@ class NoticeUpdateView(APIView):
 
 
         fileserializer = FileSerializer(files, many=True)
-        print(files)
 
         ## 공지사항 시리얼라이저 생성
         notice_detail_serializer = NoticeSerializer(notice)
@@ -318,9 +320,7 @@ class NoticeUpdateView(APIView):
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
         notice_serializer = NoticeSerializer(notice, data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
-            print('valid')
             notice = notice_serializer.save(teacher=req.user, school=req.user.school)
-            print(notice)
         notice_files = notice.notice_file.all()
         notice_files.delete()
 

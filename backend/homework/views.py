@@ -181,8 +181,11 @@ class HomeworkCreateView(APIView):
     def post(self, request):
         if request.user.userflag == 0:
 <<<<<<< HEAD
+<<<<<<< HEAD
             print(0)
             print(request.data)
+=======
+>>>>>>> 9e9bfd9 (style : print 모두 제거)
             homework_serializer = StudentHomeworkCreateSerializer(data=request.data)
             
             if homework_serializer.is_valid(raise_exception=True):
@@ -193,6 +196,7 @@ class HomeworkCreateView(APIView):
                 teacher = UserInfo.objects.get(school=request.user.school,class_field=request.user.class_field,grade=request.user.grade,userflag=True,homeroom_teacher_flag=True)
 >>>>>>> 3ed528e (fix : 학생 담임선생님에게 요청하도록 fix)
                 homework = homework_serializer.save(student=request.user,teacher=teacher)
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
             homework_serializer = StudentHomeworkCreateSerializer(data=request.data)
@@ -205,27 +209,28 @@ class HomeworkCreateView(APIView):
 =======
                 print('homework')
 >>>>>>> 1771885 (Fix : 과제 스타일 및 수정, 생성 시 오류 해결)
+=======
+>>>>>>> 9e9bfd9 (style : print 모두 제거)
                 files = request.FILES.getlist("files")
-                print(files)
                 for file in files:
                     fp = Files.objects.create(student_homework=homework,atch_file=file,atch_file_name=file)
-                    print('save')
                     fp.save()
-                print('file 오류 아님')
                 
                 submit = SubmitHomework.objects.create(student_homework=homework,student=request.user)
                 submit.save()
 
         elif request.user.userflag == 1:
 <<<<<<< HEAD
+<<<<<<< HEAD
             print(1)
             print(request.data)
+=======
+>>>>>>> 9e9bfd9 (style : print 모두 제거)
             homework_serializer = TeacherHomeworkCreateSerializer(data=request.data)
             if homework_serializer.is_valid(raise_exception=True):
-                print('valid')
                 school = request.user.school
-                print(school)
                 school_student= school.school_student.all()
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -243,17 +248,17 @@ class HomeworkCreateView(APIView):
                 students = school_student.filter(grade=homework_serializer.validated_data['grade'],class_field=homework_serializer.validated_data['class_field'],userflag=False)
                 print(students)
 >>>>>>> d6318b5 (Feat : 과제 제출 기능 구현 및 상세 페이지 오류 수정)
+=======
+                students = school_student.filter(grade=homework_serializer.validated_data['grade'],class_field=homework_serializer.validated_data['class_field'],userflag=False)
+>>>>>>> 9e9bfd9 (style : print 모두 제거)
                 homework = homework_serializer.save(teacher=request.user,target=students)
-                print(homework)
                 files = request.FILES.getlist("files")
-                print(files)
                 for file in files:
                     fp = Files.objects.create(teacher_homework=homework,atch_file=file,atch_file_name=file)
                     fp.save()
-                print('file')
                 for student in students:
-                    print(student)
                     submit = SubmitHomework.objects.create(student=student,teacher_homework=homework)
+<<<<<<< HEAD
                     print(submit)
 =======
             homework_serializer = TeacherHomeworkCreateSerializer(data=request.data)
@@ -271,6 +276,8 @@ class HomeworkCreateView(APIView):
                 for student in students:
                     submit = SubmitHomework.objects.create(student=student,teacher_homework=homework)
 >>>>>>> 1d03a62 (Backend file 삽입)
+=======
+>>>>>>> 9e9bfd9 (style : print 모두 제거)
                     submit.save()
 
         context = {
@@ -286,6 +293,7 @@ class HomeworkDetailView(APIView):
         teacher_flag = request.GET.get('teacher_flag')
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if teacher_flag == '1':
             print('teacher')
 =======
@@ -296,6 +304,8 @@ class HomeworkDetailView(APIView):
             homework_serializer = TeacherHomeworkDetailSerializer(homework)
 =======
         print(homework_pk, teacher_flag)
+=======
+>>>>>>> 9e9bfd9 (style : print 모두 제거)
         if teacher_flag == '1':
             if request.user.userflag == True:
                 homework = TeacherHomework.objects.get(id=homework_pk)
@@ -322,7 +332,6 @@ class HomeworkDetailView(APIView):
             return Response(context)
                 
         else:
-            print('student')
             homework = StudentHomework.objects.get(id=homework_pk)
             homework_serializer = StudentHomeworkDetailSerializer(homework)
 <<<<<<< HEAD
@@ -361,8 +370,6 @@ class HomeworkDetailView(APIView):
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     def put(self, request):
         homework_pk = request.data.get('pk')
-        print(homework_pk)
-        print(request.user.userflag)
         if request.user.userflag:
             homework = TeacherHomework.objects.get(pk=homework_pk)
             homework_serializer = TeacherHomeworkCreateSerializer(instance = homework,data=request.data)
@@ -422,11 +429,14 @@ class HomeworkDetailView(APIView):
         print(homework_pk)
 =======
         teacher_flag = request.data.get('teacher_flag')
+<<<<<<< HEAD
 >>>>>>> 373b6d1 (feat: 과제 생성 기능 수정, 상세정보 기능 수정, 제출 수정)
 =======
         teacher_flag = request.data.get('teacher')
 >>>>>>> 1d03a62 (Backend file 삽입)
         print(teacher_flag)
+=======
+>>>>>>> 9e9bfd9 (style : print 모두 제거)
         if teacher_flag == True:
             homework = TeacherHomework.objects.get(pk=homework_pk)
         
@@ -444,13 +454,9 @@ class HomeworkDetailView(APIView):
 
 class HomeworkCheckView(APIView): # 채점
     def post(self, request):
-        print(request.data)
         if request.user.userflag == True:
-            print('true')
             submit = SubmitHomework.objects.get(id=request.data.get('pk'))
-            print(submit)
             if submit.check_flag == True:
-                print('true')
                 return Response({"success" : False, "message" : "이미 채점된 제출입니다"})
             username = request.data.get('username')
             point = request.data.get('point')
@@ -488,7 +494,6 @@ class HomeworkCheckDoneView(APIView):
         
 class HomeworkSubmitView(APIView): # 제출
     def post(self, request):
-        print(request.data)
         submit_pk = request.data.get('submit_pk') # 제출번호
 
         if request.data.get('teacher_flag') == '1':

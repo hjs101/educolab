@@ -362,6 +362,7 @@ class SendPWEmailView(APIView):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         name = request.POST.get('name','')
         email = request.POST.get('email','')
         username = request.POST.get('username','')
@@ -369,6 +370,8 @@ class SendPWEmailView(APIView):
 =======
         print(request.data)
 >>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
+=======
+>>>>>>> 9e9bfd9 (style : print 모두 제거)
         name = request.data.get('name')
         email = request.data.get('email')
         username = request.data.get('username')
@@ -538,7 +541,6 @@ class LoginView(APIView):
                     "schoolname" : user.school.name
                 }
                 csrf.get_token(request)
-                print(data)
                 response.data = {"success" : True, "message" : "Login 성공","access" : data['access'],"userinfo" : userinfo}
                 return response
         else:

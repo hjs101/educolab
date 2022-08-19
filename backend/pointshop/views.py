@@ -41,7 +41,6 @@ class PtitleView(APIView):
 class IconView(APIView):
 
     def post(self, request):
-        print(request.user)
         buy_icon = Icon.objects.get(id=request.data.get('pk'))
         buy_user = buy_icon.icon_owner.all()
         if request.user in buy_user:

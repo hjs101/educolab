@@ -106,7 +106,6 @@ class EventView(APIView): # 행사 등록,수정,삭제
         event = EventSerializer(data=request.data)
         if event.is_valid(raise_exception=True):
             event = event.save(school=request.user.school)
-            print(event)
             return Response({
                 "success" : True,
                 "message" : "성공"

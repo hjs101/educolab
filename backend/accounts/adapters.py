@@ -6,12 +6,15 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         data = form.cleaned_data
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         print(data)
 =======
 >>>>>>> 1d03a62 (Backend file 삽입)
 =======
         print(data)
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
+=======
+>>>>>>> 9e9bfd9 (style : print 모두 제거)
         user = super().save_user(request, user, form, commit)
         name = data.get("name")
         if name:

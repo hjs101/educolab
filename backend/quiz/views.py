@@ -42,8 +42,11 @@ class SurveyTeacherMainView(APIView) :
         quiz = teacher.quiz_teacher.all()
 =======
         quiz = teacher.quiz_teacher.all().order_by('-updated_at')
+<<<<<<< HEAD
 >>>>>>> 7d09758 (Feat : 내림차순 정렬, 포인트 로그 관련 정보 수정)
         print(quiz)
+=======
+>>>>>>> 9e9bfd9 (style : print 모두 제거)
         # notices = Notice.objects.select_related('school').filter(school_id=schoolCode)
         
         ## 3. 시리얼라이저 변환
@@ -113,7 +116,6 @@ class QuizDetailView(APIView):
         ## 설문조사 시리얼라이저 생성
         question_serializer = QuestionDetailSerializer(questions, many=True)
         quiz_name = [{"quiz_name" : quiz.title}]
-        print(question_serializer.data)
         return Response(quiz_name+question_serializer.data)
 
     def delete(self, req):
@@ -157,7 +159,6 @@ class SurveyDetailView(APIView):
         quiz_id = req.data['quiz_num']
         quiz = QuizList.objects.get(pk=quiz_id)
         quiz_serializer = QuizSerializer(quiz, data=req.data['quiz'])
-        print(quiz_serializer)
         if quiz_serializer.is_valid(raise_exception=True):
             quiz = quiz_serializer.save(teacher = req.user)
 
