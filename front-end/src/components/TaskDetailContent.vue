@@ -20,7 +20,7 @@
         <div>
           <q-card class="bord">
             <q-card-section>
-              <p class="content-size bg-white" style="min-height:500px">{{task.homework?.content || task.content}}</p>
+              <p v-html="content" class="content-size bg-white" style="min-height:500px"></p>
             </q-card-section>
           </q-card>
         </div>
@@ -160,6 +160,13 @@ export default {
         return dayjs(props.task.homework?.updated_at).format('YYYY-MM-DD HH:mm')
       }
     })
+    const content = computed(() => {
+      if (isLecture.value) {
+        return props.task.homework?.content.split('\n').join('<br>')
+      } else {
+        return props.task.content.split('\n').join('<br>')
+      }
+    })
     const data = {
       teacher_flag: isLecture.value+'',
       pk: props.pk
@@ -217,6 +224,7 @@ export default {
       files,
       openFile,
       isLecture,
+      content
     }
   },
 }

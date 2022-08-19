@@ -7,8 +7,12 @@
     >
       <q-card>
         <q-card-section>
+<<<<<<< HEAD
             {{item.content}}
 <<<<<<< HEAD
+=======
+            <p v-html="content"></p>
+>>>>>>> 8263037 (Fix : 상세 페이지 출력 오류 수정)
           <div>
 <<<<<<< HEAD
             <a :href="url+item['atch_file']">{{item['atch_file_name']}}</a>
@@ -84,9 +88,13 @@ export default {
         }
       })
     })
+<<<<<<< HEAD
     const openFile = (url) => {
       window.open(url)
     }
+=======
+    const content = computed(() => props.item.content.split('\n').join('<br>'))
+>>>>>>> 8263037 (Fix : 상세 페이지 출력 오류 수정)
     let point = ref(null)
     let submitState = computed(() => props.item.submit_flag?'제출':'미제출')
     let message = ref(null)
@@ -131,8 +139,12 @@ export default {
       checkTask,
       isChecked,
       check,
+<<<<<<< HEAD
       buttonConfirm,
       openFile
+=======
+      content
+>>>>>>> 8263037 (Fix : 상세 페이지 출력 오류 수정)
     }
   }
 }
