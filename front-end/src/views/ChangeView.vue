@@ -72,7 +72,6 @@ export default {
           // 비밀번호 일치
           correct.password = true
         } else {
-          console.log(false)
           change.prompt = true
         }
       }

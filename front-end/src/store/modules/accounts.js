@@ -553,6 +553,7 @@ export const accounts = {
     currentingUser({ commit }) {
       if (localStorage.getItem("refresh")) {
         axios({
+<<<<<<< HEAD
           url : drf.accounts.currenting(),
           method : 'post',
           data : {
@@ -563,6 +564,16 @@ export const accounts = {
             console.log(res.data)
             commit("CURRENTING_USER", res.data)
           })
+=======
+          url: drf.accounts.currenting(),
+          method: "post",
+          data: {
+            refresh: localStorage.getItem("refresh"),
+          },
+        }).then((res) => {
+          commit("CURRENTING_USER", res.data);
+        });
+>>>>>>> c2bb4de (공지사항 파일 버그 수정)
       }
     },
 
@@ -572,6 +583,7 @@ export const accounts = {
         method : 'post',
         data : credentials
       })
+<<<<<<< HEAD
         .then(res => {
           console.log(res.data)
           const access = res.data.access
@@ -587,6 +599,13 @@ export const accounts = {
 =======
 >>>>>>> f9fc9e0 (Fix : 제한 사항 오류 수정)
           router.push({ name: "educolab" })
+=======
+        .then((res) => {
+          const access = res.data.access;
+          dispatch("saveToken", access);
+          commit("CURRENTING_USER", res.data);
+          router.push({ name: "educolab" });
+>>>>>>> c2bb4de (공지사항 파일 버그 수정)
         })
         .catch((err) => {
 <<<<<<< HEAD

@@ -236,7 +236,6 @@ export default {
 
 >>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     const selectSchool = (name, code) => {
-      console.log(name, code)
       prompt.selected = code
       school.selectedName = name
       school.code = code
@@ -246,7 +245,6 @@ export default {
       if (props.type !== 'change') {
         store.dispatch('changeData', {school:school.code})
       } else  {
-        console.log('info')
         store.dispatch('changeInfo', {school:school.code})
       }
     }

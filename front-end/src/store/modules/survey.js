@@ -51,16 +51,12 @@ export const survey = {
         })
     },
     onSurvey({ commit }, data) {
-      console.log(data)
       commit('SURVEY_DATA', data)
     },
     submitSurvey({ getters }, credentials) {
-      console.log(credentials)
       const {survey} = credentials
       if (survey.title && survey.grade !== null && survey.class_field !== null) {
         credentials.question = getters.surveyData
-        console.log(getters.surveyData)
-        console.log(credentials)
         if (isEmpty(...credentials.question)) {
           alert('설문은 한 문항 이상 작성되어야 합니다')
         } else {
@@ -80,7 +76,6 @@ export const survey = {
       }
     },
     surveyTotalData({commit}, data) {
-      console.log(data)
       commit('SURVEY_TOTAL_DATA', data)
     }
     ,
@@ -94,7 +89,6 @@ export const survey = {
         }
       })
         .then(res => {
-          console.log(res.data)
           for(var i = 1; i < res.data.length; i++) {
             if (res.data[i].multiple_bogi) {
               const surveyBogi = res.data[i].multiple_bogi.split('/')
@@ -125,7 +119,6 @@ export const survey = {
     updateSurvey({ getters }, credentials) {
 <<<<<<< HEAD
       const {survey} = credentials
-      console.log(credentials)
       if (credentials.survey_num && survey.title && survey.grade !== null  && survey.class_field  !== null ) {
         credentials.question = getters.surveyData
         if (isEmpty(...credentials.question)) {
@@ -184,7 +177,6 @@ export const survey = {
             (totalQuestion[j].num3 / totalNum)*100, (totalQuestion[j].num4 / totalNum)*100, (totalQuestion[j].num5 / totalNum)*100]
             totalQuestion[j].purcentNum = purcentNum
           }
-          console.log(res.data)
           commit('SURVEY_STAT', res.data)
         })
         .catch(err => {
@@ -193,7 +185,6 @@ export const survey = {
     },
 
     onQuestion({ getters, commit }, questionPk) {
-      console.log(questionPk)
       axios({
         url: drf.survey.surveyQuestion(),
         method: 'get',
@@ -203,7 +194,6 @@ export const survey = {
         }
       })
         .then(res => {
-          console.log(res.data)
           commit('SURVEY_QUESTION', res.data)
         })
         .catch(err => {

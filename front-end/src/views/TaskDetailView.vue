@@ -118,19 +118,6 @@ export default {
       }
       confirm.prompt = false
     }
-    // const isSubmit = computed(() => {
-    //   if (isLecture.value) {
-    //     if (task.value.student_submit) {
-    //       return task.value.student_submit[0]?.submit_flag
-    //     } else {
-    //       return ''
-    //     }
-    //   } else if (task.value.my_submit) {
-    //       return task.value.my_submit[0]?.submit_flag
-    //   } else {
-    //     return ''
-    //   }
-    // })
 
     return {
       user,
@@ -138,7 +125,6 @@ export default {
       pk,
       confirm,
       deleteTask,
-      // isSubmit,
       isEmptyTask,
       isLecture
     }

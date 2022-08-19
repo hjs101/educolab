@@ -60,7 +60,6 @@ export default {
       page: computed(() => props.page)
     })
     const toDetail = (pk) => {
-      console.log(pk)
       if (userType === 'student' && !props.teacher && !props.submit) {
         router.push({name: 'TaskUpdateView',
         params: {

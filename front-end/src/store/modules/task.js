@@ -106,7 +106,6 @@ export const task = {
         })
     },
     createTask({ commit, getters}, data) {
-      console.log(data)
       axios({
         url: drf.task.create(),
         method : 'post',
@@ -142,7 +141,6 @@ export const task = {
         params,
       })
         .then(res => {
-          console.log(res.data)
           commit('TASK_DETAIL', res.data)
         })
         .catch(err => {
@@ -177,7 +175,6 @@ export const task = {
       })
     },
     taskDelete({getters}, data) {
-      console.log(data)
       axios({
         url: drf.task.detail(),
         method: 'delete',
@@ -190,8 +187,6 @@ export const task = {
           }})
           router.go(0)
         })
-        // .catch(err => {
-        // })
     },
     submitTask({commit, getters}, data) {
       axios({

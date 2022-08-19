@@ -1,7 +1,6 @@
 <template>
   <div class="back">
     <div class="base">
-      <!-- {{quizDetail[probNum].answer}} -->
       <div style="padding:5px 0">
         <span style="color:#FEC002;" class="logo">edu  </span>
         <span style="color:#00D300;" class="logo">colab</span>
@@ -13,8 +12,7 @@
           <div v-if="result_flag" style="flex:1; font-size:30px; font-weight:bold; color:lightslategrey; margin-right:50px;"> 정답자 수 : {{ans_good_num}} </div>
           <q-btn  v-if="result_flag" class="btn_next" @click='quiz_start()' square color="amber-5" glossy text-color="black" label="다음 퀴즈" />
         </div>
-        <!-- <div v-if="result_flag" class="test" style="position:absolute; height:40vh; width:75vw; top:500px; z-index:1;"></div> -->
-        <!-- <div v-if="result_flag===false" class="test" style="position:absolute; height:50vh; width:75vw; top:450px; z-index:1;"></div> -->
+
         <div v-if="prob_flag" class="btns">
           <div class="hor2" style="margin-bottom:20px;">
             <q-btn v-if="result_flag===false || quizDetail[probNum].answer===1" align="left" class="btn btnp btn-fixed-width" rounded color="deep-orange-3" text-color="black" no-caps><p style="word-break:break-all;">{{quizDetail[probNum].multiple_bogi[0]}}</p></q-btn>
@@ -49,7 +47,6 @@ export default {
       this.quizTime.timer= setInterval(()=>{
       if(this.quizTime.time_flag===false){
         this.quizTime.cnt++
-        console.log(this.quizTime.cnt)
         if(this.quizTime.cnt===1){this.cnt="2"}
         if(this.quizTime.cnt===2){this.cnt="1"}
         if(this.quizTime.cnt===3){this.cnt="시작!"}
@@ -58,12 +55,8 @@ export default {
           this.prob_flag=true
         }
         if(this.quizTime.cnt===11){
-          console.log(this.ansgoodData)
           this.ansgoodQuiz(this.ansgoodData)
           this.result_flag=true
-          // this.quizTime.time_flag=true
-        // }
-        // if(this.quizTime.cnt===40){
           this.quizTime.time_flag=true
         }
       }
@@ -119,8 +112,6 @@ export default {
       }
       else{
         this.send_sig.probPk=this.quizDetail[Number(this.probNum)+1].id
-        // console.log(this.send_sig.)
-        console.log(this.probNum)
         this.sendMessage(this.send_sig)
         this.prob_flag=false
         this.result_flag=false
@@ -157,20 +148,16 @@ export default {
   .align{
     display:flex;
     font-weight:bolder;
-    /* display:flex; */
     flex:1;
     flex-direction:column;
     align-items:center;
     text-align:center;
     justify-content:center;
-    /* font-weight:bolder; */
   }
   .hor2{
     display: flex;
     flex-wrap: wrap;
     flex:1;
-    /* flex:1; */
-    /* height:100% */
   }
   .btn_next{
     color: black;
@@ -198,12 +185,6 @@ export default {
   }
   .btnp{
     margin-right:20px;
-    /* position:absolute;
-    padding:20px;
-    top:50%;
-    left:0%;
-    transform:translate(0,-50%);
-    margin:0 */
   }
   .back{
     background-color: #70AD47;

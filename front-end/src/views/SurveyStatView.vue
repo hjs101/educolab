@@ -55,6 +55,7 @@
     <div class="btn-mag row justify-center">
       <q-btn @click="goSurvey" class="text-size q-px-xl q-py-md" color="grey-8" label="목록"></q-btn>
     </div>
+    
     <!-- 주관식 답변 (모달) -->
     <q-dialog v-model="openModal">
       <q-card style="min-width:80%; min-height:80%">

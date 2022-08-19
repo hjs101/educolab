@@ -7,7 +7,6 @@
       <q-markup-table class="q-px-xl">
         <thead>
           <tr>
-            <!-- <th class="text-center">번호</th> -->
             <th class="text-center text-size">날짜</th>
             <th class="text-center text-size">상세 내역</th>
             <th class="text-center text-size">추가 점수</th>
@@ -17,7 +16,6 @@
         </thead>
         <tbody v-for="each in point.slice((page-1)*10, page*10)" :key="each.id">
           <tr>
-            <!-- <td class="text-center">{{each.id}}</td> -->
             <td class="text-center text-size">{{each.created_at}}</td>
             <td class="text-center text-size">{{each.content}} ({{each.teacher.name}})</td>
             <td class="text-center text-size">{{each.point}}</td>

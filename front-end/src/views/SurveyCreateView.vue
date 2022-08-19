@@ -230,6 +230,7 @@ export default {
       this.credentials.survey.class_field = this.surveyItem[0]?.survey_class
       this.surveyTotalData(this.surveyItem.slice(1,this.surveyItemLength))
       this.surveyList = this.surveyItemLength-1
+<<<<<<< HEAD
 
       // console.log(this.credentials.survey)
 =======
@@ -239,6 +240,8 @@ export default {
       this.credentials.survey.grade = this.surveyItem[0].survey_grade
       this.credentials.survey.class_field = this.surveyItem[0].survey_class
 >>>>>>> e9e9cab (퀴즈 버그 수정)
+=======
+>>>>>>> c2bb4de (공지사항 파일 버그 수정)
     }
   }
 }

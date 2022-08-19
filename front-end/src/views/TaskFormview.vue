@@ -327,11 +327,9 @@ export default {
       } else if (taskPk) {
         form.append('pk', taskPk)
         store.dispatch('taskUpdate', form)
-        console.log('update')
       } else {
         if (isValid.value) {
           store.dispatch('createTask', form)
-          console.log('create')
         } else {
           confirm.message = '필수 항목을 채워주세요'
           confirm.prompt = true

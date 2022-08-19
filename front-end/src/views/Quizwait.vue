@@ -72,7 +72,6 @@ export default {
 
   created() {
     this.all.RoomNumber = Math.floor(Math.random()*90000000)+10000000
-    // console.log(this.send_test)
     this.all.quizPK=this.$route.params.quizPk
     this.send_test.room_num=this.all.RoomNumber ///이거 테스트용임 지워도 됨
     this.all.username=this.getUsername

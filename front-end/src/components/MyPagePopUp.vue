@@ -111,11 +111,6 @@ export default {
         badge.url = url
       }
     }
-    // const samples = [
-    //   {id:2, title: '개미는 뚠뚠'},
-    //   {id:3, title: '내가 바로 과제 마스터'},
-    //   {id:4, title: '배고파'}
-    // ]
     const move = () => {
       if (props.changeMode) {
         axios({
@@ -139,8 +134,6 @@ export default {
           console.log(response)
           confirm.password = null
           confirm.prompt = true
-          // 실패했음을 알림
-          // password.message = response.data.message
         })
       } else {
         if (props.type) {

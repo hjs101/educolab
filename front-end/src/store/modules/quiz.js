@@ -112,9 +112,7 @@ export const quiz = {
 
     RANK_SCORE: (state) => {
       let temp = [];
-      console.log(state.online.ranking_list);
       for (let i of state.online.ranking_list) {
-        console.log(i);
         if (temp.length === 0) {
           temp.push(i.score);
         } else if (temp[0] !== i.score) {
@@ -122,7 +120,10 @@ export const quiz = {
 >>>>>>> 2f26b40 (퀴즈 수정 버그 4)
         }
       }
+<<<<<<< HEAD
       console.log(temp)
+=======
+>>>>>>> c2bb4de (공지사항 파일 버그 수정)
       return temp;
     },
 <<<<<<< HEAD
@@ -136,6 +137,7 @@ export const quiz = {
       state.online_cnt_flag = flag;
 >>>>>>> f247ee0 (퀴즈 수정페이지 버그 수정)
     },
+<<<<<<< HEAD
     ANS_GOOD_NUM:(state,data)=>state.online.ans_good_num=data,
     RANKING_LIST:(state,data)=>state.online.ranking_list=data,
     SOCKET_ON : (state, data) =>{
@@ -173,6 +175,39 @@ export const quiz = {
     SOCKET_SEND :(state, data)=>{
       // console.log("보내기")
       // console.log(data)
+=======
+    ANS_GOOD_NUM: (state, data) => (state.online.ans_good_num = data),
+    RANKING_LIST: (state, data) => (state.online.ranking_list = data),
+    SOCKET_ON: (state, data) => {
+      state.online.socket = new WebSocket(data.url);
+      state.online.RoomNumber = data.RoomNumber;
+      state.online.quizPK = data.quizPK;
+      state.online.username = data.username;
+      state.online.ans_list = [];
+
+      state.online.socket.addEventListener("message", (event) => {
+        state.online.result = JSON.parse(event.data);  //test용
+        if (
+          state.online.cnt_flag === true &&
+          state.online.result["message"] === "등록 성공"
+        ) {
+          state.online.ans_list.unshift(state.online.result["nickname"]);
+        }
+      });
+
+      state.online.socket.addEventListener("open", () => {
+        state.online.socket.send(
+          JSON.stringify({
+            message: "방 생성",
+            id: state.online.username, //수정해야함
+            room_num: state.online.RoomNumber,
+            quiz_num: state.online.quizPK,
+          })
+        );
+      });
+    },
+    SOCKET_SEND: (state, data) => {
+>>>>>>> c2bb4de (공지사항 파일 버그 수정)
       if(state.online.socket!==null){
         state.online.socket.send(JSON.stringify(data));
       }
@@ -238,7 +273,6 @@ export const quiz = {
           }
           commit("QUIZ_DETAIL", res.data);
           commit("QUIZ_DETAIL_LEN", res.data);
-          // commit("QUIZ_LEN", res.data.length)
       });
 >>>>>>> 93e53ce (퀴즈 버그 수정....)
     },
@@ -256,8 +290,6 @@ export const quiz = {
 =======
     // 퀴즈 번호, 보기, 답 가져오기
     onQuiz({ commit }, data) {
-      // console.log(data)
-      // console.log(getters.quizData)
       commit('QUIZ_DATA', data);
     },
 
@@ -297,7 +329,6 @@ export const quiz = {
 
     updateQuiz({ getters }, credentials) {
       credentials.question = getters.quizData
-      console.log(credentials)
       axios({
         url: drf.quiz.quizDetail(),
         method: 'put',
@@ -319,7 +350,6 @@ export const quiz = {
     },
 
     quizTotalData({ commit }, data) {
-      console.log(data)
       commit('QUIZ_TOTAL_DATA', data)
     },
     ////////////////////////////////
@@ -328,8 +358,11 @@ export const quiz = {
       console.log(data)
 =======
     ansgoodQuiz({ getters, commit }, data) {
+<<<<<<< HEAD
       // console.log(data);
 >>>>>>> 93e53ce (퀴즈 버그 수정....)
+=======
+>>>>>>> c2bb4de (공지사항 파일 버그 수정)
       axios({
         url: drf.quiz.quizScore(),
         method: 'get',
@@ -349,6 +382,7 @@ export const quiz = {
         method: 'get',
         headers: getters.authHeader,
         params: {
+<<<<<<< HEAD
           room_num: roomNum
         }
       })
@@ -366,6 +400,13 @@ export const quiz = {
         //   console.log(result)
         //   console.log(res)
         // })
+=======
+          room_num: roomNum,
+        },
+      }).then((res) => {
+        commit("RANKING_LIST", res.data.ranks); //임시'
+      });
+>>>>>>> c2bb4de (공지사항 파일 버그 수정)
     },
     ///////////////////////////
   }

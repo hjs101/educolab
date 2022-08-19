@@ -109,7 +109,6 @@ export default {
       })
         .then((res) => {
           items.value = res.data
-          console.log(items)
         })
     }
     })
@@ -128,7 +127,6 @@ export default {
       page[target] = val
     }
     const success = (message) => {
-      console.log(message)
       confirm.message = message
       confirm.prompt = true
     }

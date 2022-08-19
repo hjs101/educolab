@@ -33,7 +33,6 @@ export const notice = {
         headers: getters.authHeader,
       })
         .then(res => {
-          console.log(res.data)
           commit('NOTICE_LIST', res.data)
         })
         .catch(err => {
@@ -51,6 +50,7 @@ export const notice = {
         }
       })
         .then(res => {
+          console.log(res.data)
           commit('NOTICE_DETAIL', res.data)
         })
         .catch(err => {

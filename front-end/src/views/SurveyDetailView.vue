@@ -31,16 +31,10 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import SurveyBogi from '@/components/SurveyBogi.vue'
-// import { ref } from 'vue'
 
 export default {
   name : 'SurveyDetailView',
   components: { SurveyBogi, },
-  // setup() {
-  //   return {
-  //     alert: ref(false)
-  //   }
-  // },
   data() {
     return {
       surveyPk : this.$route.params.surveyPk

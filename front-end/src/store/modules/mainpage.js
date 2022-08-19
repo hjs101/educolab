@@ -1,5 +1,4 @@
 import drf from "@/api/drf.js"
-// import router from "@/router"
 import axios from "axios"
 
 export const mainpage = {

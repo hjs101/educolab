@@ -278,9 +278,12 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
 // import { reactive } from '@vue/reactivity'
+=======
+>>>>>>> c2bb4de (공지사항 파일 버그 수정)
 import { mapGetters, mapActions, useStore } from 'vuex'
 import {onBeforeMount} from 'vue'
 <<<<<<< HEAD
@@ -292,17 +295,19 @@ import { mapGetters, mapActions } from 'vuex'
 =======
 import {useRouter} from 'vue-router'
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
 import AccountErrorList from '@/components/AccountErrorList.vue'
 =======
 // import AccountErrorList from '@/components/AccountErrorList.vue'
 >>>>>>> 5264803 (프론트 버그 수정2)
+=======
+>>>>>>> c2bb4de (공지사항 파일 버그 수정)
 import ButtonGroup from '@/components/ButtonGroup.vue'
 
 export default {
   name: 'LoginView',
   components: {
-    // AccountErrorList,
     ButtonGroup
   },
 <<<<<<< HEAD

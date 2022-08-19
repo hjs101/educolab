@@ -7,14 +7,11 @@
       </div>
       <div class="line">{{quizDetail[0].quiz_name}}</div>
         <div class="hor">
-          <!-- <div v-if="person_flag" class="cnt">아무도 없습니다.</div> -->
-          <!-- <div v-if="ranking_list"> -->
           <div class="box1" v-for="item in ranking_list" v-bind:key="item">
             <div :class="{'score_bar s1':item.rank===1,'score_bar s2':item.rank===2,'score_bar s3':item.rank===3,'score_bar s4':item.rank===4,'score_bar s5':item.rank===5}">{{item.score}}</div>
             <div class="title_name">{{item.name}}</div>
             <div class="title_name">[{{item.title}}]</div>
           </div>
-          <!-- </div> -->
         </div>
       </div>
       <div class="blank">
@@ -55,7 +52,6 @@ export default {
     ...mapActions(['rankQuiz']),
     ...mapMutations({socket_on:"SOCKET_ON", sendMessage:"SOCKET_SEND", closeSocket:"SOCKET_CLOSE", cnt_flag:"SOCKET_COUNT_FLAG"}),
     quiz_end(){
-      console.log(this.RoomNumber)
       this.sendMessage({
         message:"퀴즈 종료", 
         room_num:this.RoomNumber, 
@@ -77,7 +73,6 @@ export default {
     display:flex;
     flex-direction:column;
     justify-content: center;
-    /* padding:100px 0; */
     color:lightslategray;
     font-weight:bold
   }
@@ -125,8 +120,6 @@ export default {
     flex-direction: column-reverse;
     width:15%;
     align-items:center;
-    /* text-align:center; */
-    /* justify-content:center;   */
   }
   .test{
     border:2px solid black;
@@ -175,7 +168,6 @@ export default {
     vertical-align:middle;
   }
   .line{
-    /* border-top: 3px solid #FF9966; */
     border-bottom: 3px solid #FF9966;
     padding: 30px 0;
     margin-top: 5px;
