@@ -92,9 +92,13 @@ export default {
     const openFile = (url) => {
       window.open(url)
     }
+<<<<<<< HEAD
 =======
     const content = computed(() => props.item.content.split('\n').join('<br>'))
 >>>>>>> 8263037 (Fix : 상세 페이지 출력 오류 수정)
+=======
+    const content = computed(() => props.item.content?.split('\n').join('<br>'))
+>>>>>>> bfa680a (Fix : 상세 페이지 출력 오류 수정)
     let point = ref(null)
     let submitState = computed(() => props.item.submit_flag?'제출':'미제출')
     let message = ref(null)
