@@ -40,13 +40,8 @@
 
     <div class="row items-center">
       <span class="q-py-md q-ml-sm q-mr-lg text-size" style="width: 70px; text-align:center">첨부파일</span>
-      <q-file class="row"
-      outlined clearable 
-      label="첨부 파일" v-model="credentials.files" style="width: 700px;" multiple use-chips>
-        <template v-if="fileName" v-slot:prepend>
-          {{ fileName }}
-        </template>
-      </q-file>
+      <q-file outlined v-model="credentials.files" style="width: 700px;" multiple use-chips
+      label="첨부파일"></q-file>
     </div>
     <hr>
 
@@ -76,9 +71,6 @@ export default {
       if (this.noticePk) return "공지사항 수정 페이지"
       return "공지사항 등록 페이지"
     },
-    // fileName() {
-    //   return this.noticeDetail.files[0].atch_file_name
-    // }
   },
   setup() {
     const route = useRoute()
@@ -115,7 +107,6 @@ export default {
       this.credentials.classification = this.noticeDetail.notice.classification
       this.credentials.title = this.noticeDetail.notice.title
       this.credentials.content = this.noticeDetail.notice.content
-      this.fileName = this.noticeDetail.files[0].atch_file_name
     }
   } 
 }
