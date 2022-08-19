@@ -109,7 +109,7 @@ Embeded : 여동준, 이국희
 
 Frontend : [링크](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/front-end/README.md)
 
-Backend : [링크]()백엔드 README 추가바랍니다.
+Backend : [링크](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/backend/README.MD)
 
 Embeded : [링크](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/embedded/README.md)
 
