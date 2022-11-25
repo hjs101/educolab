@@ -7,6 +7,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
   <div style="height: 2000px">
+<<<<<<< HEAD
     <!-- 교사 navbar -->
     <div v-if="isLoggedIn && currentUser.userflag">
       <div class="q-pa-md q-gutter-sm">
@@ -39,11 +40,17 @@
       </div>
     </div>
 
+=======
+    <!-- 로그인 했을 때 -->
+    <!-- <the-navbar v-if="isLoggedIn"></the-navbar> -->
+    
+>>>>>>> c942112 (로그인 프론트와 백 연결)
   <router-view />
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import { mapGetters, mapActions } from 'vuex'
 
 
@@ -62,6 +69,20 @@ export default {
       }
     }
   }
+=======
+// import TheNavbar from '@/views/TheNavbar.vue'
+
+export default {
+  name: 'MainPage',
+  // data() {
+  //   return {
+  //     isLoggedIn : false,
+  //   }
+  // },
+  // components: {
+  //   TheNavbar
+  // },
+>>>>>>> c942112 (로그인 프론트와 백 연결)
 }
 </script>
 

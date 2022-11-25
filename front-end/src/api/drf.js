@@ -7,6 +7,7 @@ export default {
     login: () => ACCOUNTS + 'login/',
     logout: () => ACCOUNTS + 'logout/',
 <<<<<<< HEAD
+<<<<<<< HEAD
     signup: () => ACCOUNTS + 'registration/',
     schoolInfo: () => ACCOUNTS + 'schoolinfo/',
     checkUsername: () => ACCOUNTS + 'check_username/',
@@ -14,6 +15,9 @@ export default {
 =======
     logout: () => ACCOUNTS + 'signup/',
 >>>>>>> 2091835 (Feat: merge 전 수정 사항 반영)
+=======
+    signup: () => ACCOUNTS + 'signup/',
+>>>>>>> c942112 (로그인 프론트와 백 연결)
   },
   notice: {
     noticeList: () => NOTICE

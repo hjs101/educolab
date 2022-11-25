@@ -34,11 +34,15 @@
         <q-input
           color="teal"
 <<<<<<< HEAD
+<<<<<<< HEAD
           v-model="idValue"
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
 =======
           v-model="state.username"
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
+=======
+          v-model="credentials.username"
+>>>>>>> c942112 (로그인 프론트와 백 연결)
           label="ID"
           lazy-rules
           :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요']"
@@ -48,6 +52,7 @@
           color="teal"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           v-model="credentials.password"
 =======
           v-model="pwValue"
@@ -55,6 +60,9 @@
 =======
           v-model="state.password"
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
+=======
+          v-model="credentials.password"
+>>>>>>> c942112 (로그인 프론트와 백 연결)
           label="Password"
           type="password"
           lazy-rules
@@ -66,6 +74,7 @@
       <!-- 여기에 로그인버튼 -->
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <q-btn color="secondary" label="LOGIN" class="col-8 offset-2 col-md-1 offset-md-1" @click="login(credentials)"/>
 =======
       <q-btn color="secondary" label="LOG IN" class="col-1" @click="login"/>
@@ -73,6 +82,9 @@
 =======
       <q-btn color="secondary" label="LOG IN" class="col-8 offset-2 col-md-1 offset-md-1" @click="login"/>
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
+=======
+      <q-btn color="secondary" label="LOGIN" class="col-8 offset-2 col-md-1 offset-md-1" @click="login(credentials)"/>
+>>>>>>> c942112 (로그인 프론트와 백 연결)
 
     </q-form>
 
@@ -103,12 +115,16 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c942112 (로그인 프론트와 백 연결)
 <style scoped>
   .input {
     width: 500px;
   }
   .buttonGroup {
     margin-top: 100px;
+<<<<<<< HEAD
 =======
 <style>
   .login {
@@ -135,10 +151,13 @@
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
 =======
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
+=======
+>>>>>>> c942112 (로그인 프론트와 백 연결)
   }
 </style>
 
 <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 // import { reactive } from '@vue/reactivity'
@@ -150,6 +169,13 @@ export default {
   components: {
     AccountErrorList
   },
+=======
+// import { reactive } from '@vue/reactivity'
+import { mapGetters, mapActions } from 'vuex'
+
+export default {
+  name: 'LoginView',
+>>>>>>> c942112 (로그인 프론트와 백 연결)
   data () {
     return {
       credentials: {
@@ -165,6 +191,7 @@ export default {
     ...mapActions(['login'])
   },
 }
+<<<<<<< HEAD
 </script>
 =======
 import {mapActions} from 'vuex'
@@ -203,3 +230,6 @@ export default {
 }
 </script>
 >>>>>>> 3d37e1b (공지사항 검색기능 구현)
+=======
+</script>
+>>>>>>> c942112 (로그인 프론트와 백 연결)

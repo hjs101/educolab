@@ -11,7 +11,12 @@ import axios from "axios"
 // import drf from '@/api/drf/js'
 >>>>>>> 2091835 (Feat: merge 전 수정 사항 반영)
 
+import drf from "@/api/drf"
+import router from "@/router"
+import Axios from "axios"
+
 export const accounts = {
+<<<<<<< HEAD
   state() {
     return {
 <<<<<<< HEAD
@@ -80,14 +85,24 @@ export const accounts = {
       },
       userType: null,
     }
+=======
+  state: {
+      token: localStorage.getItem('token') || '',
+      userInfo: {},
+      isLogin: false,
+>>>>>>> c942112 (로그인 프론트와 백 연결)
   },
   getters: {
-    // isLoggedIn: state => !!state.token,
+    isLoggedIn: state => !!state.token,
+    currentUser: state => state.currentUser,
     getUserType: state => state.userType,
     getStudentInfo: state => state.studentInfo,
     getTeacherInfo: state => state.teacherInfo,
   },
   mutations: {
+    loginSuccess(state) {
+      state.isLogin = true
+    },
     CHANGE_STUDENT_DATA(state,data) {
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
       if (state.userType === 'student') {
@@ -104,6 +119,7 @@ export const accounts = {
     },
   actions: {
 <<<<<<< HEAD
+<<<<<<< HEAD
     saveToken({commit}, access) {
       commit('SET_TOKEN', access)
       localStorage.setItem('access', access)
@@ -115,10 +131,20 @@ export const accounts = {
     login({ commit, dispatch }, credentials) {
       // 로그인 함수 구현
       axios({
+=======
+    saveToken({commit}, token) {
+      commit('SET_TOKEN', token)
+      localStorage.setItem('token', token)
+    },
+    login({ dispatch }, credentials) {
+      // 로그인 함수 구현
+      Axios({
+>>>>>>> c942112 (로그인 프론트와 백 연결)
         url: drf.accounts.login(),
         method: 'post',
         data: credentials
       })
+<<<<<<< HEAD
         .then(res => {
           console.log(res)
           const access = res.data.access
@@ -168,6 +194,18 @@ export const accounts = {
     // },
     login() {
 
+=======
+      console.log(credentials)
+        .then(res => {
+          const token = res.data.key
+          dispatch('saveToken', token)
+          router.push({ name: 'Notice'})
+        })
+        // .catch(err => {
+        //   console.err(err.response.data)
+        //   commit('')
+        // })
+>>>>>>> c942112 (로그인 프론트와 백 연결)
     },
     signup() {
 
