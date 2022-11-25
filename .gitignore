@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_Store
 node_modules
 /dist
@@ -42,6 +43,8 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
+=======
+>>>>>>> f99a32f (master에 .gitignore 추가)
 # Created by https://www.toptal.com/developers/gitignore/api/windows,python,django,venv,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,python,django,venv,visualstudiocode
 
@@ -181,6 +184,7 @@ celerybeat.pid
 env/
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 venv*/
 =======
 venv/
@@ -188,6 +192,9 @@ venv/
 =======
 venv*/
 >>>>>>> 6b96986 (venv 2개 이상을 위한 .gitignore 수정)
+=======
+venv/
+>>>>>>> f99a32f (master에 .gitignore 추가)
 ENV/
 env.bak/
 venv.bak/
@@ -371,6 +378,7 @@ $RECYCLE.BIN/
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 backend/my_settings.py
 <<<<<<< HEAD
 =======
@@ -385,3 +393,6 @@ backend/educolab/my_settings.py
 =======
 front-end/node_modules
 >>>>>>> c1b7e5f ( Fix : 버그 수정 중)
+=======
+backend/educolab/my_settings.py
+>>>>>>> f99a32f (master에 .gitignore 추가)
