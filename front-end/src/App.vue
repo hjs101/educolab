@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div style="height: 2000px">
     <!-- 교사 navbar -->
     <div v-if="isLoggedIn && currentUser.userflag">
@@ -229,10 +230,22 @@ export default {
 
     <router-view />
 >>>>>>> b22ae6e (공지사항 메인 페이지)
+=======
+  <div style="height:2000px;">
+
+    <!-- 로그인 했을 때 -->
+    <the-navbar v-if="isLoggedIn"></the-navbar>
+
+    <!-- 로그인 안했을 때 -->
+    <login-view v-else-if="!isLoggedIn"></login-view>
+    
+>>>>>>> 3d37e1b (공지사항 검색기능 구현)
   </div>
+
 </template>
 
 <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> e66f000 (navbar 생성)
 export default {
@@ -245,17 +258,20 @@ export default {
 =======
 >>>>>>> e66f000 (navbar 생성)
 =======
+=======
+import TheNavbar from '@/views/TheNavbar.vue'
+import LoginView from '@/views/LoginView.vue'
+>>>>>>> 3d37e1b (공지사항 검색기능 구현)
 
 export default {
-  name: 'theNavbar',
+  name: 'MainPage',
   data() {
-    let isLoggedIn = true
-    if (isLoggedIn == false) {
-      isLoggedIn = false
-    }
     return {
-      isLoggedIn
+      isLoggedIn : true,
     }
+  },
+  components: {
+    TheNavbar, LoginView
   }
 >>>>>>> b22ae6e (공지사항 메인 페이지)
 }

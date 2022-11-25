@@ -1,6 +1,7 @@
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div class="q-mx">
     <!-- 반응형하는 중 -->
     <h3>LOGIN</h3>
@@ -192,3 +193,13 @@ export default {
 }
 </script>
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
+=======
+  <h1>로그인 페이지</h1>
+</template>
+
+<script>
+export default {
+  name: 'LoginView',
+}
+</script>
+>>>>>>> 3d37e1b (공지사항 검색기능 구현)

@@ -9,6 +9,7 @@ const routes = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   // 회원 관리
   {
     path: '/',
@@ -56,6 +57,9 @@ const routes = [
 
 >>>>>>> 5d02b22 (네브바, 컴포넌트 구성)
   // 공지사항
+=======
+  // 공지사항 (공통)
+>>>>>>> 3d37e1b (공지사항 검색기능 구현)
   {
     path: '/notice',
     name: 'notice',
@@ -98,6 +102,7 @@ const routes = [
 >>>>>>> 5d02b22 (네브바, 컴포넌트 구성)
     component: () => import('@/views/NoticeFormView')
   },
+
   // 과제(교사)
   {
     path: '/teacher/task',
@@ -240,9 +245,39 @@ const routes = [
 =======
     name: 'teacherPage',
     component: () => import('@/views/TeacherPageView')
-  }
+  },
 
+<<<<<<< HEAD
 >>>>>>> e66f000 (navbar 생성)
+=======
+  // 과제(학생)
+  {
+    path: '/student/task',
+    name: 'StudentTaskListView',
+    component: () => import('@/views/StudentTaskListView')
+  },
+
+  // 내 필기(학생)
+  {
+    path: '/student/writing',
+    name: 'StudentWritingView.vue',
+    component: () => import('@/views/StudentWritingView')
+  },
+
+  // 포인트 상점(학생)
+  {
+    path: '/student/store',
+    name: 'StudentStoreView.vue',
+    component: () => import('@/views/StudentStoreView')
+  },
+
+  // 마이 페이지(학생)
+  {
+    path: '/student',
+    name: 'StudentPageView',
+    component: () => import('@/views/StudentPageView')
+  }
+>>>>>>> 3d37e1b (공지사항 검색기능 구현)
 ]
 
 const router = createRouter({
