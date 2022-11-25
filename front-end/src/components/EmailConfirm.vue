@@ -1,6 +1,10 @@
 <template>
   <div>
+<<<<<<< HEAD
     <q-input v-model="email.username" :suffix="email.address !== '직접 입력'? email.address: ''" input-class="text-right" label-slot clearable stack-label>
+=======
+    <q-input v-model="email" :suffix="emailAddress" input-class="text-right" label-slot clearable stack-label>
+>>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
       <template v-slot:label>
         <div class="row items-center all-pointer-events">
           Email
@@ -9,6 +13,7 @@
       </template>
     </q-input>
     <!-- 이메일 주소 선택 -->
+<<<<<<< HEAD
     <q-select v-model="email.address" :options="emailOptions" label="이메일 주소 선택" />
     <!-- 인증 버튼 -->
     <q-btn color="primary" label="이메일 인증" class="buttonGroup" @click="isValidEmail"/>
@@ -48,10 +53,27 @@
         </q-card>
       </q-dialog>
     </div>
+=======
+    <q-select v-model="emailAddress" :options="emailOptions" label="이메일 주소 선택" />
+    <!-- 인증 버튼 -->
+    <q-btn color="primary" label="이메일 인증" class="buttonGroup" @click="isValidEmail"/>
+    <!-- 인증 번호 입력 창 -->
+    <q-input
+      color="teal"
+      v-model="authNumber"
+      lazy-rules
+      :rules="[ val => val && val.length > 0 || '인증번호를 입력해주세요']"
+    />
+    <!-- 인증 번호 확인 버튼 -->
+    <q-btn color="primary" label="인증" class="buttonGroup" @click="isValidNumber"/>
+    <!-- 인증 번호 일치 여부 -->
+
+>>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import {reactive, ref} from '@vue/reactivity'
 import {computed} from 'vue'
 import {useStore} from 'vuex'
@@ -105,10 +127,32 @@ export default {
     const sendData = (data) => {
       if (number.isValidNumber) {
         store.dispatch('changeData', data)
+=======
+import {ref} from '@vue/reactivity'
+export default {
+  name: 'EmailConfirm',
+  setup () {
+    const emailOptions = [
+      '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com'
+    ]
+    let realNumber = ref(0)
+    let inputNumber = ref(0)
+    let emailAddress = ref('')
+    const isValidEmail = () => {
+      // 백에 신호 보내 인증 번호 받기 -> realNumber 바꿔주기
+    }
+    const isValidNumber = () => {
+      // 인증 번호 확인
+      if (realNumber === inputNumber) {
+        return true
+      } else {
+        return false
+>>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
       }
     }
     return {
       emailOptions,
+<<<<<<< HEAD
       number,
       email,
       alert,
@@ -116,6 +160,13 @@ export default {
       time,
       start,
       sendData
+=======
+      emailAddress,
+      isValidEmail,
+      isValidNumber,
+      realNumber,
+      inputNumber
+>>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
     }
   }
 }

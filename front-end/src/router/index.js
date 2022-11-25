@@ -122,6 +122,7 @@ const routes = [
   {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -132,12 +133,27 @@ const routes = [
   }
 =======
 =======
-    path: '/signup/teacher',
-    name: 'signupTeacher',
-    component: () => import ('@/views/TeacherSignupView')
+=======
+    path: '/signup/student',
+    name: 'signupStudent',
+    component: () => import ('@/views/SignupView')
   },
   {
+>>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+    path: '/signup/teacher',
+    name: 'signupTeacher',
+    component: () => import ('@/views/SignupView')
+  },
+  {
+<<<<<<< HEAD
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
+=======
+    path: '/signup/*',
+    redirect: {name: 'NotFound'}
+  },
+  // signup 뒤에 student, teacher 아닌 것이 있으면 404 에러
+  {
+>>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
     path: '/signup',
     name: 'agree',
     component: () => import ('@/views/SignupAgreeView')
