@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div style="height: 2000px">
     <!-- 교사 navbar -->
     <div v-if="isLoggedIn && currentUser.userflag">
@@ -173,18 +174,44 @@ export default {
   <!-- 로그인 안 된 경우 -->
   <login-view/>
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
+=======
+  <div>
+    <!-- 로그인된 경우-->
+    <!-- <the-nav-bar/> -->
+    <!-- 로그인 안 된 경우 login 페이지로 push ?? beforeEach 사용-->
+    <router-view></router-view>
+  </div>
+>>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
 </template>
+
+<style>
+  h3 {
+    text-align: center;
+  }
+  .button {
+    text-decoration: none;
+  }
+  .buttonGroup {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  }
+  .center {
+    text-align: center;
+  }
+
+</style>
 
 <script>
 // import TheNavBar from './components/TheNavBar.vue'
-import LoginView from './views/LoginView.vue'
+// import {created} from 'vue'
 export default {
   name: 'LayoutDefault',
 
   components: {
     // TheNavBar,
-    LoginView
-  },
+  }
 }
 <<<<<<< HEAD
 </style>

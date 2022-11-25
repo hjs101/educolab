@@ -113,12 +113,14 @@ const routes = [
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
+  // 회원 관리
   {
     path: '/login',
     name: 'login',
     component: () => import ('@/views/LoginView')
   },
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
     path: '/about',
     name: 'about',
@@ -129,10 +131,31 @@ const routes = [
 >>>>>>> 1f63946 (vue 환경셋팅)
   }
 =======
+=======
+    path: '/signup/teacher',
+    name: 'signupTeacher',
+    component: () => import ('@/views/TeacherSignupView')
+  },
+  {
+>>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
     path: '/signup',
     name: 'agree',
     component: () => import ('@/views/SignupAgreeView')
   },
+  {
+    path: '/nonlogin',
+    redirect: {name: 'login'}
+  },
+  // 404 에러
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: () => import ('@/views/NotFoundView')
+  },
+  // {
+  //   path: '*',
+  //   redirect: '/404'
+  // }
 
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
 ]

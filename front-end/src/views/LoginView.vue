@@ -1,5 +1,6 @@
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div class="q-mx">
     <!-- 반응형하는 중 -->
     <h3>LOGIN</h3>
@@ -17,17 +18,26 @@
 =======
   <div class="q-pa-md">
     <!-- 반응형 아직 X -->
+=======
+  <div class="q-mx">
+    <!-- 반응형하는 중 -->
+>>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
     <h3>LOGIN</h3>
+    <!-- form 부분 -->
     <q-form
       @submit="onSubmit"
-      class="q-gutter-md row"
+      class="q-gutter row"
     >
     <!-- 여기에 아이디, 비밀번호 입력 창 -->
-      <div class="input col-3 offset-4">
+      <div class="input col-8 offset-2 col-md-3 offset-md-4">
         <q-input
           color="teal"
+<<<<<<< HEAD
           v-model="idValue"
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
+=======
+          v-model="state.username"
+>>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
           label="ID"
           lazy-rules
           :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요']"
@@ -36,10 +46,14 @@
         <q-input
           color="teal"
 <<<<<<< HEAD
+<<<<<<< HEAD
           v-model="credentials.password"
 =======
           v-model="pwValue"
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
+=======
+          v-model="state.password"
+>>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
           label="Password"
           type="password"
           lazy-rules
@@ -50,19 +64,27 @@
       </div>
       <!-- 여기에 로그인버튼 -->
 <<<<<<< HEAD
+<<<<<<< HEAD
       <q-btn color="secondary" label="LOGIN" class="col-8 offset-2 col-md-1 offset-md-1" @click="login(credentials)"/>
 =======
       <q-btn color="secondary" label="LOG IN" class="col-1" @click="login"/>
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
+=======
+      <q-btn color="secondary" label="LOG IN" class="col-8 offset-2 col-md-1 offset-md-1" @click="login"/>
+>>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
 
     </q-form>
 
     <!-- 여기에 회원가입 / ID 찾기 / 비밀번호 찾기 -->
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div class="buttonGroup">
 =======
     <div class="userGroup">
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
+=======
+    <div class="buttonGroup">
+>>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
       <router-link to="/signup" class="button">
         <q-btn color="primary" label="SIGN UP"/>
       </router-link>
@@ -79,6 +101,7 @@
 </template>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <style scoped>
   .input {
     width: 500px;
@@ -94,24 +117,28 @@
   h3 {
     text-align: center;
   }
+=======
+<style scoped>
+>>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
   .input {
     width: 500px;
-    margin-right: 50px;
   }
-  .userGroup {
-    display: flex;
-    justify-content: center;
+  .buttonGroup {
     margin-top: 100px;
+<<<<<<< HEAD
     text-align: center;
     gap: 10px;
   }
   .button {
     text-decoration: none;
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
+=======
+>>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
   }
 </style>
 
 <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 // import { reactive } from '@vue/reactivity'
 import { mapGetters, mapActions } from 'vuex'
@@ -140,17 +167,27 @@ export default {
 </script>
 =======
 import {mapActions} from 'vuex'
+=======
+import { reactive } from '@vue/reactivity'
+>>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
 
 export default {
   name: 'LoginView',
-  data: function () {
-    return {
-      idValue: null,
-      pwValue: null,
+  setup () {
+    // 기존의 data
+    const state = reactive({
+      username: '',
+      password: ''
+    })
+    // method 부분
+    const login = () => {
+      // login method
+      // state 호출할 때 this 바인딩이 필요하지 않음
     }
-  },
-  methods: {
-    ...mapActions(['login'])
+    return {
+      login,
+      state
+    }
   }
 }
 </script>
