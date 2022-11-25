@@ -1,5 +1,6 @@
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div>
     <q-input color="teal" label="학교" v-model="school.name" disable/>
     <q-btn label="학교 검색" color="primary" @click="prompt.prompt = true"/>
@@ -90,55 +91,173 @@ export default {
   <Fragment>
     <q-input color="teal" label="학교" disable/>
     <q-btn label="학교 검색" color="primary" @click="prompt = true" />
+=======
+  <div>
+    <q-input color="teal" label="학교" v-model="school.name" @change="$emit(toSignup)" disable/>
+    <q-btn label="학교 검색" color="primary" @click="prompt.prompt = true"/>
+>>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
     
-    <q-dialog v-model="prompt" persistent>
+    <q-dialog v-model="prompt.prompt" persistent>
       <q-card style="min-width: 350px">
         <q-card-section>
           <div class="text-h6">학교 검색</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <q-input dense v-model="address" autofocus @keyup.enter="prompt = false" />
-          <q-btn label="검색" color="primary" @click="findSchool" />
-              <div>
-                <!-- v-for -->
-                <q-card class="my-card">
-                  <q-card-section>
-                    <b>학교 이름</b>
+          <q-input minlength="2" dense autofocus @keyup.enter="findSchool">
+            <template v-slot:append>
+              <q-icon name="mdi-magnify" />
+            </template>
+          </q-input>
+            <div v-if="prompt.searchResults">
+              <!-- v-for -->
+              <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
+                <q-card class="my-card" v-for="schoolInfo in school.list" :key="schoolInfo.schoolCode">
+                  <q-card-section @click="selectSchool(schoolInfo.schoolname, schoolInfo.schoolCode)">
+                    <b>{{schoolInfo.schoolname}}</b>
                     <br>
-                    <span>학교 주소</span>
+                    <span>{{schoolInfo.schoolAddress}}</span>
                   </q-card-section>
                 </q-card>
-              </div>
+              </q-scroll-area>
+
+              <!-- 테스트용 -->
+              <!-- <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
+                <q-card class="my-card" v-for="schoolInfo in school.temp" :key="schoolInfo.id">
+                  <q-card-section @click="selectSchool(schoolInfo.schoolname, schoolInfo.schoolCode)">
+                    <span>{{schoolInfo.url}}</span>
+                  </q-card-section>
+                </q-card>
+              </q-scroll-area> -->
+            </div>
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary">
-          <q-btn flat label="취소" v-close-popup />
+          <q-btn flat label="취소" @click="school.name = null" v-close-popup />
           <!-- 추가할 때는 emit 해주기 -->
-          <q-btn flat label="추가" v-close-popup />
+          <q-btn label="추가" @click="applySchool" v-close-popup />
         </q-card-actions>
       </q-card>
     </q-dialog>
-  </Fragment>
+  </div>
 </template>
 
 <script>
-import {ref} from '@vue/reactivity'
+import {reactive} from '@vue/reactivity'
+import {computed} from 'vue'
+import axios from 'axios'
+// import {mdiMagnify} from '@quasar/extras/mdi-v6'
 export default {
   name: 'searchSchool',
-  setup() {
-    let prompt = ref(false)
-    let school = ref(0)
-    let schoolAddress = ref('')
-    let schoolName = ref('')
+  setup(props, {emit}) {
+    const prompt = reactive({
+      prompt: false,
+      search: false,
+      searchResults: computed(() => prompt.search)
+    })
+    const school = reactive({
+      code: null,
+      name: null,
+      selectedName: null,
+      selectedCode: null,
+      list: [{
+        schoolname: '안녕중학교',
+        schoolAddress: '광주광역시 이하 생략',
+        schoolCode: 123
+      },
+      {
+        schoolname: '정신이들어중학교',
+        schoolAddress: '광주광역시 북구 이하 생략',
+        schoolCode: 124
+      },
+      {
+        schoolname: '정신이들어중학교',
+        schoolAddress: '광주광역시 북구 이하 생략',
+        schoolCode: 124
+      },
+      {
+        schoolname: '정신이들어중학교',
+        schoolAddress: '광주광역시 북구 이하 생략',
+        schoolCode: 124
+      },
+      {
+        schoolname: '정신이들어중학교',
+        schoolAddress: '광주광역시 북구 이하 생략',
+        schoolCode: 124
+      },
+      {
+        schoolname: '정신이들어중학교',
+        schoolAddress: '광주광역시 북구 이하 생략',
+        schoolCode: 124
+      },
+      {
+        schoolname: '정신이들어중학교',
+        schoolAddress: '광주광역시 북구 이하 생략',
+        schoolCode: 124
+      },
+      {
+        schoolname: '정신이들어중학교',
+        schoolAddress: '광주광역시 북구 이하 생략',
+        schoolCode: 124
+      },
+      {
+        schoolname: '정신이들어중학교',
+        schoolAddress: '광주광역시 북구 이하 생략',
+        schoolCode: 124
+      },
+      {
+        schoolname: '정신이들어중학교',
+        schoolAddress: '광주광역시 북구 이하 생략',
+        schoolCode: 124
+      },
+      {
+        schoolname: '정신이들어중학교',
+        schoolAddress: '광주광역시 북구 이하 생략',
+        schoolCode: 124
+      },
+      {
+        schoolname: '정신이들어중학교',
+        schoolAddress: '광주광역시 북구 이하 생략',
+        schoolCode: 124
+      },
+      ],
+      temp: [],
+    })
     const findSchool = () => {
+      prompt.search = true
+      const url = "https://api.thecatapi.com/v1/images/search"
+      // axios.post(URL+"", {schoolname:event.target.value})
+      //   .then((res) => school.list = res.data)
+      //   .catch((err) => console.log(err))
+      axios.get(url)
+        .then((res) => {
+          school.temp = res.data
+          console.log(school.temp)
+          })
+        .catch((err) => console.log(err))
+
       // 백에 입력 값 보내기
     }
+<<<<<<< HEAD
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+    const selectSchool = (name, code) => {
+      school.selectedName = name
+      school.selectedCode = code
+    }
+    const applySchool = () => {
+      school.name = school.selectedName
+      school.code = school.selectedCode
+    }
+    const toSignup = () => {
+      emit('to-signup', {school:school.code})
+    }
+>>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
     return {
       prompt,
       school,
       findSchool,
+<<<<<<< HEAD
 <<<<<<< HEAD
       selectSchool,
       applySchool
@@ -146,6 +265,11 @@ export default {
       schoolAddress,
       schoolName
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+      selectSchool,
+      applySchool,
+      toSignup
+>>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
     }
   },
 }

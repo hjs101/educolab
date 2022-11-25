@@ -2,6 +2,7 @@
   <div>
     <!-- 과목 (교사) -->
 <<<<<<< HEAD
+<<<<<<< HEAD
     <q-select v-if="userType === 'teacher'"
       color="teal"
       v-model="subject"
@@ -30,6 +31,8 @@
         :rules="[ val => val && val.length > 0 || '반을 입력해주세요', val => val > 0 || '적절하지 않은 값입니다']"
 =======
     {{userType}}
+=======
+>>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
     <q-select v-if="userType === 'teacher'" v-model="userData.subject" :options="subjectOptions" label="과목" />
     <!-- 학년/반 (학생) -->
     <div v-else>
@@ -39,10 +42,24 @@
         color="teal"
         label="반"
         type="number"
+        :dense="false"
         min="1"
         lazy-rules
+<<<<<<< HEAD
         :rules="[ val => val && val.length > 0 || '반을 입력해주세요']"
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+        :rules="[ val => val && val.length > 0 || '반을 입력해주세요', val => val > 0 || '적절하지 않은 값입니다']"
+      />
+      <q-input
+        v-model="userData.classNumber"
+        color="teal"
+        label="번호"
+        type="number"
+        min="1"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || '번호를 입력해주세요', val => val > 0 || '적절하지 않은 값입니다']"
+>>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
       />
     </div>
   </div>
@@ -90,9 +107,10 @@ export default {
     '국어', '수학', '사회', '과학', '보건', '기술가정', '기타'
     ]
     const userData = reactive({
-      subject: '',
-      grade: '',
-      classField: ''
+      subject: null,
+      grade: null,
+      classField: null,
+      classNumber: null
     })
     return {
       subjectOptions,

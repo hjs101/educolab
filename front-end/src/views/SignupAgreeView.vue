@@ -23,7 +23,7 @@
         <use-provision />
       </q-scroll-area>
       <!-- 여기에 체크 박스 -->
-      <!-- <q-checkbox v-model="isChecked" label="위의 약관에 모두 동의합니다" color="teal" class="col-4 offset-4" /> -->
+      <q-checkbox v-model="isChecked" label="위의 약관에 모두 동의합니다" color="teal" class="col-4 offset-4" />
       <!-- 여기에 버튼 -->
       <br>
     </div>
@@ -101,7 +101,7 @@ export default {
 </style>
 
 <script>
-// import { ref } from '@vue/reactivity'
+import { ref } from '@vue/reactivity'
 import useProvision from '@/components/UseProvision.vue'
 export default {
 <<<<<<< HEAD
@@ -116,10 +116,19 @@ export default {
   components: {
     useProvision
   },
+<<<<<<< HEAD
   // setup () {
   //   let isChecked = ref(false)
   //   return isChecked
   // },
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
+=======
+  setup () {
+    let isChecked = ref(false)
+    return {
+      isChecked
+    }
+  },
+>>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 }
 </script>

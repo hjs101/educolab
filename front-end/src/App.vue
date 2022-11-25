@@ -176,8 +176,8 @@ export default {
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
 =======
   <div>
-    <!-- 로그인된 경우-->
-    <!-- <the-nav-bar/> -->
+    <!-- 로그인된 경우 nav bar-->
+    
     <!-- 로그인 안 된 경우 login 페이지로 push ?? beforeEach 사용-->
     <router-view></router-view>
   </div>

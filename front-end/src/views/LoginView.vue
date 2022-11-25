@@ -25,7 +25,7 @@
     <h3>LOGIN</h3>
     <!-- form 부분 -->
     <q-form
-      @submit="onSubmit"
+      @submit="login"
       class="q-gutter row"
     >
     <!-- 여기에 아이디, 비밀번호 입력 창 -->

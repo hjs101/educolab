@@ -123,6 +123,7 @@ const routes = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -151,6 +152,12 @@ const routes = [
     path: '/signup/*',
     redirect: {name: 'NotFound'}
   },
+=======
+    path: '/signup/:userType',
+    name: 'signup',
+    component: () => import ('@/views/SignupView')
+  },
+>>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
   // signup 뒤에 student, teacher 아닌 것이 있으면 404 에러
   {
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
@@ -165,7 +172,7 @@ const routes = [
   // 404 에러
   {
     path: '/404',
-    name: 'NotFound',
+    name: 'notFound',
     component: () => import ('@/views/NotFoundView')
   },
   // {
