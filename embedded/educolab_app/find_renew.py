@@ -32,29 +32,6 @@ class Find_renew(Screen):
         self.rightInput=self.ids.right_input.text
 
         ##### 비밀번호 일치 확인
-<<<<<<< HEAD
-        if(self.leftInput == self.rightInput and len(self.leftInput) > 0):
-            self.data = {
-                'name': self.name_temp,
-                'email': self.email_temp,
-                'username': self.username_temp,
-                'password1': self.leftInput,
-                'password2': self.rightInput,
-            }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/change_pw/', data=self.data)
-=======
-            self.res = requests.post('http://127.0.0.1:8000/accounts/change_pw/', data=self.data)
->>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
-=======
-            self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/change_pw/', data=self.data)
->>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
-=======
-            self.res = requests.post('https://i7c102.p.ssafy.io/api/accounts/change_pw/', data=self.data)
->>>>>>> d61ea9f (fix: embedded update)
-=======
         self.data = {
             'name': self.name_temp,
             'email': self.email_temp,
@@ -69,7 +46,6 @@ class Find_renew(Screen):
 
         if self.res.json()["success"] and len(self.leftInput) > 0:
 
->>>>>>> 0b154d1 (Fix : 임베디드 변경사항 추가)
             self.next_page = "PW_result"
             self.ids.right_info.text = ""
         else:

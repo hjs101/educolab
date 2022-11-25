@@ -1,17 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# 목차
-=======
-#  EduColab ( 교육과 서비스의 청량한 조화! )
->>>>>>> 3f7c837 (Update README.md)
-=======
 #  EduColab ( 교육과 기술의 청량한 조화! )
-<<<<<<< HEAD
->>>>>>> e8c7aca (Update README.md)
-
-## EduColab 소개!
-=======
->>>>>>> 763412a (Update README.md)
 <img src="/uploads/85e4097f8177ffa87cc5b0dd1a7df106/educolab.37f5cd03.png" width="250">
 
 ### UCC : [링크](https://youtu.be/ESee2Ut4Xcg)
@@ -180,7 +167,6 @@ Docker, Nginx, Jenkins를 이용하여 무중단 자동 배포를 구축하였�
 
 ---
 
-<<<<<<< HEAD
 ```
 # <Type> : <제목> 형식으로 작성
 # <Type> 영문으로 첫글자 대문자 지켜서 작성
@@ -226,76 +212,4 @@ Docker, Nginx, Jenkins를 이용하여 무중단 자동 배포를 구축하였�
 
 ### Sequence Diagram
 
-<<<<<<< HEAD
-
-### d. 로그인 & 로그아웃
-
-```
-로그인, 로그아웃 후 새로고침 구현
-```
-
-
-
-### e. 페이지 접근 제한
-
-```
-로그인 여부, 사용자 유형에 따라 들어갈 수 있는 페이지 접근 제한
-```
-
-
-
-### f. 리프레시 토큰 발급
-
-```
-페이지가 새로고침될 때마다, 토큰 유효기간이 다가올 때마다 토큰 발급 구현 필요
-```
-
-
-
-### g. 공통
-
-```
-로딩이 길어질 경우에 로딩중임을 표시
-```
-
-=======
-#### 로컬 실행 방법
-```
-frontend polder 에서 npm run serve
-```
-
-## Back
-
-<<<<<<< HEAD
-#### 로컬 실행 방법
-```
-backend polder 에서 python manage.py runserver
-```
-## Embeded
-
-#### 로컬 실행 방법
-```
-embedded/dev-ops/Readme.md 참고해서 환경 설정 (가상 환경 설치, kivy 모듈 설치)
-embedded/Test_module/Try_all_v? 혹은 Try_all_v?_backup 들어가서 python main.py 실행
-가장 최신 버전의 경우 현재 개발 중이라 문제가 있을 가능성이 높음.
-backup은 화면 연결, 기본 버전은 이전 버전 backup에서 기능을 추가한 내용 
-```
->>>>>>> 7563471 (STYLE)
-=======
-교사
-
-teacher01
-
-asdfqwe2
-
-
-
-학생
-
-stu01
-
-asdfqwe2
->>>>>>> bf6f861 (Feat : 교사 상/벌점 부여 기능 구현 완료)
-=======
 시퀀스 다이어그램은 [여기](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/outputs/Sequence%20Diagram.docx)에서 확인하세요!
->>>>>>> 3f7c837 (Update README.md)

@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div class="baseStyle">
     <h4 class="text-center">Quiz</h4>
     <hr>
@@ -97,37 +96,6 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
-.bogi-border {
-  border-style: inset;
-}
-.question-border {
-  border-radius: 5px;
-  border: 1px solid #BDBDBD ;
-}
-.title-size {
-  font-size : 1.5rem;
-}
-.bogi-size {
-  font-size : 1.1rem;
-}
-.question-border2 {
-  border-radius: 5px;
-  border: 1px solid #BDBDBD ;
-  background-color: #FF9966;
-}
-.test {
-  border-bottom : 1px solid #BDBDBD;
-}
-</style>
-=======
-  <div>
-    <h1>퀴즈 상세 페이지</h1>
-  <router-view />
-  </div>
-</template>
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-=======
   .title-size {
     font-size : 3vmin;
   }
@@ -137,12 +105,7 @@ export default {
   .answer-size {
     font-size : 2.5vmin
   }
-<<<<<<< HEAD
-</style>
->>>>>>> 61e042d (설문조사  통계 sass)
-=======
   .btn-mag {
     margin-top: 100px;
   }
 </style>
->>>>>>> 25ff8b9 (설문조사 주관식 버그 수정)

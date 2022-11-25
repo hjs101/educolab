@@ -23,14 +23,5 @@ urlpatterns = [
     path('grant/', views.PointGrantView.as_view(), name='mypage_point'),
     path('profil/', views.ProfilChangeView.as_view(), name='profil_change'),
     path('title/', views.TitleChangeView.as_view(), name='title_change'),
-<<<<<<< HEAD
-    
-<<<<<<< HEAD
-=======
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-=======
->>>>>>> fc9ea5f (머지)
-=======
     path('icon/', views.IconChangeView.as_view(), name='icon_change'),
->>>>>>> fe8161f (feat : 아이콘 등록)
 ]

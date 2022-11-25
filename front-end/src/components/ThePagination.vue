@@ -8,14 +8,7 @@
       :boundary-links="limit>6"
       direction-links
       @click="changePage"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      size="20px"
->>>>>>> 38a5ff1 (공지사항  수정 해결)
-=======
       size="17px"
->>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
     />
   </div>
 </template>

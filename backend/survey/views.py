@@ -11,40 +11,7 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import json
-=======
 
->>>>>>> 452a9d1 (설문조사  등록)
-=======
-import os, io
-=======
->>>>>>> 596a37c (Fix : 충돌해결 미완부분 수정)
-
-
->>>>>>> 1d03a62 (Backend file 삽입)
-=======
-import json
->>>>>>> e68108f (오류 수정)
-=======
-
->>>>>>> d5bc5eb (Test : 오류 테스트1)
-=======
-
->>>>>>> fb49765 (Feat : 진행상황저장 (채팅))
-=======
-import json
->>>>>>> 1119888 (Fix : 병합후 사라진 코드 복구)
-=======
-import os, io
->>>>>>> e0daa39 (fix : 머지 충돌)
 class SurveyTeacherMainView(APIView) :
     ## 권한 설정 부분(View단위)
     # permission_classes = (IsAuthenticated,)
@@ -73,21 +40,7 @@ class SurveyStudentMainView(APIView) :
         survey_serializer = SurveyMainSerializer(my_survey,many=True)
 
         return Response(survey_serializer.data)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> 1d03a62 (Backend file 삽입)
-=======
-    
->>>>>>> 521f17f (Test : static 파일 위치 테스트)
-=======
-    
->>>>>>> fb49765 (Feat : 진행상황저장 (채팅))
-=======
-
->>>>>>> 1119888 (Fix : 병합후 사라진 코드 복구)
 class SurveyCreateView(APIView):
     def post(self, req):
 
@@ -97,15 +50,7 @@ class SurveyCreateView(APIView):
 
         
         # survey_serializer
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 1d03a62 (Backend file 삽입)
-=======
->>>>>>> 521f17f (Test : static 파일 위치 테스트)
 
-=======
->>>>>>> d5bc5eb (Test : 오류 테스트1)
         # 설문조사 등록하기 start
         survey_serializer = SurveySerializer(data=req.data['survey'])
         if req.data['survey']['grade'] == 0:
@@ -137,30 +82,11 @@ class SurveyDetailView(APIView):
         questions = survey.question_survey.all()
         ## 설문조사 시리얼라이저 생성
         question_serializer = QuestionDetailSerializer(questions, many=True)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        survey_name = [{"survey_name" : survey.title}]
-=======
         survey_name = [{"survey_name" : survey.title,
                         "survey_grade" : survey.grade,
                         "survey_class" : survey.class_field
                         }]
-<<<<<<< HEAD
->>>>>>> 54d5d96 (Feat : 설문조사 데이터 내용 추가)
-        print(question_serializer.data)
-=======
->>>>>>> 9e9bfd9 (style : print 모두 제거)
         return Response(survey_name+question_serializer.data)
-=======
-
-        return Response(question_serializer.data)
->>>>>>> 1d03a62 (Backend file 삽입)
-=======
-        survey_name = [{"survey_name" : survey.title}]
-        print(question_serializer.data)
-        return Response(survey_name+question_serializer.data)
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
 
     def delete(self, req):
         survey_id = req.GET['survey_num']
@@ -244,87 +170,18 @@ class SurveySubmitView(APIView):
 
         answers = req.data['answers']
         survey = SurveyList.objects.get(id=req.data['survey_num'])
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fb49765 (Feat : 진행상황저장 (채팅))
 
-=======
-        
->>>>>>> 1d03a62 (Backend file 삽입)
-=======
-=======
-        print("answers:")
->>>>>>> 92062c5 (Test : 테스트1)
-        print(answers)
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 4ea1789 (Test : 테스트)
-=======
-        print(answers)
-        
-        insertDB =  req.body.decode("utf-8")  # Don't use json.dumps() here
-        jsonDict =  json.loads(insertDB)
-        print(insertDB)
-        print(jsonDict)
->>>>>>> e68108f (오류 수정)
-=======
-
->>>>>>> 9418c94 (Fix : 원상복구)
-=======
-        
->>>>>>> d5bc5eb (Test : 오류 테스트1)
-=======
-        print(answers)
->>>>>>> acb8517 (Fix : 에러해결)
-=======
-
->>>>>>> 1119888 (Fix : 병합후 사라진 코드 복구)
         userauth = survey.target.filter(username=req.user.username).exists()
         if not userauth:
             return Response({"message" : "설문 제출 자격이 없습니다."})
 
         done =  survey.done_target.filter(username=req.user.username).exists()
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        print(done)
->>>>>>> d5bc5eb (Test : 오류 테스트1)
-        if done:
-            return Response({"message" : "이미 제출하셨습니다."})
-        for answer in answers:
-            print(answer)
-            question = SurveyQuestions.objects.get(id=answer['id'])
-            
-<<<<<<< HEAD
-=======
-        print(done)
-=======
->>>>>>> 06fbf4e (Fix : 오류 수정2)
-=======
-        print(done)
->>>>>>> fb49765 (Feat : 진행상황저장 (채팅))
-=======
->>>>>>> 1119888 (Fix : 병합후 사라진 코드 복구)
         if done:
             return Response({"message" : "이미 제출하셨습니다."})
 
         for answer in answers:
             question = SurveyQuestions.objects.get(id=answer['id'])
             
->>>>>>> 1d03a62 (Backend file 삽입)
-=======
-
-            
->>>>>>> d5bc5eb (Test : 오류 테스트1)
             if question.multiple_bogi is not None:
                 if answer['answer'] == 1:
                     question.num1 +=1

@@ -7,17 +7,7 @@
     >
       <q-card>
         <q-card-section>
-<<<<<<< HEAD
-            {{item.content}}
-<<<<<<< HEAD
-=======
             <p v-html="content"></p>
->>>>>>> 8263037 (Fix : 상세 페이지 출력 오류 수정)
-          <div>
-<<<<<<< HEAD
-            <a :href="url+item['atch_file']">{{item['atch_file_name']}}</a>
-=======
-=======
           <div v-if="typeof(item['atch_file_name']) === 'string'">
             <q-btn v-if="item?.atch_file" @click="openFile(url)" color="grey-12" class="text-black" size="xs">
             <q-icon name="mdi-paperclip"/>
@@ -25,11 +15,9 @@
           </q-btn>
           </div>
           <div v-else>
->>>>>>> 2dcb8d1 (Fix : 첨부파일 부분 수정)
             <div v-for="(file, idx) in item['atch_file_name']" :key="idx">
               <a :href="item['atch_file'][idx]">{{file}}</a>
             </div>
->>>>>>> 6cda58e (fix : 파일주소 변경 실험)
           </div>
           <div v-if="!isChecked && !check.computedFlag" class="row justify-evenly">
             <q-input
@@ -88,17 +76,10 @@ export default {
         }
       })
     })
-<<<<<<< HEAD
     const openFile = (url) => {
       window.open(url)
     }
-<<<<<<< HEAD
-=======
-    const content = computed(() => props.item.content.split('\n').join('<br>'))
->>>>>>> 8263037 (Fix : 상세 페이지 출력 오류 수정)
-=======
     const content = computed(() => props.item.content?.split('\n').join('<br>'))
->>>>>>> bfa680a (Fix : 상세 페이지 출력 오류 수정)
     let point = ref(null)
     let submitState = computed(() => props.item.submit_flag?'제출':'미제출')
     let message = ref(null)
@@ -143,12 +124,9 @@ export default {
       checkTask,
       isChecked,
       check,
-<<<<<<< HEAD
       buttonConfirm,
-      openFile
-=======
+      openFile,
       content
->>>>>>> 8263037 (Fix : 상세 페이지 출력 오류 수정)
     }
   }
 }

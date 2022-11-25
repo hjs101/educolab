@@ -19,42 +19,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    path('main', views.NoticeMainView.as_view(), name='notice/main'),
-=======
-=======
-    # 메인
->>>>>>> 4110506 (공지사항 메인페이지 백 통신 완료)
-    path('main/', views.NoticeMainView.as_view(), name='notice/main'),
-    path('create/', views.NoticeCreateView.as_view(), name='notice/create'),
->>>>>>> 73fd2c6 (Feat : 공지사항 기능 진행상황 저장)
-=======
-    path('main/', views.NoticeMainView.as_view(), name='notice_main'),
-    path('create/', views.NoticeCreateView.as_view(), name='notice_create'),
-    path('detail/', views.NoticeDetailView.as_view(), name='notice_detail'),
-<<<<<<< HEAD
->>>>>>> c5da375 (Feat : 공지사항 상세페이지 파일 표시, 수정기능(진행중))
-=======
-    path('update/', views.NoticeUpdateView.as_view(), name='notice_update'),
->>>>>>> 1e437b7 (Feat : 공지사항 수정기능 구현)
-=======
-    path('main/', views.NoticeMainView.as_view(), name='notice/main'),
-    path('create/', views.NoticeCreateView.as_view(), name='notice/create'),
->>>>>>> 559df98 ( Feat : 버그 수정)
-=======
-=======
->>>>>>> 1d03a62 (Backend file 삽입)
     path('main/', views.NoticeMainView.as_view(), name='notice_main'),
     path('create/', views.NoticeCreateView.as_view(), name='notice_create'),
     path('detail/', views.NoticeDetailView.as_view(), name='notice_detail'),
     path('update/', views.NoticeUpdateView.as_view(), name='notice_update'),
-<<<<<<< HEAD
->>>>>>> 15da655 (Fix : 버그수정)
-=======
->>>>>>> 1d03a62 (Backend file 삽입)
 ]

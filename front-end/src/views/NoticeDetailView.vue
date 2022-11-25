@@ -1,80 +1,8 @@
 <template>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 64e711e (공지사항 상세페이지 버그 수)
-=======
->>>>>>> e6b54fb (asdu)
-    <h1>...</h1>
-=======
-    <div v-for="item in noticeItem" :key="item.pk">
-      <h3>{{ item }}</h3>
-      <h4>{{ item.teacher }}</h4>
-      <p>{{ item.updated_at }}</p>
-      <p>{{ item.content}}</p>
-      <p>{{ item.atch_file_name }}</p>
-=======
-    <div>
-      <div class="center">
-        <h3>제목 : {{ noticeItem.notice.title }}</h3>
-        <p>등록일 : {{ noticeItem.notice.updated_at }}</p>
-        <p>작성자 : {{ noticeItem.notice.teacher.name }}</p>
-        <h4>내용 : {{ noticeItem.notice.content }}</h4>
-        <div v-for="(file, index) in noticeItem.files" :key="index">
-          파일이름: {{ file.atch_file_name }}
-          <br>
-          파일경로: {{ file.atch_file }}
-        </div>
-      </div>
->>>>>>> fec931d (공지사항  상세페이지 구현)
-=======
-=======
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-    <div class="center">
-=======
-    <div class="baseStyle">
->>>>>>> d127577 (기능별 메인 페이지 구성)
-      <h3>제목 : {{ noticeItem.notice.title }}</h3>
-      <p>등록일 : {{ noticeItem.notice.updated_at }}</p>
-      <p>작성자 : {{ noticeItem.notice.teacher.name }}</p>
-      <h4>내용 : {{ noticeItem.notice.content }}</h4>
-      <div v-for="(file, index) in noticeItem.files" :key="index">
-        파일이름: 
-        <button @click="openFile(file.atch_file)">{{ file.atch_file_name }}</button>
-        <br>
-<<<<<<< HEAD
->>>>>>> 3646f0b (공지사항 파일 업로드)
-=======
-  <div class="row justify-center q-my-xl">
-=======
-  <div class="BASE">
->>>>>>> ef40aec (버그 수정)
-    <div>
-      <div class="q-mb-md">
-=======
-  <div class="baseStyle">
-=======
   <div class="noticeDetailStyle">
-<<<<<<< HEAD
->>>>>>> 5264803 (프론트 버그 수정2)
-      <div class="q-mt-md">
->>>>>>> 43b06d2 (버그 수정)
-=======
     <h4>공지사항 상세</h4>
       <hr>
       <div class="q-my-md">
->>>>>>> 1771885 (Fix : 과제 스타일 및 수정, 생성 시 오류 해결)
         <div class="row justify-between items-center">
           <div class="row start items-center">
             <p class="title-size">[{{ noticeDetail.notice?.classification }}]</p>
@@ -85,16 +13,7 @@
           <p class="item-size text-start q-pl-sm text-grey-13">{{ noticeDetail.notice?.teacher.name }}</p>
           <p class="item-size text-right q-px-md">{{ timeInfo(noticeDetail.notice?.updated_at) }}</p>
         </div>
-<<<<<<< HEAD
-        <p class="item-size text-start q-pl-sm text-grey-13">{{ noticeDetail.notice.teacher.name }}</p>
-<<<<<<< HEAD
->>>>>>> 38a5ff1 (공지사항  수정 해결)
-=======
-        <hr>
->>>>>>> 7f2a492 (설문조사  sass)
-=======
       </div>
->>>>>>> 61e042d (설문조사  통계 sass)
 
         <div>
           <q-card class="bord">
@@ -114,30 +33,6 @@
           </q-btn>
         </div> 
       </div>
-<<<<<<< HEAD
-    </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 8ad08b5 (비밀번호  변경으로 인한 로그인 이슈)
-=======
-    
->>>>>>> b39710a (공지사항  수정 구현)
-=======
-=======
-
-      </div>
-    </div>
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-
-    <button @click="updateData">수정</button>
-    <button @click="deleteNotice(noticeItem.notice.id)">삭제</button>
-    <br>
-    <router-link to="/notice"><button>목록</button></router-link>
-<<<<<<< HEAD
->>>>>>> 3646f0b (공지사항 파일 업로드)
-=======
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-=======
       <hr>
 
       <div class="row justify-center q-mt-xl q-gutter-md">
@@ -148,12 +43,7 @@
       <div class="btn-mag row justify-center">
         <q-btn @click="goNotice" class="text-size q-px-xl q-py-md" color="grey-8" label="목록" />
       </div> 
-<<<<<<< HEAD
-    </div>  
->>>>>>> 38a5ff1 (공지사항  수정 해결)
-=======
 
->>>>>>> 43b06d2 (버그 수정)
   </div>
 </template>
 
@@ -207,25 +97,6 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
-<style>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-</style>
-=======
-    <h1>공지 상세 페이지</h1>
-  <router-view />
-  </div>
-</template>
->>>>>>> e66f000 (navbar 생성)
-=======
-</style>
->>>>>>> e6b54fb (asdu)
-=======
-</style>
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-=======
 <style scoped>
   .noticeDetailStyle {
     width: 60%;
@@ -266,12 +137,7 @@ export default {
   .btn-mag {
     margin-top: 100px;
   }
-<<<<<<< HEAD
-</style>
->>>>>>> 38a5ff1 (공지사항  수정 해결)
-=======
   .bord {
     border: 1px solid ;
   }
 </style>
->>>>>>> 7f2a492 (설문조사  sass)

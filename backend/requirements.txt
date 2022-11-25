@@ -10,22 +10,7 @@ cryptography==37.0.4
 defusedxml==0.7.1
 dj-rest-auth==2.2.5
 Django==3.2.12
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 django-allauth==0.51.0
-=======
->>>>>>> 1eb4a5e (Refactor : 일요일 신행상황 저장)
-=======
-django-allauth==0.51.0
->>>>>>> 38ea542 (Chore : requirements 수정)
-=======
-django-allauth==0.51.0
->>>>>>> 719770f (x)
-=======
-django-allauth==0.51.0
->>>>>>> 1d03a62 (Backend file 삽입)
 django-cors-headers==3.13.0
 django-environ==0.9.0
 django-filter==22.1
@@ -42,11 +27,6 @@ mysqlclient==2.1.1
 oauthlib==3.2.0
 packaging==21.3
 Pillow==9.2.0
-<<<<<<< HEAD
-=======
->>>>>>> 1d03a62 (Backend file 삽입)
-=======
->>>>>>> fc9ea5f (머지)
 pycparser==2.21
 PyJWT==2.4.0
 PyMySQL==1.0.2

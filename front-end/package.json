@@ -8,39 +8,13 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.8.3",
     "dayjs": "^1.11.5",
     "lodash": "^4.17.21",
     "quasar": "^2.0.0",
-=======
-    "core-js": "^3.8.3",
->>>>>>> 1f63946 (vue 환경셋팅)
-=======
-    "@quasar/extras": "^1.0.0",
-    "core-js": "^3.8.3",
-    "quasar": "^2.0.0",
->>>>>>> 34b83a2 (Feat : 퀘이사 UI Framework 적용)
-=======
-    "@quasar/extras": "^1.0.0",
-    "core-js": "^3.8.3",
-    "quasar": "^2.0.0",
->>>>>>> e6b54fb (asdu)
-=======
-    "@quasar/extras": "^1.0.0",
-    "core-js": "^3.8.3",
-    "quasar": "^2.0.0",
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
     "vue": "^3.2.13",
-<<<<<<< HEAD
-    "vue-cookies": "^1.8.1",
-=======
     "vue-native-websocket-vue3": "^3.1.6",
->>>>>>> 7ae675e (Feat : 웹 퀴즈 기능 완료)
     "vue-router": "^4.0.3",
     "vue-socket.io": "^3.0.10",
     "vuex": "^4.0.2"
@@ -56,27 +30,8 @@
     "axios": "^0.27.2",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     "vue-cli-plugin-axios": "~0.0.4",
     "vue-cli-plugin-quasar": "~5.0.1"
-=======
-    "vue-cli-plugin-axios": "~0.0.4"
->>>>>>> 1f63946 (vue 환경셋팅)
-=======
-    "vue-cli-plugin-axios": "~0.0.4",
-    "vue-cli-plugin-quasar": "~5.0.1"
->>>>>>> 34b83a2 (Feat : 퀘이사 UI Framework 적용)
-=======
-    "vue-cli-plugin-axios": "~0.0.4",
-    "vue-cli-plugin-quasar": "~5.0.1"
->>>>>>> e6b54fb (asdu)
-=======
-    "vue-cli-plugin-axios": "~0.0.4",
-    "vue-cli-plugin-quasar": "~5.0.1"
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   },
   "eslintConfig": {
     "root": true,

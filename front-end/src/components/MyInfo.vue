@@ -23,26 +23,6 @@
           @click="myTitle(false)"
           class="cursor-pointer"
         />
-<<<<<<< HEAD
-        <img v-else :src="profil.change" class="cursor-pointer" width="50" />
-      </div>
-      <q-card-section>
-        아이디 {{ info.username }} | 생년월일 {{ birthday }}
-        <br />
-        학교 {{ school }}
-        <span v-if="!info.userflag || info.homeroom_teacher_flag">
-          {{ info.grade }}학년 {{ info.class_field }}반 |
-        </span>
-        <span v-if="!info.userflag">
-          <q-btn color="black" class="text-bold" flat @click="myTitle(true)">
-            {{ computedTitle }}
-          </q-btn>
-          | 현재(누적) 상점/벌점 +{{ info.plus_point }} ({{ info.acc_point }}) /
-          {{ info.minus_point }}
-        </span>
-        <br />
-        이메일과 전화번호는 데이터 값에 포함되지만 출력하지 않음
-=======
         <img
           v-else
           :src="badge.change"
@@ -79,7 +59,6 @@
         <span v-if="!info.userflag">
           현재(누적) 상점/벌점 &nbsp; <b class="text-size">+{{info.plus_point}} ({{info.acc_point}}) / {{info.minus_point}}</b>
         </span>
->>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
       </q-card-section>
     </q-card-section>
 
@@ -154,23 +133,11 @@ export default {
       apply.title = title ? "보유 업적 목록" : "보유 배지 목록";
       apply.prompt = true;
     };
-<<<<<<< HEAD
-    const applyTitle = (val, type, pk, name) => {
-<<<<<<< HEAD
-      console.log(val, type, pk, name);
-      if (val && name !== title.value) {
-        let url = null;
-        if (type.value) {
-          url = drf.myPage.changeTitle();
-=======
-=======
     const applyTitle = (val, type, pk, name, path) => {
->>>>>>> 96e4e58 (Fix : 배지 출력 안 되는 오류 수정)
       if (val && name !== title.value ) {
         let url = null
         if (type) {
           url = drf.myPage.changeTitle()
->>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
         } else {
           url = drf.myPage.changeIcon();
         }
@@ -178,16 +145,6 @@ export default {
           url,
           method: "put",
           headers: store.getters.authHeader,
-<<<<<<< HEAD
-          data: { pk },
-        }).then(() => {
-          if (props.type) {
-            title.value = name;
-          } else {
-            icon.value = name;
-          }
-        });
-=======
           data: {pk,}
         })
           .then(() => {
@@ -195,19 +152,10 @@ export default {
               title.value = name
             } else {
               icon.value = name
-<<<<<<< HEAD
-              // badge.path = 
-=======
               badge.path = path
-<<<<<<< HEAD
-              console.log('path')
->>>>>>> 96e4e58 (Fix : 배지 출력 안 되는 오류 수정)
-=======
->>>>>>> 1771885 (Fix : 과제 스타일 및 수정, 생성 시 오류 해결)
             }
             router.go()
           })
->>>>>>> 4d6ec88 (Feat: 칭호 배지  적용 부분 진행 중 2)
       }
       apply.prompt = false;
     };
@@ -268,11 +216,7 @@ export default {
       computedTitle,
     };
   },
-<<<<<<< HEAD
 };
-</script>
-=======
-}
 </script>
 
 <style scoped>
@@ -283,4 +227,3 @@ export default {
 	.tbList td.txt_left{text-align:left;}
   .btn{margin-bottom:40px;}
 </style>
->>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)

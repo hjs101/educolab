@@ -20,23 +20,5 @@ from . import views
 
 urlpatterns = [
     path('',views.MainpageView.as_view(), name='mainpage'),
-<<<<<<< HEAD
-<<<<<<< HEAD
     path('event/', views.EventView.as_view(), name='event')
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> cda8e1a (feat : 채점 여부 플래그)
-=======
->>>>>>> 9c48d5b (Fix : back branch와 merge 후 충돌 수정2)
-=======
->>>>>>> e0daa39 (fix : 머지 충돌)
-=======
-    path('event/', views.EventView.as_view(), name='event'),
-<<<<<<< HEAD
->>>>>>> 1b417af (Feat : 학생 마이페이지 정보 조회, 포인트 내역 구현 중)
-=======
-    path('event/', views.EventView.as_view(), name='event')
->>>>>>> f7e1d76 (Feat : 학생 마이페이지 구현 완료 & 프로필/뱃지/칭호 변경 및 상벌점 부여 기능 진행 중)
-=======
->>>>>>> b9a6477 (Fix : 병합)
 ]

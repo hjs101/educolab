@@ -20,11 +20,7 @@
     
     <q-form>
       <div v-if="surveyPk">
-<<<<<<< HEAD
         <div v-for="survey in surveyList" :key="survey">
-=======
-        <div v-for="survey in surveyData.length-1" :key="survey">
->>>>>>> e9e9cab (퀴즈 버그 수정)
           <div class="row justify-end q-mt-xl q-mr-xl">
             <q-btn @click="deleteSurvey(quiz, $event)" class="text-size" color="orange-6">문제 삭제</q-btn>
           </div>
@@ -68,23 +64,7 @@ export default {
   components: { SurveyItem },
   name: 'SurveyCreateView',
   computed: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    ...mapGetters(['surveyData', 'survey', 'surveyItem']),
-=======
-    ...mapGetters(['surveyData', 'survey', 'isLoggedIn', 'currentUser']),
->>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
-=======
-    ...mapGetters(['surveyData', 'survey', 'surveyItem' ,'isLoggedIn', 'currentUser']),
->>>>>>> c3f5feb (Fix : 설문조사 등록 시 몇 가지 경우 수정)
-=======
     ...mapGetters(['surveyData', 'survey', 'surveyItem' ,'isLoggedIn', 'currentUser', 'surveyItemLength']),
->>>>>>> 5879b5c (Fix : 설문조사 수정 부분 오류 수정)
-=======
-    ...mapGetters(['surveyData', 'survey', 'isLoggedIn', 'currentUser', 'surveyItem']),
->>>>>>> e9e9cab (퀴즈 버그 수정)
     getTitle() {
       if (this.surveyPk) return "설문조사 수정"
       return "설문조사 등록"
@@ -147,12 +127,8 @@ export default {
         },        {
           label: '4반',
           value: 4
-<<<<<<< HEAD
-        },         {
-=======
         },
         {
->>>>>>> e9e9cab (퀴즈 버그 수정)
           label: '5반',
           value: 5
         },        {
@@ -183,37 +159,12 @@ export default {
       this.surveyData.push({})
     },
     deleteSurvey(survey, event) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      if (confirm('문항을 정말 삭제하시겠습니까?')) {
-=======
       if (survey === 1 && this.surveyList === 1) {
         alert('설문은 한 문제 이상 작성되어야 합니다')
       } else if (confirm('문항을 정말 삭제하시겠습니까?')) {
->>>>>>> 1771885 (Fix : 과제 스타일 및 수정, 생성 시 오류 해결)
         event.preventDefault()
         this.surveyList = this.surveyList - 1
         this.surveyData.splice(survey-1, 1)
-=======
-      event.preventDefault()
-      this.surveyList = this.surveyList - 1
-      this.surveyData.splice(survey-1, 1)
-    },
-  },
-  mounted() {
-    if (!this.isLoggedIn) {
-      this.$router.push('/educolab/login')
-    } else if (!this.currentUser.userflag) {
-      this.$router.push('/educolab')
-    } else if (this.surveyPk) {
-      for (var i=0; i < this.survey.length; i++) {
-        if (this.surveyPk == this.survey[i].pk) {
-          this.credentials.survey.title = this.survey[i].title
-          this.credentials.survey.grade = this.survey[i].grade
-          this.credentials.survey.class_field = this.survey[i].class_field
-          return
-        }
->>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
       }
     },
     goSurvey() {
@@ -224,24 +175,11 @@ export default {
   created() {
     if (this.surveyPk) {
       this.getSurveyDetail(this.surveyPk)
-<<<<<<< HEAD
       this.credentials.survey.title = this.surveyItem[0]?.survey_name
       this.credentials.survey.grade = this.surveyItem[0]?.survey_grade
       this.credentials.survey.class_field = this.surveyItem[0]?.survey_class
       this.surveyTotalData(this.surveyItem.slice(1,this.surveyItemLength))
       this.surveyList = this.surveyItemLength-1
-<<<<<<< HEAD
-
-      // console.log(this.credentials.survey)
-=======
-      console.log(this.surveyItem)
-      console.log(this.surveyData)
-      this.credentials.survey.title = this.surveyItem[0].survey_name
-      this.credentials.survey.grade = this.surveyItem[0].survey_grade
-      this.credentials.survey.class_field = this.surveyItem[0].survey_class
->>>>>>> e9e9cab (퀴즈 버그 수정)
-=======
->>>>>>> c2bb4de (공지사항 파일 버그 수정)
     }
   }
 }

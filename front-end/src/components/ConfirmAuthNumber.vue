@@ -14,45 +14,13 @@
       text-color="black"
       label="FIND PW"
       @click="isValidEmail"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    <!-- 인증 번호를 보냈음을 알림 또는 빈 항목이 있음을 알림 (프론트) -->
-    <message-pop-up
-      v-if="email.prompt && !email.isFail"
-      title=""
-      message="인증번호가 전송되었습니다"
-      path=""
-      success=""
-    />
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-    <!-- 인증 실패 팝업 (일치하는 회원정보가 없음) -->
-=======
     <!-- 인증 번호 보냈음을 알림 & 인증 실패 팝업 (일치하는 회원정보가 없음) -->
->>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
     <message-pop-up 
       v-if="email.confirm"
       :message="email.message"
-<<<<<<< HEAD
       @reverse="email.prompt = false"
     />
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <!-- 인증 번호를 보냈음을 알림 -->
-    <message-pop-up
-      v-if="email.confirm && !email.isFail"
-      message="인증번호가 전송되었습니다"
-      @reverse="email.prompt = false"
-=======
-      path=""
-      success=""
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-    />
-=======
->>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
-=======
     <span class="col-12"></span>
->>>>>>> db26c2a (Style & Fix : 스타일 및 오류 수정)
     <!-- 인증 번호 입력 창 -->
     <div v-if="!email.isFail" class="col-4 row justify-between q-mt-lg">
       <q-input
@@ -73,21 +41,8 @@
         v-if="alert.computedState"
         title="인증 번호 확인"
         message="인증되었습니다"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        @reverse="alert = false"
-=======
-        path=""
-        :success="email.valid"
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-=======
-        path="/change/password"
-=======
         :path="params.info?'/change/password':''"
->>>>>>> 0a91d41 (Feat : 비밀번호 확인, 회원정보 변경 기능 구현 완료, 약간의 스타일 적용)
         @reverse="alert.state = false"
->>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
       />
     </div>
   </div>
@@ -107,12 +62,9 @@ export default {
   props: {
     data: Object,
   },
-<<<<<<< HEAD
   emits: [
     'reverse',
   ],
-=======
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   components: {
     MessagePopUp,
   },
@@ -138,52 +90,13 @@ export default {
       // find
       if (params.info) {
         if (props.data.email && props.data.name && props.data.username) {
-<<<<<<< HEAD
-          axios.post(drf.accounts.sendPwEmail(), props.data)
-            .then(res => {
-              if (res.data.success) {
-                email.authNum = res.data['auth_num']
-                email.valid = true
-                start()
-              } else {
-                email.message = res.data.message
-              }
-            })
-<<<<<<< HEAD
-            .catch(err => console.dir(err))
-        } else {
-          email.message = '비어있는 항목을 채워주세요'
-=======
-        } else {
-          email.message = '비어있는 항목을 채워주세요'
-          // 빈 항목이 있을 때
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-        }
-        email.prompt = true
-      } else {
-          if (props.data.email) {
-            start()
-            axios.post(drf.accounts.sendEmail(), props.data)
-              .then(res => {
-                email.authNum = res.data['auth_num']
-                email.valid = true
-              })
-          } else {
-            email.message = '비어있는 항목을 채워주세요'
-          }
-          email.prompt = true
-=======
           url = drf.accounts.sendPwEmail()
         } 
       } else if (props.data.email) {
         url = drf.accounts.sendEmail()
-<<<<<<< HEAD
->>>>>>> 086e088 (Feat : 회원정보 수정, 비밀번호 변경 페이지 구현 완료)
-=======
       } else {
         email.message = '비어있는 항목을 채워주세요'
         email.prompt =  true
->>>>>>> f86710a (Feat : 비밀번호 변경 구현 완료)
       }
       if (url) {
         axios({

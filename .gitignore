@@ -1,15 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4bf513d (Fix : git.ignore 최신화)
-=======
 # Created by https://www.toptal.com/developers/gitignore/api/windows,python,django,venv,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,python,django,venv,visualstudiocode
 
->>>>>>> 7dba180 (Test : 배포테스트)
 .DS_Store
 node_modules
 /dist
@@ -54,15 +45,6 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-<<<<<<< HEAD
-=======
->>>>>>> f99a32f (master에 .gitignore 추가)
-=======
->>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
-=======
->>>>>>> a234dfd (Fix : My_settings 올라가는지 테스트)
-=======
->>>>>>> 4bf513d (Fix : git.ignore 최신화)
 # Created by https://www.toptal.com/developers/gitignore/api/windows,python,django,venv,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,python,django,venv,visualstudiocode
 
@@ -251,27 +233,7 @@ celerybeat.pid
 .env
 .venv
 env/
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 venv*/
-=======
-venv/
->>>>>>> 46a97f8 (embedded에 .gitignore 추가)
-=======
-venv*/
->>>>>>> 6b96986 (venv 2개 이상을 위한 .gitignore 수정)
-=======
-venv/
->>>>>>> f99a32f (master에 .gitignore 추가)
-=======
-venv*/
->>>>>>> 0965e2b (venv 2개 이상을 위한 .gitignore 수정)
-=======
-venv*/
->>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
 ENV/
 env.bak/
 venv.bak/
@@ -453,74 +415,8 @@ $RECYCLE.BIN/
 *.lnk
 *.pem
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 backend/my_settings.py
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-backend/my_settings.py
->>>>>>> 0fe143a (Style : git ignore 반영)
-=======
-backend/my_settings.py
->>>>>>> 834c26a (Fix : mySettings.py 수정)
-=======
-backend/educolab/my_settings.py
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 46a97f8 (embedded에 .gitignore 추가)
-=======
 front-end/node_modules
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> c1b7e5f ( Fix : 버그 수정 중)
-=======
-backend/educolab/my_settings.py
->>>>>>> f99a32f (master에 .gitignore 추가)
-=======
-backend/my_settings.py
->>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
-=======
->>>>>>> a234dfd (Fix : My_settings 올라가는지 테스트)
-=======
-front-end/node_modules
->>>>>>> 4bf513d (Fix : git.ignore 최신화)
-=======
-login_info.json
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 90a0649 (깃이그노어 수정)
-=======
-backend/educolab/my_settings.py
-login_token.txt
->>>>>>> b7db13e (Refactor: login token 발급)
-=======
-login_token.json
->>>>>>> 63e320c (Refactor : 기능 및 화면 조정 2)
-=======
-login_info.json
->>>>>>> d48d942 (Feat: kivy 메인페이지 작성 1)
-=======
-login_info.json
->>>>>>> a740439 (깃이그노어 수정)
-=======
-login_info.json
-./backend
-./front-end
->>>>>>> 71f00cc (.gitignore 수정)
-=======
 front-end/node_modules/*
->>>>>>> e702bd9 (ppt ÆÄÀÏ Ã߰¡)
-=======
-profile
->>>>>>> e0cb278 (fix: nyam)
-=======
+login_info.json
 profile.jpg
->>>>>>> a1eae9b (깃 이그노어 수정)

@@ -46,19 +46,7 @@
 			color: 1,1,1,1
 
 			on_release:
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 				root.onPopUp(False)
-=======
-				root.onPopUp()
->>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
-=======
-				root.onPopUp(False)
->>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
-=======
-				root.onPopUp(False)
->>>>>>> d61ea9f (fix: embedded update)
 
 			size_hint: None, None
 			height: 50
@@ -74,11 +62,6 @@
 				RoundedRectangle:
 					size: self.size
 					pos: self.pos
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> d61ea9f (fix: embedded update)
 					radius:[10]
 
 		Button:
@@ -106,42 +89,6 @@
 					size: self.size
 					pos: self.pos
 					radius:[10]	
-<<<<<<< HEAD
-=======
-					radius:[10]	
-
->>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
-=======
-					radius:[10]
-
-		Button:
-			text:"설문 완료"
-			bold:True
-			font_size: 30
-			halign:'center'
-			color: 1,1,1,1
-
-			on_release:
-				root.onPopUp(True)
-
-			size_hint: None, None
-			height: 50
-			width : 200
-
-			pos_hint: {"right":0.78,"top":0.94}
-			# width:150
-			background_normal:''
-			background_color: (0,0,0,0)
-			canvas.before:
-				Color:
-					rgba :(54/255,54/255,54/255,1)
-				RoundedRectangle:
-					size: self.size
-					pos: self.pos
-					radius:[10]	
->>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
-=======
->>>>>>> d61ea9f (fix: embedded update)
 		Label:
 			id:title
 			# text:"오늘 저녁 메뉴 선정"
@@ -164,39 +111,12 @@
 			pos_hint: {"right":0.95,"top":0.5}
 
 			on_release:
-<<<<<<< HEAD
-				root.next_flag_setup("after")
-				root.next_page_setup()
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-				# root.cnt_setup()
-				app.root.current=root.next_page
-				root.manager.transition.direction="left"
-=======
-				root.cnt_setup()
-				app.root.current=root.next_page
-				root.manager.transition.direction="left"
-				print(root.manager.survey_ans)
->>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
-=======
-				# root.cnt_setup()
-				app.root.current=root.next_page
-				root.manager.transition.direction="left"
->>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
-=======
-				# root.cnt_setup()
-				app.root.current=root.next_page
-				root.manager.transition.direction="left"
->>>>>>> d61ea9f (fix: embedded update)
-=======
 				root.r_btn()
 				# root.next_flag_setup("after")
 				# root.next_page_setup()
 				# # root.cnt_setup()
 				# app.root.current=root.next_page
 				# root.manager.transition.direction="left"
->>>>>>> 03547db (Update embedded/educolab_app/myTextInput.py, embedded/educolab_app/survey_select.kv, embedded/educolab_app/survey_select.py, embedded/educolab_app/survey_word.kv, embedded/educolab_app/survey_word.py)
 
 			Image:
 				id:after
@@ -213,39 +133,12 @@
 
 			pos_hint: {"x":0.05, "top":0.5}
 			on_release:
-<<<<<<< HEAD
-				root.next_flag_setup("before")
-				root.next_page_setup()
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-				# root.cnt_setup()
-				app.root.current=root.next_page
-				root.manager.transition.direction="right"
-=======
-				root.cnt_setup()
-				app.root.current=root.next_page
-				root.manager.transition.direction="right"
-				print(root.manager.survey_ans)
->>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
-=======
-				# root.cnt_setup()
-				app.root.current=root.next_page
-				root.manager.transition.direction="right"
->>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
-=======
-				# root.cnt_setup()
-				app.root.current=root.next_page
-				root.manager.transition.direction="right"
->>>>>>> d61ea9f (fix: embedded update)
-=======
 				root.l_btn()
 				# root.next_flag_setup("before")
 				# root.next_page_setup()
 				# # root.cnt_setup()
 				# app.root.current=root.next_page
 				# root.manager.transition.direction="right"
->>>>>>> 03547db (Update embedded/educolab_app/myTextInput.py, embedded/educolab_app/survey_select.kv, embedded/educolab_app/survey_select.py, embedded/educolab_app/survey_word.kv, embedded/educolab_app/survey_word.py)
 
 			Image:
 				id:before
@@ -281,16 +174,6 @@
 						rounded_rectangle: self.x, self.y, self.width, self.height, 40
 				Label:
 					id:prob
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-					# text: "어제는 라면을 먹었고 오늘 점심에는 햇반을 먹었으며 오늘 저녁에는 치킨을 시켰다면 내일 점심으로 먹을 것은 무엇인가?"
->>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
-=======
->>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
-=======
->>>>>>> d61ea9f (fix: embedded update)
 					size_hint: 1,None
 					text_size:self.width, None
 					height: self.texture_size[1]
@@ -301,35 +184,12 @@
 
 			limitedTextInput:
 				id:ans
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> d61ea9f (fix: embedded update)
 				on_text:root.calc(self.text)
 				# id: PW_input ### to get a string							
 				multiline: False
 				max_input_num:-1
 				size_hint: .8, .5
 				pos_hint: {"center_x":0.5, "top":1}
-<<<<<<< HEAD
-=======
-				# id: PW_input ### to get a string							
-				multiline: False
-				max_input_num :-1
-				size_hint : .8, .5
-				pos_hint : {"center_x":0.5, "top":1}
->>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
-=======
-				on_text:root.calc(self.text)
-				# id: PW_input ### to get a string							
-				multiline: False
-				max_input_num:-1
-				size_hint: .8, .5
-				pos_hint: {"center_x":0.5, "top":1}
->>>>>>> e2ab9d8 (Feat: 설문조사 상세기능 구현)
-=======
->>>>>>> d61ea9f (fix: embedded update)
 				font_size: 30
 				# password:True
 				padding:10

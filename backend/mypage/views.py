@@ -1,19 +1,8 @@
 from django.urls import is_valid_path
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
-<<<<<<< HEAD
-from accounts.models import UserInfo
-<<<<<<< HEAD
-<<<<<<< HEAD
-from pointshop.models import PTitle
-=======
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-=======
-=======
 from accounts.models import UserInfo, SchoolInfo
->>>>>>> 194aa9b (fix: 학교 수정 fix)
 from pointshop.models import PTitle, Icon
->>>>>>> fe8161f (feat : 아이콘 등록)
 from accounts.serializers import UserinfoSerializer
 from .serializers import PointlogSerializer,TeacherSerializer, StudentSerializer,SearchStudentSerializer, StudentUpdateSerializer, TeacherUpdateSerializer
 
@@ -34,13 +23,7 @@ class MypageMainView(APIView):
     ## 회원정보수정(담임등록 포함)
     def put(self,req):
         if req.user.userflag:
-<<<<<<< HEAD
-            print(1)
             userinfo_serializer = TeacherUpdateSerializer(req.user, data=req.data)
-            print(userinfo_serializer)
-=======
-            userinfo_serializer = TeacherSerializer(req.user, data=req.data)
->>>>>>> 0a91d41 (Feat : 비밀번호 확인, 회원정보 변경 기능 구현 완료, 약간의 스타일 적용)
         else:
             userinfo_serializer = StudentUpdateSerializer(req.user, data=req.data)
         if userinfo_serializer.is_valid(raise_exception=True):
@@ -103,7 +86,6 @@ class ProfilChangeView(APIView):
         return Response({
             "success" : True,
         })
-<<<<<<< HEAD
 
 class TitleChangeView(APIView):
     def put(self,request):
@@ -116,17 +98,6 @@ class TitleChangeView(APIView):
         return Response({
             "success" : True
         })
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
-=======
->>>>>>> fc9ea5f (머지)
-=======
-
->>>>>>> 4b05e8c (Fix : 학생 입장 리턴값 수정)
-=======
-
 class IconChangeView(APIView):
     def put(self,request):
         user = request.user
@@ -135,4 +106,3 @@ class IconChangeView(APIView):
         return Response({
             "success" : True
         })
->>>>>>> fe8161f (feat : 아이콘 등록)

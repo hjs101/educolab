@@ -18,15 +18,7 @@ Type : 제목
 본문
 
 꼬리말
-<<<<<<< HEAD
-<<<<<<< HEAD
 ```
-=======
-
->>>>>>> f95eabd (download gitmessage)
-=======
-```
->>>>>>> 11e8526 (Feat : Commit 규칙 템플릿 추가)
 - Type 종류<br>
 `Feat` : 새로운 기능 추가<br>
 `Fix` : 버그 수정<br>

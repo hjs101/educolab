@@ -7,35 +7,35 @@
           <p class="title-size">문항 {{ item.question_number }} . {{ item.survey_question }}</p>    
           <div class="row q-my-md">
             <p class="q-pr-md">보기 1. </p>
-            <p class="bg-red-13 border-left1" :style="{width: item.purcentNum[0]-20 + '%'}"></p>
+            <p class="bg-red-13 border-left1" :style="{width: item.purcentNum[0] + '%'}"></p>
             <p class="q-px-sm">{{ item.multiple_bogi[0] }}</p>
             <p>({{ item.num1 }})</p>
           </div>
 
           <div class="row q-my-md">
             <p class="q-pr-md">보기 2. </p>
-            <p class="bg-blue-13 border-left2" :style="{width: item.purcentNum[1]-20 + '%'}"></p>
+            <p class="bg-blue-13 border-left2" :style="{width: item.purcentNum[1] + '%'}"></p>
             <p class="q-px-sm">{{ item.multiple_bogi[1]}}</p>
             <p>({{ item.num2 }})</p>
           </div>
 
           <div class="row q-my-md">
             <p class="q-pr-md">보기 3. </p>
-            <p class="bg-green-13 border-left3" :style="{width: item.purcentNum[2]-20 + '%'}"></p>
+            <p class="bg-green-13 border-left3" :style="{width: item.purcentNum[2] + '%'}"></p>
             <p class="q-px-sm">{{ item.multiple_bogi[2]}}</p>
             <p>({{ item.num3 }})</p>
           </div>
 
           <div class="row q-my-md">
             <p class="q-pr-md">보기 4. </p>
-            <p class="bg-purple-13 border-left4" :style="{width: item.purcentNum[3]-20 + '%'}"></p>
+            <p class="bg-purple-13 border-left4" :style="{width: item.purcentNum[3] + '%'}"></p>
             <p class="q-px-sm">{{ item.multiple_bogi[3]}}</p>
             <p>({{ item.num4 }})</p>
           </div>
 
           <div class="row q-my-md">
             <p class="q-pr-md">보기 5. </p>
-            <p class="bg-grey-13 border-left5" :style="{width: item.purcentNum[4]-20 + '%'}"></p>
+            <p class="bg-grey-13 border-left5" :style="{width: item.purcentNum[4] + '%'}"></p>
             <p class="q-px-sm">{{ item.multiple_bogi[4]}}</p>
             <p>({{ item.num5 }})</p>
           </div>

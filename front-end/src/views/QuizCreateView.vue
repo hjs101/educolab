@@ -43,7 +43,6 @@
         </div>
       </div>
 
-<<<<<<< HEAD
       <div class="row justify-center q-my-xl">
         <q-btn @click="goQuiz" class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
         <q-btn @click="quizPk ? updateQuiz(credentials) : createQuiz(credentials)"
@@ -52,15 +51,6 @@
         </q-btn>
       </div>
     </q-form>
-=======
-    <div class="row justify-center q-my-xl">
-      <q-btn @click="goQuiz" class="text-size q-px-xl q-py-md" color="grey-8">취소</q-btn>
-      <q-btn @click="quizPk ? updateQuiz(credentials) : createQuiz(credentials)"
-      class="text-size q-px-xl q-py-md q-mx-lg q-py-sm" color="blue-6">
-      {{ quizPk ? '수정' : '등록'}}
-      </q-btn>
-    </div>
->>>>>>> 1a24399 (Test : 퀴즈 테스느)
 
   </div>
 </template>
@@ -97,19 +87,11 @@ export default {
     }
   },
   computed: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    ...mapGetters(['quizDetail', 'quizData']),
-=======
     ...mapGetters(['quizDetail', 'quizData', 'isLoggedIn', 'currentUser', 'quizItemLength']),
->>>>>>> 2f26b40 (퀴즈 수정 버그 4)
     getTitle() {
       if (this.quizPk) return "퀴즈 수정"
       return "퀴즈 등록"
     }
-=======
-    ...mapGetters(['quizDetail', 'quizData', 'isLoggedIn', 'currentUser'])
->>>>>>> d50ec00 (Fix : 접근제한 오류 수정)
   },
   methods: {
     ...mapActions(['createQuiz', 'getQuizDetail', 'updateQuiz', 'quizTotalData']),
@@ -131,24 +113,12 @@ export default {
       this.$router.push({name:'Quiz'})
     }
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   created() {
-    if (this.quizPk) {
-=======
-=======
->>>>>>> e9e9cab (퀴즈 버그 수정)
-  mounted() {
-=======
-  created() {
->>>>>>> 56f3b7f (퀴즈 수정 버그2)
     if (!this.isLoggedIn) {
       this.$router.push('/educolab/login/')
     } else if (!this.currentUser.userflag) {
-      this.$router.push('/login/')
+      this.$router.push('/educolab')
     } else if (this.quizPk) {
->>>>>>> c8c893f (Feat: 로그인 여부 & 사용자 여부에 따른 접근 제한)
       this.getQuizDetail(this.quizPk)
       this.credentials.quiz.title = this.quizDetail[0].quiz_name
       this.quizTotalData(this.quizDetail.slice(1, this.quizItemLength))

@@ -18,11 +18,7 @@ export const notice = {
 
   mutations: {
     NOTICE_LIST: (state, notice1) => state.notice1 = notice1,
-<<<<<<< HEAD
     NOTICE_DETAIL : (state, noticeDetail) => state.noticeDetail = noticeDetail,
-=======
-    NOTICE_DETAIL : (state, noticeDetail) => state.noticeDetail = noticeDetail
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   },
 
   actions: {
@@ -127,10 +123,6 @@ export const notice = {
           alert('해당 글이 수정되었습니다.')
           router.push({ name : 'Notice'})
         })
-<<<<<<< HEAD
     },
-=======
-    }
->>>>>>> ffe7e28 (백 프론트 파일 복사했어유)
   }
 }

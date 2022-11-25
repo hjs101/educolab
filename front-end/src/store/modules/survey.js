@@ -117,7 +117,6 @@ export const survey = {
         })
     },
     updateSurvey({ getters }, credentials) {
-<<<<<<< HEAD
       const {survey} = credentials
       if (credentials.survey_num && survey.title && survey.grade !== null  && survey.class_field  !== null ) {
         credentials.question = getters.surveyData
@@ -138,20 +137,6 @@ export const survey = {
       } else {
         alert('빈 항목을 채워주세요')
       }
-=======
-      credentials.question = getters.surveyData
-      console.log(credentials.question)
-      axios({
-        url: drf.survey.surveyUpdate(),
-        method: 'put',
-        headers: getters.authHeader,
-        data : credentials,
-      })
-        .then(res => {
-          console.log(res)
-          router.push({ name : 'Survey' })
-        })
->>>>>>> e9e9cab (퀴즈 버그 수정)
     },
 
     getSurveyStat({ getters, commit }, surveyPk) {

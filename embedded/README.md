@@ -1,65 +1,5 @@
 # 임베디드 화면 연결 및 테스트
 
-<<<<<<< HEAD
-- **Try_all_v0** : 로그인 화면 + ID/PW 찾기 화면 연결. 모듈로 구성. <br>
-  `main.py`를 실행하여 전체 화면 연결을 테스트하거나, 개별 .py를 실행하여 구성화면을 테스트할 수 있음.<br>
-- **Try_package_v0** : 로그인 화면 + ID/PW 찾기 화면 연결. 패키지로 구성. 미완성<br>
-- **Try_all_v1** : 화면 이동 제한 및 팝업 + 로그인 및 찾기 기능 <br>
-- **Try_all_v1_backup** : 프론트 기능만 업데이트 된 버전<br>
-- **Try_all_v2_backup** : v1 + 프론트(시작화면 로딩, DB 추가, 가상키보드 기능)<br>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 42a2e09 (Feat : 공지사항 상세 내용 추가)
-<br>
-=======
-  <br>
->>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
-- **notice_v0** : 공지사항 목록 및 상세 화면 디자인<br>
-- **Try_all_v3** : v2_backup + 로그인 토큰 저장 기능<br>
-- **Try_all_v3_backup** : v3 + 공지사항 목록 화면 추가<br>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
-=======
-  <br>
-- **notice_v0** : 공지사항 목록 및 상세 화면 디자인<br>
-- **Try_all_v3** : v2_backup + 로그인 토큰 저장 기능<br>
-- **Try_all_v3_backup** : v3 + 공지사항 목록 화면 추가<br>
->>>>>>> d61ea9f (fix: embedded update)
-- **Try_all_v4** : v3_backup + 메인페이지 업데이트 기능 추가 <br>
-- **Try_all_v4_backup** : v4 + 공지사항 상세 페이지 추가<br>
-- **Try_all_v5** : v4_backup + 공지사항 목록 및 상세내용 보기 기능 추가 <br>
-- **Try_all_v5_backup** : v5 + 설문조사 화면 추가<br>
-- **Try_all_v6** : v5_backup + 설문조사 기능 추가<br>
-<<<<<<< HEAD
-<<<<<<< HEAD
-- **Try_all_v6_backup** : v6 + 퀴즈 화면 추가 예정 <br>
-<<<<<<< HEAD
-
-=======
-- **Try_all_v3** : v2_backup + 화면 정리<br>
-- **notice_v0** : 최초 화면 디자인 정의<br>
->>>>>>> 210a2e8 (Feat : 메인화면 추가)
-=======
-- **Try_all_v4** : v3_backup + 기능 추가 개발 중 <br>
-- **Try_all_v4_backup** : v3_backup + 화면 개발 중<br>
-=======
->>>>>>> bb0c570 (Feat : 설문조사 화면 추가)
-
->>>>>>> 42a2e09 (Feat : 공지사항 상세 내용 추가)
-=======
-- **Try_all_v6_backup** : v6 + 퀴즈 화면 추가<br>
-- **Try_all_v7** : v6_backup + 설문조사 상세페이지 추가<br>
->>>>>>> 57d3618 (Refactor : 산출물에 퀴즈 화면 추가)
-=======
-- **Try_all_v6_backup** : v6 + 퀴즈 화면 추가<br>
-- **Try_all_v7** : v6_backup + 설문조사 상세페이지 추가<br>
->>>>>>> d61ea9f (fix: embedded update)
-=======
 -   **Try_all_v0** : 로그인 화면 + ID/PW 찾기 화면 연결. 모듈로 구성. <br>
     `main.py`를 실행하여 전체 화면 연결을 테스트하거나, 개별 .py를 실행하여 구성화면을 테스트할 수 있음.<br>
 -   **Try_package_v0** : 로그인 화면 + ID/PW 찾기 화면 연결. 패키지로 구성. 미완성<br>
@@ -77,19 +17,11 @@
 -   **Try_all_v6** : v5_backup + 설문조사 기능 추가<br>
 -   **Try_all_v6_backup** : v6 + 퀴즈 화면 추가<br>
 -   **Try_all_v7** : v6_backup + 설문조사 상세페이지 추가<br>
-<<<<<<< HEAD
--   **Try_all_v8** : quiz 구현 및 칭호 변경 추가<br>
->>>>>>> 0b1ef5f (fix: 간단 수정)
-=======
 -   **Try_all_v8** : v7 + quiz 구현 및 칭호 변경 + 프로필 사진 추가<br>
     <br>
 
 # 개요
 
-<<<<<<< HEAD
->
->>>>>>> 98c92b8 (fix: nyam)
-=======
 > 본 내용은 educolab embedded 분야의 포팅매뉴얼을 기술한다.  
 > 학생용 스마트기기 서비스의 일종으로 크로스플랫폼 사용자 인터페이스의 오픈소스 파이썬 라이브러리인 kivy를 이용하여 본 서비스를 제작하였다.  
 > Raspberry Pi(이하 RPi)를 기준으로 기술한다.
@@ -184,9 +116,6 @@
     만약 이와 같은 화면이 나온다면 성공한 것이다.<br>
 
     ![RPi_interface](./README_pic/Login_page.png)<br>
-<<<<<<< HEAD
->>>>>>> bc8211d (feat: embedded 포팅매뉴얼 업데이트)
-=======
 
     <br>
 
@@ -238,4 +167,3 @@
 -   ### websocket-client : 1.3.3
 -   ### mysql-connector-python: 8.0.30
 -   ### requests: 2.28.1
->>>>>>> 8c36ecd (embedded README update)
