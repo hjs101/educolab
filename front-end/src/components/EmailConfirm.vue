@@ -36,6 +36,7 @@
       <p>
         제한 시간 {{time.minute}}:{{time.second}}
       </p>
+<<<<<<< HEAD
       <!-- 인증 번호 일치 여부 팝업-->
       <q-dialog v-model="alert">
         <q-card>
@@ -75,6 +76,8 @@
       />
       <!-- 인증 번호 확인 버튼 -->
       <q-btn color="primary" label="인증" class="buttonGroup" @click="alert = true"/>
+=======
+>>>>>>> 8e42007 ( Feat : 이메일 인증 제한 시간 추가)
       <!-- 인증 번호 일치 여부 팝업-->
       <q-dialog v-model="alert">
         <q-card>
@@ -86,8 +89,8 @@
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
 =======
           <q-card-section class="q-pt-none">
-            <span v-if="number.isValidNumber">
-              인증번호가 일치합니다
+            <span v-if="number.isAuthNum && number.isValidNumber">
+              인증되었습니다
             </span>
             <span v-else>
               인증번호가 일치하지 않습니다
@@ -176,16 +179,29 @@ export default {
     const number = reactive({
       authNum: null,
       inputNum: null,
-      isValidNumber: computed(() => number.authNum === number.inputNum)
+      isValidNumber: computed(() => number.authNum === number.inputNum),
+      isAuthNum: computed(() => !!number.authNum)
     }) 
     const email = reactive({
       address: '',
       username: '',
       valid: false,
       showAuth: computed(() => email.valid),
+      fullEmail: computed(() => email.address !== '직접 입력'? email.username+email.address: email.username),
     })
-    let fullEmail = email.address !== '직접 입력'? email.username+email.address: email.username
     let alert = ref(false)
+    let limit = ref(180)
+    const start = () => {
+      limit.value = 180
+      const timer = setInterval(() => {
+        if (limit.value > 0) {
+          limit.value -= 1
+        } else {
+          number.authNum = null
+          clearInterval(timer)
+        }
+      },1000)
+    }
     const isValidEmail = () => {
 <<<<<<< HEAD
       // 백에 신호 보내 인증 번호 받기 -> realNumber 바꿔주기
@@ -221,15 +237,25 @@ export default {
       //   .then(res => realNumber = res.data.)
       //   .catch(err => confirm('이메일이 유효하지 않습니다'))
       email.valid = true
+      start()
     }
+    const time = reactive({
+      minute: computed(() => Math.floor(limit.value/60)),
+      second: computed(() => limit.value%60 >= 10? limit.value%60:'0'+limit.value%60),
+    })
+  
     return {
       emailOptions,
       number,
       email,
-      fullEmail,
       alert,
       isValidEmail,
+<<<<<<< HEAD
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+      time,
+      start,
+>>>>>>> 8e42007 ( Feat : 이메일 인증 제한 시간 추가)
     }
   }
 }

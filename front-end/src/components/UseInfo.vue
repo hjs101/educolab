@@ -52,13 +52,20 @@
     </p>
   </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8e42007 ( Feat : 이메일 인증 제한 시간 추가)
 </template>
 
 <script>
 export default {
   name: 'UseInfo',
 }
+<<<<<<< HEAD
 </script>
 =======
 </template>
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+</script>
+>>>>>>> 8e42007 ( Feat : 이메일 인증 제한 시간 추가)

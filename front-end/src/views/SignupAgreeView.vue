@@ -22,13 +22,20 @@
       <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
         <use-provision />
       </q-scroll-area>
+      <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
+        <use-info />
+      </q-scroll-area>
       <!-- 여기에 체크 박스 -->
       <q-checkbox v-model="isChecked" label="위의 약관에 모두 동의합니다" color="teal" class="col-4 offset-4" />
       <!-- 여기에 버튼 -->
       <br>
     </div>
+<<<<<<< HEAD
     <div class="buttonGroup">
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
+=======
+    <div class="buttonGroup" v-if="isChecked">
+>>>>>>> 8e42007 ( Feat : 이메일 인증 제한 시간 추가)
       <router-link to="/signup/teacher" class="button">
         <q-btn color="teal" label="교사용"/>
       </router-link>
