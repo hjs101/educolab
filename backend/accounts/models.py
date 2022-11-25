@@ -95,6 +95,8 @@ class UserInfo(AbstractUser):
     minus_point = models.IntegerField(default=0)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
 =======
     profil = models.CharField(max_length=45,null=True,blank=True)
@@ -123,6 +125,12 @@ class UserInfo(AbstractUser):
 >>>>>>> 40812b7 (Feat : Mypage 생성)
 =======
 =======
+=======
+    profil = models.ImageField(blank=True, upload_to='accounts/profils')
+>>>>>>> 707b7a2 (Feat : 프로필 사진 변경)
+=======
+    profil = models.ImageField(blank=True, upload_to='accounts/profils' ,default='accounts/profils/test01.jpg')
+>>>>>>> 2b5572c (Feat : 프로필 사진 변경 구현)
     acc_point = models.IntegerField(default=0, null=True)
 >>>>>>> 59ac581 (Feat : Mypage 기능 구현)
     
