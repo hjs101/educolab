@@ -208,15 +208,13 @@ class FindIDView(APIView):
 class FindUsernameView(APIView):
     permission_classes = (AllowAny,)
 
-<<<<<<< HEAD
-    def get(self, request):
-        name = request.GET.get('name')
-        email = request.GET.get('email')
-=======
     def post(self, request):
         name = request.POST.get('name')
         email = request.POST.get('email')
+<<<<<<< HEAD
 >>>>>>> 966ca14 (feat: 회원기능에서 POST 입력방식 변경)
+=======
+>>>>>>> 45cae29 ( Fix : 프론트 merge 전 커밋)
 
         try:
             user = UserInfo.objects.get(name=name,email=email)
