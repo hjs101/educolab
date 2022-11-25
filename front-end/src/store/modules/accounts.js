@@ -266,8 +266,7 @@ export const accounts = {
           })
           
         } else if (state.getters.getUserType == 'teacher') {
-        axios.post(drf.accounts.signup(), JSON.stringify(state.state.teacherInfo),
-        {headers: {'Content-Type' : 'application/json'}})
+        axios.post(drf.accounts.signup(), state.state.teacherInfo)
           .then(() => {
             console.log(state.studentInfo)
             window.alert('회원가입이 완료되었습니다')

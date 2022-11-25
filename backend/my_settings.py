@@ -1,6 +1,7 @@
 DATABASES = {
 'default': {
 <<<<<<< HEAD
+<<<<<<< HEAD
 'ENGINE': 'django.db.backends.mysql',
 'NAME': 'educolab',
 'USER': 'educolab',
@@ -33,7 +34,18 @@ DATABASES = {
     "PORT": '3306',
     }
 >>>>>>> 81686e2 ( Fix : 충돌 수정)
+=======
+'ENGINE': 'django.db.backends.mysql',
+'NAME': 'educolab',
+'USER': 'educolab',
+'PASSWORD': 'educolab',
+"HOST": '13.125.213.119',
+"PORT": '3306',
+>>>>>>> 559df98 ( Feat : 버그 수정)
 }
+}
+
+MY_IMAGE_PATH = '/SSAFY/C102_IOT/S07P12C102/backend/image/'
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -64,6 +76,7 @@ MY_IMAGE_PATH = '/SSAFY/C102_IOT/S07P12C102/backend/image/'
 >>>>>>> 755dda7 (wq)
 EMAIL_HOST_USER = 'educolabtest@gmail.com'
 
+<<<<<<< HEAD
 EMAIL_HOST_PASSWORD = 'osbqrenzvuexioxx'
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -78,3 +91,6 @@ EMAIL_HOST_PASSWORD = 'osbqrenzvuexioxx'
 >>>>>>> 81686e2 ( Fix : 충돌 수정)
 =======
 >>>>>>> 0970789 (Style : back 브랜치 테스트)
+=======
+EMAIL_HOST_PASSWORD = 'osbqrenzvuexioxx'
+>>>>>>> 559df98 ( Feat : 버그 수정)

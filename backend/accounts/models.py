@@ -6,6 +6,7 @@ from django.db import models
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     teacher_id = models.CharField(primary_key=True, max_length=45)
     name = models.CharField(max_length=30)
     birthday = models.IntegerField()
@@ -40,11 +41,14 @@ class StudentInfo(models.Model):
 =======
 >>>>>>> 9e2d7fd (Style : UserInfo DB 등록)
 =======
+=======
+>>>>>>> 559df98 ( Feat : 버그 수정)
 class SchoolInfo(models.Model):
     code = models.CharField(max_length=7,primary_key=True)
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
 
+<<<<<<< HEAD
 >>>>>>> 02ef900 (feat : 회원가입기능 학교모델 추가)
 class UserInfo(AbstractUser):
     username = models.CharField(primary_key=True,max_length=20)
@@ -74,6 +78,10 @@ class UserInfo(AbstractUser):
     profil = models.CharField(max_length=45,null=True,blank=True)
 >>>>>>> 2babd3d (Merge branch 'back' of https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102 into back)
 =======
+=======
+class UserInfo(AbstractUser):
+    username = models.CharField(primary_key=True,max_length=20)
+>>>>>>> 559df98 ( Feat : 버그 수정)
     userflag = models.BooleanField(default=False, blank=True)
     name = models.CharField(max_length=30,default=None,blank=True)
     birthday = models.DateField(default=None,blank=True)
@@ -85,6 +93,7 @@ class UserInfo(AbstractUser):
     homeroom_teacher_flag = models.IntegerField(null=True)
     plus_point = models.IntegerField(default=0)
     minus_point = models.IntegerField(default=0)
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> e82d912 (Repactor : 로그인 기능  simple jwt 변경사항)
 =======
@@ -103,3 +112,6 @@ class UserInfo(AbstractUser):
     plus_point = models.IntegerField(default=0)
     minus_point = models.IntegerField(default=0)
 >>>>>>> 9206ccc (feat : 회원가입 기능 구현(어느정도))
+=======
+    profil = models.CharField(max_length=45,null=True,blank=True)
+>>>>>>> 559df98 ( Feat : 버그 수정)

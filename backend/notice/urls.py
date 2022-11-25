@@ -21,6 +21,7 @@ from . import views
 urlpatterns = [
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('main', views.NoticeMainView.as_view(), name='notice/main'),
 =======
     path('main/', views.NoticeMainView.as_view(), name='notice/main'),
@@ -35,4 +36,8 @@ urlpatterns = [
 =======
     path('update/', views.NoticeUpdateView.as_view(), name='notice_update'),
 >>>>>>> 1e437b7 (Feat : 공지사항 수정기능 구현)
+=======
+    path('main/', views.NoticeMainView.as_view(), name='notice/main'),
+    path('create/', views.NoticeCreateView.as_view(), name='notice/create'),
+>>>>>>> 559df98 ( Feat : 버그 수정)
 ]

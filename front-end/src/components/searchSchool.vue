@@ -2,11 +2,17 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6b54fb (asdu)
   <div>
     <q-input color="teal" label="학교" v-model="school.name" disable/>
     <q-btn label="학교 검색" color="primary" @click="prompt.prompt = true"/>
+=======
+  <div class="row justify-between">
+    <q-input color="teal" label="학교" v-model="school.name" disable class="col-9"/>
+    <q-btn label="학교 검색" color="teal" @click="prompt.prompt = true" class="col-2"/>
+>>>>>>> bf45305 ( Fix : 버그 수정)
     <!-- 학교 검색 팝업 -->
     <q-dialog v-model="prompt.prompt" persistent>
       <q-card style="min-width: 350px">

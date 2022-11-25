@@ -168,6 +168,7 @@ class SchoolInfoView(APIView):
     def get(self, request):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         search = request.GET.get('schoolname')
 =======
         search = request.GET['schoolname']
@@ -175,6 +176,9 @@ class SchoolInfoView(APIView):
 =======
         search = request.GET.get('schoolname')
 >>>>>>> 5e7e020 (feat : get 정보 방식 수정)
+=======
+        search = request.GET.get('schoolname')
+>>>>>>> 8256ee0 (feat : get, post 입력방식 변화)
         school = SchoolInfo.objects.filter(name__contains=search)
         serializer = SchoolInfoSerializer(school,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
@@ -207,7 +211,19 @@ class SendSignupEmailView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self,request):
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         email = request.data.get('email')
+=======
+        email = request.POST.get('email')
+>>>>>>> 8256ee0 (feat : get, post 입력방식 변화)
+=======
+        email = request.POST.get('email')
+>>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+        email = request.data.get('email')
+>>>>>>> 80321b2 (Fix : 버그수정)
         auth_num = email_auth_num()
         send_mail(subject='educolab 회원가입 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
         context = {
@@ -228,8 +244,12 @@ class FindUsernameView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, request):
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         name = request.POST.get('name')
         email = request.POST.get('email')
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 966ca14 (feat: 회원기능에서 POST 입력방식 변경)
 =======
@@ -248,6 +268,20 @@ class FindUsernameView(APIView):
         name = request.data.get('name')
         email = request.data.get('email')
 >>>>>>> 5e7e020 (feat : get 정보 방식 수정)
+=======
+>>>>>>> 8256ee0 (feat : get, post 입력방식 변화)
+=======
+        name = request.data.get('name')
+        email = request.data.get('email')
+>>>>>>> 23fc5b1 (Fix : 충돌 수정)
+=======
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+>>>>>>> 559df98 ( Feat : 버그 수정)
+=======
+        name = request.data.get('name')
+        email = request.data.get('email')
+>>>>>>> 80321b2 (Fix : 버그수정)
 
         try:
             user = UserInfo.objects.get(name=name,email=email)
@@ -272,6 +306,8 @@ class SendPWEmailView(APIView):
 
     def post(self,request):
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         name = request.POST.get('name','')
         email = request.POST.get('email','')
         username = request.POST.get('username','')
@@ -280,6 +316,16 @@ class SendPWEmailView(APIView):
         email = request.data.get('email')
         username = request.data.get('username')
 >>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
+=======
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+>>>>>>> 8256ee0 (feat : get, post 입력방식 변화)
+=======
+        name = request.data.get('name')
+        email = request.data.get('email')
+        username = request.data.get('username')
+>>>>>>> 80321b2 (Fix : 버그수정)
         
         try:
             userinfo = UserInfo.objects.get(name=name,username=username)

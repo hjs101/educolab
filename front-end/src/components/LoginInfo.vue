@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
     <q-input
       color="teal"
       label="아이디"
@@ -15,6 +16,22 @@
 >>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+    <div class="row justify-between">
+      <q-input
+        color="teal"
+        label="아이디"
+        v-model="userData.username"
+        lazy-rules
+        class="col-9"
+        maxlength="20"
+        :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요',
+        val => val.length > 5 ||'아이디는 최소 6자리 이상이어야 합니다'
+        ]"
+      />
+      <q-btn label="중복 확인" color="teal" @click="confirmUsername" class="col-2" />
+    </div>
+>>>>>>> bf45305 ( Fix : 버그 수정)
 
     <q-dialog v-model="userData.confirm">
       <q-card>
@@ -23,10 +40,11 @@
             {{computedData.message}}
           </p>
           <br>
-          <q-btn v-close-popup label="확인" color="primary" class="buttonGroup"/>
+          <q-btn v-close-popup label="확인" color="primary" class="buttonGroup" @click="userData.confirm = false"/>
         </q-card-section>
       </q-card>
     </q-dialog>
+<<<<<<< HEAD
     
     <p v-if="userData.password2 && computedData.validUsername !== 2">
       <span v-if="computedData.validUsername">
@@ -51,14 +69,18 @@
 =======
 >>>>>>> e6b54fb (asdu)
     </p>
+=======
+>>>>>>> bf45305 ( Fix : 버그 수정)
     <q-input
       color="teal"
       label="비밀번호"
       type="password"
       v-model="userData.password1"
+      maxlength="20"
       lazy-rules
       :rules="[
         val => val !== null && val !== '' || '비밀번호를 입력해주세요',
+        val => val.length > 5 ||'비밀번호는 최소 6자리 이상이어야 합니다'
       ]"
     />
     <q-input
@@ -70,6 +92,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       @change="$emit(toSignup)"
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
@@ -77,6 +100,10 @@
 >>>>>>> 2091835 (Feat: merge 전 수정 사항 반영)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+      minlength="5"
+      maxlength="20"
+>>>>>>> bf45305 ( Fix : 버그 수정)
       lazy-rules
       :rules="[
         val => val !== null && val !== '' || '비밀번호를 다시 입력해주세요',
@@ -152,9 +179,11 @@ export default {
 =======
 >>>>>>> e6b54fb (asdu)
       confirm: null,
+      valid: null,
     })
     const computedData = reactive({
       samePassword: computed(() => userData.correct),
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -163,10 +192,14 @@ export default {
 =======
 >>>>>>> e6b54fb (asdu)
       validUsername: computed(() => userData.confirm),
+=======
+      validUsername: computed(() => userData.valid),
+>>>>>>> bf45305 ( Fix : 버그 수정)
       message: computed(() => computedData.validUsername? '사용 가능한 아이디입니다':'중복된 아이디입니다. 다른 아이디를 입력해주세요')
     })
     const confirmUsername = () => {
       // 아이디 중복 여부 확인
+<<<<<<< HEAD
       axios.get(drf.accounts.checkUsername(), {username: userData.username})
         .then((res) => {
           userData.confirm = res.data.dup === 'success'
@@ -221,10 +254,23 @@ export default {
 >>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
 =======
 >>>>>>> e6b54fb (asdu)
+=======
+      if (userData.username.length > 5) {
+        axios.get(drf.accounts.checkUsername(), {username: userData.username})
+          .then((res) => {
+            userData.confirm = true
+            userData.valid = res.data.dup === 'success'
+            if (computedData.validUsername) {
+              store.dispatch('changeData', {username: userData.username})
+            }
+          })
+      }
+>>>>>>> bf45305 ( Fix : 버그 수정)
     }
     const isCorrect = () => {
       if (userData.password1 === userData.password2) {
         userData.correct = true
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -237,6 +283,11 @@ export default {
 =======
         store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
 >>>>>>> e6b54fb (asdu)
+=======
+        if (userData.password1 > 5) {
+          store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
+        }
+>>>>>>> bf45305 ( Fix : 버그 수정)
       } else {
         userData.correct = false
       }

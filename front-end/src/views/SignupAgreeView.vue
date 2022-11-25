@@ -15,7 +15,7 @@
         <use-info />
       </q-scroll-area>
       <!-- 여기에 체크 박스 -->
-      <q-checkbox v-model="isChecked" label="위의 약관에 모두 동의합니다" color="teal" class="col-4 offset-4" />
+      <q-checkbox v-model="isChecked" label="위의 약관에 모두 동의합니다" color="teal" class="col-5 offset-5" />
       <br>
     </div>
       <!-- 여기에 버튼 -->

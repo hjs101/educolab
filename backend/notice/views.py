@@ -1,5 +1,5 @@
-from django import views
-from pkg_resources import resource_isdir
+from urllib import response
+from requests import request
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 <<<<<<< HEAD
@@ -9,6 +9,7 @@ from rest_framework.permissions import IsAuthenticated
 =======
 from rest_framework.permissions import IsAuthenticated
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 73fd2c6 (Feat : 공지사항 기능 진행상황 저장)
 from accounts.serializers import TeacherNameSerializer
 from accounts.models import SchoolInfo,UserInfo
@@ -17,7 +18,16 @@ from .serializers import NoticeMainSerializer, NoticeCreateSerializer
 from accounts.models import SchoolInfo
 from .serializers import NoticeMainSerializer, NoticeSerializer,FileSerializer
 >>>>>>> c5da375 (Feat : 공지사항 상세페이지 파일 표시, 수정기능(진행중))
+=======
+from accounts.serializers import TeacherNameSerializer
+from accounts.models import SchoolInfo,UserInfo
+from .serializers import NoticeMainSerializer, NoticeCreateSerializer
+>>>>>>> 559df98 ( Feat : 버그 수정)
 from .models import Notice, Files
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+from rest_framework.parsers import JSONParser
+from rest_framework.renderers import JSONRenderer
 import os, io
 
 
@@ -58,7 +68,7 @@ class NoticeMainView(APIView) :
         school = SchoolInfo.objects.get(code=schoolCode)
         notices = school.notice_school.all()
         # notices = Notice.objects.select_related('school').filter(school_id=schoolCode)
-        print(notices)
+        
         ## 3. 시리얼라이저 변환
         notice_serializer = NoticeMainSerializer(notices,many=True)
 
@@ -74,6 +84,7 @@ class NoticeMainView(APIView) :
 >>>>>>> 3494f79 (Feat : 공지사항 등록, 목록 기능 구현)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 
@@ -81,27 +92,26 @@ class NoticeMainView(APIView) :
 =======
 =======
 >>>>>>> c5da375 (Feat : 공지사항 상세페이지 파일 표시, 수정기능(진행중))
+=======
+
+>>>>>>> 559df98 ( Feat : 버그 수정)
         return res
 
 class NoticeCreateView(APIView):
     def post(self, req):
         # notice = Notice()
-        notice_serializer = NoticeSerializer(data=req.data)
+        notice_serializer = NoticeCreateSerializer(data=req.data)
         if notice_serializer.is_valid(raise_exception=True):
             notice_serializer.save(teacher=req.user, school=SchoolInfo.objects.get(code=req.data['school']))
 
         files = req.FILES.getlist("files")
-        print(files)
+
         notice = Notice.objects.all().order_by("-pk")
         for file in files:
-            fp = Files.objects.create(notice=notice[0], atch_file=file, atch_file_name=file)
+            fp = Files.objects.create(notice=notice[0], atch_file=file)
             fp.save()
-        res = Response()
-        res.data = {
-            'message' : "success",
-        }
-        return res
 
+<<<<<<< HEAD
 class NoticeDetailView(APIView):
     def get(self, req):
         ## 공지사항 번호 가져오기
@@ -204,3 +214,6 @@ class NoticeUpdateView(APIView):
 =======
         return Response(notice_serializer.data)
 >>>>>>> 1e437b7 (Feat : 공지사항 수정기능 구현)
+=======
+        return Response("success")
+>>>>>>> 559df98 ( Feat : 버그 수정)

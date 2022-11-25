@@ -8,6 +8,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       @submit="submitData"
 =======
       @submit="onSubmit"
@@ -23,8 +24,11 @@
 =======
 >>>>>>> e6b54fb (asdu)
       class="q-gutter row"
+=======
+      class="q-gutter row justify-content-around"
+>>>>>>> bf45305 ( Fix : 버그 수정)
     >
-      <div class="input col-8 offset-2 col-md-2 offset-md-6">
+      <div class="col-6 offset-3 col-md-4 offset-md-4">
       <!-- 여기에 아이디, 비밀번호 입력 창 -->
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -48,6 +52,7 @@
         <!-- 이메일 -->
         <email-confirm />
         <!-- 회원가입 버튼 -->
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         <q-btn color="primary" label="SIGN UP" @submit="submitData"/>
@@ -89,10 +94,22 @@
 =======
         <q-btn color="primary" label="SIGN UP" @click="submitData"/>
 >>>>>>> e6b54fb (asdu)
+=======
+        <q-btn color="primary" label="SIGN UP" class="submitButton" @click="submitData"/>
+>>>>>>> bf45305 ( Fix : 버그 수정)
       </div>
     </q-form>
   </div>
 </template>
+
+<style>
+  .submitButton {
+    margin-top: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
 
 <script>
 <<<<<<< HEAD

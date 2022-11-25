@@ -51,7 +51,12 @@ urlpatterns = [
     path(r'redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     path('accounts/registration/', include('dj_rest_auth.registration.urls')),
+=======
+    path('accounts/registration', include('dj_rest_auth.registration.urls')),
+>>>>>>> 559df98 ( Feat : 버그 수정)
     path('accounts/', include('accounts.urls')), 
     path('admin/', admin.site.urls),
 <<<<<<< HEAD
@@ -66,6 +71,9 @@ urlpatterns = [
 =======
     path('accounts/registration/', include('dj_rest_auth.registration.urls')),
 >>>>>>> 77bd03f (feat : get에서  정보 받는 방식 변경)
+=======
+    path('accounts/registration/', include('dj_rest_auth.registration.urls')),
+>>>>>>> 69838d6 (Fix : 오류 수정)
     path('accounts/', include('accounts.urls')), 
     path('admin/', admin.site.urls),
     path('notice/', include('notice.urls')),
