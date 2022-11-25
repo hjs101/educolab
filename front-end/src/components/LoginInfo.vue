@@ -49,9 +49,12 @@
       v-model="userData.password2"
       @keyup="isCorrect"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       @change="$emit(toSignup)"
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+>>>>>>> 2091835 (Feat: merge 전 수정 사항 반영)
       lazy-rules
       :rules="[
         val => val !== null && val !== '' || '비밀번호를 다시 입력해주세요',
@@ -83,8 +86,12 @@ export default {
 // import axios from 'axios';
 export default {
   name: 'LoginInfo',
+<<<<<<< HEAD
   setup (props, {emit}) {
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+  setup () {
+>>>>>>> 2091835 (Feat: merge 전 수정 사항 반영)
     const userData = reactive({
       username: null,
       password1: null,
@@ -137,15 +144,19 @@ export default {
       }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     const toSignup = () => {
       emit('to-signup', userData)
     }
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+>>>>>>> 2091835 (Feat: merge 전 수정 사항 반영)
     return {
       userData,
       computedData,
       confirmUsername,
+<<<<<<< HEAD
 <<<<<<< HEAD
       isCorrect
     }
@@ -153,6 +164,9 @@ export default {
 =======
       isCorrect,
       toSignup
+=======
+      isCorrect
+>>>>>>> 2091835 (Feat: merge 전 수정 사항 반영)
     }
   },
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))

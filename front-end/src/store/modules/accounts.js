@@ -5,7 +5,11 @@ import axios from "axios"
 =======
 // import router from '@/router'
 // import axios from 'axios'
+<<<<<<< HEAD
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+// import drf from '@/api/drf/js'
+>>>>>>> 2091835 (Feat: merge 전 수정 사항 반영)
 
 export const accounts = {
   state() {
