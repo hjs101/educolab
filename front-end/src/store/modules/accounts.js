@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import drf from "@/api/drf"
 import router from "@/router"
 import axios from "axios"
@@ -11,9 +12,11 @@ import axios from "axios"
 // import drf from '@/api/drf/js'
 >>>>>>> 2091835 (Feat: merge 전 수정 사항 반영)
 
+=======
+>>>>>>> c64b335 (유저정보  테스트)
 import drf from "@/api/drf"
 import router from "@/router"
-import Axios from "axios"
+import axios from "axios"
 
 export const accounts = {
 <<<<<<< HEAD
@@ -140,6 +143,7 @@ export const accounts = {
     login({ commit, dispatch }, credentials) {
       // 로그인 함수 구현
       axios({
+<<<<<<< HEAD
 =======
     saveToken({commit}, token) {
       commit('SET_TOKEN', token)
@@ -158,6 +162,8 @@ export const accounts = {
       // 로그인 함수 구현
       Axios({
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+>>>>>>> c64b335 (유저정보  테스트)
         url: drf.accounts.login(),
         method: 'post',
         data: credentials
@@ -221,8 +227,9 @@ export const accounts = {
           console.log(res)
           const access = res.data.access
           dispatch('saveToken', access)
+          commit('SET_CURRENT_USER', res.data) 
           router.push({ name: 'nav'})
-        })
+        })         
         .catch(err => {
           console.error(err.response.data)
           commit('SET_AUTH_ERROR', err.response.data)
