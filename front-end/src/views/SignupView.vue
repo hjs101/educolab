@@ -111,6 +111,9 @@ export default {
   components: {
     LoginInfo,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 02d99cb ( Fix : 통신 확인)
     SearchSchool,
     EmailConfirm,
     TeacherOrStudent,
