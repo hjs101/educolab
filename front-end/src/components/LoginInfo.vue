@@ -97,8 +97,12 @@ import {accounts} from '@/api/drf.js'
 =======
 import axios from 'axios'
 import drf from '@/api/drf.js'
+<<<<<<< HEAD
 import {useStore} from 'store'
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
+=======
+import {useStore} from 'vuex'
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
 export default {
   name: 'LoginInfo',
   setup () {
@@ -174,7 +178,7 @@ export default {
         .then((res) => {
           userData.confirm = res.data.dup
           if (computedData.validUsername) {
-            store.commit('changeData', {username: userData.username})
+            store.dispatch('changeData', {username: userData.username})
           }
         })
 >>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
@@ -183,13 +187,18 @@ export default {
       if (userData.password1 === userData.password2) {
         userData.correct = true
 <<<<<<< HEAD
+<<<<<<< HEAD
         store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
 =======
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+        store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
       } else {
         userData.correct = false
       }
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -203,6 +212,8 @@ export default {
 =======
     const 
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
+=======
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
     return {
       userData,
       computedData,

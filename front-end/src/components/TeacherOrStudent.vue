@@ -3,6 +3,9 @@
     <!-- 과목 (교사) -->
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
     <q-select v-if="userType === 'teacher'"
       color="teal"
       v-model="subject"
@@ -10,6 +13,7 @@
       :options="subjectOptions"
       :value="subject.value"
     />
+<<<<<<< HEAD
     <!-- 학년/반 (학생) -->
     <div v-else>
       <q-select
@@ -34,16 +38,25 @@
 =======
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
     <q-select v-if="userType === 'teacher'" v-model="userData.subject" :options="subjectOptions" label="과목" />
+=======
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
     <!-- 학년/반 (학생) -->
     <div v-else>
-      <q-select v-model="userData.grade" :options="[1,2,3]" label="학년" />
+      <q-select
+        color="teal"
+        v-model="grade"
+        :options="[1,2,3]"
+        label="학년"
+        :value="grade"
+      />
       <q-input
-        v-model="userData.classField"
+        v-model="classField"
         color="teal"
         label="반"
         type="number"
         :dense="false"
         min="1"
+        @change="sendData({class_field:classField.value})"
         lazy-rules
 <<<<<<< HEAD
         :rules="[ val => val && val.length > 0 || '반을 입력해주세요']"
@@ -70,18 +83,25 @@
 
 <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {ref} from '@vue/reactivity'
 import {useStore} from 'vuex'
 import {watch} from 'vue'
 =======
 import {reactive} from '@vue/reactivity'
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+import {ref} from '@vue/reactivity'
+import {useStore} from 'vuex'
+import {watch} from 'vue'
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
 export default {
   name: 'TeacherOrStudent',
   props: {
     userType: String,
   },
   setup() {
+<<<<<<< HEAD
 <<<<<<< HEAD
     const store = useStore()
     const subjectOptions = [
@@ -106,18 +126,35 @@ export default {
       grade,
       classField
 =======
+=======
+    const store = useStore()
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
     const subjectOptions = [
     '국어', '수학', '사회', '과학', '보건', '기술가정', '기타'
     ]
-    const userData = reactive({
-      subject: null,
-      grade: null,
-      classField: null,
+    let subject = ref('')
+    let grade = ref('')
+    let classField = ref('')
+    watch(subject, () => {
+      sendData({subject:subject.value})
     })
+    watch(grade, () => {
+      sendData({grade:grade.value})
+    })
+    const sendData = (data) => {
+      store.dispatch('changeData', data)
+    }
     return {
       subjectOptions,
+<<<<<<< HEAD
       userData
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+      sendData,
+      subject,
+      grade,
+      classField
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
     }
   }
 }

@@ -23,6 +23,7 @@
         <search-school />
         <!-- 이름 & 전화번호 -->
         <user-name />
+<<<<<<< HEAD
         <user-phone-number />
         <!-- 생년월일-->
         <user-birthday :userType="userType" />
@@ -48,6 +49,8 @@
         <!-- 학교 검색 버튼 -->
         <search-school />
         <!-- 이름 & 전화번호 -->
+=======
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
         <user-phone-number />
         <!-- 생년월일-->
         <user-birthday :userType="userType" />
@@ -56,8 +59,12 @@
         <!-- 이메일 -->
         <email-confirm />
         <!-- 회원가입 버튼 -->
+<<<<<<< HEAD
         <q-btn color="primary" label="SIGN UP" @submit="signup"/>
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+        <q-btn color="primary" label="SIGN UP" @submit="submitData"/>
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
       </div>
     </q-form>
   </div>
@@ -129,39 +136,35 @@ export default {
     TeacherOrStudent,
     UserBirthday,
     UserPhoneNumber,
+    UserName,
   },
   setup () {
     // 교사와 학생 필수 정보만 보내기 (선택 정보는 X)
     const store = useStore()
     const router = useRoute()
     const userType = router.params.userType
-    // const moveTo404 = (() => {
-    //   if (userType !=='student' && userType !== 'teacher') {
-    //     router.push({name: 'notFound'})
-    //   }
-    // })
-    // onMounted(() => {
-    //   moveTo404()
-    // })
-    // 비밀번호1, 2 같이 보내기
-    const signup = () => {
-      console.log(store)
-      // userInfo 보내기
-      // console.log(this.userData)
+    const submitData = () => {
+      store.dispatch('signup')
     }
+    onMounted(() => {
+      store.dispatch('setUserType', userType)
+    })
     return {
       userType,
-      signup,
       router,
+      submitData
     }
 <<<<<<< HEAD
   }
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
 =======
   },
+<<<<<<< HEAD
   // created () {
   //   this.mdiCalendarCursorOutline = mdiCalendarCursorOutline
   // }
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
 }
 </script>

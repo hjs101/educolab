@@ -47,6 +47,7 @@
           <q-card-section class="q-pt-none">
             <span v-if="number.isAuthNum && number.isValidNumber">
               인증되었습니다
+              {{sendData({email:email.fullEmail})}}
             </span>
             <span v-else>
               인증번호가 일치하지 않습니다
@@ -119,6 +120,7 @@ export default {
   name: 'EmailConfirm',
   setup () {
     const store = useStore()
+<<<<<<< HEAD
     const emailOptions = [
       '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력'
     ]
@@ -182,6 +184,8 @@ import drf from '@/api/drf.js'
 export default {
   name: 'EmailConfirm',
   setup () {
+=======
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
     const emailOptions = [
       '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력'
     ]
@@ -262,7 +266,9 @@ export default {
       minute: computed(() => Math.floor(limit.value/60)),
       second: computed(() => limit.value%60 >= 10? limit.value%60:'0'+limit.value%60),
     })
-  
+    const sendData = (data) => {
+      store.dispatch('changeData', data)
+    }
     return {
       emailOptions,
       number,
@@ -274,7 +280,11 @@ export default {
 =======
       time,
       start,
+<<<<<<< HEAD
 >>>>>>> 8e42007 ( Feat : 이메일 인증 제한 시간 추가)
+=======
+      sendData
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
     }
   }
 }

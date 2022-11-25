@@ -7,6 +7,7 @@ import axios from "axios"
 // import router from '@/router'
 // import axios from 'axios'
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
 // import drf from '@/api/drf/js'
@@ -16,6 +17,10 @@ import axios from "axios"
 >>>>>>> c64b335 (유저정보  테스트)
 import drf from "@/api/drf"
 import router from "@/router"
+=======
+
+import drf from '@/api/drf.js'
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
 import axios from "axios"
 
 export const accounts = {
@@ -42,7 +47,7 @@ export const accounts = {
 =======
         classField: null,
         phoneNumber: null,
-        birthday: null,
+        birthday: '2008-01-01',
         email: null,
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
       },
@@ -82,7 +87,7 @@ export const accounts = {
     CHANGE_DATA(state,data) {
 =======
         phoneNumber: null,
-        birthday: null,
+        birthday: '1972-01-01',
         email: null,
       },
       userType: null,
@@ -106,8 +111,9 @@ export const accounts = {
     authError: state => state.authError,
     authHeader: state => ({ Authorization: `Token ${state.access}` }),
     getUserType: state => state.userType,
-    getStudentInfo: state => state.studentInfo,
-    getTeacherInfo: state => state.teacherInfo,
+    // getStudentInfo: state => state.studentInfo,
+    // getTeacherInfo: state => state.teacherInfo,
+    getSubject: state => state.teacherInfo.subject,
   },
   mutations: {
 <<<<<<< HEAD
@@ -118,7 +124,11 @@ export const accounts = {
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
     CHANGE_DATA(state, data) {
+<<<<<<< HEAD
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
+=======
+      console.log(state.userType)
+>>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
       if (state.userType === 'student') {
         for (let key in data) {
           state.studentInfo[key] = data[key]
@@ -246,8 +256,27 @@ export const accounts = {
 =======
 >>>>>>> 77a4159 (로그아웃 구현)
     },
-    signup() {
-
+    signup(state) {
+      if (state.userType == 'student') {
+        axios.post(drf.accounts.signup(), state.studentInfo)
+          .then(() => {
+            confirm('회원가입이 완료되었습니다')
+            // 자동으로 이동
+          })
+          .catch(() => {
+            confirm('필수 항목이 빠져 있거나, 올바르지 않습니다')
+          })
+          
+        } else if (state.userType == 'teacher') {
+        axios.post(drf.accounts.signup(), state.teacherInfo)
+          .then(() => {
+            confirm('회원가입이 완료되었습니다')
+            // 자동으로 이동
+          })
+          .catch(() => {
+            confirm('필수 항목이 빠져 있거나, 올바르지 않습니다')
+          })
+      }
     },
 <<<<<<< HEAD
     logout() {
@@ -282,6 +311,7 @@ export const accounts = {
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
     changeData({commit}, data) {
+      console.log(data)
       commit('CHANGE_DATA', data)
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
     },

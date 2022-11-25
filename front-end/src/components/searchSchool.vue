@@ -116,11 +116,11 @@ export default {
             <div v-if="prompt.searchResults">
               <!-- v-for -->
               <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
-                <q-card class="my-card" v-for="schoolInfo in school.list" :key="schoolInfo.schoolCode">
-                  <q-card-section @click="selectSchool(schoolInfo.schoolname, schoolInfo.schoolCode)">
-                    <b>{{schoolInfo.schoolname}}</b>
+                <q-card v-for="schoolInfo in school.list" :key="schoolInfo.code">
+                  <q-card-section :class="{active: prompt.selected === schoolInfo.code}" @click="selectSchool(schoolInfo.name,schoolInfo.code)">
+                    <b>{{schoolInfo.name}}</b>
                     <br>
-                    <span>{{schoolInfo.schoolAddress}}</span>
+                    <span>{{schoolInfo.address}}</span>
                   </q-card-section>
                 </q-card>
               </q-scroll-area>
@@ -138,6 +138,13 @@ export default {
   </div>
 </template>
 
+<style>
+  .active {
+    color: blue;
+    font-weight: bold;
+  }
+</style>
+
 <script>
 import {reactive} from '@vue/reactivity'
 import {computed} from 'vue'
@@ -151,18 +158,33 @@ export default {
     const prompt = reactive({
       prompt: false,
       search: false,
-      searchResults: computed(() => prompt.search)
+      selected: null,
+      searchResults: computed(() => prompt.search),
+      // isSelected: computed(() => prompt.selected === code)
     })
     const school = reactive({
-      code: null,
       name: null,
+      code: null,
       selectedName: null,
-      selectedCode: null,
-      list: [],
+      list: [{
+        code: 123,
+        name: '아아아',
+        address: '어쩌고',
+      },
+      {
+        code: 124,
+        name: '아아아',
+        address: '어쩌고',
+      },
+      {
+        code: 125,
+        name: '아아아',
+        address: '어쩌고',
+      }],
     })
     const findSchool = (event) => {
       prompt.search = true
-      axios.get(drf.accounts.schoolInfo(), {schoolname:event.target.value})
+      axios.get(drf.accounts.schoolInfo(), {school:event.target.value})
         .then((res) => school.list = res.data)
         .catch((err) => console.log(err))
       // 백에 입력 값 보내기
@@ -171,13 +193,13 @@ export default {
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
 =======
     const selectSchool = (name, code) => {
+      prompt.selected = code
       school.selectedName = name
-      school.selectedCode = code
+      school.code = code
     }
     const applySchool = () => {
       school.name = school.selectedName
-      school.code = school.selectedCode
-      store.commit('changeStudentDate', {school:school.code})
+      store.dispatch('changeData', {school:school.code})
     }
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
     return {
