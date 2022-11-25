@@ -7,6 +7,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
 <<<<<<< HEAD
+<<<<<<< HEAD
   // 회원 관리
   {
     path: '/',
@@ -39,10 +40,14 @@ const routes = [
     name: 'agree',
     component: () => import ('@/views/SignupAgreeView')
 =======
+=======
+
+>>>>>>> 5d02b22 (네브바, 컴포넌트 구성)
   // 공지사항
   {
     path: '/notice',
     name: 'notice',
+<<<<<<< HEAD
     component: () => import('@/views/NoticeView')
 >>>>>>> e66f000 (navbar 생성)
   },
@@ -66,6 +71,15 @@ const routes = [
   {
     path: '/notice/create',
     name: 'NoticeForm',
+=======
+    component: () => import('@/views/NoticeView'),
+  },
+  
+  // 공지사항 작성
+  {
+    path: '/notice/create',
+    name: 'noticeForm',
+>>>>>>> 5d02b22 (네브바, 컴포넌트 구성)
     component: () => import('@/views/NoticeFormView')
   },
 
