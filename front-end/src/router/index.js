@@ -111,15 +111,15 @@ const routes = [
     component: () => import('@/views/StudentPageView')
 =======
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/login',
+    name: 'login',
+    component: () => import ('@/views/LoginView')
   },
   {
+<<<<<<< HEAD
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -128,6 +128,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
 >>>>>>> 1f63946 (vue 환경셋팅)
   }
+=======
+    path: '/signup',
+    name: 'agree',
+    component: () => import ('@/views/SignupAgreeView')
+  },
+
+>>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
 ]
 
 const router = createRouter({
