@@ -42,6 +42,7 @@ export const accounts = {
         school: null, // code
         grade: null,
 <<<<<<< HEAD
+<<<<<<< HEAD
         class_field: null,
         phone_number: null,
         birthday: '2008-01-01',
@@ -53,6 +54,13 @@ export const accounts = {
         birthday: '2008-01-01',
         email: null,
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+        class_field: null,
+        phone_number: null,
+        birthday: '2008-01-01',
+        email: null,
+        user_flag : false,
+>>>>>>> 6e582c6 (develop 브랜치 푸시)
       },
       teacherInfo: {
         username: null,
@@ -62,6 +70,9 @@ export const accounts = {
         school: null, // code
         subject: null,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6e582c6 (develop 브랜치 푸시)
         phone_number: null,
         birthday: '1972-01-01',
         email: null,

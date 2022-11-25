@@ -70,7 +70,25 @@ export default {
       name: null,
       code: null,
       selectedName: null,
+<<<<<<< HEAD
       list: [],
+=======
+      list: [{
+      //   code: 123,
+      //   name: '아아아',
+      //   address: '어쩌고',
+      // },
+      // {
+      //   code: 124,
+      //   name: '아아아',
+      //   address: '어쩌고',
+      // },
+      // {
+      //   code: 125,
+      //   name: '아아아',
+      //   address: '어쩌고',
+      }],
+>>>>>>> 6e582c6 (develop 브랜치 푸시)
     })
     const findSchool = (event) => {
       prompt.search = true

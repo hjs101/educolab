@@ -24,6 +24,7 @@ export default {
     signup: () => ACCOUNTS + 'signup/',
     schoolInfo: () => ACCOUNTS + 'schoolinfo/',
     checkUsername: () => ACCOUNTS + 'checkusername/',
+<<<<<<< HEAD
     sendEmail: () => ACCOUNTS + 'sendemail',
 >>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
 =======
@@ -32,6 +33,9 @@ export default {
     checkUsername: () => ACCOUNTS + 'check_username/',
     sendEmail: () => ACCOUNTS + 'send_signup_email/',
 >>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
+=======
+    sendEmail: () => ACCOUNTS + 'sendemail/',
+>>>>>>> 6e582c6 (develop 브랜치 푸시)
   },
   notice: {
     noticeList: () => NOTICE
