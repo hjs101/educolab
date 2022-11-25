@@ -28,9 +28,12 @@ export const accounts = {
   state() {
     return {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       // token: localStorage.getItem('token') || '',
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+>>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
       studentInfo: {
         username: null,
         password1: null,
@@ -200,6 +203,7 @@ export const accounts = {
         axios.post(drf.accounts.signup(), state.studentInfo)
           .then(() => {
             console.log(state.teacherInfo)
+<<<<<<< HEAD
             confirm('회원가입이 완료되었습니다')
             // 자동으로 이동
           })
@@ -260,6 +264,8 @@ export const accounts = {
       if (state.userType == 'student') {
         axios.post(drf.accounts.signup(), state.studentInfo)
           .then(() => {
+=======
+>>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
             confirm('회원가입이 완료되었습니다')
             // 자동으로 이동
           })
@@ -270,6 +276,7 @@ export const accounts = {
         } else if (state.userType == 'teacher') {
         axios.post(drf.accounts.signup(), state.teacherInfo)
           .then(() => {
+            console.log(state.studentInfo)
             confirm('회원가입이 완료되었습니다')
             // 자동으로 이동
           })
@@ -284,7 +291,6 @@ export const accounts = {
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
     logout({dispatch}) {
-      console.log('여기는 옴?')
         dispatch('removeToken')
         router.push({ name : 'login' })
       .catch(err => {

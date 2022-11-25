@@ -9,6 +9,7 @@
       <q-card style="min-width: 350px">
         <q-card-section>
           <div class="text-h6 center">학교 검색</div>
+<<<<<<< HEAD
         </q-card-section>
 
         <q-card-section class="q-pt-none">
@@ -105,6 +106,8 @@ export default {
       <q-card style="min-width: 350px">
         <q-card-section>
           <div class="text-h6">학교 검색</div>
+=======
+>>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
         </q-card-section>
 
         <q-card-section class="q-pt-none">
@@ -128,9 +131,8 @@ export default {
             </div>
         </q-card-section>
 
-        <q-card-actions align="right" class="text-primary">
+        <q-card-actions align="right" class="text-primary" v-if="prompt.search">
           <q-btn flat label="취소" @click="school.name = null" v-close-popup />
-          <!-- 추가할 때는 emit 해주기 -->
           <q-btn label="추가" @click="applySchool" v-close-popup />
         </q-card-actions>
       </q-card>
@@ -166,21 +168,7 @@ export default {
       name: null,
       code: null,
       selectedName: null,
-      list: [{
-        code: 123,
-        name: '아아아',
-        address: '어쩌고',
-      },
-      {
-        code: 124,
-        name: '아아아',
-        address: '어쩌고',
-      },
-      {
-        code: 125,
-        name: '아아아',
-        address: '어쩌고',
-      }],
+      list: [],
     })
     const findSchool = (event) => {
       prompt.search = true

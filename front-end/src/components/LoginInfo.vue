@@ -9,6 +9,9 @@
     />
     <q-btn label="중복 확인" color="primary" @click="confirmUsername" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
 
     <q-dialog v-model="userData.confirm">
       <q-card>
@@ -132,6 +135,9 @@ export default {
     const computedData = reactive({
       samePassword: computed(() => userData.correct),
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
       validUsername: computed(() => userData.confirm),
       message: computed(() => computedData.validUsername? '사용 가능한 아이디입니다':'중복된 아이디입니다. 다른 아이디를 입력해주세요')
     })
@@ -140,6 +146,7 @@ export default {
       axios.get(drf.accounts.checkUsername(), {username: userData.username})
         .then((res) => {
           userData.confirm = res.data.dup === 'success'
+<<<<<<< HEAD
           if (computedData.validUsername) {
             store.dispatch('changeData', {username: userData.username})
           }
@@ -177,6 +184,8 @@ export default {
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
         .then((res) => {
           userData.confirm = res.data.dup
+=======
+>>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
           if (computedData.validUsername) {
             store.dispatch('changeData', {username: userData.username})
           }

@@ -9,6 +9,7 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     signup: () => ACCOUNTS + 'registration/',
     schoolInfo: () => ACCOUNTS + 'schoolinfo/',
     checkUsername: () => ACCOUNTS + 'check_username/',
@@ -25,6 +26,12 @@ export default {
     checkUsername: () => ACCOUNTS + 'checkusername/',
     sendEmail: () => ACCOUNTS + 'sendemail',
 >>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
+=======
+    signup: () => ACCOUNTS + 'registration/',
+    schoolInfo: () => ACCOUNTS + 'schoolinfo/',
+    checkUsername: () => ACCOUNTS + 'check_username/',
+    sendEmail: () => ACCOUNTS + 'send_signup_email/',
+>>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
   },
   notice: {
     noticeList: () => NOTICE

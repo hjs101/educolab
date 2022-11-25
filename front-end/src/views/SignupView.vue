@@ -5,6 +5,7 @@
     <q-form
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       @submit="submitData"
 =======
       @submit="onSubmit"
@@ -12,6 +13,9 @@
 =======
       @submit="signup"
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+      @submit="submitData"
+>>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
       class="q-gutter row"
     >
       <div class="input col-8 offset-2 col-md-2 offset-md-6">
@@ -139,7 +143,6 @@ export default {
     UserName,
   },
   setup () {
-    // 교사와 학생 필수 정보만 보내기 (선택 정보는 X)
     const store = useStore()
     const router = useRoute()
     const userType = router.params.userType

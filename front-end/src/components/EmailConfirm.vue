@@ -47,7 +47,6 @@
           <q-card-section class="q-pt-none">
             <span v-if="number.isAuthNum && number.isValidNumber">
               인증되었습니다
-              {{sendData({email:email.fullEmail})}}
             </span>
             <span v-else>
               인증번호가 일치하지 않습니다
@@ -56,6 +55,7 @@
 
           <q-card-actions align="right">
             <q-btn flat label="확인" color="primary" v-close-popup @click="sendData({email:email.fullEmail})"/>
+<<<<<<< HEAD
           </q-card-actions>
         </q-card>
       </q-dialog>
@@ -100,6 +100,8 @@
 
           <q-card-actions align="right">
             <q-btn flat label="OK" color="primary" v-close-popup />
+=======
+>>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
           </q-card-actions>
         </q-card>
       </q-dialog>
@@ -155,6 +157,7 @@ export default {
         .then(res => {
           number.authNum = res.data['auth_num']
         })
+<<<<<<< HEAD
       email.valid = true
       start()
     }
@@ -259,6 +262,8 @@ export default {
       axios.post(drf.accounts.sendEmail(), email.fullEmail)
         .then(res => number.authNumber = res.data['auth_num'])
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
+=======
+>>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
       email.valid = true
       start()
     }
@@ -267,7 +272,9 @@ export default {
       second: computed(() => limit.value%60 >= 10? limit.value%60:'0'+limit.value%60),
     })
     const sendData = (data) => {
-      store.dispatch('changeData', data)
+      if (number.isValidNumber) {
+        store.dispatch('changeData', data)
+      }
     }
     return {
       emailOptions,
