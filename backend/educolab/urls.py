@@ -50,6 +50,7 @@ urlpatterns = [
     path(r'swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path(r'redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('accounts/registration/', include('dj_rest_auth.registration.urls')),
     path('accounts/', include('accounts.urls')), 
     path('admin/', admin.site.urls),
@@ -62,6 +63,9 @@ urlpatterns = [
 >>>>>>> 9b06d95 (feat : 회원가입기능 수정중 - 홍찬기)
 =======
     path('accounts/registration', include('dj_rest_auth.registration.urls')),
+=======
+    path('accounts/registration/', include('dj_rest_auth.registration.urls')),
+>>>>>>> 77bd03f (feat : get에서  정보 받는 방식 변경)
     path('accounts/', include('accounts.urls')), 
     path('admin/', admin.site.urls),
     path('notice/', include('notice.urls')),
