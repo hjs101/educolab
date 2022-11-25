@@ -1,6 +1,7 @@
 <template>
   <div>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <p>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -19,6 +20,11 @@
         개인 정보 이용 약관
       </h6>
 >>>>>>> 4628d97 ( Style : 디자인 수정)
+=======
+      <h6>
+        개인 정보 이용 약관
+      </h6>
+>>>>>>> e6b54fb (asdu)
       1. 개인 정보 수집 항목
       <br>
       <p>
@@ -71,14 +77,18 @@
   </div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 8e42007 ( Feat : 이메일 인증 제한 시간 추가)
+=======
+>>>>>>> e6b54fb (asdu)
 </template>
 
 <script>
 export default {
   name: 'UseInfo',
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 </script>
 =======
@@ -87,3 +97,6 @@ export default {
 =======
 </script>
 >>>>>>> 8e42007 ( Feat : 이메일 인증 제한 시간 추가)
+=======
+</script>
+>>>>>>> e6b54fb (asdu)

@@ -7,6 +7,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       @submit="submitData"
 =======
       @submit="onSubmit"
@@ -19,18 +20,26 @@
 >>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
 =======
 >>>>>>> f57c6b5 ( Fix : get 방식으로 요청)
+=======
+>>>>>>> e6b54fb (asdu)
       class="q-gutter row"
     >
       <div class="input col-8 offset-2 col-md-2 offset-md-6">
       <!-- 여기에 아이디, 비밀번호 입력 창 -->
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
         <login-info/>
         <!-- 학교 검색 버튼 -->
         <search-school />
         <!-- 이름 & 전화번호 -->
         <user-name />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
         <user-phone-number />
         <!-- 생년월일-->
         <user-birthday :userType="userType" />
@@ -39,6 +48,7 @@
         <!-- 이메일 -->
         <email-confirm />
         <!-- 회원가입 버튼 -->
+<<<<<<< HEAD
 <<<<<<< HEAD
         <q-btn color="primary" label="SIGN UP" @submit="submitData"/>
 =======
@@ -76,6 +86,9 @@
 =======
         <q-btn color="primary" label="SIGN UP" @click="submitData"/>
 >>>>>>> f57c6b5 ( Fix : get 방식으로 요청)
+=======
+        <q-btn color="primary" label="SIGN UP" @click="submitData"/>
+>>>>>>> e6b54fb (asdu)
       </div>
     </q-form>
   </div>
@@ -84,6 +97,9 @@
 <script>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
 import {useRoute} from 'vue-router'
 import {useStore} from 'vuex'
 import {onMounted} from 'vue'
@@ -96,6 +112,7 @@ import UserPhoneNumber from '@/components/UserPhoneNumber.vue'
 import UserName from '@/components/UserName.vue'
 
 // import { onMounted } from '@vue/runtime-core'
+<<<<<<< HEAD
 =======
 import {reactive} from '@vue/reactivity'
 =======
@@ -113,14 +130,19 @@ import UserBirthday from '@/components/UserBirthday.vue'
 import UserPhoneNumber from '@/components/UserPhoneNumber.vue'
 // import { onMounted } from '@vue/runtime-core'
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+>>>>>>> e6b54fb (asdu)
 export default {
   name: "SignupView",
   components: {
     LoginInfo,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 02d99cb ( Fix : 통신 확인)
+=======
+>>>>>>> e6b54fb (asdu)
     SearchSchool,
     EmailConfirm,
     TeacherOrStudent,
@@ -144,6 +166,7 @@ export default {
       submitData
     }
   },
+<<<<<<< HEAD
 =======
     searchSchool,
     EmailConfirm,
@@ -179,5 +202,7 @@ export default {
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
+=======
+>>>>>>> e6b54fb (asdu)
 }
 </script>

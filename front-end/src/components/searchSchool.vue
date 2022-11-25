@@ -1,6 +1,9 @@
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
   <div>
     <q-input color="teal" label="학교" v-model="school.name" disable/>
     <q-btn label="학교 검색" color="primary" @click="prompt.prompt = true"/>
@@ -9,6 +12,7 @@
       <q-card style="min-width: 350px">
         <q-card-section>
           <div class="text-h6 center">학교 검색</div>
+<<<<<<< HEAD
 <<<<<<< HEAD
         </q-card-section>
 
@@ -126,6 +130,8 @@ export default {
           <div class="text-h6">학교 검색</div>
 =======
 >>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
+=======
+>>>>>>> e6b54fb (asdu)
         </q-card-section>
 
         <q-card-section class="q-pt-none">
@@ -198,11 +204,15 @@ export default {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
 =======
 =======
 
 >>>>>>> 9d52baa ( Fix : 버그 수정 중)
+=======
+
+>>>>>>> e6b54fb (asdu)
     const selectSchool = (name, code) => {
       prompt.selected = code
       school.selectedName = name
@@ -213,14 +223,19 @@ export default {
       store.dispatch('changeData', {school:school.code})
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
 
 >>>>>>> 9d52baa ( Fix : 버그 수정 중)
+=======
+
+>>>>>>> e6b54fb (asdu)
     return {
       prompt,
       school,
       findSchool,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       selectSchool,
@@ -238,6 +253,10 @@ export default {
 =======
       applySchool
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
+=======
+      selectSchool,
+      applySchool
+>>>>>>> e6b54fb (asdu)
     }
   },
 }

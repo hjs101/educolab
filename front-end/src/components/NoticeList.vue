@@ -3,8 +3,11 @@
     <h1>공지사항 리스트</h1>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> b22ae6e (공지사항 메인 페이지)
+=======
+>>>>>>> e6b54fb (asdu)
     <table>
       <thead>
         <tr>
@@ -13,10 +16,13 @@
       </thead>
     </table>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 5e670de (front branch에 merge)
 =======
 >>>>>>> b22ae6e (공지사항 메인 페이지)
+=======
+>>>>>>> e6b54fb (asdu)
   </div>
 </template>
 

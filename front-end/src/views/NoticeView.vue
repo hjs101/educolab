@@ -1,11 +1,15 @@
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div>
 <<<<<<< HEAD
 =======
   <div>
 >>>>>>> 3d37e1b (공지사항 검색기능 구현)
+=======
+  <div>
+>>>>>>> e6b54fb (asdu)
     <h2>공지사항 메인 페이지(교사)</h2>
     <input type="search" name="" id="" v-model="searchTitle">
     <button for="searchTitle" @click="searchNotice">검색</button>
@@ -16,6 +20,9 @@
       <td>{{ search.user_id }}</td> 
     </tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
     
     <router-link to="/notice/create"><button>글쓰기</button></router-link>
 
@@ -74,6 +81,7 @@ export default {
 	.tbList th, .tbList td{border-bottom:1px solid #eee; padding:5px 0;}
 	.tbList td.txt_left{text-align:left;}
   .btn{margin-bottom:40px;}
+<<<<<<< HEAD
 </style>
 =======
     <h1>공지 메인 페이지</h1>
@@ -143,3 +151,6 @@ export default {
   .btn{margin-bottom:40px;}
 </style>
 >>>>>>> 5d02b22 (네브바, 컴포넌트 구성)
+=======
+</style>
+>>>>>>> e6b54fb (asdu)

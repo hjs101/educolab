@@ -4,6 +4,9 @@
     <!-- 여기에 약관 동의-->
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
     <div class="row">
       <q-scroll-area class="col-6 offset-3 scroll">
         <use-provision />
@@ -17,6 +20,7 @@
     </div>
       <!-- 여기에 버튼 -->
     <div class="buttonGroup" v-if="isChecked">
+<<<<<<< HEAD
 =======
     <div class="row">
       <q-scroll-area class="col-6 offset-3 scroll">
@@ -36,6 +40,8 @@
 =======
     <div class="buttonGroup" v-if="isChecked">
 >>>>>>> 8e42007 ( Feat : 이메일 인증 제한 시간 추가)
+=======
+>>>>>>> e6b54fb (asdu)
       <router-link to="/signup/teacher" class="button">
         <q-btn color="teal" label="교사용"/>
       </router-link>
@@ -43,6 +49,7 @@
         <q-btn color="teal" label="학생용"/>
       </router-link>
     </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     <q-scroll-area style="height: 200px; max-width: 700px;">
@@ -63,22 +70,30 @@
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
 =======
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
+=======
+>>>>>>> e6b54fb (asdu)
     <router-view></router-view>
   </div>
 </template>
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
+=======
+>>>>>>> e6b54fb (asdu)
 <style scoped>
   /* 버튼 사이즈 키우기 */
   /* 약관 가운데 정렬 */
   /* 약관 테두리 */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
+=======
+>>>>>>> e6b54fb (asdu)
   .scroll {
     height: 300px;
     max-width: 750px;
@@ -105,6 +120,7 @@ export default {
       isChecked
     }
   },
+<<<<<<< HEAD
 =======
 <style>
 
@@ -142,5 +158,7 @@ export default {
     }
   },
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+>>>>>>> e6b54fb (asdu)
 }
 </script>

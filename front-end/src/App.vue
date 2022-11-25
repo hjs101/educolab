@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div style="height: 2000px">
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -15,6 +16,11 @@
     <!-- 교사 navbar -->
     <div v-if="isLoggedIn">
 >>>>>>> 77a4159 (로그아웃 구현)
+=======
+  <div style="height: 2000px">
+    <!-- 교사 navbar -->
+    <div v-if="isLoggedIn && currentUser.userflag">
+>>>>>>> e6b54fb (asdu)
       <div class="q-pa-md q-gutter-sm">
         <q-bar style="height:100px;" >
           <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
@@ -24,6 +30,9 @@
           <div class="cursor-pointer"><router-link to="/search">설문조사</router-link></div>
           <div class="cursor-pointer"><router-link to="/teacher">마이페이지</router-link></div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
           <button @click="logoutBtn">로그아웃</button>
         </q-bar>
         <hr>
@@ -32,6 +41,7 @@
 
     <!-- 학생 navbar -->
     <div v-if="isLoggedIn && !currentUser.userflag">
+<<<<<<< HEAD
 =======
         </q-bar>
         <hr>
@@ -41,6 +51,8 @@
     <!-- 학생 navbar -->
     <!-- <div v-else-if="flag==='student'">
 >>>>>>> 77a4159 (로그아웃 구현)
+=======
+>>>>>>> e6b54fb (asdu)
       <div class="q-pa-md q-gutter-sm">
         <q-bar style="height:100px;" >
           <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
@@ -50,12 +62,16 @@
           <div class="cursor-pointer"><router-link to="/student/store">포인트 상점</router-link></div>
           <div class="cursor-pointer"><router-link to="/student">마이페이지</router-link></div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
           <button @click="logoutBtn">로그아웃</button>
         </q-bar>
         <hr>
       </div>
     </div>
 
+<<<<<<< HEAD
 =======
     <!-- 로그인 했을 때 -->
     <!-- <the-navbar v-if="isLoggedIn"></the-navbar> -->
@@ -68,6 +84,8 @@
     </div> -->
 
 >>>>>>> 77a4159 (로그아웃 구현)
+=======
+>>>>>>> e6b54fb (asdu)
   <router-view />
   </div>
 </template>
@@ -75,6 +93,9 @@
 <script>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
 import { mapGetters, mapActions } from 'vuex'
 
 
@@ -93,6 +114,7 @@ export default {
       }
     }
   }
+<<<<<<< HEAD
 =======
 // import TheNavbar from '@/views/TheNavbar.vue'
 
@@ -127,6 +149,8 @@ export default {
     }
   }
 >>>>>>> 77a4159 (로그아웃 구현)
+=======
+>>>>>>> e6b54fb (asdu)
 }
 </script>
 
@@ -147,6 +171,7 @@ export default {
   .center {
     text-align: center;
   }
+<<<<<<< HEAD
 </style>
 =======
   <nav>
@@ -346,3 +371,6 @@ export default {
 =======
 </script>
 >>>>>>> 34b83a2 (Feat : 퀘이사 UI Framework 적용)
+=======
+</style>
+>>>>>>> e6b54fb (asdu)

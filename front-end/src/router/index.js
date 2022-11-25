@@ -1,7 +1,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e66f000 (navbar 생성)
+=======
+>>>>>>> e6b54fb (asdu)
 // import { AppFullscreen } from 'quasar'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -10,12 +13,16 @@ const routes = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
   // 회원 관리
   {
     path: '/',
     name: 'login',
     component: () => import ('@/views/LoginView')
   },  
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -26,6 +33,8 @@ const routes = [
     component: () => import('@/views/TheNavbar')
   },
 >>>>>>> b22ae6e (공지사항 메인 페이지)
+=======
+>>>>>>> e6b54fb (asdu)
 
   // 메인페이지 
   {
@@ -33,6 +42,7 @@ const routes = [
     name: 'educolab',
     component: () => import('@/views/MainPageView')
   },
+<<<<<<< HEAD
 =======
 >>>>>>> 92fa455 (라우터 버그 수정)
 =======
@@ -44,6 +54,8 @@ const routes = [
     component: () => import('@/views/TheNavbar.vue')
   },
 >>>>>>> 77a4159 (로그아웃 구현)
+=======
+>>>>>>> e6b54fb (asdu)
   // 공지사항
   {
     path: '/notice',
@@ -62,6 +74,7 @@ const routes = [
     path: '/signup',
     name: 'agree',
     component: () => import ('@/views/SignupAgreeView')
+<<<<<<< HEAD
 =======
 =======
 
@@ -82,6 +95,10 @@ const routes = [
   // 과제(교사)
   {
 <<<<<<< HEAD
+=======
+  },
+  {
+>>>>>>> e6b54fb (asdu)
     path: '/nonlogin',
     redirect: {name: 'login'}
   },
@@ -98,6 +115,7 @@ const routes = [
   {
     path: '/notice/create',
     name: 'NoticeForm',
+<<<<<<< HEAD
 =======
     component: () => import('@/views/NoticeView'),
 =======
@@ -110,6 +128,8 @@ const routes = [
     path: '/notice/create',
     name: 'noticeForm',
 >>>>>>> 5d02b22 (네브바, 컴포넌트 구성)
+=======
+>>>>>>> e6b54fb (asdu)
     component: () => import('@/views/NoticeFormView')
   },
 
@@ -117,10 +137,13 @@ const routes = [
   {
     path: '/teacher/task',
     name: 'TeacherTask',
+<<<<<<< HEAD
 =======
     path: '/teacher/task',
     name: 'teacherTask',
 >>>>>>> e66f000 (navbar 생성)
+=======
+>>>>>>> e6b54fb (asdu)
     component: () => import('@/views/TeacherTaskView')
   },
 
@@ -128,10 +151,14 @@ const routes = [
   {
     path: '/quiz',
 <<<<<<< HEAD
+<<<<<<< HEAD
     name: 'Quiz',
 =======
     name: 'quiz',
 >>>>>>> e66f000 (navbar 생성)
+=======
+    name: 'Quiz',
+>>>>>>> e6b54fb (asdu)
     component: () => import('@/views/QuizView')
   },
 
@@ -139,10 +166,14 @@ const routes = [
   {
     path: '/search',
 <<<<<<< HEAD
+<<<<<<< HEAD
     name: 'Search',
 =======
     name: 'search',
 >>>>>>> e66f000 (navbar 생성)
+=======
+    name: 'Search',
+>>>>>>> e6b54fb (asdu)
     component: () => import('@/views/SearchView')
   },
 
@@ -150,6 +181,9 @@ const routes = [
   {
     path: '/teacher',
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
     name: 'TeacherPage',
     component: () => import('@/views/TeacherPageView')
   },
@@ -180,6 +214,7 @@ const routes = [
     path: '/student',
     name: 'StudentPageView',
     component: () => import('@/views/StudentPageView')
+<<<<<<< HEAD
 =======
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -288,6 +323,9 @@ const routes = [
     component: () => import('@/views/StudentPageView')
   }
 >>>>>>> 3d37e1b (공지사항 검색기능 구현)
+=======
+  }
+>>>>>>> e6b54fb (asdu)
 ]
 
 const router = createRouter({

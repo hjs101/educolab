@@ -4,8 +4,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
+=======
+>>>>>>> e6b54fb (asdu)
     <q-select v-if="userType === 'teacher'"
       color="teal"
       v-model="subject"
@@ -14,6 +17,9 @@
       :value="subject.value"
     />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
     <!-- 학년/반 (학생) -->
     <div v-else>
       <q-select
@@ -33,6 +39,7 @@
         @change="sendData({class_field:classField})"
         lazy-rules
         :rules="[ val => val && val.length > 0 || '반을 입력해주세요', val => val > 0 || '적절하지 않은 값입니다']"
+<<<<<<< HEAD
 =======
     {{userType}}
 =======
@@ -77,11 +84,15 @@
       />
 =======
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
+=======
+      />
+>>>>>>> e6b54fb (asdu)
     </div>
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 import {ref} from '@vue/reactivity'
@@ -95,6 +106,11 @@ import {ref} from '@vue/reactivity'
 import {useStore} from 'vuex'
 import {watch} from 'vue'
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
+=======
+import {ref} from '@vue/reactivity'
+import {useStore} from 'vuex'
+import {watch} from 'vue'
+>>>>>>> e6b54fb (asdu)
 export default {
   name: 'TeacherOrStudent',
   props: {
@@ -103,6 +119,9 @@ export default {
   setup() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
     const store = useStore()
     const subjectOptions = [
     '국어', '수학', '사회', '과학', '보건', '기술가정', '기타'
@@ -125,6 +144,7 @@ export default {
       subject,
       grade,
       classField
+<<<<<<< HEAD
 =======
 =======
     const store = useStore()
@@ -155,6 +175,8 @@ export default {
       grade,
       classField
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
+=======
+>>>>>>> e6b54fb (asdu)
     }
   }
 }

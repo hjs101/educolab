@@ -10,8 +10,11 @@
     <q-btn label="중복 확인" color="primary" @click="confirmUsername" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
+=======
+>>>>>>> e6b54fb (asdu)
 
     <q-dialog v-model="userData.confirm">
       <q-card>
@@ -29,6 +32,7 @@
       <span v-if="computedData.validUsername">
         {{computedData.message}}
       </span>
+<<<<<<< HEAD
 =======
     <p v-if="userData.password2 && computedData.validUsername !== 2">
 <<<<<<< HEAD
@@ -44,6 +48,8 @@
         {{computedData.message}}
       </span>
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
+=======
+>>>>>>> e6b54fb (asdu)
     </p>
     <q-input
       color="teal"
@@ -63,11 +69,14 @@
       @keyup="isCorrect"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       @change="$emit(toSignup)"
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
 =======
 >>>>>>> 2091835 (Feat: merge 전 수정 사항 반영)
+=======
+>>>>>>> e6b54fb (asdu)
       lazy-rules
       :rules="[
         val => val !== null && val !== '' || '비밀번호를 다시 입력해주세요',
@@ -90,6 +99,7 @@ import {computed} from 'vue'
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import axios from 'axios'
 import drf from '@/api/drf.js'
 import {useStore} from 'vuex'
@@ -106,10 +116,16 @@ import {useStore} from 'store'
 =======
 import {useStore} from 'vuex'
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
+=======
+import axios from 'axios'
+import drf from '@/api/drf.js'
+import {useStore} from 'vuex'
+>>>>>>> e6b54fb (asdu)
 export default {
   name: 'LoginInfo',
   setup () {
     const store = useStore()
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 // import axios from 'axios';
@@ -123,6 +139,8 @@ export default {
 >>>>>>> 2091835 (Feat: merge 전 수정 사항 반영)
 =======
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
+=======
+>>>>>>> e6b54fb (asdu)
     const userData = reactive({
       username: null,
       password1: null,
@@ -130,14 +148,20 @@ export default {
       correct: null,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
       confirm: null,
     })
     const computedData = reactive({
       samePassword: computed(() => userData.correct),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
+=======
+>>>>>>> e6b54fb (asdu)
       validUsername: computed(() => userData.confirm),
       message: computed(() => computedData.validUsername? '사용 가능한 아이디입니다':'중복된 아이디입니다. 다른 아이디를 입력해주세요')
     })
@@ -147,10 +171,14 @@ export default {
         .then((res) => {
           userData.confirm = res.data.dup === 'success'
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
           if (computedData.validUsername) {
             store.dispatch('changeData', {username: userData.username})
           }
         })
+<<<<<<< HEAD
 =======
       confirm: 2,
 =======
@@ -191,10 +219,13 @@ export default {
           }
         })
 >>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
+=======
+>>>>>>> e6b54fb (asdu)
     }
     const isCorrect = () => {
       if (userData.password1 === userData.password2) {
         userData.correct = true
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
@@ -203,10 +234,14 @@ export default {
 =======
         store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
+=======
+        store.dispatch('changeData', {password1: userData.password1, password2: userData.password2})
+>>>>>>> e6b54fb (asdu)
       } else {
         userData.correct = false
       }
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -223,10 +258,13 @@ export default {
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
 =======
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
+=======
+>>>>>>> e6b54fb (asdu)
     return {
       userData,
       computedData,
       confirmUsername,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       isCorrect
@@ -244,5 +282,10 @@ export default {
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
 =======
 >>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
+=======
+      isCorrect
+    }
+  }
+>>>>>>> e6b54fb (asdu)
 }
 </script>

@@ -2,6 +2,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
   <div class="q-mx">
     <!-- 반응형하는 중 -->
     <h3>LOGIN</h3>
@@ -16,6 +19,7 @@
         <q-input
           color="teal"
           v-model="credentials.username"
+<<<<<<< HEAD
 =======
   <div class="q-pa-md">
     <!-- 반응형 아직 X -->
@@ -43,6 +47,8 @@
 =======
           v-model="credentials.username"
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+>>>>>>> e6b54fb (asdu)
           label="ID"
           lazy-rules
           :rules="[ val => val && val.length > 0 || '아이디를 입력해주세요']"
@@ -50,6 +56,7 @@
 
         <q-input
           color="teal"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -63,6 +70,9 @@
 =======
           v-model="credentials.password"
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+          v-model="credentials.password"
+>>>>>>> e6b54fb (asdu)
           label="Password"
           type="password"
           lazy-rules
@@ -72,6 +82,7 @@
         />
       </div>
       <!-- 여기에 로그인버튼 -->
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -85,10 +96,14 @@
 =======
       <q-btn color="secondary" label="LOGIN" class="col-8 offset-2 col-md-1 offset-md-1" @click="login(credentials)"/>
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+      <q-btn color="secondary" label="LOGIN" class="col-8 offset-2 col-md-1 offset-md-1" @click="login(credentials)"/>
+>>>>>>> e6b54fb (asdu)
 
     </q-form>
 
     <!-- 여기에 회원가입 / ID 찾기 / 비밀번호 찾기 -->
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <div class="buttonGroup">
@@ -98,6 +113,9 @@
 =======
     <div class="buttonGroup">
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
+=======
+    <div class="buttonGroup">
+>>>>>>> e6b54fb (asdu)
       <router-link to="/signup" class="button">
         <q-btn color="primary" label="SIGN UP"/>
       </router-link>
@@ -116,14 +134,18 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+>>>>>>> e6b54fb (asdu)
 <style scoped>
   .input {
     width: 500px;
   }
   .buttonGroup {
     margin-top: 100px;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <style>
@@ -153,6 +175,8 @@
 >>>>>>> 860f864 (Refactor : 로그인, 회원가입 동의 페이지 코드 수정 & 404 페이지 만듦)
 =======
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+>>>>>>> e6b54fb (asdu)
   }
 </style>
 
@@ -160,6 +184,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
 // import { reactive } from '@vue/reactivity'
 import { mapGetters, mapActions } from 'vuex'
 import AccountErrorList from '@/components/AccountErrorList.vue'
@@ -169,6 +196,7 @@ export default {
   components: {
     AccountErrorList
   },
+<<<<<<< HEAD
 =======
 // import { reactive } from '@vue/reactivity'
 import { mapGetters, mapActions } from 'vuex'
@@ -183,6 +211,8 @@ export default {
     AccountErrorList
   },
 >>>>>>> 77a4159 (로그아웃 구현)
+=======
+>>>>>>> e6b54fb (asdu)
   data () {
     return {
       credentials: {
@@ -198,6 +228,7 @@ export default {
     ...mapActions(['login'])
   },
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 </script>
 =======
@@ -240,3 +271,6 @@ export default {
 =======
 </script>
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+</script>
+>>>>>>> e6b54fb (asdu)

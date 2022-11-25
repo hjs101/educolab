@@ -2,6 +2,9 @@ import { createStore } from 'vuex'
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
 import {accounts} from './modules/accounts.js'
 
 export default createStore({
@@ -20,6 +23,7 @@ export default createStore({
   },
   modules: {
     accounts,
+<<<<<<< HEAD
 =======
 =======
 import accounts from './accounts.js'
@@ -48,5 +52,7 @@ export default createStore({
 =======
     accounts,
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
+=======
+>>>>>>> e6b54fb (asdu)
   }
 })

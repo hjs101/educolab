@@ -11,6 +11,7 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     signup: () => ACCOUNTS + 'registration/',
 =======
     signup: () => ACCOUNTS + 'registration',
@@ -40,6 +41,12 @@ export default {
 =======
     sendEmail: () => ACCOUNTS + 'sendemail/',
 >>>>>>> 6e582c6 (develop 브랜치 푸시)
+=======
+    signup: () => ACCOUNTS + 'registration',
+    schoolInfo: () => ACCOUNTS + 'schoolinfo/',
+    checkUsername: () => ACCOUNTS + 'check_username/',
+    sendEmail: () => ACCOUNTS + 'send_signup_email/',
+>>>>>>> e6b54fb (asdu)
   },
   notice: {
     noticeList: () => NOTICE

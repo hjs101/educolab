@@ -1,6 +1,9 @@
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
   <div class="q-px-xl">
     <h1>공지 작성,수정 페이지</h1>
 
@@ -63,6 +66,7 @@ export default {
     }    
   },
 }
+<<<<<<< HEAD
 </script>
 =======
   <div>
@@ -135,3 +139,6 @@ export default {
 }
 </script>
 >>>>>>> b22ae6e (공지사항 메인 페이지)
+=======
+</script>
+>>>>>>> e6b54fb (asdu)

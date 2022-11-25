@@ -1,8 +1,11 @@
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
+=======
+>>>>>>> e6b54fb (asdu)
   <q-input
     color="teal"
     label="전화번호"
@@ -17,6 +20,9 @@
     :rules="[ val => val && val.length > 0 || '이름을 입력해주세요']"
   />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
 </template>
 
 <script>
@@ -40,6 +46,7 @@
     },
   }
 </script>
+<<<<<<< HEAD
 =======
   <div>
     <q-input
@@ -105,3 +112,5 @@ export default {
   }
 </script>
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
+=======
+>>>>>>> e6b54fb (asdu)

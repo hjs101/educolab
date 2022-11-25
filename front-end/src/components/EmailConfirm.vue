@@ -2,6 +2,7 @@
   <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <q-input v-model="email.username" :suffix="email.address !== '직접 입력'? email.address: ''" input-class="text-right" label-slot clearable stack-label>
 =======
     <q-input v-model="email" :suffix="emailAddress" input-class="text-right" label-slot clearable stack-label>
@@ -9,6 +10,9 @@
 =======
     <q-input v-model="email.username" :suffix="email.address !== '직접 입력'? email.address: ''" input-class="text-right" label-slot clearable stack-label>
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+    <q-input v-model="email.username" :suffix="email.address !== '직접 입력'? email.address: ''" input-class="text-right" label-slot clearable stack-label>
+>>>>>>> e6b54fb (asdu)
       <template v-slot:label>
         <div class="row items-center all-pointer-events">
           Email
@@ -19,6 +23,9 @@
     <!-- 이메일 주소 선택 -->
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
     <q-select v-model="email.address" :options="emailOptions" label="이메일 주소 선택" />
     <!-- 인증 버튼 -->
     <q-btn color="primary" label="이메일 인증" class="buttonGroup" @click="isValidEmail"/>
@@ -37,6 +44,9 @@
         제한 시간 {{time.minute}}:{{time.second}}
       </p>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
       <!-- 인증 번호 일치 여부 팝업-->
       <q-dialog v-model="alert">
         <q-card>
@@ -56,10 +66,14 @@
           <q-card-actions align="right">
             <q-btn flat label="확인" color="primary" v-close-popup @click="sendData({email:email.fullEmail})"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
           </q-card-actions>
         </q-card>
       </q-dialog>
     </div>
+<<<<<<< HEAD
 =======
     <q-select v-model="emailAddress" :options="emailOptions" label="이메일 주소 선택" />
 =======
@@ -107,12 +121,17 @@
       </q-dialog>
     </div>
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+>>>>>>> e6b54fb (asdu)
   </div>
 </template>
 
 <script>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
 import {reactive, ref} from '@vue/reactivity'
 import {computed} from 'vue'
 import {useStore} from 'vuex'
@@ -123,6 +142,9 @@ export default {
   setup () {
     const store = useStore()
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6b54fb (asdu)
     const emailOptions = [
       '@gmail.com', '@naver.com', '@hanmail.com', '@nate.com', '직접 입력'
     ]
@@ -157,6 +179,7 @@ export default {
         .then(res => {
           number.authNum = res.data['auth_num']
         })
+<<<<<<< HEAD
 <<<<<<< HEAD
       email.valid = true
       start()
@@ -264,6 +287,8 @@ export default {
 >>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
 =======
 >>>>>>> 80ba160 ( Feat : 백과의 통신 (학교 검색과 회원가입은 미완료))
+=======
+>>>>>>> e6b54fb (asdu)
       email.valid = true
       start()
     }
@@ -283,6 +308,7 @@ export default {
       alert,
       isValidEmail,
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
       time,
@@ -292,6 +318,11 @@ export default {
 =======
       sendData
 >>>>>>> 89ccfeb ( Feat: 회원 가입 기능 완료 (백 통신해서 디버깅 해야 함))
+=======
+      time,
+      start,
+      sendData
+>>>>>>> e6b54fb (asdu)
     }
   }
 }
