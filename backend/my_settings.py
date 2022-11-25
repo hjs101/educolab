@@ -40,6 +40,7 @@ DATABASES = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MY_IMAGE_PATH = '/SSAFY/C102_IOT/S07P12C102/backend/image/'
 <<<<<<< HEAD
 =======
@@ -59,6 +60,8 @@ MY_IMAGE_PATH = '/SSAFY/C102_IOT/S07P12C102/backend/image/'
 MY_IMAGE_PATH = '/SSAFY/C102_IOT/S07P12C102/backend/image/'
 >>>>>>> 0970789 (Style : back 브랜치 테스트)
 
+=======
+>>>>>>> 755dda7 (wq)
 EMAIL_HOST_USER = 'educolabtest@gmail.com'
 
 EMAIL_HOST_PASSWORD = 'osbqrenzvuexioxx'
