@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
     <h2>공지사항 메인 페이지(교사)</h2>
     <input type="search" name="" id="" v-model="searchTitle">
     <button for="searchTitle" @click="searchNotice">검색</button>
@@ -68,3 +69,8 @@ export default {
 	.tbList td.txt_left{text-align:left;}
   .btn{margin-bottom:40px;}
 </style>
+=======
+    <h1>공지 메인 페이지</h1>
+  </div>
+</template>
+>>>>>>> e66f000 (navbar 생성)

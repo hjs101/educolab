@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e66f000 (navbar 생성)
 // import { AppFullscreen } from 'quasar'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
+<<<<<<< HEAD
   // 회원 관리
   {
     path: '/',
@@ -34,8 +38,18 @@ const routes = [
     path: '/signup',
     name: 'agree',
     component: () => import ('@/views/SignupAgreeView')
-  },
+=======
+  // 공지사항
   {
+    path: '/notice',
+    name: 'notice',
+    component: () => import('@/views/NoticeView')
+>>>>>>> e66f000 (navbar 생성)
+  },
+
+  // 과제(교사)
+  {
+<<<<<<< HEAD
     path: '/nonlogin',
     redirect: {name: 'login'}
   },
@@ -59,26 +73,39 @@ const routes = [
   {
     path: '/teacher/task',
     name: 'TeacherTask',
+=======
+    path: '/teacher/task',
+    name: 'teacherTask',
+>>>>>>> e66f000 (navbar 생성)
     component: () => import('@/views/TeacherTaskView')
   },
 
   // 퀴즈(교사)
   {
     path: '/quiz',
+<<<<<<< HEAD
     name: 'Quiz',
+=======
+    name: 'quiz',
+>>>>>>> e66f000 (navbar 생성)
     component: () => import('@/views/QuizView')
   },
 
   // 설문조사(교사)
   {
     path: '/search',
+<<<<<<< HEAD
     name: 'Search',
+=======
+    name: 'search',
+>>>>>>> e66f000 (navbar 생성)
     component: () => import('@/views/SearchView')
   },
 
   // 마이페이지(교사)
   {
     path: '/teacher',
+<<<<<<< HEAD
     name: 'TeacherPage',
     component: () => import('@/views/TeacherPageView')
   },
@@ -181,6 +208,12 @@ const routes = [
   // }
 
 >>>>>>> 23e74e9 (Feat : 로그인 화면 제작 완료 & 기능 구현 미완료 & 약관 동의 화면 구현)
+=======
+    name: 'teacherPage',
+    component: () => import('@/views/TeacherPageView')
+  }
+
+>>>>>>> e66f000 (navbar 생성)
 ]
 
 const router = createRouter({

@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="q-px-xl">
     <h1>공지 작성,수정 페이지</h1>
 
@@ -62,3 +63,10 @@ export default {
   },
 }
 </script>
+=======
+  <div>
+    <h1>공지 작성,수정 페이지</h1>
+  <router-view />
+  </div>
+</template>
+>>>>>>> e66f000 (navbar 생성)
