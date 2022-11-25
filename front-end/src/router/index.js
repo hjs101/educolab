@@ -14,6 +14,7 @@ const routes = [
     name: 'login',
     component: () => import ('@/views/LoginView')
   },  
+<<<<<<< HEAD
 
   // 메인페이지 
   {
@@ -21,6 +22,8 @@ const routes = [
     name: 'educolab',
     component: () => import('@/views/MainPageView')
   },
+=======
+>>>>>>> 92fa455 (라우터 버그 수정)
   // 공지사항
   {
     path: '/notice',
