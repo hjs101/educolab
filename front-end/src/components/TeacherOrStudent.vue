@@ -51,6 +51,7 @@
 =======
         :rules="[ val => val && val.length > 0 || '반을 입력해주세요', val => val > 0 || '적절하지 않은 값입니다']"
       />
+<<<<<<< HEAD
       <q-input
         v-model="userData.classNumber"
         color="teal"
@@ -61,6 +62,8 @@
         :rules="[ val => val && val.length > 0 || '번호를 입력해주세요', val => val > 0 || '적절하지 않은 값입니다']"
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
       />
+=======
+>>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
     </div>
   </div>
 </template>
@@ -110,7 +113,6 @@ export default {
       subject: null,
       grade: null,
       classField: null,
-      classNumber: null
     })
     return {
       subjectOptions,

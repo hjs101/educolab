@@ -41,7 +41,6 @@ export const accounts = {
         user_flag : false,
 =======
         classField: null,
-        number: null,
         phoneNumber: null,
         birthday: null,
         email: null,
@@ -111,11 +110,15 @@ export const accounts = {
     getTeacherInfo: state => state.teacherInfo,
   },
   mutations: {
+<<<<<<< HEAD
     SET_TOKEN: (state, access) => state.access = access,
     SET_CURRENT_USER: (state, user) => state.currentUser = user,
     SET_AUTH_ERROR: (state, error) => state.authError = error,
     CHANGE_STUDENT_DATA(state,data) {
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+    CHANGE_DATA(state, data) {
+>>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
       if (state.userType === 'student') {
         for (let key in data) {
           state.studentInfo[key] = data[key]
@@ -266,6 +269,7 @@ export const accounts = {
       commit('SET_USER_TYPE', userType)
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     changeData({commit}, data) {
       console.log(data)
       commit('CHANGE_DATA', data)
@@ -276,6 +280,10 @@ export const accounts = {
     changeTeacherData({commit}, data) {
       commit('CHANGE_TEACHER_DATA', data)
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+    changeData({commit}, data) {
+      commit('CHANGE_DATA', data)
+>>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
     },
   },
 }

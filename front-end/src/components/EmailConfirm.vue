@@ -173,8 +173,12 @@ import {computed} from 'vue'
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
 =======
 import axios from 'axios'
+<<<<<<< HEAD
 import {accounts} from '@/api/drf.js'
 >>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
+=======
+import drf from '@/api/drf.js'
+>>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
 export default {
   name: 'EmailConfirm',
   setup () {
@@ -208,6 +212,7 @@ export default {
       },1000)
     }
     const isValidEmail = () => {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       // 백에 신호 보내 인증 번호 받기 -> realNumber 바꿔주기
@@ -246,6 +251,10 @@ export default {
       axios.post(accounts.sendEmail(), fullEmail)
         .then(res => realNumber = res.data[auth_num])
 >>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
+=======
+      axios.post(drf.accounts.sendEmail(), email.fullEmail)
+        .then(res => number.authNumber = res.data['auth_num'])
+>>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
       email.valid = true
       start()
     }

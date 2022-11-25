@@ -19,10 +19,10 @@
     <div class="buttonGroup" v-if="isChecked">
 =======
     <div class="row">
-      <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
+      <q-scroll-area class="col-6 offset-3 scroll">
         <use-provision />
       </q-scroll-area>
-      <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
+      <q-scroll-area class="col-6 offset-3 scroll">
         <use-info />
       </q-scroll-area>
       <!-- 여기에 체크 박스 -->
@@ -76,6 +76,9 @@
   /* 약관 가운데 정렬 */
   /* 약관 테두리 */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
   .scroll {
     height: 300px;
     max-width: 700px;

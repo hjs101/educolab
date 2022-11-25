@@ -93,10 +93,14 @@ export default {
     <q-btn label="학교 검색" color="primary" @click="prompt = true" />
 =======
   <div>
-    <q-input color="teal" label="학교" v-model="school.name" @change="$emit(toSignup)" disable/>
+    <q-input color="teal" label="학교" v-model="school.name" disable/>
     <q-btn label="학교 검색" color="primary" @click="prompt.prompt = true"/>
+<<<<<<< HEAD
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
     
+=======
+    <!-- 학교 검색 팝업 -->
+>>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
     <q-dialog v-model="prompt.prompt" persistent>
       <q-card style="min-width: 350px">
         <q-card-section>
@@ -121,14 +125,6 @@ export default {
                 </q-card>
               </q-scroll-area>
 
-              <!-- 테스트용 -->
-              <!-- <q-scroll-area style="height: 500px; max-width: 700px;" class="col-6 offset-3">
-                <q-card class="my-card" v-for="schoolInfo in school.temp" :key="schoolInfo.id">
-                  <q-card-section @click="selectSchool(schoolInfo.schoolname, schoolInfo.schoolCode)">
-                    <span>{{schoolInfo.url}}</span>
-                  </q-card-section>
-                </q-card>
-              </q-scroll-area> -->
             </div>
         </q-card-section>
 
@@ -145,11 +141,13 @@ export default {
 <script>
 import {reactive} from '@vue/reactivity'
 import {computed} from 'vue'
+import {useStore} from 'vuex'
 import axios from 'axios'
-import {accounts} from '@/api/drf.js'
+import drf from '@/api/drf.js'
 export default {
   name: 'searchSchool',
-  setup(props, {emit}) {
+  setup() {
+    const store = useStore()
     const prompt = reactive({
       prompt: false,
       search: false,
@@ -164,7 +162,7 @@ export default {
     })
     const findSchool = (event) => {
       prompt.search = true
-      axios.post(accounts.schoolInfo(), {schoolname:event.target.value})
+      axios.get(drf.accounts.schoolInfo(), {schoolname:event.target.value})
         .then((res) => school.list = res.data)
         .catch((err) => console.log(err))
       // 백에 입력 값 보내기
@@ -179,9 +177,7 @@ export default {
     const applySchool = () => {
       school.name = school.selectedName
       school.code = school.selectedCode
-    }
-    const toSignup = () => {
-      emit('to-signup', {school:school.code})
+      store.commit('changeStudentDate', {school:school.code})
     }
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
     return {
@@ -198,9 +194,13 @@ export default {
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
 =======
       selectSchool,
+<<<<<<< HEAD
       applySchool,
       toSignup
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+      applySchool
+>>>>>>> bb316aa ( Feat : 회원가입 시 입력받은 정보를 취합하는 중)
     }
   },
 }
