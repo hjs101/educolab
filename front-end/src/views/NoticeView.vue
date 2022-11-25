@@ -91,28 +91,38 @@ export default {
 
       <div class="listWrap bg-grey-3 text-black flex flex-center">
         <table class="tbList">
-          <!-- <colgroup>
-            <col width="6%" />
-            <col width="*" />
-            <col width="10%" />
-            <col width="15%" />
-          </colgroup> -->
           <tr>
             <th width="6%">분류</th>
             <th width="300px *">제목</th>
             <th width="200px 10%">등록일</th>
             <th width="150px 15%">작성자</th>
           </tr>
+
         </table>
       </div>
     </div>
 
     <div class="col-2"></div>
+    <div v-for="item in content"
+    :key="item.content_id">
+    <p>{{ item.title }}</p>
+    <p>{{ item.context }}</p>
+    </div>
 
   </div>
 </template>
 
 <script>
+import noticeList from '@/data/index.js'
+
+export default {
+  name: "NoticeView",
+  data() {
+    return {
+      content: noticeList.Content
+    }
+  }
+}
 
 </script>
 

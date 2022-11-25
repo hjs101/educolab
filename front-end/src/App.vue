@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div style="height: 2000px">
     <!-- 교사 navbar -->
     <div v-if="isLoggedIn && currentUser.userflag">
@@ -221,10 +222,18 @@ export default {
       </q-bar>
     </div>
   <router-view />
+=======
+  <div>
+  <div v-if='isLoggedIn'><router-link to='/'></router-link></div>
+  <div v-else><router-link to='/quiz'></router-link></div>  
+
+    <router-view />
+>>>>>>> b22ae6e (공지사항 메인 페이지)
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 >>>>>>> e66f000 (navbar 생성)
 export default {
   name: 'theNavbar',
@@ -235,6 +244,20 @@ export default {
   }
 =======
 >>>>>>> e66f000 (navbar 생성)
+=======
+
+export default {
+  name: 'theNavbar',
+  data() {
+    let isLoggedIn = true
+    if (isLoggedIn == false) {
+      isLoggedIn = false
+    }
+    return {
+      isLoggedIn
+    }
+  }
+>>>>>>> b22ae6e (공지사항 메인 페이지)
 }
 <<<<<<< HEAD
 </style>

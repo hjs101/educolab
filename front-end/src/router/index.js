@@ -8,6 +8,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   // 회원 관리
   {
     path: '/',
@@ -15,6 +16,14 @@ const routes = [
     component: () => import ('@/views/LoginView')
   },  
 <<<<<<< HEAD
+=======
+  // Main
+  {
+    path: '/',
+    name: 'TheNavbar',
+    component: () => import('@/views/TheNavbar')
+  },
+>>>>>>> b22ae6e (공지사항 메인 페이지)
 
   // 메인페이지 
   {
@@ -51,6 +60,7 @@ const routes = [
     path: '/notice',
     name: 'notice',
 <<<<<<< HEAD
+<<<<<<< HEAD
     component: () => import('@/views/NoticeView')
 >>>>>>> e66f000 (navbar 생성)
   },
@@ -76,8 +86,11 @@ const routes = [
     name: 'NoticeForm',
 =======
     component: () => import('@/views/NoticeView'),
+=======
+    component: () => import('@/views/NoticeView')
+>>>>>>> b22ae6e (공지사항 메인 페이지)
   },
-  
+
   // 공지사항 작성
   {
     path: '/notice/create',
@@ -85,7 +98,6 @@ const routes = [
 >>>>>>> 5d02b22 (네브바, 컴포넌트 구성)
     component: () => import('@/views/NoticeFormView')
   },
-
   // 과제(교사)
   {
     path: '/teacher/task',
