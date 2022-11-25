@@ -167,10 +167,14 @@ class SchoolInfoView(APIView):
 
     def get(self, request):
 <<<<<<< HEAD
+<<<<<<< HEAD
         search = request.GET.get('schoolname')
 =======
         search = request.GET['schoolname']
 >>>>>>> 0970789 (Style : back 브랜치 테스트)
+=======
+        search = request.GET.get('schoolname')
+>>>>>>> 5e7e020 (feat : get 정보 방식 수정)
         school = SchoolInfo.objects.filter(name__contains=search)
         serializer = SchoolInfoSerializer(school,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
@@ -203,7 +207,7 @@ class SendSignupEmailView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self,request):
-        email = request.data['email']
+        email = request.data.get('email')
         auth_num = email_auth_num()
         send_mail(subject='educolab 회원가입 이메일 인증 메일입니다',message=auth_num,recipient_list=[email],from_email=EMAIL_HOST_USER)
         context = {
@@ -234,10 +238,16 @@ class FindUsernameView(APIView):
 class FindUsernameView(APIView):
     permission_classes = (AllowAny,)
 
+<<<<<<< HEAD
     def get(self, request):
         name = request.GET.get('name')
         email = request.GET.get('email')
 >>>>>>> d0de156 ( Fix : get 방식으로 적용 중)
+=======
+    def post(self, request):
+        name = request.data.get('name')
+        email = request.data.get('email')
+>>>>>>> 5e7e020 (feat : get 정보 방식 수정)
 
         try:
             user = UserInfo.objects.get(name=name,email=email)
