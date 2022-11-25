@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+<<<<<<< HEAD
 import {accounts} from './modules/accounts.js'
 
 export default createStore({
@@ -17,5 +18,18 @@ export default createStore({
   },
   modules: {
     accounts,
+=======
+
+export default createStore({
+  state: {
+  },
+  getters: {
+  },
+  mutations: {
+  },
+  actions: {
+  },
+  modules: {
+>>>>>>> 1f63946 (vue 환경셋팅)
   }
 })

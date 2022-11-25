@@ -1,5 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
+<<<<<<< HEAD
   transpileDependencies: [
     'quasar'
   ],
@@ -10,4 +11,7 @@ module.exports = defineConfig({
       rtlSupport: false
     }
   }
+=======
+  transpileDependencies: true
+>>>>>>> 1f63946 (vue 환경셋팅)
 })
