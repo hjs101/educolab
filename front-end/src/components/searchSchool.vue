@@ -146,7 +146,7 @@ export default {
 import {reactive} from '@vue/reactivity'
 import {computed} from 'vue'
 import axios from 'axios'
-// import {mdiMagnify} from '@quasar/extras/mdi-v6'
+import {accounts} from '@/api/drf.js'
 export default {
   name: 'searchSchool',
   setup(props, {emit}) {
@@ -160,82 +160,13 @@ export default {
       name: null,
       selectedName: null,
       selectedCode: null,
-      list: [{
-        schoolname: '안녕중학교',
-        schoolAddress: '광주광역시 이하 생략',
-        schoolCode: 123
-      },
-      {
-        schoolname: '정신이들어중학교',
-        schoolAddress: '광주광역시 북구 이하 생략',
-        schoolCode: 124
-      },
-      {
-        schoolname: '정신이들어중학교',
-        schoolAddress: '광주광역시 북구 이하 생략',
-        schoolCode: 124
-      },
-      {
-        schoolname: '정신이들어중학교',
-        schoolAddress: '광주광역시 북구 이하 생략',
-        schoolCode: 124
-      },
-      {
-        schoolname: '정신이들어중학교',
-        schoolAddress: '광주광역시 북구 이하 생략',
-        schoolCode: 124
-      },
-      {
-        schoolname: '정신이들어중학교',
-        schoolAddress: '광주광역시 북구 이하 생략',
-        schoolCode: 124
-      },
-      {
-        schoolname: '정신이들어중학교',
-        schoolAddress: '광주광역시 북구 이하 생략',
-        schoolCode: 124
-      },
-      {
-        schoolname: '정신이들어중학교',
-        schoolAddress: '광주광역시 북구 이하 생략',
-        schoolCode: 124
-      },
-      {
-        schoolname: '정신이들어중학교',
-        schoolAddress: '광주광역시 북구 이하 생략',
-        schoolCode: 124
-      },
-      {
-        schoolname: '정신이들어중학교',
-        schoolAddress: '광주광역시 북구 이하 생략',
-        schoolCode: 124
-      },
-      {
-        schoolname: '정신이들어중학교',
-        schoolAddress: '광주광역시 북구 이하 생략',
-        schoolCode: 124
-      },
-      {
-        schoolname: '정신이들어중학교',
-        schoolAddress: '광주광역시 북구 이하 생략',
-        schoolCode: 124
-      },
-      ],
-      temp: [],
+      list: [],
     })
-    const findSchool = () => {
+    const findSchool = (event) => {
       prompt.search = true
-      const url = "https://api.thecatapi.com/v1/images/search"
-      // axios.post(URL+"", {schoolname:event.target.value})
-      //   .then((res) => school.list = res.data)
-      //   .catch((err) => console.log(err))
-      axios.get(url)
-        .then((res) => {
-          school.temp = res.data
-          console.log(school.temp)
-          })
+      axios.post(accounts.schoolInfo(), {schoolname:event.target.value})
+        .then((res) => school.list = res.data)
         .catch((err) => console.log(err))
-
       // 백에 입력 값 보내기
     }
 <<<<<<< HEAD

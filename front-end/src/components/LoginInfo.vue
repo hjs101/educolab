@@ -29,8 +29,12 @@
 =======
     <p v-if="userData.password2 && computedData.validUsername !== 2">
       <span v-show="computedData.validUsername">사용가능한 아이디입니다</span>
+<<<<<<< HEAD
       <span v-show="!computedData.validUsername">이미 존재하는 아이디입니다/다른 아이디 값을 입력해주세요</span>
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+      <span v-show="!computedData.validUsername">이미 존재하는 아이디입니다. 다른 아이디 값을 입력해주세요</span>
+>>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
     </p>
     <q-input
       color="teal"
@@ -75,9 +79,14 @@
 import {reactive} from '@vue/reactivity'
 import {computed} from 'vue'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import axios from 'axios'
 import drf from '@/api/drf.js'
 import {useStore} from 'vuex'
+=======
+import {accounts} from '@/api/drf.js'
+// import axios from 'axios';
+>>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
 export default {
   name: 'LoginInfo',
   setup () {
@@ -98,6 +107,7 @@ export default {
       password2: null,
       correct: null,
 <<<<<<< HEAD
+<<<<<<< HEAD
       confirm: null,
     })
     const computedData = reactive({
@@ -116,13 +126,17 @@ export default {
         })
 =======
       confirm: 2,
+=======
+      confirm: null,
+>>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
     })
     const computedData = reactive({
       samePassword: computed(() => userData.correct),
-      validUsername: computed(() => userData.confirm)
+      validUsername: computed(() => userData.confirm == 'success')
     })
     const confirmUsername = () => {
       // 아이디 일치 여부 확인
+<<<<<<< HEAD
       // const data = {username: userData.username}
     
     //   axios.get('', data)
@@ -131,6 +145,14 @@ export default {
     //       confirm = res.data
       console.log(userData.username)
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+      axios.get(accounts.checkUsername(), {username: userData.username})
+        .then((res) => {
+          // 변수명 알아내야 함
+          userData.confirm = res.data.dup
+          console.log(userData.username)
+        })
+>>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
     }
     const isCorrect = () => {
       if (userData.password1 === userData.password2) {
@@ -161,6 +183,7 @@ export default {
       isCorrect
     }
   }
+<<<<<<< HEAD
 =======
       isCorrect,
       toSignup
@@ -170,5 +193,7 @@ export default {
     }
   },
 >>>>>>> 147871f (Feat : 회원가입 틀 제작 후 이름까지 완료 (그 이후 부분은 미완성))
+=======
+>>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
 }
 </script>

@@ -168,8 +168,13 @@ import {ref} from '@vue/reactivity'
 =======
 import {reactive, ref} from '@vue/reactivity'
 import {computed} from 'vue'
+<<<<<<< HEAD
 // import axios from 'axios'
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+import axios from 'axios'
+import {accounts} from '@/api/drf.js'
+>>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
 export default {
   name: 'EmailConfirm',
   setup () {
@@ -204,6 +209,7 @@ export default {
     }
     const isValidEmail = () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // 백에 신호 보내 인증 번호 받기 -> realNumber 바꿔주기
     }
     const isValidNumber = () => {
@@ -236,6 +242,10 @@ export default {
       // axios.post('', fullEmail)
       //   .then(res => realNumber = res.data.)
       //   .catch(err => confirm('이메일이 유효하지 않습니다'))
+=======
+      axios.post(accounts.sendEmail(), fullEmail)
+        .then(res => realNumber = res.data[auth_num])
+>>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
       email.valid = true
       start()
     }

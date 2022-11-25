@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 .DS_Store
 node_modules
 /dist
@@ -45,6 +46,8 @@ pnpm-debug.log*
 
 =======
 >>>>>>> f99a32f (master에 .gitignore 추가)
+=======
+>>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
 # Created by https://www.toptal.com/developers/gitignore/api/windows,python,django,venv,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,python,django,venv,visualstudiocode
 
@@ -186,6 +189,7 @@ env/
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 venv*/
 =======
 venv/
@@ -199,6 +203,9 @@ venv/
 =======
 venv*/
 >>>>>>> 0965e2b (venv 2개 이상을 위한 .gitignore 수정)
+=======
+venv*/
+>>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
 ENV/
 env.bak/
 venv.bak/
@@ -383,6 +390,7 @@ $RECYCLE.BIN/
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 backend/my_settings.py
 <<<<<<< HEAD
 =======
@@ -400,3 +408,6 @@ front-end/node_modules
 =======
 backend/educolab/my_settings.py
 >>>>>>> f99a32f (master에 .gitignore 추가)
+=======
+backend/my_settings.py
+>>>>>>> acd4b8a ( Feat : 아이디 중복 확인, 학교 검색, 이메일 인증 백과 통신 기능 추가)
