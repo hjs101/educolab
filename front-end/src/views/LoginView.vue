@@ -172,10 +172,17 @@ export default {
 =======
 // import { reactive } from '@vue/reactivity'
 import { mapGetters, mapActions } from 'vuex'
+import AccountErrorList from '@/components/AccountErrorList.vue'
 
 export default {
   name: 'LoginView',
+<<<<<<< HEAD
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+  components: {
+    AccountErrorList
+  },
+>>>>>>> 77a4159 (로그아웃 구현)
   data () {
     return {
       credentials: {

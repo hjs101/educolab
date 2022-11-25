@@ -8,8 +8,13 @@
 <<<<<<< HEAD
   <div style="height: 2000px">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <!-- 교사 navbar -->
     <div v-if="isLoggedIn && currentUser.userflag">
+=======
+    <!-- 교사 navbar -->
+    <div v-if="isLoggedIn">
+>>>>>>> 77a4159 (로그아웃 구현)
       <div class="q-pa-md q-gutter-sm">
         <q-bar style="height:100px;" >
           <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
@@ -18,6 +23,7 @@
           <div class="cursor-pointer"><router-link to="/quiz">퀴즈</router-link></div>
           <div class="cursor-pointer"><router-link to="/search">설문조사</router-link></div>
           <div class="cursor-pointer"><router-link to="/teacher">마이페이지</router-link></div>
+<<<<<<< HEAD
           <button @click="logoutBtn">로그아웃</button>
         </q-bar>
         <hr>
@@ -26,6 +32,15 @@
 
     <!-- 학생 navbar -->
     <div v-if="isLoggedIn && !currentUser.userflag">
+=======
+        </q-bar>
+        <hr>
+      </div>
+      <button @click="logoutBtn">로그아웃</button>
+    </div>
+    <!-- 학생 navbar -->
+    <!-- <div v-else-if="flag==='student'">
+>>>>>>> 77a4159 (로그아웃 구현)
       <div class="q-pa-md q-gutter-sm">
         <q-bar style="height:100px;" >
           <a href="/"><img src="@/assets/educolab.png" alt="educolab" style="width:100px; height:100px;"></a>
@@ -34,6 +49,7 @@
           <div class="cursor-pointer"><router-link to="/student/writing">내 필기</router-link></div>
           <div class="cursor-pointer"><router-link to="/student/store">포인트 상점</router-link></div>
           <div class="cursor-pointer"><router-link to="/student">마이페이지</router-link></div>
+<<<<<<< HEAD
           <button @click="logoutBtn">로그아웃</button>
         </q-bar>
         <hr>
@@ -45,11 +61,19 @@
     <!-- <the-navbar v-if="isLoggedIn"></the-navbar> -->
     
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+        </q-bar>
+        <hr>
+      </div>
+    </div> -->
+
+>>>>>>> 77a4159 (로그아웃 구현)
   <router-view />
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 import { mapGetters, mapActions } from 'vuex'
 
@@ -83,6 +107,26 @@ export default {
   //   TheNavbar
   // },
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+import { mapGetters, mapActions } from 'vuex'
+
+
+export default {
+  name: 'MainPage',
+  computed: {
+    ...mapGetters(['isLoggedIn'])
+  },
+  methods: {
+    ...mapActions(['logout']),
+    logoutBtn() {
+      if (this.isLoggedIn) {
+        this.logout()
+      } else {
+        this.$router.back()
+      }
+    }
+  }
+>>>>>>> 77a4159 (로그아웃 구현)
 }
 </script>
 

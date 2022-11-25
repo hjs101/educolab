@@ -17,6 +17,7 @@ const routes = [
     component: () => import ('@/views/LoginView')
   },  
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // Main
   {
@@ -34,6 +35,15 @@ const routes = [
   },
 =======
 >>>>>>> 92fa455 (라우터 버그 수정)
+=======
+
+  // 메인페이지 
+  {
+    path: '/nav',
+    name: 'nav',
+    component: () => import('@/views/TheNavbar.vue')
+  },
+>>>>>>> 77a4159 (로그아웃 구현)
   // 공지사항
   {
     path: '/notice',

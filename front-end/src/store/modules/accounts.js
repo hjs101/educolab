@@ -87,22 +87,30 @@ export const accounts = {
     }
 =======
   state: {
+<<<<<<< HEAD
       token: localStorage.getItem('token') || '',
       userInfo: {},
       isLogin: false,
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+      access: localStorage.getItem('access') || '',
+      currentUser: {},
+      authError: null,
+>>>>>>> 77a4159 (로그아웃 구현)
   },
   getters: {
-    isLoggedIn: state => !!state.token,
+    isLoggedIn: state => !!state.access,
     currentUser: state => state.currentUser,
+    authError: state => state.authError,
+    authHeader: state => ({ Authorization: `Token ${state.access}` }),
     getUserType: state => state.userType,
     getStudentInfo: state => state.studentInfo,
     getTeacherInfo: state => state.teacherInfo,
   },
   mutations: {
-    loginSuccess(state) {
-      state.isLogin = true
-    },
+    SET_TOKEN: (state, access) => state.access = access,
+    SET_CURRENT_USER: (state, user) => state.currentUser = user,
+    SET_AUTH_ERROR: (state, error) => state.authError = error,
     CHANGE_STUDENT_DATA(state,data) {
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
       if (state.userType === 'student') {
@@ -120,6 +128,7 @@ export const accounts = {
   actions: {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     saveToken({commit}, access) {
       commit('SET_TOKEN', access)
       localStorage.setItem('access', access)
@@ -135,8 +144,17 @@ export const accounts = {
     saveToken({commit}, token) {
       commit('SET_TOKEN', token)
       localStorage.setItem('token', token)
+=======
+    saveToken({commit}, access) {
+      commit('SET_TOKEN', access)
+      localStorage.setItem('access', access)
+>>>>>>> 77a4159 (로그아웃 구현)
     },
-    login({ dispatch }, credentials) {
+    removeToken({commit}) {
+      commit('SET_TOKEN', '')
+      localStorage.setItem('access', '')
+    },
+    login({ commit, dispatch }, credentials) {
       // 로그인 함수 구현
       Axios({
 >>>>>>> c942112 (로그인 프론트와 백 연결)
@@ -144,6 +162,7 @@ export const accounts = {
         method: 'post',
         data: credentials
       })
+<<<<<<< HEAD
 <<<<<<< HEAD
         .then(res => {
           console.log(res)
@@ -196,23 +215,43 @@ export const accounts = {
 
 =======
       console.log(credentials)
+=======
+>>>>>>> 77a4159 (로그아웃 구현)
         .then(res => {
-          const token = res.data.key
-          dispatch('saveToken', token)
-          router.push({ name: 'Notice'})
+          console.log(res)
+          const access = res.data.access
+          dispatch('saveToken', access)
+          router.push({ name: 'nav'})
         })
+        .catch(err => {
+          console.error(err.response.data)
+          commit('SET_AUTH_ERROR', err.response.data)
+        })
+<<<<<<< HEAD
         // .catch(err => {
         //   console.err(err.response.data)
         //   commit('')
         // })
 >>>>>>> c942112 (로그인 프론트와 백 연결)
+=======
+>>>>>>> 77a4159 (로그아웃 구현)
     },
     signup() {
 
     },
+<<<<<<< HEAD
     logout() {
 
 >>>>>>> 03de9fd (Feat: 회원가입 학교 검색, 이름, 전화번호, 생년월일, 학년/반/번호)
+=======
+    logout({dispatch}) {
+      console.log('여기는 옴?')
+        dispatch('removeToken')
+        router.push({ name : 'login' })
+      .catch(err => {
+        console.log(err.respone)
+      })
+>>>>>>> 77a4159 (로그아웃 구현)
     },
     setUserType({commit}, userType) {
       // 로그인할 때
