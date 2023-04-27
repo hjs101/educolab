@@ -1,5 +1,5 @@
 #  EduColab ( 교육과 기술의 청량한 조화! )
-<img src="/uploads/85e4097f8177ffa87cc5b0dd1a7df106/educolab.37f5cd03.png" width="250">
+![image](https://user-images.githubusercontent.com/97939170/234733997-d3e5bd45-8a92-48ca-bc99-339109a8f5d0.png)
 
 ### UCC : [링크](https://youtu.be/ESee2Ut4Xcg)
 
@@ -19,7 +19,7 @@ Embeded : 여동준, 이국희
 ## 핵심 서비스
 
 ### 설문조사 등록
-![선생_013_설문조사_등록](/uploads/1dd1b65146c0f9b696f1ac4dca000f9a/선생_013_설문조사_등록.gif)
+![선생_013_설문조사_등록](/uploads/c77fa88f8d25130b59d959b1778b6955/선생_013_설문조사_등록.gif)
 
 ### 설문조사 제출
 ![학생_임베디드__003_설문조사_제출](/uploads/be5d1c289a81ddc4b8c20fea8b30a2a5/학생_임베디드__003_설문조사_제출.gif)
