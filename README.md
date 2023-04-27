@@ -106,11 +106,6 @@ Embeded : [링크](https://github.com/hjs101/educolab/blob/master/embedded/READM
 
 ![image](https://user-images.githubusercontent.com/97939170/234735680-cb58e7c6-1e3f-4d3f-aa27-5cce7d396361.png)
 
-### Jenkins를 이용한 CD 구축 및 SSL 인증서 적용
-
----
-
-백엔드 CICD 배포 및 SSL 인증서 적용 과정은 [여기](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/CICD.md)에서 설명해두었습니다.
 
 ### 특이점
 
