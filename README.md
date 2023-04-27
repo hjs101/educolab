@@ -94,7 +94,7 @@ Embeded : 여동준, 이국희
 
 ###각 개발 환경 별 포팅 매뉴얼
 
-Backend : [링크][(https://github.com/hjs101/educolab/blob/master/backend/README.MD)
+Backend : [링크](https://github.com/hjs101/educolab/blob/master/backend/README.MD)
 
 Frontend : [링크](https://github.com/hjs101/educolab/blob/master/front-end/README.md)
 
