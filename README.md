@@ -94,17 +94,17 @@ Embeded : 여동준, 이국희
 
 ###각 개발 환경 별 포팅 매뉴얼
 
-Frontend : [링크](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/front-end/README.md)
+Backend : [링크][(https://github.com/hjs101/educolab/blob/master/backend/README.MD)
 
-Backend : [링크](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/backend/README.MD)
+Frontend : [링크](https://github.com/hjs101/educolab/blob/master/front-end/README.md)
 
-Embeded : [링크](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/embedded/README.md)
+Embeded : [링크](https://github.com/hjs101/educolab/blob/master/embedded/README.md)
 
 ### 아키텍쳐 구성도
 
 ---
 
-![아키텍쳐 구성도](/uploads/a1a8362d2e4b2565ec68fb7a3f6177ec/Image_Pasted_at_2022-8-15_22-31.png)
+![image](https://user-images.githubusercontent.com/97939170/234735680-cb58e7c6-1e3f-4d3f-aa27-5cce7d396361.png)
 
 ### Jenkins를 이용한 CD 구축 및 SSL 인증서 적용
 
@@ -149,18 +149,18 @@ Docker, Nginx, Jenkins를 이용하여 무중단 자동 배포를 구축하였�
 ### 기능 정의서
 
 ---
-![기능_정의서_1](/uploads/ca30c9aa7193e1a2656f5aa5013e497b/기능_정의서_1.jpg)
+![image](https://user-images.githubusercontent.com/97939170/234736038-5c3dc3ee-e8a0-4068-a02b-284cbaa56a63.png)
 
-![기능_정의서_2](/uploads/c611b84956c82e61dd148eeee7d20392/기능_정의서_2.jpg)
+![image](https://user-images.githubusercontent.com/97939170/234736060-858cbabb-7095-4268-8578-c0e0058c8da1.png)
 
-![기능_정의서_3](/uploads/4d89e9feeaa9207aafce54efb568dbc1/기능_정의서_3.jpg)
+![image](https://user-images.githubusercontent.com/97939170/234736077-764d1dce-caef-4866-a30e-33f6be9fa534.png)
 
 
-### 화면 정의서
+### 기타 산출물
 
 ---
 
-화면 정의서는 [여기](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/outputs/%ED%99%94%EB%A9%B4_%EC%A0%95%EC%9D%98%EC%84%9C.pdf)에서 확인해주시기 바랍니다.
+기타 산출물은 [여기](https://github.com/hjs101/educolab/tree/master/outputs)에서 확인해주시기 바랍니다.
 
 
 ### ✨Git 컨벤션
@@ -201,15 +201,3 @@ Docker, Nginx, Jenkins를 이용하여 무중단 자동 배포를 구축하였�
 ################
 
 ```
-
-###  ER Diagram
-
----
-
-![ERD](/uploads/53e58cf572132880d670c9944203a78b/image.png)
-
-- ERD입니다.
-
-### Sequence Diagram
-
-시퀀스 다이어그램은 [여기](https://lab.ssafy.com/s07-webmobile3-sub2/S07P12C102/-/blob/master/outputs/Sequence%20Diagram.docx)에서 확인하세요!
